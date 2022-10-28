@@ -1,0 +1,102 @@
+{
+  "": {
+    "WPNAV_ACCEL": {
+      "Description": "Defines the horizontal acceleration in cm/s/s used during missions",
+      "DisplayName": "Waypoint Acceleration ",
+      "Increment": "10",
+      "Range": {
+        "high": "500",
+        "low": "50"
+      },
+      "Units": "cm/s/s",
+      "User": "Standard"
+    },
+    "WPNAV_ACCEL_Z": {
+      "Description": "Defines the vertical acceleration in cm/s/s used during missions",
+      "DisplayName": "Waypoint Vertical Acceleration",
+      "Increment": "10",
+      "Range": {
+        "high": "500",
+        "low": "50"
+      },
+      "Units": "cm/s/s",
+      "User": "Standard"
+    },
+    "WPNAV_JERK": {
+      "Description": "Defines the horizontal jerk in m/s/s used during missions",
+      "DisplayName": "Waypoint Jerk",
+      "Range": {
+        "high": "20",
+        "low": "1"
+      },
+      "Units": "m/s/s/s",
+      "User": "Standard"
+    },
+    "WPNAV_RADIUS": {
+      "Description": "Defines the distance from a waypoint, that when crossed indicates the wp has been hit.",
+      "DisplayName": "Waypoint Radius",
+      "Increment": "1",
+      "Range": {
+        "high": "1000",
+        "low": "5"
+      },
+      "Units": "cm",
+      "User": "Standard"
+    },
+    "WPNAV_RFND_USE": {
+      "Description": "This controls if waypoint missions use rangefinder for terrain following",
+      "DisplayName": "Waypoint missions use rangefinder for terrain following",
+      "User": "Advanced",
+      "Values": {
+        "0": "Disable",
+        "1": "Enable"
+      }
+    },
+    "WPNAV_SPEED": {
+      "Description": "Defines the speed in cm/s which the aircraft will attempt to maintain horizontally during a WP mission",
+      "DisplayName": "Waypoint Horizontal Speed Target",
+      "Increment": "50",
+      "Range": {
+        "high": "2000",
+        "low": "20"
+      },
+      "Units": "cm/s",
+      "User": "Standard"
+    },
+    "WPNAV_SPEED_DN": {
+      "Description": "Defines the speed in cm/s which the aircraft will attempt to maintain while descending during a WP mission",
+      "DisplayName": "Waypoint Descent Speed Target",
+      "Increment": "10",
+      "Range": {
+        "high": "500",
+        "low": "10"
+      },
+      "Units": "cm/s",
+      "User": "Standard"
+    },
+    "WPNAV_SPEED_UP": {
+      "Description": "Defines the speed in cm/s which the aircraft will attempt to maintain while climbing during a WP mission",
+      "DisplayName": "Waypoint Climb Speed Target",
+      "Increment": "50",
+      "Range": {
+        "high": "1000",
+        "low": "10"
+      },
+      "Units": "cm/s",
+      "User": "Standard"
+    },
+    "WPNAV_TER_MARGIN": {
+      "Description": "Waypoint Terrain following altitude margin.  Vehicle will stop if distance from target altitude is larger than this margin (in meters)",
+      "DisplayName": "Waypoint Terrain following altitude margin",
+      "Range": {
+        "high": "100",
+        "low": "0.1"
+      },
+      "Units": "m",
+      "User": "Advanced"
+    }
+  },
+  "json": {
+    "version": 0
+  }
+}

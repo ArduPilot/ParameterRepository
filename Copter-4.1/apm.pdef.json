@@ -1,0 +1,65 @@
+{
+  "": {
+    "ZIGZ_AUTO_ENABLE": {
+      "Description": "Allows you to enable (1) or disable (0) ZigZag auto feature",
+      "DisplayName": "ZigZag auto enable/disable",
+      "User": "Advanced",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "ZIGZ_DIRECTION": {
+      "Description": "The direction to move sideways in ZigZag mode",
+      "DisplayName": "Sideways direction in ZigZag auto",
+      "User": "Advanced",
+      "Values": {
+        "0": "forward",
+        "1": "right",
+        "2": "backward",
+        "3": "left"
+      }
+    },
+    "ZIGZ_LINE_NUM": {
+      "Description": "Total number of lines for ZigZag auto if 1 or more. -1: Infinity, 0: Just moving to sideways",
+      "DisplayName": "Total number of lines",
+      "Range": {
+        "high": "32767",
+        "low": "-1"
+      },
+      "User": "Advanced"
+    },
+    "ZIGZ_SIDE_DIST": {
+      "Description": "The distance to move sideways in ZigZag mode",
+      "DisplayName": "Sideways distance in ZigZag auto",
+      "Range": {
+        "high": "100",
+        "low": "0.1"
+      },
+      "Units": "m",
+      "User": "Advanced"
+    },
+    "ZIGZ_SPRAYER": {
+      "Description": "Enable the auto sprayer in ZigZag mode. SPRAY_ENABLE = 1 and SERVOx_FUNCTION = 22(SprayerPump) / 23(SprayerSpinner) also must be set. This makes the sprayer on while moving to destination A or B. The sprayer will stop if the vehicle reaches destination or the flight mode is changed from ZigZag to other.",
+      "DisplayName": "Auto sprayer in ZigZag",
+      "User": "Advanced",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "ZIGZ_WP_DELAY": {
+      "Description": "Waiting time after reached the destination",
+      "DisplayName": "The delay for zigzag waypoint",
+      "Range": {
+        "high": "127",
+        "low": "1"
+      },
+      "Units": "s",
+      "User": "Advanced"
+    }
+  },
+  "json": {
+    "version": 0
+  }
+}

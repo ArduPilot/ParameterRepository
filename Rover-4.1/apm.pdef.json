@@ -1,0 +1,222 @@
+{
+  "": {
+    "WRC2_RATE_D": {
+      "Description": "Wheel rate control D gain.  Compensates for short-term change in desired rate vs actual",
+      "DisplayName": "Wheel rate control D gain",
+      "Range": {
+        "high": "0.400",
+        "low": "0.000"
+      },
+      "User": "Standard"
+    },
+    "WRC2_RATE_FF": {
+      "Description": "Wheel rate control feed forward gain.  Desired rate (in radians/sec) is multiplied by this constant and output to output (in the range -1 to +1)",
+      "DisplayName": "Wheel rate control feed forward gain",
+      "Range": {
+        "high": "2.000",
+        "low": "0.100"
+      },
+      "User": "Standard"
+    },
+    "WRC2_RATE_FILT": {
+      "Description": "Wheel rate control input filter.  Lower values reduce noise but add delay.",
+      "DisplayName": "Wheel rate control filter frequency",
+      "Range": {
+        "high": "100.000",
+        "low": "1.000"
+      },
+      "Units": "Hz",
+      "User": "Standard"
+    },
+    "WRC2_RATE_FLTD": {
+      "Description": "Wheel rate control derivative frequency in Hz",
+      "DisplayName": "Wheel rate control derivative frequency in Hz",
+      "Increment": "1",
+      "Range": {
+        "high": "50",
+        "low": "1"
+      },
+      "Units": "Hz",
+      "User": "Standard"
+    },
+    "WRC2_RATE_FLTE": {
+      "Description": "Wheel rate control error frequency in Hz",
+      "DisplayName": "Wheel rate control error frequency in Hz",
+      "Increment": "1",
+      "Range": {
+        "high": "50",
+        "low": "1"
+      },
+      "Units": "Hz",
+      "User": "Standard"
+    },
+    "WRC2_RATE_FLTT": {
+      "Description": "Wheel rate control target frequency in Hz",
+      "DisplayName": "Wheel rate control target frequency in Hz",
+      "Increment": "1",
+      "Range": {
+        "high": "50",
+        "low": "1"
+      },
+      "Units": "Hz",
+      "User": "Standard"
+    },
+    "WRC2_RATE_I": {
+      "Description": "Wheel rate control I gain.  Corrects long term error between the desired rate (in rad/s) and actual",
+      "DisplayName": "Wheel rate control I gain",
+      "Range": {
+        "high": "2.000",
+        "low": "0.000"
+      },
+      "User": "Standard"
+    },
+    "WRC2_RATE_IMAX": {
+      "Description": "Wheel rate control I gain maximum.  Constrains the output (range -1 to +1) that the I term will generate",
+      "DisplayName": "Wheel rate control I gain maximum",
+      "Range": {
+        "high": "1.000",
+        "low": "0.000"
+      },
+      "User": "Standard"
+    },
+    "WRC2_RATE_P": {
+      "Description": "Wheel rate control P gain.  Converts rate error (in radians/sec) to output (in the range -1 to +1)",
+      "DisplayName": "Wheel rate control P gain",
+      "Range": {
+        "high": "2.000",
+        "low": "0.100"
+      },
+      "User": "Standard"
+    },
+    "WRC2_RATE_SMAX": {
+      "Description": "Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature.",
+      "DisplayName": "Wheel rate slew rate limit",
+      "Increment": "0.5",
+      "Range": {
+        "high": "200",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
+    "WRC_ENABLE": {
+      "Description": "Enable or disable wheel rate control",
+      "DisplayName": "Wheel rate control enable/disable",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "WRC_RATE_D": {
+      "Description": "Wheel rate control D gain.  Compensates for short-term change in desired rate vs actual",
+      "DisplayName": "Wheel rate control D gain",
+      "Range": {
+        "high": "0.400",
+        "low": "0.000"
+      },
+      "User": "Standard"
+    },
+    "WRC_RATE_FF": {
+      "Description": "Wheel rate control feed forward gain.  Desired rate (in radians/sec) is multiplied by this constant and output to output (in the range -1 to +1)",
+      "DisplayName": "Wheel rate control feed forward gain",
+      "Range": {
+        "high": "2.000",
+        "low": "0.100"
+      },
+      "User": "Standard"
+    },
+    "WRC_RATE_FILT": {
+      "Description": "Wheel rate control input filter.  Lower values reduce noise but add delay.",
+      "DisplayName": "Wheel rate control filter frequency",
+      "Range": {
+        "high": "100.000",
+        "low": "1.000"
+      },
+      "Units": "Hz",
+      "User": "Standard"
+    },
+    "WRC_RATE_FLTD": {
+      "Description": "Wheel rate control derivative frequency in Hz",
+      "DisplayName": "Wheel rate control derivative frequency in Hz",
+      "Increment": "1",
+      "Range": {
+        "high": "50",
+        "low": "1"
+      },
+      "Units": "Hz",
+      "User": "Standard"
+    },
+    "WRC_RATE_FLTE": {
+      "Description": "Wheel rate control error frequency in Hz",
+      "DisplayName": "Wheel rate control error frequency in Hz",
+      "Increment": "1",
+      "Range": {
+        "high": "50",
+        "low": "1"
+      },
+      "Units": "Hz",
+      "User": "Standard"
+    },
+    "WRC_RATE_FLTT": {
+      "Description": "Wheel rate control target frequency in Hz",
+      "DisplayName": "Wheel rate control target frequency in Hz",
+      "Increment": "1",
+      "Range": {
+        "high": "50",
+        "low": "1"
+      },
+      "Units": "Hz",
+      "User": "Standard"
+    },
+    "WRC_RATE_I": {
+      "Description": "Wheel rate control I gain.  Corrects long term error between the desired rate (in rad/s) and actual",
+      "DisplayName": "Wheel rate control I gain",
+      "Range": {
+        "high": "2.000",
+        "low": "0.000"
+      },
+      "User": "Standard"
+    },
+    "WRC_RATE_IMAX": {
+      "Description": "Wheel rate control I gain maximum.  Constrains the output (range -1 to +1) that the I term will generate",
+      "DisplayName": "Wheel rate control I gain maximum",
+      "Range": {
+        "high": "1.000",
+        "low": "0.000"
+      },
+      "User": "Standard"
+    },
+    "WRC_RATE_MAX": {
+      "Description": "Wheel max rotation rate",
+      "DisplayName": "Wheel max rotation rate",
+      "Range": {
+        "high": "200",
+        "low": "0"
+      },
+      "Units": "rad/s",
+      "User": "Standard"
+    },
+    "WRC_RATE_P": {
+      "Description": "Wheel rate control P gain.  Converts rate error (in radians/sec) to output (in the range -1 to +1)",
+      "DisplayName": "Wheel rate control P gain",
+      "Range": {
+        "high": "2.000",
+        "low": "0.100"
+      },
+      "User": "Standard"
+    },
+    "WRC_RATE_SMAX": {
+      "Description": "Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature.",
+      "DisplayName": "Wheel rate slew rate limit",
+      "Increment": "0.5",
+      "Range": {
+        "high": "200",
+        "low": "0"
+      },
+      "User": "Advanced"
+    }
+  },
+  "json": {
+    "version": 0
+  }
+}
