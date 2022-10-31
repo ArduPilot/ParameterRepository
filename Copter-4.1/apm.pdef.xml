@@ -94,6 +94,10 @@
           <value code="1">Terrain</value>
         </values>
       </param>
+      <param humanName="Rangefinder gain" name="ArduCopter:RNGFND_GAIN" documentation="Used to adjust the speed with which the target altitude is changed when objects are sensed below the copter" user="Standard">
+        <field name="Range">0.01 2.0</field>
+        <field name="Increment">0.01</field>
+      </param>
       <param humanName="Ground Station Failsafe Enable" name="ArduCopter:FS_GCS_ENABLE" documentation="Controls whether failsafe will be invoked (and what action to take) when connection with Ground station is lost for at least 5 seconds. See FS_OPTIONS param for additional actions, or for cases allowing Mission continuation, when GCS failsafe is enabled." user="Standard">
         <values>
           <value code="0">Disabled/NoAction</value>
@@ -482,6 +486,7 @@
           <value code="13">Heli Ext Gyro</value>
           <value code="38">Declination</value>
           <value code="39">Circle Rate</value>
+          <value code="41">RangeFinder Gain</value>
           <value code="46">Rate Pitch kP</value>
           <value code="47">Rate Pitch kI</value>
           <value code="48">Rate Pitch kD</value>
@@ -713,7 +718,7 @@
         <field name="Bitmask">0:Allow Arming,1:Allow Takeoff Without Raising Throttle,2:Ignore pilot yaw</field>
       </param>
       <param humanName="Guided mode options" name="ArduCopter:GUID_OPTIONS" documentation="Options that can be applied to change guided mode behaviour" user="Advanced">
-        <field name="Bitmask">0:Allow Arming from Transmitter,2:Ignore pilot yaw,3:SetAttitudeTarget interprets Thrust As Thrust,4:Do not stabilize PositionXY,5:Do not stabilize VelocityXY,6:Waypoint navigation used for position targets</field>
+        <field name="Bitmask">0:Allow Arming from Transmitter,2:Ignore pilot yaw,3:SetAttitudeTarget_ThrustAsThrust</field>
       </param>
       <param humanName="GCS failsafe timeout" name="ArduCopter:FS_GCS_TIMEOUT" documentation="Timeout before triggering the GCS failsafe" user="Standard">
         <field name="Units">s</field>
@@ -733,11 +738,6 @@
         <field name="Range">0 5</field>
         <field name="Increment">0.05</field>
         <field name="RebootRequired">True</field>
-      </param>
-      <param humanName="Guided mode timeout" name="ArduCopter:GUID_TIMEOUT" documentation="Guided mode timeout after which vehicle will stop or return to level if no updates are received from caller.  Only applicable during velocity, acceleration or angle control" user="Advanced">
-        <field name="Units">s</field>
-        <field name="UnitText">seconds</field>
-        <field name="Range">0.1 5</field>
       </param>
     </parameters>
   </vehicles>
@@ -3171,7 +3171,7 @@
         </values>
       </param>
       <param humanName="Board options" name="BRD_OPTIONS" documentation="Board specific option flags" user="Advanced">
-        <field name="Bitmask">0:Enable hardware watchdog, 1:Disable MAVftp, 2:Enable set of internal parameters, 3:Enable Debug Pins</field>
+        <field name="Bitmask">0:Enable hardware watchdog, 1:Disable MAVftp, 2:Enable set of internal parameters</field>
       </param>
       <param humanName="Boot delay" name="BRD_BOOT_DELAY" documentation="This adds a delay in milliseconds to boot to ensure peripherals initialise fully" user="Advanced">
         <field name="Range">0 10000</field>
@@ -3824,7 +3824,6 @@
           <value code="5">CANTester</value>
           <value code="8">KDECAN</value>
           <value code="9">PacketDigitalCAN</value>
-          <value code="11">Benewake</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -3884,9 +3883,6 @@
         <field name="Units">Hz</field>
         <field name="UnitText">hertz</field>
       </param>
-      <param humanName="UAVCAN options" name="CAN_D1_UC_OPTION" documentation="Option flags" user="Advanced">
-        <field name="Bitmask">0:ClearDNADatabase,1:IgnoreDNANodeConflicts</field>
-      </param>
     </parameters>
     <parameters name="CAN_D2_">
       <param humanName="Enable use of specific protocol over virtual driver" name="CAN_D2_PROTOCOL" documentation="Enabling this option starts selected protocol that will use this virtual driver" user="Advanced">
@@ -3898,7 +3894,6 @@
           <value code="5">CANTester</value>
           <value code="8">KDECAN</value>
           <value code="9">PacketDigitalCAN</value>
-          <value code="11">Benewake</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -3958,9 +3953,6 @@
         <field name="Units">Hz</field>
         <field name="UnitText">hertz</field>
       </param>
-      <param humanName="UAVCAN options" name="CAN_D2_UC_OPTION" documentation="Option flags" user="Advanced">
-        <field name="Bitmask">0:ClearDNADatabase,1:IgnoreDNANodeConflicts</field>
-      </param>
     </parameters>
     <parameters name="CAN_D3_">
       <param humanName="Enable use of specific protocol over virtual driver" name="CAN_D3_PROTOCOL" documentation="Enabling this option starts selected protocol that will use this virtual driver" user="Advanced">
@@ -3972,7 +3964,6 @@
           <value code="5">CANTester</value>
           <value code="8">KDECAN</value>
           <value code="9">PacketDigitalCAN</value>
-          <value code="11">Benewake</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -4031,9 +4022,6 @@
         <field name="Range">1 200</field>
         <field name="Units">Hz</field>
         <field name="UnitText">hertz</field>
-      </param>
-      <param humanName="UAVCAN options" name="CAN_D3_UC_OPTION" documentation="Option flags" user="Advanced">
-        <field name="Bitmask">0:ClearDNADatabase,1:IgnoreDNANodeConflicts</field>
       </param>
     </parameters>
     <parameters name="CAN_P1_">
@@ -4976,6 +4964,13 @@
         <field name="Bitmask">0:FirstEKF,1:SecondEKF,2:ThirdEKF,3:FourthEKF,4:FifthEKF,5:SixthEKF</field>
         <field name="RebootRequired">True</field>
       </param>
+      <param humanName="Delay from loss of navigation to yaw reset" name="EK2_GSF_DELAY" documentation="If the inertial navigation calculation stops following the GPS and other positioning sensors for longer than EK2_GSF_DELAY milli-seconds, then the EKF2 code will generate a reset request internally and reset the yaw to the estimate from the EKF-GSF filter and reset the horizontal velocity and position to the GPS. This reset will not be performed unless the use of the EKF-GSF yaw estimate is enabled via the EK2_GSF_USE parameter." user="Advanced">
+        <field name="Range">500 5000</field>
+        <field name="Increment">100</field>
+        <field name="Units">ms</field>
+        <field name="UnitText">milliseconds</field>
+        <field name="RebootRequired">True</field>
+      </param>
       <param humanName="Maximum number of resets to the EKF-GSF yaw estimate allowed" name="EK2_GSF_RST_MAX" documentation="Sets the maximum number of times the EKF2 will be allowed to reset it's yaw to the estimate from the EKF-GSF yaw estimator. No resets will be allowed unless the use of the EKF-GSF yaw estimate is enabled via the EK2_GSF_USE parameter." user="Advanced">
         <field name="Range">1 10</field>
         <field name="Increment">1</field>
@@ -5127,13 +5122,13 @@
         <field name="UnitText">meters per cubic second</field>
       </param>
       <param humanName="Wind velocity process noise (m/s^2)" name="EK3_WIND_P_NSE" documentation="This state process noise controls the growth of wind state error estimates. Increasing it makes wind estimation faster and noisier." user="Advanced">
-        <field name="Range">0.01 2.0</field>
+        <field name="Range">0.01 1.0</field>
         <field name="Increment">0.1</field>
         <field name="Units">m/s/s</field>
         <field name="UnitText">meters per square second</field>
       </param>
       <param humanName="Height rate to wind process noise scaler" name="EK3_WIND_PSCALE" documentation="This controls how much the process noise on the wind states is increased when gaining or losing altitude to take into account changes in wind speed and direction with altitude. Increasing this parameter increases how rapidly the wind states adapt when changing altitude, but does make wind velocity estimation noiser." user="Advanced">
-        <field name="Range">0.0 2.0</field>
+        <field name="Range">0.0 1.0</field>
         <field name="Increment">0.1</field>
       </param>
       <param humanName="GPS preflight check" name="EK3_GPS_CHECK" documentation="This is a 1 byte bitmap controlling which GPS preflight checks are performed. Set to 0 to bypass all checks. Set to 255 perform all checks. Set to 3 to check just the number of satellites and HDoP. Set to 31 for the most rigorous checks that will still allow checks to pass when the copter is moving, eg launch from a boat." user="Advanced">
@@ -5183,7 +5178,7 @@
         <field name="Units">Gauss/s</field>
         <field name="UnitText">gauss per second</field>
       </param>
-      <param humanName="Range finder switch height percentage" name="EK3_RNG_USE_HGT" documentation="Range finder can be used as the primary height source when below this percentage of its maximum range (see RNGFNDx_MAX_CM) and the primary height source is Baro or GPS (see EK3_SRCx_POSZ).  This feature should not be used for terrain following as it is designed for vertical takeoff and landing with climb above the range finder use height before commencing the mission, and with horizontal position changes below that height being limited to a flat region around the takeoff and landing point." user="Advanced">
+      <param humanName="Range finder switch height percentage" name="EK3_RNG_USE_HGT" documentation="Range finder can be used as the primary height source when below this percentage of its maximum range (see RNGFND_MAX_CM). This will not work unless Baro or GPS height is selected as the primary height source vis EK3_ALT_SOURCE = 0 or 2 respectively.  This feature should not be used for terrain following as it is designed  for vertical takeoff and landing with climb above  the range finder use height before commencing the mission, and with horizontal position changes below that height being limited to a flat region around the takeoff and landing point." user="Advanced">
         <field name="Range">-1 70</field>
         <field name="Increment">1</field>
         <field name="Units">%</field>
@@ -5275,6 +5270,13 @@
         <field name="Bitmask">0:FirstEKF,1:SecondEKF,2:ThirdEKF,3:FourthEKF,4:FifthEKF,5:SixthEKF</field>
         <field name="RebootRequired">True</field>
       </param>
+      <param humanName="Delay from loss of navigation to yaw reset" name="EK3_GSF_DELAY" documentation="If the inertial navigation calculation stops following the GPS and other positioning sensors for longer than EK3_GSF_DELAY milli-seconds, then the EKF3 code will generate a reset request internally and reset the yaw to the estimate from the EKF-GSF filter and reset the horizontal velocity and position to the GPS. This reset will not be performed unless the use of the EKF-GSF yaw estimate is enabled via the EK3_GSF_USE parameter." user="Advanced">
+        <field name="Range">500 5000</field>
+        <field name="Increment">100</field>
+        <field name="Units">ms</field>
+        <field name="UnitText">milliseconds</field>
+        <field name="RebootRequired">True</field>
+      </param>
       <param humanName="Maximum number of resets to the EKF-GSF yaw estimate allowed" name="EK3_GSF_RST_MAX" documentation="Sets the maximum number of times the EKF3 will be allowed to reset it's yaw to the estimate from the EKF-GSF yaw estimator. No resets will be allowed unless the use of the EKF-GSF yaw estimate is enabled via the EK3_GSF_USE parameter." user="Advanced">
         <field name="Range">1 10</field>
         <field name="Increment">1</field>
@@ -5317,10 +5319,6 @@
       <param humanName="Baro height ground effect dead zone" name="EK3_GND_EFF_DZ" documentation="This parameter sets the size of the dead zone that is applied to negative baro height spikes that can occur when takeing off or landing when a vehicle with lift rotors is operating in ground effect ground effect. Set to about 0.5m less than the amount of negative offset in baro height that occurs just prior to takeoff when lift motors are spooling up. Set to 0 if no ground effect is present. " user="Advanced">
         <field name="Range">0.0 10.0</field>
         <field name="Increment">0.5</field>
-      </param>
-      <param humanName="Primary core number" name="EK3_PRIMARY" documentation="The core number (index in IMU mask) that will be used as the primary EKF core on startup. While disarmed the EKF will force the use of this core. A value of 0 corresponds to the first IMU in EK3_IMU_MASK." user="Advanced">
-        <field name="Range">0 2</field>
-        <field name="Increment">1</field>
       </param>
     </parameters>
     <parameters name="EK3_SRC">
@@ -6044,7 +6042,7 @@
         <field name="Range">5.0 30.0</field>
       </param>
       <param humanName="driver options" name="GPS_DRV_OPTIONS" documentation="Additional backend specific options" user="Advanced">
-        <field name="Bitmask">0:Use UART2 for moving baseline on ublox,1:Use base station for GPS yaw on SBF,2:Use baudrate 115200</field>
+        <field name="Bitmask">0:Use UART2 for moving baseline on ublox,1:Use base station for GPS yaw on SBF</field>
       </param>
       <param humanName="GPS physical COM port" name="GPS_COM_PORT" documentation="The physical COM port on the connected device, currently only applies to SBF GPS" user="Advanced">
         <field name="Range">0 10</field>
@@ -6431,7 +6429,7 @@
         <field name="Range">0 10</field>
         <field name="Increment">1</field>
       </param>
-      <param humanName="Collective Hover Value" name="H_COL_HOVER" documentation="Collective needed to hover expressed as a number from 0 to 1 where 0 is H_COL_MIN and 1 is H_COL_MAX" user="Advanced">
+      <param humanName="Collective Hover Value" name="H_COLL_HOVER" documentation="Collective needed to hover expressed as a number from 0 to 1 where 0 is H_COL_MIN and 1 is H_COL_MAX" user="Advanced">
         <field name="Range">0.3 0.8</field>
       </param>
       <param humanName="Hover Value Learning" name="H_HOVER_LEARN" documentation="Enable/Disable automatic learning of hover collective" user="Advanced">
@@ -11690,12 +11688,12 @@
         <field name="Units">cm/s/s</field>
         <field name="UnitText">centimeters per square second</field>
       </param>
-      <param humanName="Velocity (horizontal) input filter" name="PSC_VELXY_FLTE" documentation="Velocity (horizontal) input filter.  This filter (in Hz) is applied to the input for P and I terms" user="Advanced">
+      <param humanName="Velocity (horizontal) input filter" name="PSC_VELXY_FILT" documentation="Velocity (horizontal) input filter.  This filter (in Hz) is applied to the input for P and I terms" user="Advanced">
         <field name="Range">0 100</field>
         <field name="Units">Hz</field>
         <field name="UnitText">hertz</field>
       </param>
-      <param humanName="Velocity (horizontal) input filter" name="PSC_VELXY_FLTD" documentation="Velocity (horizontal) input filter.  This filter (in Hz) is applied to the input for D term" user="Advanced">
+      <param humanName="Velocity (horizontal) input filter" name="PSC_VELXY_D_FILT" documentation="Velocity (horizontal) input filter.  This filter (in Hz) is applied to the input for D term" user="Advanced">
         <field name="Range">0 100</field>
         <field name="Units">Hz</field>
         <field name="UnitText">hertz</field>
@@ -11710,17 +11708,17 @@
         <field name="Range">0 45</field>
         <field name="Increment">1</field>
       </param>
-      <param humanName="Jerk limit for the horizontal kinematic input shaping" name="PSC_JERK_XY" documentation="Jerk limit of the horizontal kinematic path generation used to determine how quickly the aircraft varies the acceleration target" user="Advanced">
-        <field name="Units">m/s/s/s</field>
-        <field name="UnitText">meters per cubic second</field>
-        <field name="Range">1 20</field>
-        <field name="Increment">1</field>
+      <param humanName="Time constant for the horizontal kinimatic input shaping" name="PSC_TC_XY" documentation="Time constant of the horizontal kinimatic path generation used to determine how quickly the aircraft varies the acceleration target" user="Advanced">
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+        <field name="Range">0.25 2</field>
+        <field name="Increment">0.01</field>
       </param>
-      <param humanName="Jerk limit for the vertical kinematic input shaping" name="PSC_JERK_Z" documentation="Jerk limit of the vertical kinematic path generation used to determine how quickly the aircraft varies the acceleration target" user="Advanced">
-        <field name="Units">m/s/s/s</field>
-        <field name="UnitText">meters per cubic second</field>
-        <field name="Range">5 50</field>
-        <field name="Increment">1</field>
+      <param humanName="Time constant for the vertical kinimatic input shaping" name="PSC_TC_Z" documentation="Time constant of the vertical kinimatic path generation used to determine how quickly the aircraft varies the acceleration target" user="Advanced">
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+        <field name="Range">0.1 1</field>
+        <field name="Increment">0.01</field>
       </param>
     </parameters>
     <parameters name="RALLY_">
@@ -11745,7 +11743,7 @@
         <field name="UnitText">seconds</field>
       </param>
       <param humanName="RC options" name="RC_OPTIONS" documentation="RC input options" user="Advanced">
-        <field name="Bitmask">0:Ignore RC Receiver, 1:Ignore MAVLink Overrides, 2:Ignore Receiver Failsafe bit but allow other RC failsafes if setup, 3:FPort Pad, 4:Log RC input bytes, 5:Arming check throttle for 0 input, 6:Skip the arming check for neutral Roll/Pitch/Yay sticks, 7:Allow Switch reverse, 8:Use passthrough for CRSF telemetry, 9:Suppress CRSF mode/rate message for ELRS systems, 10:Enable RC Protocol re-detection</field>
+        <field name="Bitmask">0:Ignore RC Receiver, 1:Ignore MAVLink Overrides, 2:Ignore Receiver Failsafe bit but allow other RC failsafes if setup, 3:FPort Pad, 4:Log RC input bytes, 5:Arming check throttle for 0 input, 6:Skip the arming check for neutral Roll/Pitch/Yay sticks, 7:Allow Switch reverse, 8:Use passthrough for CRSF telemetry</field>
       </param>
       <param humanName="RC protocols enabled" name="RC_PROTOCOLS" documentation="Bitmask of enabled RC protocols. Allows narrowing the protocol detection to only specific types of RC receivers which can avoid issues with incorrect detection. Set to 1 to enable all protocols." user="Advanced">
         <field name="Bitmask">0:All,1:PPM,2:IBUS,3:SBUS,4:SBUS_NI,5:DSM,6:SUMD,7:SRXL,8:SRXL2,9:CRSF,10:ST24,11:FPORT,12:FPORT2</field>
@@ -13802,7 +13800,6 @@
           <value code="31">GYUS42v2</value>
           <value code="32">MSP</value>
           <value code="33">USD1_CAN</value>
-          <value code="34">Benewake_CAN</value>
           <value code="100">SITL</value>
         </values>
       </param>
@@ -13937,12 +13934,6 @@
           <value code="1">High Speed</value>
         </values>
       </param>
-      <param humanName="CAN receive ID" name="RNGFND1_RECV_ID" documentation="The receive ID of the CAN frames. A value of zero means all IDs are accepted." user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
-      <param humanName="Minimum signal strength" name="RNGFND1_SNR_MIN" documentation="Minimum signal strength (SNR) to accept distance" user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
     </parameters>
     <parameters name="RNGFND2_">
       <param humanName="Rangefinder type" name="RNGFND2_TYPE" documentation="What type of rangefinder device that is connected" user="Standard">
@@ -13980,7 +13971,6 @@
           <value code="31">GYUS42v2</value>
           <value code="32">MSP</value>
           <value code="33">USD1_CAN</value>
-          <value code="34">Benewake_CAN</value>
           <value code="100">SITL</value>
         </values>
       </param>
@@ -14115,12 +14105,6 @@
           <value code="1">High Speed</value>
         </values>
       </param>
-      <param humanName="CAN receive ID" name="RNGFND2_RECV_ID" documentation="The receive ID of the CAN frames. A value of zero means all IDs are accepted." user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
-      <param humanName="Minimum signal strength" name="RNGFND2_SNR_MIN" documentation="Minimum signal strength (SNR) to accept distance" user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
     </parameters>
     <parameters name="RNGFND3_">
       <param humanName="Rangefinder type" name="RNGFND3_TYPE" documentation="What type of rangefinder device that is connected" user="Standard">
@@ -14158,7 +14142,6 @@
           <value code="31">GYUS42v2</value>
           <value code="32">MSP</value>
           <value code="33">USD1_CAN</value>
-          <value code="34">Benewake_CAN</value>
           <value code="100">SITL</value>
         </values>
       </param>
@@ -14293,12 +14276,6 @@
           <value code="1">High Speed</value>
         </values>
       </param>
-      <param humanName="CAN receive ID" name="RNGFND3_RECV_ID" documentation="The receive ID of the CAN frames. A value of zero means all IDs are accepted." user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
-      <param humanName="Minimum signal strength" name="RNGFND3_SNR_MIN" documentation="Minimum signal strength (SNR) to accept distance" user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
     </parameters>
     <parameters name="RNGFND4_">
       <param humanName="Rangefinder type" name="RNGFND4_TYPE" documentation="What type of rangefinder device that is connected" user="Standard">
@@ -14336,7 +14313,6 @@
           <value code="31">GYUS42v2</value>
           <value code="32">MSP</value>
           <value code="33">USD1_CAN</value>
-          <value code="34">Benewake_CAN</value>
           <value code="100">SITL</value>
         </values>
       </param>
@@ -14471,12 +14447,6 @@
           <value code="1">High Speed</value>
         </values>
       </param>
-      <param humanName="CAN receive ID" name="RNGFND4_RECV_ID" documentation="The receive ID of the CAN frames. A value of zero means all IDs are accepted." user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
-      <param humanName="Minimum signal strength" name="RNGFND4_SNR_MIN" documentation="Minimum signal strength (SNR) to accept distance" user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
     </parameters>
     <parameters name="RNGFND5_">
       <param humanName="Rangefinder type" name="RNGFND5_TYPE" documentation="What type of rangefinder device that is connected" user="Standard">
@@ -14514,7 +14484,6 @@
           <value code="31">GYUS42v2</value>
           <value code="32">MSP</value>
           <value code="33">USD1_CAN</value>
-          <value code="34">Benewake_CAN</value>
           <value code="100">SITL</value>
         </values>
       </param>
@@ -14649,12 +14618,6 @@
           <value code="1">High Speed</value>
         </values>
       </param>
-      <param humanName="CAN receive ID" name="RNGFND5_RECV_ID" documentation="The receive ID of the CAN frames. A value of zero means all IDs are accepted." user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
-      <param humanName="Minimum signal strength" name="RNGFND5_SNR_MIN" documentation="Minimum signal strength (SNR) to accept distance" user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
     </parameters>
     <parameters name="RNGFND6_">
       <param humanName="Rangefinder type" name="RNGFND6_TYPE" documentation="What type of rangefinder device that is connected" user="Standard">
@@ -14692,7 +14655,6 @@
           <value code="31">GYUS42v2</value>
           <value code="32">MSP</value>
           <value code="33">USD1_CAN</value>
-          <value code="34">Benewake_CAN</value>
           <value code="100">SITL</value>
         </values>
       </param>
@@ -14827,12 +14789,6 @@
           <value code="1">High Speed</value>
         </values>
       </param>
-      <param humanName="CAN receive ID" name="RNGFND6_RECV_ID" documentation="The receive ID of the CAN frames. A value of zero means all IDs are accepted." user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
-      <param humanName="Minimum signal strength" name="RNGFND6_SNR_MIN" documentation="Minimum signal strength (SNR) to accept distance" user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
     </parameters>
     <parameters name="RNGFND7_">
       <param humanName="Rangefinder type" name="RNGFND7_TYPE" documentation="What type of rangefinder device that is connected" user="Standard">
@@ -14870,7 +14826,6 @@
           <value code="31">GYUS42v2</value>
           <value code="32">MSP</value>
           <value code="33">USD1_CAN</value>
-          <value code="34">Benewake_CAN</value>
           <value code="100">SITL</value>
         </values>
       </param>
@@ -15005,12 +14960,6 @@
           <value code="1">High Speed</value>
         </values>
       </param>
-      <param humanName="CAN receive ID" name="RNGFND7_RECV_ID" documentation="The receive ID of the CAN frames. A value of zero means all IDs are accepted." user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
-      <param humanName="Minimum signal strength" name="RNGFND7_SNR_MIN" documentation="Minimum signal strength (SNR) to accept distance" user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
     </parameters>
     <parameters name="RNGFND8_">
       <param humanName="Rangefinder type" name="RNGFND8_TYPE" documentation="What type of rangefinder device that is connected" user="Standard">
@@ -15048,7 +14997,6 @@
           <value code="31">GYUS42v2</value>
           <value code="32">MSP</value>
           <value code="33">USD1_CAN</value>
-          <value code="34">Benewake_CAN</value>
           <value code="100">SITL</value>
         </values>
       </param>
@@ -15183,12 +15131,6 @@
           <value code="1">High Speed</value>
         </values>
       </param>
-      <param humanName="CAN receive ID" name="RNGFND8_RECV_ID" documentation="The receive ID of the CAN frames. A value of zero means all IDs are accepted." user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
-      <param humanName="Minimum signal strength" name="RNGFND8_SNR_MIN" documentation="Minimum signal strength (SNR) to accept distance" user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
     </parameters>
     <parameters name="RNGFND9_">
       <param humanName="Rangefinder type" name="RNGFND9_TYPE" documentation="What type of rangefinder device that is connected" user="Standard">
@@ -15226,7 +15168,6 @@
           <value code="31">GYUS42v2</value>
           <value code="32">MSP</value>
           <value code="33">USD1_CAN</value>
-          <value code="34">Benewake_CAN</value>
           <value code="100">SITL</value>
         </values>
       </param>
@@ -15361,12 +15302,6 @@
           <value code="1">High Speed</value>
         </values>
       </param>
-      <param humanName="CAN receive ID" name="RNGFND9_RECV_ID" documentation="The receive ID of the CAN frames. A value of zero means all IDs are accepted." user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
-      <param humanName="Minimum signal strength" name="RNGFND9_SNR_MIN" documentation="Minimum signal strength (SNR) to accept distance" user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
     </parameters>
     <parameters name="RNGFNDA_">
       <param humanName="Rangefinder type" name="RNGFNDA_TYPE" documentation="What type of rangefinder device that is connected" user="Standard">
@@ -15404,7 +15339,6 @@
           <value code="31">GYUS42v2</value>
           <value code="32">MSP</value>
           <value code="33">USD1_CAN</value>
-          <value code="34">Benewake_CAN</value>
           <value code="100">SITL</value>
         </values>
       </param>
@@ -15538,12 +15472,6 @@
           <value code="0">Low Speed</value>
           <value code="1">High Speed</value>
         </values>
-      </param>
-      <param humanName="CAN receive ID" name="RNGFNDA_RECV_ID" documentation="The receive ID of the CAN frames. A value of zero means all IDs are accepted." user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
-      <param humanName="Minimum signal strength" name="RNGFNDA_SNR_MIN" documentation="Minimum signal strength (SNR) to accept distance" user="Advanced">
-        <field name="Range">0 65535</field>
       </param>
     </parameters>
     <parameters name="RPM">
@@ -15776,7 +15704,6 @@
           <value code="35">ADSB</value>
           <value code="36">AHRS</value>
           <value code="37">SmartAudio</value>
-          <value code="38">FETtecOneWire</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -15837,7 +15764,6 @@
           <value code="35">ADSB</value>
           <value code="36">AHRS</value>
           <value code="37">SmartAudio</value>
-          <value code="38">FETtecOneWire</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -15898,7 +15824,6 @@
           <value code="35">ADSB</value>
           <value code="36">AHRS</value>
           <value code="37">SmartAudio</value>
-          <value code="38">FETtecOneWire</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -15959,7 +15884,6 @@
           <value code="35">ADSB</value>
           <value code="36">AHRS</value>
           <value code="37">SmartAudio</value>
-          <value code="38">FETtecOneWire</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -16020,7 +15944,6 @@
           <value code="35">ADSB</value>
           <value code="36">AHRS</value>
           <value code="37">SmartAudio</value>
-          <value code="38">FETtecOneWire</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -16081,7 +16004,6 @@
           <value code="35">ADSB</value>
           <value code="36">AHRS</value>
           <value code="37">SmartAudio</value>
-          <value code="38">FETtecOneWire</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -16105,27 +16027,27 @@
         </values>
       </param>
       <param humanName="Telem1 options" name="SERIAL1_OPTIONS" documentation="Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire. The Swap option allows the RX and TX pins to be swapped on STM32F7 based boards." user="Advanced">
-        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO</field>
+        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from</field>
         <field name="RebootRequired">True</field>
       </param>
       <param humanName="Telem2 options" name="SERIAL2_OPTIONS" documentation="Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire." user="Advanced">
-        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO</field>
+        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from</field>
         <field name="RebootRequired">True</field>
       </param>
       <param humanName="Serial3 options" name="SERIAL3_OPTIONS" documentation="Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire." user="Advanced">
-        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO</field>
+        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from</field>
         <field name="RebootRequired">True</field>
       </param>
       <param humanName="Serial4 options" name="SERIAL4_OPTIONS" documentation="Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire." user="Advanced">
-        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO</field>
+        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from</field>
         <field name="RebootRequired">True</field>
       </param>
       <param humanName="Serial5 options" name="SERIAL5_OPTIONS" documentation="Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire." user="Advanced">
-        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO</field>
+        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from</field>
         <field name="RebootRequired">True</field>
       </param>
       <param humanName="Serial6 options" name="SERIAL6_OPTIONS" documentation="Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire." user="Advanced">
-        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO</field>
+        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from</field>
         <field name="RebootRequired">True</field>
       </param>
       <param humanName="Serial passthru first port" name="SERIAL_PASS1" documentation="This sets one side of pass-through between two serial ports. Once both sides are set then all data received on either port will be passed to the other port" user="Advanced">
@@ -16194,8 +16116,6 @@
           <value code="34">AirSpeed</value>
           <value code="35">ADSB</value>
           <value code="36">AHRS</value>
-          <value code="37">SmartAudio</value>
-          <value code="38">FETtecOneWire</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -16219,7 +16139,7 @@
         </values>
       </param>
       <param humanName="Serial7 options" name="SERIAL7_OPTIONS" documentation="Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire." user="Advanced">
-        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO</field>
+        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from</field>
         <field name="RebootRequired">True</field>
       </param>
       <param humanName="Serial8 protocol selection" name="SERIAL8_PROTOCOL" documentation="Control what protocol Serial8 port should be used for. Note that the Frsky options require external converter hardware. See the wiki for details." user="Standard">
@@ -16259,12 +16179,10 @@
           <value code="34">AirSpeed</value>
           <value code="35">ADSB</value>
           <value code="36">AHRS</value>
-          <value code="37">SmartAudio</value>
-          <value code="38">FETtecOneWire</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Serial 8 Baud Rate" name="SERIAL8_BAUD" documentation="The baud rate used for Serial8. Most stm32-based boards can support rates of up to 1500. If you setup a rate you cannot support and then can't connect to your board you should load a firmware from a different vehicle type. That will reset all your parameters to defaults." user="Standard">
+      <param humanName="Serial 8 Baud Rate" name="SERIAL8_BAUD" documentation="The baud rate used for Serial7. Most stm32-based boards can support rates of up to 1500. If you setup a rate you cannot support and then can't connect to your board you should load a firmware from a different vehicle type. That will reset all your parameters to defaults." user="Standard">
         <values>
           <value code="1">1200</value>
           <value code="2">2400</value>
@@ -16284,7 +16202,7 @@
         </values>
       </param>
       <param humanName="Serial8 options" name="SERIAL8_OPTIONS" documentation="Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire." user="Advanced">
-        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO</field>
+        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from</field>
         <field name="RebootRequired">True</field>
       </param>
     </parameters>
@@ -18288,18 +18206,6 @@
         <field name="Bitmask">0:Channel1,1:Channel2,2:Channel3,3:Channel4,4:Channel5,5:Channel6,6:Channel7,7:Channel8,8:Channel9,9:Channel10,10:Channel11,11:Channel12,12:Channel13,13:Channel14,14:Channel15,15:Channel16</field>
       </param>
     </parameters>
-    <parameters name="SERVO_FTW_">
-      <param humanName="Servo channel output bitmask" name="SERVO_FTW_MASK" documentation="Servo channel mask specifying FETtec ESC output." user="Standard">
-        <field name="Bitmask">0:SERVO1,1:SERVO2,2:SERVO3,3:SERVO4,4:SERVO5,5:SERVO6,6:SERVO7,7:SERVO8,8:SERVO9,9:SERVO10,10:SERVO11,11:SERVO12</field>
-        <field name="RebootRequired">True</field>
-      </param>
-      <param humanName="Servo channel reverse rotation bitmask" name="SERVO_FTW_RVMASK" documentation="Servo channel mask to reverse rotation of FETtec ESC outputs." user="Standard">
-        <field name="Bitmask">0:SERVO1,1:SERVO2,2:SERVO3,3:SERVO4,4:SERVO5,5:SERVO6,6:SERVO7,7:SERVO8,8:SERVO9,9:SERVO10,10:SERVO11,11:SERVO12</field>
-      </param>
-      <param humanName="Nr. electrical poles" name="SERVO_FTW_POLES" documentation="Number of motor electrical poles" user="Standard">
-        <field name="Range">2 50</field>
-      </param>
-    </parameters>
     <parameters name="SERVO_ROB_">
       <param humanName="Robotis servo position min" name="SERVO_ROB_POSMIN" documentation="Position minimum at servo min value. This should be within the position control range of the servos, normally 0 to 4095" user="Standard">
         <field name="Range">0 4095</field>
@@ -19410,14 +19316,9 @@
         </values>
       </param>
       <param humanName="Waypoint Jerk" name="WPNAV_JERK" documentation="Defines the horizontal jerk in m/s/s used during missions" user="Standard">
-        <field name="Units">m/s/s/s</field>
-        <field name="UnitText">meters per cubic second</field>
+        <field name="Units">m/s/s</field>
+        <field name="UnitText">meters per square second</field>
         <field name="Range">1 20</field>
-      </param>
-      <param humanName="Waypoint Terrain following altitude margin" name="WPNAV_TER_MARGIN" documentation="Waypoint Terrain following altitude margin.  Vehicle will stop if distance from target altitude is larger than this margin (in meters)" user="Advanced">
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-        <field name="Range">0.1 100</field>
       </param>
     </parameters>
     <parameters name="ZIGZ_">

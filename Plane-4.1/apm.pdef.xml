@@ -586,7 +586,7 @@
         <field name="ReadOnly">True</field>
       </param>
       <param humanName="Log bitmask" name="ArduPlane:LOG_BITMASK" documentation="Bitmap of what on-board log types to enable. This value is made up of the sum of each of the log types you want to be saved. It is usually best just to enable all log types by setting this to 65535. The individual bits are ATTITUDE_FAST=1, ATTITUDE_MEDIUM=2, GPS=4, PerformanceMonitoring=8, ControlTuning=16, NavigationTuning=32, Mode=64, IMU=128, Commands=256, Battery=512, Compass=1024, TECS=2048, Camera=4096, RCandServo=8192, Sonar=16384, Arming=32768, FullLogs=65535" user="Advanced">
-        <field name="Bitmask">0:ATTITUDE_FAST,1:ATTITUDE_MED,2:GPS,3:PM,4:CTUN,5:NTUN,6:MODE,7:IMU,8:CMD,9:CURRENT,10:COMPASS,11:TECS,12:CAMERA,13:RC,14:SONAR,15:ARM/DISARM,19:IMU_RAW,20:ATTITUDE_FULLRATE</field>
+        <field name="Bitmask">0:ATTITUDE_FAST,1:ATTITUDE_MED,2:GPS,3:PM,4:CTUN,5:NTUN,6:MODE,7:IMU,8:CMD,9:CURRENT,10:COMPASS,11:TECS,12:CAMERA,13:RC,14:SONAR,15:ARM/DISARM,19:IMU_RAW</field>
       </param>
       <param humanName="Target airspeed" name="ArduPlane:TRIM_ARSPD_CM" documentation="Target airspeed in cm/s in automatic throttle modes. Value is as an indicated (calibrated/apparent) airspeed." user="Standard">
         <field name="Units">cm/s</field>
@@ -696,7 +696,7 @@
         <field name="UnitText">meters</field>
       </param>
       <param humanName="Flight mode options" name="ArduPlane:FLIGHT_OPTIONS" documentation="Flight mode specific options" user="Advanced">
-        <field name="Bitmask">0:Rudder mixing in direct flight modes only (Manual / Stabilize / Acro),1:Use centered throttle in Cruise or FBWB to indicate trim airspeed, 2:Disable attitude check for takeoff arming, 3:Force target airspeed to trim airspeed in Cruise or FBWB, 4: Climb to ALT_HOLD_RTL before turning for RTL, 5: Enable yaw damper in acro mode, 6: Surpress speed scaling during auto takeoffs to be 1 or less to prevent oscillations without airpseed sensor, 7:EnableDefaultAirspeed for takeoff</field>
+        <field name="Bitmask">0:Rudder mixing in direct flight modes only (Manual / Stabilize / Acro),1:Use centered throttle in Cruise or FBWB to indicate trim airspeed, 2:Disable attitude check for takeoff arming, 3:Force target airspeed to trim airspeed in Cruise or FBWB, 4: Climb to ALT_HOLD_RTL before turning for RTL, 5: Enable yaw damper in acro mode, 6: Surpress speed scaling during auto takeoffs to be 1 or less to prevent oscillations without airpseed sensor.</field>
       </param>
       <param humanName="Takeoff throttle acceleration count" name="ArduPlane:TKOFF_ACCEL_CNT" documentation="This is the number of acceleration events to require for arming with TKOFF_THR_MINACC. The default is 1, which means a single forward acceleration above TKOFF_THR_MINACC will arm. By setting this higher than 1 you can require more forward/backward movements to arm." user="Standard">
         <field name="Range">1 10</field>
@@ -760,21 +760,6 @@
         <field name="UnitText">meters</field>
         <field name="Range">0 30</field>
         <field name="Increment">1</field>
-      </param>
-      <param humanName="Manual control expo for roll" name="ArduPlane:MAN_EXPO_ROLL" documentation="Percentage exponential for roll input in MANUAL, ACRO and TRAINING modes" user="Standard">
-        <field name="Range">0 100</field>
-        <field name="Increment">1</field>
-      </param>
-      <param humanName="Manual input expo for pitch" name="ArduPlane:MAN_EXPO_PITCH" documentation="Percentage exponential for pitch input in MANUAL, ACRO and TRAINING modes" user="Standard">
-        <field name="Range">0 100</field>
-        <field name="Increment">1</field>
-      </param>
-      <param humanName="Manual input expo for rudder" name="ArduPlane:MAN_EXPO_RUDDER" documentation="Percentage exponential for rudder input in MANUAL, ACRO and TRAINING modes" user="Standard">
-        <field name="Range">0 100</field>
-        <field name="Increment">1</field>
-      </param>
-      <param humanName="Oneshot output mask" name="ArduPlane:ONESHOT_MASK" documentation="Mask of output channels to use oneshot on" user="Advanced">
-        <field name="Bitmask">0: Servo 1, 1: Servo 2, 2: Servo 3, 3: Servo 4, 4: Servo 5, 5: Servo 6, 6: Servo 7, 7: Servo 8, 8: Servo 9, 9: Servo 10, 10: Servo 11, 11: Servo 12, 12: Servo 13, 13: Servo 14, 14: Servo 15</field>
       </param>
     </parameters>
   </vehicles>
@@ -4513,6 +4498,13 @@
         <field name="Bitmask">0:FirstEKF,1:SecondEKF,2:ThirdEKF,3:FourthEKF,4:FifthEKF,5:SixthEKF</field>
         <field name="RebootRequired">True</field>
       </param>
+      <param humanName="Delay from loss of navigation to yaw reset" name="EK2_GSF_DELAY" documentation="If the inertial navigation calculation stops following the GPS and other positioning sensors for longer than EK2_GSF_DELAY milli-seconds, then the EKF2 code will generate a reset request internally and reset the yaw to the estimate from the EKF-GSF filter and reset the horizontal velocity and position to the GPS. This reset will not be performed unless the use of the EKF-GSF yaw estimate is enabled via the EK2_GSF_USE parameter." user="Advanced">
+        <field name="Range">500 5000</field>
+        <field name="Increment">100</field>
+        <field name="Units">ms</field>
+        <field name="UnitText">milliseconds</field>
+        <field name="RebootRequired">True</field>
+      </param>
       <param humanName="Maximum number of resets to the EKF-GSF yaw estimate allowed" name="EK2_GSF_RST_MAX" documentation="Sets the maximum number of times the EKF2 will be allowed to reset it's yaw to the estimate from the EKF-GSF yaw estimator. No resets will be allowed unless the use of the EKF-GSF yaw estimate is enabled via the EK2_GSF_USE parameter." user="Advanced">
         <field name="Range">1 10</field>
         <field name="Increment">1</field>
@@ -4664,13 +4656,13 @@
         <field name="UnitText">meters per cubic second</field>
       </param>
       <param humanName="Wind velocity process noise (m/s^2)" name="EK3_WIND_P_NSE" documentation="This state process noise controls the growth of wind state error estimates. Increasing it makes wind estimation faster and noisier." user="Advanced">
-        <field name="Range">0.01 2.0</field>
+        <field name="Range">0.01 1.0</field>
         <field name="Increment">0.1</field>
         <field name="Units">m/s/s</field>
         <field name="UnitText">meters per square second</field>
       </param>
       <param humanName="Height rate to wind process noise scaler" name="EK3_WIND_PSCALE" documentation="This controls how much the process noise on the wind states is increased when gaining or losing altitude to take into account changes in wind speed and direction with altitude. Increasing this parameter increases how rapidly the wind states adapt when changing altitude, but does make wind velocity estimation noiser." user="Advanced">
-        <field name="Range">0.0 2.0</field>
+        <field name="Range">0.0 1.0</field>
         <field name="Increment">0.1</field>
       </param>
       <param humanName="GPS preflight check" name="EK3_GPS_CHECK" documentation="This is a 1 byte bitmap controlling which GPS preflight checks are performed. Set to 0 to bypass all checks. Set to 255 perform all checks. Set to 3 to check just the number of satellites and HDoP. Set to 31 for the most rigorous checks that will still allow checks to pass when the copter is moving, eg launch from a boat." user="Advanced">
@@ -4720,7 +4712,7 @@
         <field name="Units">Gauss/s</field>
         <field name="UnitText">gauss per second</field>
       </param>
-      <param humanName="Range finder switch height percentage" name="EK3_RNG_USE_HGT" documentation="Range finder can be used as the primary height source when below this percentage of its maximum range (see RNGFNDx_MAX_CM) and the primary height source is Baro or GPS (see EK3_SRCx_POSZ).  This feature should not be used for terrain following as it is designed for vertical takeoff and landing with climb above the range finder use height before commencing the mission, and with horizontal position changes below that height being limited to a flat region around the takeoff and landing point." user="Advanced">
+      <param humanName="Range finder switch height percentage" name="EK3_RNG_USE_HGT" documentation="Range finder can be used as the primary height source when below this percentage of its maximum range (see RNGFND_MAX_CM). This will not work unless Baro or GPS height is selected as the primary height source vis EK3_ALT_SOURCE = 0 or 2 respectively.  This feature should not be used for terrain following as it is designed  for vertical takeoff and landing with climb above  the range finder use height before commencing the mission, and with horizontal position changes below that height being limited to a flat region around the takeoff and landing point." user="Advanced">
         <field name="Range">-1 70</field>
         <field name="Increment">1</field>
         <field name="Units">%</field>
@@ -4810,6 +4802,13 @@
       </param>
       <param humanName="Bitmask of which EKF-GSF yaw estimators are used" name="EK3_GSF_USE_MASK" documentation="1 byte bitmap of which EKF3 instances will use the output from the EKF-GSF yaw estimator that has been turned on by the EK3_GSF_RUN parameter. If the inertial navigation calculation stops following the GPS, then the vehicle code can request EKF3 to attempt to resolve the issue, either by performing a yaw reset if enabled by this parameter by switching to another EKF3 instance. Additionally the EKF3 will  initiate a reset internally if navigation is lost for more than EK3_GSF_DELAY milli seconds." user="Advanced">
         <field name="Bitmask">0:FirstEKF,1:SecondEKF,2:ThirdEKF,3:FourthEKF,4:FifthEKF,5:SixthEKF</field>
+        <field name="RebootRequired">True</field>
+      </param>
+      <param humanName="Delay from loss of navigation to yaw reset" name="EK3_GSF_DELAY" documentation="If the inertial navigation calculation stops following the GPS and other positioning sensors for longer than EK3_GSF_DELAY milli-seconds, then the EKF3 code will generate a reset request internally and reset the yaw to the estimate from the EKF-GSF filter and reset the horizontal velocity and position to the GPS. This reset will not be performed unless the use of the EKF-GSF yaw estimate is enabled via the EK3_GSF_USE parameter." user="Advanced">
+        <field name="Range">500 5000</field>
+        <field name="Increment">100</field>
+        <field name="Units">ms</field>
+        <field name="UnitText">milliseconds</field>
         <field name="RebootRequired">True</field>
       </param>
       <param humanName="Maximum number of resets to the EKF-GSF yaw estimate allowed" name="EK3_GSF_RST_MAX" documentation="Sets the maximum number of times the EKF3 will be allowed to reset it's yaw to the estimate from the EKF-GSF yaw estimator. No resets will be allowed unless the use of the EKF-GSF yaw estimate is enabled via the EK3_GSF_USE parameter." user="Advanced">
@@ -5504,7 +5503,7 @@
         <field name="Range">5.0 30.0</field>
       </param>
       <param humanName="driver options" name="GPS_DRV_OPTIONS" documentation="Additional backend specific options" user="Advanced">
-        <field name="Bitmask">0:Use UART2 for moving baseline on ublox,1:Use base station for GPS yaw on SBF,2:Use baudrate 115200</field>
+        <field name="Bitmask">0:Use UART2 for moving baseline on ublox,1:Use base station for GPS yaw on SBF</field>
       </param>
       <param humanName="GPS physical COM port" name="GPS_COM_PORT" documentation="The physical COM port on the connected device, currently only applies to SBF GPS" user="Advanced">
         <field name="Range">0 10</field>
@@ -11466,12 +11465,12 @@
         <field name="Units">cm/s/s</field>
         <field name="UnitText">centimeters per square second</field>
       </param>
-      <param humanName="Velocity (horizontal) input filter" name="Q_P_VELXY_FLTE" documentation="Velocity (horizontal) input filter.  This filter (in Hz) is applied to the input for P and I terms" user="Advanced">
+      <param humanName="Velocity (horizontal) input filter" name="Q_P_VELXY_FILT" documentation="Velocity (horizontal) input filter.  This filter (in Hz) is applied to the input for P and I terms" user="Advanced">
         <field name="Range">0 100</field>
         <field name="Units">Hz</field>
         <field name="UnitText">hertz</field>
       </param>
-      <param humanName="Velocity (horizontal) input filter" name="Q_P_VELXY_FLTD" documentation="Velocity (horizontal) input filter.  This filter (in Hz) is applied to the input for D term" user="Advanced">
+      <param humanName="Velocity (horizontal) input filter" name="Q_P_VELXY_D_FILT" documentation="Velocity (horizontal) input filter.  This filter (in Hz) is applied to the input for D term" user="Advanced">
         <field name="Range">0 100</field>
         <field name="Units">Hz</field>
         <field name="UnitText">hertz</field>
@@ -11486,17 +11485,17 @@
         <field name="Range">0 45</field>
         <field name="Increment">1</field>
       </param>
-      <param humanName="Jerk limit for the horizontal kinematic input shaping" name="Q_P_JERK_XY" documentation="Jerk limit of the horizontal kinematic path generation used to determine how quickly the aircraft varies the acceleration target" user="Advanced">
-        <field name="Units">m/s/s/s</field>
-        <field name="UnitText">meters per cubic second</field>
-        <field name="Range">1 20</field>
-        <field name="Increment">1</field>
+      <param humanName="Time constant for the horizontal kinimatic input shaping" name="Q_P_TC_XY" documentation="Time constant of the horizontal kinimatic path generation used to determine how quickly the aircraft varies the acceleration target" user="Advanced">
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+        <field name="Range">0.25 2</field>
+        <field name="Increment">0.01</field>
       </param>
-      <param humanName="Jerk limit for the vertical kinematic input shaping" name="Q_P_JERK_Z" documentation="Jerk limit of the vertical kinematic path generation used to determine how quickly the aircraft varies the acceleration target" user="Advanced">
-        <field name="Units">m/s/s/s</field>
-        <field name="UnitText">meters per cubic second</field>
-        <field name="Range">5 50</field>
-        <field name="Increment">1</field>
+      <param humanName="Time constant for the vertical kinimatic input shaping" name="Q_P_TC_Z" documentation="Time constant of the vertical kinimatic path generation used to determine how quickly the aircraft varies the acceleration target" user="Advanced">
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+        <field name="Range">0.1 1</field>
+        <field name="Increment">0.01</field>
       </param>
     </parameters>
     <parameters name="Q_WP_">
@@ -11543,14 +11542,9 @@
         </values>
       </param>
       <param humanName="Waypoint Jerk" name="Q_WP_JERK" documentation="Defines the horizontal jerk in m/s/s used during missions" user="Standard">
-        <field name="Units">m/s/s/s</field>
-        <field name="UnitText">meters per cubic second</field>
+        <field name="Units">m/s/s</field>
+        <field name="UnitText">meters per square second</field>
         <field name="Range">1 20</field>
-      </param>
-      <param humanName="Waypoint Terrain following altitude margin" name="Q_WP_TER_MARGIN" documentation="Waypoint Terrain following altitude margin.  Vehicle will stop if distance from target altitude is larger than this margin (in meters)" user="Advanced">
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-        <field name="Range">0.1 100</field>
       </param>
     </parameters>
     <parameters name="RALLY_">
@@ -11575,7 +11569,7 @@
         <field name="UnitText">seconds</field>
       </param>
       <param humanName="RC options" name="RC_OPTIONS" documentation="RC input options" user="Advanced">
-        <field name="Bitmask">0:Ignore RC Receiver, 1:Ignore MAVLink Overrides, 2:Ignore Receiver Failsafe bit but allow other RC failsafes if setup, 3:FPort Pad, 4:Log RC input bytes, 5:Arming check throttle for 0 input, 6:Skip the arming check for neutral Roll/Pitch/Yay sticks, 7:Allow Switch reverse, 8:Use passthrough for CRSF telemetry, 9:Suppress CRSF mode/rate message for ELRS systems</field>
+        <field name="Bitmask">0:Ignore RC Receiver, 1:Ignore MAVLink Overrides, 2:Ignore Receiver Failsafe bit but allow other RC failsafes if setup, 3:FPort Pad, 4:Log RC input bytes, 5:Arming check throttle for 0 input, 6:Skip the arming check for neutral Roll/Pitch/Yay sticks, 7:Allow Switch reverse, 8:Use passthrough for CRSF telemetry</field>
       </param>
       <param humanName="RC protocols enabled" name="RC_PROTOCOLS" documentation="Bitmask of enabled RC protocols. Allows narrowing the protocol detection to only specific types of RC receivers which can avoid issues with incorrect detection. Set to 1 to enable all protocols." user="Advanced">
         <field name="Bitmask">0:All,1:PPM,2:IBUS,3:SBUS,4:SBUS_NI,5:DSM,6:SUMD,7:SRXL,8:SRXL2,9:CRSF,10:ST24,11:FPORT,12:FPORT2</field>
@@ -15547,27 +15541,27 @@
         </values>
       </param>
       <param humanName="Telem1 options" name="SERIAL1_OPTIONS" documentation="Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire. The Swap option allows the RX and TX pins to be swapped on STM32F7 based boards." user="Advanced">
-        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO</field>
+        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from</field>
         <field name="RebootRequired">True</field>
       </param>
       <param humanName="Telem2 options" name="SERIAL2_OPTIONS" documentation="Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire." user="Advanced">
-        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO</field>
+        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from</field>
         <field name="RebootRequired">True</field>
       </param>
       <param humanName="Serial3 options" name="SERIAL3_OPTIONS" documentation="Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire." user="Advanced">
-        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO</field>
+        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from</field>
         <field name="RebootRequired">True</field>
       </param>
       <param humanName="Serial4 options" name="SERIAL4_OPTIONS" documentation="Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire." user="Advanced">
-        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO</field>
+        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from</field>
         <field name="RebootRequired">True</field>
       </param>
       <param humanName="Serial5 options" name="SERIAL5_OPTIONS" documentation="Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire." user="Advanced">
-        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO</field>
+        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from</field>
         <field name="RebootRequired">True</field>
       </param>
       <param humanName="Serial6 options" name="SERIAL6_OPTIONS" documentation="Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire." user="Advanced">
-        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO</field>
+        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from</field>
         <field name="RebootRequired">True</field>
       </param>
       <param humanName="Serial passthru first port" name="SERIAL_PASS1" documentation="This sets one side of pass-through between two serial ports. Once both sides are set then all data received on either port will be passed to the other port" user="Advanced">
@@ -15659,7 +15653,7 @@
         </values>
       </param>
       <param humanName="Serial7 options" name="SERIAL7_OPTIONS" documentation="Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire." user="Advanced">
-        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO</field>
+        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from</field>
         <field name="RebootRequired">True</field>
       </param>
       <param humanName="Serial8 protocol selection" name="SERIAL8_PROTOCOL" documentation="Control what protocol Serial8 port should be used for. Note that the Frsky options require external converter hardware. See the wiki for details." user="Standard">
@@ -15702,7 +15696,7 @@
         </values>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Serial 8 Baud Rate" name="SERIAL8_BAUD" documentation="The baud rate used for Serial8. Most stm32-based boards can support rates of up to 1500. If you setup a rate you cannot support and then can't connect to your board you should load a firmware from a different vehicle type. That will reset all your parameters to defaults." user="Standard">
+      <param humanName="Serial 8 Baud Rate" name="SERIAL8_BAUD" documentation="The baud rate used for Serial7. Most stm32-based boards can support rates of up to 1500. If you setup a rate you cannot support and then can't connect to your board you should load a firmware from a different vehicle type. That will reset all your parameters to defaults." user="Standard">
         <values>
           <value code="1">1200</value>
           <value code="2">2400</value>
@@ -15722,7 +15716,7 @@
         </values>
       </param>
       <param humanName="Serial8 options" name="SERIAL8_OPTIONS" documentation="Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire." user="Advanced">
-        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO</field>
+        <field name="Bitmask">0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:Swap, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from</field>
         <field name="RebootRequired">True</field>
       </param>
     </parameters>
