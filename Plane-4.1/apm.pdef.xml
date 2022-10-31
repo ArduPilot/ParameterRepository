@@ -696,7 +696,7 @@
         <field name="UnitText">meters</field>
       </param>
       <param humanName="Flight mode options" name="ArduPlane:FLIGHT_OPTIONS" documentation="Flight mode specific options" user="Advanced">
-        <field name="Bitmask">0:Rudder mixing in direct flight modes only (Manual / Stabilize / Acro),1:Use centered throttle in Cruise or FBWB to indicate trim airspeed, 2:Disable attitude check for takeoff arming, 3:Force target airspeed to trim airspeed in Cruise or FBWB, 4: Climb to ALT_HOLD_RTL before turning for RTL, 5: Enable yaw damper in acro mode, 6: Surpress speed scaling during auto takeoffs to be 1 or less to prevent oscillations without airpseed sensor, 7:EnableDefaultAirspeed for takeoff, 11:Disable suppression of fixed wing rate gains in ground mode</field>
+        <field name="Bitmask">0:Rudder mixing in direct flight modes only (Manual / Stabilize / Acro),1:Use centered throttle in Cruise or FBWB to indicate trim airspeed, 2:Disable attitude check for takeoff arming, 3:Force target airspeed to trim airspeed in Cruise or FBWB, 4: Climb to ALT_HOLD_RTL before turning for RTL, 5: Enable yaw damper in acro mode, 6: Surpress speed scaling during auto takeoffs to be 1 or less to prevent oscillations without airpseed sensor, 7:EnableDefaultAirspeed for takeoff</field>
       </param>
       <param humanName="Takeoff throttle acceleration count" name="ArduPlane:TKOFF_ACCEL_CNT" documentation="This is the number of acceleration events to require for arming with TKOFF_THR_MINACC. The default is 1, which means a single forward acceleration above TKOFF_THR_MINACC will arm. By setting this higher than 1 you can require more forward/backward movements to arm." user="Standard">
         <field name="Range">1 10</field>
@@ -2827,7 +2827,7 @@
         </values>
       </param>
       <param humanName="Board options" name="BRD_OPTIONS" documentation="Board specific option flags" user="Advanced">
-        <field name="Bitmask">0:Enable hardware watchdog, 1:Disable MAVftp, 2:Enable set of internal parameters, 3:Enable Debug Pins</field>
+        <field name="Bitmask">0:Enable hardware watchdog, 1:Disable MAVftp, 2:Enable set of internal parameters</field>
       </param>
       <param humanName="Boot delay" name="BRD_BOOT_DELAY" documentation="This adds a delay in milliseconds to boot to ensure peripherals initialise fully" user="Advanced">
         <field name="Range">0 10000</field>
@@ -3372,7 +3372,6 @@
           <value code="5">CANTester</value>
           <value code="8">KDECAN</value>
           <value code="9">PacketDigitalCAN</value>
-          <value code="11">Benewake</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -3432,9 +3431,6 @@
         <field name="Units">Hz</field>
         <field name="UnitText">hertz</field>
       </param>
-      <param humanName="UAVCAN options" name="CAN_D1_UC_OPTION" documentation="Option flags" user="Advanced">
-        <field name="Bitmask">0:ClearDNADatabase,1:IgnoreDNANodeConflicts</field>
-      </param>
     </parameters>
     <parameters name="CAN_D2_">
       <param humanName="Enable use of specific protocol over virtual driver" name="CAN_D2_PROTOCOL" documentation="Enabling this option starts selected protocol that will use this virtual driver" user="Advanced">
@@ -3446,7 +3442,6 @@
           <value code="5">CANTester</value>
           <value code="8">KDECAN</value>
           <value code="9">PacketDigitalCAN</value>
-          <value code="11">Benewake</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -3506,9 +3501,6 @@
         <field name="Units">Hz</field>
         <field name="UnitText">hertz</field>
       </param>
-      <param humanName="UAVCAN options" name="CAN_D2_UC_OPTION" documentation="Option flags" user="Advanced">
-        <field name="Bitmask">0:ClearDNADatabase,1:IgnoreDNANodeConflicts</field>
-      </param>
     </parameters>
     <parameters name="CAN_D3_">
       <param humanName="Enable use of specific protocol over virtual driver" name="CAN_D3_PROTOCOL" documentation="Enabling this option starts selected protocol that will use this virtual driver" user="Advanced">
@@ -3520,7 +3512,6 @@
           <value code="5">CANTester</value>
           <value code="8">KDECAN</value>
           <value code="9">PacketDigitalCAN</value>
-          <value code="11">Benewake</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -3579,9 +3570,6 @@
         <field name="Range">1 200</field>
         <field name="Units">Hz</field>
         <field name="UnitText">hertz</field>
-      </param>
-      <param humanName="UAVCAN options" name="CAN_D3_UC_OPTION" documentation="Option flags" user="Advanced">
-        <field name="Bitmask">0:ClearDNADatabase,1:IgnoreDNANodeConflicts</field>
       </param>
     </parameters>
     <parameters name="CAN_P1_">
@@ -4866,10 +4854,6 @@
       <param humanName="Baro height ground effect dead zone" name="EK3_GND_EFF_DZ" documentation="This parameter sets the size of the dead zone that is applied to negative baro height spikes that can occur when takeing off or landing when a vehicle with lift rotors is operating in ground effect ground effect. Set to about 0.5m less than the amount of negative offset in baro height that occurs just prior to takeoff when lift motors are spooling up. Set to 0 if no ground effect is present. " user="Advanced">
         <field name="Range">0.0 10.0</field>
         <field name="Increment">0.5</field>
-      </param>
-      <param humanName="Primary core number" name="EK3_PRIMARY" documentation="The core number (index in IMU mask) that will be used as the primary EKF core on startup. While disarmed the EKF will force the use of this core. A value of 0 corresponds to the first IMU in EK3_IMU_MASK." user="Advanced">
-        <field name="Range">0 2</field>
-        <field name="Increment">1</field>
       </param>
     </parameters>
     <parameters name="EK3_SRC">
@@ -11591,7 +11575,7 @@
         <field name="UnitText">seconds</field>
       </param>
       <param humanName="RC options" name="RC_OPTIONS" documentation="RC input options" user="Advanced">
-        <field name="Bitmask">0:Ignore RC Receiver, 1:Ignore MAVLink Overrides, 2:Ignore Receiver Failsafe bit but allow other RC failsafes if setup, 3:FPort Pad, 4:Log RC input bytes, 5:Arming check throttle for 0 input, 6:Skip the arming check for neutral Roll/Pitch/Yay sticks, 7:Allow Switch reverse, 8:Use passthrough for CRSF telemetry, 9:Suppress CRSF mode/rate message for ELRS systems, 10:Enable RC Protocol re-detection</field>
+        <field name="Bitmask">0:Ignore RC Receiver, 1:Ignore MAVLink Overrides, 2:Ignore Receiver Failsafe bit but allow other RC failsafes if setup, 3:FPort Pad, 4:Log RC input bytes, 5:Arming check throttle for 0 input, 6:Skip the arming check for neutral Roll/Pitch/Yay sticks, 7:Allow Switch reverse, 8:Use passthrough for CRSF telemetry, 9:Suppress CRSF mode/rate message for ELRS systems</field>
       </param>
       <param humanName="RC protocols enabled" name="RC_PROTOCOLS" documentation="Bitmask of enabled RC protocols. Allows narrowing the protocol detection to only specific types of RC receivers which can avoid issues with incorrect detection. Set to 1 to enable all protocols." user="Advanced">
         <field name="Bitmask">0:All,1:PPM,2:IBUS,3:SBUS,4:SBUS_NI,5:DSM,6:SUMD,7:SRXL,8:SRXL2,9:CRSF,10:ST24,11:FPORT,12:FPORT2</field>
@@ -11679,8 +11663,6 @@
           <value code="102">Camera Mode Toggle</value>
           <value code="105">GPS Disable Yaw</value>
           <value code="106">Disable Airspeed Use</value>
-          <value code="107">EnableFixedWingAutotune</value>
-          <value code="108">ModeQRTL</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="300">Scripting1</value>
@@ -11776,8 +11758,6 @@
           <value code="102">Camera Mode Toggle</value>
           <value code="105">GPS Disable Yaw</value>
           <value code="106">Disable Airspeed Use</value>
-          <value code="107">EnableFixedWingAutotune</value>
-          <value code="108">ModeQRTL</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="300">Scripting1</value>
@@ -11873,8 +11853,6 @@
           <value code="102">Camera Mode Toggle</value>
           <value code="105">GPS Disable Yaw</value>
           <value code="106">Disable Airspeed Use</value>
-          <value code="107">EnableFixedWingAutotune</value>
-          <value code="108">ModeQRTL</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="300">Scripting1</value>
@@ -11970,8 +11948,6 @@
           <value code="102">Camera Mode Toggle</value>
           <value code="105">GPS Disable Yaw</value>
           <value code="106">Disable Airspeed Use</value>
-          <value code="107">EnableFixedWingAutotune</value>
-          <value code="108">ModeQRTL</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="300">Scripting1</value>
@@ -12067,8 +12043,6 @@
           <value code="102">Camera Mode Toggle</value>
           <value code="105">GPS Disable Yaw</value>
           <value code="106">Disable Airspeed Use</value>
-          <value code="107">EnableFixedWingAutotune</value>
-          <value code="108">ModeQRTL</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="300">Scripting1</value>
@@ -12164,8 +12138,6 @@
           <value code="102">Camera Mode Toggle</value>
           <value code="105">GPS Disable Yaw</value>
           <value code="106">Disable Airspeed Use</value>
-          <value code="107">EnableFixedWingAutotune</value>
-          <value code="108">ModeQRTL</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="300">Scripting1</value>
@@ -12261,8 +12233,6 @@
           <value code="102">Camera Mode Toggle</value>
           <value code="105">GPS Disable Yaw</value>
           <value code="106">Disable Airspeed Use</value>
-          <value code="107">EnableFixedWingAutotune</value>
-          <value code="108">ModeQRTL</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="300">Scripting1</value>
@@ -12358,8 +12328,6 @@
           <value code="102">Camera Mode Toggle</value>
           <value code="105">GPS Disable Yaw</value>
           <value code="106">Disable Airspeed Use</value>
-          <value code="107">EnableFixedWingAutotune</value>
-          <value code="108">ModeQRTL</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="300">Scripting1</value>
@@ -12455,8 +12423,6 @@
           <value code="102">Camera Mode Toggle</value>
           <value code="105">GPS Disable Yaw</value>
           <value code="106">Disable Airspeed Use</value>
-          <value code="107">EnableFixedWingAutotune</value>
-          <value code="108">ModeQRTL</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="300">Scripting1</value>
@@ -12552,8 +12518,6 @@
           <value code="102">Camera Mode Toggle</value>
           <value code="105">GPS Disable Yaw</value>
           <value code="106">Disable Airspeed Use</value>
-          <value code="107">EnableFixedWingAutotune</value>
-          <value code="108">ModeQRTL</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="300">Scripting1</value>
@@ -12649,8 +12613,6 @@
           <value code="102">Camera Mode Toggle</value>
           <value code="105">GPS Disable Yaw</value>
           <value code="106">Disable Airspeed Use</value>
-          <value code="107">EnableFixedWingAutotune</value>
-          <value code="108">ModeQRTL</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="300">Scripting1</value>
@@ -12746,8 +12708,6 @@
           <value code="102">Camera Mode Toggle</value>
           <value code="105">GPS Disable Yaw</value>
           <value code="106">Disable Airspeed Use</value>
-          <value code="107">EnableFixedWingAutotune</value>
-          <value code="108">ModeQRTL</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="300">Scripting1</value>
@@ -12843,8 +12803,6 @@
           <value code="102">Camera Mode Toggle</value>
           <value code="105">GPS Disable Yaw</value>
           <value code="106">Disable Airspeed Use</value>
-          <value code="107">EnableFixedWingAutotune</value>
-          <value code="108">ModeQRTL</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="300">Scripting1</value>
@@ -12940,8 +12898,6 @@
           <value code="102">Camera Mode Toggle</value>
           <value code="105">GPS Disable Yaw</value>
           <value code="106">Disable Airspeed Use</value>
-          <value code="107">EnableFixedWingAutotune</value>
-          <value code="108">ModeQRTL</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="300">Scripting1</value>
@@ -13037,8 +12993,6 @@
           <value code="102">Camera Mode Toggle</value>
           <value code="105">GPS Disable Yaw</value>
           <value code="106">Disable Airspeed Use</value>
-          <value code="107">EnableFixedWingAutotune</value>
-          <value code="108">ModeQRTL</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="300">Scripting1</value>
@@ -13134,8 +13088,6 @@
           <value code="102">Camera Mode Toggle</value>
           <value code="105">GPS Disable Yaw</value>
           <value code="106">Disable Airspeed Use</value>
-          <value code="107">EnableFixedWingAutotune</value>
-          <value code="108">ModeQRTL</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="300">Scripting1</value>
@@ -13368,7 +13320,6 @@
           <value code="31">GYUS42v2</value>
           <value code="32">MSP</value>
           <value code="33">USD1_CAN</value>
-          <value code="34">Benewake_CAN</value>
           <value code="100">SITL</value>
         </values>
       </param>
@@ -13503,12 +13454,6 @@
           <value code="1">High Speed</value>
         </values>
       </param>
-      <param humanName="CAN receive ID" name="RNGFND1_RECV_ID" documentation="The receive ID of the CAN frames. A value of zero means all IDs are accepted." user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
-      <param humanName="Minimum signal strength" name="RNGFND1_SNR_MIN" documentation="Minimum signal strength (SNR) to accept distance" user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
     </parameters>
     <parameters name="RNGFND2_">
       <param humanName="Rangefinder type" name="RNGFND2_TYPE" documentation="What type of rangefinder device that is connected" user="Standard">
@@ -13546,7 +13491,6 @@
           <value code="31">GYUS42v2</value>
           <value code="32">MSP</value>
           <value code="33">USD1_CAN</value>
-          <value code="34">Benewake_CAN</value>
           <value code="100">SITL</value>
         </values>
       </param>
@@ -13681,12 +13625,6 @@
           <value code="1">High Speed</value>
         </values>
       </param>
-      <param humanName="CAN receive ID" name="RNGFND2_RECV_ID" documentation="The receive ID of the CAN frames. A value of zero means all IDs are accepted." user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
-      <param humanName="Minimum signal strength" name="RNGFND2_SNR_MIN" documentation="Minimum signal strength (SNR) to accept distance" user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
     </parameters>
     <parameters name="RNGFND3_">
       <param humanName="Rangefinder type" name="RNGFND3_TYPE" documentation="What type of rangefinder device that is connected" user="Standard">
@@ -13724,7 +13662,6 @@
           <value code="31">GYUS42v2</value>
           <value code="32">MSP</value>
           <value code="33">USD1_CAN</value>
-          <value code="34">Benewake_CAN</value>
           <value code="100">SITL</value>
         </values>
       </param>
@@ -13859,12 +13796,6 @@
           <value code="1">High Speed</value>
         </values>
       </param>
-      <param humanName="CAN receive ID" name="RNGFND3_RECV_ID" documentation="The receive ID of the CAN frames. A value of zero means all IDs are accepted." user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
-      <param humanName="Minimum signal strength" name="RNGFND3_SNR_MIN" documentation="Minimum signal strength (SNR) to accept distance" user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
     </parameters>
     <parameters name="RNGFND4_">
       <param humanName="Rangefinder type" name="RNGFND4_TYPE" documentation="What type of rangefinder device that is connected" user="Standard">
@@ -13902,7 +13833,6 @@
           <value code="31">GYUS42v2</value>
           <value code="32">MSP</value>
           <value code="33">USD1_CAN</value>
-          <value code="34">Benewake_CAN</value>
           <value code="100">SITL</value>
         </values>
       </param>
@@ -14037,12 +13967,6 @@
           <value code="1">High Speed</value>
         </values>
       </param>
-      <param humanName="CAN receive ID" name="RNGFND4_RECV_ID" documentation="The receive ID of the CAN frames. A value of zero means all IDs are accepted." user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
-      <param humanName="Minimum signal strength" name="RNGFND4_SNR_MIN" documentation="Minimum signal strength (SNR) to accept distance" user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
     </parameters>
     <parameters name="RNGFND5_">
       <param humanName="Rangefinder type" name="RNGFND5_TYPE" documentation="What type of rangefinder device that is connected" user="Standard">
@@ -14080,7 +14004,6 @@
           <value code="31">GYUS42v2</value>
           <value code="32">MSP</value>
           <value code="33">USD1_CAN</value>
-          <value code="34">Benewake_CAN</value>
           <value code="100">SITL</value>
         </values>
       </param>
@@ -14215,12 +14138,6 @@
           <value code="1">High Speed</value>
         </values>
       </param>
-      <param humanName="CAN receive ID" name="RNGFND5_RECV_ID" documentation="The receive ID of the CAN frames. A value of zero means all IDs are accepted." user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
-      <param humanName="Minimum signal strength" name="RNGFND5_SNR_MIN" documentation="Minimum signal strength (SNR) to accept distance" user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
     </parameters>
     <parameters name="RNGFND6_">
       <param humanName="Rangefinder type" name="RNGFND6_TYPE" documentation="What type of rangefinder device that is connected" user="Standard">
@@ -14258,7 +14175,6 @@
           <value code="31">GYUS42v2</value>
           <value code="32">MSP</value>
           <value code="33">USD1_CAN</value>
-          <value code="34">Benewake_CAN</value>
           <value code="100">SITL</value>
         </values>
       </param>
@@ -14393,12 +14309,6 @@
           <value code="1">High Speed</value>
         </values>
       </param>
-      <param humanName="CAN receive ID" name="RNGFND6_RECV_ID" documentation="The receive ID of the CAN frames. A value of zero means all IDs are accepted." user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
-      <param humanName="Minimum signal strength" name="RNGFND6_SNR_MIN" documentation="Minimum signal strength (SNR) to accept distance" user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
     </parameters>
     <parameters name="RNGFND7_">
       <param humanName="Rangefinder type" name="RNGFND7_TYPE" documentation="What type of rangefinder device that is connected" user="Standard">
@@ -14436,7 +14346,6 @@
           <value code="31">GYUS42v2</value>
           <value code="32">MSP</value>
           <value code="33">USD1_CAN</value>
-          <value code="34">Benewake_CAN</value>
           <value code="100">SITL</value>
         </values>
       </param>
@@ -14571,12 +14480,6 @@
           <value code="1">High Speed</value>
         </values>
       </param>
-      <param humanName="CAN receive ID" name="RNGFND7_RECV_ID" documentation="The receive ID of the CAN frames. A value of zero means all IDs are accepted." user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
-      <param humanName="Minimum signal strength" name="RNGFND7_SNR_MIN" documentation="Minimum signal strength (SNR) to accept distance" user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
     </parameters>
     <parameters name="RNGFND8_">
       <param humanName="Rangefinder type" name="RNGFND8_TYPE" documentation="What type of rangefinder device that is connected" user="Standard">
@@ -14614,7 +14517,6 @@
           <value code="31">GYUS42v2</value>
           <value code="32">MSP</value>
           <value code="33">USD1_CAN</value>
-          <value code="34">Benewake_CAN</value>
           <value code="100">SITL</value>
         </values>
       </param>
@@ -14749,12 +14651,6 @@
           <value code="1">High Speed</value>
         </values>
       </param>
-      <param humanName="CAN receive ID" name="RNGFND8_RECV_ID" documentation="The receive ID of the CAN frames. A value of zero means all IDs are accepted." user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
-      <param humanName="Minimum signal strength" name="RNGFND8_SNR_MIN" documentation="Minimum signal strength (SNR) to accept distance" user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
     </parameters>
     <parameters name="RNGFND9_">
       <param humanName="Rangefinder type" name="RNGFND9_TYPE" documentation="What type of rangefinder device that is connected" user="Standard">
@@ -14792,7 +14688,6 @@
           <value code="31">GYUS42v2</value>
           <value code="32">MSP</value>
           <value code="33">USD1_CAN</value>
-          <value code="34">Benewake_CAN</value>
           <value code="100">SITL</value>
         </values>
       </param>
@@ -14927,12 +14822,6 @@
           <value code="1">High Speed</value>
         </values>
       </param>
-      <param humanName="CAN receive ID" name="RNGFND9_RECV_ID" documentation="The receive ID of the CAN frames. A value of zero means all IDs are accepted." user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
-      <param humanName="Minimum signal strength" name="RNGFND9_SNR_MIN" documentation="Minimum signal strength (SNR) to accept distance" user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
     </parameters>
     <parameters name="RNGFNDA_">
       <param humanName="Rangefinder type" name="RNGFNDA_TYPE" documentation="What type of rangefinder device that is connected" user="Standard">
@@ -14970,7 +14859,6 @@
           <value code="31">GYUS42v2</value>
           <value code="32">MSP</value>
           <value code="33">USD1_CAN</value>
-          <value code="34">Benewake_CAN</value>
           <value code="100">SITL</value>
         </values>
       </param>
@@ -15104,12 +14992,6 @@
           <value code="0">Low Speed</value>
           <value code="1">High Speed</value>
         </values>
-      </param>
-      <param humanName="CAN receive ID" name="RNGFNDA_RECV_ID" documentation="The receive ID of the CAN frames. A value of zero means all IDs are accepted." user="Advanced">
-        <field name="Range">0 65535</field>
-      </param>
-      <param humanName="Minimum signal strength" name="RNGFNDA_SNR_MIN" documentation="Minimum signal strength (SNR) to accept distance" user="Advanced">
-        <field name="Range">0 65535</field>
       </param>
     </parameters>
     <parameters name="RPM">
@@ -15342,7 +15224,6 @@
           <value code="35">ADSB</value>
           <value code="36">AHRS</value>
           <value code="37">SmartAudio</value>
-          <value code="38">FETtecOneWire</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -15403,7 +15284,6 @@
           <value code="35">ADSB</value>
           <value code="36">AHRS</value>
           <value code="37">SmartAudio</value>
-          <value code="38">FETtecOneWire</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -15464,7 +15344,6 @@
           <value code="35">ADSB</value>
           <value code="36">AHRS</value>
           <value code="37">SmartAudio</value>
-          <value code="38">FETtecOneWire</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -15525,7 +15404,6 @@
           <value code="35">ADSB</value>
           <value code="36">AHRS</value>
           <value code="37">SmartAudio</value>
-          <value code="38">FETtecOneWire</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -15586,7 +15464,6 @@
           <value code="35">ADSB</value>
           <value code="36">AHRS</value>
           <value code="37">SmartAudio</value>
-          <value code="38">FETtecOneWire</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -15647,7 +15524,6 @@
           <value code="35">ADSB</value>
           <value code="36">AHRS</value>
           <value code="37">SmartAudio</value>
-          <value code="38">FETtecOneWire</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -15760,8 +15636,6 @@
           <value code="34">AirSpeed</value>
           <value code="35">ADSB</value>
           <value code="36">AHRS</value>
-          <value code="37">SmartAudio</value>
-          <value code="38">FETtecOneWire</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -15825,8 +15699,6 @@
           <value code="34">AirSpeed</value>
           <value code="35">ADSB</value>
           <value code="36">AHRS</value>
-          <value code="37">SmartAudio</value>
-          <value code="38">FETtecOneWire</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -18146,18 +18018,6 @@
       </param>
       <param humanName="BLHeli bitmask of reversed channels" name="SERVO_BLH_RVMASK" documentation="Mask of channels which are reversed. This is used to configure ESCs in reversed mode" user="Advanced">
         <field name="Bitmask">0:Channel1,1:Channel2,2:Channel3,3:Channel4,4:Channel5,5:Channel6,6:Channel7,7:Channel8,8:Channel9,9:Channel10,10:Channel11,11:Channel12,12:Channel13,13:Channel14,14:Channel15,15:Channel16</field>
-      </param>
-    </parameters>
-    <parameters name="SERVO_FTW_">
-      <param humanName="Servo channel output bitmask" name="SERVO_FTW_MASK" documentation="Servo channel mask specifying FETtec ESC output." user="Standard">
-        <field name="Bitmask">0:SERVO1,1:SERVO2,2:SERVO3,3:SERVO4,4:SERVO5,5:SERVO6,6:SERVO7,7:SERVO8,8:SERVO9,9:SERVO10,10:SERVO11,11:SERVO12</field>
-        <field name="RebootRequired">True</field>
-      </param>
-      <param humanName="Servo channel reverse rotation bitmask" name="SERVO_FTW_RVMASK" documentation="Servo channel mask to reverse rotation of FETtec ESC outputs." user="Standard">
-        <field name="Bitmask">0:SERVO1,1:SERVO2,2:SERVO3,3:SERVO4,4:SERVO5,5:SERVO6,6:SERVO7,7:SERVO8,8:SERVO9,9:SERVO10,10:SERVO11,11:SERVO12</field>
-      </param>
-      <param humanName="Nr. electrical poles" name="SERVO_FTW_POLES" documentation="Number of motor electrical poles" user="Standard">
-        <field name="Range">2 50</field>
       </param>
     </parameters>
     <parameters name="SERVO_ROB_">

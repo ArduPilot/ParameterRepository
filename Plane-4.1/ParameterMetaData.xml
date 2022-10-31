@@ -2091,7 +2091,7 @@
       <Values>0:Disabled,1:Enabled</Values>
     </BRD_IO_ENABLE>
     <BRD_OPTIONS>
-      <Bitmask>0:Enable hardware watchdog, 1:Disable MAVftp, 2:Enable set of internal parameters, 3:Enable Debug Pins</Bitmask>
+      <Bitmask>0:Enable hardware watchdog, 1:Disable MAVftp, 2:Enable set of internal parameters</Bitmask>
       <Description>Board specific option flags</Description>
       <DisplayName>Board options</DisplayName>
       <User>Advanced</User>
@@ -2549,7 +2549,7 @@
       <DisplayName>Enable use of specific protocol over virtual driver</DisplayName>
       <RebootRequired>True</RebootRequired>
       <User>Advanced</User>
-      <Values>0:Disabled,1:UAVCAN,3:ToshibaCAN,4:PiccoloCAN,5:CANTester,8:KDECAN,9:PacketDigitalCAN,11:Benewake</Values>
+      <Values>0:Disabled,1:UAVCAN,3:ToshibaCAN,4:PiccoloCAN,5:CANTester,8:KDECAN,9:PacketDigitalCAN</Values>
     </CAN_D1_PROTOCOL>
     <CAN_D1_TST_ID>
       <Description>Selects the Index of Test that needs to be run recursively, this value gets reset to 0 at boot.</Description>
@@ -2576,12 +2576,6 @@
       <Range>1 250</Range>
       <User>Advanced</User>
     </CAN_D1_UC_NODE>
-    <CAN_D1_UC_OPTION>
-      <Bitmask>0:ClearDNADatabase,1:IgnoreDNANodeConflicts</Bitmask>
-      <Description>Option flags</Description>
-      <DisplayName>UAVCAN options</DisplayName>
-      <User>Advanced</User>
-    </CAN_D1_UC_OPTION>
     <CAN_D1_UC_SRV_BM>
       <Bitmask>0: Servo 1, 1: Servo 2, 2: Servo 3, 3: Servo 4, 4: Servo 5, 5: Servo 6, 6: Servo 7, 7: Servo 8, 8: Servo 9, 9: Servo 10, 10: Servo 11, 11: Servo 12, 12: Servo 13, 13: Servo 14, 14: Servo 15</Bitmask>
       <Description>Bitmask with one set for channel to be transmitted as a servo command over UAVCAN</Description>
@@ -2630,7 +2624,7 @@
       <DisplayName>Enable use of specific protocol over virtual driver</DisplayName>
       <RebootRequired>True</RebootRequired>
       <User>Advanced</User>
-      <Values>0:Disabled,1:UAVCAN,3:ToshibaCAN,4:PiccoloCAN,5:CANTester,8:KDECAN,9:PacketDigitalCAN,11:Benewake</Values>
+      <Values>0:Disabled,1:UAVCAN,3:ToshibaCAN,4:PiccoloCAN,5:CANTester,8:KDECAN,9:PacketDigitalCAN</Values>
     </CAN_D2_PROTOCOL>
     <CAN_D2_TST_ID>
       <Description>Selects the Index of Test that needs to be run recursively, this value gets reset to 0 at boot.</Description>
@@ -2657,12 +2651,6 @@
       <Range>1 250</Range>
       <User>Advanced</User>
     </CAN_D2_UC_NODE>
-    <CAN_D2_UC_OPTION>
-      <Bitmask>0:ClearDNADatabase,1:IgnoreDNANodeConflicts</Bitmask>
-      <Description>Option flags</Description>
-      <DisplayName>UAVCAN options</DisplayName>
-      <User>Advanced</User>
-    </CAN_D2_UC_OPTION>
     <CAN_D2_UC_SRV_BM>
       <Bitmask>0: Servo 1, 1: Servo 2, 2: Servo 3, 3: Servo 4, 4: Servo 5, 5: Servo 6, 6: Servo 7, 7: Servo 8, 8: Servo 9, 9: Servo 10, 10: Servo 11, 11: Servo 12, 12: Servo 13, 13: Servo 14, 14: Servo 15</Bitmask>
       <Description>Bitmask with one set for channel to be transmitted as a servo command over UAVCAN</Description>
@@ -2711,7 +2699,7 @@
       <DisplayName>Enable use of specific protocol over virtual driver</DisplayName>
       <RebootRequired>True</RebootRequired>
       <User>Advanced</User>
-      <Values>0:Disabled,1:UAVCAN,3:ToshibaCAN,4:PiccoloCAN,5:CANTester,8:KDECAN,9:PacketDigitalCAN,11:Benewake</Values>
+      <Values>0:Disabled,1:UAVCAN,3:ToshibaCAN,4:PiccoloCAN,5:CANTester,8:KDECAN,9:PacketDigitalCAN</Values>
     </CAN_D3_PROTOCOL>
     <CAN_D3_TST_ID>
       <Description>Selects the Index of Test that needs to be run recursively, this value gets reset to 0 at boot.</Description>
@@ -2738,12 +2726,6 @@
       <Range>1 250</Range>
       <User>Advanced</User>
     </CAN_D3_UC_NODE>
-    <CAN_D3_UC_OPTION>
-      <Bitmask>0:ClearDNADatabase,1:IgnoreDNANodeConflicts</Bitmask>
-      <Description>Option flags</Description>
-      <DisplayName>UAVCAN options</DisplayName>
-      <User>Advanced</User>
-    </CAN_D3_UC_OPTION>
     <CAN_D3_UC_SRV_BM>
       <Bitmask>0: Servo 1, 1: Servo 2, 2: Servo 3, 3: Servo 4, 4: Servo 5, 5: Servo 6, 6: Servo 7, 7: Servo 8, 8: Servo 9, 9: Servo 10, 10: Servo 11, 11: Servo 12, 12: Servo 13, 13: Servo 14, 14: Servo 15</Bitmask>
       <Description>Bitmask with one set for channel to be transmitted as a servo command over UAVCAN</Description>
@@ -4275,13 +4257,6 @@
       <Range>100 1000</Range>
       <User>Advanced</User>
     </EK3_POS_I_GATE>
-    <EK3_PRIMARY>
-      <Description>The core number (index in IMU mask) that will be used as the primary EKF core on startup. While disarmed the EKF will force the use of this core. A value of 0 corresponds to the first IMU in EK3_IMU_MASK.</Description>
-      <DisplayName>Primary core number</DisplayName>
-      <Increment>1</Increment>
-      <Range>0 2</Range>
-      <User>Advanced</User>
-    </EK3_PRIMARY>
     <EK3_RNG_I_GATE>
       <Description>This sets the percentage number of standard deviations applied to the range finder innovation consistency check. Decreasing it makes it more likely that good measurements will be rejected. Increasing it makes it more likely that bad measurements will be accepted.</Description>
       <DisplayName>Range finder measurement gate size</DisplayName>
@@ -4719,7 +4694,7 @@
       <User>Advanced</User>
     </FLAP_SLEWRATE>
     <FLIGHT_OPTIONS>
-      <Bitmask>0:Rudder mixing in direct flight modes only (Manual / Stabilize / Acro),1:Use centered throttle in Cruise or FBWB to indicate trim airspeed, 2:Disable attitude check for takeoff arming, 3:Force target airspeed to trim airspeed in Cruise or FBWB, 4: Climb to ALT_HOLD_RTL before turning for RTL, 5: Enable yaw damper in acro mode, 6: Surpress speed scaling during auto takeoffs to be 1 or less to prevent oscillations without airpseed sensor, 7:EnableDefaultAirspeed for takeoff, 11:Disable suppression of fixed wing rate gains in ground mode</Bitmask>
+      <Bitmask>0:Rudder mixing in direct flight modes only (Manual / Stabilize / Acro),1:Use centered throttle in Cruise or FBWB to indicate trim airspeed, 2:Disable attitude check for takeoff arming, 3:Force target airspeed to trim airspeed in Cruise or FBWB, 4: Climb to ALT_HOLD_RTL before turning for RTL, 5: Enable yaw damper in acro mode, 6: Surpress speed scaling during auto takeoffs to be 1 or less to prevent oscillations without airpseed sensor, 7:EnableDefaultAirspeed for takeoff</Bitmask>
       <Description>Flight mode specific options</Description>
       <DisplayName>Flight mode options</DisplayName>
       <User>Advanced</User>
@@ -13329,7 +13304,7 @@
       <Description>Function assigned to this RC channel</Description>
       <DisplayName>RC input option</DisplayName>
       <User>Standard</User>
-      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,107:EnableFixedWingAutotune,108:ModeQRTL,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
+      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
     </RC10_OPTION>
     <RC10_REVERSED>
       <Description>Reverse channel input. Set to 0 for normal operation. Set to 1 to reverse this input channel.</Description>
@@ -13372,7 +13347,7 @@
       <Description>Function assigned to this RC channel</Description>
       <DisplayName>RC input option</DisplayName>
       <User>Standard</User>
-      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,107:EnableFixedWingAutotune,108:ModeQRTL,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
+      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
     </RC11_OPTION>
     <RC11_REVERSED>
       <Description>Reverse channel input. Set to 0 for normal operation. Set to 1 to reverse this input channel.</Description>
@@ -13415,7 +13390,7 @@
       <Description>Function assigned to this RC channel</Description>
       <DisplayName>RC input option</DisplayName>
       <User>Standard</User>
-      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,107:EnableFixedWingAutotune,108:ModeQRTL,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
+      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
     </RC12_OPTION>
     <RC12_REVERSED>
       <Description>Reverse channel input. Set to 0 for normal operation. Set to 1 to reverse this input channel.</Description>
@@ -13458,7 +13433,7 @@
       <Description>Function assigned to this RC channel</Description>
       <DisplayName>RC input option</DisplayName>
       <User>Standard</User>
-      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,107:EnableFixedWingAutotune,108:ModeQRTL,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
+      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
     </RC13_OPTION>
     <RC13_REVERSED>
       <Description>Reverse channel input. Set to 0 for normal operation. Set to 1 to reverse this input channel.</Description>
@@ -13501,7 +13476,7 @@
       <Description>Function assigned to this RC channel</Description>
       <DisplayName>RC input option</DisplayName>
       <User>Standard</User>
-      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,107:EnableFixedWingAutotune,108:ModeQRTL,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
+      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
     </RC14_OPTION>
     <RC14_REVERSED>
       <Description>Reverse channel input. Set to 0 for normal operation. Set to 1 to reverse this input channel.</Description>
@@ -13544,7 +13519,7 @@
       <Description>Function assigned to this RC channel</Description>
       <DisplayName>RC input option</DisplayName>
       <User>Standard</User>
-      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,107:EnableFixedWingAutotune,108:ModeQRTL,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
+      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
     </RC15_OPTION>
     <RC15_REVERSED>
       <Description>Reverse channel input. Set to 0 for normal operation. Set to 1 to reverse this input channel.</Description>
@@ -13587,7 +13562,7 @@
       <Description>Function assigned to this RC channel</Description>
       <DisplayName>RC input option</DisplayName>
       <User>Standard</User>
-      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,107:EnableFixedWingAutotune,108:ModeQRTL,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
+      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
     </RC16_OPTION>
     <RC16_REVERSED>
       <Description>Reverse channel input. Set to 0 for normal operation. Set to 1 to reverse this input channel.</Description>
@@ -13630,7 +13605,7 @@
       <Description>Function assigned to this RC channel</Description>
       <DisplayName>RC input option</DisplayName>
       <User>Standard</User>
-      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,107:EnableFixedWingAutotune,108:ModeQRTL,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
+      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
     </RC1_OPTION>
     <RC1_REVERSED>
       <Description>Reverse channel input. Set to 0 for normal operation. Set to 1 to reverse this input channel.</Description>
@@ -13673,7 +13648,7 @@
       <Description>Function assigned to this RC channel</Description>
       <DisplayName>RC input option</DisplayName>
       <User>Standard</User>
-      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,107:EnableFixedWingAutotune,108:ModeQRTL,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
+      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
     </RC2_OPTION>
     <RC2_REVERSED>
       <Description>Reverse channel input. Set to 0 for normal operation. Set to 1 to reverse this input channel.</Description>
@@ -13716,7 +13691,7 @@
       <Description>Function assigned to this RC channel</Description>
       <DisplayName>RC input option</DisplayName>
       <User>Standard</User>
-      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,107:EnableFixedWingAutotune,108:ModeQRTL,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
+      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
     </RC3_OPTION>
     <RC3_REVERSED>
       <Description>Reverse channel input. Set to 0 for normal operation. Set to 1 to reverse this input channel.</Description>
@@ -13759,7 +13734,7 @@
       <Description>Function assigned to this RC channel</Description>
       <DisplayName>RC input option</DisplayName>
       <User>Standard</User>
-      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,107:EnableFixedWingAutotune,108:ModeQRTL,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
+      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
     </RC4_OPTION>
     <RC4_REVERSED>
       <Description>Reverse channel input. Set to 0 for normal operation. Set to 1 to reverse this input channel.</Description>
@@ -13802,7 +13777,7 @@
       <Description>Function assigned to this RC channel</Description>
       <DisplayName>RC input option</DisplayName>
       <User>Standard</User>
-      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,107:EnableFixedWingAutotune,108:ModeQRTL,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
+      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
     </RC5_OPTION>
     <RC5_REVERSED>
       <Description>Reverse channel input. Set to 0 for normal operation. Set to 1 to reverse this input channel.</Description>
@@ -13845,7 +13820,7 @@
       <Description>Function assigned to this RC channel</Description>
       <DisplayName>RC input option</DisplayName>
       <User>Standard</User>
-      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,107:EnableFixedWingAutotune,108:ModeQRTL,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
+      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
     </RC6_OPTION>
     <RC6_REVERSED>
       <Description>Reverse channel input. Set to 0 for normal operation. Set to 1 to reverse this input channel.</Description>
@@ -13888,7 +13863,7 @@
       <Description>Function assigned to this RC channel</Description>
       <DisplayName>RC input option</DisplayName>
       <User>Standard</User>
-      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,107:EnableFixedWingAutotune,108:ModeQRTL,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
+      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
     </RC7_OPTION>
     <RC7_REVERSED>
       <Description>Reverse channel input. Set to 0 for normal operation. Set to 1 to reverse this input channel.</Description>
@@ -13931,7 +13906,7 @@
       <Description>Function assigned to this RC channel</Description>
       <DisplayName>RC input option</DisplayName>
       <User>Standard</User>
-      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,107:EnableFixedWingAutotune,108:ModeQRTL,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
+      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
     </RC8_OPTION>
     <RC8_REVERSED>
       <Description>Reverse channel input. Set to 0 for normal operation. Set to 1 to reverse this input channel.</Description>
@@ -13974,7 +13949,7 @@
       <Description>Function assigned to this RC channel</Description>
       <DisplayName>RC input option</DisplayName>
       <User>Standard</User>
-      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,107:EnableFixedWingAutotune,108:ModeQRTL,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
+      <Values>0:Do Nothing,4:ModeRTL,9:Camera Trigger,11:Fence,16:ModeAuto,24:Auto Mission Reset,27:Retract Mount,28:Relay On/Off,29:Landing Gear,30:Lost Plane Sound,31:Motor Emergency Stop,34:Relay2 On/Off,35:Relay3 On/Off,36:Relay4 On/Off,38:ADSB Avoidance En,41:ArmDisarm,43:InvertedFlight,46:RC Override Enable,51:ModeManual,55:ModeGuided,56:ModeLoiter,58:Clear Waypoints,62:Compass Learn,64:Reverse Throttle,65:GPS Disable,66:Relay5 On/Off,67:Relay6 On/Off,72:ModeCircle,77:ModeTakeoff,78:RunCam Control,79:RunCam OSD Control,81:Disarm,82:QAssist 3pos,84:Air Mode,85:Generator,86:Non Auto Terrain Follow Disable,87:Crow Select,88:Soaring Enable,89:Landing Flare,90:EKF Pos Source,91:Airspeed Ratio Calibration,92:FBWA,94:VTX Power,95:FBWA taildragger takeoff mode,96:trigger re-reading of mode switch,100:KillIMU1,101:KillIMU2,102:Camera Mode Toggle,105:GPS Disable Yaw,106:Disable Airspeed Use,208:Flap,209:Forward Throttle,300:Scripting1,301:Scripting2,302:Scripting3,303:Scripting4,304:Scripting5,305:Scripting6,306:Scripting7,307:Scripting8</Values>
     </RC9_OPTION>
     <RC9_REVERSED>
       <Description>Reverse channel input. Set to 0 for normal operation. Set to 1 to reverse this input channel.</Description>
@@ -14023,7 +13998,7 @@
       <User>Advanced</User>
     </RCMAP_YAW>
     <RC_OPTIONS>
-      <Bitmask>0:Ignore RC Receiver, 1:Ignore MAVLink Overrides, 2:Ignore Receiver Failsafe bit but allow other RC failsafes if setup, 3:FPort Pad, 4:Log RC input bytes, 5:Arming check throttle for 0 input, 6:Skip the arming check for neutral Roll/Pitch/Yay sticks, 7:Allow Switch reverse, 8:Use passthrough for CRSF telemetry, 9:Suppress CRSF mode/rate message for ELRS systems, 10:Enable RC Protocol re-detection</Bitmask>
+      <Bitmask>0:Ignore RC Receiver, 1:Ignore MAVLink Overrides, 2:Ignore Receiver Failsafe bit but allow other RC failsafes if setup, 3:FPort Pad, 4:Log RC input bytes, 5:Arming check throttle for 0 input, 6:Skip the arming check for neutral Roll/Pitch/Yay sticks, 7:Allow Switch reverse, 8:Use passthrough for CRSF telemetry, 9:Suppress CRSF mode/rate message for ELRS systems</Bitmask>
       <Description>RC input options</Description>
       <DisplayName>RC options</DisplayName>
       <User>Advanced</User>
@@ -14250,12 +14225,6 @@
       <Units>m</Units>
       <User>Standard</User>
     </RNGFND1_PWRRNG>
-    <RNGFND1_RECV_ID>
-      <Description>The receive ID of the CAN frames. A value of zero means all IDs are accepted.</Description>
-      <DisplayName>CAN receive ID</DisplayName>
-      <Range>0 65535</Range>
-      <User>Advanced</User>
-    </RNGFND1_RECV_ID>
     <RNGFND1_RMETRIC>
       <Description>This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.</Description>
       <DisplayName>Ratiometric</DisplayName>
@@ -14269,12 +14238,6 @@
       <Units>m/V</Units>
       <User>Standard</User>
     </RNGFND1_SCALING>
-    <RNGFND1_SNR_MIN>
-      <Description>Minimum signal strength (SNR) to accept distance</Description>
-      <DisplayName>Minimum signal strength</DisplayName>
-      <Range>0 65535</Range>
-      <User>Advanced</User>
-    </RNGFND1_SNR_MIN>
     <RNGFND1_STOP_PIN>
       <Description>Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.</Description>
       <DisplayName>Rangefinder stop pin</DisplayName>
@@ -14285,7 +14248,7 @@
       <Description>What type of rangefinder device that is connected</Description>
       <DisplayName>Rangefinder type</DisplayName>
       <User>Standard</User>
-      <Values>0:None,1:Analog,2:MaxbotixI2C,3:LidarLite-I2C,5:PWM,6:BBB-PRU,7:LightWareI2C,8:LightWareSerial,9:Bebop,10:MAVLink,11:uLanding,12:LeddarOne,13:MaxbotixSerial,14:TeraRangerI2C,15:LidarLiteV3-I2C,16:VL53L0X or VL53L1X,17:NMEA,18:WASP-LRF,19:BenewakeTF02,20:Benewake-Serial,21:LidarLightV3HP,22:PWM,23:BlueRoboticsPing,24:UAVCAN,25:BenewakeTFminiPlus-I2C,26:LanbaoPSK-CM8JL65-CC5,27:BenewakeTF03,28:VL53L1X-ShortRange,29:LeddarVu8-Serial,30:HC-SR04,31:GYUS42v2,32:MSP,33:USD1_CAN,34:Benewake_CAN,100:SITL</Values>
+      <Values>0:None,1:Analog,2:MaxbotixI2C,3:LidarLite-I2C,5:PWM,6:BBB-PRU,7:LightWareI2C,8:LightWareSerial,9:Bebop,10:MAVLink,11:uLanding,12:LeddarOne,13:MaxbotixSerial,14:TeraRangerI2C,15:LidarLiteV3-I2C,16:VL53L0X or VL53L1X,17:NMEA,18:WASP-LRF,19:BenewakeTF02,20:Benewake-Serial,21:LidarLightV3HP,22:PWM,23:BlueRoboticsPing,24:UAVCAN,25:BenewakeTFminiPlus-I2C,26:LanbaoPSK-CM8JL65-CC5,27:BenewakeTF03,28:VL53L1X-ShortRange,29:LeddarVu8-Serial,30:HC-SR04,31:GYUS42v2,32:MSP,33:USD1_CAN,100:SITL</Values>
     </RNGFND1_TYPE>
     <RNGFND1_WSP_AVG>
       <Description>Sets the number of pulses to be used in multi-pulse averaging mode. In this mode, a sequence of rapid fire ranges are taken and then averaged to improve the accuracy of the measurement</Description>
@@ -14408,12 +14371,6 @@
       <Units>m</Units>
       <User>Standard</User>
     </RNGFND2_PWRRNG>
-    <RNGFND2_RECV_ID>
-      <Description>The receive ID of the CAN frames. A value of zero means all IDs are accepted.</Description>
-      <DisplayName>CAN receive ID</DisplayName>
-      <Range>0 65535</Range>
-      <User>Advanced</User>
-    </RNGFND2_RECV_ID>
     <RNGFND2_RMETRIC>
       <Description>This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.</Description>
       <DisplayName>Ratiometric</DisplayName>
@@ -14427,12 +14384,6 @@
       <Units>m/V</Units>
       <User>Standard</User>
     </RNGFND2_SCALING>
-    <RNGFND2_SNR_MIN>
-      <Description>Minimum signal strength (SNR) to accept distance</Description>
-      <DisplayName>Minimum signal strength</DisplayName>
-      <Range>0 65535</Range>
-      <User>Advanced</User>
-    </RNGFND2_SNR_MIN>
     <RNGFND2_STOP_PIN>
       <Description>Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.</Description>
       <DisplayName>Rangefinder stop pin</DisplayName>
@@ -14443,7 +14394,7 @@
       <Description>What type of rangefinder device that is connected</Description>
       <DisplayName>Rangefinder type</DisplayName>
       <User>Standard</User>
-      <Values>0:None,1:Analog,2:MaxbotixI2C,3:LidarLite-I2C,5:PWM,6:BBB-PRU,7:LightWareI2C,8:LightWareSerial,9:Bebop,10:MAVLink,11:uLanding,12:LeddarOne,13:MaxbotixSerial,14:TeraRangerI2C,15:LidarLiteV3-I2C,16:VL53L0X or VL53L1X,17:NMEA,18:WASP-LRF,19:BenewakeTF02,20:Benewake-Serial,21:LidarLightV3HP,22:PWM,23:BlueRoboticsPing,24:UAVCAN,25:BenewakeTFminiPlus-I2C,26:LanbaoPSK-CM8JL65-CC5,27:BenewakeTF03,28:VL53L1X-ShortRange,29:LeddarVu8-Serial,30:HC-SR04,31:GYUS42v2,32:MSP,33:USD1_CAN,34:Benewake_CAN,100:SITL</Values>
+      <Values>0:None,1:Analog,2:MaxbotixI2C,3:LidarLite-I2C,5:PWM,6:BBB-PRU,7:LightWareI2C,8:LightWareSerial,9:Bebop,10:MAVLink,11:uLanding,12:LeddarOne,13:MaxbotixSerial,14:TeraRangerI2C,15:LidarLiteV3-I2C,16:VL53L0X or VL53L1X,17:NMEA,18:WASP-LRF,19:BenewakeTF02,20:Benewake-Serial,21:LidarLightV3HP,22:PWM,23:BlueRoboticsPing,24:UAVCAN,25:BenewakeTFminiPlus-I2C,26:LanbaoPSK-CM8JL65-CC5,27:BenewakeTF03,28:VL53L1X-ShortRange,29:LeddarVu8-Serial,30:HC-SR04,31:GYUS42v2,32:MSP,33:USD1_CAN,100:SITL</Values>
     </RNGFND2_TYPE>
     <RNGFND2_WSP_AVG>
       <Description>Sets the number of pulses to be used in multi-pulse averaging mode. In this mode, a sequence of rapid fire ranges are taken and then averaged to improve the accuracy of the measurement</Description>
@@ -14566,12 +14517,6 @@
       <Units>m</Units>
       <User>Standard</User>
     </RNGFND3_PWRRNG>
-    <RNGFND3_RECV_ID>
-      <Description>The receive ID of the CAN frames. A value of zero means all IDs are accepted.</Description>
-      <DisplayName>CAN receive ID</DisplayName>
-      <Range>0 65535</Range>
-      <User>Advanced</User>
-    </RNGFND3_RECV_ID>
     <RNGFND3_RMETRIC>
       <Description>This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.</Description>
       <DisplayName>Ratiometric</DisplayName>
@@ -14585,12 +14530,6 @@
       <Units>m/V</Units>
       <User>Standard</User>
     </RNGFND3_SCALING>
-    <RNGFND3_SNR_MIN>
-      <Description>Minimum signal strength (SNR) to accept distance</Description>
-      <DisplayName>Minimum signal strength</DisplayName>
-      <Range>0 65535</Range>
-      <User>Advanced</User>
-    </RNGFND3_SNR_MIN>
     <RNGFND3_STOP_PIN>
       <Description>Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.</Description>
       <DisplayName>Rangefinder stop pin</DisplayName>
@@ -14601,7 +14540,7 @@
       <Description>What type of rangefinder device that is connected</Description>
       <DisplayName>Rangefinder type</DisplayName>
       <User>Standard</User>
-      <Values>0:None,1:Analog,2:MaxbotixI2C,3:LidarLite-I2C,5:PWM,6:BBB-PRU,7:LightWareI2C,8:LightWareSerial,9:Bebop,10:MAVLink,11:uLanding,12:LeddarOne,13:MaxbotixSerial,14:TeraRangerI2C,15:LidarLiteV3-I2C,16:VL53L0X or VL53L1X,17:NMEA,18:WASP-LRF,19:BenewakeTF02,20:Benewake-Serial,21:LidarLightV3HP,22:PWM,23:BlueRoboticsPing,24:UAVCAN,25:BenewakeTFminiPlus-I2C,26:LanbaoPSK-CM8JL65-CC5,27:BenewakeTF03,28:VL53L1X-ShortRange,29:LeddarVu8-Serial,30:HC-SR04,31:GYUS42v2,32:MSP,33:USD1_CAN,34:Benewake_CAN,100:SITL</Values>
+      <Values>0:None,1:Analog,2:MaxbotixI2C,3:LidarLite-I2C,5:PWM,6:BBB-PRU,7:LightWareI2C,8:LightWareSerial,9:Bebop,10:MAVLink,11:uLanding,12:LeddarOne,13:MaxbotixSerial,14:TeraRangerI2C,15:LidarLiteV3-I2C,16:VL53L0X or VL53L1X,17:NMEA,18:WASP-LRF,19:BenewakeTF02,20:Benewake-Serial,21:LidarLightV3HP,22:PWM,23:BlueRoboticsPing,24:UAVCAN,25:BenewakeTFminiPlus-I2C,26:LanbaoPSK-CM8JL65-CC5,27:BenewakeTF03,28:VL53L1X-ShortRange,29:LeddarVu8-Serial,30:HC-SR04,31:GYUS42v2,32:MSP,33:USD1_CAN,100:SITL</Values>
     </RNGFND3_TYPE>
     <RNGFND3_WSP_AVG>
       <Description>Sets the number of pulses to be used in multi-pulse averaging mode. In this mode, a sequence of rapid fire ranges are taken and then averaged to improve the accuracy of the measurement</Description>
@@ -14724,12 +14663,6 @@
       <Units>m</Units>
       <User>Standard</User>
     </RNGFND4_PWRRNG>
-    <RNGFND4_RECV_ID>
-      <Description>The receive ID of the CAN frames. A value of zero means all IDs are accepted.</Description>
-      <DisplayName>CAN receive ID</DisplayName>
-      <Range>0 65535</Range>
-      <User>Advanced</User>
-    </RNGFND4_RECV_ID>
     <RNGFND4_RMETRIC>
       <Description>This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.</Description>
       <DisplayName>Ratiometric</DisplayName>
@@ -14743,12 +14676,6 @@
       <Units>m/V</Units>
       <User>Standard</User>
     </RNGFND4_SCALING>
-    <RNGFND4_SNR_MIN>
-      <Description>Minimum signal strength (SNR) to accept distance</Description>
-      <DisplayName>Minimum signal strength</DisplayName>
-      <Range>0 65535</Range>
-      <User>Advanced</User>
-    </RNGFND4_SNR_MIN>
     <RNGFND4_STOP_PIN>
       <Description>Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.</Description>
       <DisplayName>Rangefinder stop pin</DisplayName>
@@ -14759,7 +14686,7 @@
       <Description>What type of rangefinder device that is connected</Description>
       <DisplayName>Rangefinder type</DisplayName>
       <User>Standard</User>
-      <Values>0:None,1:Analog,2:MaxbotixI2C,3:LidarLite-I2C,5:PWM,6:BBB-PRU,7:LightWareI2C,8:LightWareSerial,9:Bebop,10:MAVLink,11:uLanding,12:LeddarOne,13:MaxbotixSerial,14:TeraRangerI2C,15:LidarLiteV3-I2C,16:VL53L0X or VL53L1X,17:NMEA,18:WASP-LRF,19:BenewakeTF02,20:Benewake-Serial,21:LidarLightV3HP,22:PWM,23:BlueRoboticsPing,24:UAVCAN,25:BenewakeTFminiPlus-I2C,26:LanbaoPSK-CM8JL65-CC5,27:BenewakeTF03,28:VL53L1X-ShortRange,29:LeddarVu8-Serial,30:HC-SR04,31:GYUS42v2,32:MSP,33:USD1_CAN,34:Benewake_CAN,100:SITL</Values>
+      <Values>0:None,1:Analog,2:MaxbotixI2C,3:LidarLite-I2C,5:PWM,6:BBB-PRU,7:LightWareI2C,8:LightWareSerial,9:Bebop,10:MAVLink,11:uLanding,12:LeddarOne,13:MaxbotixSerial,14:TeraRangerI2C,15:LidarLiteV3-I2C,16:VL53L0X or VL53L1X,17:NMEA,18:WASP-LRF,19:BenewakeTF02,20:Benewake-Serial,21:LidarLightV3HP,22:PWM,23:BlueRoboticsPing,24:UAVCAN,25:BenewakeTFminiPlus-I2C,26:LanbaoPSK-CM8JL65-CC5,27:BenewakeTF03,28:VL53L1X-ShortRange,29:LeddarVu8-Serial,30:HC-SR04,31:GYUS42v2,32:MSP,33:USD1_CAN,100:SITL</Values>
     </RNGFND4_TYPE>
     <RNGFND4_WSP_AVG>
       <Description>Sets the number of pulses to be used in multi-pulse averaging mode. In this mode, a sequence of rapid fire ranges are taken and then averaged to improve the accuracy of the measurement</Description>
@@ -14882,12 +14809,6 @@
       <Units>m</Units>
       <User>Standard</User>
     </RNGFND5_PWRRNG>
-    <RNGFND5_RECV_ID>
-      <Description>The receive ID of the CAN frames. A value of zero means all IDs are accepted.</Description>
-      <DisplayName>CAN receive ID</DisplayName>
-      <Range>0 65535</Range>
-      <User>Advanced</User>
-    </RNGFND5_RECV_ID>
     <RNGFND5_RMETRIC>
       <Description>This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.</Description>
       <DisplayName>Ratiometric</DisplayName>
@@ -14901,12 +14822,6 @@
       <Units>m/V</Units>
       <User>Standard</User>
     </RNGFND5_SCALING>
-    <RNGFND5_SNR_MIN>
-      <Description>Minimum signal strength (SNR) to accept distance</Description>
-      <DisplayName>Minimum signal strength</DisplayName>
-      <Range>0 65535</Range>
-      <User>Advanced</User>
-    </RNGFND5_SNR_MIN>
     <RNGFND5_STOP_PIN>
       <Description>Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.</Description>
       <DisplayName>Rangefinder stop pin</DisplayName>
@@ -14917,7 +14832,7 @@
       <Description>What type of rangefinder device that is connected</Description>
       <DisplayName>Rangefinder type</DisplayName>
       <User>Standard</User>
-      <Values>0:None,1:Analog,2:MaxbotixI2C,3:LidarLite-I2C,5:PWM,6:BBB-PRU,7:LightWareI2C,8:LightWareSerial,9:Bebop,10:MAVLink,11:uLanding,12:LeddarOne,13:MaxbotixSerial,14:TeraRangerI2C,15:LidarLiteV3-I2C,16:VL53L0X or VL53L1X,17:NMEA,18:WASP-LRF,19:BenewakeTF02,20:Benewake-Serial,21:LidarLightV3HP,22:PWM,23:BlueRoboticsPing,24:UAVCAN,25:BenewakeTFminiPlus-I2C,26:LanbaoPSK-CM8JL65-CC5,27:BenewakeTF03,28:VL53L1X-ShortRange,29:LeddarVu8-Serial,30:HC-SR04,31:GYUS42v2,32:MSP,33:USD1_CAN,34:Benewake_CAN,100:SITL</Values>
+      <Values>0:None,1:Analog,2:MaxbotixI2C,3:LidarLite-I2C,5:PWM,6:BBB-PRU,7:LightWareI2C,8:LightWareSerial,9:Bebop,10:MAVLink,11:uLanding,12:LeddarOne,13:MaxbotixSerial,14:TeraRangerI2C,15:LidarLiteV3-I2C,16:VL53L0X or VL53L1X,17:NMEA,18:WASP-LRF,19:BenewakeTF02,20:Benewake-Serial,21:LidarLightV3HP,22:PWM,23:BlueRoboticsPing,24:UAVCAN,25:BenewakeTFminiPlus-I2C,26:LanbaoPSK-CM8JL65-CC5,27:BenewakeTF03,28:VL53L1X-ShortRange,29:LeddarVu8-Serial,30:HC-SR04,31:GYUS42v2,32:MSP,33:USD1_CAN,100:SITL</Values>
     </RNGFND5_TYPE>
     <RNGFND5_WSP_AVG>
       <Description>Sets the number of pulses to be used in multi-pulse averaging mode. In this mode, a sequence of rapid fire ranges are taken and then averaged to improve the accuracy of the measurement</Description>
@@ -15040,12 +14955,6 @@
       <Units>m</Units>
       <User>Standard</User>
     </RNGFND6_PWRRNG>
-    <RNGFND6_RECV_ID>
-      <Description>The receive ID of the CAN frames. A value of zero means all IDs are accepted.</Description>
-      <DisplayName>CAN receive ID</DisplayName>
-      <Range>0 65535</Range>
-      <User>Advanced</User>
-    </RNGFND6_RECV_ID>
     <RNGFND6_RMETRIC>
       <Description>This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.</Description>
       <DisplayName>Ratiometric</DisplayName>
@@ -15059,12 +14968,6 @@
       <Units>m/V</Units>
       <User>Standard</User>
     </RNGFND6_SCALING>
-    <RNGFND6_SNR_MIN>
-      <Description>Minimum signal strength (SNR) to accept distance</Description>
-      <DisplayName>Minimum signal strength</DisplayName>
-      <Range>0 65535</Range>
-      <User>Advanced</User>
-    </RNGFND6_SNR_MIN>
     <RNGFND6_STOP_PIN>
       <Description>Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.</Description>
       <DisplayName>Rangefinder stop pin</DisplayName>
@@ -15075,7 +14978,7 @@
       <Description>What type of rangefinder device that is connected</Description>
       <DisplayName>Rangefinder type</DisplayName>
       <User>Standard</User>
-      <Values>0:None,1:Analog,2:MaxbotixI2C,3:LidarLite-I2C,5:PWM,6:BBB-PRU,7:LightWareI2C,8:LightWareSerial,9:Bebop,10:MAVLink,11:uLanding,12:LeddarOne,13:MaxbotixSerial,14:TeraRangerI2C,15:LidarLiteV3-I2C,16:VL53L0X or VL53L1X,17:NMEA,18:WASP-LRF,19:BenewakeTF02,20:Benewake-Serial,21:LidarLightV3HP,22:PWM,23:BlueRoboticsPing,24:UAVCAN,25:BenewakeTFminiPlus-I2C,26:LanbaoPSK-CM8JL65-CC5,27:BenewakeTF03,28:VL53L1X-ShortRange,29:LeddarVu8-Serial,30:HC-SR04,31:GYUS42v2,32:MSP,33:USD1_CAN,34:Benewake_CAN,100:SITL</Values>
+      <Values>0:None,1:Analog,2:MaxbotixI2C,3:LidarLite-I2C,5:PWM,6:BBB-PRU,7:LightWareI2C,8:LightWareSerial,9:Bebop,10:MAVLink,11:uLanding,12:LeddarOne,13:MaxbotixSerial,14:TeraRangerI2C,15:LidarLiteV3-I2C,16:VL53L0X or VL53L1X,17:NMEA,18:WASP-LRF,19:BenewakeTF02,20:Benewake-Serial,21:LidarLightV3HP,22:PWM,23:BlueRoboticsPing,24:UAVCAN,25:BenewakeTFminiPlus-I2C,26:LanbaoPSK-CM8JL65-CC5,27:BenewakeTF03,28:VL53L1X-ShortRange,29:LeddarVu8-Serial,30:HC-SR04,31:GYUS42v2,32:MSP,33:USD1_CAN,100:SITL</Values>
     </RNGFND6_TYPE>
     <RNGFND6_WSP_AVG>
       <Description>Sets the number of pulses to be used in multi-pulse averaging mode. In this mode, a sequence of rapid fire ranges are taken and then averaged to improve the accuracy of the measurement</Description>
@@ -15198,12 +15101,6 @@
       <Units>m</Units>
       <User>Standard</User>
     </RNGFND7_PWRRNG>
-    <RNGFND7_RECV_ID>
-      <Description>The receive ID of the CAN frames. A value of zero means all IDs are accepted.</Description>
-      <DisplayName>CAN receive ID</DisplayName>
-      <Range>0 65535</Range>
-      <User>Advanced</User>
-    </RNGFND7_RECV_ID>
     <RNGFND7_RMETRIC>
       <Description>This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.</Description>
       <DisplayName>Ratiometric</DisplayName>
@@ -15217,12 +15114,6 @@
       <Units>m/V</Units>
       <User>Standard</User>
     </RNGFND7_SCALING>
-    <RNGFND7_SNR_MIN>
-      <Description>Minimum signal strength (SNR) to accept distance</Description>
-      <DisplayName>Minimum signal strength</DisplayName>
-      <Range>0 65535</Range>
-      <User>Advanced</User>
-    </RNGFND7_SNR_MIN>
     <RNGFND7_STOP_PIN>
       <Description>Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.</Description>
       <DisplayName>Rangefinder stop pin</DisplayName>
@@ -15233,7 +15124,7 @@
       <Description>What type of rangefinder device that is connected</Description>
       <DisplayName>Rangefinder type</DisplayName>
       <User>Standard</User>
-      <Values>0:None,1:Analog,2:MaxbotixI2C,3:LidarLite-I2C,5:PWM,6:BBB-PRU,7:LightWareI2C,8:LightWareSerial,9:Bebop,10:MAVLink,11:uLanding,12:LeddarOne,13:MaxbotixSerial,14:TeraRangerI2C,15:LidarLiteV3-I2C,16:VL53L0X or VL53L1X,17:NMEA,18:WASP-LRF,19:BenewakeTF02,20:Benewake-Serial,21:LidarLightV3HP,22:PWM,23:BlueRoboticsPing,24:UAVCAN,25:BenewakeTFminiPlus-I2C,26:LanbaoPSK-CM8JL65-CC5,27:BenewakeTF03,28:VL53L1X-ShortRange,29:LeddarVu8-Serial,30:HC-SR04,31:GYUS42v2,32:MSP,33:USD1_CAN,34:Benewake_CAN,100:SITL</Values>
+      <Values>0:None,1:Analog,2:MaxbotixI2C,3:LidarLite-I2C,5:PWM,6:BBB-PRU,7:LightWareI2C,8:LightWareSerial,9:Bebop,10:MAVLink,11:uLanding,12:LeddarOne,13:MaxbotixSerial,14:TeraRangerI2C,15:LidarLiteV3-I2C,16:VL53L0X or VL53L1X,17:NMEA,18:WASP-LRF,19:BenewakeTF02,20:Benewake-Serial,21:LidarLightV3HP,22:PWM,23:BlueRoboticsPing,24:UAVCAN,25:BenewakeTFminiPlus-I2C,26:LanbaoPSK-CM8JL65-CC5,27:BenewakeTF03,28:VL53L1X-ShortRange,29:LeddarVu8-Serial,30:HC-SR04,31:GYUS42v2,32:MSP,33:USD1_CAN,100:SITL</Values>
     </RNGFND7_TYPE>
     <RNGFND7_WSP_AVG>
       <Description>Sets the number of pulses to be used in multi-pulse averaging mode. In this mode, a sequence of rapid fire ranges are taken and then averaged to improve the accuracy of the measurement</Description>
@@ -15356,12 +15247,6 @@
       <Units>m</Units>
       <User>Standard</User>
     </RNGFND8_PWRRNG>
-    <RNGFND8_RECV_ID>
-      <Description>The receive ID of the CAN frames. A value of zero means all IDs are accepted.</Description>
-      <DisplayName>CAN receive ID</DisplayName>
-      <Range>0 65535</Range>
-      <User>Advanced</User>
-    </RNGFND8_RECV_ID>
     <RNGFND8_RMETRIC>
       <Description>This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.</Description>
       <DisplayName>Ratiometric</DisplayName>
@@ -15375,12 +15260,6 @@
       <Units>m/V</Units>
       <User>Standard</User>
     </RNGFND8_SCALING>
-    <RNGFND8_SNR_MIN>
-      <Description>Minimum signal strength (SNR) to accept distance</Description>
-      <DisplayName>Minimum signal strength</DisplayName>
-      <Range>0 65535</Range>
-      <User>Advanced</User>
-    </RNGFND8_SNR_MIN>
     <RNGFND8_STOP_PIN>
       <Description>Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.</Description>
       <DisplayName>Rangefinder stop pin</DisplayName>
@@ -15391,7 +15270,7 @@
       <Description>What type of rangefinder device that is connected</Description>
       <DisplayName>Rangefinder type</DisplayName>
       <User>Standard</User>
-      <Values>0:None,1:Analog,2:MaxbotixI2C,3:LidarLite-I2C,5:PWM,6:BBB-PRU,7:LightWareI2C,8:LightWareSerial,9:Bebop,10:MAVLink,11:uLanding,12:LeddarOne,13:MaxbotixSerial,14:TeraRangerI2C,15:LidarLiteV3-I2C,16:VL53L0X or VL53L1X,17:NMEA,18:WASP-LRF,19:BenewakeTF02,20:Benewake-Serial,21:LidarLightV3HP,22:PWM,23:BlueRoboticsPing,24:UAVCAN,25:BenewakeTFminiPlus-I2C,26:LanbaoPSK-CM8JL65-CC5,27:BenewakeTF03,28:VL53L1X-ShortRange,29:LeddarVu8-Serial,30:HC-SR04,31:GYUS42v2,32:MSP,33:USD1_CAN,34:Benewake_CAN,100:SITL</Values>
+      <Values>0:None,1:Analog,2:MaxbotixI2C,3:LidarLite-I2C,5:PWM,6:BBB-PRU,7:LightWareI2C,8:LightWareSerial,9:Bebop,10:MAVLink,11:uLanding,12:LeddarOne,13:MaxbotixSerial,14:TeraRangerI2C,15:LidarLiteV3-I2C,16:VL53L0X or VL53L1X,17:NMEA,18:WASP-LRF,19:BenewakeTF02,20:Benewake-Serial,21:LidarLightV3HP,22:PWM,23:BlueRoboticsPing,24:UAVCAN,25:BenewakeTFminiPlus-I2C,26:LanbaoPSK-CM8JL65-CC5,27:BenewakeTF03,28:VL53L1X-ShortRange,29:LeddarVu8-Serial,30:HC-SR04,31:GYUS42v2,32:MSP,33:USD1_CAN,100:SITL</Values>
     </RNGFND8_TYPE>
     <RNGFND8_WSP_AVG>
       <Description>Sets the number of pulses to be used in multi-pulse averaging mode. In this mode, a sequence of rapid fire ranges are taken and then averaged to improve the accuracy of the measurement</Description>
@@ -15514,12 +15393,6 @@
       <Units>m</Units>
       <User>Standard</User>
     </RNGFND9_PWRRNG>
-    <RNGFND9_RECV_ID>
-      <Description>The receive ID of the CAN frames. A value of zero means all IDs are accepted.</Description>
-      <DisplayName>CAN receive ID</DisplayName>
-      <Range>0 65535</Range>
-      <User>Advanced</User>
-    </RNGFND9_RECV_ID>
     <RNGFND9_RMETRIC>
       <Description>This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.</Description>
       <DisplayName>Ratiometric</DisplayName>
@@ -15533,12 +15406,6 @@
       <Units>m/V</Units>
       <User>Standard</User>
     </RNGFND9_SCALING>
-    <RNGFND9_SNR_MIN>
-      <Description>Minimum signal strength (SNR) to accept distance</Description>
-      <DisplayName>Minimum signal strength</DisplayName>
-      <Range>0 65535</Range>
-      <User>Advanced</User>
-    </RNGFND9_SNR_MIN>
     <RNGFND9_STOP_PIN>
       <Description>Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.</Description>
       <DisplayName>Rangefinder stop pin</DisplayName>
@@ -15549,7 +15416,7 @@
       <Description>What type of rangefinder device that is connected</Description>
       <DisplayName>Rangefinder type</DisplayName>
       <User>Standard</User>
-      <Values>0:None,1:Analog,2:MaxbotixI2C,3:LidarLite-I2C,5:PWM,6:BBB-PRU,7:LightWareI2C,8:LightWareSerial,9:Bebop,10:MAVLink,11:uLanding,12:LeddarOne,13:MaxbotixSerial,14:TeraRangerI2C,15:LidarLiteV3-I2C,16:VL53L0X or VL53L1X,17:NMEA,18:WASP-LRF,19:BenewakeTF02,20:Benewake-Serial,21:LidarLightV3HP,22:PWM,23:BlueRoboticsPing,24:UAVCAN,25:BenewakeTFminiPlus-I2C,26:LanbaoPSK-CM8JL65-CC5,27:BenewakeTF03,28:VL53L1X-ShortRange,29:LeddarVu8-Serial,30:HC-SR04,31:GYUS42v2,32:MSP,33:USD1_CAN,34:Benewake_CAN,100:SITL</Values>
+      <Values>0:None,1:Analog,2:MaxbotixI2C,3:LidarLite-I2C,5:PWM,6:BBB-PRU,7:LightWareI2C,8:LightWareSerial,9:Bebop,10:MAVLink,11:uLanding,12:LeddarOne,13:MaxbotixSerial,14:TeraRangerI2C,15:LidarLiteV3-I2C,16:VL53L0X or VL53L1X,17:NMEA,18:WASP-LRF,19:BenewakeTF02,20:Benewake-Serial,21:LidarLightV3HP,22:PWM,23:BlueRoboticsPing,24:UAVCAN,25:BenewakeTFminiPlus-I2C,26:LanbaoPSK-CM8JL65-CC5,27:BenewakeTF03,28:VL53L1X-ShortRange,29:LeddarVu8-Serial,30:HC-SR04,31:GYUS42v2,32:MSP,33:USD1_CAN,100:SITL</Values>
     </RNGFND9_TYPE>
     <RNGFND9_WSP_AVG>
       <Description>Sets the number of pulses to be used in multi-pulse averaging mode. In this mode, a sequence of rapid fire ranges are taken and then averaged to improve the accuracy of the measurement</Description>
@@ -15672,12 +15539,6 @@
       <Units>m</Units>
       <User>Standard</User>
     </RNGFNDA_PWRRNG>
-    <RNGFNDA_RECV_ID>
-      <Description>The receive ID of the CAN frames. A value of zero means all IDs are accepted.</Description>
-      <DisplayName>CAN receive ID</DisplayName>
-      <Range>0 65535</Range>
-      <User>Advanced</User>
-    </RNGFNDA_RECV_ID>
     <RNGFNDA_RMETRIC>
       <Description>This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.</Description>
       <DisplayName>Ratiometric</DisplayName>
@@ -15691,12 +15552,6 @@
       <Units>m/V</Units>
       <User>Standard</User>
     </RNGFNDA_SCALING>
-    <RNGFNDA_SNR_MIN>
-      <Description>Minimum signal strength (SNR) to accept distance</Description>
-      <DisplayName>Minimum signal strength</DisplayName>
-      <Range>0 65535</Range>
-      <User>Advanced</User>
-    </RNGFNDA_SNR_MIN>
     <RNGFNDA_STOP_PIN>
       <Description>Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.</Description>
       <DisplayName>Rangefinder stop pin</DisplayName>
@@ -15707,7 +15562,7 @@
       <Description>What type of rangefinder device that is connected</Description>
       <DisplayName>Rangefinder type</DisplayName>
       <User>Standard</User>
-      <Values>0:None,1:Analog,2:MaxbotixI2C,3:LidarLite-I2C,5:PWM,6:BBB-PRU,7:LightWareI2C,8:LightWareSerial,9:Bebop,10:MAVLink,11:uLanding,12:LeddarOne,13:MaxbotixSerial,14:TeraRangerI2C,15:LidarLiteV3-I2C,16:VL53L0X or VL53L1X,17:NMEA,18:WASP-LRF,19:BenewakeTF02,20:Benewake-Serial,21:LidarLightV3HP,22:PWM,23:BlueRoboticsPing,24:UAVCAN,25:BenewakeTFminiPlus-I2C,26:LanbaoPSK-CM8JL65-CC5,27:BenewakeTF03,28:VL53L1X-ShortRange,29:LeddarVu8-Serial,30:HC-SR04,31:GYUS42v2,32:MSP,33:USD1_CAN,34:Benewake_CAN,100:SITL</Values>
+      <Values>0:None,1:Analog,2:MaxbotixI2C,3:LidarLite-I2C,5:PWM,6:BBB-PRU,7:LightWareI2C,8:LightWareSerial,9:Bebop,10:MAVLink,11:uLanding,12:LeddarOne,13:MaxbotixSerial,14:TeraRangerI2C,15:LidarLiteV3-I2C,16:VL53L0X or VL53L1X,17:NMEA,18:WASP-LRF,19:BenewakeTF02,20:Benewake-Serial,21:LidarLightV3HP,22:PWM,23:BlueRoboticsPing,24:UAVCAN,25:BenewakeTFminiPlus-I2C,26:LanbaoPSK-CM8JL65-CC5,27:BenewakeTF03,28:VL53L1X-ShortRange,29:LeddarVu8-Serial,30:HC-SR04,31:GYUS42v2,32:MSP,33:USD1_CAN,100:SITL</Values>
     </RNGFNDA_TYPE>
     <RNGFNDA_WSP_AVG>
       <Description>Sets the number of pulses to be used in multi-pulse averaging mode. In this mode, a sequence of rapid fire ranges are taken and then averaged to improve the accuracy of the measurement</Description>
@@ -16001,7 +15856,7 @@
       <DisplayName>Telem1 protocol selection</DisplayName>
       <RebootRequired>True</RebootRequired>
       <User>Standard</User>
-      <Values>-1:None,1:MAVLink1,2:MAVLink2,3:Frsky D,4:Frsky SPort,5:GPS,7:Alexmos Gimbal Serial,8:SToRM32 Gimbal Serial,9:Rangefinder,10:FrSky SPort Passthrough (OpenTX),11:Lidar360,13:Beacon,14:Volz servo out,15:SBus servo out,16:ESC Telemetry,17:Devo Telemetry,18:OpticalFlow,19:RobotisServo,20:NMEA Output,21:WindVane,22:SLCAN,23:RCIN,24:MegaSquirt EFI,25:LTM,26:RunCam,27:HottTelem,28:Scripting,29:Crossfire,30:Generator,31:Winch,32:MSP,33:DJI FPV,34:AirSpeed,35:ADSB,36:AHRS,37:SmartAudio,38:FETtecOneWire</Values>
+      <Values>-1:None,1:MAVLink1,2:MAVLink2,3:Frsky D,4:Frsky SPort,5:GPS,7:Alexmos Gimbal Serial,8:SToRM32 Gimbal Serial,9:Rangefinder,10:FrSky SPort Passthrough (OpenTX),11:Lidar360,13:Beacon,14:Volz servo out,15:SBus servo out,16:ESC Telemetry,17:Devo Telemetry,18:OpticalFlow,19:RobotisServo,20:NMEA Output,21:WindVane,22:SLCAN,23:RCIN,24:MegaSquirt EFI,25:LTM,26:RunCam,27:HottTelem,28:Scripting,29:Crossfire,30:Generator,31:Winch,32:MSP,33:DJI FPV,34:AirSpeed,35:ADSB,36:AHRS,37:SmartAudio</Values>
     </SERIAL1_PROTOCOL>
     <SERIAL2_BAUD>
       <Description>The baud rate of the Telem2 port. Most stm32-based boards can support rates of up to 1500. If you setup a rate you cannot support and then can't connect to your board you should load a firmware from a different vehicle type. That will reset all your parameters to defaults.</Description>
@@ -16021,7 +15876,7 @@
       <DisplayName>Telemetry 2 protocol selection</DisplayName>
       <RebootRequired>True</RebootRequired>
       <User>Standard</User>
-      <Values>-1:None,1:MAVLink1,2:MAVLink2,3:Frsky D,4:Frsky SPort,5:GPS,7:Alexmos Gimbal Serial,8:SToRM32 Gimbal Serial,9:Rangefinder,10:FrSky SPort Passthrough (OpenTX),11:Lidar360,13:Beacon,14:Volz servo out,15:SBus servo out,16:ESC Telemetry,17:Devo Telemetry,18:OpticalFlow,19:RobotisServo,20:NMEA Output,21:WindVane,22:SLCAN,23:RCIN,24:MegaSquirt EFI,25:LTM,26:RunCam,27:HottTelem,28:Scripting,29:Crossfire,30:Generator,31:Winch,32:MSP,33:DJI FPV,34:AirSpeed,35:ADSB,36:AHRS,37:SmartAudio,38:FETtecOneWire</Values>
+      <Values>-1:None,1:MAVLink1,2:MAVLink2,3:Frsky D,4:Frsky SPort,5:GPS,7:Alexmos Gimbal Serial,8:SToRM32 Gimbal Serial,9:Rangefinder,10:FrSky SPort Passthrough (OpenTX),11:Lidar360,13:Beacon,14:Volz servo out,15:SBus servo out,16:ESC Telemetry,17:Devo Telemetry,18:OpticalFlow,19:RobotisServo,20:NMEA Output,21:WindVane,22:SLCAN,23:RCIN,24:MegaSquirt EFI,25:LTM,26:RunCam,27:HottTelem,28:Scripting,29:Crossfire,30:Generator,31:Winch,32:MSP,33:DJI FPV,34:AirSpeed,35:ADSB,36:AHRS,37:SmartAudio</Values>
     </SERIAL2_PROTOCOL>
     <SERIAL3_BAUD>
       <Description>The baud rate used for the Serial 3 (GPS). Most stm32-based boards can support rates of up to 1500. If you setup a rate you cannot support and then can't connect to your board you should load a firmware from a different vehicle type. That will reset all your parameters to defaults.</Description>
@@ -16041,7 +15896,7 @@
       <DisplayName>Serial 3 (GPS) protocol selection</DisplayName>
       <RebootRequired>True</RebootRequired>
       <User>Standard</User>
-      <Values>-1:None,1:MAVLink1,2:MAVLink2,3:Frsky D,4:Frsky SPort,5:GPS,7:Alexmos Gimbal Serial,8:SToRM32 Gimbal Serial,9:Rangefinder,10:FrSky SPort Passthrough (OpenTX),11:Lidar360,13:Beacon,14:Volz servo out,15:SBus servo out,16:ESC Telemetry,17:Devo Telemetry,18:OpticalFlow,19:RobotisServo,20:NMEA Output,21:WindVane,22:SLCAN,23:RCIN,24:MegaSquirt EFI,25:LTM,26:RunCam,27:HottTelem,28:Scripting,29:Crossfire,30:Generator,31:Winch,32:MSP,33:DJI FPV,34:AirSpeed,35:ADSB,36:AHRS,37:SmartAudio,38:FETtecOneWire</Values>
+      <Values>-1:None,1:MAVLink1,2:MAVLink2,3:Frsky D,4:Frsky SPort,5:GPS,7:Alexmos Gimbal Serial,8:SToRM32 Gimbal Serial,9:Rangefinder,10:FrSky SPort Passthrough (OpenTX),11:Lidar360,13:Beacon,14:Volz servo out,15:SBus servo out,16:ESC Telemetry,17:Devo Telemetry,18:OpticalFlow,19:RobotisServo,20:NMEA Output,21:WindVane,22:SLCAN,23:RCIN,24:MegaSquirt EFI,25:LTM,26:RunCam,27:HottTelem,28:Scripting,29:Crossfire,30:Generator,31:Winch,32:MSP,33:DJI FPV,34:AirSpeed,35:ADSB,36:AHRS,37:SmartAudio</Values>
     </SERIAL3_PROTOCOL>
     <SERIAL4_BAUD>
       <Description>The baud rate used for Serial4. Most stm32-based boards can support rates of up to 1500. If you setup a rate you cannot support and then can't connect to your board you should load a firmware from a different vehicle type. That will reset all your parameters to defaults.</Description>
@@ -16061,7 +15916,7 @@
       <DisplayName>Serial4 protocol selection</DisplayName>
       <RebootRequired>True</RebootRequired>
       <User>Standard</User>
-      <Values>-1:None,1:MAVLink1,2:MAVLink2,3:Frsky D,4:Frsky SPort,5:GPS,7:Alexmos Gimbal Serial,8:SToRM32 Gimbal Serial,9:Rangefinder,10:FrSky SPort Passthrough (OpenTX),11:Lidar360,13:Beacon,14:Volz servo out,15:SBus servo out,16:ESC Telemetry,17:Devo Telemetry,18:OpticalFlow,19:RobotisServo,20:NMEA Output,21:WindVane,22:SLCAN,23:RCIN,24:MegaSquirt EFI,25:LTM,26:RunCam,27:HottTelem,28:Scripting,29:Crossfire,30:Generator,31:Winch,32:MSP,33:DJI FPV,34:AirSpeed,35:ADSB,36:AHRS,37:SmartAudio,38:FETtecOneWire</Values>
+      <Values>-1:None,1:MAVLink1,2:MAVLink2,3:Frsky D,4:Frsky SPort,5:GPS,7:Alexmos Gimbal Serial,8:SToRM32 Gimbal Serial,9:Rangefinder,10:FrSky SPort Passthrough (OpenTX),11:Lidar360,13:Beacon,14:Volz servo out,15:SBus servo out,16:ESC Telemetry,17:Devo Telemetry,18:OpticalFlow,19:RobotisServo,20:NMEA Output,21:WindVane,22:SLCAN,23:RCIN,24:MegaSquirt EFI,25:LTM,26:RunCam,27:HottTelem,28:Scripting,29:Crossfire,30:Generator,31:Winch,32:MSP,33:DJI FPV,34:AirSpeed,35:ADSB,36:AHRS,37:SmartAudio</Values>
     </SERIAL4_PROTOCOL>
     <SERIAL5_BAUD>
       <Description>The baud rate used for Serial5. Most stm32-based boards can support rates of up to 1500. If you setup a rate you cannot support and then can't connect to your board you should load a firmware from a different vehicle type. That will reset all your parameters to defaults.</Description>
@@ -16081,7 +15936,7 @@
       <DisplayName>Serial5 protocol selection</DisplayName>
       <RebootRequired>True</RebootRequired>
       <User>Standard</User>
-      <Values>-1:None,1:MAVLink1,2:MAVLink2,3:Frsky D,4:Frsky SPort,5:GPS,7:Alexmos Gimbal Serial,8:SToRM32 Gimbal Serial,9:Rangefinder,10:FrSky SPort Passthrough (OpenTX),11:Lidar360,13:Beacon,14:Volz servo out,15:SBus servo out,16:ESC Telemetry,17:Devo Telemetry,18:OpticalFlow,19:RobotisServo,20:NMEA Output,21:WindVane,22:SLCAN,23:RCIN,24:MegaSquirt EFI,25:LTM,26:RunCam,27:HottTelem,28:Scripting,29:Crossfire,30:Generator,31:Winch,32:MSP,33:DJI FPV,34:AirSpeed,35:ADSB,36:AHRS,37:SmartAudio,38:FETtecOneWire</Values>
+      <Values>-1:None,1:MAVLink1,2:MAVLink2,3:Frsky D,4:Frsky SPort,5:GPS,7:Alexmos Gimbal Serial,8:SToRM32 Gimbal Serial,9:Rangefinder,10:FrSky SPort Passthrough (OpenTX),11:Lidar360,13:Beacon,14:Volz servo out,15:SBus servo out,16:ESC Telemetry,17:Devo Telemetry,18:OpticalFlow,19:RobotisServo,20:NMEA Output,21:WindVane,22:SLCAN,23:RCIN,24:MegaSquirt EFI,25:LTM,26:RunCam,27:HottTelem,28:Scripting,29:Crossfire,30:Generator,31:Winch,32:MSP,33:DJI FPV,34:AirSpeed,35:ADSB,36:AHRS,37:SmartAudio</Values>
     </SERIAL5_PROTOCOL>
     <SERIAL6_BAUD>
       <Description>The baud rate used for Serial6. Most stm32-based boards can support rates of up to 1500. If you setup a rate you cannot support and then can't connect to your board you should load a firmware from a different vehicle type. That will reset all your parameters to defaults.</Description>
@@ -16101,7 +15956,7 @@
       <DisplayName>Serial6 protocol selection</DisplayName>
       <RebootRequired>True</RebootRequired>
       <User>Standard</User>
-      <Values>-1:None,1:MAVLink1,2:MAVLink2,3:Frsky D,4:Frsky SPort,5:GPS,7:Alexmos Gimbal Serial,8:SToRM32 Gimbal Serial,9:Rangefinder,10:FrSky SPort Passthrough (OpenTX),11:Lidar360,13:Beacon,14:Volz servo out,15:SBus servo out,16:ESC Telemetry,17:Devo Telemetry,18:OpticalFlow,19:RobotisServo,20:NMEA Output,21:WindVane,22:SLCAN,23:RCIN,24:MegaSquirt EFI,25:LTM,26:RunCam,27:HottTelem,28:Scripting,29:Crossfire,30:Generator,31:Winch,32:MSP,33:DJI FPV,34:AirSpeed,35:ADSB,36:AHRS,37:SmartAudio,38:FETtecOneWire</Values>
+      <Values>-1:None,1:MAVLink1,2:MAVLink2,3:Frsky D,4:Frsky SPort,5:GPS,7:Alexmos Gimbal Serial,8:SToRM32 Gimbal Serial,9:Rangefinder,10:FrSky SPort Passthrough (OpenTX),11:Lidar360,13:Beacon,14:Volz servo out,15:SBus servo out,16:ESC Telemetry,17:Devo Telemetry,18:OpticalFlow,19:RobotisServo,20:NMEA Output,21:WindVane,22:SLCAN,23:RCIN,24:MegaSquirt EFI,25:LTM,26:RunCam,27:HottTelem,28:Scripting,29:Crossfire,30:Generator,31:Winch,32:MSP,33:DJI FPV,34:AirSpeed,35:ADSB,36:AHRS,37:SmartAudio</Values>
     </SERIAL6_PROTOCOL>
     <SERIAL7_BAUD>
       <Description>The baud rate used for Serial7. Most stm32-based boards can support rates of up to 1500. If you setup a rate you cannot support and then can't connect to your board you should load a firmware from a different vehicle type. That will reset all your parameters to defaults.</Description>
@@ -16121,7 +15976,7 @@
       <DisplayName>Serial7 protocol selection</DisplayName>
       <RebootRequired>True</RebootRequired>
       <User>Standard</User>
-      <Values>-1:None,1:MAVLink1,2:MAVLink2,3:Frsky D,4:Frsky SPort,5:GPS,7:Alexmos Gimbal Serial,8:SToRM32 Gimbal Serial,9:Rangefinder,10:FrSky SPort Passthrough (OpenTX),11:Lidar360,13:Beacon,14:Volz servo out,15:SBus servo out,16:ESC Telemetry,17:Devo Telemetry,18:OpticalFlow,19:RobotisServo,20:NMEA Output,21:WindVane,22:SLCAN,23:RCIN,24:MegaSquirt EFI,25:LTM,26:RunCam,27:HottTelem,28:Scripting,29:Crossfire,30:Generator,31:Winch,32:MSP,33:DJI FPV,34:AirSpeed,35:ADSB,36:AHRS,37:SmartAudio,38:FETtecOneWire</Values>
+      <Values>-1:None,1:MAVLink1,2:MAVLink2,3:Frsky D,4:Frsky SPort,5:GPS,7:Alexmos Gimbal Serial,8:SToRM32 Gimbal Serial,9:Rangefinder,10:FrSky SPort Passthrough (OpenTX),11:Lidar360,13:Beacon,14:Volz servo out,15:SBus servo out,16:ESC Telemetry,17:Devo Telemetry,18:OpticalFlow,19:RobotisServo,20:NMEA Output,21:WindVane,22:SLCAN,23:RCIN,24:MegaSquirt EFI,25:LTM,26:RunCam,27:HottTelem,28:Scripting,29:Crossfire,30:Generator,31:Winch,32:MSP,33:DJI FPV,34:AirSpeed,35:ADSB,36:AHRS</Values>
     </SERIAL7_PROTOCOL>
     <SERIAL8_BAUD>
       <Description>The baud rate used for Serial8. Most stm32-based boards can support rates of up to 1500. If you setup a rate you cannot support and then can't connect to your board you should load a firmware from a different vehicle type. That will reset all your parameters to defaults.</Description>
@@ -16141,7 +15996,7 @@
       <DisplayName>Serial8 protocol selection</DisplayName>
       <RebootRequired>True</RebootRequired>
       <User>Standard</User>
-      <Values>-1:None,1:MAVLink1,2:MAVLink2,3:Frsky D,4:Frsky SPort,5:GPS,7:Alexmos Gimbal Serial,8:SToRM32 Gimbal Serial,9:Rangefinder,10:FrSky SPort Passthrough (OpenTX),11:Lidar360,13:Beacon,14:Volz servo out,15:SBus servo out,16:ESC Telemetry,17:Devo Telemetry,18:OpticalFlow,19:RobotisServo,20:NMEA Output,21:WindVane,22:SLCAN,23:RCIN,24:MegaSquirt EFI,25:LTM,26:RunCam,27:HottTelem,28:Scripting,29:Crossfire,30:Generator,31:Winch,32:MSP,33:DJI FPV,34:AirSpeed,35:ADSB,36:AHRS,37:SmartAudio,38:FETtecOneWire</Values>
+      <Values>-1:None,1:MAVLink1,2:MAVLink2,3:Frsky D,4:Frsky SPort,5:GPS,7:Alexmos Gimbal Serial,8:SToRM32 Gimbal Serial,9:Rangefinder,10:FrSky SPort Passthrough (OpenTX),11:Lidar360,13:Beacon,14:Volz servo out,15:SBus servo out,16:ESC Telemetry,17:Devo Telemetry,18:OpticalFlow,19:RobotisServo,20:NMEA Output,21:WindVane,22:SLCAN,23:RCIN,24:MegaSquirt EFI,25:LTM,26:RunCam,27:HottTelem,28:Scripting,29:Crossfire,30:Generator,31:Winch,32:MSP,33:DJI FPV,34:AirSpeed,35:ADSB,36:AHRS</Values>
     </SERIAL8_PROTOCOL>
     <SERIAL_PASS1>
       <Description>This sets one side of pass-through between two serial ports. Once both sides are set then all data received on either port will be passed to the other port</Description>
@@ -16830,25 +16685,6 @@
       <User>Advanced</User>
       <Values>0:1Khz,1:loop-rate,2:double loop-rate,3:triple loop-rate,4:quadruple loop rate</Values>
     </SERVO_DSHOT_RATE>
-    <SERVO_FTW_MASK>
-      <Bitmask>0:SERVO1,1:SERVO2,2:SERVO3,3:SERVO4,4:SERVO5,5:SERVO6,6:SERVO7,7:SERVO8,8:SERVO9,9:SERVO10,10:SERVO11,11:SERVO12</Bitmask>
-      <Description>Servo channel mask specifying FETtec ESC output.</Description>
-      <DisplayName>Servo channel output bitmask</DisplayName>
-      <RebootRequired>True</RebootRequired>
-      <User>Standard</User>
-    </SERVO_FTW_MASK>
-    <SERVO_FTW_POLES>
-      <Description>Number of motor electrical poles</Description>
-      <DisplayName>Nr. electrical poles</DisplayName>
-      <Range>2 50</Range>
-      <User>Standard</User>
-    </SERVO_FTW_POLES>
-    <SERVO_FTW_RVMASK>
-      <Bitmask>0:SERVO1,1:SERVO2,2:SERVO3,3:SERVO4,4:SERVO5,5:SERVO6,6:SERVO7,7:SERVO8,8:SERVO9,9:SERVO10,10:SERVO11,11:SERVO12</Bitmask>
-      <Description>Servo channel mask to reverse rotation of FETtec ESC outputs.</Description>
-      <DisplayName>Servo channel reverse rotation bitmask</DisplayName>
-      <User>Standard</User>
-    </SERVO_FTW_RVMASK>
     <SERVO_RATE>
       <Description>This sets the default output rate in Hz for all outputs.</Description>
       <DisplayName>Servo default output rate</DisplayName>
