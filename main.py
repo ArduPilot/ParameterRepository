@@ -88,7 +88,7 @@ class Groundskeeper:
             print(f'Going to: {tag_name}')
             repository.git.checkout(tag_reference)
             try:
-                subprocess.run([f'{self.repository_path}/Tools/autotest/param_metadata/param_parse.py', '--vehicle', vehicle_type])
+                subprocess.run([f'{self.repository_path}/Tools/autotest/param_metadata/param_parse.py', '--vehicle', vehicle_type], cwd=self.repository_path)
             except Exception as exception:
                 print(exception)
 
@@ -96,9 +96,9 @@ class Groundskeeper:
             subprocess.run(['mkdir', '-p', output])
             dest = f"{output}/{tag_simple_name}-{tag['matches']['major']}.{tag['matches']['minor']}"
             subprocess.run(['mkdir', '-p', dest])
-            for data in glob.glob('Parameter*'):
+            for data in glob.glob(f'{self.repository_path}/Parameter*'):
                 shutil.move(data, dest)
-            for data in glob.glob('apm.pdef.*'):
+            for data in glob.glob(f'{self.repository_path}/apm.pdef.*'):
                 shutil.move(data, dest)
 
 
