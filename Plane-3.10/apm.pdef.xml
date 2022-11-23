@@ -759,7 +759,7 @@
 </param>
 <param humanName="Differential spoiler and crow flaps options" name="ArduPlane:DSPOILER_OPTS" documentation="Differential spoiler and crow flaps options" user="Advanced">
 <field name="Bitmask">0:pitch control, 1:full span, 2:Progressive crow</field>
-<field name="Values">0: none, 1: D spoilers have pitch input, 2: use both control surfaces on each wing for roll, 4: Progressive crow, flaps only first (0-50% flap in) then crow flaps (50 - 100% flap in)</field>
+<field name="Values">0: none, 1: D spoilers have pitch input, 2: use both control surfaces on each wing for roll, 4: Progressive crow. Flaps only first (0-50% flap in) then crow flaps (50 - 100% flap in)</field>
 </param>
 <param humanName="Differential spoiler aileron matching" name="ArduPlane:DSPOILER_AILMTCH" documentation="This scales down the inner flaps so less than full downwards range can be used for differential spoiler and full span ailerons, 100 is use full range, upwards travel is unaffected" user="Advanced">
 <field name="Range">0 100</field>
