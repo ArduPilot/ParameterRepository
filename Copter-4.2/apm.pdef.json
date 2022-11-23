@@ -1117,8 +1117,7 @@
         "high": "0.03",
         "low": "0.0"
       },
-      "User": "Standard",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Standard"
     },
     "ATC_RAT_PIT_FF": {
       "Description": "Pitch axis rate controller feed forward",
@@ -1128,8 +1127,7 @@
         "high": "0.5",
         "low": "0.05"
       },
-      "User": "Standard",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Standard"
     },
     "ATC_RAT_PIT_FLTD": {
       "Description": "Pitch axis rate controller derivative frequency in Hz",
@@ -1140,8 +1138,7 @@
         "low": "0"
       },
       "Units": "Hz",
-      "User": "Standard",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Standard"
     },
     "ATC_RAT_PIT_FLTE": {
       "Description": "Pitch axis rate controller error frequency in Hz",
@@ -1152,8 +1149,7 @@
         "low": "5"
       },
       "Units": "Hz",
-      "User": "Standard",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Standard"
     },
     "ATC_RAT_PIT_FLTT": {
       "Description": "Pitch axis rate controller target frequency in Hz",
@@ -1164,8 +1160,7 @@
         "low": "5"
       },
       "Units": "Hz",
-      "User": "Standard",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Standard"
     },
     "ATC_RAT_PIT_I": {
       "Description": "Pitch axis rate controller I gain.  Corrects long-term difference in desired pitch rate vs actual pitch rate",
@@ -1175,8 +1170,7 @@
         "high": "0.6",
         "low": "0.0"
       },
-      "User": "Standard",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Standard"
     },
     "ATC_RAT_PIT_ILMI": {
       "Description": "Point below which I-term will not leak down",
@@ -1195,8 +1189,7 @@
         "high": "1",
         "low": "0"
       },
-      "User": "Standard",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Standard"
     },
     "ATC_RAT_PIT_P": {
       "Description": "Pitch axis rate controller P gain.  Converts the difference between desired pitch rate and actual pitch rate into a motor speed output",
@@ -1206,8 +1199,7 @@
         "high": "0.35",
         "low": "0.0"
       },
-      "User": "Standard",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Standard"
     },
     "ATC_RAT_PIT_SMAX": {
       "Description": "Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature.",
@@ -1217,8 +1209,7 @@
         "high": "200",
         "low": "0"
       },
-      "User": "Advanced",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Advanced"
     },
     "ATC_RAT_RLL_D": {
       "Description": "Roll axis rate controller D gain.  Compensates for short-term change in desired roll rate vs actual roll rate",
@@ -1228,8 +1219,7 @@
         "high": "0.03",
         "low": "0.0"
       },
-      "User": "Standard",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Standard"
     },
     "ATC_RAT_RLL_FF": {
       "Description": "Roll axis rate controller feed forward",
@@ -1239,8 +1229,7 @@
         "high": "0.5",
         "low": "0.05"
       },
-      "User": "Standard",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Standard"
     },
     "ATC_RAT_RLL_FLTD": {
       "Description": "Roll axis rate controller derivative frequency in Hz",
@@ -1251,8 +1240,7 @@
         "low": "0"
       },
       "Units": "Hz",
-      "User": "Standard",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Standard"
     },
     "ATC_RAT_RLL_FLTE": {
       "Description": "Roll axis rate controller error frequency in Hz",
@@ -1263,8 +1251,7 @@
         "low": "5"
       },
       "Units": "Hz",
-      "User": "Standard",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Standard"
     },
     "ATC_RAT_RLL_FLTT": {
       "Description": "Roll axis rate controller target frequency in Hz",
@@ -1275,8 +1262,7 @@
         "low": "5"
       },
       "Units": "Hz",
-      "User": "Standard",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Standard"
     },
     "ATC_RAT_RLL_I": {
       "Description": "Roll axis rate controller I gain.  Corrects long-term difference in desired roll rate vs actual roll rate",
@@ -1286,8 +1272,7 @@
         "high": "0.6",
         "low": "0.0"
       },
-      "User": "Standard",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Standard"
     },
     "ATC_RAT_RLL_ILMI": {
       "Description": "Point below which I-term will not leak down",
@@ -1306,8 +1291,7 @@
         "high": "1",
         "low": "0"
       },
-      "User": "Standard",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Standard"
     },
     "ATC_RAT_RLL_P": {
       "Description": "Roll axis rate controller P gain.  Converts the difference between desired roll rate and actual roll rate into a motor speed output",
@@ -1317,8 +1301,7 @@
         "high": "0.35",
         "low": "0.0"
       },
-      "User": "Standard",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Standard"
     },
     "ATC_RAT_RLL_SMAX": {
       "Description": "Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature.",
@@ -1328,8 +1311,7 @@
         "high": "200",
         "low": "0"
       },
-      "User": "Advanced",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Advanced"
     },
     "ATC_RAT_YAW_D": {
       "Description": "Yaw axis rate controller D gain.  Compensates for short-term change in desired yaw rate vs actual yaw rate",
@@ -1339,8 +1321,7 @@
         "high": "0.02",
         "low": "0.000"
       },
-      "User": "Standard",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Standard"
     },
     "ATC_RAT_YAW_FF": {
       "Description": "Yaw axis rate controller feed forward",
@@ -1350,8 +1331,7 @@
         "high": "0.5",
         "low": "0"
       },
-      "User": "Standard",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Standard"
     },
     "ATC_RAT_YAW_FLTD": {
       "Description": "Yaw axis rate controller derivative frequency in Hz",
@@ -1362,8 +1342,7 @@
         "low": "0"
       },
       "Units": "Hz",
-      "User": "Standard",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Standard"
     },
     "ATC_RAT_YAW_FLTE": {
       "Description": "Yaw axis rate controller error frequency in Hz",
@@ -1374,8 +1353,7 @@
         "low": "5"
       },
       "Units": "Hz",
-      "User": "Standard",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Standard"
     },
     "ATC_RAT_YAW_FLTT": {
       "Description": "Yaw axis rate controller target frequency in Hz",
@@ -1386,8 +1364,7 @@
         "low": "5"
       },
       "Units": "Hz",
-      "User": "Standard",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Standard"
     },
     "ATC_RAT_YAW_I": {
       "Description": "Yaw axis rate controller I gain.  Corrects long-term difference in desired yaw rate vs actual yaw rate",
@@ -1397,8 +1374,7 @@
         "high": "0.2",
         "low": "0.01"
       },
-      "User": "Standard",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Standard"
     },
     "ATC_RAT_YAW_ILMI": {
       "Description": "Point below which I-term will not leak down",
@@ -1417,8 +1393,7 @@
         "high": "1",
         "low": "0"
       },
-      "User": "Standard",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Standard"
     },
     "ATC_RAT_YAW_P": {
       "Description": "Yaw axis rate controller P gain.  Converts the difference between desired yaw rate and actual yaw rate into a motor speed output",
@@ -1428,8 +1403,7 @@
         "high": "0.60",
         "low": "0.180"
       },
-      "User": "Standard",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Standard"
     },
     "ATC_RAT_YAW_SMAX": {
       "Description": "Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature.",
@@ -1439,8 +1413,7 @@
         "high": "200",
         "low": "0"
       },
-      "User": "Advanced",
-      "path": "AC_AttitudeControl_Heli"
+      "User": "Advanced"
     },
     "ATC_SLEW_YAW": {
       "Description": "Maximum rate the yaw target can be updated in Loiter, RTL, Auto flight modes",
@@ -1499,8 +1472,7 @@
       },
       "Description": "1-byte bitmap of axes to autotune",
       "DisplayName": "Autotune axis bitmask",
-      "User": "Standard",
-      "path": "AC_AutoTune_Heli"
+      "User": "Standard"
     },
     "AUTOTUNE_FRQ_MAX": {
       "Description": "Defines the end frequency for sweeps and dwells",
@@ -11435,8 +11407,7 @@
       "Values": {
         "0": "Normal",
         "1": "Reversed"
-      },
-      "path": "AP_MotorsHeli_Dual"
+      }
     },
     "H_SW_H3_ENABLE": {
       "Description": "Automatically set when H3 generic swash type is selected for swashplate 1. Do not set manually.",
@@ -11445,8 +11416,7 @@
       "Values": {
         "0": "Disabled",
         "1": "Enabled"
-      },
-      "path": "AP_MotorsHeli_Dual"
+      }
     },
     "H_SW_H3_PHANG": {
       "Description": "Only for H3 swashplate.  If pitching the swash forward induces a roll, this can be correct the problem",
@@ -11457,8 +11427,7 @@
         "low": "-30"
       },
       "Units": "deg",
-      "User": "Advanced",
-      "path": "AP_MotorsHeli_Dual"
+      "User": "Advanced"
     },
     "H_SW_H3_SV1_POS": {
       "Description": "Azimuth position on swashplate for servo 1 with the front of the heli being 0 deg",
@@ -11468,8 +11437,7 @@
         "low": "-180"
       },
       "Units": "deg",
-      "User": "Advanced",
-      "path": "AP_MotorsHeli_Dual"
+      "User": "Advanced"
     },
     "H_SW_H3_SV2_POS": {
       "Description": "Azimuth position on swashplate 1 for servo 2 with the front of the heli being 0 deg",
@@ -11479,8 +11447,7 @@
         "low": "-180"
       },
       "Units": "deg",
-      "User": "Advanced",
-      "path": "AP_MotorsHeli_Dual"
+      "User": "Advanced"
     },
     "H_SW_H3_SV3_POS": {
       "Description": "Azimuth position on swashplate 1 for servo 3 with the front of the heli being 0 deg",
@@ -11490,8 +11457,7 @@
         "low": "-180"
       },
       "Units": "deg",
-      "User": "Advanced",
-      "path": "AP_MotorsHeli_Dual"
+      "User": "Advanced"
     },
     "H_SW_LIN_SVO": {
       "Description": "This linearizes the swashplate 1 servo's mechanical output to account for nonlinear output due to arm rotation.  This requires a specific setup procedure to work properly.  The servo arm must be centered on the mechanical throw at the servo trim position and the servo trim position kept as close to 1500 as possible. Leveling the swashplate can only be done through the pitch links.  See the ardupilot wiki for more details on setup.",
@@ -11500,8 +11466,7 @@
       "Values": {
         "0": "Disabled",
         "1": "Enabled"
-      },
-      "path": "AP_MotorsHeli_Dual"
+      }
     },
     "H_SW_TYPE": {
       "Description": "H3 is generic, three-servo only. H3_120/H3_140 plates have Motor1 left side, Motor2 right side, Motor3 elevator in rear. HR3_120/HR3_140 have Motor1 right side, Motor2 left side, Motor3 elevator in front - use H3_120/H3_140 and reverse servo and collective directions as necessary. For all H3_90 swashplates use H4_90 and don't use servo output for the missing servo. For H4-90 Motors1&2 are left/right respectively, Motors3&4 are rear/front respectively. For H4-45 Motors1&2 are LF/RF, Motors3&4 are LR/RR ",
@@ -11514,8 +11479,7 @@
         "3": "H3_120",
         "4": "H4_90",
         "5": "H4_45"
-      },
-      "path": "AP_MotorsHeli_Dual"
+      }
     },
     "H_TAIL_SPEED": {
       "Description": "Direct drive, variable pitch tail ESC speed in percent output to the tail motor esc (HeliTailRSC Servo) when motor interlock enabled (throttle hold off).",
