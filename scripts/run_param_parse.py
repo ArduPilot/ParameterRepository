@@ -122,16 +122,18 @@ class Groundskeeper:
             except Exception as exception:
                 print(exception)
 
-            output = f'/tmp/output'
+            output = Path(__file__).parent.parent
             subprocess.run(['mkdir', '-p', output])
             dest = f"{output}/{folder_name}"
             subprocess.run(['mkdir', '-p', dest])
             for data in glob.glob(f'{dest}/*'):
                     os.remove(data)
             for data in glob.glob(f'{self.repository_path}/Parameter*'):
-                shutil.move(data, dest)
+                shutil.copy2(data, dest)
+                os.remove(data)
             for data in glob.glob(f'{self.repository_path}/apm.pdef.*'):
-                shutil.move(data, dest)
+                shutil.copy2(data, dest)
+                os.remove(data)
 
 
 
