@@ -105,6 +105,8 @@ class Groundskeeper:
             subprocess.run(['mkdir', '-p', output])
             dest = f"{output}/{folder_name}"
             subprocess.run(['mkdir', '-p', dest])
+            for data in glob.glob(f'{dest}/*'):
+                    os.remove(data)
             for data in glob.glob(f'{self.repository_path}/Parameter*'):
                 shutil.move(data, dest)
             for data in glob.glob(f'{self.repository_path}/apm.pdef.*'):
