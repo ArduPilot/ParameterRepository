@@ -81,13 +81,20 @@ class Groundskeeper:
         for tag in tags:
             tag_name = tag['tag']
             tag_simple_name = tag['matches']['name']
+            tag_major_version, tag_minor_version = int(tag['matches']['major']), int(tag['matches']['minor'])
             vehicle_type = self.valid_name_map.get(tag_simple_name)
             tag_reference = tag['reference']
+            folder_name = f'{vehicle_type}-{tag_major_version}.{tag_minor_version}'
 
             if not vehicle_type:
                 continue
 
-            print(f'Going to: {tag_name}')
+            print(f'Processing: {folder_name}..')
+            # Old versions are not mantained and generation of the files is not fully supported
+            if tag_major_version < 4:
+                print("Ignoring old version")
+                continue
+
             repository.git.checkout(tag_reference)
             try:
                 subprocess.run([f'{self.repository_path}/Tools/autotest/param_metadata/param_parse.py', '--vehicle', vehicle_type], cwd=self.repository_path)
@@ -96,7 +103,7 @@ class Groundskeeper:
 
             output = f'/tmp/output'
             subprocess.run(['mkdir', '-p', output])
-            dest = f"{output}/{tag_simple_name}-{tag['matches']['major']}.{tag['matches']['minor']}"
+            dest = f"{output}/{folder_name}"
             subprocess.run(['mkdir', '-p', dest])
             for data in glob.glob(f'{self.repository_path}/Parameter*'):
                 shutil.move(data, dest)
