@@ -2453,6 +2453,24 @@ DO NOT EDIT
 </ul>
 
 
+<h2>Altitude error maximum (BARO_ALTERR_MAX)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>This is the maximum acceptable altitude discrepancy between GPS altitude and barometric presssure altitude calculated against a standard atmosphere for arming checks to pass. If you are getting an arming error due to this parameter then you may have a faulty or substituted barometer. A common issue is vendors replacing a MS5611 in a &quot;Pixhawk&quot; with a MS5607. If you have that issue then please see BARO_OPTIONS parameter to force the MS5611 to be treated as a MS5607. This check is disabled if the value is zero.</p>
+<ul>
+<li>Units: meters</li>
+<li>Increment: 1</li>
+<li>Range: 0 5000</li>
+</ul>
+
+
+<h2>Barometer options (BARO_OPTIONS)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Barometer options</p>
+<ul>
+<li>Bitmask: 0:Treat MS5611 as MS5607</li>
+</ul>
+
+
 <h1>BARO1_WCF_ Parameters</h1>
 
 
@@ -5606,11 +5624,12 @@ DO NOT EDIT
 
 <h2>Enable IO co-processor (BRD_IO_ENABLE)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>This allows for the IO co-processor on FMUv1 and FMUv2 to be disabled</p>
+<p>This allows for the IO co-processor on boards with an IOMCU to be disabled. Setting to 2 will enable the IOMCU but not attempt to update firmware on startup</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
 <tr><td>1</td><td>Enabled</td></tr>
+<tr><td>2</td><td>EnableNoFWUpdate</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -5620,7 +5639,7 @@ DO NOT EDIT
 
 <p>This controls the activation of the safety button. It allows you to control if the safety button can be used for safety enable and/or disable, and whether the button is only active when disarmed</p>
 <ul>
-<li>Bitmask: 0:ActiveForSafetyEnable,1:ActiveForSafetyDisable,2:ActiveWhenArmed,3:Force safety on when the aircraft disarms</li>
+<li>Bitmask: 0:ActiveForSafetyDisable,1:ActiveForSafetyEnable,2:ActiveWhenArmed,3:Force safety on when the aircraft disarms</li>
 </ul>
 
 
@@ -6110,6 +6129,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -6202,6 +6225,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -6294,6 +6321,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -6386,6 +6417,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -6418,6 +6453,7 @@ DO NOT EDIT
 <tr><td>0</td><td>Servo</td></tr>
 <tr><td>1</td><td>Relay</td></tr>
 <tr><td>2</td><td>GoPro in Solo Gimbal</td></tr>
+<tr><td>3</td><td>Mount (Siyi)</td></tr>
 </table>
 </ul>
 
@@ -6549,7 +6585,7 @@ DO NOT EDIT
 <tr><td>1</td><td>RunCam Split Micro/RunCam with UART</td></tr>
 <tr><td>2</td><td>RunCam Split</td></tr>
 <tr><td>3</td><td>RunCam Split4 4k</td></tr>
-<tr><td>4</td><td>RunCam Hybrid</td></tr>
+<tr><td>4</td><td>RunCam Hybrid/RunCam Thumb Pro</td></tr>
 </table>
 </ul>
 
@@ -8474,9 +8510,9 @@ DO NOT EDIT
 
 <h2>OpenDroneID options (DID_OPTIONS)</h2>
 
-<p>Options for OpenDroneID subsystem. Bit 0 means to enforce arming checks</p>
+<p>Options for OpenDroneID subsystem</p>
 <ul>
-<li>Bitmask: 0:EnforceArming</li>
+<li>Bitmask: 0:EnforceArming, 1:AllowNonGPSPosition</li>
 </ul>
 
 
@@ -13311,6 +13347,7 @@ DO NOT EDIT
 <tr><td>5</td><td>SToRM32 Serial</td></tr>
 <tr><td>6</td><td>Gremsy</td></tr>
 <tr><td>7</td><td>BrushlessPWM</td></tr>
+<tr><td>8</td><td>Siyi</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -13497,6 +13534,7 @@ DO NOT EDIT
 <tr><td>5</td><td>SToRM32 Serial</td></tr>
 <tr><td>6</td><td>Gremsy</td></tr>
 <tr><td>7</td><td>BrushlessPWM</td></tr>
+<tr><td>8</td><td>Siyi</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -22432,7 +22470,7 @@ DO NOT EDIT
 
 <p>Level Transition:Keep wings within LEVEL_ROLL_LIMIT and only use forward motor(s) for climb during transition, Allow FW Takeoff: If bit is not set then NAV_TAKEOFF command on quadplanes will instead perform a NAV_VTOL takeoff, Allow FW Land:If bit is not set then NAV_LAND command on quadplanes will instead perform a NAV_VTOL_LAND, Vtol Takeoff Frame: command NAV_VTOL_TAKEOFF altitude is as set by the command&#x27;s reference frame rather than a delta above current location, Always use FW spiral approach:Always use Use a fixed wing spiral approach for VTOL landings, USE QRTL:instead of QLAND for rc failsafe when in VTOL modes, Use Governor:Use ICE Idle Governor in MANUAL for forward motor, Force Qassist: on always,Mtrs_Only_Qassist: in tailsitters only, uses VTOL motors and not flying surfaces for QASSIST, Airmode_On_Arm:Airmode enabled when arming by aux switch, Disarmed Yaw Tilt:Enable motor tilt for yaw when disarmed, Delay Spoolup:Delay VTOL spoolup for 2 seconds after arming, ThrLandControl: enable throttle stick control of landing rate, DisableApproach: Disable use of approach and airbrake stages in VTOL landing, EnableLandResposition: enable pilot controlled repositioning in AUTO land. Descent will pause while repositioning. ARMVTOL: Arm only in VTOL or AUTO modes. CompleteTransition: to fixed wing if Q_TRANS_FAIL timer times out instead of QLAND. Force RTL mode: forces RTL mode on rc failsafe in VTOL modes overriding bit 5(USE_QRTL).</p>
 <ul>
-<li>Bitmask: 0:Level Transition,1:Allow FW Takeoff,2:Allow FW Land,3:Vtol Takeoff Frame,4:Always use FW spiral approach,5:Use QRTL,6:Use Governor,7:Force Qassist,8:Mtrs_Only_Qassist,10:Disarmed Yaw Tilt,11:Delay Spoolup,12:disable Qassist based on synthetic airspeed,13:Disable Ground Effect Compensation,14:Ignore forward flight angle limits in Qmodes,15:ThrLandControl,16:DisableApproach,17:EnableLandReposition,18:ARMVtol, 19: CompleteTransition if Q_TRANS_FAIL, 20: Force RTL mode on VTOL failsafes overriding bit 5(USE QRTL)</li>
+<li>Bitmask: 0:Level Transition,1:Allow FW Takeoff,2:Allow FW Land,3:Vtol Takeoff Frame,4:Always use FW spiral approach,5:Use QRTL,6:Use Governor,7:Force Qassist,8:Mtrs_Only_Qassist,10:Disarmed Yaw Tilt,11:Delay Spoolup,12:disable Qassist based on synthetic airspeed,13:Disable Ground Effect Compensation,14:Ignore forward flight angle limits in Qmodes,15:ThrLandControl,16:DisableApproach,17:EnableLandReposition,18:ARMVtol, 19: CompleteTransition if Q_TRANS_FAIL, 20: Force RTL mode on VTOL failsafes overriding bit 5(USE QRTL), 21:Tilt rotor tilt motors up when disarmed in FW modes (except manual) to prevent ground strikes</li>
 </ul>
 
 
@@ -24209,7 +24247,7 @@ DO NOT EDIT
 
 <p>RC input options</p>
 <ul>
-<li>Bitmask: 0:Ignore RC Receiver, 1:Ignore MAVLink Overrides, 2:Ignore Receiver Failsafe bit but allow other RC failsafes if setup, 3:FPort Pad, 4:Log RC input bytes, 5:Arming check throttle for 0 input, 6:Skip the arming check for neutral Roll/Pitch/Yaw sticks, 7:Allow Switch reverse, 8:Use passthrough for CRSF telemetry, 9:Suppress CRSF mode/rate message for ELRS systems,10:Enable multiple receiver support, 11:CRSF RSSI shows Link Quality</li>
+<li>Bitmask: 0:Ignore RC Receiver, 1:Ignore MAVLink Overrides, 2:Ignore Receiver Failsafe bit but allow other RC failsafes if setup, 3:FPort Pad, 4:Log RC input bytes, 5:Arming check throttle for 0 input, 6:Skip the arming check for neutral Roll/Pitch/Yaw sticks, 7:Allow Switch reverse, 8:Use passthrough for CRSF telemetry, 9:Suppress CRSF mode/rate message for ELRS systems,10:Enable multiple receiver support, 11:Use Link Quality for RSSI with CRSF, 13: Use 420kbaud for ELRS protocol</li>
 </ul>
 
 
@@ -24345,6 +24383,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -24490,6 +24532,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -24635,6 +24681,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -24780,6 +24830,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -24925,6 +24979,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -25070,6 +25128,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -25215,6 +25277,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -25360,6 +25426,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -25505,6 +25575,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -25650,6 +25724,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -25795,6 +25873,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -25940,6 +26022,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -26085,6 +26171,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -26230,6 +26320,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -26375,6 +26469,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -26520,6 +26618,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>

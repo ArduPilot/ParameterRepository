@@ -1426,6 +1426,15 @@
         <field name="Increment">0.1</field>
         <field name="Volatile">True</field>
       </param>
+      <param humanName="Altitude error maximum" name="BARO_ALTERR_MAX" documentation="This is the maximum acceptable altitude discrepancy between GPS altitude and barometric presssure altitude calculated against a standard atmosphere for arming checks to pass. If you are getting an arming error due to this parameter then you may have a faulty or substituted barometer. A common issue is vendors replacing a MS5611 in a &quot;Pixhawk&quot; with a MS5607. If you have that issue then please see BARO_OPTIONS parameter to force the MS5611 to be treated as a MS5607. This check is disabled if the value is zero." user="Advanced">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+        <field name="Increment">1</field>
+        <field name="Range">0 5000</field>
+      </param>
+      <param humanName="Barometer options" name="BARO_OPTIONS" documentation="Barometer options" user="Advanced">
+        <field name="Bitmask">0:Treat MS5611 as MS5607</field>
+      </param>
     </parameters>
     <parameters name="BARO1_WCF_">
       <param humanName="Wind coefficient enable" name="BARO1_WCF_ENABLE" documentation="This enables the use of wind coefficients for barometer compensation" user="Advanced">
@@ -3256,15 +3265,16 @@
         </values>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Enable IO co-processor" name="BRD_IO_ENABLE" documentation="This allows for the IO co-processor on FMUv1 and FMUv2 to be disabled" user="Advanced">
+      <param humanName="Enable IO co-processor" name="BRD_IO_ENABLE" documentation="This allows for the IO co-processor on boards with an IOMCU to be disabled. Setting to 2 will enable the IOMCU but not attempt to update firmware on startup" user="Advanced">
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
+          <value code="2">EnableNoFWUpdate</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
       <param humanName="Options for safety button behavior" name="BRD_SAFETYOPTION" documentation="This controls the activation of the safety button. It allows you to control if the safety button can be used for safety enable and/or disable, and whether the button is only active when disarmed" user="Standard">
-        <field name="Bitmask">0:ActiveForSafetyEnable,1:ActiveForSafetyDisable,2:ActiveWhenArmed,3:Force safety on when the aircraft disarms</field>
+        <field name="Bitmask">0:ActiveForSafetyDisable,1:ActiveForSafetyEnable,2:ActiveWhenArmed,3:Force safety on when the aircraft disarms</field>
       </param>
       <param humanName="Autopilot board voltage requirement" name="BRD_VBUS_MIN" documentation="Minimum voltage on the autopilot power rail to allow the aircraft to arm. 0 to disable the check." user="Advanced">
         <field name="Units">V</field>
@@ -3550,6 +3560,10 @@
           <value code="163">Mount Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="165">Arm/Emergency Motor Stop</value>
+          <value code="166">Camera Record Video</value>
+          <value code="167">Camera Zoom</value>
+          <value code="168">Camera Manual Focus</value>
+          <value code="169">Camera Auto Focus</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="210">Airbrakes</value>
@@ -3637,6 +3651,10 @@
           <value code="163">Mount Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="165">Arm/Emergency Motor Stop</value>
+          <value code="166">Camera Record Video</value>
+          <value code="167">Camera Zoom</value>
+          <value code="168">Camera Manual Focus</value>
+          <value code="169">Camera Auto Focus</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="210">Airbrakes</value>
@@ -3724,6 +3742,10 @@
           <value code="163">Mount Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="165">Arm/Emergency Motor Stop</value>
+          <value code="166">Camera Record Video</value>
+          <value code="167">Camera Zoom</value>
+          <value code="168">Camera Manual Focus</value>
+          <value code="169">Camera Auto Focus</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="210">Airbrakes</value>
@@ -3811,6 +3833,10 @@
           <value code="163">Mount Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="165">Arm/Emergency Motor Stop</value>
+          <value code="166">Camera Record Video</value>
+          <value code="167">Camera Zoom</value>
+          <value code="168">Camera Manual Focus</value>
+          <value code="169">Camera Auto Focus</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="210">Airbrakes</value>
@@ -3837,6 +3863,7 @@
           <value code="0">Servo</value>
           <value code="1">Relay</value>
           <value code="2">GoPro in Solo Gimbal</value>
+          <value code="3">Mount (Siyi)</value>
         </values>
       </param>
       <param humanName="Duration that shutter is held open" name="CAM_DURATION" documentation="How long the shutter will be held open in 10ths of a second (i.e. enter 10 for 1second, 50 for 5seconds)" user="Standard">
@@ -3913,7 +3940,7 @@
           <value code="1">RunCam Split Micro/RunCam with UART</value>
           <value code="2">RunCam Split</value>
           <value code="3">RunCam Split4 4k</value>
-          <value code="4">RunCam Hybrid</value>
+          <value code="4">RunCam Hybrid/RunCam Thumb Pro</value>
         </values>
       </param>
       <param humanName="RunCam features available" name="CAM_RC_FEATURES" documentation="The available features of the attached RunCam device. If 0 then the RunCam device will be queried for the features it supports, otherwise this setting is used." user="Advanced">
@@ -4969,8 +4996,8 @@
           <value code="2">Driver2</value>
         </values>
       </param>
-      <param humanName="OpenDroneID options" name="DID_OPTIONS" documentation="Options for OpenDroneID subsystem. Bit 0 means to enforce arming checks">
-        <field name="Bitmask">0:EnforceArming</field>
+      <param humanName="OpenDroneID options" name="DID_OPTIONS" documentation="Options for OpenDroneID subsystem">
+        <field name="Bitmask">0:EnforceArming, 1:AllowNonGPSPosition</field>
       </param>
       <param humanName="Barometer vertical accuraacy" name="DID_BARO_ACC" documentation="Barometer Vertical Accuracy when installed in the vehicle. Note this is dependent upon installation conditions and thus disabled by default" user="Advanced">
         <field name="Units">m</field>
@@ -7587,6 +7614,7 @@
           <value code="5">SToRM32 Serial</value>
           <value code="6">Gremsy</value>
           <value code="7">BrushlessPWM</value>
+          <value code="8">Siyi</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -7702,6 +7730,7 @@
           <value code="5">SToRM32 Serial</value>
           <value code="6">Gremsy</value>
           <value code="7">BrushlessPWM</value>
+          <value code="8">Siyi</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -11671,7 +11700,7 @@
         </values>
       </param>
       <param humanName="quadplane options" name="Q_OPTIONS" documentation="Level Transition:Keep wings within LEVEL_ROLL_LIMIT and only use forward motor(s) for climb during transition, Allow FW Takeoff: If bit is not set then NAV_TAKEOFF command on quadplanes will instead perform a NAV_VTOL takeoff, Allow FW Land:If bit is not set then NAV_LAND command on quadplanes will instead perform a NAV_VTOL_LAND, Vtol Takeoff Frame: command NAV_VTOL_TAKEOFF altitude is as set by the command's reference frame rather than a delta above current location, Always use FW spiral approach:Always use Use a fixed wing spiral approach for VTOL landings, USE QRTL:instead of QLAND for rc failsafe when in VTOL modes, Use Governor:Use ICE Idle Governor in MANUAL for forward motor, Force Qassist: on always,Mtrs_Only_Qassist: in tailsitters only, uses VTOL motors and not flying surfaces for QASSIST, Airmode_On_Arm:Airmode enabled when arming by aux switch, Disarmed Yaw Tilt:Enable motor tilt for yaw when disarmed, Delay Spoolup:Delay VTOL spoolup for 2 seconds after arming, ThrLandControl: enable throttle stick control of landing rate, DisableApproach: Disable use of approach and airbrake stages in VTOL landing, EnableLandResposition: enable pilot controlled repositioning in AUTO land. Descent will pause while repositioning. ARMVTOL: Arm only in VTOL or AUTO modes. CompleteTransition: to fixed wing if Q_TRANS_FAIL timer times out instead of QLAND. Force RTL mode: forces RTL mode on rc failsafe in VTOL modes overriding bit 5(USE_QRTL).">
-        <field name="Bitmask">0:Level Transition,1:Allow FW Takeoff,2:Allow FW Land,3:Vtol Takeoff Frame,4:Always use FW spiral approach,5:Use QRTL,6:Use Governor,7:Force Qassist,8:Mtrs_Only_Qassist,10:Disarmed Yaw Tilt,11:Delay Spoolup,12:disable Qassist based on synthetic airspeed,13:Disable Ground Effect Compensation,14:Ignore forward flight angle limits in Qmodes,15:ThrLandControl,16:DisableApproach,17:EnableLandReposition,18:ARMVtol, 19: CompleteTransition if Q_TRANS_FAIL, 20: Force RTL mode on VTOL failsafes overriding bit 5(USE QRTL)</field>
+        <field name="Bitmask">0:Level Transition,1:Allow FW Takeoff,2:Allow FW Land,3:Vtol Takeoff Frame,4:Always use FW spiral approach,5:Use QRTL,6:Use Governor,7:Force Qassist,8:Mtrs_Only_Qassist,10:Disarmed Yaw Tilt,11:Delay Spoolup,12:disable Qassist based on synthetic airspeed,13:Disable Ground Effect Compensation,14:Ignore forward flight angle limits in Qmodes,15:ThrLandControl,16:DisableApproach,17:EnableLandReposition,18:ARMVtol, 19: CompleteTransition if Q_TRANS_FAIL, 20: Force RTL mode on VTOL failsafes overriding bit 5(USE QRTL), 21:Tilt rotor tilt motors up when disarmed in FW modes (except manual) to prevent ground strikes</field>
       </param>
       <param humanName="Transition deceleration" name="Q_TRANS_DECEL" documentation="This is deceleration rate that will be used in calculating the stopping distance when transitioning from fixed wing flight to multicopter flight." user="Standard">
         <field name="Units">m/s/s</field>
@@ -12640,7 +12669,7 @@
         <field name="UnitText">seconds</field>
       </param>
       <param humanName="RC options" name="RC_OPTIONS" documentation="RC input options" user="Advanced">
-        <field name="Bitmask">0:Ignore RC Receiver, 1:Ignore MAVLink Overrides, 2:Ignore Receiver Failsafe bit but allow other RC failsafes if setup, 3:FPort Pad, 4:Log RC input bytes, 5:Arming check throttle for 0 input, 6:Skip the arming check for neutral Roll/Pitch/Yaw sticks, 7:Allow Switch reverse, 8:Use passthrough for CRSF telemetry, 9:Suppress CRSF mode/rate message for ELRS systems,10:Enable multiple receiver support, 11:CRSF RSSI shows Link Quality</field>
+        <field name="Bitmask">0:Ignore RC Receiver, 1:Ignore MAVLink Overrides, 2:Ignore Receiver Failsafe bit but allow other RC failsafes if setup, 3:FPort Pad, 4:Log RC input bytes, 5:Arming check throttle for 0 input, 6:Skip the arming check for neutral Roll/Pitch/Yaw sticks, 7:Allow Switch reverse, 8:Use passthrough for CRSF telemetry, 9:Suppress CRSF mode/rate message for ELRS systems,10:Enable multiple receiver support, 11:Use Link Quality for RSSI with CRSF, 13: Use 420kbaud for ELRS protocol</field>
       </param>
       <param humanName="RC protocols enabled" name="RC_PROTOCOLS" documentation="Bitmask of enabled RC protocols. Allows narrowing the protocol detection to only specific types of RC receivers which can avoid issues with incorrect detection. Set to 1 to enable all protocols." user="Advanced">
         <field name="Bitmask">0:All,1:PPM,2:IBUS,3:SBUS,4:SBUS_NI,5:DSM,6:SUMD,7:SRXL,8:SRXL2,9:CRSF,10:ST24,11:FPORT,12:FPORT2,13:FastSBUS</field>
@@ -12744,6 +12773,10 @@
           <value code="163">Mount Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="165">Arm/Emergency Motor Stop</value>
+          <value code="166">Camera Record Video</value>
+          <value code="167">Camera Zoom</value>
+          <value code="168">Camera Manual Focus</value>
+          <value code="169">Camera Auto Focus</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="210">Airbrakes</value>
@@ -12862,6 +12895,10 @@
           <value code="163">Mount Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="165">Arm/Emergency Motor Stop</value>
+          <value code="166">Camera Record Video</value>
+          <value code="167">Camera Zoom</value>
+          <value code="168">Camera Manual Focus</value>
+          <value code="169">Camera Auto Focus</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="210">Airbrakes</value>
@@ -12980,6 +13017,10 @@
           <value code="163">Mount Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="165">Arm/Emergency Motor Stop</value>
+          <value code="166">Camera Record Video</value>
+          <value code="167">Camera Zoom</value>
+          <value code="168">Camera Manual Focus</value>
+          <value code="169">Camera Auto Focus</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="210">Airbrakes</value>
@@ -13098,6 +13139,10 @@
           <value code="163">Mount Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="165">Arm/Emergency Motor Stop</value>
+          <value code="166">Camera Record Video</value>
+          <value code="167">Camera Zoom</value>
+          <value code="168">Camera Manual Focus</value>
+          <value code="169">Camera Auto Focus</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="210">Airbrakes</value>
@@ -13216,6 +13261,10 @@
           <value code="163">Mount Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="165">Arm/Emergency Motor Stop</value>
+          <value code="166">Camera Record Video</value>
+          <value code="167">Camera Zoom</value>
+          <value code="168">Camera Manual Focus</value>
+          <value code="169">Camera Auto Focus</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="210">Airbrakes</value>
@@ -13334,6 +13383,10 @@
           <value code="163">Mount Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="165">Arm/Emergency Motor Stop</value>
+          <value code="166">Camera Record Video</value>
+          <value code="167">Camera Zoom</value>
+          <value code="168">Camera Manual Focus</value>
+          <value code="169">Camera Auto Focus</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="210">Airbrakes</value>
@@ -13452,6 +13505,10 @@
           <value code="163">Mount Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="165">Arm/Emergency Motor Stop</value>
+          <value code="166">Camera Record Video</value>
+          <value code="167">Camera Zoom</value>
+          <value code="168">Camera Manual Focus</value>
+          <value code="169">Camera Auto Focus</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="210">Airbrakes</value>
@@ -13570,6 +13627,10 @@
           <value code="163">Mount Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="165">Arm/Emergency Motor Stop</value>
+          <value code="166">Camera Record Video</value>
+          <value code="167">Camera Zoom</value>
+          <value code="168">Camera Manual Focus</value>
+          <value code="169">Camera Auto Focus</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="210">Airbrakes</value>
@@ -13688,6 +13749,10 @@
           <value code="163">Mount Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="165">Arm/Emergency Motor Stop</value>
+          <value code="166">Camera Record Video</value>
+          <value code="167">Camera Zoom</value>
+          <value code="168">Camera Manual Focus</value>
+          <value code="169">Camera Auto Focus</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="210">Airbrakes</value>
@@ -13806,6 +13871,10 @@
           <value code="163">Mount Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="165">Arm/Emergency Motor Stop</value>
+          <value code="166">Camera Record Video</value>
+          <value code="167">Camera Zoom</value>
+          <value code="168">Camera Manual Focus</value>
+          <value code="169">Camera Auto Focus</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="210">Airbrakes</value>
@@ -13924,6 +13993,10 @@
           <value code="163">Mount Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="165">Arm/Emergency Motor Stop</value>
+          <value code="166">Camera Record Video</value>
+          <value code="167">Camera Zoom</value>
+          <value code="168">Camera Manual Focus</value>
+          <value code="169">Camera Auto Focus</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="210">Airbrakes</value>
@@ -14042,6 +14115,10 @@
           <value code="163">Mount Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="165">Arm/Emergency Motor Stop</value>
+          <value code="166">Camera Record Video</value>
+          <value code="167">Camera Zoom</value>
+          <value code="168">Camera Manual Focus</value>
+          <value code="169">Camera Auto Focus</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="210">Airbrakes</value>
@@ -14160,6 +14237,10 @@
           <value code="163">Mount Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="165">Arm/Emergency Motor Stop</value>
+          <value code="166">Camera Record Video</value>
+          <value code="167">Camera Zoom</value>
+          <value code="168">Camera Manual Focus</value>
+          <value code="169">Camera Auto Focus</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="210">Airbrakes</value>
@@ -14278,6 +14359,10 @@
           <value code="163">Mount Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="165">Arm/Emergency Motor Stop</value>
+          <value code="166">Camera Record Video</value>
+          <value code="167">Camera Zoom</value>
+          <value code="168">Camera Manual Focus</value>
+          <value code="169">Camera Auto Focus</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="210">Airbrakes</value>
@@ -14396,6 +14481,10 @@
           <value code="163">Mount Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="165">Arm/Emergency Motor Stop</value>
+          <value code="166">Camera Record Video</value>
+          <value code="167">Camera Zoom</value>
+          <value code="168">Camera Manual Focus</value>
+          <value code="169">Camera Auto Focus</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="210">Airbrakes</value>
@@ -14514,6 +14603,10 @@
           <value code="163">Mount Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="165">Arm/Emergency Motor Stop</value>
+          <value code="166">Camera Record Video</value>
+          <value code="167">Camera Zoom</value>
+          <value code="168">Camera Manual Focus</value>
+          <value code="169">Camera Auto Focus</value>
           <value code="208">Flap</value>
           <value code="209">Forward Throttle</value>
           <value code="210">Airbrakes</value>

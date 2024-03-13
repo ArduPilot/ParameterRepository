@@ -1007,6 +1007,17 @@
       "User": "Advanced",
       "Volatile": "True"
     },
+    "BARO_ALTERR_MAX": {
+      "Description": "This is the maximum acceptable altitude discrepancy between GPS altitude and barometric presssure altitude calculated against a standard atmosphere for arming checks to pass. If you are getting an arming error due to this parameter then you may have a faulty or substituted barometer. A common issue is vendors replacing a MS5611 in a \"Pixhawk\" with a MS5607. If you have that issue then please see BARO_OPTIONS parameter to force the MS5611 to be treated as a MS5607. This check is disabled if the value is zero.",
+      "DisplayName": "Altitude error maximum",
+      "Increment": "1",
+      "Range": {
+        "high": "5000",
+        "low": "0"
+      },
+      "Units": "m",
+      "User": "Advanced"
+    },
     "BARO_ALT_OFFSET": {
       "Description": "altitude offset in meters added to barometric altitude. This is used to allow for automatic adjustment of the base barometric altitude by a ground station equipped with a barometer. The value is added to the barometric altitude read by the aircraft. It is automatically reset to 0 when the barometer is calibrated on each reboot or when a preflight calibration is performed.",
       "DisplayName": "altitude offset",
@@ -1049,6 +1060,14 @@
       "Units": "degC",
       "User": "Advanced",
       "Volatile": "True"
+    },
+    "BARO_OPTIONS": {
+      "Bitmask": {
+        "0": "Treat MS5611 as MS5607"
+      },
+      "Description": "Barometer options",
+      "DisplayName": "Barometer options",
+      "User": "Advanced"
     },
     "BARO_PRIMARY": {
       "Description": "This selects which barometer will be the primary if multiple barometers are found",
@@ -3962,13 +3981,14 @@
       "User": "Advanced"
     },
     "BRD_IO_ENABLE": {
-      "Description": "This allows for the IO co-processor on FMUv1 and FMUv2 to be disabled",
+      "Description": "This allows for the IO co-processor on boards with an IOMCU to be disabled. Setting to 2 will enable the IOMCU but not attempt to update firmware on startup",
       "DisplayName": "Enable IO co-processor",
       "RebootRequired": "True",
       "User": "Advanced",
       "Values": {
         "0": "Disabled",
-        "1": "Enabled"
+        "1": "Enabled",
+        "2": "EnableNoFWUpdate"
       }
     },
     "BRD_OPTIONS": {
@@ -4006,8 +4026,8 @@
     },
     "BRD_SAFETYOPTION": {
       "Bitmask": {
-        "0": "ActiveForSafetyEnable",
-        "1": "ActiveForSafetyDisable",
+        "0": "ActiveForSafetyDisable",
+        "1": "ActiveForSafetyEnable",
         "2": "ActiveWhenArmed",
         "3": "Force safety on when the aircraft disarms"
       },
@@ -4407,6 +4427,10 @@
         "163": "Mount Lock",
         "164": "Pause Stream Logging",
         "165": "Arm/Emergency Motor Stop",
+        "166": "Camera Record Video",
+        "167": "Camera Zoom",
+        "168": "Camera Manual Focus",
+        "169": "Camera Auto Focus",
         "208": "Flap",
         "209": "Forward Throttle",
         "210": "Airbrakes",
@@ -4497,6 +4521,10 @@
         "163": "Mount Lock",
         "164": "Pause Stream Logging",
         "165": "Arm/Emergency Motor Stop",
+        "166": "Camera Record Video",
+        "167": "Camera Zoom",
+        "168": "Camera Manual Focus",
+        "169": "Camera Auto Focus",
         "208": "Flap",
         "209": "Forward Throttle",
         "210": "Airbrakes",
@@ -4587,6 +4615,10 @@
         "163": "Mount Lock",
         "164": "Pause Stream Logging",
         "165": "Arm/Emergency Motor Stop",
+        "166": "Camera Record Video",
+        "167": "Camera Zoom",
+        "168": "Camera Manual Focus",
+        "169": "Camera Auto Focus",
         "208": "Flap",
         "209": "Forward Throttle",
         "210": "Airbrakes",
@@ -4677,6 +4709,10 @@
         "163": "Mount Lock",
         "164": "Pause Stream Logging",
         "165": "Arm/Emergency Motor Stop",
+        "166": "Camera Record Video",
+        "167": "Camera Zoom",
+        "168": "Camera Manual Focus",
+        "169": "Camera Auto Focus",
         "208": "Flap",
         "209": "Forward Throttle",
         "210": "Airbrakes",
@@ -4952,7 +4988,8 @@
       "Values": {
         "0": "Servo",
         "1": "Relay",
-        "2": "GoPro in Solo Gimbal"
+        "2": "GoPro in Solo Gimbal",
+        "3": "Mount (Siyi)"
       }
     },
     "CAM_TYPE": {
@@ -5016,7 +5053,7 @@
         "1": "RunCam Split Micro/RunCam with UART",
         "2": "RunCam Split",
         "3": "RunCam Split4 4k",
-        "4": "RunCam Hybrid"
+        "4": "RunCam Hybrid/RunCam Thumb Pro"
       }
     }
   },
@@ -7113,9 +7150,10 @@
     },
     "DID_OPTIONS": {
       "Bitmask": {
-        "0": "EnforceArming"
+        "0": "EnforceArming",
+        "1": "AllowNonGPSPosition"
       },
-      "Description": "Options for OpenDroneID subsystem. Bit 0 means to enforce arming checks",
+      "Description": "Options for OpenDroneID subsystem",
       "DisplayName": "OpenDroneID options"
     }
   },
@@ -12054,7 +12092,8 @@
         "4": "SToRM32 MAVLink",
         "5": "SToRM32 Serial",
         "6": "Gremsy",
-        "7": "BrushlessPWM"
+        "7": "BrushlessPWM",
+        "8": "Siyi"
       }
     },
     "MNT1_YAW_MAX": {
@@ -12250,7 +12289,8 @@
         "4": "SToRM32 MAVLink",
         "5": "SToRM32 Serial",
         "6": "Gremsy",
-        "7": "BrushlessPWM"
+        "7": "BrushlessPWM",
+        "8": "Siyi"
       }
     },
     "MNT2_YAW_MAX": {
@@ -21444,6 +21484,7 @@
         "19": "CompleteTransition if Q_TRANS_FAIL",
         "2": "Allow FW Land",
         "20": "Force RTL mode on VTOL failsafes overriding bit 5(USE QRTL)",
+        "21": "Tilt rotor tilt motors up when disarmed in FW modes (except manual) to prevent ground strikes",
         "3": "Vtol Takeoff Frame",
         "4": "Always use FW spiral approach",
         "5": "Use QRTL",
@@ -23315,7 +23356,8 @@
         "0": "Ignore RC Receiver",
         "1": "Ignore MAVLink Overrides",
         "10": "Enable multiple receiver support",
-        "11": "CRSF RSSI shows Link Quality",
+        "11": "Use Link Quality for RSSI with CRSF",
+        "13": "Use 420kbaud for ELRS protocol",
         "2": "Ignore Receiver Failsafe bit but allow other RC failsafes if setup",
         "3": "FPort Pad",
         "4": "Log RC input bytes",
@@ -23420,6 +23462,10 @@
         "163": "Mount Lock",
         "164": "Pause Stream Logging",
         "165": "Arm/Emergency Motor Stop",
+        "166": "Camera Record Video",
+        "167": "Camera Zoom",
+        "168": "Camera Manual Focus",
+        "169": "Camera Auto Focus",
         "208": "Flap",
         "209": "Forward Throttle",
         "210": "Airbrakes",
@@ -23564,6 +23610,10 @@
         "163": "Mount Lock",
         "164": "Pause Stream Logging",
         "165": "Arm/Emergency Motor Stop",
+        "166": "Camera Record Video",
+        "167": "Camera Zoom",
+        "168": "Camera Manual Focus",
+        "169": "Camera Auto Focus",
         "208": "Flap",
         "209": "Forward Throttle",
         "210": "Airbrakes",
@@ -23708,6 +23758,10 @@
         "163": "Mount Lock",
         "164": "Pause Stream Logging",
         "165": "Arm/Emergency Motor Stop",
+        "166": "Camera Record Video",
+        "167": "Camera Zoom",
+        "168": "Camera Manual Focus",
+        "169": "Camera Auto Focus",
         "208": "Flap",
         "209": "Forward Throttle",
         "210": "Airbrakes",
@@ -23852,6 +23906,10 @@
         "163": "Mount Lock",
         "164": "Pause Stream Logging",
         "165": "Arm/Emergency Motor Stop",
+        "166": "Camera Record Video",
+        "167": "Camera Zoom",
+        "168": "Camera Manual Focus",
+        "169": "Camera Auto Focus",
         "208": "Flap",
         "209": "Forward Throttle",
         "210": "Airbrakes",
@@ -23996,6 +24054,10 @@
         "163": "Mount Lock",
         "164": "Pause Stream Logging",
         "165": "Arm/Emergency Motor Stop",
+        "166": "Camera Record Video",
+        "167": "Camera Zoom",
+        "168": "Camera Manual Focus",
+        "169": "Camera Auto Focus",
         "208": "Flap",
         "209": "Forward Throttle",
         "210": "Airbrakes",
@@ -24140,6 +24202,10 @@
         "163": "Mount Lock",
         "164": "Pause Stream Logging",
         "165": "Arm/Emergency Motor Stop",
+        "166": "Camera Record Video",
+        "167": "Camera Zoom",
+        "168": "Camera Manual Focus",
+        "169": "Camera Auto Focus",
         "208": "Flap",
         "209": "Forward Throttle",
         "210": "Airbrakes",
@@ -24284,6 +24350,10 @@
         "163": "Mount Lock",
         "164": "Pause Stream Logging",
         "165": "Arm/Emergency Motor Stop",
+        "166": "Camera Record Video",
+        "167": "Camera Zoom",
+        "168": "Camera Manual Focus",
+        "169": "Camera Auto Focus",
         "208": "Flap",
         "209": "Forward Throttle",
         "210": "Airbrakes",
@@ -24428,6 +24498,10 @@
         "163": "Mount Lock",
         "164": "Pause Stream Logging",
         "165": "Arm/Emergency Motor Stop",
+        "166": "Camera Record Video",
+        "167": "Camera Zoom",
+        "168": "Camera Manual Focus",
+        "169": "Camera Auto Focus",
         "208": "Flap",
         "209": "Forward Throttle",
         "210": "Airbrakes",
@@ -24572,6 +24646,10 @@
         "163": "Mount Lock",
         "164": "Pause Stream Logging",
         "165": "Arm/Emergency Motor Stop",
+        "166": "Camera Record Video",
+        "167": "Camera Zoom",
+        "168": "Camera Manual Focus",
+        "169": "Camera Auto Focus",
         "208": "Flap",
         "209": "Forward Throttle",
         "210": "Airbrakes",
@@ -24716,6 +24794,10 @@
         "163": "Mount Lock",
         "164": "Pause Stream Logging",
         "165": "Arm/Emergency Motor Stop",
+        "166": "Camera Record Video",
+        "167": "Camera Zoom",
+        "168": "Camera Manual Focus",
+        "169": "Camera Auto Focus",
         "208": "Flap",
         "209": "Forward Throttle",
         "210": "Airbrakes",
@@ -24860,6 +24942,10 @@
         "163": "Mount Lock",
         "164": "Pause Stream Logging",
         "165": "Arm/Emergency Motor Stop",
+        "166": "Camera Record Video",
+        "167": "Camera Zoom",
+        "168": "Camera Manual Focus",
+        "169": "Camera Auto Focus",
         "208": "Flap",
         "209": "Forward Throttle",
         "210": "Airbrakes",
@@ -25004,6 +25090,10 @@
         "163": "Mount Lock",
         "164": "Pause Stream Logging",
         "165": "Arm/Emergency Motor Stop",
+        "166": "Camera Record Video",
+        "167": "Camera Zoom",
+        "168": "Camera Manual Focus",
+        "169": "Camera Auto Focus",
         "208": "Flap",
         "209": "Forward Throttle",
         "210": "Airbrakes",
@@ -25148,6 +25238,10 @@
         "163": "Mount Lock",
         "164": "Pause Stream Logging",
         "165": "Arm/Emergency Motor Stop",
+        "166": "Camera Record Video",
+        "167": "Camera Zoom",
+        "168": "Camera Manual Focus",
+        "169": "Camera Auto Focus",
         "208": "Flap",
         "209": "Forward Throttle",
         "210": "Airbrakes",
@@ -25292,6 +25386,10 @@
         "163": "Mount Lock",
         "164": "Pause Stream Logging",
         "165": "Arm/Emergency Motor Stop",
+        "166": "Camera Record Video",
+        "167": "Camera Zoom",
+        "168": "Camera Manual Focus",
+        "169": "Camera Auto Focus",
         "208": "Flap",
         "209": "Forward Throttle",
         "210": "Airbrakes",
@@ -25436,6 +25534,10 @@
         "163": "Mount Lock",
         "164": "Pause Stream Logging",
         "165": "Arm/Emergency Motor Stop",
+        "166": "Camera Record Video",
+        "167": "Camera Zoom",
+        "168": "Camera Manual Focus",
+        "169": "Camera Auto Focus",
         "208": "Flap",
         "209": "Forward Throttle",
         "210": "Airbrakes",
@@ -25580,6 +25682,10 @@
         "163": "Mount Lock",
         "164": "Pause Stream Logging",
         "165": "Arm/Emergency Motor Stop",
+        "166": "Camera Record Video",
+        "167": "Camera Zoom",
+        "168": "Camera Manual Focus",
+        "169": "Camera Auto Focus",
         "208": "Flap",
         "209": "Forward Throttle",
         "210": "Airbrakes",

@@ -2428,6 +2428,26 @@ User provided field elevation in meters. This is used to improve the calculation
 
 - Volatile: True
 
+## BARO_ALTERR_MAX: Altitude error maximum
+
+*Note: This parameter is for advanced users*
+
+This is the maximum acceptable altitude discrepancy between GPS altitude and barometric presssure altitude calculated against a standard atmosphere for arming checks to pass. If you are getting an arming error due to this parameter then you may have a faulty or substituted barometer. A common issue is vendors replacing a MS5611 in a "Pixhawk" with a MS5607. If you have that issue then please see BARO_OPTIONS parameter to force the MS5611 to be treated as a MS5607. This check is disabled if the value is zero.
+
+- Units: m
+
+- Increment: 1
+
+- Range: 0 5000
+
+## BARO_OPTIONS: Barometer options
+
+*Note: This parameter is for advanced users*
+
+Barometer options
+
+- Bitmask: 0:Treat MS5611 as MS5607
+
 # BARO1WCF Parameters
 
 ## BARO1_WCF_ENABLE: Wind coefficient enable
@@ -5480,12 +5500,13 @@ This allows selection of a PX4 or VRBRAIN board type. If set to zero then the bo
 
 *Note: This parameter is for advanced users*
 
-This allows for the IO co-processor on FMUv1 and FMUv2 to be disabled
+This allows for the IO co-processor on boards with an IOMCU to be disabled. Setting to 2 will enable the IOMCU but not attempt to update firmware on startup
 
 |Value|Meaning|
 |:---:|:---:|
 |0|Disabled|
 |1|Enabled|
+|2|EnableNoFWUpdate|
 
 - RebootRequired: True
 
@@ -5493,7 +5514,7 @@ This allows for the IO co-processor on FMUv1 and FMUv2 to be disabled
 
 This controls the activation of the safety button. It allows you to control if the safety button can be used for safety enable and/or disable, and whether the button is only active when disarmed
 
-- Bitmask: 0:ActiveForSafetyEnable,1:ActiveForSafetyDisable,2:ActiveWhenArmed,3:Force safety on when the aircraft disarms
+- Bitmask: 0:ActiveForSafetyDisable,1:ActiveForSafetyEnable,2:ActiveWhenArmed,3:Force safety on when the aircraft disarms
 
 ## BRD_VBUS_MIN: Autopilot board voltage requirement
 
@@ -5971,6 +5992,10 @@ Auxiliary RC Options function executed on pin change
 |163|Mount Lock|
 |164|Pause Stream Logging|
 |165|Arm/Emergency Motor Stop|
+|166|Camera Record Video|
+|167|Camera Zoom|
+|168|Camera Manual Focus|
+|169|Camera Auto Focus|
 |208|Flap|
 |209|Forward Throttle|
 |210|Airbrakes|
@@ -6061,6 +6086,10 @@ Auxiliary RC Options function executed on pin change
 |163|Mount Lock|
 |164|Pause Stream Logging|
 |165|Arm/Emergency Motor Stop|
+|166|Camera Record Video|
+|167|Camera Zoom|
+|168|Camera Manual Focus|
+|169|Camera Auto Focus|
 |208|Flap|
 |209|Forward Throttle|
 |210|Airbrakes|
@@ -6151,6 +6180,10 @@ Auxiliary RC Options function executed on pin change
 |163|Mount Lock|
 |164|Pause Stream Logging|
 |165|Arm/Emergency Motor Stop|
+|166|Camera Record Video|
+|167|Camera Zoom|
+|168|Camera Manual Focus|
+|169|Camera Auto Focus|
 |208|Flap|
 |209|Forward Throttle|
 |210|Airbrakes|
@@ -6241,6 +6274,10 @@ Auxiliary RC Options function executed on pin change
 |163|Mount Lock|
 |164|Pause Stream Logging|
 |165|Arm/Emergency Motor Stop|
+|166|Camera Record Video|
+|167|Camera Zoom|
+|168|Camera Manual Focus|
+|169|Camera Auto Focus|
 |208|Flap|
 |209|Forward Throttle|
 |210|Airbrakes|
@@ -6270,6 +6307,7 @@ how to trigger the camera to take a picture
 |0|Servo|
 |1|Relay|
 |2|GoPro in Solo Gimbal|
+|3|Mount (Siyi)|
 
 ## CAM_DURATION: Duration that shutter is held open
 
@@ -6383,7 +6421,7 @@ RunCam deviee type used to determine OSD menu structure and shutter options.
 |1|RunCam Split Micro/RunCam with UART|
 |2|RunCam Split|
 |3|RunCam Split4 4k|
-|4|RunCam Hybrid|
+|4|RunCam Hybrid/RunCam Thumb Pro|
 
 ## CAM_RC_FEATURES: RunCam features available
 
@@ -8288,9 +8326,9 @@ DroneCAN driver index, 0 to disable DroneCAN
 
 ## DID_OPTIONS: OpenDroneID options
 
-Options for OpenDroneID subsystem. Bit 0 means to enforce arming checks
+Options for OpenDroneID subsystem
 
-- Bitmask: 0:EnforceArming
+- Bitmask: 0:EnforceArming, 1:AllowNonGPSPosition
 
 ## DID_BARO_ACC: Barometer vertical accuraacy
 
@@ -13313,6 +13351,7 @@ Mount Type
 |5|SToRM32 Serial|
 |6|Gremsy|
 |7|BrushlessPWM|
+|8|Siyi|
 
 - RebootRequired: True
 
@@ -13495,6 +13534,7 @@ Mount Type
 |5|SToRM32 Serial|
 |6|Gremsy|
 |7|BrushlessPWM|
+|8|Siyi|
 
 - RebootRequired: True
 
@@ -20421,7 +20461,7 @@ This controls the mavlink type given in HEARTBEAT messages. For some GCS types a
 
 Level Transition:Keep wings within LEVEL_ROLL_LIMIT and only use forward motor(s) for climb during transition, Allow FW Takeoff: If bit is not set then NAV_TAKEOFF command on quadplanes will instead perform a NAV_VTOL takeoff, Allow FW Land:If bit is not set then NAV_LAND command on quadplanes will instead perform a NAV_VTOL_LAND, Vtol Takeoff Frame: command NAV_VTOL_TAKEOFF altitude is as set by the command's reference frame rather than a delta above current location, Always use FW spiral approach:Always use Use a fixed wing spiral approach for VTOL landings, USE QRTL:instead of QLAND for rc failsafe when in VTOL modes, Use Governor:Use ICE Idle Governor in MANUAL for forward motor, Force Qassist: on always,Mtrs_Only_Qassist: in tailsitters only, uses VTOL motors and not flying surfaces for QASSIST, Airmode_On_Arm:Airmode enabled when arming by aux switch, Disarmed Yaw Tilt:Enable motor tilt for yaw when disarmed, Delay Spoolup:Delay VTOL spoolup for 2 seconds after arming, ThrLandControl: enable throttle stick control of landing rate, DisableApproach: Disable use of approach and airbrake stages in VTOL landing, EnableLandResposition: enable pilot controlled repositioning in AUTO land. Descent will pause while repositioning. ARMVTOL: Arm only in VTOL or AUTO modes. CompleteTransition: to fixed wing if Q_TRANS_FAIL timer times out instead of QLAND. Force RTL mode: forces RTL mode on rc failsafe in VTOL modes overriding bit 5(USE_QRTL).
 
-- Bitmask: 0:Level Transition,1:Allow FW Takeoff,2:Allow FW Land,3:Vtol Takeoff Frame,4:Always use FW spiral approach,5:Use QRTL,6:Use Governor,7:Force Qassist,8:Mtrs_Only_Qassist,10:Disarmed Yaw Tilt,11:Delay Spoolup,12:disable Qassist based on synthetic airspeed,13:Disable Ground Effect Compensation,14:Ignore forward flight angle limits in Qmodes,15:ThrLandControl,16:DisableApproach,17:EnableLandReposition,18:ARMVtol, 19: CompleteTransition if Q_TRANS_FAIL, 20: Force RTL mode on VTOL failsafes overriding bit 5(USE QRTL)
+- Bitmask: 0:Level Transition,1:Allow FW Takeoff,2:Allow FW Land,3:Vtol Takeoff Frame,4:Always use FW spiral approach,5:Use QRTL,6:Use Governor,7:Force Qassist,8:Mtrs_Only_Qassist,10:Disarmed Yaw Tilt,11:Delay Spoolup,12:disable Qassist based on synthetic airspeed,13:Disable Ground Effect Compensation,14:Ignore forward flight angle limits in Qmodes,15:ThrLandControl,16:DisableApproach,17:EnableLandReposition,18:ARMVtol, 19: CompleteTransition if Q_TRANS_FAIL, 20: Force RTL mode on VTOL failsafes overriding bit 5(USE QRTL), 21:Tilt rotor tilt motors up when disarmed in FW modes (except manual) to prevent ground strikes
 
 ## Q_TRANS_DECEL: Transition deceleration
 
@@ -22175,7 +22215,7 @@ Timeout after which RC overrides will no longer be used, and RC input will resum
 
 RC input options
 
-- Bitmask: 0:Ignore RC Receiver, 1:Ignore MAVLink Overrides, 2:Ignore Receiver Failsafe bit but allow other RC failsafes if setup, 3:FPort Pad, 4:Log RC input bytes, 5:Arming check throttle for 0 input, 6:Skip the arming check for neutral Roll/Pitch/Yaw sticks, 7:Allow Switch reverse, 8:Use passthrough for CRSF telemetry, 9:Suppress CRSF mode/rate message for ELRS systems,10:Enable multiple receiver support, 11:CRSF RSSI shows Link Quality
+- Bitmask: 0:Ignore RC Receiver, 1:Ignore MAVLink Overrides, 2:Ignore Receiver Failsafe bit but allow other RC failsafes if setup, 3:FPort Pad, 4:Log RC input bytes, 5:Arming check throttle for 0 input, 6:Skip the arming check for neutral Roll/Pitch/Yaw sticks, 7:Allow Switch reverse, 8:Use passthrough for CRSF telemetry, 9:Suppress CRSF mode/rate message for ELRS systems,10:Enable multiple receiver support, 11:Use Link Quality for RSSI with CRSF, 13: Use 420kbaud for ELRS protocol
 
 ## RC_PROTOCOLS: RC protocols enabled
 
@@ -22316,6 +22356,10 @@ Function assigned to this RC channel
 |163|Mount Lock|
 |164|Pause Stream Logging|
 |165|Arm/Emergency Motor Stop|
+|166|Camera Record Video|
+|167|Camera Zoom|
+|168|Camera Manual Focus|
+|169|Camera Auto Focus|
 |208|Flap|
 |209|Forward Throttle|
 |210|Airbrakes|
