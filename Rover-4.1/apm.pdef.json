@@ -1503,7 +1503,7 @@
         "15": "CubeOrange",
         "17": "Durandal",
         "3": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1",
-        "4": "CubeOrange_PM2/Navigator"
+        "4": "CubeOrange_PM2"
       }
     },
     "BATT2_FS_CRT_ACT": {
@@ -1621,8 +1621,7 @@
         "13": "Pixhawk2_PM2/CubeOrange_PM2",
         "14": "CubeOrange",
         "16": "Durandal",
-        "2": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1",
-        "5": "Navigator"
+        "2": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1"
       }
     }
   },
@@ -1695,7 +1694,7 @@
         "15": "CubeOrange",
         "17": "Durandal",
         "3": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1",
-        "4": "CubeOrange_PM2/Navigator"
+        "4": "CubeOrange_PM2"
       }
     },
     "BATT3_FS_CRT_ACT": {
@@ -1813,8 +1812,7 @@
         "13": "Pixhawk2_PM2/CubeOrange_PM2",
         "14": "CubeOrange",
         "16": "Durandal",
-        "2": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1",
-        "5": "Navigator"
+        "2": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1"
       }
     }
   },
@@ -1887,7 +1885,7 @@
         "15": "CubeOrange",
         "17": "Durandal",
         "3": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1",
-        "4": "CubeOrange_PM2/Navigator"
+        "4": "CubeOrange_PM2"
       }
     },
     "BATT4_FS_CRT_ACT": {
@@ -2005,8 +2003,7 @@
         "13": "Pixhawk2_PM2/CubeOrange_PM2",
         "14": "CubeOrange",
         "16": "Durandal",
-        "2": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1",
-        "5": "Navigator"
+        "2": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1"
       }
     }
   },
@@ -2079,7 +2076,7 @@
         "15": "CubeOrange",
         "17": "Durandal",
         "3": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1",
-        "4": "CubeOrange_PM2/Navigator"
+        "4": "CubeOrange_PM2"
       }
     },
     "BATT5_FS_CRT_ACT": {
@@ -2197,8 +2194,7 @@
         "13": "Pixhawk2_PM2/CubeOrange_PM2",
         "14": "CubeOrange",
         "16": "Durandal",
-        "2": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1",
-        "5": "Navigator"
+        "2": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1"
       }
     }
   },
@@ -2271,7 +2267,7 @@
         "15": "CubeOrange",
         "17": "Durandal",
         "3": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1",
-        "4": "CubeOrange_PM2/Navigator"
+        "4": "CubeOrange_PM2"
       }
     },
     "BATT6_FS_CRT_ACT": {
@@ -2389,8 +2385,7 @@
         "13": "Pixhawk2_PM2/CubeOrange_PM2",
         "14": "CubeOrange",
         "16": "Durandal",
-        "2": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1",
-        "5": "Navigator"
+        "2": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1"
       }
     }
   },
@@ -2463,7 +2458,7 @@
         "15": "CubeOrange",
         "17": "Durandal",
         "3": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1",
-        "4": "CubeOrange_PM2/Navigator"
+        "4": "CubeOrange_PM2"
       }
     },
     "BATT7_FS_CRT_ACT": {
@@ -2581,8 +2576,7 @@
         "13": "Pixhawk2_PM2/CubeOrange_PM2",
         "14": "CubeOrange",
         "16": "Durandal",
-        "2": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1",
-        "5": "Navigator"
+        "2": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1"
       }
     }
   },
@@ -2655,7 +2649,7 @@
         "15": "CubeOrange",
         "17": "Durandal",
         "3": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1",
-        "4": "CubeOrange_PM2/Navigator"
+        "4": "CubeOrange_PM2"
       }
     },
     "BATT8_FS_CRT_ACT": {
@@ -2773,8 +2767,7 @@
         "13": "Pixhawk2_PM2/CubeOrange_PM2",
         "14": "CubeOrange",
         "16": "Durandal",
-        "2": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1",
-        "5": "Navigator"
+        "2": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1"
       }
     }
   },
@@ -2847,7 +2840,7 @@
         "15": "CubeOrange",
         "17": "Durandal",
         "3": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1",
-        "4": "CubeOrange_PM2/Navigator"
+        "4": "CubeOrange_PM2"
       }
     },
     "BATT9_FS_CRT_ACT": {
@@ -2965,8 +2958,7 @@
         "13": "Pixhawk2_PM2/CubeOrange_PM2",
         "14": "CubeOrange",
         "16": "Durandal",
-        "2": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1",
-        "5": "Navigator"
+        "2": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1"
       }
     }
   },
@@ -3039,7 +3031,7 @@
         "15": "CubeOrange",
         "17": "Durandal",
         "3": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1",
-        "4": "CubeOrange_PM2/Navigator"
+        "4": "CubeOrange_PM2"
       }
     },
     "BATT_FS_CRT_ACT": {
@@ -3157,8 +3149,7 @@
         "13": "Pixhawk2_PM2/CubeOrange_PM2",
         "14": "CubeOrange",
         "16": "Durandal",
-        "2": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1",
-        "5": "Navigator"
+        "2": "Pixhawk/Pixracer/Navio2/Pixhawk2_PM1"
       }
     }
   },
@@ -4282,6 +4273,7 @@
       "Values": {
         "0": "Disabled",
         "1": "UAVCAN",
+        "11": "Benewake",
         "3": "ToshibaCAN",
         "4": "PiccoloCAN",
         "5": "CANTester",
@@ -4474,6 +4466,7 @@
       "Values": {
         "0": "Disabled",
         "1": "UAVCAN",
+        "11": "Benewake",
         "3": "ToshibaCAN",
         "4": "PiccoloCAN",
         "5": "CANTester",
@@ -4666,6 +4659,7 @@
       "Values": {
         "0": "Disabled",
         "1": "UAVCAN",
+        "11": "Benewake",
         "3": "ToshibaCAN",
         "4": "PiccoloCAN",
         "5": "CANTester",
@@ -20066,6 +20060,15 @@
       "Units": "m",
       "User": "Standard"
     },
+    "RNGFND1_RECV_ID": {
+      "Description": "The receive ID of the CAN frames. A value of zero means all IDs are accepted.",
+      "DisplayName": "CAN receive ID",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
     "RNGFND1_RMETRIC": {
       "Description": "This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.",
       "DisplayName": "Ratiometric",
@@ -20081,6 +20084,15 @@
       "Increment": "0.001",
       "Units": "m/V",
       "User": "Standard"
+    },
+    "RNGFND1_SNR_MIN": {
+      "Description": "Minimum signal strength (SNR) to accept distance",
+      "DisplayName": "Minimum signal strength",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
     },
     "RNGFND1_STOP_PIN": {
       "Description": "Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.",
@@ -20136,6 +20148,7 @@
         "31": "GYUS42v2",
         "32": "MSP",
         "33": "USD1_CAN",
+        "34": "Benewake_CAN",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -20327,6 +20340,15 @@
       "Units": "m",
       "User": "Standard"
     },
+    "RNGFND2_RECV_ID": {
+      "Description": "The receive ID of the CAN frames. A value of zero means all IDs are accepted.",
+      "DisplayName": "CAN receive ID",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
     "RNGFND2_RMETRIC": {
       "Description": "This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.",
       "DisplayName": "Ratiometric",
@@ -20342,6 +20364,15 @@
       "Increment": "0.001",
       "Units": "m/V",
       "User": "Standard"
+    },
+    "RNGFND2_SNR_MIN": {
+      "Description": "Minimum signal strength (SNR) to accept distance",
+      "DisplayName": "Minimum signal strength",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
     },
     "RNGFND2_STOP_PIN": {
       "Description": "Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.",
@@ -20397,6 +20428,7 @@
         "31": "GYUS42v2",
         "32": "MSP",
         "33": "USD1_CAN",
+        "34": "Benewake_CAN",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -20588,6 +20620,15 @@
       "Units": "m",
       "User": "Standard"
     },
+    "RNGFND3_RECV_ID": {
+      "Description": "The receive ID of the CAN frames. A value of zero means all IDs are accepted.",
+      "DisplayName": "CAN receive ID",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
     "RNGFND3_RMETRIC": {
       "Description": "This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.",
       "DisplayName": "Ratiometric",
@@ -20603,6 +20644,15 @@
       "Increment": "0.001",
       "Units": "m/V",
       "User": "Standard"
+    },
+    "RNGFND3_SNR_MIN": {
+      "Description": "Minimum signal strength (SNR) to accept distance",
+      "DisplayName": "Minimum signal strength",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
     },
     "RNGFND3_STOP_PIN": {
       "Description": "Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.",
@@ -20658,6 +20708,7 @@
         "31": "GYUS42v2",
         "32": "MSP",
         "33": "USD1_CAN",
+        "34": "Benewake_CAN",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -20849,6 +20900,15 @@
       "Units": "m",
       "User": "Standard"
     },
+    "RNGFND4_RECV_ID": {
+      "Description": "The receive ID of the CAN frames. A value of zero means all IDs are accepted.",
+      "DisplayName": "CAN receive ID",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
     "RNGFND4_RMETRIC": {
       "Description": "This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.",
       "DisplayName": "Ratiometric",
@@ -20864,6 +20924,15 @@
       "Increment": "0.001",
       "Units": "m/V",
       "User": "Standard"
+    },
+    "RNGFND4_SNR_MIN": {
+      "Description": "Minimum signal strength (SNR) to accept distance",
+      "DisplayName": "Minimum signal strength",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
     },
     "RNGFND4_STOP_PIN": {
       "Description": "Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.",
@@ -20919,6 +20988,7 @@
         "31": "GYUS42v2",
         "32": "MSP",
         "33": "USD1_CAN",
+        "34": "Benewake_CAN",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -21110,6 +21180,15 @@
       "Units": "m",
       "User": "Standard"
     },
+    "RNGFND5_RECV_ID": {
+      "Description": "The receive ID of the CAN frames. A value of zero means all IDs are accepted.",
+      "DisplayName": "CAN receive ID",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
     "RNGFND5_RMETRIC": {
       "Description": "This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.",
       "DisplayName": "Ratiometric",
@@ -21125,6 +21204,15 @@
       "Increment": "0.001",
       "Units": "m/V",
       "User": "Standard"
+    },
+    "RNGFND5_SNR_MIN": {
+      "Description": "Minimum signal strength (SNR) to accept distance",
+      "DisplayName": "Minimum signal strength",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
     },
     "RNGFND5_STOP_PIN": {
       "Description": "Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.",
@@ -21180,6 +21268,7 @@
         "31": "GYUS42v2",
         "32": "MSP",
         "33": "USD1_CAN",
+        "34": "Benewake_CAN",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -21371,6 +21460,15 @@
       "Units": "m",
       "User": "Standard"
     },
+    "RNGFND6_RECV_ID": {
+      "Description": "The receive ID of the CAN frames. A value of zero means all IDs are accepted.",
+      "DisplayName": "CAN receive ID",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
     "RNGFND6_RMETRIC": {
       "Description": "This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.",
       "DisplayName": "Ratiometric",
@@ -21386,6 +21484,15 @@
       "Increment": "0.001",
       "Units": "m/V",
       "User": "Standard"
+    },
+    "RNGFND6_SNR_MIN": {
+      "Description": "Minimum signal strength (SNR) to accept distance",
+      "DisplayName": "Minimum signal strength",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
     },
     "RNGFND6_STOP_PIN": {
       "Description": "Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.",
@@ -21441,6 +21548,7 @@
         "31": "GYUS42v2",
         "32": "MSP",
         "33": "USD1_CAN",
+        "34": "Benewake_CAN",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -21632,6 +21740,15 @@
       "Units": "m",
       "User": "Standard"
     },
+    "RNGFND7_RECV_ID": {
+      "Description": "The receive ID of the CAN frames. A value of zero means all IDs are accepted.",
+      "DisplayName": "CAN receive ID",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
     "RNGFND7_RMETRIC": {
       "Description": "This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.",
       "DisplayName": "Ratiometric",
@@ -21647,6 +21764,15 @@
       "Increment": "0.001",
       "Units": "m/V",
       "User": "Standard"
+    },
+    "RNGFND7_SNR_MIN": {
+      "Description": "Minimum signal strength (SNR) to accept distance",
+      "DisplayName": "Minimum signal strength",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
     },
     "RNGFND7_STOP_PIN": {
       "Description": "Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.",
@@ -21702,6 +21828,7 @@
         "31": "GYUS42v2",
         "32": "MSP",
         "33": "USD1_CAN",
+        "34": "Benewake_CAN",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -21893,6 +22020,15 @@
       "Units": "m",
       "User": "Standard"
     },
+    "RNGFND8_RECV_ID": {
+      "Description": "The receive ID of the CAN frames. A value of zero means all IDs are accepted.",
+      "DisplayName": "CAN receive ID",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
     "RNGFND8_RMETRIC": {
       "Description": "This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.",
       "DisplayName": "Ratiometric",
@@ -21908,6 +22044,15 @@
       "Increment": "0.001",
       "Units": "m/V",
       "User": "Standard"
+    },
+    "RNGFND8_SNR_MIN": {
+      "Description": "Minimum signal strength (SNR) to accept distance",
+      "DisplayName": "Minimum signal strength",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
     },
     "RNGFND8_STOP_PIN": {
       "Description": "Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.",
@@ -21963,6 +22108,7 @@
         "31": "GYUS42v2",
         "32": "MSP",
         "33": "USD1_CAN",
+        "34": "Benewake_CAN",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -22154,6 +22300,15 @@
       "Units": "m",
       "User": "Standard"
     },
+    "RNGFND9_RECV_ID": {
+      "Description": "The receive ID of the CAN frames. A value of zero means all IDs are accepted.",
+      "DisplayName": "CAN receive ID",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
     "RNGFND9_RMETRIC": {
       "Description": "This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.",
       "DisplayName": "Ratiometric",
@@ -22169,6 +22324,15 @@
       "Increment": "0.001",
       "Units": "m/V",
       "User": "Standard"
+    },
+    "RNGFND9_SNR_MIN": {
+      "Description": "Minimum signal strength (SNR) to accept distance",
+      "DisplayName": "Minimum signal strength",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
     },
     "RNGFND9_STOP_PIN": {
       "Description": "Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.",
@@ -22224,6 +22388,7 @@
         "31": "GYUS42v2",
         "32": "MSP",
         "33": "USD1_CAN",
+        "34": "Benewake_CAN",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -22415,6 +22580,15 @@
       "Units": "m",
       "User": "Standard"
     },
+    "RNGFNDA_RECV_ID": {
+      "Description": "The receive ID of the CAN frames. A value of zero means all IDs are accepted.",
+      "DisplayName": "CAN receive ID",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
     "RNGFNDA_RMETRIC": {
       "Description": "This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.",
       "DisplayName": "Ratiometric",
@@ -22430,6 +22604,15 @@
       "Increment": "0.001",
       "Units": "m/V",
       "User": "Standard"
+    },
+    "RNGFNDA_SNR_MIN": {
+      "Description": "Minimum signal strength (SNR) to accept distance",
+      "DisplayName": "Minimum signal strength",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
     },
     "RNGFNDA_STOP_PIN": {
       "Description": "Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.",
@@ -22485,6 +22668,7 @@
         "31": "GYUS42v2",
         "32": "MSP",
         "33": "USD1_CAN",
+        "34": "Benewake_CAN",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
