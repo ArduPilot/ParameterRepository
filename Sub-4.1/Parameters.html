@@ -444,6 +444,17 @@ DO NOT EDIT
 </ul>
 
 
+<h2>Control Frame (ArduSub:CONTROL_FRAME)</h2>
+
+<p>Control Frame used in stabilized modes</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Standard</td></tr>
+<tr><td>1</td><td>Body frame Yaw/Pitch/Roll</td></tr>
+</table>
+</ul>
+
+
 <h1>AHRS_ Parameters</h1>
 
 
@@ -1500,12 +1511,13 @@ DO NOT EDIT
 
 <h2>External baro bus (BARO_EXT_BUS)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>This selects the bus number for looking for an I2C barometer. When set to -1 it will probe all external i2c buses based on the GND_PROBE_EXT parameter.</p>
+<p>This selects the bus number for looking for an I2C barometer. When set to -1 it will probe all external i2c buses based on the BARO_PROBE_EXT parameter.</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>-1</td><td>Disabled</td></tr>
 <tr><td>0</td><td>Bus0</td></tr>
 <tr><td>1</td><td>Bus1</td></tr>
+<tr><td>6</td><td>Bus6</td></tr>
 </table>
 </ul>
 
@@ -1552,7 +1564,7 @@ DO NOT EDIT
 
 <h2>External barometers to probe (BARO_PROBE_EXT)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>This sets which types of external i2c barometer to look for. It is a bitmask of barometer types. The I2C buses to probe is based on GND_EXT_BUS. If BARO_EXT_BUS is -1 then it will probe all external buses, otherwise it will probe just the bus number given in GND_EXT_BUS.</p>
+<p>This sets which types of external i2c barometer to look for. It is a bitmask of barometer types. The I2C buses to probe is based on BARO_EXT_BUS. If BARO_EXT_BUS is -1 then it will probe all external buses, otherwise it will probe just the bus number given in BARO_EXT_BUS.</p>
 <ul>
 <li>Bitmask: 0:BMP085,1:BMP280,2:MS5611,3:MS5607,4:MS5637,5:FBM320,6:DPS280,7:LPS25H,8:Keller,9:MS5837,10:BMP388,11:SPL06,12:MSP</li>
 </ul>

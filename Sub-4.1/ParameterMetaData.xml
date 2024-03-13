@@ -853,10 +853,10 @@
       <User>Advanced</User>
     </BARO_ALT_OFFSET>
     <BARO_EXT_BUS>
-      <Description>This selects the bus number for looking for an I2C barometer. When set to -1 it will probe all external i2c buses based on the GND_PROBE_EXT parameter.</Description>
+      <Description>This selects the bus number for looking for an I2C barometer. When set to -1 it will probe all external i2c buses based on the BARO_PROBE_EXT parameter.</Description>
       <DisplayName>External baro bus</DisplayName>
       <User>Advanced</User>
-      <Values>-1:Disabled,0:Bus0,1:Bus1</Values>
+      <Values>-1:Disabled,0:Bus0,1:Bus1,6:Bus6</Values>
     </BARO_EXT_BUS>
     <BARO_FLTR_RNG>
       <Description>This sets the range around the average value that new samples must be within to be accepted. This can help reduce the impact of noise on sensors that are on long I2C cables. The value is a percentage from the average value. A value of zero disables this filter.</Description>
@@ -881,7 +881,7 @@
     </BARO_PRIMARY>
     <BARO_PROBE_EXT>
       <Bitmask>0:BMP085,1:BMP280,2:MS5611,3:MS5607,4:MS5637,5:FBM320,6:DPS280,7:LPS25H,8:Keller,9:MS5837,10:BMP388,11:SPL06,12:MSP</Bitmask>
-      <Description>This sets which types of external i2c barometer to look for. It is a bitmask of barometer types. The I2C buses to probe is based on GND_EXT_BUS. If BARO_EXT_BUS is -1 then it will probe all external buses, otherwise it will probe just the bus number given in GND_EXT_BUS.</Description>
+      <Description>This sets which types of external i2c barometer to look for. It is a bitmask of barometer types. The I2C buses to probe is based on BARO_EXT_BUS. If BARO_EXT_BUS is -1 then it will probe all external buses, otherwise it will probe just the bus number given in BARO_EXT_BUS.</Description>
       <DisplayName>External barometers to probe</DisplayName>
       <User>Advanced</User>
     </BARO_PROBE_EXT>
@@ -3547,6 +3547,12 @@
       <User>Advanced</User>
       <Values>0:Disabled,1:Enabled</Values>
     </COMPASS_USE3>
+    <CONTROL_FRAME>
+      <Description>Control Frame used in stabilized modes</Description>
+      <DisplayName>Control Frame</DisplayName>
+      <User>Standard</User>
+      <Values>0:Standard,1:Body frame Yaw/Pitch/Roll</Values>
+    </CONTROL_FRAME>
     <EAHRS_RATE>
       <Description>Requested rate for AHRS device</Description>
       <DisplayName>AHRS data rate</DisplayName>
