@@ -3400,6 +3400,24 @@ DO NOT EDIT
 </ul>
 
 
+<h2>Altitude error maximum (BARO_ALTERR_MAX)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>This is the maximum acceptable altitude discrepancy between GPS altitude and barometric presssure altitude calculated against a standard atmosphere for arming checks to pass. If you are getting an arming error due to this parameter then you may have a faulty or substituted barometer. A common issue is vendors replacing a MS5611 in a &quot;Pixhawk&quot; with a MS5607. If you have that issue then please see BARO_OPTIONS parameter to force the MS5611 to be treated as a MS5607. This check is disabled if the value is zero.</p>
+<ul>
+<li>Units: meters</li>
+<li>Increment: 1</li>
+<li>Range: 0 5000</li>
+</ul>
+
+
+<h2>Barometer options (BARO_OPTIONS)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Barometer options</p>
+<ul>
+<li>Bitmask: 0:Treat MS5611 as MS5607</li>
+</ul>
+
+
 <h1>BARO1_WCF_ Parameters</h1>
 
 
@@ -6538,11 +6556,12 @@ DO NOT EDIT
 
 <h2>Enable IO co-processor (BRD_IO_ENABLE)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>This allows for the IO co-processor on FMUv1 and FMUv2 to be disabled</p>
+<p>This allows for the IO co-processor on boards with an IOMCU to be disabled. Setting to 2 will enable the IOMCU but not attempt to update firmware on startup</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
 <tr><td>1</td><td>Enabled</td></tr>
+<tr><td>2</td><td>EnableNoFWUpdate</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -6552,7 +6571,7 @@ DO NOT EDIT
 
 <p>This controls the activation of the safety button. It allows you to control if the safety button can be used for safety enable and/or disable, and whether the button is only active when disarmed</p>
 <ul>
-<li>Bitmask: 0:ActiveForSafetyEnable,1:ActiveForSafetyDisable,2:ActiveWhenArmed,3:Force safety on when the aircraft disarms</li>
+<li>Bitmask: 0:ActiveForSafetyDisable,1:ActiveForSafetyEnable,2:ActiveWhenArmed,3:Force safety on when the aircraft disarms</li>
 </ul>
 
 
@@ -7064,6 +7083,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>212</td><td>Mount1 Roll</td></tr>
 <tr><td>213</td><td>Mount1 Pitch</td></tr>
 <tr><td>214</td><td>Mount1 Yaw</td></tr>
@@ -7175,6 +7198,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>212</td><td>Mount1 Roll</td></tr>
 <tr><td>213</td><td>Mount1 Pitch</td></tr>
 <tr><td>214</td><td>Mount1 Yaw</td></tr>
@@ -7286,6 +7313,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>212</td><td>Mount1 Roll</td></tr>
 <tr><td>213</td><td>Mount1 Pitch</td></tr>
 <tr><td>214</td><td>Mount1 Yaw</td></tr>
@@ -7397,6 +7428,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>212</td><td>Mount1 Roll</td></tr>
 <tr><td>213</td><td>Mount1 Pitch</td></tr>
 <tr><td>214</td><td>Mount1 Yaw</td></tr>
@@ -7426,6 +7461,7 @@ DO NOT EDIT
 <tr><td>0</td><td>Servo</td></tr>
 <tr><td>1</td><td>Relay</td></tr>
 <tr><td>2</td><td>GoPro in Solo Gimbal</td></tr>
+<tr><td>3</td><td>Mount (Siyi)</td></tr>
 </table>
 </ul>
 
@@ -7557,7 +7593,7 @@ DO NOT EDIT
 <tr><td>1</td><td>RunCam Split Micro/RunCam with UART</td></tr>
 <tr><td>2</td><td>RunCam Split</td></tr>
 <tr><td>3</td><td>RunCam Split4 4k</td></tr>
-<tr><td>4</td><td>RunCam Hybrid</td></tr>
+<tr><td>4</td><td>RunCam Hybrid/RunCam Thumb Pro</td></tr>
 </table>
 </ul>
 
@@ -9537,9 +9573,9 @@ DO NOT EDIT
 
 <h2>OpenDroneID options (DID_OPTIONS)</h2>
 
-<p>Options for OpenDroneID subsystem. Bit 0 means to enforce arming checks</p>
+<p>Options for OpenDroneID subsystem</p>
 <ul>
-<li>Bitmask: 0:EnforceArming</li>
+<li>Bitmask: 0:EnforceArming, 1:AllowNonGPSPosition</li>
 </ul>
 
 
@@ -14689,6 +14725,7 @@ DO NOT EDIT
 <tr><td>5</td><td>SToRM32 Serial</td></tr>
 <tr><td>6</td><td>Gremsy</td></tr>
 <tr><td>7</td><td>BrushlessPWM</td></tr>
+<tr><td>8</td><td>Siyi</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -14875,6 +14912,7 @@ DO NOT EDIT
 <tr><td>5</td><td>SToRM32 Serial</td></tr>
 <tr><td>6</td><td>Gremsy</td></tr>
 <tr><td>7</td><td>BrushlessPWM</td></tr>
+<tr><td>8</td><td>Siyi</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -23948,7 +23986,7 @@ DO NOT EDIT
 
 <p>Precision Landing Extra Options</p>
 <ul>
-<li>Bitmask: 0: Moving Landing Target</li>
+<li>Bitmask: 0: Moving Landing Target, 1: Allow Precision Landing after manual reposition </li>
 </ul>
 
 
@@ -24847,7 +24885,7 @@ DO NOT EDIT
 
 <p>RC input options</p>
 <ul>
-<li>Bitmask: 0:Ignore RC Receiver, 1:Ignore MAVLink Overrides, 2:Ignore Receiver Failsafe bit but allow other RC failsafes if setup, 3:FPort Pad, 4:Log RC input bytes, 5:Arming check throttle for 0 input, 6:Skip the arming check for neutral Roll/Pitch/Yaw sticks, 7:Allow Switch reverse, 8:Use passthrough for CRSF telemetry, 9:Suppress CRSF mode/rate message for ELRS systems,10:Enable multiple receiver support, 11:CRSF RSSI shows Link Quality</li>
+<li>Bitmask: 0:Ignore RC Receiver, 1:Ignore MAVLink Overrides, 2:Ignore Receiver Failsafe bit but allow other RC failsafes if setup, 3:FPort Pad, 4:Log RC input bytes, 5:Arming check throttle for 0 input, 6:Skip the arming check for neutral Roll/Pitch/Yaw sticks, 7:Allow Switch reverse, 8:Use passthrough for CRSF telemetry, 9:Suppress CRSF mode/rate message for ELRS systems,10:Enable multiple receiver support, 11:Use Link Quality for RSSI with CRSF, 13: Use 420kbaud for ELRS protocol</li>
 </ul>
 
 
@@ -25005,6 +25043,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>212</td><td>Mount1 Roll</td></tr>
 <tr><td>213</td><td>Mount1 Pitch</td></tr>
 <tr><td>214</td><td>Mount1 Yaw</td></tr>
@@ -25169,6 +25211,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>212</td><td>Mount1 Roll</td></tr>
 <tr><td>213</td><td>Mount1 Pitch</td></tr>
 <tr><td>214</td><td>Mount1 Yaw</td></tr>
@@ -25333,6 +25379,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>212</td><td>Mount1 Roll</td></tr>
 <tr><td>213</td><td>Mount1 Pitch</td></tr>
 <tr><td>214</td><td>Mount1 Yaw</td></tr>
@@ -25497,6 +25547,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>212</td><td>Mount1 Roll</td></tr>
 <tr><td>213</td><td>Mount1 Pitch</td></tr>
 <tr><td>214</td><td>Mount1 Yaw</td></tr>
@@ -25661,6 +25715,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>212</td><td>Mount1 Roll</td></tr>
 <tr><td>213</td><td>Mount1 Pitch</td></tr>
 <tr><td>214</td><td>Mount1 Yaw</td></tr>
@@ -25825,6 +25883,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>212</td><td>Mount1 Roll</td></tr>
 <tr><td>213</td><td>Mount1 Pitch</td></tr>
 <tr><td>214</td><td>Mount1 Yaw</td></tr>
@@ -25989,6 +26051,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>212</td><td>Mount1 Roll</td></tr>
 <tr><td>213</td><td>Mount1 Pitch</td></tr>
 <tr><td>214</td><td>Mount1 Yaw</td></tr>
@@ -26153,6 +26219,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>212</td><td>Mount1 Roll</td></tr>
 <tr><td>213</td><td>Mount1 Pitch</td></tr>
 <tr><td>214</td><td>Mount1 Yaw</td></tr>
@@ -26317,6 +26387,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>212</td><td>Mount1 Roll</td></tr>
 <tr><td>213</td><td>Mount1 Pitch</td></tr>
 <tr><td>214</td><td>Mount1 Yaw</td></tr>
@@ -26481,6 +26555,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>212</td><td>Mount1 Roll</td></tr>
 <tr><td>213</td><td>Mount1 Pitch</td></tr>
 <tr><td>214</td><td>Mount1 Yaw</td></tr>
@@ -26645,6 +26723,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>212</td><td>Mount1 Roll</td></tr>
 <tr><td>213</td><td>Mount1 Pitch</td></tr>
 <tr><td>214</td><td>Mount1 Yaw</td></tr>
@@ -26809,6 +26891,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>212</td><td>Mount1 Roll</td></tr>
 <tr><td>213</td><td>Mount1 Pitch</td></tr>
 <tr><td>214</td><td>Mount1 Yaw</td></tr>
@@ -26973,6 +27059,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>212</td><td>Mount1 Roll</td></tr>
 <tr><td>213</td><td>Mount1 Pitch</td></tr>
 <tr><td>214</td><td>Mount1 Yaw</td></tr>
@@ -27137,6 +27227,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>212</td><td>Mount1 Roll</td></tr>
 <tr><td>213</td><td>Mount1 Pitch</td></tr>
 <tr><td>214</td><td>Mount1 Yaw</td></tr>
@@ -27301,6 +27395,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>212</td><td>Mount1 Roll</td></tr>
 <tr><td>213</td><td>Mount1 Pitch</td></tr>
 <tr><td>214</td><td>Mount1 Yaw</td></tr>
@@ -27465,6 +27563,10 @@ DO NOT EDIT
 <tr><td>163</td><td>Mount Lock</td></tr>
 <tr><td>164</td><td>Pause Stream Logging</td></tr>
 <tr><td>165</td><td>Arm/Emergency Motor Stop</td></tr>
+<tr><td>166</td><td>Camera Record Video</td></tr>
+<tr><td>167</td><td>Camera Zoom</td></tr>
+<tr><td>168</td><td>Camera Manual Focus</td></tr>
+<tr><td>169</td><td>Camera Auto Focus</td></tr>
 <tr><td>212</td><td>Mount1 Roll</td></tr>
 <tr><td>213</td><td>Mount1 Pitch</td></tr>
 <tr><td>214</td><td>Mount1 Yaw</td></tr>
