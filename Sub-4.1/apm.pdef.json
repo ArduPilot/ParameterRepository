@@ -1093,13 +1093,14 @@
       "User": "Advanced"
     },
     "BARO_EXT_BUS": {
-      "Description": "This selects the bus number for looking for an I2C barometer. When set to -1 it will probe all external i2c buses based on the GND_PROBE_EXT parameter.",
+      "Description": "This selects the bus number for looking for an I2C barometer. When set to -1 it will probe all external i2c buses based on the BARO_PROBE_EXT parameter.",
       "DisplayName": "External baro bus",
       "User": "Advanced",
       "Values": {
         "-1": "Disabled",
         "0": "Bus0",
-        "1": "Bus1"
+        "1": "Bus1",
+        "6": "Bus6"
       }
     },
     "BARO_FLTR_RNG": {
@@ -1146,7 +1147,7 @@
         "8": "Keller",
         "9": "MS5837"
       },
-      "Description": "This sets which types of external i2c barometer to look for. It is a bitmask of barometer types. The I2C buses to probe is based on GND_EXT_BUS. If BARO_EXT_BUS is -1 then it will probe all external buses, otherwise it will probe just the bus number given in GND_EXT_BUS.",
+      "Description": "This sets which types of external i2c barometer to look for. It is a bitmask of barometer types. The I2C buses to probe is based on BARO_EXT_BUS. If BARO_EXT_BUS is -1 then it will probe all external buses, otherwise it will probe just the bus number given in BARO_EXT_BUS.",
       "DisplayName": "External barometers to probe",
       "User": "Advanced"
     },
@@ -12796,7 +12797,7 @@
       }
     },
     "MOT_PWM_MAX": {
-      "Description": "This sets the max PWM value in microseconds that will ever be output to the motors, 0 = use input RC3_MAX",
+      "Description": "This sets the max PWM value in microseconds that will ever be output to the motors",
       "DisplayName": "PWM output maximum",
       "Range": {
         "high": "2000",
@@ -12806,7 +12807,7 @@
       "User": "Advanced"
     },
     "MOT_PWM_MIN": {
-      "Description": "This sets the min PWM output value in microseconds that will ever be output to the motors, 0 = use input RC3_MIN",
+      "Description": "This sets the min PWM output value in microseconds that will ever be output to the motors",
       "DisplayName": "PWM output minimum",
       "Range": {
         "high": "2000",
@@ -21981,6 +21982,15 @@
       },
       "Units": "cdeg",
       "User": "Advanced"
+    },
+    "CONTROL_FRAME": {
+      "Description": "Control Frame used in stabilized modes",
+      "DisplayName": "Control Frame",
+      "User": "Standard",
+      "Values": {
+        "0": "Standard",
+        "1": "Body frame Yaw/Pitch/Roll"
+      }
     },
     "FORMAT_VERSION": {
       "Description": "This value is incremented when changes are made to the eeprom format",

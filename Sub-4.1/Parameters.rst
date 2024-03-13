@@ -945,6 +945,31 @@ Acro roll\/pitch Expo to allow faster rotation when stick at edges
 
 
 
+.. _CONTROL_FRAME:
+
+CONTROL\_FRAME: Control Frame
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Control Frame used in stabilized modes
+
+
++---------------------------------------+
+| Values                                |
++=======================================+
+| +-------+---------------------------+ |
+| | Value | Meaning                   | |
+| +=======+===========================+ |
+| | 0     | Standard                  | |
+| +-------+---------------------------+ |
+| | 1     | Body frame Yaw/Pitch/Roll | |
+| +-------+---------------------------+ |
+|                                       |
++---------------------------------------+
+
+
+
+
 
 .. _parameters_AHRS_:
 
@@ -3168,7 +3193,7 @@ BARO\_EXT\_BUS: External baro bus
 
 | *Note: This parameter is for advanced users*
 
-This selects the bus number for looking for an I2C barometer\. When set to \-1 it will probe all external i2c buses based on the GND\_PROBE\_EXT parameter\.
+This selects the bus number for looking for an I2C barometer\. When set to \-1 it will probe all external i2c buses based on the BARO\_PROBE\_EXT parameter\.
 
 
 +----------------------+
@@ -3182,6 +3207,8 @@ This selects the bus number for looking for an I2C barometer\. When set to \-1 i
 | | 0     | Bus0     | |
 | +-------+----------+ |
 | | 1     | Bus1     | |
+| +-------+----------+ |
+| | 6     | Bus6     | |
 | +-------+----------+ |
 |                      |
 +----------------------+
@@ -3270,7 +3297,7 @@ BARO\_PROBE\_EXT: External barometers to probe
 
 | *Note: This parameter is for advanced users*
 
-This sets which types of external i2c barometer to look for\. It is a bitmask of barometer types\. The I2C buses to probe is based on GND\_EXT\_BUS\. If BARO\_EXT\_BUS is \-1 then it will probe all external buses\, otherwise it will probe just the bus number given in GND\_EXT\_BUS\.
+This sets which types of external i2c barometer to look for\. It is a bitmask of barometer types\. The I2C buses to probe is based on BARO\_EXT\_BUS\. If BARO\_EXT\_BUS is \-1 then it will probe all external buses\, otherwise it will probe just the bus number given in BARO\_EXT\_BUS\.
 
 
 +-------------------+
