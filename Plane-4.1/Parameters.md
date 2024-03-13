@@ -1117,7 +1117,7 @@ When the aircraft is within this altitude of the home waypoint, while disarmed i
 
 Flight mode specific options
 
-- Bitmask: 0:Rudder mixing in direct flight modes only (Manual / Stabilize / Acro),1:Use centered throttle in Cruise or FBWB to indicate trim airspeed, 2:Disable attitude check for takeoff arming, 3:Force target airspeed to trim airspeed in Cruise or FBWB, 4: Climb to ALT_HOLD_RTL before turning for RTL, 5: Enable yaw damper in acro mode, 6: Surpress speed scaling during auto takeoffs to be 1 or less to prevent oscillations without airpseed sensor, 7:EnableDefaultAirspeed for takeoff
+- Bitmask: 0:Rudder mixing in direct flight modes only (Manual / Stabilize / Acro),1:Use centered throttle in Cruise or FBWB to indicate trim airspeed, 2:Disable attitude check for takeoff arming, 3:Force target airspeed to trim airspeed in Cruise or FBWB, 4: Climb to ALT_HOLD_RTL before turning for RTL, 5: Enable yaw damper in acro mode, 6: Surpress speed scaling during auto takeoffs to be 1 or less to prevent oscillations without airpseed sensor, 7:EnableDefaultAirspeed for takeoff, 11:Disable suppression of fixed wing rate gains in ground mode
 
 ## TKOFF_ACCEL_CNT: Takeoff throttle acceleration count
 
@@ -4697,7 +4697,7 @@ This sets the voltage max for PWM output pulses. 0 for 3.3V and 1 for 5V output.
 
 Board specific option flags
 
-- Bitmask: 0:Enable hardware watchdog, 1:Disable MAVftp, 2:Enable set of internal parameters
+- Bitmask: 0:Enable hardware watchdog, 1:Disable MAVftp, 2:Enable set of internal parameters, 3:Enable Debug Pins
 
 ## BRD_BOOT_DELAY: Boot delay
 
@@ -5483,6 +5483,7 @@ Enabling this option starts selected protocol that will use this virtual driver
 |5|CANTester|
 |8|KDECAN|
 |9|PacketDigitalCAN|
+|11|Benewake|
 
 - RebootRequired: True
 
@@ -5594,6 +5595,14 @@ Maximum transmit rate for servo outputs
 
 - Units: Hz
 
+## CAN_D1_UC_OPTION: UAVCAN options
+
+*Note: This parameter is for advanced users*
+
+Option flags
+
+- Bitmask: 0:ClearDNADatabase,1:IgnoreDNANodeConflicts
+
 # CAND2 Parameters
 
 ## CAN_D2_PROTOCOL: Enable use of specific protocol over virtual driver
@@ -5611,6 +5620,7 @@ Enabling this option starts selected protocol that will use this virtual driver
 |5|CANTester|
 |8|KDECAN|
 |9|PacketDigitalCAN|
+|11|Benewake|
 
 - RebootRequired: True
 
@@ -5722,6 +5732,14 @@ Maximum transmit rate for servo outputs
 
 - Units: Hz
 
+## CAN_D2_UC_OPTION: UAVCAN options
+
+*Note: This parameter is for advanced users*
+
+Option flags
+
+- Bitmask: 0:ClearDNADatabase,1:IgnoreDNANodeConflicts
+
 # CAND3 Parameters
 
 ## CAN_D3_PROTOCOL: Enable use of specific protocol over virtual driver
@@ -5739,6 +5757,7 @@ Enabling this option starts selected protocol that will use this virtual driver
 |5|CANTester|
 |8|KDECAN|
 |9|PacketDigitalCAN|
+|11|Benewake|
 
 - RebootRequired: True
 
@@ -5849,6 +5868,14 @@ Maximum transmit rate for servo outputs
 - Range: 1 200
 
 - Units: Hz
+
+## CAN_D3_UC_OPTION: UAVCAN options
+
+*Note: This parameter is for advanced users*
+
+Option flags
+
+- Bitmask: 0:ClearDNADatabase,1:IgnoreDNANodeConflicts
 
 # CANP1 Parameters
 
@@ -8347,6 +8374,16 @@ This parameter sets the size of the dead zone that is applied to negative baro h
 - Range: 0.0 10.0
 
 - Increment: 0.5
+
+## EK3_PRIMARY: Primary core number
+
+*Note: This parameter is for advanced users*
+
+The core number (index in IMU mask) that will be used as the primary EKF core on startup. While disarmed the EKF will force the use of this core. A value of 0 corresponds to the first IMU in EK3_IMU_MASK.
+
+- Range: 0 2
+
+- Increment: 1
 
 # EK3SRC Parameters
 
@@ -20351,7 +20388,7 @@ Timeout after which RC overrides will no longer be used, and RC input will resum
 
 RC input options
 
-- Bitmask: 0:Ignore RC Receiver, 1:Ignore MAVLink Overrides, 2:Ignore Receiver Failsafe bit but allow other RC failsafes if setup, 3:FPort Pad, 4:Log RC input bytes, 5:Arming check throttle for 0 input, 6:Skip the arming check for neutral Roll/Pitch/Yay sticks, 7:Allow Switch reverse, 8:Use passthrough for CRSF telemetry, 9:Suppress CRSF mode/rate message for ELRS systems
+- Bitmask: 0:Ignore RC Receiver, 1:Ignore MAVLink Overrides, 2:Ignore Receiver Failsafe bit but allow other RC failsafes if setup, 3:FPort Pad, 4:Log RC input bytes, 5:Arming check throttle for 0 input, 6:Skip the arming check for neutral Roll/Pitch/Yay sticks, 7:Allow Switch reverse, 8:Use passthrough for CRSF telemetry, 9:Suppress CRSF mode/rate message for ELRS systems, 10:Enable RC Protocol re-detection
 
 ## RC_PROTOCOLS: RC protocols enabled
 
@@ -20476,6 +20513,8 @@ Function assigned to this RC channel
 |102|Camera Mode Toggle|
 |105|GPS Disable Yaw|
 |106|Disable Airspeed Use|
+|107|EnableFixedWingAutotune|
+|108|ModeQRTL|
 |208|Flap|
 |209|Forward Throttle|
 |300|Scripting1|
@@ -20810,6 +20849,7 @@ What type of rangefinder device that is connected
 |31|GYUS42v2|
 |32|MSP|
 |33|USD1_CAN|
+|34|Benewake_CAN|
 |100|SITL|
 
 ## RNGFND1_PIN: Rangefinder pin
@@ -21031,6 +21071,22 @@ Desired baud rate
 |0|Low Speed|
 |1|High Speed|
 
+## RNGFND1_RECV_ID: CAN receive ID
+
+*Note: This parameter is for advanced users*
+
+The receive ID of the CAN frames. A value of zero means all IDs are accepted.
+
+- Range: 0 65535
+
+## RNGFND1_SNR_MIN: Minimum signal strength
+
+*Note: This parameter is for advanced users*
+
+Minimum signal strength (SNR) to accept distance
+
+- Range: 0 65535
+
 # RNGFND2 Parameters
 
 ## RNGFND2_TYPE: Rangefinder type
@@ -21072,6 +21128,7 @@ What type of rangefinder device that is connected
 |31|GYUS42v2|
 |32|MSP|
 |33|USD1_CAN|
+|34|Benewake_CAN|
 |100|SITL|
 
 ## RNGFND2_PIN: Rangefinder pin
@@ -21293,6 +21350,22 @@ Desired baud rate
 |0|Low Speed|
 |1|High Speed|
 
+## RNGFND2_RECV_ID: CAN receive ID
+
+*Note: This parameter is for advanced users*
+
+The receive ID of the CAN frames. A value of zero means all IDs are accepted.
+
+- Range: 0 65535
+
+## RNGFND2_SNR_MIN: Minimum signal strength
+
+*Note: This parameter is for advanced users*
+
+Minimum signal strength (SNR) to accept distance
+
+- Range: 0 65535
+
 # RNGFND3 Parameters
 
 ## RNGFND3_TYPE: Rangefinder type
@@ -21334,6 +21407,7 @@ What type of rangefinder device that is connected
 |31|GYUS42v2|
 |32|MSP|
 |33|USD1_CAN|
+|34|Benewake_CAN|
 |100|SITL|
 
 ## RNGFND3_PIN: Rangefinder pin
@@ -21555,6 +21629,22 @@ Desired baud rate
 |0|Low Speed|
 |1|High Speed|
 
+## RNGFND3_RECV_ID: CAN receive ID
+
+*Note: This parameter is for advanced users*
+
+The receive ID of the CAN frames. A value of zero means all IDs are accepted.
+
+- Range: 0 65535
+
+## RNGFND3_SNR_MIN: Minimum signal strength
+
+*Note: This parameter is for advanced users*
+
+Minimum signal strength (SNR) to accept distance
+
+- Range: 0 65535
+
 # RNGFND4 Parameters
 
 ## RNGFND4_TYPE: Rangefinder type
@@ -21596,6 +21686,7 @@ What type of rangefinder device that is connected
 |31|GYUS42v2|
 |32|MSP|
 |33|USD1_CAN|
+|34|Benewake_CAN|
 |100|SITL|
 
 ## RNGFND4_PIN: Rangefinder pin
@@ -21817,6 +21908,22 @@ Desired baud rate
 |0|Low Speed|
 |1|High Speed|
 
+## RNGFND4_RECV_ID: CAN receive ID
+
+*Note: This parameter is for advanced users*
+
+The receive ID of the CAN frames. A value of zero means all IDs are accepted.
+
+- Range: 0 65535
+
+## RNGFND4_SNR_MIN: Minimum signal strength
+
+*Note: This parameter is for advanced users*
+
+Minimum signal strength (SNR) to accept distance
+
+- Range: 0 65535
+
 # RNGFND5 Parameters
 
 ## RNGFND5_TYPE: Rangefinder type
@@ -21858,6 +21965,7 @@ What type of rangefinder device that is connected
 |31|GYUS42v2|
 |32|MSP|
 |33|USD1_CAN|
+|34|Benewake_CAN|
 |100|SITL|
 
 ## RNGFND5_PIN: Rangefinder pin
@@ -22079,6 +22187,22 @@ Desired baud rate
 |0|Low Speed|
 |1|High Speed|
 
+## RNGFND5_RECV_ID: CAN receive ID
+
+*Note: This parameter is for advanced users*
+
+The receive ID of the CAN frames. A value of zero means all IDs are accepted.
+
+- Range: 0 65535
+
+## RNGFND5_SNR_MIN: Minimum signal strength
+
+*Note: This parameter is for advanced users*
+
+Minimum signal strength (SNR) to accept distance
+
+- Range: 0 65535
+
 # RNGFND6 Parameters
 
 ## RNGFND6_TYPE: Rangefinder type
@@ -22120,6 +22244,7 @@ What type of rangefinder device that is connected
 |31|GYUS42v2|
 |32|MSP|
 |33|USD1_CAN|
+|34|Benewake_CAN|
 |100|SITL|
 
 ## RNGFND6_PIN: Rangefinder pin
@@ -22341,6 +22466,22 @@ Desired baud rate
 |0|Low Speed|
 |1|High Speed|
 
+## RNGFND6_RECV_ID: CAN receive ID
+
+*Note: This parameter is for advanced users*
+
+The receive ID of the CAN frames. A value of zero means all IDs are accepted.
+
+- Range: 0 65535
+
+## RNGFND6_SNR_MIN: Minimum signal strength
+
+*Note: This parameter is for advanced users*
+
+Minimum signal strength (SNR) to accept distance
+
+- Range: 0 65535
+
 # RNGFND7 Parameters
 
 ## RNGFND7_TYPE: Rangefinder type
@@ -22382,6 +22523,7 @@ What type of rangefinder device that is connected
 |31|GYUS42v2|
 |32|MSP|
 |33|USD1_CAN|
+|34|Benewake_CAN|
 |100|SITL|
 
 ## RNGFND7_PIN: Rangefinder pin
@@ -22603,6 +22745,22 @@ Desired baud rate
 |0|Low Speed|
 |1|High Speed|
 
+## RNGFND7_RECV_ID: CAN receive ID
+
+*Note: This parameter is for advanced users*
+
+The receive ID of the CAN frames. A value of zero means all IDs are accepted.
+
+- Range: 0 65535
+
+## RNGFND7_SNR_MIN: Minimum signal strength
+
+*Note: This parameter is for advanced users*
+
+Minimum signal strength (SNR) to accept distance
+
+- Range: 0 65535
+
 # RNGFND8 Parameters
 
 ## RNGFND8_TYPE: Rangefinder type
@@ -22644,6 +22802,7 @@ What type of rangefinder device that is connected
 |31|GYUS42v2|
 |32|MSP|
 |33|USD1_CAN|
+|34|Benewake_CAN|
 |100|SITL|
 
 ## RNGFND8_PIN: Rangefinder pin
@@ -22865,6 +23024,22 @@ Desired baud rate
 |0|Low Speed|
 |1|High Speed|
 
+## RNGFND8_RECV_ID: CAN receive ID
+
+*Note: This parameter is for advanced users*
+
+The receive ID of the CAN frames. A value of zero means all IDs are accepted.
+
+- Range: 0 65535
+
+## RNGFND8_SNR_MIN: Minimum signal strength
+
+*Note: This parameter is for advanced users*
+
+Minimum signal strength (SNR) to accept distance
+
+- Range: 0 65535
+
 # RNGFND9 Parameters
 
 ## RNGFND9_TYPE: Rangefinder type
@@ -22906,6 +23081,7 @@ What type of rangefinder device that is connected
 |31|GYUS42v2|
 |32|MSP|
 |33|USD1_CAN|
+|34|Benewake_CAN|
 |100|SITL|
 
 ## RNGFND9_PIN: Rangefinder pin
@@ -23127,6 +23303,22 @@ Desired baud rate
 |0|Low Speed|
 |1|High Speed|
 
+## RNGFND9_RECV_ID: CAN receive ID
+
+*Note: This parameter is for advanced users*
+
+The receive ID of the CAN frames. A value of zero means all IDs are accepted.
+
+- Range: 0 65535
+
+## RNGFND9_SNR_MIN: Minimum signal strength
+
+*Note: This parameter is for advanced users*
+
+Minimum signal strength (SNR) to accept distance
+
+- Range: 0 65535
+
 # RNGFNDA Parameters
 
 ## RNGFNDA_TYPE: Rangefinder type
@@ -23168,6 +23360,7 @@ What type of rangefinder device that is connected
 |31|GYUS42v2|
 |32|MSP|
 |33|USD1_CAN|
+|34|Benewake_CAN|
 |100|SITL|
 
 ## RNGFNDA_PIN: Rangefinder pin
@@ -23388,6 +23581,22 @@ Desired baud rate
 |:---:|:---:|
 |0|Low Speed|
 |1|High Speed|
+
+## RNGFNDA_RECV_ID: CAN receive ID
+
+*Note: This parameter is for advanced users*
+
+The receive ID of the CAN frames. A value of zero means all IDs are accepted.
+
+- Range: 0 65535
+
+## RNGFNDA_SNR_MIN: Minimum signal strength
+
+*Note: This parameter is for advanced users*
+
+Minimum signal strength (SNR) to accept distance
+
+- Range: 0 65535
 
 # RPM Parameters
 
@@ -23740,6 +23949,7 @@ Control what protocol to use on the Telem1 port. Note that the Frsky options req
 |35|ADSB|
 |36|AHRS|
 |37|SmartAudio|
+|38|FETtecOneWire|
 
 - RebootRequired: True
 
@@ -23807,6 +24017,7 @@ Control what protocol to use on the Telem2 port. Note that the Frsky options req
 |35|ADSB|
 |36|AHRS|
 |37|SmartAudio|
+|38|FETtecOneWire|
 
 - RebootRequired: True
 
@@ -23874,6 +24085,7 @@ Control what protocol Serial 3 (GPS) should be used for. Note that the Frsky opt
 |35|ADSB|
 |36|AHRS|
 |37|SmartAudio|
+|38|FETtecOneWire|
 
 - RebootRequired: True
 
@@ -23941,6 +24153,7 @@ Control what protocol Serial4 port should be used for. Note that the Frsky optio
 |35|ADSB|
 |36|AHRS|
 |37|SmartAudio|
+|38|FETtecOneWire|
 
 - RebootRequired: True
 
@@ -24008,6 +24221,7 @@ Control what protocol Serial5 port should be used for. Note that the Frsky optio
 |35|ADSB|
 |36|AHRS|
 |37|SmartAudio|
+|38|FETtecOneWire|
 
 - RebootRequired: True
 
@@ -24075,6 +24289,7 @@ Control what protocol Serial6 port should be used for. Note that the Frsky optio
 |35|ADSB|
 |36|AHRS|
 |37|SmartAudio|
+|38|FETtecOneWire|
 
 - RebootRequired: True
 
@@ -24245,6 +24460,8 @@ Control what protocol Serial7 port should be used for. Note that the Frsky optio
 |34|AirSpeed|
 |35|ADSB|
 |36|AHRS|
+|37|SmartAudio|
+|38|FETtecOneWire|
 
 - RebootRequired: True
 
@@ -24321,6 +24538,8 @@ Control what protocol Serial8 port should be used for. Note that the Frsky optio
 |34|AirSpeed|
 |35|ADSB|
 |36|AHRS|
+|37|SmartAudio|
+|38|FETtecOneWire|
 
 - RebootRequired: True
 
@@ -24684,6 +24903,28 @@ Mask of channels which support bi-directional dshot. This is used for ESCs which
 Mask of channels which are reversed. This is used to configure ESCs in reversed mode
 
 - Bitmask: 0:Channel1,1:Channel2,2:Channel3,3:Channel4,4:Channel5,5:Channel6,6:Channel7,7:Channel8,8:Channel9,9:Channel10,10:Channel11,11:Channel12,12:Channel13,13:Channel14,14:Channel15,15:Channel16
+
+# SERVOFTW Parameters
+
+## SERVO_FTW_MASK: Servo channel output bitmask
+
+Servo channel mask specifying FETtec ESC output.
+
+- Bitmask: 0:SERVO1,1:SERVO2,2:SERVO3,3:SERVO4,4:SERVO5,5:SERVO6,6:SERVO7,7:SERVO8,8:SERVO9,9:SERVO10,10:SERVO11,11:SERVO12
+
+- RebootRequired: True
+
+## SERVO_FTW_RVMASK: Servo channel reverse rotation bitmask
+
+Servo channel mask to reverse rotation of FETtec ESC outputs.
+
+- Bitmask: 0:SERVO1,1:SERVO2,2:SERVO3,3:SERVO4,4:SERVO5,5:SERVO6,6:SERVO7,7:SERVO8,8:SERVO9,9:SERVO10,10:SERVO11,11:SERVO12
+
+## SERVO_FTW_POLES: Nr. electrical poles
+
+Number of motor electrical poles
+
+- Range: 2 50
 
 # SERVOROB Parameters
 
