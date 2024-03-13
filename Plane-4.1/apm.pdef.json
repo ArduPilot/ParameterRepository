@@ -2981,7 +2981,8 @@
       "Bitmask": {
         "0": "Enable hardware watchdog",
         "1": "Disable MAVftp",
-        "2": "Enable set of internal parameters"
+        "2": "Enable set of internal parameters",
+        "3": "Enable Debug Pins"
       },
       "Description": "Board specific option flags",
       "DisplayName": "Board options",
@@ -3954,6 +3955,7 @@
       "Values": {
         "0": "Disabled",
         "1": "UAVCAN",
+        "11": "Benewake",
         "3": "ToshibaCAN",
         "4": "PiccoloCAN",
         "5": "CANTester",
@@ -4095,6 +4097,15 @@
       },
       "User": "Advanced"
     },
+    "CAN_D1_UC_OPTION": {
+      "Bitmask": {
+        "0": "ClearDNADatabase",
+        "1": "IgnoreDNANodeConflicts"
+      },
+      "Description": "Option flags",
+      "DisplayName": "UAVCAN options",
+      "User": "Advanced"
+    },
     "CAN_D1_UC_SRV_BM": {
       "Bitmask": {
         "0": "Servo 1",
@@ -4137,6 +4148,7 @@
       "Values": {
         "0": "Disabled",
         "1": "UAVCAN",
+        "11": "Benewake",
         "3": "ToshibaCAN",
         "4": "PiccoloCAN",
         "5": "CANTester",
@@ -4278,6 +4290,15 @@
       },
       "User": "Advanced"
     },
+    "CAN_D2_UC_OPTION": {
+      "Bitmask": {
+        "0": "ClearDNADatabase",
+        "1": "IgnoreDNANodeConflicts"
+      },
+      "Description": "Option flags",
+      "DisplayName": "UAVCAN options",
+      "User": "Advanced"
+    },
     "CAN_D2_UC_SRV_BM": {
       "Bitmask": {
         "0": "Servo 1",
@@ -4320,6 +4341,7 @@
       "Values": {
         "0": "Disabled",
         "1": "UAVCAN",
+        "11": "Benewake",
         "3": "ToshibaCAN",
         "4": "PiccoloCAN",
         "5": "CANTester",
@@ -4459,6 +4481,15 @@
         "high": "250",
         "low": "1"
       },
+      "User": "Advanced"
+    },
+    "CAN_D3_UC_OPTION": {
+      "Bitmask": {
+        "0": "ClearDNADatabase",
+        "1": "IgnoreDNANodeConflicts"
+      },
+      "Description": "Option flags",
+      "DisplayName": "UAVCAN options",
       "User": "Advanced"
     },
     "CAN_D3_UC_SRV_BM": {
@@ -5810,18 +5841,6 @@
       "Units": "Hz",
       "User": "Advanced"
     },
-    "EK2_GSF_DELAY": {
-      "Description": "If the inertial navigation calculation stops following the GPS and other positioning sensors for longer than EK2_GSF_DELAY milli-seconds, then the EKF2 code will generate a reset request internally and reset the yaw to the estimate from the EKF-GSF filter and reset the horizontal velocity and position to the GPS. This reset will not be performed unless the use of the EKF-GSF yaw estimate is enabled via the EK2_GSF_USE parameter.",
-      "DisplayName": "Delay from loss of navigation to yaw reset",
-      "Increment": "100",
-      "Range": {
-        "high": "5000",
-        "low": "500"
-      },
-      "RebootRequired": "True",
-      "Units": "ms",
-      "User": "Advanced"
-    },
     "EK2_GSF_RST_MAX": {
       "Description": "Sets the maximum number of times the EKF2 will be allowed to reset it's yaw to the estimate from the EKF-GSF yaw estimator. No resets will be allowed unless the use of the EKF-GSF yaw estimate is enabled via the EK2_GSF_USE parameter.",
       "DisplayName": "Maximum number of resets to the EKF-GSF yaw estimate allowed",
@@ -6469,18 +6488,6 @@
       "DisplayName": "GPS preflight check",
       "User": "Advanced"
     },
-    "EK3_GSF_DELAY": {
-      "Description": "If the inertial navigation calculation stops following the GPS and other positioning sensors for longer than EK3_GSF_DELAY milli-seconds, then the EKF3 code will generate a reset request internally and reset the yaw to the estimate from the EKF-GSF filter and reset the horizontal velocity and position to the GPS. This reset will not be performed unless the use of the EKF-GSF yaw estimate is enabled via the EK3_GSF_USE parameter.",
-      "DisplayName": "Delay from loss of navigation to yaw reset",
-      "Increment": "100",
-      "Range": {
-        "high": "5000",
-        "low": "500"
-      },
-      "RebootRequired": "True",
-      "Units": "ms",
-      "User": "Advanced"
-    },
     "EK3_GSF_RST_MAX": {
       "Description": "Sets the maximum number of times the EKF3 will be allowed to reset it's yaw to the estimate from the EKF-GSF yaw estimator. No resets will be allowed unless the use of the EKF-GSF yaw estimate is enabled via the EK3_GSF_USE parameter.",
       "DisplayName": "Maximum number of resets to the EKF-GSF yaw estimate allowed",
@@ -6720,6 +6727,16 @@
       },
       "User": "Advanced"
     },
+    "EK3_PRIMARY": {
+      "Description": "The core number (index in IMU mask) that will be used as the primary EKF core on startup. While disarmed the EKF will force the use of this core. A value of 0 corresponds to the first IMU in EK3_IMU_MASK.",
+      "DisplayName": "Primary core number",
+      "Increment": "1",
+      "Range": {
+        "high": "2",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
     "EK3_RNG_I_GATE": {
       "Description": "This sets the percentage number of standard deviations applied to the range finder innovation consistency check. Decreasing it makes it more likely that good measurements will be rejected. Increasing it makes it more likely that bad measurements will be accepted.",
       "DisplayName": "Range finder measurement gate size",
@@ -6742,7 +6759,7 @@
       "User": "Advanced"
     },
     "EK3_RNG_USE_HGT": {
-      "Description": "Range finder can be used as the primary height source when below this percentage of its maximum range (see RNGFND_MAX_CM). This will not work unless Baro or GPS height is selected as the primary height source vis EK3_ALT_SOURCE = 0 or 2 respectively.  This feature should not be used for terrain following as it is designed  for vertical takeoff and landing with climb above  the range finder use height before commencing the mission, and with horizontal position changes below that height being limited to a flat region around the takeoff and landing point.",
+      "Description": "Range finder can be used as the primary height source when below this percentage of its maximum range (see RNGFNDx_MAX_CM) and the primary height source is Baro or GPS (see EK3_SRCx_POSZ).  This feature should not be used for terrain following as it is designed for vertical takeoff and landing with climb above the range finder use height before commencing the mission, and with horizontal position changes below that height being limited to a flat region around the takeoff and landing point.",
       "DisplayName": "Range finder switch height percentage",
       "Increment": "1",
       "Range": {
@@ -6854,7 +6871,7 @@
       "DisplayName": "Height rate to wind process noise scaler",
       "Increment": "0.1",
       "Range": {
-        "high": "1.0",
+        "high": "2.0",
         "low": "0.0"
       },
       "User": "Advanced"
@@ -6864,7 +6881,7 @@
       "DisplayName": "Wind velocity process noise (m/s^2)",
       "Increment": "0.1",
       "Range": {
-        "high": "1.0",
+        "high": "2.0",
         "low": "0.01"
       },
       "Units": "m/s/s",
@@ -7671,7 +7688,8 @@
     "GPS_DRV_OPTIONS": {
       "Bitmask": {
         "0": "Use UART2 for moving baseline on ublox",
-        "1": "Use base station for GPS yaw on SBF"
+        "1": "Use base station for GPS yaw on SBF",
+        "2": "Use baudrate 115200"
       },
       "Description": "Additional backend specific options",
       "DisplayName": "driver options",
@@ -18129,11 +18147,13 @@
       "Bitmask": {
         "0": "Rudder mixing in direct flight modes only (Manual / Stabilize / Acro)",
         "1": "Use centered throttle in Cruise or FBWB to indicate trim airspeed",
+        "11": "Disable suppression of fixed wing rate gains in ground mode",
         "2": "Disable attitude check for takeoff arming",
         "3": "Force target airspeed to trim airspeed in Cruise or FBWB",
         "4": "Climb to ALT_HOLD_RTL before turning for RTL",
         "5": "Enable yaw damper in acro mode",
-        "6": "Surpress speed scaling during auto takeoffs to be 1 or less to prevent oscillations without airpseed sensor."
+        "6": "Surpress speed scaling during auto takeoffs to be 1 or less to prevent oscillations without airpseed sensor",
+        "7": "EnableDefaultAirspeed for takeoff"
       },
       "Description": "Flight mode specific options",
       "DisplayName": "Flight mode options",
@@ -18606,6 +18626,7 @@
         "15": "ARM/DISARM",
         "19": "IMU_RAW",
         "2": "GPS",
+        "20": "ATTITUDE_FULLRATE",
         "3": "PM",
         "4": "CTUN",
         "5": "NTUN",
@@ -18641,6 +18662,36 @@
       "DisplayName": "Manual R/C pass-through mask",
       "User": "Advanced"
     },
+    "MAN_EXPO_PITCH": {
+      "Description": "Percentage exponential for pitch input in MANUAL, ACRO and TRAINING modes",
+      "DisplayName": "Manual input expo for pitch",
+      "Increment": "1",
+      "Range": {
+        "high": "100",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "MAN_EXPO_ROLL": {
+      "Description": "Percentage exponential for roll input in MANUAL, ACRO and TRAINING modes",
+      "DisplayName": "Manual control expo for roll",
+      "Increment": "1",
+      "Range": {
+        "high": "100",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "MAN_EXPO_RUDDER": {
+      "Description": "Percentage exponential for rudder input in MANUAL, ACRO and TRAINING modes",
+      "DisplayName": "Manual input expo for rudder",
+      "Increment": "1",
+      "Range": {
+        "high": "100",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
     "MIN_GNDSPD_CM": {
       "Description": "Minimum ground speed in cm/s when under airspeed control",
       "DisplayName": "Minimum ground speed",
@@ -18674,6 +18725,28 @@
         "0": "Default",
         "1": "L1Controller"
       }
+    },
+    "ONESHOT_MASK": {
+      "Bitmask": {
+        "0": "Servo 1",
+        "1": "Servo 2",
+        "10": "Servo 11",
+        "11": "Servo 12",
+        "12": "Servo 13",
+        "13": "Servo 14",
+        "14": "Servo 15",
+        "2": "Servo 3",
+        "3": "Servo 4",
+        "4": "Servo 5",
+        "5": "Servo 6",
+        "6": "Servo 7",
+        "7": "Servo 8",
+        "8": "Servo 9",
+        "9": "Servo 10"
+      },
+      "Description": "Mask of output channels to use oneshot on",
+      "DisplayName": "Oneshot output mask",
+      "User": "Advanced"
     },
     "OVERRIDE_CHAN": {
       "Description": "If set to a non-zero value then this is an RC input channel number to use for giving IO manual control in case the main FMU microcontroller on a board with a IO co-processor fails. When this RC input channel goes above 1750 the FMU microcontroller will no longer be involved in controlling the servos and instead the IO microcontroller will directly control the servos. Note that IO manual control will be automatically activated if the FMU crashes for any reason. This parameter allows you to test for correct manual behaviour without actually crashing the FMU. This parameter is can be set to a non-zero value either for ground testing purposes or for giving the effect of an external override control board. Please also see the docs on OVERRIDE_SAFETY. Note that you may set OVERRIDE_CHAN to the same channel as FLTMODE_CH to get IO based override when in flight mode 6. Note that when override is triggered due to a FMU crash the 6 auxiliary output channels on Pixhawk will no longer be updated, so all the flight controls you need must be assigned to the first 8 channels.",
@@ -20833,6 +20906,28 @@
       "Units": "deg",
       "User": "Advanced"
     },
+    "Q_P_JERK_XY": {
+      "Description": "Jerk limit of the horizontal kinematic path generation used to determine how quickly the aircraft varies the acceleration target",
+      "DisplayName": "Jerk limit for the horizontal kinematic input shaping",
+      "Increment": "1",
+      "Range": {
+        "high": "20",
+        "low": "1"
+      },
+      "Units": "m/s/s/s",
+      "User": "Advanced"
+    },
+    "Q_P_JERK_Z": {
+      "Description": "Jerk limit of the vertical kinematic path generation used to determine how quickly the aircraft varies the acceleration target",
+      "DisplayName": "Jerk limit for the vertical kinematic input shaping",
+      "Increment": "1",
+      "Range": {
+        "high": "50",
+        "low": "5"
+      },
+      "Units": "m/s/s/s",
+      "User": "Advanced"
+    },
     "Q_P_POSXY_P": {
       "Description": "Position controller P gain.  Converts the distance (in the latitude direction) to the target location into a desired speed which is then passed to the loiter latitude rate controller",
       "DisplayName": "Position (horizontal) controller P gain",
@@ -20851,28 +20946,6 @@
       },
       "User": "Standard"
     },
-    "Q_P_TC_XY": {
-      "Description": "Time constant of the horizontal kinimatic path generation used to determine how quickly the aircraft varies the acceleration target",
-      "DisplayName": "Time constant for the horizontal kinimatic input shaping",
-      "Increment": "0.01",
-      "Range": {
-        "high": "2",
-        "low": "0.25"
-      },
-      "Units": "s",
-      "User": "Advanced"
-    },
-    "Q_P_TC_Z": {
-      "Description": "Time constant of the vertical kinimatic path generation used to determine how quickly the aircraft varies the acceleration target",
-      "DisplayName": "Time constant for the vertical kinimatic input shaping",
-      "Increment": "0.01",
-      "Range": {
-        "high": "1",
-        "low": "0.1"
-      },
-      "Units": "s",
-      "User": "Advanced"
-    },
     "Q_P_VELXY_D": {
       "Description": "Velocity (horizontal) D gain.  Corrects short-term changes in velocity",
       "DisplayName": "Velocity (horizontal) D gain",
@@ -20881,16 +20954,6 @@
         "high": "1.00",
         "low": "0.00"
       },
-      "User": "Advanced"
-    },
-    "Q_P_VELXY_D_FILT": {
-      "Description": "Velocity (horizontal) input filter.  This filter (in Hz) is applied to the input for D term",
-      "DisplayName": "Velocity (horizontal) input filter",
-      "Range": {
-        "high": "100",
-        "low": "0"
-      },
-      "Units": "Hz",
       "User": "Advanced"
     },
     "Q_P_VELXY_FF": {
@@ -20903,7 +20966,17 @@
       },
       "User": "Advanced"
     },
-    "Q_P_VELXY_FILT": {
+    "Q_P_VELXY_FLTD": {
+      "Description": "Velocity (horizontal) input filter.  This filter (in Hz) is applied to the input for D term",
+      "DisplayName": "Velocity (horizontal) input filter",
+      "Range": {
+        "high": "100",
+        "low": "0"
+      },
+      "Units": "Hz",
+      "User": "Advanced"
+    },
+    "Q_P_VELXY_FLTE": {
       "Description": "Velocity (horizontal) input filter.  This filter (in Hz) is applied to the input for P and I terms",
       "DisplayName": "Velocity (horizontal) input filter",
       "Range": {
@@ -21043,7 +21116,7 @@
         "high": "20",
         "low": "1"
       },
-      "Units": "m/s/s",
+      "Units": "m/s/s/s",
       "User": "Standard"
     },
     "Q_WP_RADIUS": {
@@ -21098,6 +21171,16 @@
       },
       "Units": "cm/s",
       "User": "Standard"
+    },
+    "Q_WP_TER_MARGIN": {
+      "Description": "Waypoint Terrain following altitude margin.  Vehicle will stop if distance from target altitude is larger than this margin (in meters)",
+      "DisplayName": "Waypoint Terrain following altitude margin",
+      "Range": {
+        "high": "100",
+        "low": "0.1"
+      },
+      "Units": "m",
+      "User": "Advanced"
     }
   },
   "RALLY_": {
@@ -21128,13 +21211,15 @@
       "Bitmask": {
         "0": "Ignore RC Receiver",
         "1": "Ignore MAVLink Overrides",
+        "10": "Enable RC Protocol re-detection",
         "2": "Ignore Receiver Failsafe bit but allow other RC failsafes if setup",
         "3": "FPort Pad",
         "4": "Log RC input bytes",
         "5": "Arming check throttle for 0 input",
         "6": "Skip the arming check for neutral Roll/Pitch/Yay sticks",
         "7": "Allow Switch reverse",
-        "8": "Use passthrough for CRSF telemetry"
+        "8": "Use passthrough for CRSF telemetry",
+        "9": "Suppress CRSF mode/rate message for ELRS systems"
       },
       "Description": "RC input options",
       "DisplayName": "RC options",
@@ -21215,6 +21300,8 @@
         "102": "Camera Mode Toggle",
         "105": "GPS Disable Yaw",
         "106": "Disable Airspeed Use",
+        "107": "EnableFixedWingAutotune",
+        "108": "ModeQRTL",
         "11": "Fence",
         "16": "ModeAuto",
         "208": "Flap",
@@ -21336,6 +21423,8 @@
         "102": "Camera Mode Toggle",
         "105": "GPS Disable Yaw",
         "106": "Disable Airspeed Use",
+        "107": "EnableFixedWingAutotune",
+        "108": "ModeQRTL",
         "11": "Fence",
         "16": "ModeAuto",
         "208": "Flap",
@@ -21457,6 +21546,8 @@
         "102": "Camera Mode Toggle",
         "105": "GPS Disable Yaw",
         "106": "Disable Airspeed Use",
+        "107": "EnableFixedWingAutotune",
+        "108": "ModeQRTL",
         "11": "Fence",
         "16": "ModeAuto",
         "208": "Flap",
@@ -21578,6 +21669,8 @@
         "102": "Camera Mode Toggle",
         "105": "GPS Disable Yaw",
         "106": "Disable Airspeed Use",
+        "107": "EnableFixedWingAutotune",
+        "108": "ModeQRTL",
         "11": "Fence",
         "16": "ModeAuto",
         "208": "Flap",
@@ -21699,6 +21792,8 @@
         "102": "Camera Mode Toggle",
         "105": "GPS Disable Yaw",
         "106": "Disable Airspeed Use",
+        "107": "EnableFixedWingAutotune",
+        "108": "ModeQRTL",
         "11": "Fence",
         "16": "ModeAuto",
         "208": "Flap",
@@ -21820,6 +21915,8 @@
         "102": "Camera Mode Toggle",
         "105": "GPS Disable Yaw",
         "106": "Disable Airspeed Use",
+        "107": "EnableFixedWingAutotune",
+        "108": "ModeQRTL",
         "11": "Fence",
         "16": "ModeAuto",
         "208": "Flap",
@@ -21941,6 +22038,8 @@
         "102": "Camera Mode Toggle",
         "105": "GPS Disable Yaw",
         "106": "Disable Airspeed Use",
+        "107": "EnableFixedWingAutotune",
+        "108": "ModeQRTL",
         "11": "Fence",
         "16": "ModeAuto",
         "208": "Flap",
@@ -22062,6 +22161,8 @@
         "102": "Camera Mode Toggle",
         "105": "GPS Disable Yaw",
         "106": "Disable Airspeed Use",
+        "107": "EnableFixedWingAutotune",
+        "108": "ModeQRTL",
         "11": "Fence",
         "16": "ModeAuto",
         "208": "Flap",
@@ -22183,6 +22284,8 @@
         "102": "Camera Mode Toggle",
         "105": "GPS Disable Yaw",
         "106": "Disable Airspeed Use",
+        "107": "EnableFixedWingAutotune",
+        "108": "ModeQRTL",
         "11": "Fence",
         "16": "ModeAuto",
         "208": "Flap",
@@ -22304,6 +22407,8 @@
         "102": "Camera Mode Toggle",
         "105": "GPS Disable Yaw",
         "106": "Disable Airspeed Use",
+        "107": "EnableFixedWingAutotune",
+        "108": "ModeQRTL",
         "11": "Fence",
         "16": "ModeAuto",
         "208": "Flap",
@@ -22425,6 +22530,8 @@
         "102": "Camera Mode Toggle",
         "105": "GPS Disable Yaw",
         "106": "Disable Airspeed Use",
+        "107": "EnableFixedWingAutotune",
+        "108": "ModeQRTL",
         "11": "Fence",
         "16": "ModeAuto",
         "208": "Flap",
@@ -22546,6 +22653,8 @@
         "102": "Camera Mode Toggle",
         "105": "GPS Disable Yaw",
         "106": "Disable Airspeed Use",
+        "107": "EnableFixedWingAutotune",
+        "108": "ModeQRTL",
         "11": "Fence",
         "16": "ModeAuto",
         "208": "Flap",
@@ -22667,6 +22776,8 @@
         "102": "Camera Mode Toggle",
         "105": "GPS Disable Yaw",
         "106": "Disable Airspeed Use",
+        "107": "EnableFixedWingAutotune",
+        "108": "ModeQRTL",
         "11": "Fence",
         "16": "ModeAuto",
         "208": "Flap",
@@ -22788,6 +22899,8 @@
         "102": "Camera Mode Toggle",
         "105": "GPS Disable Yaw",
         "106": "Disable Airspeed Use",
+        "107": "EnableFixedWingAutotune",
+        "108": "ModeQRTL",
         "11": "Fence",
         "16": "ModeAuto",
         "208": "Flap",
@@ -22909,6 +23022,8 @@
         "102": "Camera Mode Toggle",
         "105": "GPS Disable Yaw",
         "106": "Disable Airspeed Use",
+        "107": "EnableFixedWingAutotune",
+        "108": "ModeQRTL",
         "11": "Fence",
         "16": "ModeAuto",
         "208": "Flap",
@@ -23030,6 +23145,8 @@
         "102": "Camera Mode Toggle",
         "105": "GPS Disable Yaw",
         "106": "Disable Airspeed Use",
+        "107": "EnableFixedWingAutotune",
+        "108": "ModeQRTL",
         "11": "Fence",
         "16": "ModeAuto",
         "208": "Flap",
@@ -23525,6 +23642,15 @@
       "Units": "m",
       "User": "Standard"
     },
+    "RNGFND1_RECV_ID": {
+      "Description": "The receive ID of the CAN frames. A value of zero means all IDs are accepted.",
+      "DisplayName": "CAN receive ID",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
     "RNGFND1_RMETRIC": {
       "Description": "This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.",
       "DisplayName": "Ratiometric",
@@ -23540,6 +23666,15 @@
       "Increment": "0.001",
       "Units": "m/V",
       "User": "Standard"
+    },
+    "RNGFND1_SNR_MIN": {
+      "Description": "Minimum signal strength (SNR) to accept distance",
+      "DisplayName": "Minimum signal strength",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
     },
     "RNGFND1_STOP_PIN": {
       "Description": "Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.",
@@ -23595,6 +23730,7 @@
         "31": "GYUS42v2",
         "32": "MSP",
         "33": "USD1_CAN",
+        "34": "Benewake_CAN",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -23786,6 +23922,15 @@
       "Units": "m",
       "User": "Standard"
     },
+    "RNGFND2_RECV_ID": {
+      "Description": "The receive ID of the CAN frames. A value of zero means all IDs are accepted.",
+      "DisplayName": "CAN receive ID",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
     "RNGFND2_RMETRIC": {
       "Description": "This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.",
       "DisplayName": "Ratiometric",
@@ -23801,6 +23946,15 @@
       "Increment": "0.001",
       "Units": "m/V",
       "User": "Standard"
+    },
+    "RNGFND2_SNR_MIN": {
+      "Description": "Minimum signal strength (SNR) to accept distance",
+      "DisplayName": "Minimum signal strength",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
     },
     "RNGFND2_STOP_PIN": {
       "Description": "Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.",
@@ -23856,6 +24010,7 @@
         "31": "GYUS42v2",
         "32": "MSP",
         "33": "USD1_CAN",
+        "34": "Benewake_CAN",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -24047,6 +24202,15 @@
       "Units": "m",
       "User": "Standard"
     },
+    "RNGFND3_RECV_ID": {
+      "Description": "The receive ID of the CAN frames. A value of zero means all IDs are accepted.",
+      "DisplayName": "CAN receive ID",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
     "RNGFND3_RMETRIC": {
       "Description": "This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.",
       "DisplayName": "Ratiometric",
@@ -24062,6 +24226,15 @@
       "Increment": "0.001",
       "Units": "m/V",
       "User": "Standard"
+    },
+    "RNGFND3_SNR_MIN": {
+      "Description": "Minimum signal strength (SNR) to accept distance",
+      "DisplayName": "Minimum signal strength",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
     },
     "RNGFND3_STOP_PIN": {
       "Description": "Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.",
@@ -24117,6 +24290,7 @@
         "31": "GYUS42v2",
         "32": "MSP",
         "33": "USD1_CAN",
+        "34": "Benewake_CAN",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -24308,6 +24482,15 @@
       "Units": "m",
       "User": "Standard"
     },
+    "RNGFND4_RECV_ID": {
+      "Description": "The receive ID of the CAN frames. A value of zero means all IDs are accepted.",
+      "DisplayName": "CAN receive ID",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
     "RNGFND4_RMETRIC": {
       "Description": "This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.",
       "DisplayName": "Ratiometric",
@@ -24323,6 +24506,15 @@
       "Increment": "0.001",
       "Units": "m/V",
       "User": "Standard"
+    },
+    "RNGFND4_SNR_MIN": {
+      "Description": "Minimum signal strength (SNR) to accept distance",
+      "DisplayName": "Minimum signal strength",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
     },
     "RNGFND4_STOP_PIN": {
       "Description": "Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.",
@@ -24378,6 +24570,7 @@
         "31": "GYUS42v2",
         "32": "MSP",
         "33": "USD1_CAN",
+        "34": "Benewake_CAN",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -24569,6 +24762,15 @@
       "Units": "m",
       "User": "Standard"
     },
+    "RNGFND5_RECV_ID": {
+      "Description": "The receive ID of the CAN frames. A value of zero means all IDs are accepted.",
+      "DisplayName": "CAN receive ID",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
     "RNGFND5_RMETRIC": {
       "Description": "This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.",
       "DisplayName": "Ratiometric",
@@ -24584,6 +24786,15 @@
       "Increment": "0.001",
       "Units": "m/V",
       "User": "Standard"
+    },
+    "RNGFND5_SNR_MIN": {
+      "Description": "Minimum signal strength (SNR) to accept distance",
+      "DisplayName": "Minimum signal strength",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
     },
     "RNGFND5_STOP_PIN": {
       "Description": "Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.",
@@ -24639,6 +24850,7 @@
         "31": "GYUS42v2",
         "32": "MSP",
         "33": "USD1_CAN",
+        "34": "Benewake_CAN",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -24830,6 +25042,15 @@
       "Units": "m",
       "User": "Standard"
     },
+    "RNGFND6_RECV_ID": {
+      "Description": "The receive ID of the CAN frames. A value of zero means all IDs are accepted.",
+      "DisplayName": "CAN receive ID",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
     "RNGFND6_RMETRIC": {
       "Description": "This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.",
       "DisplayName": "Ratiometric",
@@ -24845,6 +25066,15 @@
       "Increment": "0.001",
       "Units": "m/V",
       "User": "Standard"
+    },
+    "RNGFND6_SNR_MIN": {
+      "Description": "Minimum signal strength (SNR) to accept distance",
+      "DisplayName": "Minimum signal strength",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
     },
     "RNGFND6_STOP_PIN": {
       "Description": "Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.",
@@ -24900,6 +25130,7 @@
         "31": "GYUS42v2",
         "32": "MSP",
         "33": "USD1_CAN",
+        "34": "Benewake_CAN",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -25091,6 +25322,15 @@
       "Units": "m",
       "User": "Standard"
     },
+    "RNGFND7_RECV_ID": {
+      "Description": "The receive ID of the CAN frames. A value of zero means all IDs are accepted.",
+      "DisplayName": "CAN receive ID",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
     "RNGFND7_RMETRIC": {
       "Description": "This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.",
       "DisplayName": "Ratiometric",
@@ -25106,6 +25346,15 @@
       "Increment": "0.001",
       "Units": "m/V",
       "User": "Standard"
+    },
+    "RNGFND7_SNR_MIN": {
+      "Description": "Minimum signal strength (SNR) to accept distance",
+      "DisplayName": "Minimum signal strength",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
     },
     "RNGFND7_STOP_PIN": {
       "Description": "Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.",
@@ -25161,6 +25410,7 @@
         "31": "GYUS42v2",
         "32": "MSP",
         "33": "USD1_CAN",
+        "34": "Benewake_CAN",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -25352,6 +25602,15 @@
       "Units": "m",
       "User": "Standard"
     },
+    "RNGFND8_RECV_ID": {
+      "Description": "The receive ID of the CAN frames. A value of zero means all IDs are accepted.",
+      "DisplayName": "CAN receive ID",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
     "RNGFND8_RMETRIC": {
       "Description": "This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.",
       "DisplayName": "Ratiometric",
@@ -25367,6 +25626,15 @@
       "Increment": "0.001",
       "Units": "m/V",
       "User": "Standard"
+    },
+    "RNGFND8_SNR_MIN": {
+      "Description": "Minimum signal strength (SNR) to accept distance",
+      "DisplayName": "Minimum signal strength",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
     },
     "RNGFND8_STOP_PIN": {
       "Description": "Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.",
@@ -25422,6 +25690,7 @@
         "31": "GYUS42v2",
         "32": "MSP",
         "33": "USD1_CAN",
+        "34": "Benewake_CAN",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -25613,6 +25882,15 @@
       "Units": "m",
       "User": "Standard"
     },
+    "RNGFND9_RECV_ID": {
+      "Description": "The receive ID of the CAN frames. A value of zero means all IDs are accepted.",
+      "DisplayName": "CAN receive ID",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
     "RNGFND9_RMETRIC": {
       "Description": "This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.",
       "DisplayName": "Ratiometric",
@@ -25628,6 +25906,15 @@
       "Increment": "0.001",
       "Units": "m/V",
       "User": "Standard"
+    },
+    "RNGFND9_SNR_MIN": {
+      "Description": "Minimum signal strength (SNR) to accept distance",
+      "DisplayName": "Minimum signal strength",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
     },
     "RNGFND9_STOP_PIN": {
       "Description": "Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.",
@@ -25683,6 +25970,7 @@
         "31": "GYUS42v2",
         "32": "MSP",
         "33": "USD1_CAN",
+        "34": "Benewake_CAN",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -25874,6 +26162,15 @@
       "Units": "m",
       "User": "Standard"
     },
+    "RNGFNDA_RECV_ID": {
+      "Description": "The receive ID of the CAN frames. A value of zero means all IDs are accepted.",
+      "DisplayName": "CAN receive ID",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
     "RNGFNDA_RMETRIC": {
       "Description": "This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.",
       "DisplayName": "Ratiometric",
@@ -25889,6 +26186,15 @@
       "Increment": "0.001",
       "Units": "m/V",
       "User": "Standard"
+    },
+    "RNGFNDA_SNR_MIN": {
+      "Description": "Minimum signal strength (SNR) to accept distance",
+      "DisplayName": "Minimum signal strength",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
     },
     "RNGFNDA_STOP_PIN": {
       "Description": "Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range.",
@@ -25944,6 +26250,7 @@
         "31": "GYUS42v2",
         "32": "MSP",
         "33": "USD1_CAN",
+        "34": "Benewake_CAN",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -26337,6 +26644,7 @@
         "0": "InvertRX",
         "1": "InvertTX",
         "10": "Don't forward mavlink to/from",
+        "11": "DisableFIFO",
         "2": "HalfDuplex",
         "3": "Swap",
         "4": "RX_PullDown",
@@ -26388,6 +26696,7 @@
         "35": "ADSB",
         "36": "AHRS",
         "37": "SmartAudio",
+        "38": "FETtecOneWire",
         "4": "Frsky SPort",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
@@ -26422,6 +26731,7 @@
         "0": "InvertRX",
         "1": "InvertTX",
         "10": "Don't forward mavlink to/from",
+        "11": "DisableFIFO",
         "2": "HalfDuplex",
         "3": "Swap",
         "4": "RX_PullDown",
@@ -26473,6 +26783,7 @@
         "35": "ADSB",
         "36": "AHRS",
         "37": "SmartAudio",
+        "38": "FETtecOneWire",
         "4": "Frsky SPort",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
@@ -26507,6 +26818,7 @@
         "0": "InvertRX",
         "1": "InvertTX",
         "10": "Don't forward mavlink to/from",
+        "11": "DisableFIFO",
         "2": "HalfDuplex",
         "3": "Swap",
         "4": "RX_PullDown",
@@ -26558,6 +26870,7 @@
         "35": "ADSB",
         "36": "AHRS",
         "37": "SmartAudio",
+        "38": "FETtecOneWire",
         "4": "Frsky SPort",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
@@ -26592,6 +26905,7 @@
         "0": "InvertRX",
         "1": "InvertTX",
         "10": "Don't forward mavlink to/from",
+        "11": "DisableFIFO",
         "2": "HalfDuplex",
         "3": "Swap",
         "4": "RX_PullDown",
@@ -26643,6 +26957,7 @@
         "35": "ADSB",
         "36": "AHRS",
         "37": "SmartAudio",
+        "38": "FETtecOneWire",
         "4": "Frsky SPort",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
@@ -26677,6 +26992,7 @@
         "0": "InvertRX",
         "1": "InvertTX",
         "10": "Don't forward mavlink to/from",
+        "11": "DisableFIFO",
         "2": "HalfDuplex",
         "3": "Swap",
         "4": "RX_PullDown",
@@ -26728,6 +27044,7 @@
         "35": "ADSB",
         "36": "AHRS",
         "37": "SmartAudio",
+        "38": "FETtecOneWire",
         "4": "Frsky SPort",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
@@ -26762,6 +27079,7 @@
         "0": "InvertRX",
         "1": "InvertTX",
         "10": "Don't forward mavlink to/from",
+        "11": "DisableFIFO",
         "2": "HalfDuplex",
         "3": "Swap",
         "4": "RX_PullDown",
@@ -26813,6 +27131,7 @@
         "35": "ADSB",
         "36": "AHRS",
         "37": "SmartAudio",
+        "38": "FETtecOneWire",
         "4": "Frsky SPort",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
@@ -26847,6 +27166,7 @@
         "0": "InvertRX",
         "1": "InvertTX",
         "10": "Don't forward mavlink to/from",
+        "11": "DisableFIFO",
         "2": "HalfDuplex",
         "3": "Swap",
         "4": "RX_PullDown",
@@ -26897,6 +27217,8 @@
         "34": "AirSpeed",
         "35": "ADSB",
         "36": "AHRS",
+        "37": "SmartAudio",
+        "38": "FETtecOneWire",
         "4": "Frsky SPort",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
@@ -26905,7 +27227,7 @@
       }
     },
     "SERIAL8_BAUD": {
-      "Description": "The baud rate used for Serial7. Most stm32-based boards can support rates of up to 1500. If you setup a rate you cannot support and then can't connect to your board you should load a firmware from a different vehicle type. That will reset all your parameters to defaults.",
+      "Description": "The baud rate used for Serial8. Most stm32-based boards can support rates of up to 1500. If you setup a rate you cannot support and then can't connect to your board you should load a firmware from a different vehicle type. That will reset all your parameters to defaults.",
       "DisplayName": "Serial 8 Baud Rate",
       "User": "Standard",
       "Values": {
@@ -26931,6 +27253,7 @@
         "0": "InvertRX",
         "1": "InvertTX",
         "10": "Don't forward mavlink to/from",
+        "11": "DisableFIFO",
         "2": "HalfDuplex",
         "3": "Swap",
         "4": "RX_PullDown",
@@ -26981,6 +27304,8 @@
         "34": "AirSpeed",
         "35": "ADSB",
         "36": "AHRS",
+        "37": "SmartAudio",
+        "38": "FETtecOneWire",
         "4": "Frsky SPort",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
@@ -29781,6 +30106,56 @@
         "low": "0"
       },
       "Units": "Hz",
+      "User": "Standard"
+    }
+  },
+  "SERVO_FTW_": {
+    "SERVO_FTW_MASK": {
+      "Bitmask": {
+        "0": "SERVO1",
+        "1": "SERVO2",
+        "10": "SERVO11",
+        "11": "SERVO12",
+        "2": "SERVO3",
+        "3": "SERVO4",
+        "4": "SERVO5",
+        "5": "SERVO6",
+        "6": "SERVO7",
+        "7": "SERVO8",
+        "8": "SERVO9",
+        "9": "SERVO10"
+      },
+      "Description": "Servo channel mask specifying FETtec ESC output.",
+      "DisplayName": "Servo channel output bitmask",
+      "RebootRequired": "True",
+      "User": "Standard"
+    },
+    "SERVO_FTW_POLES": {
+      "Description": "Number of motor electrical poles",
+      "DisplayName": "Nr. electrical poles",
+      "Range": {
+        "high": "50",
+        "low": "2"
+      },
+      "User": "Standard"
+    },
+    "SERVO_FTW_RVMASK": {
+      "Bitmask": {
+        "0": "SERVO1",
+        "1": "SERVO2",
+        "10": "SERVO11",
+        "11": "SERVO12",
+        "2": "SERVO3",
+        "3": "SERVO4",
+        "4": "SERVO5",
+        "5": "SERVO6",
+        "6": "SERVO7",
+        "7": "SERVO8",
+        "8": "SERVO9",
+        "9": "SERVO10"
+      },
+      "Description": "Servo channel mask to reverse rotation of FETtec ESC outputs.",
+      "DisplayName": "Servo channel reverse rotation bitmask",
       "User": "Standard"
     }
   },
