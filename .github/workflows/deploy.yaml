@@ -1,0 +1,43 @@
+name: Run Python Script and Commit Changes
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron:  '0 0 */5 * *' # Runs every 5 days at midnight
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  run-and-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # fetch all history for all tags and branches
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8' # Set the Python version you need
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip GitPython packaging lxml emit xmltodict
+          # Add any other dependencies here
+
+      - name: Run Python script
+        run: |
+          python scripts/run_param_parse.py
+          python scripts/json_from_xml.py
+
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name 'Git bot'
+          git config --global user.email 'bot@noreply.github.com'
+          git status
+          git add .
+          git diff --staged --quiet || git commit -m "Update metadata"
+          git push
+
