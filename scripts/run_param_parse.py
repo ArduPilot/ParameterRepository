@@ -11,6 +11,7 @@ import tempfile
 from pathlib import Path
 
 from packaging import version
+from datetime import datetime
 
 class Groundskeeper:
     repository_url = 'https://github.com/ArduPilot/ardupilot'
@@ -59,9 +60,15 @@ class Groundskeeper:
         #return git.Repo(self.repository_path)
         return git.Repo.clone_from(self.repository_url, self.repository_path)
 
+    def get_last_ground_change(repository: git.Repo):
+        last_commit_date = repository.head.commit.committed_date
+        return datetime.fromtimestamp(last_commit_date)
+
+
     def run(self):
         self.repository = self.clone_repository()
         tag_names = [tag.path[len('refs/tags/'):] for tag in self.repository.tags]
+        last_ground_change = Groundskeeper.get_last_ground_change(git.Repo(Path(__file__).parent.parent))
 
         # Get only valid tag names
         tags = [
@@ -117,6 +124,10 @@ class Groundskeeper:
                 continue
 
             self.repository.git.checkout(tag_reference)
+            tag_date = Groundskeeper.get_last_ground_change(self.repository)
+            if last_ground_change > tag_date:
+                print(f"Version already generated for {tag_date}")
+                continue
             try:
                 subprocess.run([f'{self.repository_path}/Tools/autotest/param_metadata/param_parse.py', '--vehicle', vehicle_type], cwd=self.repository_path)
             except Exception as exception:
