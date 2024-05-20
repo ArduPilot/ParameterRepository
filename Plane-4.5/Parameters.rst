@@ -1760,11 +1760,11 @@ PTCH\_LIM\_MIN\_DEG: Minimum Pitch Angle
 Maximum pitch down angle commanded in modes with stabilized limits
 
 
-+-----------+----------+--------------+
-| Increment | Range    | Units        |
-+===========+==========+==============+
-| 10        | -90 to 0 | centidegrees |
-+-----------+----------+--------------+
++-----------+----------+---------+
+| Increment | Range    | Units   |
++===========+==========+=========+
+| 10        | -90 to 0 | degrees |
++-----------+----------+---------+
 
 
 
@@ -4478,6 +4478,32 @@ Compass magnetic field strength error threshold vs earth magnetic model\.  X and
 +==========+============+
 | 0 to 500 | milligauss |
 +----------+------------+
+
+
+
+
+.. _ARMING_CRSDP_IGN:
+
+ARMING\_CRSDP\_IGN: Disable CrashDump Arming check
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Must have value \"1\" if crashdump data is present on the system\, or a prearm failure will be raised\.  Do not set this parameter unless the risks of doing so are fully understood\.  The presence of a crash dump means that the firmware currently installed has suffered a critical software failure which resulted in the autopilot immediately rebooting\.  The crashdump file gives diagnostic information which can help in finding the issue\, please contact the ArduPIlot support team\.  If this crashdump data is present\, the vehicle is likely unsafe to fly\.  Check the ArduPilot documentation for more details\.
+
+
++-------------------------------------------------+
+| Values                                          |
++=================================================+
+| +-------+-------------------------------------+ |
+| | Value | Meaning                             | |
+| +=======+=====================================+ |
+| | 0     | Crash Dump arming check active      | |
+| +-------+-------------------------------------+ |
+| | 1     | Crash Dump arming check deactivated | |
+| +-------+-------------------------------------+ |
+|                                                 |
++-------------------------------------------------+
 
 
 
@@ -21516,6 +21542,26 @@ This sets the amount of storage in kilobytes reserved on the microsd card in mis
 
 
 
+.. _BRD_SD_FENCE:
+
+BRD\_SD\_FENCE:  SDCard Fence size
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+This sets the amount of storage in kilobytes reserved on the microsd card in fence\.stg for fence storage\.
+
+
++---------+
+| Range   |
++=========+
+| 0 to 64 |
++---------+
+
+
+
+
 .. _BRD_IO_DSHOT:
 
 BRD\_IO\_DSHOT: Load DShot FW on IO
@@ -22469,6 +22515,8 @@ Auxiliary RC Options function executed on pin change
 | +-------+-----------------------------------------------------+ |
 | | 176   | Quadplane Fwd Throttle Override enable              | |
 | +-------+-----------------------------------------------------+ |
+| | 177   | Mount LRF enable                                    | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -22681,6 +22729,8 @@ Auxiliary RC Options function executed on pin change
 | | 175   | Camera Lens                                         | |
 | +-------+-----------------------------------------------------+ |
 | | 176   | Quadplane Fwd Throttle Override enable              | |
+| +-------+-----------------------------------------------------+ |
+| | 177   | Mount LRF enable                                    | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -22895,6 +22945,8 @@ Auxiliary RC Options function executed on pin change
 | +-------+-----------------------------------------------------+ |
 | | 176   | Quadplane Fwd Throttle Override enable              | |
 | +-------+-----------------------------------------------------+ |
+| | 177   | Mount LRF enable                                    | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -23107,6 +23159,8 @@ Auxiliary RC Options function executed on pin change
 | | 175   | Camera Lens                                         | |
 | +-------+-----------------------------------------------------+ |
 | | 176   | Quadplane Fwd Throttle Override enable              | |
+| +-------+-----------------------------------------------------+ |
+| | 177   | Mount LRF enable                                    | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -23971,36 +24025,36 @@ CAN\_D1\_PROTOCOL: Enable use of specific protocol over virtual driver
 Enabling this option starts selected protocol that will use this virtual driver
 
 
-+-----------------------------+
-| Values                      |
-+=============================+
-| +-------+-----------------+ |
-| | Value | Meaning         | |
-| +=======+=================+ |
-| | 0     | Disabled        | |
-| +-------+-----------------+ |
-| | 1     | DroneCAN        | |
-| +-------+-----------------+ |
-| | 4     | PiccoloCAN      | |
-| +-------+-----------------+ |
-| | 6     | EFI_NWPMU       | |
-| +-------+-----------------+ |
-| | 7     | USD1            | |
-| +-------+-----------------+ |
-| | 8     | KDECAN          | |
-| +-------+-----------------+ |
-| | 10    | Scripting       | |
-| +-------+-----------------+ |
-| | 11    | Benewake        | |
-| +-------+-----------------+ |
-| | 12    | Scripting2      | |
-| +-------+-----------------+ |
-| | 13    | TOFSenseP       | |
-| +-------+-----------------+ |
-| | 14    | NanoRadar_NRA24 | |
-| +-------+-----------------+ |
-|                             |
-+-----------------------------+
++------------------------+
+| Values                 |
++========================+
+| +-------+------------+ |
+| | Value | Meaning    | |
+| +=======+============+ |
+| | 0     | Disabled   | |
+| +-------+------------+ |
+| | 1     | DroneCAN   | |
+| +-------+------------+ |
+| | 4     | PiccoloCAN | |
+| +-------+------------+ |
+| | 6     | EFI_NWPMU  | |
+| +-------+------------+ |
+| | 7     | USD1       | |
+| +-------+------------+ |
+| | 8     | KDECAN     | |
+| +-------+------------+ |
+| | 10    | Scripting  | |
+| +-------+------------+ |
+| | 11    | Benewake   | |
+| +-------+------------+ |
+| | 12    | Scripting2 | |
+| +-------+------------+ |
+| | 13    | TOFSenseP  | |
+| +-------+------------+ |
+| | 14    | NanoRadar  | |
+| +-------+------------+ |
+|                        |
++------------------------+
 
 
 
@@ -24016,28 +24070,28 @@ CAN\_D1\_PROTOCOL2: Secondary protocol with 11 bit CAN addressing
 Secondary protocol with 11 bit CAN addressing
 
 
-+-----------------------------+
-| Values                      |
-+=============================+
-| +-------+-----------------+ |
-| | Value | Meaning         | |
-| +=======+=================+ |
-| | 0     | Disabled        | |
-| +-------+-----------------+ |
-| | 7     | USD1            | |
-| +-------+-----------------+ |
-| | 10    | Scripting       | |
-| +-------+-----------------+ |
-| | 11    | Benewake        | |
-| +-------+-----------------+ |
-| | 12    | Scripting2      | |
-| +-------+-----------------+ |
-| | 13    | TOFSenseP       | |
-| +-------+-----------------+ |
-| | 14    | NanoRadar_NRA24 | |
-| +-------+-----------------+ |
-|                             |
-+-----------------------------+
++------------------------+
+| Values                 |
++========================+
+| +-------+------------+ |
+| | Value | Meaning    | |
+| +=======+============+ |
+| | 0     | Disabled   | |
+| +-------+------------+ |
+| | 7     | USD1       | |
+| +-------+------------+ |
+| | 10    | Scripting  | |
+| +-------+------------+ |
+| | 11    | Benewake   | |
+| +-------+------------+ |
+| | 12    | Scripting2 | |
+| +-------+------------+ |
+| | 13    | TOFSenseP  | |
+| +-------+------------+ |
+| | 14    | NanoRadar  | |
+| +-------+------------+ |
+|                        |
++------------------------+
 
 
 
@@ -25409,36 +25463,36 @@ CAN\_D2\_PROTOCOL: Enable use of specific protocol over virtual driver
 Enabling this option starts selected protocol that will use this virtual driver
 
 
-+-----------------------------+
-| Values                      |
-+=============================+
-| +-------+-----------------+ |
-| | Value | Meaning         | |
-| +=======+=================+ |
-| | 0     | Disabled        | |
-| +-------+-----------------+ |
-| | 1     | DroneCAN        | |
-| +-------+-----------------+ |
-| | 4     | PiccoloCAN      | |
-| +-------+-----------------+ |
-| | 6     | EFI_NWPMU       | |
-| +-------+-----------------+ |
-| | 7     | USD1            | |
-| +-------+-----------------+ |
-| | 8     | KDECAN          | |
-| +-------+-----------------+ |
-| | 10    | Scripting       | |
-| +-------+-----------------+ |
-| | 11    | Benewake        | |
-| +-------+-----------------+ |
-| | 12    | Scripting2      | |
-| +-------+-----------------+ |
-| | 13    | TOFSenseP       | |
-| +-------+-----------------+ |
-| | 14    | NanoRadar_NRA24 | |
-| +-------+-----------------+ |
-|                             |
-+-----------------------------+
++------------------------+
+| Values                 |
++========================+
+| +-------+------------+ |
+| | Value | Meaning    | |
+| +=======+============+ |
+| | 0     | Disabled   | |
+| +-------+------------+ |
+| | 1     | DroneCAN   | |
+| +-------+------------+ |
+| | 4     | PiccoloCAN | |
+| +-------+------------+ |
+| | 6     | EFI_NWPMU  | |
+| +-------+------------+ |
+| | 7     | USD1       | |
+| +-------+------------+ |
+| | 8     | KDECAN     | |
+| +-------+------------+ |
+| | 10    | Scripting  | |
+| +-------+------------+ |
+| | 11    | Benewake   | |
+| +-------+------------+ |
+| | 12    | Scripting2 | |
+| +-------+------------+ |
+| | 13    | TOFSenseP  | |
+| +-------+------------+ |
+| | 14    | NanoRadar  | |
+| +-------+------------+ |
+|                        |
++------------------------+
 
 
 
@@ -25454,28 +25508,28 @@ CAN\_D2\_PROTOCOL2: Secondary protocol with 11 bit CAN addressing
 Secondary protocol with 11 bit CAN addressing
 
 
-+-----------------------------+
-| Values                      |
-+=============================+
-| +-------+-----------------+ |
-| | Value | Meaning         | |
-| +=======+=================+ |
-| | 0     | Disabled        | |
-| +-------+-----------------+ |
-| | 7     | USD1            | |
-| +-------+-----------------+ |
-| | 10    | Scripting       | |
-| +-------+-----------------+ |
-| | 11    | Benewake        | |
-| +-------+-----------------+ |
-| | 12    | Scripting2      | |
-| +-------+-----------------+ |
-| | 13    | TOFSenseP       | |
-| +-------+-----------------+ |
-| | 14    | NanoRadar_NRA24 | |
-| +-------+-----------------+ |
-|                             |
-+-----------------------------+
++------------------------+
+| Values                 |
++========================+
+| +-------+------------+ |
+| | Value | Meaning    | |
+| +=======+============+ |
+| | 0     | Disabled   | |
+| +-------+------------+ |
+| | 7     | USD1       | |
+| +-------+------------+ |
+| | 10    | Scripting  | |
+| +-------+------------+ |
+| | 11    | Benewake   | |
+| +-------+------------+ |
+| | 12    | Scripting2 | |
+| +-------+------------+ |
+| | 13    | TOFSenseP  | |
+| +-------+------------+ |
+| | 14    | NanoRadar  | |
+| +-------+------------+ |
+|                        |
++------------------------+
 
 
 
@@ -26847,36 +26901,36 @@ CAN\_D3\_PROTOCOL: Enable use of specific protocol over virtual driver
 Enabling this option starts selected protocol that will use this virtual driver
 
 
-+-----------------------------+
-| Values                      |
-+=============================+
-| +-------+-----------------+ |
-| | Value | Meaning         | |
-| +=======+=================+ |
-| | 0     | Disabled        | |
-| +-------+-----------------+ |
-| | 1     | DroneCAN        | |
-| +-------+-----------------+ |
-| | 4     | PiccoloCAN      | |
-| +-------+-----------------+ |
-| | 6     | EFI_NWPMU       | |
-| +-------+-----------------+ |
-| | 7     | USD1            | |
-| +-------+-----------------+ |
-| | 8     | KDECAN          | |
-| +-------+-----------------+ |
-| | 10    | Scripting       | |
-| +-------+-----------------+ |
-| | 11    | Benewake        | |
-| +-------+-----------------+ |
-| | 12    | Scripting2      | |
-| +-------+-----------------+ |
-| | 13    | TOFSenseP       | |
-| +-------+-----------------+ |
-| | 14    | NanoRadar_NRA24 | |
-| +-------+-----------------+ |
-|                             |
-+-----------------------------+
++------------------------+
+| Values                 |
++========================+
+| +-------+------------+ |
+| | Value | Meaning    | |
+| +=======+============+ |
+| | 0     | Disabled   | |
+| +-------+------------+ |
+| | 1     | DroneCAN   | |
+| +-------+------------+ |
+| | 4     | PiccoloCAN | |
+| +-------+------------+ |
+| | 6     | EFI_NWPMU  | |
+| +-------+------------+ |
+| | 7     | USD1       | |
+| +-------+------------+ |
+| | 8     | KDECAN     | |
+| +-------+------------+ |
+| | 10    | Scripting  | |
+| +-------+------------+ |
+| | 11    | Benewake   | |
+| +-------+------------+ |
+| | 12    | Scripting2 | |
+| +-------+------------+ |
+| | 13    | TOFSenseP  | |
+| +-------+------------+ |
+| | 14    | NanoRadar  | |
+| +-------+------------+ |
+|                        |
++------------------------+
 
 
 
@@ -26892,28 +26946,28 @@ CAN\_D3\_PROTOCOL2: Secondary protocol with 11 bit CAN addressing
 Secondary protocol with 11 bit CAN addressing
 
 
-+-----------------------------+
-| Values                      |
-+=============================+
-| +-------+-----------------+ |
-| | Value | Meaning         | |
-| +=======+=================+ |
-| | 0     | Disabled        | |
-| +-------+-----------------+ |
-| | 7     | USD1            | |
-| +-------+-----------------+ |
-| | 10    | Scripting       | |
-| +-------+-----------------+ |
-| | 11    | Benewake        | |
-| +-------+-----------------+ |
-| | 12    | Scripting2      | |
-| +-------+-----------------+ |
-| | 13    | TOFSenseP       | |
-| +-------+-----------------+ |
-| | 14    | NanoRadar_NRA24 | |
-| +-------+-----------------+ |
-|                             |
-+-----------------------------+
++------------------------+
+| Values                 |
++========================+
+| +-------+------------+ |
+| | Value | Meaning    | |
+| +=======+============+ |
+| | 0     | Disabled   | |
+| +-------+------------+ |
+| | 7     | USD1       | |
+| +-------+------------+ |
+| | 10    | Scripting  | |
+| +-------+------------+ |
+| | 11    | Benewake   | |
+| +-------+------------+ |
+| | 12    | Scripting2 | |
+| +-------+------------+ |
+| | 13    | TOFSenseP  | |
+| +-------+------------+ |
+| | 14    | NanoRadar  | |
+| +-------+------------+ |
+|                        |
++------------------------+
 
 
 
@@ -31271,6 +31325,24 @@ External AHRS sensors bitmask
 | +-----+---------+ |
 |                   |
 +-------------------+
+
+
+
+
+.. _EAHRS_LOG_RATE:
+
+EAHRS\_LOG\_RATE: AHRS logging rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Logging rate for EARHS devices
+
+
++-------+
+| Units |
++=======+
+| hertz |
++-------+
 
 
 
@@ -37481,26 +37553,30 @@ GPS\_DRV\_OPTIONS: driver options
 Additional backend specific options
 
 
-+-------------------------------------------------------------------+
-| Bitmask                                                           |
-+===================================================================+
-| +-----+---------------------------------------------------------+ |
-| | Bit | Meaning                                                 | |
-| +=====+=========================================================+ |
-| | 0   | Use UART2 for moving baseline on ublox                  | |
-| +-----+---------------------------------------------------------+ |
-| | 1   | Use base station for GPS yaw on SBF                     | |
-| +-----+---------------------------------------------------------+ |
-| | 2   | Use baudrate 115200                                     | |
-| +-----+---------------------------------------------------------+ |
-| | 3   | Use dedicated CAN port b/w GPSes for moving baseline    | |
-| +-----+---------------------------------------------------------+ |
-| | 4   | Use ellipsoid height instead of AMSL                    | |
-| +-----+---------------------------------------------------------+ |
-| | 5   | Override GPS satellite health of L5 band from L1 health | |
-| +-----+---------------------------------------------------------+ |
-|                                                                   |
-+-------------------------------------------------------------------+
++---------------------------------------------------------------------------------------+
+| Bitmask                                                                               |
++=======================================================================================+
+| +-----+-----------------------------------------------------------------------------+ |
+| | Bit | Meaning                                                                     | |
+| +=====+=============================================================================+ |
+| | 0   | Use UART2 for moving baseline on ublox                                      | |
+| +-----+-----------------------------------------------------------------------------+ |
+| | 1   | Use base station for GPS yaw on SBF                                         | |
+| +-----+-----------------------------------------------------------------------------+ |
+| | 2   | Use baudrate 115200                                                         | |
+| +-----+-----------------------------------------------------------------------------+ |
+| | 3   | Use dedicated CAN port b/w GPSes for moving baseline                        | |
+| +-----+-----------------------------------------------------------------------------+ |
+| | 4   | Use ellipsoid height instead of AMSL                                        | |
+| +-----+-----------------------------------------------------------------------------+ |
+| | 5   | Override GPS satellite health of L5 band from L1 health                     | |
+| +-----+-----------------------------------------------------------------------------+ |
+| | 6   | Enable RTCM full parse even for a single channel                            | |
+| +-----+-----------------------------------------------------------------------------+ |
+| | 7   | Disable automatic full RTCM parsing when RTCM seen on more than one channel | |
+| +-----+-----------------------------------------------------------------------------+ |
+|                                                                                       |
++---------------------------------------------------------------------------------------+
 
 
 
@@ -44867,6 +44943,29 @@ MNT1\_DEVID: Mount Device ID
 Mount device ID\, taking into account its type\, bus and instance
 
 
+.. _MNT1_OPTIONS:
+
+MNT1\_OPTIONS: Mount options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Mount options bitmask
+
+
++--------------------------------------------+
+| Bitmask                                    |
++============================================+
+| +-----+----------------------------------+ |
+| | Bit | Meaning                          | |
+| +=====+==================================+ |
+| | 0   | RC lock state from previous mode | |
+| +-----+----------------------------------+ |
+|                                            |
++--------------------------------------------+
+
+
+
+
 
 .. _parameters_MNT2:
 
@@ -45245,6 +45344,29 @@ MNT2\_DEVID: Mount Device ID
 Mount device ID\, taking into account its type\, bus and instance
 
 
+.. _MNT2_OPTIONS:
+
+MNT2\_OPTIONS: Mount options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Mount options bitmask
+
+
++--------------------------------------------+
+| Bitmask                                    |
++============================================+
+| +-----+----------------------------------+ |
+| | Bit | Meaning                          | |
+| +=====+==================================+ |
+| | 0   | RC lock state from previous mode | |
+| +-----+----------------------------------+ |
+|                                            |
++--------------------------------------------+
+
+
+
+
 
 .. _parameters_MSP:
 
@@ -45419,10 +45541,10 @@ NET\_ Parameters
 ----------------
 
 
-.. _NET_ENABLED:
+.. _NET_ENABLE:
 
-NET\_ENABLED: Networking Enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+NET\_ENABLE: Networking Enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
@@ -65535,6 +65657,478 @@ Type of the parameter to be displayed and modified
 
 
 
+.. _parameters_PLND_:
+
+PLND\_ Parameters
+-----------------
+
+
+.. _PLND_ENABLED:
+
+PLND\_ENABLED: Precision Land enabled\/disabled
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Precision Land enabled\/disabled
+
+
++----------------------+
+| Values               |
++======================+
+| +-------+----------+ |
+| | Value | Meaning  | |
+| +=======+==========+ |
+| | 0     | Disabled | |
+| +-------+----------+ |
+| | 1     | Enabled  | |
+| +-------+----------+ |
+|                      |
++----------------------+
+
+
+
+
+.. _PLND_TYPE:
+
+PLND\_TYPE: Precision Land Type
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Precision Land Type
+
+
++-------------------------------+
+| Values                        |
++===============================+
+| +-------+-------------------+ |
+| | Value | Meaning           | |
+| +=======+===================+ |
+| | 0     | None              | |
+| +-------+-------------------+ |
+| | 1     | CompanionComputer | |
+| +-------+-------------------+ |
+| | 2     | IRLock            | |
+| +-------+-------------------+ |
+| | 3     | SITL_Gazebo       | |
+| +-------+-------------------+ |
+| | 4     | SITL              | |
+| +-------+-------------------+ |
+|                               |
++-------------------------------+
+
+
+
+
+.. _PLND_YAW_ALIGN:
+
+PLND\_YAW\_ALIGN: Sensor yaw alignment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Yaw angle from body x\-axis to sensor x\-axis\.
+
+
++-----------+------------+--------------+
+| Increment | Range      | Units        |
++===========+============+==============+
+| 10        | 0 to 36000 | centidegrees |
++-----------+------------+--------------+
+
+
+
+
+.. _PLND_LAND_OFS_X:
+
+PLND\_LAND\_OFS\_X: Land offset forward
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Desired landing position of the camera forward of the target in vehicle body frame
+
+
++-----------+-----------+-------------+
+| Increment | Range     | Units       |
++===========+===========+=============+
+| 1         | -20 to 20 | centimeters |
++-----------+-----------+-------------+
+
+
+
+
+.. _PLND_LAND_OFS_Y:
+
+PLND\_LAND\_OFS\_Y: Land offset right
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+desired landing position of the camera right of the target in vehicle body frame
+
+
++-----------+-----------+-------------+
+| Increment | Range     | Units       |
++===========+===========+=============+
+| 1         | -20 to 20 | centimeters |
++-----------+-----------+-------------+
+
+
+
+
+.. _PLND_EST_TYPE:
+
+PLND\_EST\_TYPE: Precision Land Estimator Type
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Specifies the estimation method to be used
+
+
++--------------------------+
+| Values                   |
++==========================+
+| +-------+--------------+ |
+| | Value | Meaning      | |
+| +=======+==============+ |
+| | 0     | RawSensor    | |
+| +-------+--------------+ |
+| | 1     | KalmanFilter | |
+| +-------+--------------+ |
+|                          |
++--------------------------+
+
+
+
+
+.. _PLND_ACC_P_NSE:
+
+PLND\_ACC\_P\_NSE: Kalman Filter Accelerometer Noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Kalman Filter Accelerometer Noise\, higher values weight the input from the camera more\, accels less
+
+
++----------+
+| Range    |
++==========+
+| 0.5 to 5 |
++----------+
+
+
+
+
+.. _PLND_CAM_POS_X:
+
+PLND\_CAM\_POS\_X: Camera X position offset
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+X position of the camera in body frame\. Positive X is forward of the origin\.
+
+
++-----------+---------+--------+
+| Increment | Range   | Units  |
++===========+=========+========+
+| 0.01      | -5 to 5 | meters |
++-----------+---------+--------+
+
+
+
+
+.. _PLND_CAM_POS_Y:
+
+PLND\_CAM\_POS\_Y: Camera Y position offset
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Y position of the camera in body frame\. Positive Y is to the right of the origin\.
+
+
++-----------+---------+--------+
+| Increment | Range   | Units  |
++===========+=========+========+
+| 0.01      | -5 to 5 | meters |
++-----------+---------+--------+
+
+
+
+
+.. _PLND_CAM_POS_Z:
+
+PLND\_CAM\_POS\_Z: Camera Z position offset
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Z position of the camera in body frame\. Positive Z is down from the origin\.
+
+
++-----------+---------+--------+
+| Increment | Range   | Units  |
++===========+=========+========+
+| 0.01      | -5 to 5 | meters |
++-----------+---------+--------+
+
+
+
+
+.. _PLND_BUS:
+
+PLND\_BUS: Sensor Bus
+~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Precland sensor bus for I2C sensors\.
+
+
++-------------------------+
+| Values                  |
++=========================+
+| +-------+-------------+ |
+| | Value | Meaning     | |
+| +=======+=============+ |
+| | -1    | DefaultBus  | |
+| +-------+-------------+ |
+| | 0     | InternalI2C | |
+| +-------+-------------+ |
+| | 1     | ExternalI2C | |
+| +-------+-------------+ |
+|                         |
++-------------------------+
+
+
+
+
+.. _PLND_LAG:
+
+PLND\_LAG: Precision Landing sensor lag
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+Precision Landing sensor lag\, to cope with variable landing\_target latency
+
+
++-----------+---------------+---------+
+| Increment | Range         | Units   |
++===========+===============+=========+
+| 1         | 0.02 to 0.250 | seconds |
++-----------+---------------+---------+
+
+
+
+
+.. _PLND_XY_DIST_MAX:
+
+PLND\_XY\_DIST\_MAX: Precision Landing maximum distance to target before descending
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+The vehicle will not start descending if the landing target is detected and it is further than this many meters away\. Set 0 to always descend\.
+
+
++---------+--------+
+| Range   | Units  |
++=========+========+
+| 0 to 10 | meters |
++---------+--------+
+
+
+
+
+.. _PLND_STRICT:
+
+PLND\_STRICT: PrecLand strictness
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+How strictly should the vehicle land on the target if target is lost
+
+
++----------------------------------------------------+
+| Values                                             |
++====================================================+
+| +-------+----------------------------------------+ |
+| | Value | Meaning                                | |
+| +=======+========================================+ |
+| | 0     | Land Vertically (Not strict)           | |
+| +-------+----------------------------------------+ |
+| | 1     | Retry Landing(Normal Strictness)       | |
+| +-------+----------------------------------------+ |
+| | 2     | Do not land (just Hover) (Very Strict) | |
+| +-------+----------------------------------------+ |
+|                                                    |
++----------------------------------------------------+
+
+
+
+
+.. _PLND_RET_MAX:
+
+PLND\_RET\_MAX: PrecLand Maximum number of retires for a failed landing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+PrecLand Maximum number of retires for a failed landing\. Set to zero to disable landing retry\.
+
+
++-----------+---------+
+| Increment | Range   |
++===========+=========+
+| 1         | 0 to 10 |
++-----------+---------+
+
+
+
+
+.. _PLND_TIMEOUT:
+
+PLND\_TIMEOUT: PrecLand retry timeout
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Time for which vehicle continues descend even if target is lost\. After this time period\, vehicle will attempt a landing retry depending on PLND\_STRICT parameter\.
+
+
++---------+---------+
+| Range   | Units   |
++=========+=========+
+| 0 to 20 | seconds |
++---------+---------+
+
+
+
+
+.. _PLND_RET_BEHAVE:
+
+PLND\_RET\_BEHAVE: PrecLand retry behaviour
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Prec Land will do the action selected by this parameter if a retry to a landing is needed
+
+
++--------------------------------------------------------------------------------+
+| Values                                                                         |
++================================================================================+
+| +-------+--------------------------------------------------------------------+ |
+| | Value | Meaning                                                            | |
+| +=======+====================================================================+ |
+| | 0     | Go to the last location where landing target was detected          | |
+| +-------+--------------------------------------------------------------------+ |
+| | 1     | Go towards the approximate location of the detected landing target | |
+| +-------+--------------------------------------------------------------------+ |
+|                                                                                |
++--------------------------------------------------------------------------------+
+
+
+
+
+.. _PLND_ALT_MIN:
+
+PLND\_ALT\_MIN: PrecLand minimum alt for retry
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Vehicle will continue landing vertically even if target is lost below this height\. This needs a rangefinder to work\. Set to zero to disable this\.
+
+
++--------+--------+
+| Range  | Units  |
++========+========+
+| 0 to 5 | meters |
++--------+--------+
+
+
+
+
+.. _PLND_ALT_MAX:
+
+PLND\_ALT\_MAX: PrecLand maximum alt for retry
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Vehicle will continue landing vertically until this height if target is not found\. Below this height if landing target is not found\, landing retry\/failsafe might be attempted\. This needs a rangefinder to work\. Set to zero to disable this\.
+
+
++---------+--------+
+| Range   | Units  |
++=========+========+
+| 0 to 50 | meters |
++---------+--------+
+
+
+
+
+.. _PLND_OPTIONS:
+
+PLND\_OPTIONS: Precision Landing Extra Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Precision Landing Extra Options
+
+
++-----------------------------------------------------------+
+| Bitmask                                                   |
++===========================================================+
+| +-----+-------------------------------------------------+ |
+| | Bit | Meaning                                         | |
+| +=====+=================================================+ |
+| | 0   | Moving Landing Target                           | |
+| +-----+-------------------------------------------------+ |
+| | 1   | Allow Precision Landing after manual reposition | |
+| +-----+-------------------------------------------------+ |
+| | 2   | Maintain high speed in final descent            | |
+| +-----+-------------------------------------------------+ |
+|                                                           |
++-----------------------------------------------------------+
+
+
+
+
+.. _PLND_ORIENT:
+
+PLND\_ORIENT: Camera Orientation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+Orientation of camera\/sensor on body
+
+
++---------------------+
+| Values              |
++=====================+
+| +-------+---------+ |
+| | Value | Meaning | |
+| +=======+=========+ |
+| | 0     | Forward | |
+| +-------+---------+ |
+| | 4     | Back    | |
+| +-------+---------+ |
+| | 25    | Down    | |
+| +-------+---------+ |
+|                     |
++---------------------+
+
+
+
+
+
 .. _parameters_PTCH:
 
 PTCH Parameters
@@ -65918,11 +66512,11 @@ Q\_TRANSITION\_MS: Transition time
 Transition time in milliseconds after minimum airspeed is reached
 
 
-+---------------+--------------+
-| Range         | Units        |
-+===============+==============+
-| 2000 to 30000 | milliseconds |
-+---------------+--------------+
++--------------+--------------+
+| Range        | Units        |
++==============+==============+
+| 500 to 30000 | milliseconds |
++--------------+--------------+
 
 
 
@@ -66966,6 +67560,24 @@ This parameter determines when the feature that uses forward throttle instead of
 | +-------+----------------------------------------------+ |
 |                                                          |
 +----------------------------------------------------------+
+
+
+
+
+.. _Q_BCK_PIT_LIM:
+
+Q\_BCK\_PIT\_LIM: Q mode rearward pitch limit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+This sets the maximum number of degrees of back or pitch up in Q modes when the airspeed is at AIRSPEED\_MIN\, and is used to prevent excessive sutructural loads when pitching up decelerate\. If airspeed is above or below AIRSPEED\_MIN\, the pitch up\/back will be adjusted according to the formula pitch\_limit \= Q\_BCK\_PIT\_LIM \* \(AIRSPEED\_MIN \/ IAS\)\^2\. The backwards\/up pitch limit controlled by this parameter is in addition to limiting applied by PTCH\_LIM\_MAX\_DEG and Q\_ANGLE\_MAX\. The BCK\_PIT\_LIM limit is only applied when Q\_FWD\_THR\_USE is set to 1 or 2 and the vehicle is flying in a mode that uses forward throttle instead of forward tilt to generate forward speed\. Set to a non positive value 0 to deactivate this limit\.
+
+
++-----------+-------------+---------+
+| Increment | Range       | Units   |
++===========+=============+=========+
+| 0.1       | 0.0 to 15.0 | degrees |
++-----------+-------------+---------+
 
 
 
@@ -71041,6 +71653,8 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 176   | Quadplane Fwd Throttle Override enable              | |
 | +-------+-----------------------------------------------------+ |
+| | 177   | Mount LRF enable                                    | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -71362,6 +71976,8 @@ Function assigned to this RC channel
 | | 175   | Camera Lens                                         | |
 | +-------+-----------------------------------------------------+ |
 | | 176   | Quadplane Fwd Throttle Override enable              | |
+| +-------+-----------------------------------------------------+ |
+| | 177   | Mount LRF enable                                    | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -71685,6 +72301,8 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 176   | Quadplane Fwd Throttle Override enable              | |
 | +-------+-----------------------------------------------------+ |
+| | 177   | Mount LRF enable                                    | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -72006,6 +72624,8 @@ Function assigned to this RC channel
 | | 175   | Camera Lens                                         | |
 | +-------+-----------------------------------------------------+ |
 | | 176   | Quadplane Fwd Throttle Override enable              | |
+| +-------+-----------------------------------------------------+ |
+| | 177   | Mount LRF enable                                    | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -72329,6 +72949,8 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 176   | Quadplane Fwd Throttle Override enable              | |
 | +-------+-----------------------------------------------------+ |
+| | 177   | Mount LRF enable                                    | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -72650,6 +73272,8 @@ Function assigned to this RC channel
 | | 175   | Camera Lens                                         | |
 | +-------+-----------------------------------------------------+ |
 | | 176   | Quadplane Fwd Throttle Override enable              | |
+| +-------+-----------------------------------------------------+ |
+| | 177   | Mount LRF enable                                    | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -72973,6 +73597,8 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 176   | Quadplane Fwd Throttle Override enable              | |
 | +-------+-----------------------------------------------------+ |
+| | 177   | Mount LRF enable                                    | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -73294,6 +73920,8 @@ Function assigned to this RC channel
 | | 175   | Camera Lens                                         | |
 | +-------+-----------------------------------------------------+ |
 | | 176   | Quadplane Fwd Throttle Override enable              | |
+| +-------+-----------------------------------------------------+ |
+| | 177   | Mount LRF enable                                    | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -73617,6 +74245,8 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 176   | Quadplane Fwd Throttle Override enable              | |
 | +-------+-----------------------------------------------------+ |
+| | 177   | Mount LRF enable                                    | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -73938,6 +74568,8 @@ Function assigned to this RC channel
 | | 175   | Camera Lens                                         | |
 | +-------+-----------------------------------------------------+ |
 | | 176   | Quadplane Fwd Throttle Override enable              | |
+| +-------+-----------------------------------------------------+ |
+| | 177   | Mount LRF enable                                    | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -74261,6 +74893,8 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 176   | Quadplane Fwd Throttle Override enable              | |
 | +-------+-----------------------------------------------------+ |
+| | 177   | Mount LRF enable                                    | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -74582,6 +75216,8 @@ Function assigned to this RC channel
 | | 175   | Camera Lens                                         | |
 | +-------+-----------------------------------------------------+ |
 | | 176   | Quadplane Fwd Throttle Override enable              | |
+| +-------+-----------------------------------------------------+ |
+| | 177   | Mount LRF enable                                    | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -74905,6 +75541,8 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 176   | Quadplane Fwd Throttle Override enable              | |
 | +-------+-----------------------------------------------------+ |
+| | 177   | Mount LRF enable                                    | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -75226,6 +75864,8 @@ Function assigned to this RC channel
 | | 175   | Camera Lens                                         | |
 | +-------+-----------------------------------------------------+ |
 | | 176   | Quadplane Fwd Throttle Override enable              | |
+| +-------+-----------------------------------------------------+ |
+| | 177   | Mount LRF enable                                    | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -75549,6 +76189,8 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 176   | Quadplane Fwd Throttle Override enable              | |
 | +-------+-----------------------------------------------------+ |
+| | 177   | Mount LRF enable                                    | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -75870,6 +76512,8 @@ Function assigned to this RC channel
 | | 175   | Camera Lens                                         | |
 | +-------+-----------------------------------------------------+ |
 | | 176   | Quadplane Fwd Throttle Override enable              | |
+| +-------+-----------------------------------------------------+ |
+| | 177   | Mount LRF enable                                    | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -103858,19 +104502,19 @@ Allows you to enable \(1\) or disable \(0\) the Preland simulation
 
 .. _SIM_PLD_HEIGHT:
 
-SIM\_PLD\_HEIGHT: Precland device center\'s height above sealevel
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SIM\_PLD\_HEIGHT: Precland device center\'s height SITL origin
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
-Precland device center\'s height above sealevel assume a 2x2m square as station base
+Precland device center\'s height above SITL origin\. Assumes a 2x2m square as station base
 
 
-+-----------+------------+-------------+
-| Increment | Range      | Units       |
-+===========+============+=============+
-| 1         | 0 to 10000 | centimeters |
-+-----------+------------+-------------+
++-----------+------------+--------+
+| Increment | Range      | Units  |
++===========+============+========+
+| 1         | 0 to 10000 | meters |
++-----------+------------+--------+
 
 
 
@@ -103980,6 +104624,32 @@ Precland device rate\. e\.g led patter refresh rate\, RF message rate\, etc\.
 +==========+=======+
 | 0 to 200 | hertz |
 +----------+-------+
+
+
+
+
+.. _SIM_PLD_SHIP:
+
+SIM\_PLD\_SHIP: SIM\_Precland follow ship
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+This makes the position of the landing beacon follow the simulated ship from SIM\_SHIP\. The ship movement is controlled with the SIM\_SHIP parameters
+
+
++----------------------+
+| Values               |
++======================+
+| +-------+----------+ |
+| | Value | Meaning  | |
+| +=======+==========+ |
+| | 0     | Disabled | |
+| +-------+----------+ |
+| | 1     | Enabled  | |
+| +-------+----------+ |
+|                      |
++----------------------+
 
 
 
@@ -104156,6 +104826,272 @@ Sets percentage of outgoing byte loss on UARTs
 +=========+
 | percent |
 +---------+
+
+
+
+
+.. _SIM_VICON_FAIL:
+
+SIM\_VICON\_FAIL: SITL vicon failure
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+SITL vicon failure
+
+
++---------------------------+
+| Values                    |
++===========================+
+| +-------+---------------+ |
+| | Value | Meaning       | |
+| +=======+===============+ |
+| | 0     | Vicon Healthy | |
+| +-------+---------------+ |
+| | 1     | Vicon Failed  | |
+| +-------+---------------+ |
+|                           |
++---------------------------+
+
+
+
+
+.. _SIM_VICON_GLIT_X:
+
+SIM\_VICON\_GLIT\_X: SITL vicon position glitch North
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+SITL vicon position glitch North
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
+.. _SIM_VICON_GLIT_Y:
+
+SIM\_VICON\_GLIT\_Y: SITL vicon position glitch East
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+SITL vicon position glitch East
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
+.. _SIM_VICON_GLIT_Z:
+
+SIM\_VICON\_GLIT\_Z: SITL vicon position glitch Down
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+SITL vicon position glitch Down
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
+.. _SIM_VICON_POS_X:
+
+SIM\_VICON\_POS\_X: SITL vicon position on vehicle in Forward direction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+SITL vicon position on vehicle in Forward direction
+
+
++---------+--------+
+| Range   | Units  |
++=========+========+
+| 0 to 10 | meters |
++---------+--------+
+
+
+
+
+.. _SIM_VICON_POS_Y:
+
+SIM\_VICON\_POS\_Y: SITL vicon position on vehicle in Right direction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+SITL vicon position on vehicle in Right direction
+
+
++---------+--------+
+| Range   | Units  |
++=========+========+
+| 0 to 10 | meters |
++---------+--------+
+
+
+
+
+.. _SIM_VICON_POS_Z:
+
+SIM\_VICON\_POS\_Z: SITL vicon position on vehicle in Down direction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+SITL vicon position on vehicle in Down direction
+
+
++---------+--------+
+| Range   | Units  |
++=========+========+
+| 0 to 10 | meters |
++---------+--------+
+
+
+
+
+.. _SIM_VICON_TMASK:
+
+SIM\_VICON\_TMASK: SITL vicon type mask
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+SITL vicon messages sent
+
+
++------------------------------------+
+| Bitmask                            |
++====================================+
+| +-----+--------------------------+ |
+| | Bit | Meaning                  | |
+| +=====+==========================+ |
+| | 0   | VISION_POSITION_ESTIMATE | |
+| +-----+--------------------------+ |
+| | 1   | VISION_SPEED_ESTIMATE    | |
+| +-----+--------------------------+ |
+| | 2   | VICON_POSITION_ESTIMATE  | |
+| +-----+--------------------------+ |
+| | 3   | VISION_POSITION_DELTA    | |
+| +-----+--------------------------+ |
+| | 4   | ODOMETRY                 | |
+| +-----+--------------------------+ |
+|                                    |
++------------------------------------+
+
+
+
+
+.. _SIM_VICON_VGLI_X:
+
+SIM\_VICON\_VGLI\_X: SITL vicon velocity glitch North
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+SITL vicon velocity glitch North
+
+
++-------------------+
+| Units             |
++===================+
+| meters per second |
++-------------------+
+
+
+
+
+.. _SIM_VICON_VGLI_Y:
+
+SIM\_VICON\_VGLI\_Y: SITL vicon velocity glitch East
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+SITL vicon velocity glitch East
+
+
++-------------------+
+| Units             |
++===================+
+| meters per second |
++-------------------+
+
+
+
+
+.. _SIM_VICON_VGLI_Z:
+
+SIM\_VICON\_VGLI\_Z: SITL vicon velocity glitch Down
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+SITL vicon velocity glitch Down
+
+
++-------------------+
+| Units             |
++===================+
+| meters per second |
++-------------------+
+
+
+
+
+.. _SIM_VICON_YAW:
+
+SIM\_VICON\_YAW: SITL vicon yaw angle in earth frame
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+SITL vicon yaw angle in earth frame
+
+
++----------+---------+
+| Range    | Units   |
++==========+=========+
+| 0 to 360 | degrees |
++----------+---------+
+
+
+
+
+.. _SIM_VICON_YAWERR:
+
+SIM\_VICON\_YAWERR: SITL vicon yaw error
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+SITL vicon yaw added to reported yaw sent to vehicle
+
+
++-------------+---------+
+| Range       | Units   |
++=============+=========+
+| -180 to 180 | degrees |
++-------------+---------+
 
 
 
@@ -106948,16 +107884,18 @@ TECS\_OPTIONS: Extra TECS options
 This allows the enabling of special features in the speed\/height controller\.
 
 
-+----------------------+
-| Bitmask              |
-+======================+
-| +-----+------------+ |
-| | Bit | Meaning    | |
-| +=====+============+ |
-| | 0   | GliderOnly | |
-| +-----+------------+ |
-|                      |
-+----------------------+
++-------------------------------+
+| Bitmask                       |
++===============================+
+| +-----+---------------------+ |
+| | Bit | Meaning             | |
+| +=====+=====================+ |
+| | 0   | GliderOnly          | |
+| +-----+---------------------+ |
+| | 1   | AllowDescentSpeedup | |
+| +-----+---------------------+ |
+|                               |
++-------------------------------+
 
 
 
@@ -109631,6 +110569,25 @@ Visual odometry yaw measurement noise minimum \(radians\)\, This value will be u
 
 
 
+.. _VISO_QUAL_MIN:
+
+VISO\_QUAL\_MIN: Visual odometry minimum quality
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Visual odometry will only be sent to EKF if over this value\. \-1 to always send \(even bad values\)\, 0 to send if good or unknown
+
+
++-----------+---------+
+| Range     | Units   |
++===========+=========+
+| -1 to 100 | percent |
++-----------+---------+
+
+
+
+
 
 .. _parameters_VTX_:
 
@@ -109729,6 +110686,8 @@ Video Transmitter Band
 | | 6     | 1G3 Band A   | |
 | +-------+--------------+ |
 | | 7     | 1G3 Band B   | |
+| +-------+--------------+ |
+| | 8     | Band X       | |
 | +-------+--------------+ |
 |                          |
 +--------------------------+

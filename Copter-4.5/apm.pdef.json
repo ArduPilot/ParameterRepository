@@ -1,4 +1,1422 @@
 {
+  "": {
+    "AEROM_ALT_ABORT": {
+      "Description": "Maximum allowable loss in altitude during a trick or sequence from its starting altitude.",
+      "DisplayName": "Altitude Abort",
+      "Units": "m"
+    },
+    "AEROM_ANG_ACCEL": {
+      "Description": "Maximum angular acceleration in maneuvers",
+      "DisplayName": "Angular acceleration limit",
+      "Units": "deg/s/s"
+    },
+    "AEROM_ANG_TC": {
+      "Description": "This is the time over which we filter the desired roll to smooth it",
+      "DisplayName": "Roll control filtertime constant",
+      "Units": "s"
+    },
+    "AEROM_BOX_WIDTH": {
+      "Description": "Length of aerobatic \"box\" ",
+      "DisplayName": "Box Width",
+      "Units": "m"
+    },
+    "AEROM_DEBUG": {
+      "Description": "This controls the printing of extra debug information on paths",
+      "DisplayName": "Debug control"
+    },
+    "AEROM_ENTRY_RATE": {
+      "Description": "This controls how rapidly we roll into a new orientation",
+      "DisplayName": "The roll rate to use when entering a roll maneuver",
+      "Units": "deg/s"
+    },
+    "AEROM_ERR_COR_D": {
+      "Description": "This controls how rapidly we correct back onto the desired path",
+      "DisplayName": "D gain for path error corrections"
+    },
+    "AEROM_ERR_COR_P": {
+      "Description": "This controls how rapidly we correct back onto the desired path",
+      "DisplayName": "P gain for path error corrections"
+    },
+    "AEROM_KE_RUDD": {
+      "Description": "Percent of rudder normally uses to sustain knife-edge at trick speed",
+      "DisplayName": "KnifeEdge Rudder",
+      "Units": "%"
+    },
+    "AEROM_KE_RUDD_LK": {
+      "Description": "Time to look ahead in the path to calculate rudder correction for bank angle",
+      "DisplayName": "KnifeEdge Rudder lookahead",
+      "Units": "s"
+    },
+    "AEROM_LKAHD": {
+      "Description": "This is how much time to look ahead in the path for calculating path rates",
+      "DisplayName": "Lookahead",
+      "Units": "s"
+    },
+    "AEROM_MIS_ANGLE": {
+      "Description": "When set to a non-zero value, this is the assumed direction of the mission. Otherwise the waypoint angle is used",
+      "DisplayName": "Mission angle",
+      "Units": "deg"
+    },
+    "AEROM_OPTIONS": {
+      "Bitmask": {
+        "0": "UseRTLOnAbort",
+        "1": "AddAtToMessages",
+        "2": "DualAircraftSynchronised"
+      },
+      "Description": "Options to control aerobatic behavior",
+      "DisplayName": "Aerobatic options",
+      "Units": "deg"
+    },
+    "AEROM_PATH_SCALE": {
+      "Description": "Scale factor for Path/Box size. 0.5 would half the distances in maneuvers. Radii are unaffected.",
+      "DisplayName": "Path Scale",
+      "Range": {
+        "high": "100",
+        "low": "0.1"
+      }
+    },
+    "AEROM_ROL_COR_TC": {
+      "Description": "This is the time constant for correcting roll errors. A smaller value leads to faster roll corrections",
+      "DisplayName": "Roll control time constant",
+      "Units": "s"
+    },
+    "AEROM_SPD_I": {
+      "Description": "This controls how rapidly the throttle is raised to compensate for a speed error",
+      "DisplayName": "I gain for speed controller",
+      "Units": "%"
+    },
+    "AEROM_SPD_P": {
+      "Description": "This controls how rapidly the throttle is raised to compensate for a speed error",
+      "DisplayName": "P gain for speed controller",
+      "Units": "%"
+    },
+    "AEROM_STALL_PIT": {
+      "Description": "Pitch threashold for moving to final stage of stall turn",
+      "DisplayName": "Stall turn pitch threshold",
+      "Units": "deg"
+    },
+    "AEROM_STALL_THR": {
+      "Description": "Amount of throttle to reduce to for a stall turn",
+      "DisplayName": "Stall turn throttle",
+      "Units": "%"
+    },
+    "AEROM_THR_BOOST": {
+      "Description": "This is the extra throttle added in schedule elements marked as needing a throttle boost",
+      "DisplayName": "Throttle boost",
+      "Units": "%"
+    },
+    "AEROM_THR_LKAHD": {
+      "Description": "This controls how far ahead we look in time along the path for the target throttle",
+      "DisplayName": "The lookahead for throttle control",
+      "Units": "s"
+    },
+    "AEROM_THR_MIN": {
+      "Description": "Lowest throttle used during maneuvers",
+      "DisplayName": "Minimum Throttle",
+      "Units": "%"
+    },
+    "AEROM_THR_PIT_FF": {
+      "Description": "This controls how much extra throttle to add based on pitch ange. The value is for 90 degrees and is applied in proportion to pitch",
+      "DisplayName": "Throttle feed forward from pitch",
+      "Units": "%"
+    },
+    "AEROM_TIME_COR_P": {
+      "Description": "This is the time constant for correcting path position errors",
+      "DisplayName": "Time constant for correction of our distance along the path",
+      "Units": "s"
+    },
+    "AEROM_TS_I": {
+      "Description": "This controls how rapidly two aircraft are brought back into time sync",
+      "DisplayName": "Timesync I gain"
+    },
+    "AEROM_TS_P": {
+      "Description": "This controls how rapidly two aircraft are brought back into time sync",
+      "DisplayName": "Timesync P gain"
+    },
+    "AEROM_TS_RATE": {
+      "Description": "This sets the rate we send data for time sync between aircraft",
+      "DisplayName": "Timesync rate of send of NAMED_VALUE_FLOAT data",
+      "Units": "Hz"
+    },
+    "AEROM_TS_SPDMAX": {
+      "Description": "This sets the maximum speed adjustment for time sync between aircraft",
+      "DisplayName": "Timesync speed max",
+      "Units": "m/s"
+    },
+    "AEROM_YAW_ACCEL": {
+      "Description": "This is maximum yaw acceleration to use",
+      "DisplayName": "Yaw acceleration",
+      "Units": "deg/s/s"
+    },
+    "BATT_ANX_CANDRV": {
+      "Description": "Set ANX CAN driver",
+      "DisplayName": "Set ANX CAN driver",
+      "User": "Standard",
+      "Values": {
+        "0": "None",
+        "1": "1stCANDriver",
+        "2": "2ndCanDriver"
+      }
+    },
+    "BATT_ANX_ENABLE": {
+      "Description": "Enable ANX battery support",
+      "DisplayName": "Enable ANX battery support",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "BATT_ANX_INDEX": {
+      "Description": "ANX CAN battery index",
+      "DisplayName": "ANX CAN battery index",
+      "Range": {
+        "high": "10",
+        "low": "1"
+      },
+      "User": "Standard"
+    },
+    "BATT_ANX_OPTIONS": {
+      "Bitmask": {
+        "0": "LogAllFrames"
+      },
+      "Description": "ANX CAN battery options",
+      "DisplayName": "ANX CAN battery options",
+      "User": "Advanced"
+    },
+    "BATT_SOC1_C1": {
+      "Description": "Battery estimator coefficient1",
+      "DisplayName": "Battery estimator coefficient1",
+      "Range": {
+        "high": "200",
+        "low": "100"
+      },
+      "User": "Standard"
+    },
+    "BATT_SOC1_C2": {
+      "Description": "Battery estimator coefficient2",
+      "DisplayName": "Battery estimator coefficient2",
+      "Range": {
+        "high": "5",
+        "low": "2"
+      },
+      "User": "Standard"
+    },
+    "BATT_SOC1_C3": {
+      "Description": "Battery estimator coefficient3",
+      "DisplayName": "Battery estimator coefficient3",
+      "Range": {
+        "high": "0.5",
+        "low": "0.01"
+      },
+      "User": "Standard"
+    },
+    "BATT_SOC1_IDX": {
+      "Description": "Battery estimator index",
+      "DisplayName": "Battery estimator index",
+      "Range": {
+        "high": "4",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "BATT_SOC1_NCELL": {
+      "Description": "Battery estimator cell count",
+      "DisplayName": "Battery estimator cell count",
+      "Range": {
+        "high": "48",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "BATT_SOC2_C1": {
+      "Description": "Battery estimator coefficient1",
+      "DisplayName": "Battery estimator coefficient1",
+      "Range": {
+        "high": "200",
+        "low": "100"
+      },
+      "User": "Standard"
+    },
+    "BATT_SOC2_C2": {
+      "Description": "Battery estimator coefficient2",
+      "DisplayName": "Battery estimator coefficient2",
+      "Range": {
+        "high": "5",
+        "low": "2"
+      },
+      "User": "Standard"
+    },
+    "BATT_SOC2_C3": {
+      "Description": "Battery estimator coefficient3",
+      "DisplayName": "Battery estimator coefficient3",
+      "Range": {
+        "high": "0.5",
+        "low": "0.01"
+      },
+      "User": "Standard"
+    },
+    "BATT_SOC2_IDX": {
+      "Description": "Battery estimator index",
+      "DisplayName": "Battery estimator index",
+      "Range": {
+        "high": "4",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "BATT_SOC2_NCELL": {
+      "Description": "Battery estimator cell count",
+      "DisplayName": "Battery estimator cell count",
+      "Range": {
+        "high": "48",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "BATT_SOC3_C1": {
+      "Description": "Battery estimator coefficient1",
+      "DisplayName": "Battery estimator coefficient1",
+      "Range": {
+        "high": "200",
+        "low": "100"
+      },
+      "User": "Standard"
+    },
+    "BATT_SOC3_C2": {
+      "Description": "Battery estimator coefficient2",
+      "DisplayName": "Battery estimator coefficient2",
+      "Range": {
+        "high": "5",
+        "low": "2"
+      },
+      "User": "Standard"
+    },
+    "BATT_SOC3_C3": {
+      "Description": "Battery estimator coefficient3",
+      "DisplayName": "Battery estimator coefficient3",
+      "Range": {
+        "high": "0.5",
+        "low": "0.01"
+      },
+      "User": "Standard"
+    },
+    "BATT_SOC3_IDX": {
+      "Description": "Battery estimator index",
+      "DisplayName": "Battery estimator index",
+      "Range": {
+        "high": "4",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "BATT_SOC3_NCELL": {
+      "Description": "Battery estimator cell count",
+      "DisplayName": "Battery estimator cell count",
+      "Range": {
+        "high": "48",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "BATT_SOC4_C1": {
+      "Description": "Battery estimator coefficient1",
+      "DisplayName": "Battery estimator coefficient1",
+      "Range": {
+        "high": "200",
+        "low": "100"
+      },
+      "User": "Standard"
+    },
+    "BATT_SOC4_C2": {
+      "Description": "Battery estimator coefficient2",
+      "DisplayName": "Battery estimator coefficient2",
+      "Range": {
+        "high": "5",
+        "low": "2"
+      },
+      "User": "Standard"
+    },
+    "BATT_SOC4_C3": {
+      "Description": "Battery estimator coefficient3",
+      "DisplayName": "Battery estimator coefficient3",
+      "Range": {
+        "high": "0.5",
+        "low": "0.01"
+      },
+      "User": "Standard"
+    },
+    "BATT_SOC4_IDX": {
+      "Description": "Battery estimator index",
+      "DisplayName": "Battery estimator index",
+      "Range": {
+        "high": "4",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "BATT_SOC4_NCELL": {
+      "Description": "Battery estimator cell count",
+      "DisplayName": "Battery estimator cell count",
+      "Range": {
+        "high": "48",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "BATT_SOC_COUNT": {
+      "Description": "Number of battery SOC estimators",
+      "DisplayName": "Count of SOC estimators",
+      "Range": {
+        "high": "4",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "DIST_CUTOFF": {
+      "Description": "The distance from target beyond which the target is ignored",
+      "DisplayName": "Precland distance cutoff",
+      "Range": {
+        "high": "100",
+        "low": "0"
+      },
+      "Units": "m",
+      "User": "Standard"
+    },
+    "DJIR_DEBUG": {
+      "Description": "Enable DJIRS2 debug",
+      "DisplayName": "DJIRS2 debug",
+      "User": "Advanced",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled",
+        "2": "Enabled with attitude reporting"
+      }
+    },
+    "DJIR_UPSIDEDOWN": {
+      "Description": "DJIRS2 upside down",
+      "DisplayName": "DJIRS2 upside down",
+      "User": "Standard",
+      "Values": {
+        "0": "Right side up",
+        "1": "Upside down"
+      }
+    },
+    "DR_ENABLE": {
+      "Description": "Deadreckoning Enable",
+      "DisplayName": "Deadreckoning Enable",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "DR_ENABLE_DIST": {
+      "Description": "Distance from home (in meters) beyond which the dead reckoning will be enabled",
+      "DisplayName": "Deadreckoning Enable Distance",
+      "Units": "m",
+      "User": "Standard"
+    },
+    "DR_FLY_ALT_MIN": {
+      "Description": "Copter will fly at at least this altitude (in meters) above home during deadreckoning",
+      "DisplayName": "Deadreckoning Altitude Min",
+      "Range": {
+        "high": "1000",
+        "low": "0"
+      },
+      "Units": "m",
+      "User": "Standard"
+    },
+    "DR_FLY_ANGLE": {
+      "Description": "lean angle (in degrees) during deadreckoning",
+      "DisplayName": "Deadreckoning Lean Angle",
+      "Range": {
+        "high": "45",
+        "low": "0"
+      },
+      "Units": "deg",
+      "User": "Standard"
+    },
+    "DR_FLY_TIMEOUT": {
+      "Description": "Copter will attempt to switch to NEXT_MODE after this many seconds of deadreckoning.  If it cannot switch modes it will continue in Guided_NoGPS.  Set to 0 to disable timeout",
+      "DisplayName": "Deadreckoning flight timeout",
+      "Units": "s",
+      "User": "Standard"
+    },
+    "DR_GPS_SACC_MAX": {
+      "Description": "GPS speed accuracy maximum, above which deadreckoning home will begin (default is 0.8).  Lower values trigger with good GPS quality, higher values will allow poorer GPS before triggering. Set to 0 to disable use of GPS speed accuracy",
+      "DisplayName": "Deadreckoning GPS speed accuracy maximum threshold",
+      "Range": {
+        "high": "10",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "DR_GPS_SAT_MIN": {
+      "Description": "GPS satellite count threshold below which deadreckoning home will begin (default is 6).  Higher values trigger with good GPS quality, Lower values trigger with worse GPS quality. Set to 0 to disable use of GPS satellite count",
+      "DisplayName": "Deadreckoning GPS satellite count min threshold",
+      "Range": {
+        "high": "30",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "DR_GPS_TRIGG_SEC": {
+      "Description": "GPS checks must fail for this many seconds before dead reckoning will be triggered",
+      "DisplayName": "Deadreckoning GPS check trigger seconds",
+      "Units": "s",
+      "User": "Standard"
+    },
+    "DR_NEXT_MODE": {
+      "Description": "Copter switch to this mode after GPS recovers or DR_FLY_TIMEOUT has elapsed.  Default is 6/RTL.  Set to -1 to return to mode used before deadreckoning was triggered",
+      "DisplayName": "Deadreckoning Next Mode",
+      "User": "Standard",
+      "Values": {
+        "16": "PosHold",
+        "17": "Brake",
+        "2": "AltHold",
+        "20": "Guided_NoGPS",
+        "21": "Smart_RTL",
+        "27": "Auto RTL",
+        "3": "Auto",
+        "4": "Guided",
+        "5": "Loiter",
+        "6": "RTL",
+        "7": "Circle",
+        "9": "Land"
+      }
+    },
+    "EFI_DLA_ENABLE": {
+      "Description": "Enable EFI DLA driver",
+      "DisplayName": "EFI DLA enable",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "EFI_DLA_LPS": {
+      "Description": "EFI DLA litres of fuel per second of injection time",
+      "DisplayName": "EFI DLA fuel scale",
+      "Range": {
+        "high": "1",
+        "low": "0.00001"
+      },
+      "Units": "litres",
+      "User": "Standard"
+    },
+    "EFI_H6K_CANDRV": {
+      "Description": "Halo6000 CAN driver. Use 1 for first CAN scripting driver, 2 for 2nd driver",
+      "DisplayName": "Halo6000 CAN driver",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "1": "FirstCAN",
+        "2": "SecondCAN"
+      }
+    },
+    "EFI_H6K_ENABLE": {
+      "Description": "Enable Halo6000 EFI driver",
+      "DisplayName": "Enable Halo6000 EFI driver",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "EFI_H6K_FUELTOT": {
+      "Description": "The capacity of the tank in litres",
+      "DisplayName": "Halo6000 total fuel capacity",
+      "Units": "litres",
+      "User": "Standard"
+    },
+    "EFI_H6K_START_FN": {
+      "Description": "The RC auxilliary function number for start/stop of the generator. Zero to disable start function",
+      "DisplayName": "Halo6000 start auxilliary function",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "300": "300",
+        "301": "301",
+        "302": "302",
+        "303": "303",
+        "304": "304",
+        "305": "305",
+        "306": "306",
+        "307": "307"
+      }
+    },
+    "EFI_H6K_TELEM_RT": {
+      "Description": "The rate that additional generator telemetry is sent",
+      "DisplayName": "Halo6000 telemetry rate",
+      "Units": "Hz",
+      "User": "Standard"
+    },
+    "EFI_INF_ENABLE": {
+      "Description": "Enable EFI INF-Inject driver",
+      "DisplayName": "EFI INF-Inject enable",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "EFI_SP_CANDRV": {
+      "Description": "Set SkyPower EFI CAN driver",
+      "DisplayName": "Set SkyPower EFI CAN driver",
+      "User": "Standard",
+      "Values": {
+        "0": "None",
+        "1": "1stCANDriver",
+        "2": "2ndCanDriver"
+      }
+    },
+    "EFI_SP_ENABLE": {
+      "Description": "Enable SkyPower EFI support",
+      "DisplayName": "Enable SkyPower EFI support",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "EFI_SP_GEN_CTRL": {
+      "Description": "SkyPower EFI enable generator control",
+      "DisplayName": "SkyPower EFI enable generator control",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "EFI_SP_GEN_FN": {
+      "Description": "SkyPower EFI generator control function. This is the RCn_OPTION value to use to find the R/C channel used for controlling generator start/stop",
+      "DisplayName": "SkyPower EFI generator control function",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "300": "300",
+        "301": "301",
+        "302": "302",
+        "303": "303",
+        "304": "304",
+        "305": "305",
+        "306": "306",
+        "307": "307"
+      }
+    },
+    "EFI_SP_LOG_RT": {
+      "Description": "SkyPower EFI log rate. This is the rate at which extra logging of the SkyPower EFI is performed",
+      "DisplayName": "SkyPower EFI log rate",
+      "Range": {
+        "high": "50",
+        "low": "1"
+      },
+      "Units": "Hz",
+      "User": "Advanced"
+    },
+    "EFI_SP_MIN_RPM": {
+      "Description": "SkyPower EFI minimum RPM. This is the RPM below which the engine is considered to be stopped",
+      "DisplayName": "SkyPower EFI minimum RPM",
+      "Range": {
+        "high": "1000",
+        "low": "1"
+      },
+      "User": "Advanced"
+    },
+    "EFI_SP_MODEL": {
+      "Description": "SkyPower EFI ECU model",
+      "DisplayName": "SkyPower EFI ECU model",
+      "User": "Standard",
+      "Values": {
+        "0": "Default",
+        "1": "SP_275"
+      }
+    },
+    "EFI_SP_RST_TIME": {
+      "Description": "SkyPower EFI restart time. If engine should be running and it has stopped for this amount of time then auto-restart. To disable this feature set this value to zero.",
+      "DisplayName": "SkyPower EFI restart time",
+      "Range": {
+        "high": "10",
+        "low": "0"
+      },
+      "Units": "s",
+      "User": "Standard"
+    },
+    "EFI_SP_START_FN": {
+      "Description": "SkyPower EFI start function. This is the RCn_OPTION value to use to find the R/C channel used for controlling engine start",
+      "DisplayName": "SkyPower EFI start function",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "300": "300",
+        "301": "301",
+        "302": "302",
+        "303": "303",
+        "304": "304",
+        "305": "305",
+        "306": "306",
+        "307": "307"
+      }
+    },
+    "EFI_SP_ST_DISARM": {
+      "Description": "SkyPower EFI allow start disarmed. This controls if starting the engine while disarmed is allowed",
+      "DisplayName": "SkyPower EFI allow start disarmed",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "EFI_SP_THR_FN": {
+      "Description": "SkyPower EFI throttle function. This sets which SERVOn_FUNCTION to use for the target throttle. This should be 70 for fixed wing aircraft and 31 for helicopter rotor speed control",
+      "DisplayName": "SkyPower EFI throttle function",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "31": "HeliRSC",
+        "70": "FixedWing"
+      }
+    },
+    "EFI_SP_THR_RATE": {
+      "Description": "SkyPower EFI throttle rate. This sets rate at which throttle updates are sent to the engine",
+      "DisplayName": "SkyPower EFI throttle rate",
+      "Range": {
+        "high": "100",
+        "low": "10"
+      },
+      "Units": "Hz",
+      "User": "Advanced"
+    },
+    "EFI_SP_TLM_RT": {
+      "Description": "SkyPower EFI telemetry rate. This is the rate at which extra telemetry values are sent to the GCS",
+      "DisplayName": "SkyPower EFI telemetry rate",
+      "Range": {
+        "high": "10",
+        "low": "1"
+      },
+      "Units": "Hz",
+      "User": "Advanced"
+    },
+    "EFI_SP_UPDATE_HZ": {
+      "Description": "SkyPower EFI update rate",
+      "DisplayName": "SkyPower EFI update rate",
+      "Range": {
+        "high": "200",
+        "low": "10"
+      },
+      "Units": "Hz",
+      "User": "Advanced"
+    },
+    "EFI_SVF_ARMCHECK": {
+      "Description": "Check for Generator ARM state before arming",
+      "DisplayName": "Generator SVFFI arming check",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "EFI_SVF_ENABLE": {
+      "Description": "Enable SVFFI generator support",
+      "DisplayName": "Generator SVFFI enable",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "ESC_HW_ENABLE": {
+      "Description": "Enable Hobbywing ESC telemetry",
+      "DisplayName": "Hobbywing ESC Enable",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "ESC_HW_OFS": {
+      "Description": "Motor number offset of first ESC",
+      "DisplayName": "Hobbywing ESC motor offset",
+      "Range": {
+        "high": "31",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "ESC_HW_POLES": {
+      "Description": "Number of motor poles for eRPM scaling",
+      "DisplayName": "Hobbywing ESC motor poles",
+      "Range": {
+        "high": "50",
+        "low": "1"
+      },
+      "User": "Standard"
+    },
+    "ESRC_EXTN_QUAL": {
+      "Description": "ExternalNav may be used if quality is above this threshold",
+      "DisplayName": "EKF Source ExternalNav Quality Threshold",
+      "Range": {
+        "high": "100",
+        "low": "0"
+      },
+      "Units": "%",
+      "User": "Standard"
+    },
+    "ESRC_EXTN_THRESH": {
+      "Description": "ExternalNav may be used if innovations are below this threshold",
+      "DisplayName": "EKF Source ExternalNav Innovation Threshold",
+      "Range": {
+        "high": "1",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "ESRC_FLOW_QUAL": {
+      "Description": "OpticalFlow may be used if quality is above this threshold",
+      "DisplayName": "EKF Source OpticalFlow Quality Threshold",
+      "Range": {
+        "high": "100",
+        "low": "0"
+      },
+      "Units": "%",
+      "User": "Standard"
+    },
+    "ESRC_FLOW_THRESH": {
+      "Description": "OpticalFlow may be used if innovations are below this threshold",
+      "DisplayName": "EKF Source OpticalFlow Innovation Threshold",
+      "Range": {
+        "high": "1",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "ESRC_RNGFND_MAX": {
+      "Description": "OpticalFlow may be used if rangefinder distance is below this threshold",
+      "DisplayName": "EKF Source Rangefinder Max",
+      "Range": {
+        "high": "50",
+        "low": "0"
+      },
+      "Units": "m",
+      "User": "Standard"
+    },
+    "PLND_ALT_CUTOFF": {
+      "Description": "The altitude (rangefinder distance) below which we stop using the precision landing sensor and continue landing",
+      "DisplayName": "Precland altitude cutoff",
+      "Range": {
+        "high": "20",
+        "low": "0"
+      },
+      "Units": "m",
+      "User": "Standard"
+    },
+    "POI_DIST_MAX": {
+      "Description": "POI's max distance (in meters) from the vehicle",
+      "DisplayName": "Mount POI distance max",
+      "Range": {
+        "high": "10000",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "PREV_ENABLE": {
+      "Description": "Enable parameter reversion system",
+      "DisplayName": "parameter reversion enable",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "PREV_RC_FUNC": {
+      "Description": "RCn_OPTION number to used to trigger parameter reversion",
+      "DisplayName": "param reversion RC function",
+      "User": "Standard"
+    },
+    "QUIK_AUTO_FILTER": {
+      "Description": "When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER",
+      "DisplayName": "Quicktune auto filter enable",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "QUIK_AUTO_SAVE": {
+      "Description": "Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune",
+      "DisplayName": "Quicktune auto save",
+      "Units": "s",
+      "User": "Standard"
+    },
+    "QUIK_AXES": {
+      "Bitmask": {
+        "0": "Roll",
+        "1": "Pitch",
+        "2": "Yaw"
+      },
+      "Description": "axes to tune",
+      "DisplayName": "Quicktune axes",
+      "User": "Standard"
+    },
+    "QUIK_DOUBLE_TIME": {
+      "Description": "Time to double a tuning parameter. Raise this for a slower tune.",
+      "DisplayName": "Quicktune doubling time",
+      "Range": {
+        "high": "20",
+        "low": "5"
+      },
+      "Units": "s",
+      "User": "Standard"
+    },
+    "QUIK_ENABLE": {
+      "Description": "Enable quicktune system",
+      "DisplayName": "Quicktune enable",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "QUIK_GAIN_MARGIN": {
+      "Description": "Reduction in gain after oscillation detected. Raise this number to get a more conservative tune",
+      "DisplayName": "Quicktune gain margin",
+      "Range": {
+        "high": "80",
+        "low": "20"
+      },
+      "Units": "%",
+      "User": "Standard"
+    },
+    "QUIK_MAX_REDUCE": {
+      "Description": "This controls how much quicktune is allowed to lower gains from the original gains. If the vehicle already has a reasonable tune and is not oscillating then you can set this to zero to prevent gain reductions. The default of 20% is reasonable for most vehicles. Using a maximum gain reduction lowers the chance of an angle P oscillation happening if quicktune gets a false positive oscillation at a low gain, which can result in very low rate gains and a dangerous angle P oscillation.",
+      "DisplayName": "Quicktune maximum gain reduction",
+      "Range": {
+        "high": "100",
+        "low": "0"
+      },
+      "Units": "%",
+      "User": "Standard"
+    },
+    "QUIK_OPTIONS": {
+      "Bitmask": {
+        "0": "UseTwoPositionSwitch"
+      },
+      "Description": "Additional options. When the Two Position Switch option is enabled then a high switch position will start the tune, low will disable the tune. you should also set a QUIK_AUTO_SAVE time so that you will be able to save the tune.",
+      "DisplayName": "Quicktune options",
+      "User": "Standard"
+    },
+    "QUIK_OSC_SMAX": {
+      "Description": "Threshold for oscillation detection. A lower value will lead to a more conservative tune.",
+      "DisplayName": "Quicktune oscillation rate threshold",
+      "Range": {
+        "high": "10",
+        "low": "1"
+      },
+      "User": "Standard"
+    },
+    "QUIK_RC_FUNC": {
+      "Description": "RCn_OPTION number to use to control tuning stop/start/save",
+      "DisplayName": "Quicktune RC function",
+      "User": "Standard"
+    },
+    "QUIK_RP_PI_RATIO": {
+      "Description": "Ratio between P and I gains for roll and pitch. Raise this to get a lower I gain",
+      "DisplayName": "Quicktune roll/pitch PI ratio",
+      "Range": {
+        "high": "1.0",
+        "low": "0.5"
+      },
+      "User": "Standard"
+    },
+    "QUIK_YAW_D_MAX": {
+      "Description": "Maximum value for yaw D gain",
+      "DisplayName": "Quicktune Yaw D max",
+      "Range": {
+        "high": "1",
+        "low": "0.001"
+      },
+      "User": "Standard"
+    },
+    "QUIK_YAW_P_MAX": {
+      "Description": "Maximum value for yaw P gain",
+      "DisplayName": "Quicktune Yaw P max",
+      "Range": {
+        "high": "3",
+        "low": "0.1"
+      },
+      "User": "Standard"
+    },
+    "QUIK_Y_PI_RATIO": {
+      "Description": "Ratio between P and I gains for yaw. Raise this to get a lower I gain",
+      "DisplayName": "Quicktune Yaw PI ratio",
+      "Range": {
+        "high": "20",
+        "low": "0.5"
+      },
+      "User": "Standard"
+    },
+    "RCK_DEBUG": {
+      "Description": "Sends Rockblock debug text to GCS via statustexts",
+      "DisplayName": "Display Rockblock debugging text",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "RCK_ENABLE": {
+      "Description": "Enables the Rockblock sending and recieving",
+      "DisplayName": "Enable Message transmission",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "RCK_FORCEHL": {
+      "Description": "Automatically enables High Latency mode if not already enabled",
+      "DisplayName": "Force enable High Latency mode",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "RCK_PERIOD": {
+      "Description": "When in High Latency mode, send Rockblock updates every N seconds",
+      "DisplayName": "Update rate",
+      "Range": {
+        "high": "600",
+        "low": "0"
+      },
+      "Units": "s",
+      "User": "Standard"
+    },
+    "RTUN_AUTO_FILTER": {
+      "Description": "When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER",
+      "DisplayName": "Rover Quicktune auto filter enable",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "RTUN_AUTO_SAVE": {
+      "Description": "Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune",
+      "DisplayName": "Rover Quicktune auto save",
+      "Units": "s",
+      "User": "Standard"
+    },
+    "RTUN_AXES": {
+      "Bitmask": {
+        "0": "Steering",
+        "1": "Speed"
+      },
+      "Description": "axes to tune",
+      "DisplayName": "Rover Quicktune axes",
+      "User": "Standard"
+    },
+    "RTUN_ENABLE": {
+      "Description": "Enable quicktune system",
+      "DisplayName": "Rover Quicktune enable",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "RTUN_RC_FUNC": {
+      "Description": "RCn_OPTION number to use to control tuning stop/start/save",
+      "DisplayName": "Rover Quicktune RC function",
+      "User": "Standard",
+      "Values": {
+        "300": "Scripting1",
+        "301": "Scripting2",
+        "302": "Scripting3",
+        "303": "Scripting4",
+        "304": "Scripting5",
+        "305": "Scripting6",
+        "306": "Scripting7",
+        "307": "Scripting8"
+      }
+    },
+    "RTUN_SPD_FFRATIO": {
+      "Description": "Ratio between measured response and CRUISE_THROTTLE value. Raise this to get a higher CRUISE_THROTTLE value",
+      "DisplayName": "Rover Quicktune Speed FeedForward (equivalent) ratio",
+      "Range": {
+        "high": "1.0",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "RTUN_SPD_I_RATIO": {
+      "Description": "Ratio between speed FF and I gain. Raise this to get a higher I gain, 0 to leave I unchanged",
+      "DisplayName": "Rover Quicktune Speed FF to I ratio",
+      "Range": {
+        "high": "2.0",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "RTUN_SPD_P_RATIO": {
+      "Description": "Ratio between speed FF and P gain. Raise this to get a higher P gain, 0 to leave P unchanged",
+      "DisplayName": "Rover Quicktune Speed FF to P ratio",
+      "Range": {
+        "high": "2.0",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "RTUN_STR_FFRATIO": {
+      "Description": "Ratio between measured response and FF gain. Raise this to get a higher FF gain",
+      "DisplayName": "Rover Quicktune Steering Rate FeedForward ratio",
+      "Range": {
+        "high": "1.0",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "RTUN_STR_I_RATIO": {
+      "Description": "Ratio between steering FF and I gains. Raise this to get a higher I gain, 0 to leave I unchanged",
+      "DisplayName": "Rover Quicktune Steering FF to I ratio",
+      "Range": {
+        "high": "2.0",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "RTUN_STR_P_RATIO": {
+      "Description": "Ratio between steering FF and P gains. Raise this to get a higher P gain, 0 to leave P unchanged",
+      "DisplayName": "Rover Quicktune Steering FF to P ratio",
+      "Range": {
+        "high": "2.0",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "SHIP_AUTO_OFS": {
+      "Description": "Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target. NOTE: This parameter will auto-reset to zero once the offset has been calculated.",
+      "DisplayName": "Ship automatic offset trigger",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "1": "Trigger"
+      }
+    },
+    "SHIP_ENABLE": {
+      "Description": "Enable ship landing system",
+      "DisplayName": "Ship landing enable",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "SHIP_LAND_ANGLE": {
+      "Description": "Angle from the stern of the ship for landing approach. Use this to ensure that on a go-around that ship superstructure and cables are avoided. A value of zero means to approach from the rear of the ship. A value of 90 means the landing will approach from the port (left) side of the ship. A value of -90 will mean approaching from the starboard (right) side of the ship. A value of 180 will approach from the bow of the ship. This parameter is combined with the sign of the RTL_RADIUS parameter to determine the holdoff pattern. If RTL_RADIUS is positive then a clockwise loiter is performed, if RTL_RADIUS is negative then a counter-clockwise loiter is used.",
+      "DisplayName": "Ship landing angle",
+      "Range": {
+        "high": "180",
+        "low": "-180"
+      },
+      "Units": "deg",
+      "User": "Standard"
+    },
+    "TOFSENSE_ID1": {
+      "Description": "First TOFSENSE-M sensor ID. Leave this at 0 to accept all IDs and if only one sensor is present. You can change ID of sensor from NAssistant Software",
+      "DisplayName": "TOFSENSE-M First ID",
+      "Range": {
+        "high": "255",
+        "low": "1"
+      },
+      "User": "Standard"
+    },
+    "TOFSENSE_ID2": {
+      "Description": "Second TOFSENSE-M sensor ID. This cannot be 0. You can change ID of sensor from NAssistant Software",
+      "DisplayName": "TOFSENSE-M Second ID",
+      "Range": {
+        "high": "255",
+        "low": "1"
+      },
+      "User": "Standard"
+    },
+    "TOFSENSE_ID3": {
+      "Description": "Third TOFSENSE-M sensor ID. This cannot be 0. You can change ID of sensor from NAssistant Software",
+      "DisplayName": "TOFSENSE-M Thir ID",
+      "Range": {
+        "high": "255",
+        "low": "1"
+      },
+      "User": "Standard"
+    },
+    "TOFSENSE_INST1": {
+      "Description": "First TOFSENSE-M sensors backend Instance. Setting this to 1 will pick the first backend from PRX_ or RNG_ Parameters (Depending on TOFSENSE_PRX)",
+      "DisplayName": "TOFSENSE-M First Instance",
+      "Range": {
+        "high": "3",
+        "low": "1"
+      },
+      "User": "Standard"
+    },
+    "TOFSENSE_INST2": {
+      "Description": "Second TOFSENSE-M sensors backend Instance. Setting this to 2 will pick the second backend from PRX_ or RNG_ Parameters (Depending on TOFSENSE_PRX)",
+      "DisplayName": "TOFSENSE-M Second Instance",
+      "Range": {
+        "high": "3",
+        "low": "1"
+      },
+      "User": "Standard"
+    },
+    "TOFSENSE_INST3": {
+      "Description": "Third TOFSENSE-M sensors backend Instance. Setting this to 3 will pick the second backend from PRX_ or RNG_ Parameters (Depending on TOFSENSE_PRX)",
+      "DisplayName": "TOFSENSE-M Third Instance",
+      "Range": {
+        "high": "3",
+        "low": "1"
+      },
+      "User": "Standard"
+    },
+    "TOFSENSE_MODE": {
+      "Description": "TOFSENSE-M mode to be used. 0 for 8x8 mode. 1 for 4x4 mode",
+      "DisplayName": "TOFSENSE-M mode to be used",
+      "User": "Standard",
+      "Values": {
+        "0": "8x8 mode",
+        "1": "4x4 mode"
+      }
+    },
+    "TOFSENSE_NO": {
+      "Description": "Number of TOFSENSE-M CAN sensors connected",
+      "DisplayName": "TOFSENSE-M Connected",
+      "Range": {
+        "high": "3",
+        "low": "1"
+      },
+      "User": "Standard"
+    },
+    "TOFSENSE_PRX": {
+      "Description": "Set 0 if sensor is to be used as a 1-D rangefinder (minimum of all distances will be sent, typically used for height detection). Set 1 if it should be used as a 3-D proximity device (Eg. Obstacle Avoidance)",
+      "DisplayName": "TOFSENSE-M to be used as Proximity sensor",
+      "User": "Standard",
+      "Values": {
+        "0": "Set as Rangefinder",
+        "1": "Set as Proximity sensor"
+      }
+    },
+    "TOFSENSE_S1_BR": {
+      "Description": "Serial Port baud rate. Sensor baud rate can be changed from Nassistant software",
+      "DisplayName": "TOFSENSE-M serial port baudrate",
+      "User": "Standard"
+    },
+    "TOFSENSE_S1_PRX": {
+      "Description": "Set 0 if sensor is to be used as a 1-D rangefinder (minimum of all distances will be sent, typically used for height detection). Set 1 if it should be used as a 3-D proximity device (Eg. Obstacle Avoidance)",
+      "DisplayName": "TOFSENSE-M to be used as Proximity sensor",
+      "User": "Standard",
+      "Values": {
+        "0": "Set as Rangefinder",
+        "1": "Set as Proximity sensor"
+      }
+    },
+    "TOFSENSE_S1_SP": {
+      "Description": "UART instance sensor is connected to. Set 1 if sensor is connected to the port with fist SERIALx_PROTOCOL = 28. ",
+      "DisplayName": "TOFSENSE-M serial port config",
+      "Range": {
+        "high": "4",
+        "low": "1"
+      },
+      "User": "Standard"
+    },
+    "TRIK_ACT_FN": {
+      "Description": "Setting an RC channel's _OPTION to this value will use it for trick action (abort,announce,execute)",
+      "DisplayName": "Trik Action Scripting Function",
+      "Range": {
+        "high": "307",
+        "low": "301"
+      }
+    },
+    "TRIK_COUNT": {
+      "Description": "Number of tricks which can be selected over the range of the trik selection RC channel",
+      "DisplayName": "Trik Count",
+      "Range": {
+        "high": "11",
+        "low": "1"
+      }
+    },
+    "TRIK_ENABLE": {
+      "Description": "Enables Tricks on Switch. TRIK params hidden until enabled",
+      "DisplayName": "Tricks on Switch Enable"
+    },
+    "TRIK_SEL_FN": {
+      "Description": "Setting an RC channel's _OPTION to this value will use it for trick selection",
+      "DisplayName": "Trik Selection Scripting Function",
+      "Range": {
+        "high": "307",
+        "low": "301"
+      }
+    },
+    "VIEP_CAM_SWHIGH": {
+      "Description": "Camera selection when switch is in high position",
+      "DisplayName": "ViewPro Camera For Switch High",
+      "User": "Standard",
+      "Values": {
+        "0": "No change in camera selection",
+        "1": "EO1",
+        "2": "IR thermal",
+        "3": "EO1 + IR Picture-in-picture",
+        "4": "IR + EO1 Picture-in-picture",
+        "5": "Fusion",
+        "6": "IR1 13mm",
+        "7": "IR2 52mm"
+      }
+    },
+    "VIEP_CAM_SWLOW": {
+      "Description": "Camera selection when switch is in low position",
+      "DisplayName": "ViewPro Camera For Switch Low",
+      "User": "Standard",
+      "Values": {
+        "0": "No change in camera selection",
+        "1": "EO1",
+        "2": "IR thermal",
+        "3": "EO1 + IR Picture-in-picture",
+        "4": "IR + EO1 Picture-in-picture",
+        "5": "Fusion",
+        "6": "IR1 13mm",
+        "7": "IR2 52mm"
+      }
+    },
+    "VIEP_CAM_SWMID": {
+      "Description": "Camera selection when switch is in middle position",
+      "DisplayName": "ViewPro Camera For Switch Mid",
+      "User": "Standard",
+      "Values": {
+        "0": "No change in camera selection",
+        "1": "EO1",
+        "2": "IR thermal",
+        "3": "EO1 + IR Picture-in-picture",
+        "4": "IR + EO1 Picture-in-picture",
+        "5": "Fusion",
+        "6": "IR1 13mm",
+        "7": "IR2 52mm"
+      }
+    },
+    "VIEP_DEBUG": {
+      "Description": "ViewPro debug",
+      "DisplayName": "ViewPro debug",
+      "User": "Advanced",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled",
+        "2": "Enabled including attitude reporting"
+      }
+    },
+    "VIEP_ZOOM_MAX": {
+      "Description": "ViewPro Zoom Times Max",
+      "DisplayName": "ViewPro Zoom Times Max",
+      "Range": {
+        "high": "30",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "VIEP_ZOOM_SPEED": {
+      "Description": "ViewPro Zoom Speed.  Higher numbers result in faster zooming",
+      "DisplayName": "ViewPro Zoom Speed",
+      "Range": {
+        "high": "7",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "WEB_BIND_PORT": {
+      "Description": "web server TCP port",
+      "DisplayName": "web server TCP port",
+      "Range": {
+        "high": "65535",
+        "low": "1"
+      },
+      "User": "Standard"
+    },
+    "WEB_BLOCK_SIZE": {
+      "Description": "web server block size for download",
+      "DisplayName": "web server block size",
+      "Range": {
+        "high": "65535",
+        "low": "1"
+      },
+      "User": "Advanced"
+    },
+    "WEB_DEBUG": {
+      "Description": "web server debugging",
+      "DisplayName": "web server debugging",
+      "User": "Advanced",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "WEB_ENABLE": {
+      "Description": "enable web server",
+      "DisplayName": "enable web server",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "WEB_SENDFILE_MIN": {
+      "Description": "sendfile is an offloading mechanism for faster file download. If this is non-zero and the file is larger than this size then sendfile will be used for file download",
+      "DisplayName": "web server minimum file size for sendfile",
+      "Range": {
+        "high": "10000000",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
+    "WEB_TIMEOUT": {
+      "Description": "timeout for inactive connections",
+      "DisplayName": "web server timeout",
+      "Range": {
+        "high": "60",
+        "low": "0.1"
+      },
+      "Units": "s",
+      "User": "Advanced"
+    },
+    "WINCH_RATE_DN": {
+      "Description": "Maximum rate when releasing line",
+      "DisplayName": "WinchControl Rate Down",
+      "Range": {
+        "high": "5.0",
+        "low": "0.1"
+      },
+      "User": "Standard"
+    },
+    "WINCH_RATE_UP": {
+      "Description": "Maximum rate when retracting line",
+      "DisplayName": "WinchControl Rate Up",
+      "Range": {
+        "high": "5.0",
+        "low": "0.1"
+      },
+      "User": "Standard"
+    },
+    "WINCH_RC_FUNC": {
+      "Description": "RCn_OPTION number to use to control winch rate",
+      "DisplayName": "Winch Rate Control RC function",
+      "User": "Standard",
+      "Values": {
+        "300": "Scripting1",
+        "301": "Scripting2",
+        "302": "Scripting3",
+        "303": "Scripting4",
+        "304": "Scripting5",
+        "305": "Scripting6",
+        "306": "Scripting7",
+        "307": "Scripting8"
+      }
+    }
+  },
   "ADSB_": {
     "ADSB_EMIT_TYPE": {
       "Description": "ADSB classification for the type of vehicle emitting the transponder signal. Default value is 14 (UAV).",
@@ -614,6 +2032,15 @@
       "Description": "Checks prior to arming motor. This is a bitmask of checks that will be performed before allowing arming. For most users it is recommended to leave this at the default of 1 (all checks enabled). You can select whatever checks you prefer by adding together the values of each check type to set this parameter. For example, to only allow arming when you have GPS lock and no RC failsafe you would set ARMING_CHECK to 72.",
       "DisplayName": "Arm Checks to Perform (bitmask)",
       "User": "Standard"
+    },
+    "ARMING_CRSDP_IGN": {
+      "Description": "Must have value \"1\" if crashdump data is present on the system, or a prearm failure will be raised.  Do not set this parameter unless the risks of doing so are fully understood.  The presence of a crash dump means that the firmware currently installed has suffered a critical software failure which resulted in the autopilot immediately rebooting.  The crashdump file gives diagnostic information which can help in finding the issue, please contact the ArduPIlot support team.  If this crashdump data is present, the vehicle is likely unsafe to fly.  Check the ArduPilot documentation for more details.",
+      "DisplayName": "Disable CrashDump Arming check",
+      "User": "Advanced",
+      "Values": {
+        "0": "Crash Dump arming check active",
+        "1": "Crash Dump arming check deactivated"
+      }
     },
     "ARMING_MAGTHRESH": {
       "Description": "Compass magnetic field strength error threshold vs earth magnetic model.  X and y axis are compared using this threhold, Z axis uses 2x this threshold.  0 to disable check",
@@ -1256,7 +2683,8 @@
         "high": "0.03",
         "low": "0.0"
       },
-      "User": "Standard"
+      "User": "Standard",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_PIT_D_FF": {
       "Description": "FF D Gain which produces an output that is proportional to the rate of change of the target",
@@ -1266,7 +2694,8 @@
         "high": "0.02",
         "low": "0"
       },
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_PIT_FF": {
       "Description": "Pitch axis rate controller feed forward",
@@ -1276,7 +2705,8 @@
         "high": "0.5",
         "low": "0.05"
       },
-      "User": "Standard"
+      "User": "Standard",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_PIT_FLTD": {
       "Description": "Pitch axis rate controller derivative frequency in Hz",
@@ -1287,7 +2717,8 @@
         "low": "0"
       },
       "Units": "Hz",
-      "User": "Standard"
+      "User": "Standard",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_PIT_FLTE": {
       "Description": "Pitch axis rate controller error frequency in Hz",
@@ -1298,7 +2729,8 @@
         "low": "5"
       },
       "Units": "Hz",
-      "User": "Standard"
+      "User": "Standard",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_PIT_FLTT": {
       "Description": "Pitch axis rate controller target frequency in Hz",
@@ -1309,7 +2741,8 @@
         "low": "5"
       },
       "Units": "Hz",
-      "User": "Standard"
+      "User": "Standard",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_PIT_I": {
       "Description": "Pitch axis rate controller I gain.  Corrects long-term difference in desired pitch rate vs actual pitch rate",
@@ -1319,7 +2752,8 @@
         "high": "0.6",
         "low": "0.0"
       },
-      "User": "Standard"
+      "User": "Standard",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_PIT_ILMI": {
       "Description": "Point below which I-term will not leak down",
@@ -1338,7 +2772,8 @@
         "high": "1",
         "low": "0"
       },
-      "User": "Standard"
+      "User": "Standard",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_PIT_NEF": {
       "Description": "Pitch Error notch filter index",
@@ -1347,7 +2782,8 @@
         "high": "8",
         "low": "1"
       },
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_PIT_NTF": {
       "Description": "Pitch Target notch filter index",
@@ -1356,7 +2792,8 @@
         "high": "8",
         "low": "1"
       },
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_PIT_P": {
       "Description": "Pitch axis rate controller P gain.  Corrects in proportion to the difference between the desired pitch rate vs actual pitch rate",
@@ -1366,7 +2803,8 @@
         "high": "0.35",
         "low": "0.0"
       },
-      "User": "Standard"
+      "User": "Standard",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_PIT_PDMX": {
       "Description": "Pitch axis rate controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output",
@@ -1385,7 +2823,8 @@
         "high": "200",
         "low": "0"
       },
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_RLL_D": {
       "Description": "Roll axis rate controller D gain.  Compensates for short-term change in desired roll rate vs actual roll rate",
@@ -1395,7 +2834,8 @@
         "high": "0.03",
         "low": "0.0"
       },
-      "User": "Standard"
+      "User": "Standard",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_RLL_D_FF": {
       "Description": "FF D Gain which produces an output that is proportional to the rate of change of the target",
@@ -1405,7 +2845,8 @@
         "high": "0.02",
         "low": "0"
       },
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_RLL_FF": {
       "Description": "Roll axis rate controller feed forward",
@@ -1415,7 +2856,8 @@
         "high": "0.5",
         "low": "0.05"
       },
-      "User": "Standard"
+      "User": "Standard",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_RLL_FLTD": {
       "Description": "Roll axis rate controller derivative frequency in Hz",
@@ -1426,7 +2868,8 @@
         "low": "0"
       },
       "Units": "Hz",
-      "User": "Standard"
+      "User": "Standard",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_RLL_FLTE": {
       "Description": "Roll axis rate controller error frequency in Hz",
@@ -1437,7 +2880,8 @@
         "low": "5"
       },
       "Units": "Hz",
-      "User": "Standard"
+      "User": "Standard",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_RLL_FLTT": {
       "Description": "Roll axis rate controller target frequency in Hz",
@@ -1448,7 +2892,8 @@
         "low": "5"
       },
       "Units": "Hz",
-      "User": "Standard"
+      "User": "Standard",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_RLL_I": {
       "Description": "Roll axis rate controller I gain.  Corrects long-term difference in desired roll rate vs actual roll rate",
@@ -1458,7 +2903,8 @@
         "high": "0.6",
         "low": "0.0"
       },
-      "User": "Standard"
+      "User": "Standard",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_RLL_ILMI": {
       "Description": "Point below which I-term will not leak down",
@@ -1477,7 +2923,8 @@
         "high": "1",
         "low": "0"
       },
-      "User": "Standard"
+      "User": "Standard",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_RLL_NEF": {
       "Description": "Roll Error notch filter index",
@@ -1486,7 +2933,8 @@
         "high": "8",
         "low": "1"
       },
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_RLL_NTF": {
       "Description": "Roll Target notch filter index",
@@ -1495,7 +2943,8 @@
         "high": "8",
         "low": "1"
       },
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_RLL_P": {
       "Description": "Roll axis rate controller P gain.  Corrects in proportion to the difference between the desired roll rate vs actual roll rate",
@@ -1505,7 +2954,8 @@
         "high": "0.35",
         "low": "0.0"
       },
-      "User": "Standard"
+      "User": "Standard",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_RLL_PDMX": {
       "Description": "Roll axis rate controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output",
@@ -1524,7 +2974,8 @@
         "high": "200",
         "low": "0"
       },
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_YAW_D": {
       "Description": "Yaw axis rate controller D gain.  Compensates for short-term change in desired yaw rate vs actual yaw rate",
@@ -1534,7 +2985,8 @@
         "high": "0.02",
         "low": "0.000"
       },
-      "User": "Standard"
+      "User": "Standard",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_YAW_D_FF": {
       "Description": "FF D Gain which produces an output that is proportional to the rate of change of the target",
@@ -1544,7 +2996,8 @@
         "high": "0.02",
         "low": "0"
       },
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_YAW_FF": {
       "Description": "Yaw axis rate controller feed forward",
@@ -1554,7 +3007,8 @@
         "high": "0.5",
         "low": "0"
       },
-      "User": "Standard"
+      "User": "Standard",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_YAW_FLTD": {
       "Description": "Yaw axis rate controller derivative frequency in Hz",
@@ -1565,7 +3019,8 @@
         "low": "0"
       },
       "Units": "Hz",
-      "User": "Standard"
+      "User": "Standard",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_YAW_FLTE": {
       "Description": "Yaw axis rate controller error frequency in Hz",
@@ -1576,7 +3031,8 @@
         "low": "5"
       },
       "Units": "Hz",
-      "User": "Standard"
+      "User": "Standard",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_YAW_FLTT": {
       "Description": "Yaw axis rate controller target frequency in Hz",
@@ -1587,7 +3043,8 @@
         "low": "5"
       },
       "Units": "Hz",
-      "User": "Standard"
+      "User": "Standard",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_YAW_I": {
       "Description": "Yaw axis rate controller I gain.  Corrects long-term difference in desired yaw rate vs actual yaw rate",
@@ -1597,7 +3054,8 @@
         "high": "0.2",
         "low": "0.01"
       },
-      "User": "Standard"
+      "User": "Standard",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_YAW_ILMI": {
       "Description": "Point below which I-term will not leak down",
@@ -1616,7 +3074,8 @@
         "high": "1",
         "low": "0"
       },
-      "User": "Standard"
+      "User": "Standard",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_YAW_NEF": {
       "Description": "Yaw Error notch filter index",
@@ -1625,7 +3084,8 @@
         "high": "8",
         "low": "1"
       },
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_YAW_NTF": {
       "Description": "Yaw Target notch filter index",
@@ -1635,7 +3095,8 @@
         "low": "1"
       },
       "Units": "Hz",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_YAW_P": {
       "Description": "Yaw axis rate controller P gain.  Corrects in proportion to the difference between the desired yaw rate vs actual yaw rate",
@@ -1645,7 +3106,8 @@
         "high": "0.60",
         "low": "0.180"
       },
-      "User": "Standard"
+      "User": "Standard",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_RAT_YAW_PDMX": {
       "Description": "Yaw axis rate controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output",
@@ -1664,7 +3126,8 @@
         "high": "200",
         "low": "0"
       },
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AC_AttitudeControl_Heli"
     },
     "ATC_SLEW_YAW": {
       "Description": "Maximum rate the yaw target can be updated in Loiter, RTL, Auto flight modes",
@@ -1732,7 +3195,8 @@
       },
       "Description": "1-byte bitmap of axes to autotune",
       "DisplayName": "Autotune axis bitmask",
-      "User": "Standard"
+      "User": "Standard",
+      "path": "AC_AutoTune_Heli"
     },
     "AUTOTUNE_FRQ_MAX": {
       "Description": "Defines the end frequency for sweeps and dwells",
@@ -2534,7 +3998,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATT2_I2C_BUS": {
       "Description": "Battery monitor I2C bus number",
@@ -2544,7 +4009,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATT2_LOW_MAH": {
       "Description": "Battery capacity at which the low battery failsafe is triggered. Set to 0 to disable battery remaining failsafe. If the battery capacity drops below this level the vehicle will perform the failsafe specified by the BATT2_FS_LOW_ACT parameter.",
@@ -2904,7 +4370,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATT3_I2C_BUS": {
       "Description": "Battery monitor I2C bus number",
@@ -2914,7 +4381,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATT3_LOW_MAH": {
       "Description": "Battery capacity at which the low battery failsafe is triggered. Set to 0 to disable battery remaining failsafe. If the battery capacity drops below this level the vehicle will perform the failsafe specified by the BATT3_FS_LOW_ACT parameter.",
@@ -3274,7 +4742,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATT4_I2C_BUS": {
       "Description": "Battery monitor I2C bus number",
@@ -3284,7 +4753,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATT4_LOW_MAH": {
       "Description": "Battery capacity at which the low battery failsafe is triggered. Set to 0 to disable battery remaining failsafe. If the battery capacity drops below this level the vehicle will perform the failsafe specified by the BATT4_FS_LOW_ACT parameter.",
@@ -3644,7 +5114,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATT5_I2C_BUS": {
       "Description": "Battery monitor I2C bus number",
@@ -3654,7 +5125,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATT5_LOW_MAH": {
       "Description": "Battery capacity at which the low battery failsafe is triggered. Set to 0 to disable battery remaining failsafe. If the battery capacity drops below this level the vehicle will perform the failsafe specified by the BATT5_FS_LOW_ACT parameter.",
@@ -4014,7 +5486,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATT6_I2C_BUS": {
       "Description": "Battery monitor I2C bus number",
@@ -4024,7 +5497,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATT6_LOW_MAH": {
       "Description": "Battery capacity at which the low battery failsafe is triggered. Set to 0 to disable battery remaining failsafe. If the battery capacity drops below this level the vehicle will perform the failsafe specified by the BATT6_FS_LOW_ACT parameter.",
@@ -4384,7 +5858,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATT7_I2C_BUS": {
       "Description": "Battery monitor I2C bus number",
@@ -4394,7 +5869,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATT7_LOW_MAH": {
       "Description": "Battery capacity at which the low battery failsafe is triggered. Set to 0 to disable battery remaining failsafe. If the battery capacity drops below this level the vehicle will perform the failsafe specified by the BATT7_FS_LOW_ACT parameter.",
@@ -4754,7 +6230,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATT8_I2C_BUS": {
       "Description": "Battery monitor I2C bus number",
@@ -4764,7 +6241,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATT8_LOW_MAH": {
       "Description": "Battery capacity at which the low battery failsafe is triggered. Set to 0 to disable battery remaining failsafe. If the battery capacity drops below this level the vehicle will perform the failsafe specified by the BATT8_FS_LOW_ACT parameter.",
@@ -5124,7 +6602,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATT9_I2C_BUS": {
       "Description": "Battery monitor I2C bus number",
@@ -5134,7 +6613,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATT9_LOW_MAH": {
       "Description": "Battery capacity at which the low battery failsafe is triggered. Set to 0 to disable battery remaining failsafe. If the battery capacity drops below this level the vehicle will perform the failsafe specified by the BATT9_FS_LOW_ACT parameter.",
@@ -5494,7 +6974,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATTA_I2C_BUS": {
       "Description": "Battery monitor I2C bus number",
@@ -5504,7 +6985,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATTA_LOW_MAH": {
       "Description": "Battery capacity at which the low battery failsafe is triggered. Set to 0 to disable battery remaining failsafe. If the battery capacity drops below this level the vehicle will perform the failsafe specified by the BATTA_FS_LOW_ACT parameter.",
@@ -5864,7 +7346,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATTB_I2C_BUS": {
       "Description": "Battery monitor I2C bus number",
@@ -5874,7 +7357,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATTB_LOW_MAH": {
       "Description": "Battery capacity at which the low battery failsafe is triggered. Set to 0 to disable battery remaining failsafe. If the battery capacity drops below this level the vehicle will perform the failsafe specified by the BATTB_FS_LOW_ACT parameter.",
@@ -6234,7 +7718,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATTC_I2C_BUS": {
       "Description": "Battery monitor I2C bus number",
@@ -6244,7 +7729,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATTC_LOW_MAH": {
       "Description": "Battery capacity at which the low battery failsafe is triggered. Set to 0 to disable battery remaining failsafe. If the battery capacity drops below this level the vehicle will perform the failsafe specified by the BATTC_FS_LOW_ACT parameter.",
@@ -6604,7 +8090,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATTD_I2C_BUS": {
       "Description": "Battery monitor I2C bus number",
@@ -6614,7 +8101,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATTD_LOW_MAH": {
       "Description": "Battery capacity at which the low battery failsafe is triggered. Set to 0 to disable battery remaining failsafe. If the battery capacity drops below this level the vehicle will perform the failsafe specified by the BATTD_FS_LOW_ACT parameter.",
@@ -6974,7 +8462,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATTE_I2C_BUS": {
       "Description": "Battery monitor I2C bus number",
@@ -6984,7 +8473,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATTE_LOW_MAH": {
       "Description": "Battery capacity at which the low battery failsafe is triggered. Set to 0 to disable battery remaining failsafe. If the battery capacity drops below this level the vehicle will perform the failsafe specified by the BATTE_FS_LOW_ACT parameter.",
@@ -7344,7 +8834,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATTF_I2C_BUS": {
       "Description": "Battery monitor I2C bus number",
@@ -7354,7 +8845,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATTF_LOW_MAH": {
       "Description": "Battery capacity at which the low battery failsafe is triggered. Set to 0 to disable battery remaining failsafe. If the battery capacity drops below this level the vehicle will perform the failsafe specified by the BATTF_FS_LOW_ACT parameter.",
@@ -7714,7 +9206,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATTG_I2C_BUS": {
       "Description": "Battery monitor I2C bus number",
@@ -7724,7 +9217,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATTG_LOW_MAH": {
       "Description": "Battery capacity at which the low battery failsafe is triggered. Set to 0 to disable battery remaining failsafe. If the battery capacity drops below this level the vehicle will perform the failsafe specified by the BATTG_FS_LOW_ACT parameter.",
@@ -8084,7 +9578,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATT_I2C_BUS": {
       "Description": "Battery monitor I2C bus number",
@@ -8094,7 +9589,8 @@
         "low": "0"
       },
       "RebootRequired": "True",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_BattMonitor_INA2xx"
     },
     "BATT_LOW_MAH": {
       "Description": "Battery capacity at which the low battery failsafe is triggered. Set to 0 to disable battery remaining failsafe. If the battery capacity drops below this level the vehicle will perform the failsafe specified by the BATT_FS_LOW_ACT parameter.",
@@ -8484,6 +9980,16 @@
         "7": "300Hz"
       }
     },
+    "BRD_SD_FENCE": {
+      "Description": "This sets the amount of storage in kilobytes reserved on the microsd card in fence.stg for fence storage.",
+      "DisplayName": " SDCard Fence size",
+      "Range": {
+        "high": "64",
+        "low": "0"
+      },
+      "RebootRequired": "True",
+      "User": "Advanced"
+    },
     "BRD_SD_MISSION": {
       "Description": "This sets the amount of storage in kilobytes reserved on the microsd card in mission.stg for waypoint storage. Each waypoint uses 15 bytes.",
       "DisplayName": " SDCard Mission size",
@@ -8861,6 +10367,7 @@
         "172": "Battery MPPT Enable",
         "174": "Camera Image Tracking",
         "175": "Camera Lens",
+        "177": "Mount LRF enable",
         "18": "LAND Mode",
         "19": "Gripper Release",
         "2": "FLIP Mode",
@@ -8982,6 +10489,7 @@
         "172": "Battery MPPT Enable",
         "174": "Camera Image Tracking",
         "175": "Camera Lens",
+        "177": "Mount LRF enable",
         "18": "LAND Mode",
         "19": "Gripper Release",
         "2": "FLIP Mode",
@@ -9103,6 +10611,7 @@
         "172": "Battery MPPT Enable",
         "174": "Camera Image Tracking",
         "175": "Camera Lens",
+        "177": "Mount LRF enable",
         "18": "LAND Mode",
         "19": "Gripper Release",
         "2": "FLIP Mode",
@@ -9224,6 +10733,7 @@
         "172": "Battery MPPT Enable",
         "174": "Camera Image Tracking",
         "175": "Camera Lens",
+        "177": "Mount LRF enable",
         "18": "LAND Mode",
         "19": "Gripper Release",
         "2": "FLIP Mode",
@@ -9781,7 +11291,7 @@
         "11": "Benewake",
         "12": "Scripting2",
         "13": "TOFSenseP",
-        "14": "NanoRadar_NRA24",
+        "14": "NanoRadar",
         "4": "PiccoloCAN",
         "6": "EFI_NWPMU",
         "7": "USD1",
@@ -9799,7 +11309,7 @@
         "11": "Benewake",
         "12": "Scripting2",
         "13": "TOFSenseP",
-        "14": "NanoRadar_NRA24",
+        "14": "NanoRadar",
         "7": "USD1"
       }
     }
@@ -10442,7 +11952,7 @@
         "11": "Benewake",
         "12": "Scripting2",
         "13": "TOFSenseP",
-        "14": "NanoRadar_NRA24",
+        "14": "NanoRadar",
         "4": "PiccoloCAN",
         "6": "EFI_NWPMU",
         "7": "USD1",
@@ -10460,7 +11970,7 @@
         "11": "Benewake",
         "12": "Scripting2",
         "13": "TOFSenseP",
-        "14": "NanoRadar_NRA24",
+        "14": "NanoRadar",
         "7": "USD1"
       }
     }
@@ -11103,7 +12613,7 @@
         "11": "Benewake",
         "12": "Scripting2",
         "13": "TOFSenseP",
-        "14": "NanoRadar_NRA24",
+        "14": "NanoRadar",
         "4": "PiccoloCAN",
         "6": "EFI_NWPMU",
         "7": "USD1",
@@ -11121,7 +12631,7 @@
         "11": "Benewake",
         "12": "Scripting2",
         "13": "TOFSenseP",
-        "14": "NanoRadar_NRA24",
+        "14": "NanoRadar",
         "7": "USD1"
       }
     }
@@ -14383,6 +15893,12 @@
     }
   },
   "EAHRS": {
+    "EAHRS_LOG_RATE": {
+      "Description": "Logging rate for EARHS devices",
+      "DisplayName": "AHRS logging rate",
+      "Units": "Hz",
+      "User": "Standard"
+    },
     "EAHRS_OPTIONS": {
       "Bitmask": {
         "0": "Vector Nav use uncompensated values for accel gyro and mag."
@@ -17144,7 +18660,9 @@
         "2": "Use baudrate 115200",
         "3": "Use dedicated CAN port b/w GPSes for moving baseline",
         "4": "Use ellipsoid height instead of AMSL",
-        "5": "Override GPS satellite health of L5 band from L1 health"
+        "5": "Override GPS satellite health of L5 band from L1 health",
+        "6": "Enable RTCM full parse even for a single channel",
+        "7": "Disable automatic full RTCM parsing when RTCM seen on more than one channel"
       },
       "Description": "Additional backend specific options",
       "DisplayName": "driver options",
@@ -17981,7 +19499,8 @@
       "Values": {
         "0": "Normal",
         "1": "Reversed"
-      }
+      },
+      "path": "AP_MotorsHeli_Dual"
     },
     "H_SW_H3_ENABLE": {
       "Description": "Automatically set when H3 generic swash type is selected for swashplate 1. Do not set manually.",
@@ -17990,7 +19509,8 @@
       "Values": {
         "0": "Disabled",
         "1": "Enabled"
-      }
+      },
+      "path": "AP_MotorsHeli_Dual"
     },
     "H_SW_H3_PHANG": {
       "Description": "Only for H3 swashplate.  If pitching the swash forward induces a roll, this can be correct the problem",
@@ -18001,7 +19521,8 @@
         "low": "-30"
       },
       "Units": "deg",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_MotorsHeli_Dual"
     },
     "H_SW_H3_SV1_POS": {
       "Description": "Azimuth position on swashplate for servo 1 with the front of the heli being 0 deg",
@@ -18011,7 +19532,8 @@
         "low": "-180"
       },
       "Units": "deg",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_MotorsHeli_Dual"
     },
     "H_SW_H3_SV2_POS": {
       "Description": "Azimuth position on swashplate 1 for servo 2 with the front of the heli being 0 deg",
@@ -18021,7 +19543,8 @@
         "low": "-180"
       },
       "Units": "deg",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_MotorsHeli_Dual"
     },
     "H_SW_H3_SV3_POS": {
       "Description": "Azimuth position on swashplate 1 for servo 3 with the front of the heli being 0 deg",
@@ -18031,7 +19554,8 @@
         "low": "-180"
       },
       "Units": "deg",
-      "User": "Advanced"
+      "User": "Advanced",
+      "path": "AP_MotorsHeli_Dual"
     },
     "H_SW_LIN_SVO": {
       "Description": "This linearizes the swashplate 1 servo's mechanical output to account for nonlinear output due to arm rotation.  This requires a specific setup procedure to work properly.  The servo arm must be centered on the mechanical throw at the servo trim position and the servo trim position kept as close to 1500 as possible. Leveling the swashplate can only be done through the pitch links.  See the ardupilot wiki for more details on setup.",
@@ -18040,7 +19564,8 @@
       "Values": {
         "0": "Disabled",
         "1": "Enabled"
-      }
+      },
+      "path": "AP_MotorsHeli_Dual"
     },
     "H_SW_TYPE": {
       "Description": "H3 is generic, three-servo only. H3_120/H3_140 plates have Motor1 left side, Motor2 right side, Motor3 elevator in rear. HR3_120/HR3_140 have Motor1 right side, Motor2 left side, Motor3 elevator in front - use H3_120/H3_140 and reverse servo and collective directions as necessary. For all H3_90 swashplates use H4_90 and don't use servo output for the missing servo. For H4-90 Motors1&2 are left/right respectively, Motors3&4 are rear/front respectively. For H4-45 Motors1&2 are LF/RF, Motors3&4 are LR/RR ",
@@ -18053,7 +19578,8 @@
         "3": "H3_120",
         "4": "H4_90",
         "5": "H4_45"
-      }
+      },
+      "path": "AP_MotorsHeli_Dual"
     },
     "H_TAIL_SPEED": {
       "Description": "Direct drive, variable pitch tail ESC speed in percent output to the tail motor esc (HeliTailRSC Servo) when motor interlock enabled (throttle hold off) and speed fully ramped up after spoolup.",
@@ -20565,1356 +22091,6 @@
       "User": "Standard"
     }
   },
-  "Lua Script": {
-    "AEROM_ALT_ABORT": {
-      "Description": "Maximum allowable loss in altitude during a trick or sequence from its starting altitude.",
-      "DisplayName": "Altitude Abort",
-      "Units": "m"
-    },
-    "AEROM_ANG_ACCEL": {
-      "Description": "Maximum angular acceleration in maneuvers",
-      "DisplayName": "Angular acceleration limit",
-      "Units": "deg/s/s"
-    },
-    "AEROM_ANG_TC": {
-      "Description": "This is the time over which we filter the desired roll to smooth it",
-      "DisplayName": "Roll control filtertime constant",
-      "Units": "s"
-    },
-    "AEROM_BOX_WIDTH": {
-      "Description": "Length of aerobatic \"box\" ",
-      "DisplayName": "Box Width",
-      "Units": "m"
-    },
-    "AEROM_DEBUG": {
-      "Description": "This controls the printing of extra debug information on paths",
-      "DisplayName": "Debug control"
-    },
-    "AEROM_ENTRY_RATE": {
-      "Description": "This controls how rapidly we roll into a new orientation",
-      "DisplayName": "The roll rate to use when entering a roll maneuver",
-      "Units": "deg/s"
-    },
-    "AEROM_ERR_COR_D": {
-      "Description": "This controls how rapidly we correct back onto the desired path",
-      "DisplayName": "D gain for path error corrections"
-    },
-    "AEROM_ERR_COR_P": {
-      "Description": "This controls how rapidly we correct back onto the desired path",
-      "DisplayName": "P gain for path error corrections"
-    },
-    "AEROM_KE_RUDD": {
-      "Description": "Percent of rudder normally uses to sustain knife-edge at trick speed",
-      "DisplayName": "KnifeEdge Rudder",
-      "Units": "%"
-    },
-    "AEROM_KE_RUDD_LK": {
-      "Description": "Time to look ahead in the path to calculate rudder correction for bank angle",
-      "DisplayName": "KnifeEdge Rudder lookahead",
-      "Units": "s"
-    },
-    "AEROM_LKAHD": {
-      "Description": "This is how much time to look ahead in the path for calculating path rates",
-      "DisplayName": "Lookahead",
-      "Units": "s"
-    },
-    "AEROM_MIS_ANGLE": {
-      "Description": "When set to a non-zero value, this is the assumed direction of the mission. Otherwise the waypoint angle is used",
-      "DisplayName": "Mission angle",
-      "Units": "deg"
-    },
-    "AEROM_OPTIONS": {
-      "Bitmask": {
-        "0": "UseRTLOnAbort",
-        "1": "AddAtToMessages",
-        "2": "DualAircraftSynchronised"
-      },
-      "Description": "Options to control aerobatic behavior",
-      "DisplayName": "Aerobatic options",
-      "Units": "deg"
-    },
-    "AEROM_PATH_SCALE": {
-      "Description": "Scale factor for Path/Box size. 0.5 would half the distances in maneuvers. Radii are unaffected.",
-      "DisplayName": "Path Scale",
-      "Range": {
-        "high": "100",
-        "low": "0.1"
-      }
-    },
-    "AEROM_ROL_COR_TC": {
-      "Description": "This is the time constant for correcting roll errors. A smaller value leads to faster roll corrections",
-      "DisplayName": "Roll control time constant",
-      "Units": "s"
-    },
-    "AEROM_SPD_I": {
-      "Description": "This controls how rapidly the throttle is raised to compensate for a speed error",
-      "DisplayName": "I gain for speed controller",
-      "Units": "%"
-    },
-    "AEROM_SPD_P": {
-      "Description": "This controls how rapidly the throttle is raised to compensate for a speed error",
-      "DisplayName": "P gain for speed controller",
-      "Units": "%"
-    },
-    "AEROM_STALL_PIT": {
-      "Description": "Pitch threashold for moving to final stage of stall turn",
-      "DisplayName": "Stall turn pitch threshold",
-      "Units": "deg"
-    },
-    "AEROM_STALL_THR": {
-      "Description": "Amount of throttle to reduce to for a stall turn",
-      "DisplayName": "Stall turn throttle",
-      "Units": "%"
-    },
-    "AEROM_THR_BOOST": {
-      "Description": "This is the extra throttle added in schedule elements marked as needing a throttle boost",
-      "DisplayName": "Throttle boost",
-      "Units": "%"
-    },
-    "AEROM_THR_LKAHD": {
-      "Description": "This controls how far ahead we look in time along the path for the target throttle",
-      "DisplayName": "The lookahead for throttle control",
-      "Units": "s"
-    },
-    "AEROM_THR_MIN": {
-      "Description": "Lowest throttle used during maneuvers",
-      "DisplayName": "Minimum Throttle",
-      "Units": "%"
-    },
-    "AEROM_THR_PIT_FF": {
-      "Description": "This controls how much extra throttle to add based on pitch ange. The value is for 90 degrees and is applied in proportion to pitch",
-      "DisplayName": "Throttle feed forward from pitch",
-      "Units": "%"
-    },
-    "AEROM_TIME_COR_P": {
-      "Description": "This is the time constant for correcting path position errors",
-      "DisplayName": "Time constant for correction of our distance along the path",
-      "Units": "s"
-    },
-    "AEROM_TS_I": {
-      "Description": "This controls how rapidly two aircraft are brought back into time sync",
-      "DisplayName": "Timesync I gain"
-    },
-    "AEROM_TS_P": {
-      "Description": "This controls how rapidly two aircraft are brought back into time sync",
-      "DisplayName": "Timesync P gain"
-    },
-    "AEROM_TS_RATE": {
-      "Description": "This sets the rate we send data for time sync between aircraft",
-      "DisplayName": "Timesync rate of send of NAMED_VALUE_FLOAT data",
-      "Units": "Hz"
-    },
-    "AEROM_TS_SPDMAX": {
-      "Description": "This sets the maximum speed adjustment for time sync between aircraft",
-      "DisplayName": "Timesync speed max",
-      "Units": "m/s"
-    },
-    "AEROM_YAW_ACCEL": {
-      "Description": "This is maximum yaw acceleration to use",
-      "DisplayName": "Yaw acceleration",
-      "Units": "deg/s/s"
-    },
-    "BATT_ANX_CANDRV": {
-      "Description": "Set ANX CAN driver",
-      "DisplayName": "Set ANX CAN driver",
-      "User": "Standard",
-      "Values": {
-        "0": "None",
-        "1": "1stCANDriver",
-        "2": "2ndCanDriver"
-      }
-    },
-    "BATT_ANX_ENABLE": {
-      "Description": "Enable ANX battery support",
-      "DisplayName": "Enable ANX battery support",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "1": "Enabled"
-      }
-    },
-    "BATT_ANX_INDEX": {
-      "Description": "ANX CAN battery index",
-      "DisplayName": "ANX CAN battery index",
-      "Range": {
-        "high": "10",
-        "low": "1"
-      },
-      "User": "Standard"
-    },
-    "BATT_ANX_OPTIONS": {
-      "Bitmask": {
-        "0": "LogAllFrames"
-      },
-      "Description": "ANX CAN battery options",
-      "DisplayName": "ANX CAN battery options",
-      "User": "Advanced"
-    },
-    "BATT_SOC1_C1": {
-      "Description": "Battery estimator coefficient1",
-      "DisplayName": "Battery estimator coefficient1",
-      "Range": {
-        "high": "200",
-        "low": "100"
-      },
-      "User": "Standard"
-    },
-    "BATT_SOC1_C2": {
-      "Description": "Battery estimator coefficient2",
-      "DisplayName": "Battery estimator coefficient2",
-      "Range": {
-        "high": "5",
-        "low": "2"
-      },
-      "User": "Standard"
-    },
-    "BATT_SOC1_C3": {
-      "Description": "Battery estimator coefficient3",
-      "DisplayName": "Battery estimator coefficient3",
-      "Range": {
-        "high": "0.5",
-        "low": "0.01"
-      },
-      "User": "Standard"
-    },
-    "BATT_SOC1_IDX": {
-      "Description": "Battery estimator index",
-      "DisplayName": "Battery estimator index",
-      "Range": {
-        "high": "4",
-        "low": "0"
-      },
-      "User": "Standard"
-    },
-    "BATT_SOC1_NCELL": {
-      "Description": "Battery estimator cell count",
-      "DisplayName": "Battery estimator cell count",
-      "Range": {
-        "high": "48",
-        "low": "0"
-      },
-      "User": "Standard"
-    },
-    "BATT_SOC2_C1": {
-      "Description": "Battery estimator coefficient1",
-      "DisplayName": "Battery estimator coefficient1",
-      "Range": {
-        "high": "200",
-        "low": "100"
-      },
-      "User": "Standard"
-    },
-    "BATT_SOC2_C2": {
-      "Description": "Battery estimator coefficient2",
-      "DisplayName": "Battery estimator coefficient2",
-      "Range": {
-        "high": "5",
-        "low": "2"
-      },
-      "User": "Standard"
-    },
-    "BATT_SOC2_C3": {
-      "Description": "Battery estimator coefficient3",
-      "DisplayName": "Battery estimator coefficient3",
-      "Range": {
-        "high": "0.5",
-        "low": "0.01"
-      },
-      "User": "Standard"
-    },
-    "BATT_SOC2_IDX": {
-      "Description": "Battery estimator index",
-      "DisplayName": "Battery estimator index",
-      "Range": {
-        "high": "4",
-        "low": "0"
-      },
-      "User": "Standard"
-    },
-    "BATT_SOC2_NCELL": {
-      "Description": "Battery estimator cell count",
-      "DisplayName": "Battery estimator cell count",
-      "Range": {
-        "high": "48",
-        "low": "0"
-      },
-      "User": "Standard"
-    },
-    "BATT_SOC3_C1": {
-      "Description": "Battery estimator coefficient1",
-      "DisplayName": "Battery estimator coefficient1",
-      "Range": {
-        "high": "200",
-        "low": "100"
-      },
-      "User": "Standard"
-    },
-    "BATT_SOC3_C2": {
-      "Description": "Battery estimator coefficient2",
-      "DisplayName": "Battery estimator coefficient2",
-      "Range": {
-        "high": "5",
-        "low": "2"
-      },
-      "User": "Standard"
-    },
-    "BATT_SOC3_C3": {
-      "Description": "Battery estimator coefficient3",
-      "DisplayName": "Battery estimator coefficient3",
-      "Range": {
-        "high": "0.5",
-        "low": "0.01"
-      },
-      "User": "Standard"
-    },
-    "BATT_SOC3_IDX": {
-      "Description": "Battery estimator index",
-      "DisplayName": "Battery estimator index",
-      "Range": {
-        "high": "4",
-        "low": "0"
-      },
-      "User": "Standard"
-    },
-    "BATT_SOC3_NCELL": {
-      "Description": "Battery estimator cell count",
-      "DisplayName": "Battery estimator cell count",
-      "Range": {
-        "high": "48",
-        "low": "0"
-      },
-      "User": "Standard"
-    },
-    "BATT_SOC4_C1": {
-      "Description": "Battery estimator coefficient1",
-      "DisplayName": "Battery estimator coefficient1",
-      "Range": {
-        "high": "200",
-        "low": "100"
-      },
-      "User": "Standard"
-    },
-    "BATT_SOC4_C2": {
-      "Description": "Battery estimator coefficient2",
-      "DisplayName": "Battery estimator coefficient2",
-      "Range": {
-        "high": "5",
-        "low": "2"
-      },
-      "User": "Standard"
-    },
-    "BATT_SOC4_C3": {
-      "Description": "Battery estimator coefficient3",
-      "DisplayName": "Battery estimator coefficient3",
-      "Range": {
-        "high": "0.5",
-        "low": "0.01"
-      },
-      "User": "Standard"
-    },
-    "BATT_SOC4_IDX": {
-      "Description": "Battery estimator index",
-      "DisplayName": "Battery estimator index",
-      "Range": {
-        "high": "4",
-        "low": "0"
-      },
-      "User": "Standard"
-    },
-    "BATT_SOC4_NCELL": {
-      "Description": "Battery estimator cell count",
-      "DisplayName": "Battery estimator cell count",
-      "Range": {
-        "high": "48",
-        "low": "0"
-      },
-      "User": "Standard"
-    },
-    "BATT_SOC_COUNT": {
-      "Description": "Number of battery SOC estimators",
-      "DisplayName": "Count of SOC estimators",
-      "Range": {
-        "high": "4",
-        "low": "0"
-      },
-      "User": "Standard"
-    },
-    "DJIR_DEBUG": {
-      "Description": "Enable DJIRS2 debug",
-      "DisplayName": "DJIRS2 debug",
-      "User": "Advanced",
-      "Values": {
-        "0": "Disabled",
-        "1": "Enabled",
-        "2": "Enabled with attitude reporting"
-      }
-    },
-    "DJIR_UPSIDEDOWN": {
-      "Description": "DJIRS2 upside down",
-      "DisplayName": "DJIRS2 upside down",
-      "User": "Standard",
-      "Values": {
-        "0": "Right side up",
-        "1": "Upside down"
-      }
-    },
-    "DR_ENABLE": {
-      "Description": "Deadreckoning Enable",
-      "DisplayName": "Deadreckoning Enable",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "1": "Enabled"
-      }
-    },
-    "DR_ENABLE_DIST": {
-      "Description": "Distance from home (in meters) beyond which the dead reckoning will be enabled",
-      "DisplayName": "Deadreckoning Enable Distance",
-      "Units": "m",
-      "User": "Standard"
-    },
-    "DR_FLY_ALT_MIN": {
-      "Description": "Copter will fly at at least this altitude (in meters) above home during deadreckoning",
-      "DisplayName": "Deadreckoning Altitude Min",
-      "Range": {
-        "high": "1000",
-        "low": "0"
-      },
-      "Units": "m",
-      "User": "Standard"
-    },
-    "DR_FLY_ANGLE": {
-      "Description": "lean angle (in degrees) during deadreckoning",
-      "DisplayName": "Deadreckoning Lean Angle",
-      "Range": {
-        "high": "45",
-        "low": "0"
-      },
-      "Units": "deg",
-      "User": "Standard"
-    },
-    "DR_FLY_TIMEOUT": {
-      "Description": "Copter will attempt to switch to NEXT_MODE after this many seconds of deadreckoning.  If it cannot switch modes it will continue in Guided_NoGPS.  Set to 0 to disable timeout",
-      "DisplayName": "Deadreckoning flight timeout",
-      "Units": "s",
-      "User": "Standard"
-    },
-    "DR_GPS_SACC_MAX": {
-      "Description": "GPS speed accuracy maximum, above which deadreckoning home will begin (default is 0.8).  Lower values trigger with good GPS quality, higher values will allow poorer GPS before triggering. Set to 0 to disable use of GPS speed accuracy",
-      "DisplayName": "Deadreckoning GPS speed accuracy maximum threshold",
-      "Range": {
-        "high": "10",
-        "low": "0"
-      },
-      "User": "Standard"
-    },
-    "DR_GPS_SAT_MIN": {
-      "Description": "GPS satellite count threshold below which deadreckoning home will begin (default is 6).  Higher values trigger with good GPS quality, Lower values trigger with worse GPS quality. Set to 0 to disable use of GPS satellite count",
-      "DisplayName": "Deadreckoning GPS satellite count min threshold",
-      "Range": {
-        "high": "30",
-        "low": "0"
-      },
-      "User": "Standard"
-    },
-    "DR_GPS_TRIGG_SEC": {
-      "Description": "GPS checks must fail for this many seconds before dead reckoning will be triggered",
-      "DisplayName": "Deadreckoning GPS check trigger seconds",
-      "Units": "s",
-      "User": "Standard"
-    },
-    "DR_NEXT_MODE": {
-      "Description": "Copter switch to this mode after GPS recovers or DR_FLY_TIMEOUT has elapsed.  Default is 6/RTL.  Set to -1 to return to mode used before deadreckoning was triggered",
-      "DisplayName": "Deadreckoning Next Mode",
-      "User": "Standard",
-      "Values": {
-        "16": "PosHold",
-        "17": "Brake",
-        "2": "AltHold",
-        "20": "Guided_NoGPS",
-        "21": "Smart_RTL",
-        "27": "Auto RTL",
-        "3": "Auto",
-        "4": "Guided",
-        "5": "Loiter",
-        "6": "RTL",
-        "7": "Circle",
-        "9": "Land"
-      }
-    },
-    "EFI_DLA_ENABLE": {
-      "Description": "Enable EFI DLA driver",
-      "DisplayName": "EFI DLA enable",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "1": "Enabled"
-      }
-    },
-    "EFI_DLA_LPS": {
-      "Description": "EFI DLA litres of fuel per second of injection time",
-      "DisplayName": "EFI DLA fuel scale",
-      "Range": {
-        "high": "1",
-        "low": "0.00001"
-      },
-      "Units": "litres",
-      "User": "Standard"
-    },
-    "EFI_H6K_CANDRV": {
-      "Description": "Halo6000 CAN driver. Use 1 for first CAN scripting driver, 2 for 2nd driver",
-      "DisplayName": "Halo6000 CAN driver",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "1": "FirstCAN",
-        "2": "SecondCAN"
-      }
-    },
-    "EFI_H6K_ENABLE": {
-      "Description": "Enable Halo6000 EFI driver",
-      "DisplayName": "Enable Halo6000 EFI driver",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "1": "Enabled"
-      }
-    },
-    "EFI_H6K_FUELTOT": {
-      "Description": "The capacity of the tank in litres",
-      "DisplayName": "Halo6000 total fuel capacity",
-      "Units": "litres",
-      "User": "Standard"
-    },
-    "EFI_H6K_START_FN": {
-      "Description": "The RC auxilliary function number for start/stop of the generator. Zero to disable start function",
-      "DisplayName": "Halo6000 start auxilliary function",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "300": "300",
-        "301": "301",
-        "302": "302",
-        "303": "303",
-        "304": "304",
-        "305": "305",
-        "306": "306",
-        "307": "307"
-      }
-    },
-    "EFI_H6K_TELEM_RT": {
-      "Description": "The rate that additional generator telemetry is sent",
-      "DisplayName": "Halo6000 telemetry rate",
-      "Units": "Hz",
-      "User": "Standard"
-    },
-    "EFI_INF_ENABLE": {
-      "Description": "Enable EFI INF-Inject driver",
-      "DisplayName": "EFI INF-Inject enable",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "1": "Enabled"
-      }
-    },
-    "EFI_SP_CANDRV": {
-      "Description": "Set SkyPower EFI CAN driver",
-      "DisplayName": "Set SkyPower EFI CAN driver",
-      "User": "Standard",
-      "Values": {
-        "0": "None",
-        "1": "1stCANDriver",
-        "2": "2ndCanDriver"
-      }
-    },
-    "EFI_SP_ENABLE": {
-      "Description": "Enable SkyPower EFI support",
-      "DisplayName": "Enable SkyPower EFI support",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "1": "Enabled"
-      }
-    },
-    "EFI_SP_GEN_CTRL": {
-      "Description": "SkyPower EFI enable generator control",
-      "DisplayName": "SkyPower EFI enable generator control",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "1": "Enabled"
-      }
-    },
-    "EFI_SP_GEN_FN": {
-      "Description": "SkyPower EFI generator control function. This is the RCn_OPTION value to use to find the R/C channel used for controlling generator start/stop",
-      "DisplayName": "SkyPower EFI generator control function",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "300": "300",
-        "301": "301",
-        "302": "302",
-        "303": "303",
-        "304": "304",
-        "305": "305",
-        "306": "306",
-        "307": "307"
-      }
-    },
-    "EFI_SP_LOG_RT": {
-      "Description": "SkyPower EFI log rate. This is the rate at which extra logging of the SkyPower EFI is performed",
-      "DisplayName": "SkyPower EFI log rate",
-      "Range": {
-        "high": "50",
-        "low": "1"
-      },
-      "Units": "Hz",
-      "User": "Advanced"
-    },
-    "EFI_SP_MIN_RPM": {
-      "Description": "SkyPower EFI minimum RPM. This is the RPM below which the engine is considered to be stopped",
-      "DisplayName": "SkyPower EFI minimum RPM",
-      "Range": {
-        "high": "1000",
-        "low": "1"
-      },
-      "User": "Advanced"
-    },
-    "EFI_SP_MODEL": {
-      "Description": "SkyPower EFI ECU model",
-      "DisplayName": "SkyPower EFI ECU model",
-      "User": "Standard",
-      "Values": {
-        "0": "Default",
-        "1": "SP_275"
-      }
-    },
-    "EFI_SP_RST_TIME": {
-      "Description": "SkyPower EFI restart time. If engine should be running and it has stopped for this amount of time then auto-restart. To disable this feature set this value to zero.",
-      "DisplayName": "SkyPower EFI restart time",
-      "Range": {
-        "high": "10",
-        "low": "0"
-      },
-      "Units": "s",
-      "User": "Standard"
-    },
-    "EFI_SP_START_FN": {
-      "Description": "SkyPower EFI start function. This is the RCn_OPTION value to use to find the R/C channel used for controlling engine start",
-      "DisplayName": "SkyPower EFI start function",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "300": "300",
-        "301": "301",
-        "302": "302",
-        "303": "303",
-        "304": "304",
-        "305": "305",
-        "306": "306",
-        "307": "307"
-      }
-    },
-    "EFI_SP_ST_DISARM": {
-      "Description": "SkyPower EFI allow start disarmed. This controls if starting the engine while disarmed is allowed",
-      "DisplayName": "SkyPower EFI allow start disarmed",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "1": "Enabled"
-      }
-    },
-    "EFI_SP_THR_FN": {
-      "Description": "SkyPower EFI throttle function. This sets which SERVOn_FUNCTION to use for the target throttle. This should be 70 for fixed wing aircraft and 31 for helicopter rotor speed control",
-      "DisplayName": "SkyPower EFI throttle function",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "31": "HeliRSC",
-        "70": "FixedWing"
-      }
-    },
-    "EFI_SP_THR_RATE": {
-      "Description": "SkyPower EFI throttle rate. This sets rate at which throttle updates are sent to the engine",
-      "DisplayName": "SkyPower EFI throttle rate",
-      "Range": {
-        "high": "100",
-        "low": "10"
-      },
-      "Units": "Hz",
-      "User": "Advanced"
-    },
-    "EFI_SP_TLM_RT": {
-      "Description": "SkyPower EFI telemetry rate. This is the rate at which extra telemetry values are sent to the GCS",
-      "DisplayName": "SkyPower EFI telemetry rate",
-      "Range": {
-        "high": "10",
-        "low": "1"
-      },
-      "Units": "Hz",
-      "User": "Advanced"
-    },
-    "EFI_SP_UPDATE_HZ": {
-      "Description": "SkyPower EFI update rate",
-      "DisplayName": "SkyPower EFI update rate",
-      "Range": {
-        "high": "200",
-        "low": "10"
-      },
-      "Units": "Hz",
-      "User": "Advanced"
-    },
-    "EFI_SVF_ARMCHECK": {
-      "Description": "Check for Generator ARM state before arming",
-      "DisplayName": "Generator SVFFI arming check",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "1": "Enabled"
-      }
-    },
-    "EFI_SVF_ENABLE": {
-      "Description": "Enable SVFFI generator support",
-      "DisplayName": "Generator SVFFI enable",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "1": "Enabled"
-      }
-    },
-    "ESC_HW_ENABLE": {
-      "Description": "Enable Hobbywing ESC telemetry",
-      "DisplayName": "Hobbywing ESC Enable",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "1": "Enabled"
-      }
-    },
-    "ESC_HW_OFS": {
-      "Description": "Motor number offset of first ESC",
-      "DisplayName": "Hobbywing ESC motor offset",
-      "Range": {
-        "high": "31",
-        "low": "0"
-      },
-      "User": "Standard"
-    },
-    "ESC_HW_POLES": {
-      "Description": "Number of motor poles for eRPM scaling",
-      "DisplayName": "Hobbywing ESC motor poles",
-      "Range": {
-        "high": "50",
-        "low": "1"
-      },
-      "User": "Standard"
-    },
-    "POI_DIST_MAX": {
-      "Description": "POI's max distance (in meters) from the vehicle",
-      "DisplayName": "Mount POI distance max",
-      "Range": {
-        "high": "10000",
-        "low": "0"
-      },
-      "User": "Standard"
-    },
-    "PREV_ENABLE": {
-      "Description": "Enable parameter reversion system",
-      "DisplayName": "parameter reversion enable",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "1": "Enabled"
-      }
-    },
-    "PREV_RC_FUNC": {
-      "Description": "RCn_OPTION number to used to trigger parameter reversion",
-      "DisplayName": "param reversion RC function",
-      "User": "Standard"
-    },
-    "QUIK_AUTO_FILTER": {
-      "Description": "When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER",
-      "DisplayName": "Quicktune auto filter enable",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "1": "Enabled"
-      }
-    },
-    "QUIK_AUTO_SAVE": {
-      "Description": "Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune",
-      "DisplayName": "Quicktune auto save",
-      "Units": "s",
-      "User": "Standard"
-    },
-    "QUIK_AXES": {
-      "Bitmask": {
-        "0": "Roll",
-        "1": "Pitch",
-        "2": "Yaw"
-      },
-      "Description": "axes to tune",
-      "DisplayName": "Quicktune axes",
-      "User": "Standard"
-    },
-    "QUIK_DOUBLE_TIME": {
-      "Description": "Time to double a tuning parameter. Raise this for a slower tune.",
-      "DisplayName": "Quicktune doubling time",
-      "Range": {
-        "high": "20",
-        "low": "5"
-      },
-      "Units": "s",
-      "User": "Standard"
-    },
-    "QUIK_ENABLE": {
-      "Description": "Enable quicktune system",
-      "DisplayName": "Quicktune enable",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "1": "Enabled"
-      }
-    },
-    "QUIK_GAIN_MARGIN": {
-      "Description": "Reduction in gain after oscillation detected. Raise this number to get a more conservative tune",
-      "DisplayName": "Quicktune gain margin",
-      "Range": {
-        "high": "80",
-        "low": "20"
-      },
-      "Units": "%",
-      "User": "Standard"
-    },
-    "QUIK_MAX_REDUCE": {
-      "Description": "This controls how much quicktune is allowed to lower gains from the original gains. If the vehicle already has a reasonable tune and is not oscillating then you can set this to zero to prevent gain reductions. The default of 20% is reasonable for most vehicles. Using a maximum gain reduction lowers the chance of an angle P oscillation happening if quicktune gets a false positive oscillation at a low gain, which can result in very low rate gains and a dangerous angle P oscillation.",
-      "DisplayName": "Quicktune maximum gain reduction",
-      "Range": {
-        "high": "100",
-        "low": "0"
-      },
-      "Units": "%",
-      "User": "Standard"
-    },
-    "QUIK_OPTIONS": {
-      "Bitmask": {
-        "0": "UseTwoPositionSwitch"
-      },
-      "Description": "Additional options. When the Two Position Switch option is enabled then a high switch position will start the tune, low will disable the tune. you should also set a QUIK_AUTO_SAVE time so that you will be able to save the tune.",
-      "DisplayName": "Quicktune options",
-      "User": "Standard"
-    },
-    "QUIK_OSC_SMAX": {
-      "Description": "Threshold for oscillation detection. A lower value will lead to a more conservative tune.",
-      "DisplayName": "Quicktune oscillation rate threshold",
-      "Range": {
-        "high": "10",
-        "low": "1"
-      },
-      "User": "Standard"
-    },
-    "QUIK_RC_FUNC": {
-      "Description": "RCn_OPTION number to use to control tuning stop/start/save",
-      "DisplayName": "Quicktune RC function",
-      "User": "Standard"
-    },
-    "QUIK_RP_PI_RATIO": {
-      "Description": "Ratio between P and I gains for roll and pitch. Raise this to get a lower I gain",
-      "DisplayName": "Quicktune roll/pitch PI ratio",
-      "Range": {
-        "high": "1.0",
-        "low": "0.5"
-      },
-      "User": "Standard"
-    },
-    "QUIK_YAW_D_MAX": {
-      "Description": "Maximum value for yaw D gain",
-      "DisplayName": "Quicktune Yaw D max",
-      "Range": {
-        "high": "1",
-        "low": "0.001"
-      },
-      "User": "Standard"
-    },
-    "QUIK_YAW_P_MAX": {
-      "Description": "Maximum value for yaw P gain",
-      "DisplayName": "Quicktune Yaw P max",
-      "Range": {
-        "high": "3",
-        "low": "0.1"
-      },
-      "User": "Standard"
-    },
-    "QUIK_Y_PI_RATIO": {
-      "Description": "Ratio between P and I gains for yaw. Raise this to get a lower I gain",
-      "DisplayName": "Quicktune Yaw PI ratio",
-      "Range": {
-        "high": "20",
-        "low": "0.5"
-      },
-      "User": "Standard"
-    },
-    "RCK_DEBUG": {
-      "Description": "Sends Rockblock debug text to GCS via statustexts",
-      "DisplayName": "Display Rockblock debugging text",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "1": "Enabled"
-      }
-    },
-    "RCK_ENABLE": {
-      "Description": "Enables the Rockblock sending and recieving",
-      "DisplayName": "Enable Message transmission",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "1": "Enabled"
-      }
-    },
-    "RCK_FORCEHL": {
-      "Description": "Automatically enables High Latency mode if not already enabled",
-      "DisplayName": "Force enable High Latency mode",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "1": "Enabled"
-      }
-    },
-    "RCK_PERIOD": {
-      "Description": "When in High Latency mode, send Rockblock updates every N seconds",
-      "DisplayName": "Update rate",
-      "Range": {
-        "high": "600",
-        "low": "0"
-      },
-      "Units": "s",
-      "User": "Standard"
-    },
-    "RTUN_AUTO_FILTER": {
-      "Description": "When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER",
-      "DisplayName": "Rover Quicktune auto filter enable",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "1": "Enabled"
-      }
-    },
-    "RTUN_AUTO_SAVE": {
-      "Description": "Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune",
-      "DisplayName": "Rover Quicktune auto save",
-      "Units": "s",
-      "User": "Standard"
-    },
-    "RTUN_AXES": {
-      "Bitmask": {
-        "0": "Steering",
-        "1": "Speed"
-      },
-      "Description": "axes to tune",
-      "DisplayName": "Rover Quicktune axes",
-      "User": "Standard"
-    },
-    "RTUN_ENABLE": {
-      "Description": "Enable quicktune system",
-      "DisplayName": "Rover Quicktune enable",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "1": "Enabled"
-      }
-    },
-    "RTUN_RC_FUNC": {
-      "Description": "RCn_OPTION number to use to control tuning stop/start/save",
-      "DisplayName": "Rover Quicktune RC function",
-      "User": "Standard",
-      "Values": {
-        "300": "Scripting1",
-        "301": "Scripting2",
-        "302": "Scripting3",
-        "303": "Scripting4",
-        "304": "Scripting5",
-        "305": "Scripting6",
-        "306": "Scripting7",
-        "307": "Scripting8"
-      }
-    },
-    "RTUN_SPD_FFRATIO": {
-      "Description": "Ratio between measured response and CRUISE_THROTTLE value. Raise this to get a higher CRUISE_THROTTLE value",
-      "DisplayName": "Rover Quicktune Speed FeedForward (equivalent) ratio",
-      "Range": {
-        "high": "1.0",
-        "low": "0"
-      },
-      "User": "Standard"
-    },
-    "RTUN_SPD_I_RATIO": {
-      "Description": "Ratio between speed FF and I gain. Raise this to get a higher I gain, 0 to leave I unchanged",
-      "DisplayName": "Rover Quicktune Speed FF to I ratio",
-      "Range": {
-        "high": "2.0",
-        "low": "0"
-      },
-      "User": "Standard"
-    },
-    "RTUN_SPD_P_RATIO": {
-      "Description": "Ratio between speed FF and P gain. Raise this to get a higher P gain, 0 to leave P unchanged",
-      "DisplayName": "Rover Quicktune Speed FF to P ratio",
-      "Range": {
-        "high": "2.0",
-        "low": "0"
-      },
-      "User": "Standard"
-    },
-    "RTUN_STR_FFRATIO": {
-      "Description": "Ratio between measured response and FF gain. Raise this to get a higher FF gain",
-      "DisplayName": "Rover Quicktune Steering Rate FeedForward ratio",
-      "Range": {
-        "high": "1.0",
-        "low": "0"
-      },
-      "User": "Standard"
-    },
-    "RTUN_STR_I_RATIO": {
-      "Description": "Ratio between steering FF and I gains. Raise this to get a higher I gain, 0 to leave I unchanged",
-      "DisplayName": "Rover Quicktune Steering FF to I ratio",
-      "Range": {
-        "high": "2.0",
-        "low": "0"
-      },
-      "User": "Standard"
-    },
-    "RTUN_STR_P_RATIO": {
-      "Description": "Ratio between steering FF and P gains. Raise this to get a higher P gain, 0 to leave P unchanged",
-      "DisplayName": "Rover Quicktune Steering FF to P ratio",
-      "Range": {
-        "high": "2.0",
-        "low": "0"
-      },
-      "User": "Standard"
-    },
-    "SHIP_AUTO_OFS": {
-      "Description": "Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target. NOTE: This parameter will auto-reset to zero once the offset has been calculated.",
-      "DisplayName": "Ship automatic offset trigger",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "1": "Trigger"
-      }
-    },
-    "SHIP_ENABLE": {
-      "Description": "Enable ship landing system",
-      "DisplayName": "Ship landing enable",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "1": "Enabled"
-      }
-    },
-    "SHIP_LAND_ANGLE": {
-      "Description": "Angle from the stern of the ship for landing approach. Use this to ensure that on a go-around that ship superstructure and cables are avoided. A value of zero means to approach from the rear of the ship. A value of 90 means the landing will approach from the port (left) side of the ship. A value of -90 will mean approaching from the starboard (right) side of the ship. A value of 180 will approach from the bow of the ship. This parameter is combined with the sign of the RTL_RADIUS parameter to determine the holdoff pattern. If RTL_RADIUS is positive then a clockwise loiter is performed, if RTL_RADIUS is negative then a counter-clockwise loiter is used.",
-      "DisplayName": "Ship landing angle",
-      "Range": {
-        "high": "180",
-        "low": "-180"
-      },
-      "Units": "deg",
-      "User": "Standard"
-    },
-    "TOFSENSE_ID1": {
-      "Description": "First TOFSENSE-M sensor ID. Leave this at 0 to accept all IDs and if only one sensor is present. You can change ID of sensor from NAssistant Software",
-      "DisplayName": "TOFSENSE-M First ID",
-      "Range": {
-        "high": "255",
-        "low": "1"
-      },
-      "User": "Standard"
-    },
-    "TOFSENSE_ID2": {
-      "Description": "Second TOFSENSE-M sensor ID. This cannot be 0. You can change ID of sensor from NAssistant Software",
-      "DisplayName": "TOFSENSE-M Second ID",
-      "Range": {
-        "high": "255",
-        "low": "1"
-      },
-      "User": "Standard"
-    },
-    "TOFSENSE_ID3": {
-      "Description": "Third TOFSENSE-M sensor ID. This cannot be 0. You can change ID of sensor from NAssistant Software",
-      "DisplayName": "TOFSENSE-M Thir ID",
-      "Range": {
-        "high": "255",
-        "low": "1"
-      },
-      "User": "Standard"
-    },
-    "TOFSENSE_INST1": {
-      "Description": "First TOFSENSE-M sensors backend Instance. Setting this to 1 will pick the first backend from PRX_ or RNG_ Parameters (Depending on TOFSENSE_PRX)",
-      "DisplayName": "TOFSENSE-M First Instance",
-      "Range": {
-        "high": "3",
-        "low": "1"
-      },
-      "User": "Standard"
-    },
-    "TOFSENSE_INST2": {
-      "Description": "Second TOFSENSE-M sensors backend Instance. Setting this to 2 will pick the second backend from PRX_ or RNG_ Parameters (Depending on TOFSENSE_PRX)",
-      "DisplayName": "TOFSENSE-M Second Instance",
-      "Range": {
-        "high": "3",
-        "low": "1"
-      },
-      "User": "Standard"
-    },
-    "TOFSENSE_INST3": {
-      "Description": "Third TOFSENSE-M sensors backend Instance. Setting this to 3 will pick the second backend from PRX_ or RNG_ Parameters (Depending on TOFSENSE_PRX)",
-      "DisplayName": "TOFSENSE-M Third Instance",
-      "Range": {
-        "high": "3",
-        "low": "1"
-      },
-      "User": "Standard"
-    },
-    "TOFSENSE_MODE": {
-      "Description": "TOFSENSE-M mode to be used. 0 for 8x8 mode. 1 for 4x4 mode",
-      "DisplayName": "TOFSENSE-M mode to be used",
-      "User": "Standard",
-      "Values": {
-        "0": "8x8 mode",
-        "1": "4x4 mode"
-      }
-    },
-    "TOFSENSE_NO": {
-      "Description": "Number of TOFSENSE-M CAN sensors connected",
-      "DisplayName": "TOFSENSE-M Connected",
-      "Range": {
-        "high": "3",
-        "low": "1"
-      },
-      "User": "Standard"
-    },
-    "TOFSENSE_PRX": {
-      "Description": "Set 0 if sensor is to be used as a 1-D rangefinder (minimum of all distances will be sent, typically used for height detection). Set 1 if it should be used as a 3-D proximity device (Eg. Obstacle Avoidance)",
-      "DisplayName": "TOFSENSE-M to be used as Proximity sensor",
-      "User": "Standard",
-      "Values": {
-        "0": "Set as Rangefinder",
-        "1": "Set as Proximity sensor"
-      }
-    },
-    "TOFSENSE_S1_BR": {
-      "Description": "Serial Port baud rate. Sensor baud rate can be changed from Nassistant software",
-      "DisplayName": "TOFSENSE-M serial port baudrate",
-      "User": "Standard"
-    },
-    "TOFSENSE_S1_PRX": {
-      "Description": "Set 0 if sensor is to be used as a 1-D rangefinder (minimum of all distances will be sent, typically used for height detection). Set 1 if it should be used as a 3-D proximity device (Eg. Obstacle Avoidance)",
-      "DisplayName": "TOFSENSE-M to be used as Proximity sensor",
-      "User": "Standard",
-      "Values": {
-        "0": "Set as Rangefinder",
-        "1": "Set as Proximity sensor"
-      }
-    },
-    "TOFSENSE_S1_SP": {
-      "Description": "UART instance sensor is connected to. Set 1 if sensor is connected to the port with fist SERIALx_PROTOCOL = 28. ",
-      "DisplayName": "TOFSENSE-M serial port config",
-      "Range": {
-        "high": "4",
-        "low": "1"
-      },
-      "User": "Standard"
-    },
-    "TRIK_ACT_FN": {
-      "Description": "Setting an RC channel's _OPTION to this value will use it for trick action (abort,announce,execute)",
-      "DisplayName": "Trik Action Scripting Function",
-      "Range": {
-        "high": "307",
-        "low": "301"
-      }
-    },
-    "TRIK_COUNT": {
-      "Description": "Number of tricks which can be selected over the range of the trik selection RC channel",
-      "DisplayName": "Trik Count",
-      "Range": {
-        "high": "11",
-        "low": "1"
-      }
-    },
-    "TRIK_ENABLE": {
-      "Description": "Enables Tricks on Switch. TRIK params hidden until enabled",
-      "DisplayName": "Tricks on Switch Enable"
-    },
-    "TRIK_SEL_FN": {
-      "Description": "Setting an RC channel's _OPTION to this value will use it for trick selection",
-      "DisplayName": "Trik Selection Scripting Function",
-      "Range": {
-        "high": "307",
-        "low": "301"
-      }
-    },
-    "VIEP_CAM_SWHIGH": {
-      "Description": "Camera selection when switch is in high position",
-      "DisplayName": "ViewPro Camera For Switch High",
-      "User": "Standard",
-      "Values": {
-        "0": "No change in camera selection",
-        "1": "EO1",
-        "2": "IR thermal",
-        "3": "EO1 + IR Picture-in-picture",
-        "4": "IR + EO1 Picture-in-picture",
-        "5": "Fusion",
-        "6": "IR1 13mm",
-        "7": "IR2 52mm"
-      }
-    },
-    "VIEP_CAM_SWLOW": {
-      "Description": "Camera selection when switch is in low position",
-      "DisplayName": "ViewPro Camera For Switch Low",
-      "User": "Standard",
-      "Values": {
-        "0": "No change in camera selection",
-        "1": "EO1",
-        "2": "IR thermal",
-        "3": "EO1 + IR Picture-in-picture",
-        "4": "IR + EO1 Picture-in-picture",
-        "5": "Fusion",
-        "6": "IR1 13mm",
-        "7": "IR2 52mm"
-      }
-    },
-    "VIEP_CAM_SWMID": {
-      "Description": "Camera selection when switch is in middle position",
-      "DisplayName": "ViewPro Camera For Switch Mid",
-      "User": "Standard",
-      "Values": {
-        "0": "No change in camera selection",
-        "1": "EO1",
-        "2": "IR thermal",
-        "3": "EO1 + IR Picture-in-picture",
-        "4": "IR + EO1 Picture-in-picture",
-        "5": "Fusion",
-        "6": "IR1 13mm",
-        "7": "IR2 52mm"
-      }
-    },
-    "VIEP_DEBUG": {
-      "Description": "ViewPro debug",
-      "DisplayName": "ViewPro debug",
-      "User": "Advanced",
-      "Values": {
-        "0": "Disabled",
-        "1": "Enabled",
-        "2": "Enabled including attitude reporting"
-      }
-    },
-    "VIEP_ZOOM_MAX": {
-      "Description": "ViewPro Zoom Times Max",
-      "DisplayName": "ViewPro Zoom Times Max",
-      "Range": {
-        "high": "30",
-        "low": "0"
-      },
-      "User": "Standard"
-    },
-    "VIEP_ZOOM_SPEED": {
-      "Description": "ViewPro Zoom Speed.  Higher numbers result in faster zooming",
-      "DisplayName": "ViewPro Zoom Speed",
-      "Range": {
-        "high": "7",
-        "low": "0"
-      },
-      "User": "Standard"
-    },
-    "WEB_BIND_PORT": {
-      "Description": "web server TCP port",
-      "DisplayName": "web server TCP port",
-      "Range": {
-        "high": "65535",
-        "low": "1"
-      },
-      "User": "Standard"
-    },
-    "WEB_BLOCK_SIZE": {
-      "Description": "web server block size for download",
-      "DisplayName": "web server block size",
-      "Range": {
-        "high": "65535",
-        "low": "1"
-      },
-      "User": "Advanced"
-    },
-    "WEB_DEBUG": {
-      "Description": "web server debugging",
-      "DisplayName": "web server debugging",
-      "User": "Advanced",
-      "Values": {
-        "0": "Disabled",
-        "1": "Enabled"
-      }
-    },
-    "WEB_ENABLE": {
-      "Description": "enable web server",
-      "DisplayName": "enable web server",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "1": "Enabled"
-      }
-    },
-    "WEB_SENDFILE_MIN": {
-      "Description": "sendfile is an offloading mechanism for faster file download. If this is non-zero and the file is larger than this size then sendfile will be used for file download",
-      "DisplayName": "web server minimum file size for sendfile",
-      "Range": {
-        "high": "10000000",
-        "low": "0"
-      },
-      "User": "Advanced"
-    },
-    "WEB_TIMEOUT": {
-      "Description": "timeout for inactive connections",
-      "DisplayName": "web server timeout",
-      "Range": {
-        "high": "60",
-        "low": "0.1"
-      },
-      "Units": "s",
-      "User": "Advanced"
-    },
-    "WINCH_RATE_DN": {
-      "Description": "Maximum rate when releasing line",
-      "DisplayName": "WinchControl Rate Down",
-      "Range": {
-        "high": "5.0",
-        "low": "0.1"
-      },
-      "User": "Standard"
-    },
-    "WINCH_RATE_UP": {
-      "Description": "Maximum rate when retracting line",
-      "DisplayName": "WinchControl Rate Up",
-      "Range": {
-        "high": "5.0",
-        "low": "0.1"
-      },
-      "User": "Standard"
-    },
-    "WINCH_RC_FUNC": {
-      "Description": "RCn_OPTION number to use to control winch rate",
-      "DisplayName": "Winch Rate Control RC function",
-      "User": "Standard",
-      "Values": {
-        "300": "Scripting1",
-        "301": "Scripting2",
-        "302": "Scripting3",
-        "303": "Scripting4",
-        "304": "Scripting5",
-        "305": "Scripting6",
-        "306": "Scripting7",
-        "307": "Scripting8"
-      }
-    }
-  },
   "MIS_": {
     "MIS_OPTIONS": {
       "Bitmask": {
@@ -22019,6 +22195,14 @@
         "low": "-180.0"
       },
       "Units": "deg",
+      "User": "Standard"
+    },
+    "MNT1_OPTIONS": {
+      "Bitmask": {
+        "0": "RC lock state from previous mode"
+      },
+      "Description": "Mount options bitmask",
+      "DisplayName": "Mount options",
       "User": "Standard"
     },
     "MNT1_PITCH_MAX": {
@@ -22231,6 +22415,14 @@
         "low": "-180.0"
       },
       "Units": "deg",
+      "User": "Standard"
+    },
+    "MNT2_OPTIONS": {
+      "Bitmask": {
+        "0": "RC lock state from previous mode"
+      },
+      "Description": "Mount options bitmask",
+      "DisplayName": "Mount options",
       "User": "Standard"
     },
     "MNT2_PITCH_MAX": {
@@ -22664,7 +22856,7 @@
         "1": "Enable"
       }
     },
-    "NET_ENABLED": {
+    "NET_ENABLE": {
       "Description": "Networking Enable",
       "DisplayName": "Networking Enable",
       "RebootRequired": "True",
@@ -31489,6 +31681,7 @@
         "14": "DroneCAN",
         "15": "Scripting",
         "16": "LD06",
+        "17": "MR72_CAN",
         "2": "MAVLink",
         "3": "TeraRangerTower",
         "4": "RangeFinder",
@@ -31507,6 +31700,17 @@
       },
       "Units": "deg",
       "User": "Standard"
+    }
+  },
+  "PRX1_": {
+    "PRX1_RECV_ID": {
+      "Description": "The receive ID of the CAN frames. A value of zero means all IDs are accepted.",
+      "DisplayName": "CAN receive ID",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
     }
   },
   "PRX2": {
@@ -31642,6 +31846,7 @@
         "14": "DroneCAN",
         "15": "Scripting",
         "16": "LD06",
+        "17": "MR72_CAN",
         "2": "MAVLink",
         "3": "TeraRangerTower",
         "4": "RangeFinder",
@@ -31660,6 +31865,17 @@
       },
       "Units": "deg",
       "User": "Standard"
+    }
+  },
+  "PRX2_": {
+    "PRX2_RECV_ID": {
+      "Description": "The receive ID of the CAN frames. A value of zero means all IDs are accepted.",
+      "DisplayName": "CAN receive ID",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
     }
   },
   "PRX3": {
@@ -31795,6 +32011,7 @@
         "14": "DroneCAN",
         "15": "Scripting",
         "16": "LD06",
+        "17": "MR72_CAN",
         "2": "MAVLink",
         "3": "TeraRangerTower",
         "4": "RangeFinder",
@@ -31813,6 +32030,17 @@
       },
       "Units": "deg",
       "User": "Standard"
+    }
+  },
+  "PRX3_": {
+    "PRX3_RECV_ID": {
+      "Description": "The receive ID of the CAN frames. A value of zero means all IDs are accepted.",
+      "DisplayName": "CAN receive ID",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
     }
   },
   "PRX4": {
@@ -31948,6 +32176,7 @@
         "14": "DroneCAN",
         "15": "Scripting",
         "16": "LD06",
+        "17": "MR72_CAN",
         "2": "MAVLink",
         "3": "TeraRangerTower",
         "4": "RangeFinder",
@@ -31966,6 +32195,17 @@
       },
       "Units": "deg",
       "User": "Standard"
+    }
+  },
+  "PRX4_": {
+    "PRX4_RECV_ID": {
+      "Description": "The receive ID of the CAN frames. A value of zero means all IDs are accepted.",
+      "DisplayName": "CAN receive ID",
+      "Range": {
+        "high": "65535",
+        "low": "0"
+      },
+      "User": "Advanced"
     }
   },
   "PSC": {
@@ -32460,6 +32700,7 @@
         "172": "Battery MPPT Enable",
         "174": "Camera Image Tracking",
         "175": "Camera Lens",
+        "177": "Mount LRF enable",
         "18": "LAND Mode",
         "19": "Gripper Release",
         "2": "FLIP Mode",
@@ -32635,6 +32876,7 @@
         "172": "Battery MPPT Enable",
         "174": "Camera Image Tracking",
         "175": "Camera Lens",
+        "177": "Mount LRF enable",
         "18": "LAND Mode",
         "19": "Gripper Release",
         "2": "FLIP Mode",
@@ -32810,6 +33052,7 @@
         "172": "Battery MPPT Enable",
         "174": "Camera Image Tracking",
         "175": "Camera Lens",
+        "177": "Mount LRF enable",
         "18": "LAND Mode",
         "19": "Gripper Release",
         "2": "FLIP Mode",
@@ -32985,6 +33228,7 @@
         "172": "Battery MPPT Enable",
         "174": "Camera Image Tracking",
         "175": "Camera Lens",
+        "177": "Mount LRF enable",
         "18": "LAND Mode",
         "19": "Gripper Release",
         "2": "FLIP Mode",
@@ -33160,6 +33404,7 @@
         "172": "Battery MPPT Enable",
         "174": "Camera Image Tracking",
         "175": "Camera Lens",
+        "177": "Mount LRF enable",
         "18": "LAND Mode",
         "19": "Gripper Release",
         "2": "FLIP Mode",
@@ -33335,6 +33580,7 @@
         "172": "Battery MPPT Enable",
         "174": "Camera Image Tracking",
         "175": "Camera Lens",
+        "177": "Mount LRF enable",
         "18": "LAND Mode",
         "19": "Gripper Release",
         "2": "FLIP Mode",
@@ -33510,6 +33756,7 @@
         "172": "Battery MPPT Enable",
         "174": "Camera Image Tracking",
         "175": "Camera Lens",
+        "177": "Mount LRF enable",
         "18": "LAND Mode",
         "19": "Gripper Release",
         "2": "FLIP Mode",
@@ -33685,6 +33932,7 @@
         "172": "Battery MPPT Enable",
         "174": "Camera Image Tracking",
         "175": "Camera Lens",
+        "177": "Mount LRF enable",
         "18": "LAND Mode",
         "19": "Gripper Release",
         "2": "FLIP Mode",
@@ -33860,6 +34108,7 @@
         "172": "Battery MPPT Enable",
         "174": "Camera Image Tracking",
         "175": "Camera Lens",
+        "177": "Mount LRF enable",
         "18": "LAND Mode",
         "19": "Gripper Release",
         "2": "FLIP Mode",
@@ -34035,6 +34284,7 @@
         "172": "Battery MPPT Enable",
         "174": "Camera Image Tracking",
         "175": "Camera Lens",
+        "177": "Mount LRF enable",
         "18": "LAND Mode",
         "19": "Gripper Release",
         "2": "FLIP Mode",
@@ -34210,6 +34460,7 @@
         "172": "Battery MPPT Enable",
         "174": "Camera Image Tracking",
         "175": "Camera Lens",
+        "177": "Mount LRF enable",
         "18": "LAND Mode",
         "19": "Gripper Release",
         "2": "FLIP Mode",
@@ -34385,6 +34636,7 @@
         "172": "Battery MPPT Enable",
         "174": "Camera Image Tracking",
         "175": "Camera Lens",
+        "177": "Mount LRF enable",
         "18": "LAND Mode",
         "19": "Gripper Release",
         "2": "FLIP Mode",
@@ -34560,6 +34812,7 @@
         "172": "Battery MPPT Enable",
         "174": "Camera Image Tracking",
         "175": "Camera Lens",
+        "177": "Mount LRF enable",
         "18": "LAND Mode",
         "19": "Gripper Release",
         "2": "FLIP Mode",
@@ -34735,6 +34988,7 @@
         "172": "Battery MPPT Enable",
         "174": "Camera Image Tracking",
         "175": "Camera Lens",
+        "177": "Mount LRF enable",
         "18": "LAND Mode",
         "19": "Gripper Release",
         "2": "FLIP Mode",
@@ -34910,6 +35164,7 @@
         "172": "Battery MPPT Enable",
         "174": "Camera Image Tracking",
         "175": "Camera Lens",
+        "177": "Mount LRF enable",
         "18": "LAND Mode",
         "19": "Gripper Release",
         "2": "FLIP Mode",
@@ -35085,6 +35340,7 @@
         "172": "Battery MPPT Enable",
         "174": "Camera Image Tracking",
         "175": "Camera Lens",
+        "177": "Mount LRF enable",
         "18": "LAND Mode",
         "19": "Gripper Release",
         "2": "FLIP Mode",
@@ -47153,6 +47409,113 @@
       "Units": "%",
       "User": "Advanced"
     },
+    "SIM_VICON_FAIL": {
+      "Description": "SITL vicon failure",
+      "DisplayName": "SITL vicon failure",
+      "User": "Advanced",
+      "Values": {
+        "0": "Vicon Healthy",
+        "1": "Vicon Failed"
+      }
+    },
+    "SIM_VICON_GLIT_X": {
+      "Description": "SITL vicon position glitch North",
+      "DisplayName": "SITL vicon position glitch North",
+      "Units": "m",
+      "User": "Advanced"
+    },
+    "SIM_VICON_GLIT_Y": {
+      "Description": "SITL vicon position glitch East",
+      "DisplayName": "SITL vicon position glitch East",
+      "Units": "m",
+      "User": "Advanced"
+    },
+    "SIM_VICON_GLIT_Z": {
+      "Description": "SITL vicon position glitch Down",
+      "DisplayName": "SITL vicon position glitch Down",
+      "Units": "m",
+      "User": "Advanced"
+    },
+    "SIM_VICON_POS_X": {
+      "Description": "SITL vicon position on vehicle in Forward direction",
+      "DisplayName": "SITL vicon position on vehicle in Forward direction",
+      "Range": {
+        "high": "10",
+        "low": "0"
+      },
+      "Units": "m",
+      "User": "Advanced"
+    },
+    "SIM_VICON_POS_Y": {
+      "Description": "SITL vicon position on vehicle in Right direction",
+      "DisplayName": "SITL vicon position on vehicle in Right direction",
+      "Range": {
+        "high": "10",
+        "low": "0"
+      },
+      "Units": "m",
+      "User": "Advanced"
+    },
+    "SIM_VICON_POS_Z": {
+      "Description": "SITL vicon position on vehicle in Down direction",
+      "DisplayName": "SITL vicon position on vehicle in Down direction",
+      "Range": {
+        "high": "10",
+        "low": "0"
+      },
+      "Units": "m",
+      "User": "Advanced    "
+    },
+    "SIM_VICON_TMASK": {
+      "Bitmask": {
+        "0": "VISION_POSITION_ESTIMATE",
+        "1": "VISION_SPEED_ESTIMATE",
+        "2": "VICON_POSITION_ESTIMATE",
+        "3": "VISION_POSITION_DELTA",
+        "4": "ODOMETRY"
+      },
+      "Description": "SITL vicon messages sent",
+      "DisplayName": "SITL vicon type mask",
+      "User": "Advanced"
+    },
+    "SIM_VICON_VGLI_X": {
+      "Description": "SITL vicon velocity glitch North",
+      "DisplayName": "SITL vicon velocity glitch North",
+      "Units": "m/s",
+      "User": "Advanced"
+    },
+    "SIM_VICON_VGLI_Y": {
+      "Description": "SITL vicon velocity glitch East",
+      "DisplayName": "SITL vicon velocity glitch East",
+      "Units": "m/s",
+      "User": "Advanced"
+    },
+    "SIM_VICON_VGLI_Z": {
+      "Description": "SITL vicon velocity glitch Down",
+      "DisplayName": "SITL vicon velocity glitch Down",
+      "Units": "m/s",
+      "User": "Advanced"
+    },
+    "SIM_VICON_YAW": {
+      "Description": "SITL vicon yaw angle in earth frame",
+      "DisplayName": "SITL vicon yaw angle in earth frame",
+      "Range": {
+        "high": "360",
+        "low": "0"
+      },
+      "Units": "deg",
+      "User": "Advanced"
+    },
+    "SIM_VICON_YAWERR": {
+      "Description": "SITL vicon yaw added to reported yaw sent to vehicle",
+      "DisplayName": "SITL vicon yaw error",
+      "Range": {
+        "high": "180",
+        "low": "-180"
+      },
+      "Units": "deg",
+      "User": "Advanced"
+    },
     "SIM_WIND_DIR": {
       "Description": "Allows you to set wind direction (true deg) in sim",
       "DisplayName": "Simulated Wind direction",
@@ -47372,14 +47735,14 @@
       }
     },
     "SIM_PLD_HEIGHT": {
-      "Description": "Precland device center's height above sealevel assume a 2x2m square as station base",
-      "DisplayName": "Precland device center's height above sealevel",
+      "Description": "Precland device center's height above SITL origin. Assumes a 2x2m square as station base",
+      "DisplayName": "Precland device center's height SITL origin",
       "Increment": "1",
       "Range": {
         "high": "10000",
         "low": "0"
       },
-      "Units": "cm",
+      "Units": "m",
       "User": "Advanced"
     },
     "SIM_PLD_LAT": {
@@ -47431,6 +47794,15 @@
       },
       "Units": "Hz",
       "User": "Advanced"
+    },
+    "SIM_PLD_SHIP": {
+      "Description": "This makes the position of the landing beacon follow the simulated ship from SIM_SHIP. The ship movement is controlled with the SIM_SHIP parameters",
+      "DisplayName": "SIM_Precland follow ship",
+      "User": "Advanced",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
     },
     "SIM_PLD_TYPE": {
       "Description": "Precland device radiance type: it can be a cylinder, a cone, or a sphere.",
@@ -49699,39 +50071,6 @@
       "User": "Advanced"
     }
   },
-  "VEHICLE": {
-    "FLTMODE_GCSBLOCK": {
-      "Bitmask": {
-        "0": "Stabilize",
-        "1": "Acro",
-        "10": "AutoTune",
-        "11": "PosHold",
-        "12": "Brake",
-        "13": "Throw",
-        "14": "Avoid_ADSB",
-        "15": "Guided_NoGPS",
-        "16": "Smart_RTL",
-        "17": "FlowHold",
-        "18": "Follow",
-        "19": "ZigZag",
-        "2": "AltHold",
-        "20": "SystemID",
-        "21": "Heli_Autorotate",
-        "22": "Auto RTL",
-        "23": "Turtle",
-        "3": "Auto",
-        "4": "Guided",
-        "5": "Loiter",
-        "6": "Circle",
-        "7": "Drift",
-        "8": "Sport",
-        "9": "Flip"
-      },
-      "Description": "Bitmask of flight modes to disable for GCS selection. Mode can still be accessed via RC or failsafe.",
-      "DisplayName": "Flight mode block from GCS",
-      "User": "Standard"
-    }
-  },
   "VISO": {
     "VISO_DELAY_MS": {
       "Description": "Visual odometry sensor delay relative to inertial measurements",
@@ -49799,6 +50138,16 @@
       "Units": "m",
       "User": "Advanced"
     },
+    "VISO_QUAL_MIN": {
+      "Description": "Visual odometry will only be sent to EKF if over this value. -1 to always send (even bad values), 0 to send if good or unknown",
+      "DisplayName": "Visual odometry minimum quality",
+      "Range": {
+        "high": "100",
+        "low": "-1"
+      },
+      "Units": "%",
+      "User": "Advanced"
+    },
     "VISO_SCALE": {
       "Description": "Visual odometry scaling factor applied to position estimates from sensor",
       "DisplayName": "Visual odometry scaling factor",
@@ -49850,7 +50199,8 @@
         "4": "RaceBand",
         "5": "Low RaceBand",
         "6": "1G3 Band A",
-        "7": "1G3 Band B"
+        "7": "1G3 Band B",
+        "8": "Band X"
       }
     },
     "VTX_CHANNEL": {

@@ -830,6 +830,105 @@
       </param>
     </parameters>
     <parameters name="Lua Script">
+      <param humanName="Deadreckoning Enable" name="DR_ENABLE" documentation="Deadreckoning Enable" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Deadreckoning Enable Distance" name="DR_ENABLE_DIST" documentation="Distance from home (in meters) beyond which the dead reckoning will be enabled" user="Standard">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="Deadreckoning GPS speed accuracy maximum threshold" name="DR_GPS_SACC_MAX" documentation="GPS speed accuracy maximum, above which deadreckoning home will begin (default is 0.8).  Lower values trigger with good GPS quality, higher values will allow poorer GPS before triggering. Set to 0 to disable use of GPS speed accuracy" user="Standard">
+        <field name="Range">0 10</field>
+      </param>
+      <param humanName="Deadreckoning GPS satellite count min threshold" name="DR_GPS_SAT_MIN" documentation="GPS satellite count threshold below which deadreckoning home will begin (default is 6).  Higher values trigger with good GPS quality, Lower values trigger with worse GPS quality. Set to 0 to disable use of GPS satellite count" user="Standard">
+        <field name="Range">0 30</field>
+      </param>
+      <param humanName="Deadreckoning GPS check trigger seconds" name="DR_GPS_TRIGG_SEC" documentation="GPS checks must fail for this many seconds before dead reckoning will be triggered" user="Standard">
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+      </param>
+      <param humanName="Deadreckoning Lean Angle" name="DR_FLY_ANGLE" documentation="lean angle (in degrees) during deadreckoning" user="Standard">
+        <field name="Units">deg</field>
+        <field name="UnitText">degrees</field>
+        <field name="Range">0 45</field>
+      </param>
+      <param humanName="Deadreckoning Altitude Min" name="DR_FLY_ALT_MIN" documentation="Copter will fly at at least this altitude (in meters) above home during deadreckoning" user="Standard">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+        <field name="Range">0 1000</field>
+      </param>
+      <param humanName="Deadreckoning flight timeout" name="DR_FLY_TIMEOUT" documentation="Copter will attempt to switch to NEXT_MODE after this many seconds of deadreckoning.  If it cannot switch modes it will continue in Guided_NoGPS.  Set to 0 to disable timeout" user="Standard">
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+      </param>
+      <param humanName="Deadreckoning Next Mode" name="DR_NEXT_MODE" documentation="Copter switch to this mode after GPS recovers or DR_FLY_TIMEOUT has elapsed.  Default is 6/RTL.  Set to -1 to return to mode used before deadreckoning was triggered" user="Standard">
+        <values>
+          <value code="2">AltHold</value>
+          <value code="3">Auto</value>
+          <value code="4">Guided</value>
+          <value code="5">Loiter</value>
+          <value code="6">RTL</value>
+          <value code="7">Circle</value>
+          <value code="9">Land</value>
+          <value code="16">PosHold</value>
+          <value code="17">Brake</value>
+          <value code="20">Guided_NoGPS</value>
+          <value code="21">Smart_RTL</value>
+          <value code="27">Auto RTL</value>
+        </values>
+      </param>
+      <param humanName="Rover Quicktune enable" name="RTUN_ENABLE" documentation="Enable quicktune system" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Rover Quicktune axes" name="RTUN_AXES" documentation="axes to tune" user="Standard">
+        <field name="Bitmask">0:Steering,1:Speed</field>
+      </param>
+      <param humanName="Rover Quicktune Steering Rate FeedForward ratio" name="RTUN_STR_FFRATIO" documentation="Ratio between measured response and FF gain. Raise this to get a higher FF gain" user="Standard">
+        <field name="Range">0 1.0</field>
+      </param>
+      <param humanName="Rover Quicktune Steering FF to P ratio" name="RTUN_STR_P_RATIO" documentation="Ratio between steering FF and P gains. Raise this to get a higher P gain, 0 to leave P unchanged" user="Standard">
+        <field name="Range">0 2.0</field>
+      </param>
+      <param humanName="Rover Quicktune Steering FF to I ratio" name="RTUN_STR_I_RATIO" documentation="Ratio between steering FF and I gains. Raise this to get a higher I gain, 0 to leave I unchanged" user="Standard">
+        <field name="Range">0 2.0</field>
+      </param>
+      <param humanName="Rover Quicktune Speed FeedForward (equivalent) ratio" name="RTUN_SPD_FFRATIO" documentation="Ratio between measured response and CRUISE_THROTTLE value. Raise this to get a higher CRUISE_THROTTLE value" user="Standard">
+        <field name="Range">0 1.0</field>
+      </param>
+      <param humanName="Rover Quicktune Speed FF to P ratio" name="RTUN_SPD_P_RATIO" documentation="Ratio between speed FF and P gain. Raise this to get a higher P gain, 0 to leave P unchanged" user="Standard">
+        <field name="Range">0 2.0</field>
+      </param>
+      <param humanName="Rover Quicktune Speed FF to I ratio" name="RTUN_SPD_I_RATIO" documentation="Ratio between speed FF and I gain. Raise this to get a higher I gain, 0 to leave I unchanged" user="Standard">
+        <field name="Range">0 2.0</field>
+      </param>
+      <param humanName="Rover Quicktune auto filter enable" name="RTUN_AUTO_FILTER" documentation="When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Rover Quicktune auto save" name="RTUN_AUTO_SAVE" documentation="Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune" user="Standard">
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+      </param>
+      <param humanName="Rover Quicktune RC function" name="RTUN_RC_FUNC" documentation="RCn_OPTION number to use to control tuning stop/start/save" user="Standard">
+        <values>
+          <value code="300">Scripting1</value>
+          <value code="301">Scripting2</value>
+          <value code="302">Scripting3</value>
+          <value code="303">Scripting4</value>
+          <value code="304">Scripting5</value>
+          <value code="305">Scripting6</value>
+          <value code="306">Scripting7</value>
+          <value code="307">Scripting8</value>
+        </values>
+      </param>
       <param humanName="Count of SOC estimators" name="BATT_SOC_COUNT" documentation="Number of battery SOC estimators" user="Standard">
         <field name="Range">0 4</field>
       </param>
@@ -916,152 +1015,6 @@
           <value code="1">Enabled</value>
         </values>
       </param>
-      <param humanName="Deadreckoning Enable" name="DR_ENABLE" documentation="Deadreckoning Enable" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Deadreckoning Enable Distance" name="DR_ENABLE_DIST" documentation="Distance from home (in meters) beyond which the dead reckoning will be enabled" user="Standard">
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-      </param>
-      <param humanName="Deadreckoning GPS speed accuracy maximum threshold" name="DR_GPS_SACC_MAX" documentation="GPS speed accuracy maximum, above which deadreckoning home will begin (default is 0.8).  Lower values trigger with good GPS quality, higher values will allow poorer GPS before triggering. Set to 0 to disable use of GPS speed accuracy" user="Standard">
-        <field name="Range">0 10</field>
-      </param>
-      <param humanName="Deadreckoning GPS satellite count min threshold" name="DR_GPS_SAT_MIN" documentation="GPS satellite count threshold below which deadreckoning home will begin (default is 6).  Higher values trigger with good GPS quality, Lower values trigger with worse GPS quality. Set to 0 to disable use of GPS satellite count" user="Standard">
-        <field name="Range">0 30</field>
-      </param>
-      <param humanName="Deadreckoning GPS check trigger seconds" name="DR_GPS_TRIGG_SEC" documentation="GPS checks must fail for this many seconds before dead reckoning will be triggered" user="Standard">
-        <field name="Units">s</field>
-        <field name="UnitText">seconds</field>
-      </param>
-      <param humanName="Deadreckoning Lean Angle" name="DR_FLY_ANGLE" documentation="lean angle (in degrees) during deadreckoning" user="Standard">
-        <field name="Units">deg</field>
-        <field name="UnitText">degrees</field>
-        <field name="Range">0 45</field>
-      </param>
-      <param humanName="Deadreckoning Altitude Min" name="DR_FLY_ALT_MIN" documentation="Copter will fly at at least this altitude (in meters) above home during deadreckoning" user="Standard">
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-        <field name="Range">0 1000</field>
-      </param>
-      <param humanName="Deadreckoning flight timeout" name="DR_FLY_TIMEOUT" documentation="Copter will attempt to switch to NEXT_MODE after this many seconds of deadreckoning.  If it cannot switch modes it will continue in Guided_NoGPS.  Set to 0 to disable timeout" user="Standard">
-        <field name="Units">s</field>
-        <field name="UnitText">seconds</field>
-      </param>
-      <param humanName="Deadreckoning Next Mode" name="DR_NEXT_MODE" documentation="Copter switch to this mode after GPS recovers or DR_FLY_TIMEOUT has elapsed.  Default is 6/RTL.  Set to -1 to return to mode used before deadreckoning was triggered" user="Standard">
-        <values>
-          <value code="2">AltHold</value>
-          <value code="3">Auto</value>
-          <value code="4">Guided</value>
-          <value code="5">Loiter</value>
-          <value code="6">RTL</value>
-          <value code="7">Circle</value>
-          <value code="9">Land</value>
-          <value code="16">PosHold</value>
-          <value code="17">Brake</value>
-          <value code="20">Guided_NoGPS</value>
-          <value code="21">Smart_RTL</value>
-          <value code="27">Auto RTL</value>
-        </values>
-      </param>
-      <param humanName="Mount POI distance max" name="POI_DIST_MAX" documentation="POI's max distance (in meters) from the vehicle" user="Standard">
-        <field name="Range">0 10000</field>
-      </param>
-      <param humanName="enable web server" name="WEB_ENABLE" documentation="enable web server" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="web server TCP port" name="WEB_BIND_PORT" documentation="web server TCP port" user="Standard">
-        <field name="Range">1 65535</field>
-      </param>
-      <param humanName="web server debugging" name="WEB_DEBUG" documentation="web server debugging" user="Advanced">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="web server block size" name="WEB_BLOCK_SIZE" documentation="web server block size for download" user="Advanced">
-        <field name="Range">1 65535</field>
-      </param>
-      <param humanName="web server timeout" name="WEB_TIMEOUT" documentation="timeout for inactive connections" user="Advanced">
-        <field name="Units">s</field>
-        <field name="UnitText">seconds</field>
-        <field name="Range">0.1 60</field>
-      </param>
-      <param humanName="web server minimum file size for sendfile" name="WEB_SENDFILE_MIN" documentation="sendfile is an offloading mechanism for faster file download. If this is non-zero and the file is larger than this size then sendfile will be used for file download" user="Advanced">
-        <field name="Range">0 10000000</field>
-      </param>
-      <param humanName="Rover Quicktune enable" name="RTUN_ENABLE" documentation="Enable quicktune system" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Rover Quicktune axes" name="RTUN_AXES" documentation="axes to tune" user="Standard">
-        <field name="Bitmask">0:Steering,1:Speed</field>
-      </param>
-      <param humanName="Rover Quicktune Steering Rate FeedForward ratio" name="RTUN_STR_FFRATIO" documentation="Ratio between measured response and FF gain. Raise this to get a higher FF gain" user="Standard">
-        <field name="Range">0 1.0</field>
-      </param>
-      <param humanName="Rover Quicktune Steering FF to P ratio" name="RTUN_STR_P_RATIO" documentation="Ratio between steering FF and P gains. Raise this to get a higher P gain, 0 to leave P unchanged" user="Standard">
-        <field name="Range">0 2.0</field>
-      </param>
-      <param humanName="Rover Quicktune Steering FF to I ratio" name="RTUN_STR_I_RATIO" documentation="Ratio between steering FF and I gains. Raise this to get a higher I gain, 0 to leave I unchanged" user="Standard">
-        <field name="Range">0 2.0</field>
-      </param>
-      <param humanName="Rover Quicktune Speed FeedForward (equivalent) ratio" name="RTUN_SPD_FFRATIO" documentation="Ratio between measured response and CRUISE_THROTTLE value. Raise this to get a higher CRUISE_THROTTLE value" user="Standard">
-        <field name="Range">0 1.0</field>
-      </param>
-      <param humanName="Rover Quicktune Speed FF to P ratio" name="RTUN_SPD_P_RATIO" documentation="Ratio between speed FF and P gain. Raise this to get a higher P gain, 0 to leave P unchanged" user="Standard">
-        <field name="Range">0 2.0</field>
-      </param>
-      <param humanName="Rover Quicktune Speed FF to I ratio" name="RTUN_SPD_I_RATIO" documentation="Ratio between speed FF and I gain. Raise this to get a higher I gain, 0 to leave I unchanged" user="Standard">
-        <field name="Range">0 2.0</field>
-      </param>
-      <param humanName="Rover Quicktune auto filter enable" name="RTUN_AUTO_FILTER" documentation="When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Rover Quicktune auto save" name="RTUN_AUTO_SAVE" documentation="Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune" user="Standard">
-        <field name="Units">s</field>
-        <field name="UnitText">seconds</field>
-      </param>
-      <param humanName="Rover Quicktune RC function" name="RTUN_RC_FUNC" documentation="RCn_OPTION number to use to control tuning stop/start/save" user="Standard">
-        <values>
-          <value code="300">Scripting1</value>
-          <value code="301">Scripting2</value>
-          <value code="302">Scripting3</value>
-          <value code="303">Scripting4</value>
-          <value code="304">Scripting5</value>
-          <value code="305">Scripting6</value>
-          <value code="306">Scripting7</value>
-          <value code="307">Scripting8</value>
-        </values>
-      </param>
-      <param humanName="WinchControl Rate Up" name="WINCH_RATE_UP" documentation="Maximum rate when retracting line" user="Standard">
-        <field name="Range">0.1 5.0</field>
-      </param>
-      <param humanName="WinchControl Rate Down" name="WINCH_RATE_DN" documentation="Maximum rate when releasing line" user="Standard">
-        <field name="Range">0.1 5.0</field>
-      </param>
-      <param humanName="Winch Rate Control RC function" name="WINCH_RC_FUNC" documentation="RCn_OPTION number to use to control winch rate" user="Standard">
-        <values>
-          <value code="300">Scripting1</value>
-          <value code="301">Scripting2</value>
-          <value code="302">Scripting3</value>
-          <value code="303">Scripting4</value>
-          <value code="304">Scripting5</value>
-          <value code="305">Scripting6</value>
-          <value code="306">Scripting7</value>
-          <value code="307">Scripting8</value>
-        </values>
-      </param>
       <param humanName="Quicktune enable" name="QUIK_ENABLE" documentation="Enable quicktune system" user="Standard">
         <values>
           <value code="0">Disabled</value>
@@ -1116,6 +1069,66 @@
       <param humanName="Quicktune options" name="QUIK_OPTIONS" documentation="Additional options. When the Two Position Switch option is enabled then a high switch position will start the tune, low will disable the tune. you should also set a QUIK_AUTO_SAVE time so that you will be able to save the tune." user="Standard">
         <field name="Bitmask">0:UseTwoPositionSwitch</field>
       </param>
+      <param humanName="EKF Source ExternalNav Innovation Threshold" name="ESRC_EXTN_THRESH" documentation="ExternalNav may be used if innovations are below this threshold" user="Standard">
+        <field name="Range">0 1</field>
+      </param>
+      <param humanName="EKF Source ExternalNav Quality Threshold" name="ESRC_EXTN_QUAL" documentation="ExternalNav may be used if quality is above this threshold" user="Standard">
+        <field name="Range">0 100</field>
+        <field name="Units">%</field>
+        <field name="UnitText">percent</field>
+      </param>
+      <param humanName="EKF Source OpticalFlow Innovation Threshold" name="ESRC_FLOW_THRESH" documentation="OpticalFlow may be used if innovations are below this threshold" user="Standard">
+        <field name="Range">0 1</field>
+      </param>
+      <param humanName="EKF Source OpticalFlow Quality Threshold" name="ESRC_FLOW_QUAL" documentation="OpticalFlow may be used if quality is above this threshold" user="Standard">
+        <field name="Range">0 100</field>
+        <field name="Units">%</field>
+        <field name="UnitText">percent</field>
+      </param>
+      <param humanName="EKF Source Rangefinder Max" name="ESRC_RNGFND_MAX" documentation="OpticalFlow may be used if rangefinder distance is below this threshold" user="Standard">
+        <field name="Range">0 50</field>
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="Mount POI distance max" name="POI_DIST_MAX" documentation="POI's max distance (in meters) from the vehicle" user="Standard">
+        <field name="Range">0 10000</field>
+      </param>
+      <param humanName="enable web server" name="WEB_ENABLE" documentation="enable web server" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="web server TCP port" name="WEB_BIND_PORT" documentation="web server TCP port" user="Standard">
+        <field name="Range">1 65535</field>
+      </param>
+      <param humanName="web server debugging" name="WEB_DEBUG" documentation="web server debugging" user="Advanced">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="web server block size" name="WEB_BLOCK_SIZE" documentation="web server block size for download" user="Advanced">
+        <field name="Range">1 65535</field>
+      </param>
+      <param humanName="web server timeout" name="WEB_TIMEOUT" documentation="timeout for inactive connections" user="Advanced">
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+        <field name="Range">0.1 60</field>
+      </param>
+      <param humanName="web server minimum file size for sendfile" name="WEB_SENDFILE_MIN" documentation="sendfile is an offloading mechanism for faster file download. If this is non-zero and the file is larger than this size then sendfile will be used for file download" user="Advanced">
+        <field name="Range">0 10000000</field>
+      </param>
+      <param humanName="Precland altitude cutoff" name="PLND_ALT_CUTOFF" documentation="The altitude (rangefinder distance) below which we stop using the precision landing sensor and continue landing" user="Standard">
+        <field name="Range">0 20</field>
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="Precland distance cutoff" name="DIST_CUTOFF" documentation="The distance from target beyond which the target is ignored" user="Standard">
+        <field name="Range">0 100</field>
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
       <param humanName="Ship landing enable" name="SHIP_ENABLE" documentation="Enable ship landing system" user="Standard">
         <values>
           <value code="0">Disabled</value>
@@ -1141,6 +1154,24 @@
       </param>
       <param humanName="param reversion RC function" name="PREV_RC_FUNC" documentation="RCn_OPTION number to used to trigger parameter reversion" user="Standard">
 </param>
+      <param humanName="WinchControl Rate Up" name="WINCH_RATE_UP" documentation="Maximum rate when retracting line" user="Standard">
+        <field name="Range">0.1 5.0</field>
+      </param>
+      <param humanName="WinchControl Rate Down" name="WINCH_RATE_DN" documentation="Maximum rate when releasing line" user="Standard">
+        <field name="Range">0.1 5.0</field>
+      </param>
+      <param humanName="Winch Rate Control RC function" name="WINCH_RC_FUNC" documentation="RCn_OPTION number to use to control winch rate" user="Standard">
+        <values>
+          <value code="300">Scripting1</value>
+          <value code="301">Scripting2</value>
+          <value code="302">Scripting3</value>
+          <value code="303">Scripting4</value>
+          <value code="304">Scripting5</value>
+          <value code="305">Scripting6</value>
+          <value code="306">Scripting7</value>
+          <value code="307">Scripting8</value>
+        </values>
+      </param>
       <param humanName="Angular acceleration limit" name="AEROM_ANG_ACCEL" documentation="Maximum angular acceleration in maneuvers">
         <field name="Units">deg/s/s</field>
         <field name="UnitText">degrees per square second</field>
@@ -1930,6 +1961,12 @@
         <field name="Units">mGauss</field>
         <field name="UnitText">milligauss</field>
         <field name="Range">0 500</field>
+      </param>
+      <param humanName="Disable CrashDump Arming check" name="ARMING_CRSDP_IGN" documentation="Must have value &quot;1&quot; if crashdump data is present on the system, or a prearm failure will be raised.  Do not set this parameter unless the risks of doing so are fully understood.  The presence of a crash dump means that the firmware currently installed has suffered a critical software failure which resulted in the autopilot immediately rebooting.  The crashdump file gives diagnostic information which can help in finding the issue, please contact the ArduPIlot support team.  If this crashdump data is present, the vehicle is likely unsafe to fly.  Check the ArduPilot documentation for more details." user="Advanced">
+        <values>
+          <value code="0">Crash Dump arming check active</value>
+          <value code="1">Crash Dump arming check deactivated</value>
+        </values>
       </param>
     </parameters>
     <parameters name="AROT_">
@@ -6721,6 +6758,10 @@
         <field name="Range">0 64</field>
         <field name="RebootRequired">True</field>
       </param>
+      <param humanName=" SDCard Fence size" name="BRD_SD_FENCE" documentation="This sets the amount of storage in kilobytes reserved on the microsd card in fence.stg for fence storage." user="Advanced">
+        <field name="Range">0 64</field>
+        <field name="RebootRequired">True</field>
+      </param>
       <param humanName="Load DShot FW on IO" name="BRD_IO_DSHOT" documentation="This loads the DShot firmware on the IO co-processor" user="Advanced">
         <values>
           <value code="0">StandardFW</value>
@@ -6948,6 +6989,7 @@
           <value code="30">Lost Copter Sound</value>
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
+          <value code="177">Mount LRF enable</value>
           <value code="163">Mount Lock</value>
           <value code="213">Mount1 Pitch</value>
           <value code="212">Mount1 Roll</value>
@@ -7066,6 +7108,7 @@
           <value code="30">Lost Copter Sound</value>
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
+          <value code="177">Mount LRF enable</value>
           <value code="163">Mount Lock</value>
           <value code="213">Mount1 Pitch</value>
           <value code="212">Mount1 Roll</value>
@@ -7184,6 +7227,7 @@
           <value code="30">Lost Copter Sound</value>
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
+          <value code="177">Mount LRF enable</value>
           <value code="163">Mount Lock</value>
           <value code="213">Mount1 Pitch</value>
           <value code="212">Mount1 Roll</value>
@@ -7302,6 +7346,7 @@
           <value code="30">Lost Copter Sound</value>
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
+          <value code="177">Mount LRF enable</value>
           <value code="163">Mount Lock</value>
           <value code="213">Mount1 Pitch</value>
           <value code="212">Mount1 Roll</value>
@@ -7583,7 +7628,7 @@
           <value code="11">Benewake</value>
           <value code="12">Scripting2</value>
           <value code="13">TOFSenseP</value>
-          <value code="14">NanoRadar_NRA24</value>
+          <value code="14">NanoRadar</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -7595,7 +7640,7 @@
           <value code="11">Benewake</value>
           <value code="12">Scripting2</value>
           <value code="13">TOFSenseP</value>
-          <value code="14">NanoRadar_NRA24</value>
+          <value code="14">NanoRadar</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -7951,7 +7996,7 @@
           <value code="11">Benewake</value>
           <value code="12">Scripting2</value>
           <value code="13">TOFSenseP</value>
-          <value code="14">NanoRadar_NRA24</value>
+          <value code="14">NanoRadar</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -7963,7 +8008,7 @@
           <value code="11">Benewake</value>
           <value code="12">Scripting2</value>
           <value code="13">TOFSenseP</value>
-          <value code="14">NanoRadar_NRA24</value>
+          <value code="14">NanoRadar</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -8319,7 +8364,7 @@
           <value code="11">Benewake</value>
           <value code="12">Scripting2</value>
           <value code="13">TOFSenseP</value>
-          <value code="14">NanoRadar_NRA24</value>
+          <value code="14">NanoRadar</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -8331,7 +8376,7 @@
           <value code="11">Benewake</value>
           <value code="12">Scripting2</value>
           <value code="13">TOFSenseP</value>
-          <value code="14">NanoRadar_NRA24</value>
+          <value code="14">NanoRadar</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -9502,6 +9547,10 @@
       </param>
       <param humanName="External AHRS sensors" name="EAHRS_SENSORS" documentation="External AHRS sensors bitmask" user="Advanced">
         <field name="Bitmask">0:GPS,1:IMU,2:Baro,3:Compass</field>
+      </param>
+      <param humanName="AHRS logging rate" name="EAHRS_LOG_RATE" documentation="Logging rate for EARHS devices" user="Standard">
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
       </param>
     </parameters>
     <parameters name="EFI">
@@ -11125,7 +11174,7 @@
         <field name="Bitmask">0:Horiz Pos,1:Vert Pos,2:Speed</field>
       </param>
       <param humanName="driver options" name="GPS_DRV_OPTIONS" documentation="Additional backend specific options" user="Advanced">
-        <field name="Bitmask">0:Use UART2 for moving baseline on ublox,1:Use base station for GPS yaw on SBF,2:Use baudrate 115200,3:Use dedicated CAN port b/w GPSes for moving baseline,4:Use ellipsoid height instead of AMSL, 5:Override GPS satellite health of L5 band from L1 health</field>
+        <field name="Bitmask">0:Use UART2 for moving baseline on ublox,1:Use base station for GPS yaw on SBF,2:Use baudrate 115200,3:Use dedicated CAN port b/w GPSes for moving baseline,4:Use ellipsoid height instead of AMSL, 5:Override GPS satellite health of L5 band from L1 health, 6:Enable RTCM full parse even for a single channel, 7:Disable automatic full RTCM parsing when RTCM seen on more than one channel</field>
       </param>
       <param humanName="GPS physical COM port" name="GPS_COM_PORT" documentation="The physical COM port on the connected device, currently only applies to SBF and GSOF GPS" user="Advanced">
         <field name="Range">0 10</field>
@@ -13050,6 +13099,9 @@
       </param>
       <param humanName="Mount Device ID" name="MNT1_DEVID" documentation="Mount device ID, taking into account its type, bus and instance" user="Advanced">
 </param>
+      <param humanName="Mount options" name="MNT1_OPTIONS" documentation="Mount options bitmask" user="Standard">
+        <field name="Bitmask">0:RC lock state from previous mode</field>
+      </param>
     </parameters>
     <parameters name="MNT2">
       <param humanName="Mount Type" name="MNT2_TYPE" documentation="Mount Type" user="Standard">
@@ -13175,6 +13227,9 @@
       </param>
       <param humanName="Mount Device ID" name="MNT2_DEVID" documentation="Mount device ID, taking into account its type, bus and instance" user="Advanced">
 </param>
+      <param humanName="Mount options" name="MNT2_OPTIONS" documentation="Mount options bitmask" user="Standard">
+        <field name="Bitmask">0:RC lock state from previous mode</field>
+      </param>
     </parameters>
     <parameters name="MOT_">
       <param humanName="Matrix Yaw Min" name="MOT_YAW_HEADROOM" documentation="Yaw control is given at least this pwm in microseconds range" user="Advanced">
@@ -13341,7 +13396,7 @@
       </param>
     </parameters>
     <parameters name="NET_">
-      <param humanName="Networking Enable" name="NET_ENABLED" documentation="Networking Enable" user="Advanced">
+      <param humanName="Networking Enable" name="NET_ENABLE" documentation="Networking Enable" user="Advanced">
         <values>
           <value code="0">Disable</value>
           <value code="1">Enable</value>
@@ -17750,6 +17805,7 @@
           <value code="14">DroneCAN</value>
           <value code="15">Scripting</value>
           <value code="16">LD06</value>
+          <value code="17">MR72_CAN</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -17819,6 +17875,11 @@
         <field name="Increment">1</field>
       </param>
     </parameters>
+    <parameters name="PRX1_">
+      <param humanName="CAN receive ID" name="PRX1_RECV_ID" documentation="The receive ID of the CAN frames. A value of zero means all IDs are accepted." user="Advanced">
+        <field name="Range">0 65535</field>
+      </param>
+    </parameters>
     <parameters name="PRX2">
       <param humanName="Proximity type" name="PRX2_TYPE" documentation="What type of proximity sensor is connected" user="Standard">
         <values>
@@ -17836,6 +17897,7 @@
           <value code="14">DroneCAN</value>
           <value code="15">Scripting</value>
           <value code="16">LD06</value>
+          <value code="17">MR72_CAN</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -17905,6 +17967,11 @@
         <field name="Increment">1</field>
       </param>
     </parameters>
+    <parameters name="PRX2_">
+      <param humanName="CAN receive ID" name="PRX2_RECV_ID" documentation="The receive ID of the CAN frames. A value of zero means all IDs are accepted." user="Advanced">
+        <field name="Range">0 65535</field>
+      </param>
+    </parameters>
     <parameters name="PRX3">
       <param humanName="Proximity type" name="PRX3_TYPE" documentation="What type of proximity sensor is connected" user="Standard">
         <values>
@@ -17922,6 +17989,7 @@
           <value code="14">DroneCAN</value>
           <value code="15">Scripting</value>
           <value code="16">LD06</value>
+          <value code="17">MR72_CAN</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -17991,6 +18059,11 @@
         <field name="Increment">1</field>
       </param>
     </parameters>
+    <parameters name="PRX3_">
+      <param humanName="CAN receive ID" name="PRX3_RECV_ID" documentation="The receive ID of the CAN frames. A value of zero means all IDs are accepted." user="Advanced">
+        <field name="Range">0 65535</field>
+      </param>
+    </parameters>
     <parameters name="PRX4">
       <param humanName="Proximity type" name="PRX4_TYPE" documentation="What type of proximity sensor is connected" user="Standard">
         <values>
@@ -18008,6 +18081,7 @@
           <value code="14">DroneCAN</value>
           <value code="15">Scripting</value>
           <value code="16">LD06</value>
+          <value code="17">MR72_CAN</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -18075,6 +18149,11 @@
       <param humanName="Bus address of sensor" name="PRX4_ADDR" documentation="The bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses." user="Standard">
         <field name="Range">0 127</field>
         <field name="Increment">1</field>
+      </param>
+    </parameters>
+    <parameters name="PRX4_">
+      <param humanName="CAN receive ID" name="PRX4_RECV_ID" documentation="The receive ID of the CAN frames. A value of zero means all IDs are accepted." user="Advanced">
+        <field name="Range">0 65535</field>
       </param>
     </parameters>
     <parameters name="PSC">
@@ -18344,6 +18423,7 @@
           <value code="30">Lost Copter Sound</value>
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
+          <value code="177">Mount LRF enable</value>
           <value code="163">Mount Lock</value>
           <value code="213">Mount1 Pitch</value>
           <value code="212">Mount1 Roll</value>
@@ -18493,6 +18573,7 @@
           <value code="30">Lost Copter Sound</value>
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
+          <value code="177">Mount LRF enable</value>
           <value code="163">Mount Lock</value>
           <value code="213">Mount1 Pitch</value>
           <value code="212">Mount1 Roll</value>
@@ -18642,6 +18723,7 @@
           <value code="30">Lost Copter Sound</value>
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
+          <value code="177">Mount LRF enable</value>
           <value code="163">Mount Lock</value>
           <value code="213">Mount1 Pitch</value>
           <value code="212">Mount1 Roll</value>
@@ -18791,6 +18873,7 @@
           <value code="30">Lost Copter Sound</value>
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
+          <value code="177">Mount LRF enable</value>
           <value code="163">Mount Lock</value>
           <value code="213">Mount1 Pitch</value>
           <value code="212">Mount1 Roll</value>
@@ -18940,6 +19023,7 @@
           <value code="30">Lost Copter Sound</value>
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
+          <value code="177">Mount LRF enable</value>
           <value code="163">Mount Lock</value>
           <value code="213">Mount1 Pitch</value>
           <value code="212">Mount1 Roll</value>
@@ -19089,6 +19173,7 @@
           <value code="30">Lost Copter Sound</value>
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
+          <value code="177">Mount LRF enable</value>
           <value code="163">Mount Lock</value>
           <value code="213">Mount1 Pitch</value>
           <value code="212">Mount1 Roll</value>
@@ -19238,6 +19323,7 @@
           <value code="30">Lost Copter Sound</value>
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
+          <value code="177">Mount LRF enable</value>
           <value code="163">Mount Lock</value>
           <value code="213">Mount1 Pitch</value>
           <value code="212">Mount1 Roll</value>
@@ -19387,6 +19473,7 @@
           <value code="30">Lost Copter Sound</value>
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
+          <value code="177">Mount LRF enable</value>
           <value code="163">Mount Lock</value>
           <value code="213">Mount1 Pitch</value>
           <value code="212">Mount1 Roll</value>
@@ -19536,6 +19623,7 @@
           <value code="30">Lost Copter Sound</value>
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
+          <value code="177">Mount LRF enable</value>
           <value code="163">Mount Lock</value>
           <value code="213">Mount1 Pitch</value>
           <value code="212">Mount1 Roll</value>
@@ -19685,6 +19773,7 @@
           <value code="30">Lost Copter Sound</value>
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
+          <value code="177">Mount LRF enable</value>
           <value code="163">Mount Lock</value>
           <value code="213">Mount1 Pitch</value>
           <value code="212">Mount1 Roll</value>
@@ -19834,6 +19923,7 @@
           <value code="30">Lost Copter Sound</value>
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
+          <value code="177">Mount LRF enable</value>
           <value code="163">Mount Lock</value>
           <value code="213">Mount1 Pitch</value>
           <value code="212">Mount1 Roll</value>
@@ -19983,6 +20073,7 @@
           <value code="30">Lost Copter Sound</value>
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
+          <value code="177">Mount LRF enable</value>
           <value code="163">Mount Lock</value>
           <value code="213">Mount1 Pitch</value>
           <value code="212">Mount1 Roll</value>
@@ -20132,6 +20223,7 @@
           <value code="30">Lost Copter Sound</value>
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
+          <value code="177">Mount LRF enable</value>
           <value code="163">Mount Lock</value>
           <value code="213">Mount1 Pitch</value>
           <value code="212">Mount1 Roll</value>
@@ -20281,6 +20373,7 @@
           <value code="30">Lost Copter Sound</value>
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
+          <value code="177">Mount LRF enable</value>
           <value code="163">Mount Lock</value>
           <value code="213">Mount1 Pitch</value>
           <value code="212">Mount1 Roll</value>
@@ -20430,6 +20523,7 @@
           <value code="30">Lost Copter Sound</value>
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
+          <value code="177">Mount LRF enable</value>
           <value code="163">Mount Lock</value>
           <value code="213">Mount1 Pitch</value>
           <value code="212">Mount1 Roll</value>
@@ -20579,6 +20673,7 @@
           <value code="30">Lost Copter Sound</value>
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
+          <value code="177">Mount LRF enable</value>
           <value code="163">Mount Lock</value>
           <value code="213">Mount1 Pitch</value>
           <value code="212">Mount1 Roll</value>
@@ -29150,6 +29245,64 @@
 </param>
       <param humanName="Original Position (Heading)" name="SIM_OPOS_HDG" documentation="Specifies vehicle's startup heading (0-360)" user="Advanced">
 </param>
+      <param humanName="SITL vicon position on vehicle in Forward direction" name="SIM_VICON_POS_X" documentation="SITL vicon position on vehicle in Forward direction" user="Advanced">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+        <field name="Range">0 10</field>
+      </param>
+      <param humanName="SITL vicon position on vehicle in Right direction" name="SIM_VICON_POS_Y" documentation="SITL vicon position on vehicle in Right direction" user="Advanced">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+        <field name="Range">0 10</field>
+      </param>
+      <param humanName="SITL vicon position on vehicle in Down direction" name="SIM_VICON_POS_Z" documentation="SITL vicon position on vehicle in Down direction" user="Advanced    ">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+        <field name="Range">0 10</field>
+      </param>
+      <param humanName="SITL vicon position glitch North" name="SIM_VICON_GLIT_X" documentation="SITL vicon position glitch North" user="Advanced">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="SITL vicon position glitch East" name="SIM_VICON_GLIT_Y" documentation="SITL vicon position glitch East" user="Advanced">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="SITL vicon position glitch Down" name="SIM_VICON_GLIT_Z" documentation="SITL vicon position glitch Down" user="Advanced">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="SITL vicon failure" name="SIM_VICON_FAIL" documentation="SITL vicon failure" user="Advanced">
+        <values>
+          <value code="0">Vicon Healthy</value>
+          <value code="1">Vicon Failed</value>
+        </values>
+      </param>
+      <param humanName="SITL vicon yaw angle in earth frame" name="SIM_VICON_YAW" documentation="SITL vicon yaw angle in earth frame" user="Advanced">
+        <field name="Units">deg</field>
+        <field name="UnitText">degrees</field>
+        <field name="Range">0 360</field>
+      </param>
+      <param humanName="SITL vicon yaw error" name="SIM_VICON_YAWERR" documentation="SITL vicon yaw added to reported yaw sent to vehicle" user="Advanced">
+        <field name="Units">deg</field>
+        <field name="UnitText">degrees</field>
+        <field name="Range">-180 180</field>
+      </param>
+      <param humanName="SITL vicon type mask" name="SIM_VICON_TMASK" documentation="SITL vicon messages sent" user="Advanced">
+        <field name="Bitmask">0:VISION_POSITION_ESTIMATE, 1:VISION_SPEED_ESTIMATE, 2:VICON_POSITION_ESTIMATE, 3:VISION_POSITION_DELTA, 4:ODOMETRY</field>
+      </param>
+      <param humanName="SITL vicon velocity glitch North" name="SIM_VICON_VGLI_X" documentation="SITL vicon velocity glitch North" user="Advanced">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+      </param>
+      <param humanName="SITL vicon velocity glitch East" name="SIM_VICON_VGLI_Y" documentation="SITL vicon velocity glitch East" user="Advanced">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+      </param>
+      <param humanName="SITL vicon velocity glitch Down" name="SIM_VICON_VGLI_Z" documentation="SITL vicon velocity glitch Down" user="Advanced">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+      </param>
       <param humanName="IMU count" name="SIM_IMU_COUNT" documentation="Number of simulated IMUs to create">
 </param>
       <param humanName="Baro Noise" name="SIM_BARO_RND" documentation="Amount of (evenly-distributed) noise injected into the 1st baro" user="Advanced">
@@ -29697,9 +29850,9 @@
         <field name="Increment">0.000001</field>
         <field name="Range">-180 180</field>
       </param>
-      <param humanName="Precland device center's height above sealevel" name="SIM_PLD_HEIGHT" documentation="Precland device center's height above sealevel assume a 2x2m square as station base" user="Advanced">
-        <field name="Units">cm</field>
-        <field name="UnitText">centimeters</field>
+      <param humanName="Precland device center's height SITL origin" name="SIM_PLD_HEIGHT" documentation="Precland device center's height above SITL origin. Assumes a 2x2m square as station base" user="Advanced">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
         <field name="Increment">1</field>
         <field name="Range">0 10000</field>
       </param>
@@ -29740,6 +29893,12 @@
       </param>
       <param humanName="SIM_Precland extra options" name="SIM_PLD_OPTIONS" documentation="SIM_Precland extra options" user="Advanced">
         <field name="Bitmask">0: Enable target distance</field>
+      </param>
+      <param humanName="SIM_Precland follow ship" name="SIM_PLD_SHIP" documentation="This makes the position of the landing beacon follow the simulated ship from SIM_SHIP. The ship movement is controlled with the SIM_SHIP parameters" user="Advanced">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
       </param>
     </parameters>
     <parameters name="SIM_SPR_">
@@ -31229,6 +31388,11 @@
         <field name="UnitText">radians</field>
         <field name="Range">0.05 1.0</field>
       </param>
+      <param humanName="Visual odometry minimum quality" name="VISO_QUAL_MIN" documentation="Visual odometry will only be sent to EKF if over this value. -1 to always send (even bad values), 0 to send if good or unknown" user="Advanced">
+        <field name="Units">%</field>
+        <field name="UnitText">percent</field>
+        <field name="Range">-1 100</field>
+      </param>
     </parameters>
     <parameters name="VTX_">
       <param humanName="Is the Video Transmitter enabled or not" name="VTX_ENABLE" documentation="Toggles the Video Transmitter on and off">
@@ -31253,6 +31417,7 @@
           <value code="5">Low RaceBand</value>
           <value code="6">1G3 Band A</value>
           <value code="7">1G3 Band B</value>
+          <value code="8">Band X</value>
         </values>
       </param>
       <param humanName="Video Transmitter Frequency" name="VTX_FREQ" documentation="Video Transmitter Frequency. The frequency is derived from the setting of BAND and CHANNEL" user="Standard">

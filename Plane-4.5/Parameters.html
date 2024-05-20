@@ -847,7 +847,7 @@ DO NOT EDIT
 
 <p>Maximum pitch down angle commanded in modes with stabilized limits</p>
 <ul>
-<li>Units: centidegrees</li>
+<li>Units: degrees</li>
 <li>Range: -90 0</li>
 <li>Increment: 10</li>
 </ul>
@@ -1319,6 +1319,199 @@ DO NOT EDIT
 <h1>Lua Script Parameters</h1>
 
 
+<h2>Deadreckoning Enable (DR_ENABLE)</h2>
+
+<p>Deadreckoning Enable</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Deadreckoning Enable Distance (DR_ENABLE_DIST)</h2>
+
+<p>Distance from home (in meters) beyond which the dead reckoning will be enabled</p>
+<ul>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>Deadreckoning GPS speed accuracy maximum threshold (DR_GPS_SACC_MAX)</h2>
+
+<p>GPS speed accuracy maximum, above which deadreckoning home will begin (default is 0.8).  Lower values trigger with good GPS quality, higher values will allow poorer GPS before triggering. Set to 0 to disable use of GPS speed accuracy</p>
+<ul>
+<li>Range: 0 10</li>
+</ul>
+
+
+<h2>Deadreckoning GPS satellite count min threshold (DR_GPS_SAT_MIN)</h2>
+
+<p>GPS satellite count threshold below which deadreckoning home will begin (default is 6).  Higher values trigger with good GPS quality, Lower values trigger with worse GPS quality. Set to 0 to disable use of GPS satellite count</p>
+<ul>
+<li>Range: 0 30</li>
+</ul>
+
+
+<h2>Deadreckoning GPS check trigger seconds (DR_GPS_TRIGG_SEC)</h2>
+
+<p>GPS checks must fail for this many seconds before dead reckoning will be triggered</p>
+<ul>
+<li>Units: seconds</li>
+</ul>
+
+
+<h2>Deadreckoning Lean Angle (DR_FLY_ANGLE)</h2>
+
+<p>lean angle (in degrees) during deadreckoning</p>
+<ul>
+<li>Units: degrees</li>
+<li>Range: 0 45</li>
+</ul>
+
+
+<h2>Deadreckoning Altitude Min (DR_FLY_ALT_MIN)</h2>
+
+<p>Copter will fly at at least this altitude (in meters) above home during deadreckoning</p>
+<ul>
+<li>Units: meters</li>
+<li>Range: 0 1000</li>
+</ul>
+
+
+<h2>Deadreckoning flight timeout (DR_FLY_TIMEOUT)</h2>
+
+<p>Copter will attempt to switch to NEXT_MODE after this many seconds of deadreckoning.  If it cannot switch modes it will continue in Guided_NoGPS.  Set to 0 to disable timeout</p>
+<ul>
+<li>Units: seconds</li>
+</ul>
+
+
+<h2>Deadreckoning Next Mode (DR_NEXT_MODE)</h2>
+
+<p>Copter switch to this mode after GPS recovers or DR_FLY_TIMEOUT has elapsed.  Default is 6/RTL.  Set to -1 to return to mode used before deadreckoning was triggered</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>2</td><td>AltHold</td></tr>
+<tr><td>3</td><td>Auto</td></tr>
+<tr><td>4</td><td>Guided</td></tr>
+<tr><td>5</td><td>Loiter</td></tr>
+<tr><td>6</td><td>RTL</td></tr>
+<tr><td>7</td><td>Circle</td></tr>
+<tr><td>9</td><td>Land</td></tr>
+<tr><td>16</td><td>PosHold</td></tr>
+<tr><td>17</td><td>Brake</td></tr>
+<tr><td>20</td><td>Guided_NoGPS</td></tr>
+<tr><td>21</td><td>Smart_RTL</td></tr>
+<tr><td>27</td><td>Auto RTL</td></tr>
+</table>
+</ul>
+
+
+<h2>Rover Quicktune enable (RTUN_ENABLE)</h2>
+
+<p>Enable quicktune system</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Rover Quicktune axes (RTUN_AXES)</h2>
+
+<p>axes to tune</p>
+<ul>
+<li>Bitmask: 0:Steering,1:Speed</li>
+</ul>
+
+
+<h2>Rover Quicktune Steering Rate FeedForward ratio (RTUN_STR_FFRATIO)</h2>
+
+<p>Ratio between measured response and FF gain. Raise this to get a higher FF gain</p>
+<ul>
+<li>Range: 0 1.0</li>
+</ul>
+
+
+<h2>Rover Quicktune Steering FF to P ratio (RTUN_STR_P_RATIO)</h2>
+
+<p>Ratio between steering FF and P gains. Raise this to get a higher P gain, 0 to leave P unchanged</p>
+<ul>
+<li>Range: 0 2.0</li>
+</ul>
+
+
+<h2>Rover Quicktune Steering FF to I ratio (RTUN_STR_I_RATIO)</h2>
+
+<p>Ratio between steering FF and I gains. Raise this to get a higher I gain, 0 to leave I unchanged</p>
+<ul>
+<li>Range: 0 2.0</li>
+</ul>
+
+
+<h2>Rover Quicktune Speed FeedForward (equivalent) ratio (RTUN_SPD_FFRATIO)</h2>
+
+<p>Ratio between measured response and CRUISE_THROTTLE value. Raise this to get a higher CRUISE_THROTTLE value</p>
+<ul>
+<li>Range: 0 1.0</li>
+</ul>
+
+
+<h2>Rover Quicktune Speed FF to P ratio (RTUN_SPD_P_RATIO)</h2>
+
+<p>Ratio between speed FF and P gain. Raise this to get a higher P gain, 0 to leave P unchanged</p>
+<ul>
+<li>Range: 0 2.0</li>
+</ul>
+
+
+<h2>Rover Quicktune Speed FF to I ratio (RTUN_SPD_I_RATIO)</h2>
+
+<p>Ratio between speed FF and I gain. Raise this to get a higher I gain, 0 to leave I unchanged</p>
+<ul>
+<li>Range: 0 2.0</li>
+</ul>
+
+
+<h2>Rover Quicktune auto filter enable (RTUN_AUTO_FILTER)</h2>
+
+<p>When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Rover Quicktune auto save (RTUN_AUTO_SAVE)</h2>
+
+<p>Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune</p>
+<ul>
+<li>Units: seconds</li>
+</ul>
+
+
+<h2>Rover Quicktune RC function (RTUN_RC_FUNC)</h2>
+
+<p>RCn_OPTION number to use to control tuning stop/start/save</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>300</td><td>Scripting1</td></tr>
+<tr><td>301</td><td>Scripting2</td></tr>
+<tr><td>302</td><td>Scripting3</td></tr>
+<tr><td>303</td><td>Scripting4</td></tr>
+<tr><td>304</td><td>Scripting5</td></tr>
+<tr><td>305</td><td>Scripting6</td></tr>
+<tr><td>306</td><td>Scripting7</td></tr>
+<tr><td>307</td><td>Scripting8</td></tr>
+</table>
+</ul>
+
+
 <h2>Count of SOC estimators (BATT_SOC_COUNT)</h2>
 
 <p>Number of battery SOC estimators</p>
@@ -1649,93 +1842,46 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Deadreckoning Enable (DR_ENABLE)</h2>
+<h2>EKF Source ExternalNav Innovation Threshold (ESRC_EXTN_THRESH)</h2>
 
-<p>Deadreckoning Enable</p>
+<p>ExternalNav may be used if innovations are below this threshold</p>
 <ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
+<li>Range: 0 1</li>
 </ul>
 
 
-<h2>Deadreckoning Enable Distance (DR_ENABLE_DIST)</h2>
+<h2>EKF Source ExternalNav Quality Threshold (ESRC_EXTN_QUAL)</h2>
 
-<p>Distance from home (in meters) beyond which the dead reckoning will be enabled</p>
+<p>ExternalNav may be used if quality is above this threshold</p>
 <ul>
+<li>Range: 0 100</li>
+<li>Units: percent</li>
+</ul>
+
+
+<h2>EKF Source OpticalFlow Innovation Threshold (ESRC_FLOW_THRESH)</h2>
+
+<p>OpticalFlow may be used if innovations are below this threshold</p>
+<ul>
+<li>Range: 0 1</li>
+</ul>
+
+
+<h2>EKF Source OpticalFlow Quality Threshold (ESRC_FLOW_QUAL)</h2>
+
+<p>OpticalFlow may be used if quality is above this threshold</p>
+<ul>
+<li>Range: 0 100</li>
+<li>Units: percent</li>
+</ul>
+
+
+<h2>EKF Source Rangefinder Max (ESRC_RNGFND_MAX)</h2>
+
+<p>OpticalFlow may be used if rangefinder distance is below this threshold</p>
+<ul>
+<li>Range: 0 50</li>
 <li>Units: meters</li>
-</ul>
-
-
-<h2>Deadreckoning GPS speed accuracy maximum threshold (DR_GPS_SACC_MAX)</h2>
-
-<p>GPS speed accuracy maximum, above which deadreckoning home will begin (default is 0.8).  Lower values trigger with good GPS quality, higher values will allow poorer GPS before triggering. Set to 0 to disable use of GPS speed accuracy</p>
-<ul>
-<li>Range: 0 10</li>
-</ul>
-
-
-<h2>Deadreckoning GPS satellite count min threshold (DR_GPS_SAT_MIN)</h2>
-
-<p>GPS satellite count threshold below which deadreckoning home will begin (default is 6).  Higher values trigger with good GPS quality, Lower values trigger with worse GPS quality. Set to 0 to disable use of GPS satellite count</p>
-<ul>
-<li>Range: 0 30</li>
-</ul>
-
-
-<h2>Deadreckoning GPS check trigger seconds (DR_GPS_TRIGG_SEC)</h2>
-
-<p>GPS checks must fail for this many seconds before dead reckoning will be triggered</p>
-<ul>
-<li>Units: seconds</li>
-</ul>
-
-
-<h2>Deadreckoning Lean Angle (DR_FLY_ANGLE)</h2>
-
-<p>lean angle (in degrees) during deadreckoning</p>
-<ul>
-<li>Units: degrees</li>
-<li>Range: 0 45</li>
-</ul>
-
-
-<h2>Deadreckoning Altitude Min (DR_FLY_ALT_MIN)</h2>
-
-<p>Copter will fly at at least this altitude (in meters) above home during deadreckoning</p>
-<ul>
-<li>Units: meters</li>
-<li>Range: 0 1000</li>
-</ul>
-
-
-<h2>Deadreckoning flight timeout (DR_FLY_TIMEOUT)</h2>
-
-<p>Copter will attempt to switch to NEXT_MODE after this many seconds of deadreckoning.  If it cannot switch modes it will continue in Guided_NoGPS.  Set to 0 to disable timeout</p>
-<ul>
-<li>Units: seconds</li>
-</ul>
-
-
-<h2>Deadreckoning Next Mode (DR_NEXT_MODE)</h2>
-
-<p>Copter switch to this mode after GPS recovers or DR_FLY_TIMEOUT has elapsed.  Default is 6/RTL.  Set to -1 to return to mode used before deadreckoning was triggered</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>2</td><td>AltHold</td></tr>
-<tr><td>3</td><td>Auto</td></tr>
-<tr><td>4</td><td>Guided</td></tr>
-<tr><td>5</td><td>Loiter</td></tr>
-<tr><td>6</td><td>RTL</td></tr>
-<tr><td>7</td><td>Circle</td></tr>
-<tr><td>9</td><td>Land</td></tr>
-<tr><td>16</td><td>PosHold</td></tr>
-<tr><td>17</td><td>Brake</td></tr>
-<tr><td>20</td><td>Guided_NoGPS</td></tr>
-<tr><td>21</td><td>Smart_RTL</td></tr>
-<tr><td>27</td><td>Auto RTL</td></tr>
-</table>
 </ul>
 
 
@@ -1802,6 +1948,24 @@ DO NOT EDIT
 </ul>
 
 
+<h2>Precland altitude cutoff (PLND_ALT_CUTOFF)</h2>
+
+<p>The altitude (rangefinder distance) below which we stop using the precision landing sensor and continue landing</p>
+<ul>
+<li>Range: 0 20</li>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>Precland distance cutoff (DIST_CUTOFF)</h2>
+
+<p>The distance from target beyond which the target is ignored</p>
+<ul>
+<li>Range: 0 100</li>
+<li>Units: meters</li>
+</ul>
+
+
 <h2>Ship landing enable (SHIP_ENABLE)</h2>
 
 <p>Enable ship landing system</p>
@@ -1848,109 +2012,6 @@ DO NOT EDIT
 
 <p>RCn_OPTION number to used to trigger parameter reversion</p>
 <ul>
-</ul>
-
-
-<h2>Rover Quicktune enable (RTUN_ENABLE)</h2>
-
-<p>Enable quicktune system</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Rover Quicktune axes (RTUN_AXES)</h2>
-
-<p>axes to tune</p>
-<ul>
-<li>Bitmask: 0:Steering,1:Speed</li>
-</ul>
-
-
-<h2>Rover Quicktune Steering Rate FeedForward ratio (RTUN_STR_FFRATIO)</h2>
-
-<p>Ratio between measured response and FF gain. Raise this to get a higher FF gain</p>
-<ul>
-<li>Range: 0 1.0</li>
-</ul>
-
-
-<h2>Rover Quicktune Steering FF to P ratio (RTUN_STR_P_RATIO)</h2>
-
-<p>Ratio between steering FF and P gains. Raise this to get a higher P gain, 0 to leave P unchanged</p>
-<ul>
-<li>Range: 0 2.0</li>
-</ul>
-
-
-<h2>Rover Quicktune Steering FF to I ratio (RTUN_STR_I_RATIO)</h2>
-
-<p>Ratio between steering FF and I gains. Raise this to get a higher I gain, 0 to leave I unchanged</p>
-<ul>
-<li>Range: 0 2.0</li>
-</ul>
-
-
-<h2>Rover Quicktune Speed FeedForward (equivalent) ratio (RTUN_SPD_FFRATIO)</h2>
-
-<p>Ratio between measured response and CRUISE_THROTTLE value. Raise this to get a higher CRUISE_THROTTLE value</p>
-<ul>
-<li>Range: 0 1.0</li>
-</ul>
-
-
-<h2>Rover Quicktune Speed FF to P ratio (RTUN_SPD_P_RATIO)</h2>
-
-<p>Ratio between speed FF and P gain. Raise this to get a higher P gain, 0 to leave P unchanged</p>
-<ul>
-<li>Range: 0 2.0</li>
-</ul>
-
-
-<h2>Rover Quicktune Speed FF to I ratio (RTUN_SPD_I_RATIO)</h2>
-
-<p>Ratio between speed FF and I gain. Raise this to get a higher I gain, 0 to leave I unchanged</p>
-<ul>
-<li>Range: 0 2.0</li>
-</ul>
-
-
-<h2>Rover Quicktune auto filter enable (RTUN_AUTO_FILTER)</h2>
-
-<p>When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Rover Quicktune auto save (RTUN_AUTO_SAVE)</h2>
-
-<p>Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune</p>
-<ul>
-<li>Units: seconds</li>
-</ul>
-
-
-<h2>Rover Quicktune RC function (RTUN_RC_FUNC)</h2>
-
-<p>RCn_OPTION number to use to control tuning stop/start/save</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>300</td><td>Scripting1</td></tr>
-<tr><td>301</td><td>Scripting2</td></tr>
-<tr><td>302</td><td>Scripting3</td></tr>
-<tr><td>303</td><td>Scripting4</td></tr>
-<tr><td>304</td><td>Scripting5</td></tr>
-<tr><td>305</td><td>Scripting6</td></tr>
-<tr><td>306</td><td>Scripting7</td></tr>
-<tr><td>307</td><td>Scripting8</td></tr>
-</table>
 </ul>
 
 
@@ -3481,6 +3542,17 @@ DO NOT EDIT
 <ul>
 <li>Units: milligauss</li>
 <li>Range: 0 500</li>
+</ul>
+
+
+<h2>Disable CrashDump Arming check (ARMING_CRSDP_IGN)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Must have value &quot;1&quot; if crashdump data is present on the system, or a prearm failure will be raised.  Do not set this parameter unless the risks of doing so are fully understood.  The presence of a crash dump means that the firmware currently installed has suffered a critical software failure which resulted in the autopilot immediately rebooting.  The crashdump file gives diagnostic information which can help in finding the issue, please contact the ArduPIlot support team.  If this crashdump data is present, the vehicle is likely unsafe to fly.  Check the ArduPilot documentation for more details.</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Crash Dump arming check active</td></tr>
+<tr><td>1</td><td>Crash Dump arming check deactivated</td></tr>
+</table>
 </ul>
 
 
@@ -11065,6 +11137,15 @@ DO NOT EDIT
 </ul>
 
 
+<h2> SDCard Fence size (BRD_SD_FENCE)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>This sets the amount of storage in kilobytes reserved on the microsd card in fence.stg for fence storage.</p>
+<ul>
+<li>Range: 0 64</li>
+<li>RebootRequired: True</li>
+</ul>
+
+
 <h2>Load DShot FW on IO (BRD_IO_DSHOT)</h2><em>Note: This parameter is for advanced users</em><br>
 
 <p>This loads the DShot firmware on the IO co-processor</p>
@@ -11473,6 +11554,7 @@ DO NOT EDIT
 <tr><td>174</td><td>Camera Image Tracking</td></tr>
 <tr><td>175</td><td>Camera Lens</td></tr>
 <tr><td>176</td><td>Quadplane Fwd Throttle Override enable</td></tr>
+<tr><td>177</td><td>Mount LRF enable</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>VTOL Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -11578,6 +11660,7 @@ DO NOT EDIT
 <tr><td>174</td><td>Camera Image Tracking</td></tr>
 <tr><td>175</td><td>Camera Lens</td></tr>
 <tr><td>176</td><td>Quadplane Fwd Throttle Override enable</td></tr>
+<tr><td>177</td><td>Mount LRF enable</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>VTOL Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -11683,6 +11766,7 @@ DO NOT EDIT
 <tr><td>174</td><td>Camera Image Tracking</td></tr>
 <tr><td>175</td><td>Camera Lens</td></tr>
 <tr><td>176</td><td>Quadplane Fwd Throttle Override enable</td></tr>
+<tr><td>177</td><td>Mount LRF enable</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>VTOL Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -11788,6 +11872,7 @@ DO NOT EDIT
 <tr><td>174</td><td>Camera Image Tracking</td></tr>
 <tr><td>175</td><td>Camera Lens</td></tr>
 <tr><td>176</td><td>Quadplane Fwd Throttle Override enable</td></tr>
+<tr><td>177</td><td>Mount LRF enable</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>VTOL Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -12197,7 +12282,7 @@ DO NOT EDIT
 <tr><td>11</td><td>Benewake</td></tr>
 <tr><td>12</td><td>Scripting2</td></tr>
 <tr><td>13</td><td>TOFSenseP</td></tr>
-<tr><td>14</td><td>NanoRadar_NRA24</td></tr>
+<tr><td>14</td><td>NanoRadar</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -12214,7 +12299,7 @@ DO NOT EDIT
 <tr><td>11</td><td>Benewake</td></tr>
 <tr><td>12</td><td>Scripting2</td></tr>
 <tr><td>13</td><td>TOFSenseP</td></tr>
-<tr><td>14</td><td>NanoRadar_NRA24</td></tr>
+<tr><td>14</td><td>NanoRadar</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -12717,7 +12802,7 @@ DO NOT EDIT
 <tr><td>11</td><td>Benewake</td></tr>
 <tr><td>12</td><td>Scripting2</td></tr>
 <tr><td>13</td><td>TOFSenseP</td></tr>
-<tr><td>14</td><td>NanoRadar_NRA24</td></tr>
+<tr><td>14</td><td>NanoRadar</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -12734,7 +12819,7 @@ DO NOT EDIT
 <tr><td>11</td><td>Benewake</td></tr>
 <tr><td>12</td><td>Scripting2</td></tr>
 <tr><td>13</td><td>TOFSenseP</td></tr>
-<tr><td>14</td><td>NanoRadar_NRA24</td></tr>
+<tr><td>14</td><td>NanoRadar</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -13237,7 +13322,7 @@ DO NOT EDIT
 <tr><td>11</td><td>Benewake</td></tr>
 <tr><td>12</td><td>Scripting2</td></tr>
 <tr><td>13</td><td>TOFSenseP</td></tr>
-<tr><td>14</td><td>NanoRadar_NRA24</td></tr>
+<tr><td>14</td><td>NanoRadar</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -13254,7 +13339,7 @@ DO NOT EDIT
 <tr><td>11</td><td>Benewake</td></tr>
 <tr><td>12</td><td>Scripting2</td></tr>
 <tr><td>13</td><td>TOFSenseP</td></tr>
-<tr><td>14</td><td>NanoRadar_NRA24</td></tr>
+<tr><td>14</td><td>NanoRadar</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -15164,6 +15249,14 @@ DO NOT EDIT
 <p>External AHRS sensors bitmask</p>
 <ul>
 <li>Bitmask: 0:GPS,1:IMU,2:Baro,3:Compass</li>
+</ul>
+
+
+<h2>AHRS logging rate (EAHRS_LOG_RATE)</h2>
+
+<p>Logging rate for EARHS devices</p>
+<ul>
+<li>Units: hertz</li>
 </ul>
 
 
@@ -17969,7 +18062,7 @@ DO NOT EDIT
 
 <p>Additional backend specific options</p>
 <ul>
-<li>Bitmask: 0:Use UART2 for moving baseline on ublox,1:Use base station for GPS yaw on SBF,2:Use baudrate 115200,3:Use dedicated CAN port b/w GPSes for moving baseline,4:Use ellipsoid height instead of AMSL, 5:Override GPS satellite health of L5 band from L1 health</li>
+<li>Bitmask: 0:Use UART2 for moving baseline on ublox,1:Use base station for GPS yaw on SBF,2:Use baudrate 115200,3:Use dedicated CAN port b/w GPSes for moving baseline,4:Use ellipsoid height instead of AMSL, 5:Override GPS satellite health of L5 band from L1 health, 6:Enable RTCM full parse even for a single channel, 7:Disable automatic full RTCM parsing when RTCM seen on more than one channel</li>
 </ul>
 
 
@@ -21344,6 +21437,14 @@ DO NOT EDIT
 </ul>
 
 
+<h2>Mount options (MNT1_OPTIONS)</h2>
+
+<p>Mount options bitmask</p>
+<ul>
+<li>Bitmask: 0:RC lock state from previous mode</li>
+</ul>
+
+
 <h1>MNT2 Parameters</h1>
 
 
@@ -21550,6 +21651,14 @@ DO NOT EDIT
 </ul>
 
 
+<h2>Mount options (MNT2_OPTIONS)</h2>
+
+<p>Mount options bitmask</p>
+<ul>
+<li>Bitmask: 0:RC lock state from previous mode</li>
+</ul>
+
+
 <h1>MSP Parameters</h1>
 
 
@@ -21628,7 +21737,7 @@ DO NOT EDIT
 <h1>NET_ Parameters</h1>
 
 
-<h2>Networking Enable (NET_ENABLED)</h2><em>Note: This parameter is for advanced users</em><br>
+<h2>Networking Enable (NET_ENABLE)</h2><em>Note: This parameter is for advanced users</em><br>
 
 <p>Networking Enable</p>
 <ul>
@@ -30917,6 +31026,225 @@ DO NOT EDIT
 </ul>
 
 
+<h1>PLND_ Parameters</h1>
+
+
+<h2>Precision Land enabled/disabled (PLND_ENABLED)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Precision Land enabled/disabled</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Precision Land Type (PLND_TYPE)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Precision Land Type</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>None</td></tr>
+<tr><td>1</td><td>CompanionComputer</td></tr>
+<tr><td>2</td><td>IRLock</td></tr>
+<tr><td>3</td><td>SITL_Gazebo</td></tr>
+<tr><td>4</td><td>SITL</td></tr>
+</table>
+</ul>
+
+
+<h2>Sensor yaw alignment (PLND_YAW_ALIGN)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Yaw angle from body x-axis to sensor x-axis.</p>
+<ul>
+<li>Range: 0 36000</li>
+<li>Increment: 10</li>
+<li>Units: centidegrees</li>
+</ul>
+
+
+<h2>Land offset forward (PLND_LAND_OFS_X)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Desired landing position of the camera forward of the target in vehicle body frame</p>
+<ul>
+<li>Range: -20 20</li>
+<li>Increment: 1</li>
+<li>Units: centimeters</li>
+</ul>
+
+
+<h2>Land offset right (PLND_LAND_OFS_Y)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>desired landing position of the camera right of the target in vehicle body frame</p>
+<ul>
+<li>Range: -20 20</li>
+<li>Increment: 1</li>
+<li>Units: centimeters</li>
+</ul>
+
+
+<h2>Precision Land Estimator Type (PLND_EST_TYPE)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Specifies the estimation method to be used</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>RawSensor</td></tr>
+<tr><td>1</td><td>KalmanFilter</td></tr>
+</table>
+</ul>
+
+
+<h2>Kalman Filter Accelerometer Noise (PLND_ACC_P_NSE)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Kalman Filter Accelerometer Noise, higher values weight the input from the camera more, accels less</p>
+<ul>
+<li>Range: 0.5 5</li>
+</ul>
+
+
+<h2>Camera X position offset (PLND_CAM_POS_X)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>X position of the camera in body frame. Positive X is forward of the origin.</p>
+<ul>
+<li>Units: meters</li>
+<li>Range: -5 5</li>
+<li>Increment: 0.01</li>
+</ul>
+
+
+<h2>Camera Y position offset (PLND_CAM_POS_Y)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Y position of the camera in body frame. Positive Y is to the right of the origin.</p>
+<ul>
+<li>Units: meters</li>
+<li>Range: -5 5</li>
+<li>Increment: 0.01</li>
+</ul>
+
+
+<h2>Camera Z position offset (PLND_CAM_POS_Z)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Z position of the camera in body frame. Positive Z is down from the origin.</p>
+<ul>
+<li>Units: meters</li>
+<li>Range: -5 5</li>
+<li>Increment: 0.01</li>
+</ul>
+
+
+<h2>Sensor Bus (PLND_BUS)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Precland sensor bus for I2C sensors.</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>-1</td><td>DefaultBus</td></tr>
+<tr><td>0</td><td>InternalI2C</td></tr>
+<tr><td>1</td><td>ExternalI2C</td></tr>
+</table>
+</ul>
+
+
+<h2>Precision Landing sensor lag (PLND_LAG)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Precision Landing sensor lag, to cope with variable landing_target latency</p>
+<ul>
+<li>Range: 0.02 0.250</li>
+<li>Increment: 1</li>
+<li>Units: seconds</li>
+<li>RebootRequired: True</li>
+</ul>
+
+
+<h2>Precision Landing maximum distance to target before descending (PLND_XY_DIST_MAX)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>The vehicle will not start descending if the landing target is detected and it is further than this many meters away. Set 0 to always descend.</p>
+<ul>
+<li>Range: 0 10</li>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>PrecLand strictness (PLND_STRICT)</h2>
+
+<p>How strictly should the vehicle land on the target if target is lost</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Land Vertically (Not strict)</td></tr>
+<tr><td>1</td><td>Retry Landing(Normal Strictness)</td></tr>
+<tr><td>2</td><td>Do not land (just Hover) (Very Strict)</td></tr>
+</table>
+</ul>
+
+
+<h2>PrecLand Maximum number of retires for a failed landing (PLND_RET_MAX)</h2>
+
+<p>PrecLand Maximum number of retires for a failed landing. Set to zero to disable landing retry.</p>
+<ul>
+<li>Range: 0 10</li>
+<li>Increment: 1</li>
+</ul>
+
+
+<h2>PrecLand retry timeout (PLND_TIMEOUT)</h2>
+
+<p>Time for which vehicle continues descend even if target is lost. After this time period, vehicle will attempt a landing retry depending on PLND_STRICT parameter.</p>
+<ul>
+<li>Range: 0 20</li>
+<li>Units: seconds</li>
+</ul>
+
+
+<h2>PrecLand retry behaviour (PLND_RET_BEHAVE)</h2>
+
+<p>Prec Land will do the action selected by this parameter if a retry to a landing is needed</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Go to the last location where landing target was detected</td></tr>
+<tr><td>1</td><td>Go towards the approximate location of the detected landing target</td></tr>
+</table>
+</ul>
+
+
+<h2>PrecLand minimum alt for retry (PLND_ALT_MIN)</h2>
+
+<p>Vehicle will continue landing vertically even if target is lost below this height. This needs a rangefinder to work. Set to zero to disable this.</p>
+<ul>
+<li>Range: 0 5</li>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>PrecLand maximum alt for retry (PLND_ALT_MAX)</h2>
+
+<p>Vehicle will continue landing vertically until this height if target is not found. Below this height if landing target is not found, landing retry/failsafe might be attempted. This needs a rangefinder to work. Set to zero to disable this.</p>
+<ul>
+<li>Range: 0 50</li>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>Precision Landing Extra Options (PLND_OPTIONS)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Precision Landing Extra Options</p>
+<ul>
+<li>Bitmask: 0: Moving Landing Target, 1: Allow Precision Landing after manual reposition, 2: Maintain high speed in final descent</li>
+</ul>
+
+
+<h2>Camera Orientation (PLND_ORIENT)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Orientation of camera/sensor on body</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Forward</td></tr>
+<tr><td>4</td><td>Back</td></tr>
+<tr><td>25</td><td>Down</td></tr>
+</table>
+<li>RebootRequired: True</li>
+</ul>
+
+
 <h1>PTCH Parameters</h1>
 
 
@@ -31108,7 +31436,7 @@ DO NOT EDIT
 <p>Transition time in milliseconds after minimum airspeed is reached</p>
 <ul>
 <li>Units: milliseconds</li>
-<li>Range: 2000 30000</li>
+<li>Range: 500 30000</li>
 </ul>
 
 
@@ -31613,6 +31941,16 @@ DO NOT EDIT
 <tr><td>1</td><td>On in all position controlled Q modes</td></tr>
 <tr><td>2</td><td>On in all Q modes except QAUTOTUNE and QACRO</td></tr>
 </table>
+</ul>
+
+
+<h2>Q mode rearward pitch limit (Q_BCK_PIT_LIM)</h2>
+
+<p>This sets the maximum number of degrees of back or pitch up in Q modes when the airspeed is at AIRSPEED_MIN, and is used to prevent excessive sutructural loads when pitching up decelerate. If airspeed is above or below AIRSPEED_MIN, the pitch up/back will be adjusted according to the formula pitch_limit = Q_BCK_PIT_LIM * (AIRSPEED_MIN / IAS)^2. The backwards/up pitch limit controlled by this parameter is in addition to limiting applied by PTCH_LIM_MAX_DEG and Q_ANGLE_MAX. The BCK_PIT_LIM limit is only applied when Q_FWD_THR_USE is set to 1 or 2 and the vehicle is flying in a mode that uses forward throttle instead of forward tilt to generate forward speed. Set to a non positive value 0 to deactivate this limit.</p>
+<ul>
+<li>Units: degrees</li>
+<li>Range: 0.0 15.0</li>
+<li>Increment: 0.1</li>
 </ul>
 
 
@@ -33514,6 +33852,7 @@ DO NOT EDIT
 <tr><td>174</td><td>Camera Image Tracking</td></tr>
 <tr><td>175</td><td>Camera Lens</td></tr>
 <tr><td>176</td><td>Quadplane Fwd Throttle Override enable</td></tr>
+<tr><td>177</td><td>Mount LRF enable</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>VTOL Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -33672,6 +34011,7 @@ DO NOT EDIT
 <tr><td>174</td><td>Camera Image Tracking</td></tr>
 <tr><td>175</td><td>Camera Lens</td></tr>
 <tr><td>176</td><td>Quadplane Fwd Throttle Override enable</td></tr>
+<tr><td>177</td><td>Mount LRF enable</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>VTOL Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -33830,6 +34170,7 @@ DO NOT EDIT
 <tr><td>174</td><td>Camera Image Tracking</td></tr>
 <tr><td>175</td><td>Camera Lens</td></tr>
 <tr><td>176</td><td>Quadplane Fwd Throttle Override enable</td></tr>
+<tr><td>177</td><td>Mount LRF enable</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>VTOL Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -33988,6 +34329,7 @@ DO NOT EDIT
 <tr><td>174</td><td>Camera Image Tracking</td></tr>
 <tr><td>175</td><td>Camera Lens</td></tr>
 <tr><td>176</td><td>Quadplane Fwd Throttle Override enable</td></tr>
+<tr><td>177</td><td>Mount LRF enable</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>VTOL Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -34146,6 +34488,7 @@ DO NOT EDIT
 <tr><td>174</td><td>Camera Image Tracking</td></tr>
 <tr><td>175</td><td>Camera Lens</td></tr>
 <tr><td>176</td><td>Quadplane Fwd Throttle Override enable</td></tr>
+<tr><td>177</td><td>Mount LRF enable</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>VTOL Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -34304,6 +34647,7 @@ DO NOT EDIT
 <tr><td>174</td><td>Camera Image Tracking</td></tr>
 <tr><td>175</td><td>Camera Lens</td></tr>
 <tr><td>176</td><td>Quadplane Fwd Throttle Override enable</td></tr>
+<tr><td>177</td><td>Mount LRF enable</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>VTOL Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -34462,6 +34806,7 @@ DO NOT EDIT
 <tr><td>174</td><td>Camera Image Tracking</td></tr>
 <tr><td>175</td><td>Camera Lens</td></tr>
 <tr><td>176</td><td>Quadplane Fwd Throttle Override enable</td></tr>
+<tr><td>177</td><td>Mount LRF enable</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>VTOL Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -34620,6 +34965,7 @@ DO NOT EDIT
 <tr><td>174</td><td>Camera Image Tracking</td></tr>
 <tr><td>175</td><td>Camera Lens</td></tr>
 <tr><td>176</td><td>Quadplane Fwd Throttle Override enable</td></tr>
+<tr><td>177</td><td>Mount LRF enable</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>VTOL Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -34778,6 +35124,7 @@ DO NOT EDIT
 <tr><td>174</td><td>Camera Image Tracking</td></tr>
 <tr><td>175</td><td>Camera Lens</td></tr>
 <tr><td>176</td><td>Quadplane Fwd Throttle Override enable</td></tr>
+<tr><td>177</td><td>Mount LRF enable</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>VTOL Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -34936,6 +35283,7 @@ DO NOT EDIT
 <tr><td>174</td><td>Camera Image Tracking</td></tr>
 <tr><td>175</td><td>Camera Lens</td></tr>
 <tr><td>176</td><td>Quadplane Fwd Throttle Override enable</td></tr>
+<tr><td>177</td><td>Mount LRF enable</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>VTOL Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -35094,6 +35442,7 @@ DO NOT EDIT
 <tr><td>174</td><td>Camera Image Tracking</td></tr>
 <tr><td>175</td><td>Camera Lens</td></tr>
 <tr><td>176</td><td>Quadplane Fwd Throttle Override enable</td></tr>
+<tr><td>177</td><td>Mount LRF enable</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>VTOL Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -35252,6 +35601,7 @@ DO NOT EDIT
 <tr><td>174</td><td>Camera Image Tracking</td></tr>
 <tr><td>175</td><td>Camera Lens</td></tr>
 <tr><td>176</td><td>Quadplane Fwd Throttle Override enable</td></tr>
+<tr><td>177</td><td>Mount LRF enable</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>VTOL Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -35410,6 +35760,7 @@ DO NOT EDIT
 <tr><td>174</td><td>Camera Image Tracking</td></tr>
 <tr><td>175</td><td>Camera Lens</td></tr>
 <tr><td>176</td><td>Quadplane Fwd Throttle Override enable</td></tr>
+<tr><td>177</td><td>Mount LRF enable</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>VTOL Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -35568,6 +35919,7 @@ DO NOT EDIT
 <tr><td>174</td><td>Camera Image Tracking</td></tr>
 <tr><td>175</td><td>Camera Lens</td></tr>
 <tr><td>176</td><td>Quadplane Fwd Throttle Override enable</td></tr>
+<tr><td>177</td><td>Mount LRF enable</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>VTOL Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -35726,6 +36078,7 @@ DO NOT EDIT
 <tr><td>174</td><td>Camera Image Tracking</td></tr>
 <tr><td>175</td><td>Camera Lens</td></tr>
 <tr><td>176</td><td>Quadplane Fwd Throttle Override enable</td></tr>
+<tr><td>177</td><td>Mount LRF enable</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>VTOL Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -35884,6 +36237,7 @@ DO NOT EDIT
 <tr><td>174</td><td>Camera Image Tracking</td></tr>
 <tr><td>175</td><td>Camera Lens</td></tr>
 <tr><td>176</td><td>Quadplane Fwd Throttle Override enable</td></tr>
+<tr><td>177</td><td>Mount LRF enable</td></tr>
 <tr><td>208</td><td>Flap</td></tr>
 <tr><td>209</td><td>VTOL Forward Throttle</td></tr>
 <tr><td>210</td><td>Airbrakes</td></tr>
@@ -47908,6 +48262,118 @@ DO NOT EDIT
 </ul>
 
 
+<h2>SITL vicon position on vehicle in Forward direction (SIM_VICON_POS_X)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>SITL vicon position on vehicle in Forward direction</p>
+<ul>
+<li>Units: meters</li>
+<li>Range: 0 10</li>
+</ul>
+
+
+<h2>SITL vicon position on vehicle in Right direction (SIM_VICON_POS_Y)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>SITL vicon position on vehicle in Right direction</p>
+<ul>
+<li>Units: meters</li>
+<li>Range: 0 10</li>
+</ul>
+
+
+<h2>SITL vicon position on vehicle in Down direction (SIM_VICON_POS_Z)</h2>
+
+<p>SITL vicon position on vehicle in Down direction</p>
+<ul>
+<li>Units: meters</li>
+<li>Range: 0 10</li>
+</ul>
+
+
+<h2>SITL vicon position glitch North (SIM_VICON_GLIT_X)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>SITL vicon position glitch North</p>
+<ul>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>SITL vicon position glitch East (SIM_VICON_GLIT_Y)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>SITL vicon position glitch East</p>
+<ul>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>SITL vicon position glitch Down (SIM_VICON_GLIT_Z)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>SITL vicon position glitch Down</p>
+<ul>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>SITL vicon failure (SIM_VICON_FAIL)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>SITL vicon failure</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Vicon Healthy</td></tr>
+<tr><td>1</td><td>Vicon Failed</td></tr>
+</table>
+</ul>
+
+
+<h2>SITL vicon yaw angle in earth frame (SIM_VICON_YAW)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>SITL vicon yaw angle in earth frame</p>
+<ul>
+<li>Units: degrees</li>
+<li>Range: 0 360</li>
+</ul>
+
+
+<h2>SITL vicon yaw error (SIM_VICON_YAWERR)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>SITL vicon yaw added to reported yaw sent to vehicle</p>
+<ul>
+<li>Units: degrees</li>
+<li>Range: -180 180</li>
+</ul>
+
+
+<h2>SITL vicon type mask (SIM_VICON_TMASK)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>SITL vicon messages sent</p>
+<ul>
+<li>Bitmask: 0:VISION_POSITION_ESTIMATE, 1:VISION_SPEED_ESTIMATE, 2:VICON_POSITION_ESTIMATE, 3:VISION_POSITION_DELTA, 4:ODOMETRY</li>
+</ul>
+
+
+<h2>SITL vicon velocity glitch North (SIM_VICON_VGLI_X)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>SITL vicon velocity glitch North</p>
+<ul>
+<li>Units: meters per second</li>
+</ul>
+
+
+<h2>SITL vicon velocity glitch East (SIM_VICON_VGLI_Y)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>SITL vicon velocity glitch East</p>
+<ul>
+<li>Units: meters per second</li>
+</ul>
+
+
+<h2>SITL vicon velocity glitch Down (SIM_VICON_VGLI_Z)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>SITL vicon velocity glitch Down</p>
+<ul>
+<li>Units: meters per second</li>
+</ul>
+
+
 <h2>IMU count (SIM_IMU_COUNT)</h2>
 
 <p>Number of simulated IMUs to create</p>
@@ -49175,11 +49641,11 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Precland device center's height above sealevel (SIM_PLD_HEIGHT)</h2><em>Note: This parameter is for advanced users</em><br>
+<h2>Precland device center's height SITL origin (SIM_PLD_HEIGHT)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Precland device center&#x27;s height above sealevel assume a 2x2m square as station base</p>
+<p>Precland device center&#x27;s height above SITL origin. Assumes a 2x2m square as station base</p>
 <ul>
-<li>Units: centimeters</li>
+<li>Units: meters</li>
 <li>Increment: 1</li>
 <li>Range: 0 10000</li>
 </ul>
@@ -49251,6 +49717,17 @@ DO NOT EDIT
 <p>SIM_Precland extra options</p>
 <ul>
 <li>Bitmask: 0: Enable target distance</li>
+</ul>
+
+
+<h2>SIM_Precland follow ship (SIM_PLD_SHIP)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>This makes the position of the landing beacon follow the simulated ship from SIM_SHIP. The ship movement is controlled with the SIM_SHIP parameters</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
 </ul>
 
 
@@ -50643,7 +51120,7 @@ DO NOT EDIT
 
 <p>This allows the enabling of special features in the speed/height controller.</p>
 <ul>
-<li>Bitmask: 0:GliderOnly</li>
+<li>Bitmask: 0:GliderOnly,1:AllowDescentSpeedup</li>
 </ul>
 
 
@@ -52040,6 +52517,15 @@ DO NOT EDIT
 </ul>
 
 
+<h2>Visual odometry minimum quality (VISO_QUAL_MIN)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Visual odometry will only be sent to EKF if over this value. -1 to always send (even bad values), 0 to send if good or unknown</p>
+<ul>
+<li>Units: percent</li>
+<li>Range: -1 100</li>
+</ul>
+
+
 <h1>VTX_ Parameters</h1>
 
 
@@ -52083,6 +52569,7 @@ DO NOT EDIT
 <tr><td>5</td><td>Low RaceBand</td></tr>
 <tr><td>6</td><td>1G3 Band A</td></tr>
 <tr><td>7</td><td>1G3 Band B</td></tr>
+<tr><td>8</td><td>Band X</td></tr>
 </table>
 </ul>
 
