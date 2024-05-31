@@ -1936,8 +1936,18 @@
       "User": "Standard"
     },
     "AVOID_BACKUP_SPD": {
-      "Description": "Maximum speed that will be used to back away from obstacles in GPS modes (m/s). Set zero to disable",
-      "DisplayName": "Avoidance maximum backup speed",
+      "Description": "Maximum speed that will be used to back away from obstacles horizontally in position control modes (m/s). Set zero to disable horizontal backup.",
+      "DisplayName": "Avoidance maximum horizontal backup speed",
+      "Range": {
+        "high": "2",
+        "low": "0"
+      },
+      "Units": "m/s",
+      "User": "Standard"
+    },
+    "AVOID_BACKZ_SPD": {
+      "Description": "Maximum speed that will be used to back away from obstacles vertically in height control modes (m/s). Set zero to disable vertical backup.",
+      "DisplayName": "Avoidance maximum vertical backup speed",
       "Range": {
         "high": "2",
         "low": "0"
