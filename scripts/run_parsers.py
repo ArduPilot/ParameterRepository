@@ -70,6 +70,9 @@ class Groundskeeper:
         tag_names = [tag.path[len('refs/tags/'):] for tag in self.repository.tags]
         last_ground_change = Groundskeeper.get_last_ground_change(git.Repo(Path(__file__).parent.parent))
 
+        # Prepare for MAVLink parsing - always use the latest script (since it might cover new messages)
+        shutil.copy(f'{self.repository_path}/Tools/scripts/mavlink_parse.py', self.temp_folder)
+
         # Get only valid tag names
         tags = [
             {
@@ -123,11 +126,14 @@ class Groundskeeper:
                 print("Ignoring old version")
                 continue
 
-            self.repository.git.checkout(tag_reference)
+            # Ignore local changes (they're automated anyway)
+            self.repository.git.checkout(tag_reference, force=True)
             tag_date = Groundskeeper.get_last_ground_change(self.repository)
             if last_ground_change > tag_date:
                 print(f"Version already generated for {tag_date}")
                 continue
+
+            # Run parameters parser
             try:
                 subprocess.run([f'{self.repository_path}/Tools/autotest/param_metadata/param_parse.py', '--vehicle', vehicle_type], cwd=self.repository_path)
             except Exception as exception:
@@ -146,6 +152,18 @@ class Groundskeeper:
                 shutil.copy2(data, dest)
                 os.remove(data)
 
+            # Run MAVLink messages parser
+            vehicle = f'{"Ardu" if vehicle_type != "Rover" else ""}{vehicle_type}'
+            try:
+                # The parser expects to be run from its normal place in the repository
+                script_folder = f'{self.repository_path}/Tools/scripts/'
+                script_file = script_folder + 'mavlink_parse.py'
+                shutil.copy(f'{self.temp_folder}/mavlink_parse.py', script_file)
+                subprocess.run([script_file, '-cguq', '--header', 'ardupilot_wiki', '--format', 'rst',
+                                '--filename', f'{dest}/MAVLinkMessages.rst', '--branch', folder_name, '--vehicle', vehicle],
+                               cwd=script_folder)
+            except Exception as exception:
+                print(exception)
 
 
 G = Groundskeeper()
