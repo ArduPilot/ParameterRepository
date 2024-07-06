@@ -649,118 +649,11 @@ Bitmask of flight modes to disable for GCS selection. Mode can still be accessed
 
 # Lua Script Parameters
 
-## RCK_FORCEHL: Force enable High Latency mode
+## POI_DIST_MAX: Mount POI distance max
 
-Automatically enables High Latency mode if not already enabled
+POI's max distance (in meters) from the vehicle
 
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## RCK_PERIOD: Update rate
-
-When in High Latency mode, send Rockblock updates every N seconds
-
-- Range: 0 600
-
-- Units: s
-
-## RCK_DEBUG: Display Rockblock debugging text
-
-Sends Rockblock debug text to GCS via statustexts
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## RCK_ENABLE: Enable Message transmission
-
-Enables the Rockblock sending and recieving
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## ESRC_EXTN_THRESH: EKF Source ExternalNav Innovation Threshold
-
-ExternalNav may be used if innovations are below this threshold
-
-- Range: 0 1
-
-## ESRC_EXTN_QUAL: EKF Source ExternalNav Quality Threshold
-
-ExternalNav may be used if quality is above this threshold
-
-- Range: 0 100
-
-- Units: %
-
-## ESRC_FLOW_THRESH: EKF Source OpticalFlow Innovation Threshold
-
-OpticalFlow may be used if innovations are below this threshold
-
-- Range: 0 1
-
-## ESRC_FLOW_QUAL: EKF Source OpticalFlow Quality Threshold
-
-OpticalFlow may be used if quality is above this threshold
-
-- Range: 0 100
-
-- Units: %
-
-## ESRC_RNGFND_MAX: EKF Source Rangefinder Max
-
-OpticalFlow may be used if rangefinder distance is below this threshold
-
-- Range: 0 50
-
-- Units: m
-
-## SHIP_ENABLE: Ship landing enable
-
-Enable ship landing system
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## SHIP_LAND_ANGLE: Ship landing angle
-
-Angle from the stern of the ship for landing approach. Use this to ensure that on a go-around that ship superstructure and cables are avoided. A value of zero means to approach from the rear of the ship. A value of 90 means the landing will approach from the port (left) side of the ship. A value of -90 will mean approaching from the starboard (right) side of the ship. A value of 180 will approach from the bow of the ship. This parameter is combined with the sign of the RTL_RADIUS parameter to determine the holdoff pattern. If RTL_RADIUS is positive then a clockwise loiter is performed, if RTL_RADIUS is negative then a counter-clockwise loiter is used.
-
-- Range: -180 180
-
-- Units: deg
-
-## SHIP_AUTO_OFS: Ship automatic offset trigger
-
-Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target. NOTE: This parameter will auto-reset to zero once the offset has been calculated.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Trigger|
-
-## PLND_ALT_CUTOFF: Precland altitude cutoff
-
-The altitude (rangefinder distance) below which we stop using the precision landing sensor and continue landing
-
-- Range: 0 20
-
-- Units: m
-
-## DIST_CUTOFF: Precland distance cutoff
-
-The distance from target beyond which the target is ignored
-
-- Range: 0 100
-
-- Units: m
+- Range: 0 10000
 
 ## BATT_SOC_COUNT: Count of SOC estimators
 
@@ -888,6 +781,54 @@ Battery estimator coefficient3
 
 - Range: 0.01 0.5
 
+## PREV_ENABLE: parameter reversion enable
+
+Enable parameter reversion system
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## PREV_RC_FUNC: param reversion RC function
+
+RCn_OPTION number to used to trigger parameter reversion
+
+## RCK_FORCEHL: Force enable High Latency mode
+
+Automatically enables High Latency mode if not already enabled
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## RCK_PERIOD: Update rate
+
+When in High Latency mode, send Rockblock updates every N seconds
+
+- Range: 0 600
+
+- Units: s
+
+## RCK_DEBUG: Display Rockblock debugging text
+
+Sends Rockblock debug text to GCS via statustexts
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## RCK_ENABLE: Enable Message transmission
+
+Enables the Rockblock sending and recieving
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
 ## RTUN_ENABLE: Rover Quicktune enable
 
 Enable quicktune system
@@ -969,25 +910,6 @@ RCn_OPTION number to use to control tuning stop/start/save
 |306|Scripting7|
 |307|Scripting8|
 
-## POI_DIST_MAX: Mount POI distance max
-
-POI's max distance (in meters) from the vehicle
-
-- Range: 0 10000
-
-## PREV_ENABLE: parameter reversion enable
-
-Enable parameter reversion system
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## PREV_RC_FUNC: param reversion RC function
-
-RCn_OPTION number to used to trigger parameter reversion
-
 ## DR_ENABLE: Deadreckoning Enable
 
 Deadreckoning Enable
@@ -1061,6 +983,85 @@ Copter switch to this mode after GPS recovers or DR_FLY_TIMEOUT has elapsed.  De
 |20|Guided_NoGPS|
 |21|Smart_RTL|
 |27|Auto RTL|
+
+## WEB_ENABLE: enable web server
+
+enable web server
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## WEB_BIND_PORT: web server TCP port
+
+web server TCP port
+
+- Range: 1 65535
+
+## WEB_DEBUG: web server debugging
+
+*Note: This parameter is for advanced users*
+
+web server debugging
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## WEB_BLOCK_SIZE: web server block size
+
+*Note: This parameter is for advanced users*
+
+web server block size for download
+
+- Range: 1 65535
+
+## WEB_TIMEOUT: web server timeout
+
+*Note: This parameter is for advanced users*
+
+timeout for inactive connections
+
+- Units: s
+
+- Range: 0.1 60
+
+## WEB_SENDFILE_MIN: web server minimum file size for sendfile
+
+*Note: This parameter is for advanced users*
+
+sendfile is an offloading mechanism for faster file download. If this is non-zero and the file is larger than this size then sendfile will be used for file download
+
+- Range: 0 10000000
+
+## WINCH_RATE_UP: WinchControl Rate Up
+
+Maximum rate when retracting line
+
+- Range: 0.1 5.0
+
+## WINCH_RATE_DN: WinchControl Rate Down
+
+Maximum rate when releasing line
+
+- Range: 0.1 5.0
+
+## WINCH_RC_FUNC: Winch Rate Control RC function
+
+RCn_OPTION number to use to control winch rate
+
+|Value|Meaning|
+|:---:|:---:|
+|300|Scripting1|
+|301|Scripting2|
+|302|Scripting3|
+|303|Scripting4|
+|304|Scripting5|
+|305|Scripting6|
+|306|Scripting7|
+|307|Scripting8|
 
 ## QUIK_ENABLE: Quicktune enable
 
@@ -1156,84 +1157,83 @@ Additional options. When the Two Position Switch option is enabled then a high s
 
 - Bitmask: 0:UseTwoPositionSwitch
 
-## WINCH_RATE_UP: WinchControl Rate Up
+## ESRC_EXTN_THRESH: EKF Source ExternalNav Innovation Threshold
 
-Maximum rate when retracting line
+ExternalNav may be used if innovations are below this threshold
 
-- Range: 0.1 5.0
+- Range: 0 1
 
-## WINCH_RATE_DN: WinchControl Rate Down
+## ESRC_EXTN_QUAL: EKF Source ExternalNav Quality Threshold
 
-Maximum rate when releasing line
+ExternalNav may be used if quality is above this threshold
 
-- Range: 0.1 5.0
+- Range: 0 100
 
-## WINCH_RC_FUNC: Winch Rate Control RC function
+- Units: %
 
-RCn_OPTION number to use to control winch rate
+## ESRC_FLOW_THRESH: EKF Source OpticalFlow Innovation Threshold
 
-|Value|Meaning|
-|:---:|:---:|
-|300|Scripting1|
-|301|Scripting2|
-|302|Scripting3|
-|303|Scripting4|
-|304|Scripting5|
-|305|Scripting6|
-|306|Scripting7|
-|307|Scripting8|
+OpticalFlow may be used if innovations are below this threshold
 
-## WEB_ENABLE: enable web server
+- Range: 0 1
 
-enable web server
+## ESRC_FLOW_QUAL: EKF Source OpticalFlow Quality Threshold
 
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
+OpticalFlow may be used if quality is above this threshold
 
-## WEB_BIND_PORT: web server TCP port
+- Range: 0 100
 
-web server TCP port
+- Units: %
 
-- Range: 1 65535
+## ESRC_RNGFND_MAX: EKF Source Rangefinder Max
 
-## WEB_DEBUG: web server debugging
+OpticalFlow may be used if rangefinder distance is below this threshold
 
-*Note: This parameter is for advanced users*
+- Range: 0 50
 
-web server debugging
+- Units: m
+
+## SHIP_ENABLE: Ship landing enable
+
+Enable ship landing system
 
 |Value|Meaning|
 |:---:|:---:|
 |0|Disabled|
 |1|Enabled|
 
-## WEB_BLOCK_SIZE: web server block size
+## SHIP_LAND_ANGLE: Ship landing angle
 
-*Note: This parameter is for advanced users*
+Angle from the stern of the ship for landing approach. Use this to ensure that on a go-around that ship superstructure and cables are avoided. A value of zero means to approach from the rear of the ship. A value of 90 means the landing will approach from the port (left) side of the ship. A value of -90 will mean approaching from the starboard (right) side of the ship. A value of 180 will approach from the bow of the ship. This parameter is combined with the sign of the RTL_RADIUS parameter to determine the holdoff pattern. If RTL_RADIUS is positive then a clockwise loiter is performed, if RTL_RADIUS is negative then a counter-clockwise loiter is used.
 
-web server block size for download
+- Range: -180 180
 
-- Range: 1 65535
+- Units: deg
 
-## WEB_TIMEOUT: web server timeout
+## SHIP_AUTO_OFS: Ship automatic offset trigger
 
-*Note: This parameter is for advanced users*
+Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target. NOTE: This parameter will auto-reset to zero once the offset has been calculated.
 
-timeout for inactive connections
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Trigger|
 
-- Units: s
+## PLND_ALT_CUTOFF: Precland altitude cutoff
 
-- Range: 0.1 60
+The altitude (rangefinder distance) below which we stop using the precision landing sensor and continue landing
 
-## WEB_SENDFILE_MIN: web server minimum file size for sendfile
+- Range: 0 20
 
-*Note: This parameter is for advanced users*
+- Units: m
 
-sendfile is an offloading mechanism for faster file download. If this is non-zero and the file is larger than this size then sendfile will be used for file download
+## DIST_CUTOFF: Precland distance cutoff
 
-- Range: 0 10000000
+The distance from target beyond which the target is ignored
+
+- Range: 0 100
+
+- Units: m
 
 ## AEROM_ANG_ACCEL: Angular acceleration limit
 
@@ -1423,6 +1423,110 @@ Number of tricks which can be selected over the range of the trik selection RC c
 
 - Range: 1 11
 
+## VIEP_DEBUG: ViewPro debug
+
+*Note: This parameter is for advanced users*
+
+ViewPro debug
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+|2|Enabled including attitude reporting|
+
+## VIEP_CAM_SWLOW: ViewPro Camera For Switch Low
+
+Camera selection when switch is in low position
+
+|Value|Meaning|
+|:---:|:---:|
+|0|No change in camera selection|
+|1|EO1|
+|2|IR thermal|
+|3|EO1 + IR Picture-in-picture|
+|4|IR + EO1 Picture-in-picture|
+|5|Fusion|
+|6|IR1 13mm|
+|7|IR2 52mm|
+
+## VIEP_CAM_SWMID: ViewPro Camera For Switch Mid
+
+Camera selection when switch is in middle position
+
+|Value|Meaning|
+|:---:|:---:|
+|0|No change in camera selection|
+|1|EO1|
+|2|IR thermal|
+|3|EO1 + IR Picture-in-picture|
+|4|IR + EO1 Picture-in-picture|
+|5|Fusion|
+|6|IR1 13mm|
+|7|IR2 52mm|
+
+## VIEP_CAM_SWHIGH: ViewPro Camera For Switch High
+
+Camera selection when switch is in high position
+
+|Value|Meaning|
+|:---:|:---:|
+|0|No change in camera selection|
+|1|EO1|
+|2|IR thermal|
+|3|EO1 + IR Picture-in-picture|
+|4|IR + EO1 Picture-in-picture|
+|5|Fusion|
+|6|IR1 13mm|
+|7|IR2 52mm|
+
+## VIEP_ZOOM_SPEED: ViewPro Zoom Speed
+
+ViewPro Zoom Speed.  Higher numbers result in faster zooming
+
+- Range: 0 7
+
+## VIEP_ZOOM_MAX: ViewPro Zoom Times Max
+
+ViewPro Zoom Times Max
+
+- Range: 0 30
+
+## EFI_DLA_ENABLE: EFI DLA enable
+
+Enable EFI DLA driver
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## EFI_DLA_LPS: EFI DLA fuel scale
+
+EFI DLA litres of fuel per second of injection time
+
+- Range: 0.00001 1
+
+- Units: litres
+
+## EFI_SVF_ENABLE: Generator SVFFI enable
+
+Enable SVFFI generator support
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## EFI_SVF_ARMCHECK: Generator SVFFI arming check
+
+Check for Generator ARM state before arming
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
 ## ESC_HW_ENABLE: Hobbywing ESC Enable
 
 Enable Hobbywing ESC telemetry
@@ -1443,6 +1547,15 @@ Number of motor poles for eRPM scaling
 Motor number offset of first ESC
 
 - Range: 0 31
+
+## EFI_INF_ENABLE: EFI INF-Inject enable
+
+Enable EFI INF-Inject driver
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
 
 ## EFI_SP_ENABLE: Enable SkyPower EFI support
 
@@ -1588,74 +1701,59 @@ SkyPower EFI restart time. If engine should be running and it has stopped for th
 
 - Units: s
 
-## VIEP_DEBUG: ViewPro debug
+## BATT_ANX_ENABLE: Enable ANX battery support
 
-*Note: This parameter is for advanced users*
-
-ViewPro debug
+Enable ANX battery support
 
 |Value|Meaning|
 |:---:|:---:|
 |0|Disabled|
 |1|Enabled|
-|2|Enabled including attitude reporting|
 
-## VIEP_CAM_SWLOW: ViewPro Camera For Switch Low
+## BATT_ANX_CANDRV: Set ANX CAN driver
 
-Camera selection when switch is in low position
-
-|Value|Meaning|
-|:---:|:---:|
-|0|No change in camera selection|
-|1|EO1|
-|2|IR thermal|
-|3|EO1 + IR Picture-in-picture|
-|4|IR + EO1 Picture-in-picture|
-|5|Fusion|
-|6|IR1 13mm|
-|7|IR2 52mm|
-
-## VIEP_CAM_SWMID: ViewPro Camera For Switch Mid
-
-Camera selection when switch is in middle position
+Set ANX CAN driver
 
 |Value|Meaning|
 |:---:|:---:|
-|0|No change in camera selection|
-|1|EO1|
-|2|IR thermal|
-|3|EO1 + IR Picture-in-picture|
-|4|IR + EO1 Picture-in-picture|
-|5|Fusion|
-|6|IR1 13mm|
-|7|IR2 52mm|
+|0|None|
+|1|1stCANDriver|
+|2|2ndCanDriver|
 
-## VIEP_CAM_SWHIGH: ViewPro Camera For Switch High
+## BATT_ANX_INDEX: ANX CAN battery index
 
-Camera selection when switch is in high position
+ANX CAN battery index
+
+- Range: 1 10
+
+## BATT_ANX_OPTIONS: ANX CAN battery options
+
+*Note: This parameter is for advanced users*
+
+ANX CAN battery options
+
+- Bitmask: 0:LogAllFrames
+
+## DJIR_DEBUG: DJIRS2 debug
+
+*Note: This parameter is for advanced users*
+
+Enable DJIRS2 debug
 
 |Value|Meaning|
 |:---:|:---:|
-|0|No change in camera selection|
-|1|EO1|
-|2|IR thermal|
-|3|EO1 + IR Picture-in-picture|
-|4|IR + EO1 Picture-in-picture|
-|5|Fusion|
-|6|IR1 13mm|
-|7|IR2 52mm|
+|0|Disabled|
+|1|Enabled|
+|2|Enabled with attitude reporting|
 
-## VIEP_ZOOM_SPEED: ViewPro Zoom Speed
+## DJIR_UPSIDEDOWN: DJIRS2 upside down
 
-ViewPro Zoom Speed.  Higher numbers result in faster zooming
+DJIRS2 upside down
 
-- Range: 0 7
-
-## VIEP_ZOOM_MAX: ViewPro Zoom Times Max
-
-ViewPro Zoom Times Max
-
-- Range: 0 30
+|Value|Meaning|
+|:---:|:---:|
+|0|Right side up|
+|1|Upside down|
 
 ## EFI_H6K_ENABLE: Enable Halo6000 EFI driver
 
@@ -1703,104 +1801,6 @@ The rate that additional generator telemetry is sent
 The capacity of the tank in litres
 
 - Units: litres
-
-## EFI_DLA_ENABLE: EFI DLA enable
-
-Enable EFI DLA driver
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## EFI_DLA_LPS: EFI DLA fuel scale
-
-EFI DLA litres of fuel per second of injection time
-
-- Range: 0.00001 1
-
-- Units: litres
-
-## DJIR_DEBUG: DJIRS2 debug
-
-*Note: This parameter is for advanced users*
-
-Enable DJIRS2 debug
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-|2|Enabled with attitude reporting|
-
-## DJIR_UPSIDEDOWN: DJIRS2 upside down
-
-DJIRS2 upside down
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Right side up|
-|1|Upside down|
-
-## BATT_ANX_ENABLE: Enable ANX battery support
-
-Enable ANX battery support
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## BATT_ANX_CANDRV: Set ANX CAN driver
-
-Set ANX CAN driver
-
-|Value|Meaning|
-|:---:|:---:|
-|0|None|
-|1|1stCANDriver|
-|2|2ndCanDriver|
-
-## BATT_ANX_INDEX: ANX CAN battery index
-
-ANX CAN battery index
-
-- Range: 1 10
-
-## BATT_ANX_OPTIONS: ANX CAN battery options
-
-*Note: This parameter is for advanced users*
-
-ANX CAN battery options
-
-- Bitmask: 0:LogAllFrames
-
-## EFI_INF_ENABLE: EFI INF-Inject enable
-
-Enable EFI INF-Inject driver
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## EFI_SVF_ENABLE: Generator SVFFI enable
-
-Enable SVFFI generator support
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## EFI_SVF_ARMCHECK: Generator SVFFI arming check
-
-Check for Generator ARM state before arming
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
 
 ## TOFSENSE_S1_PRX: TOFSENSE-M to be used as Proximity sensor
 
@@ -18142,9 +18142,9 @@ Temperature that the 3rd gyroscope was calibrated at
 
 *Note: This parameter is for advanced users*
 
-This enables optional temperature calibration features. Setting PersistParams will save the accelerometer and temperature calibration parameters in the bootloader sector on the next update of the bootloader.
+This enables optional temperature calibration features. Setting of the Persist bits will save the temperature and/or accelerometer calibration parameters in the bootloader sector on the next update of the bootloader.
 
-- Bitmask: 0:PersistParams
+- Bitmask: 0:PersistTemps, 1:PersistAccels
 
 ## INS_RAW_LOG_OPT: Raw logging options
 
@@ -21430,7 +21430,7 @@ This sets the method used to switch different OSD screens.
 
 This sets options that change the display
 
-- Bitmask: 0:UseDecimalPack, 1:InvertedWindArrow, 2:InvertedAHRoll, 3:Convert feet to miles at 5280ft instead of 10000ft, 4:DisableCrosshair, 5:TranslateArrows, 6:AviationStyleAH
+- Bitmask: 0:UseDecimalPack, 1:InvertedWindArrow, 2:InvertedAHRoll, 3:Convert feet to miles at 5280ft instead of 10000ft, 4:DisableCrosshair, 5:TranslateArrows, 6:AviationStyleAH, 7:Prefix LQ with RF Mode
 
 ## OSD_FONT: OSD Font
 
@@ -21456,9 +21456,9 @@ Sets horizontal offset of the osd inside image
 
 ## OSD_W_RSSI: RSSI warn level (in %)
 
-Set level at which RSSI item will flash
+Set level at which RSSI item will flash (in positive % or negative dBm values as applicable). 30% or -100dBm are defaults.
 
-- Range: 0 99
+- Range: -128 100
 
 ## OSD_W_NSAT: NSAT warn level
 
@@ -21548,6 +21548,18 @@ Set level at which RESTVOLT item will flash
 Set level at which ACRVOLT item will flash
 
 - Range: 0 100
+
+## OSD_W_LQ: RC link quality warn level (in %)
+
+Set level at which RC_LQ item will flash (%)
+
+- Range: 0 100
+
+## OSD_W_SNR: RC link SNR warn level (in %)
+
+Set level at which RC_SNR item will flash (in db)
+
+- Range: -20 10
 
 ## OSD_TYPE2: OSD type 2
 
@@ -21946,7 +21958,7 @@ Vertical position on screen
 
 ## OSD1_ESCTEMP_EN: ESCTEMP_EN
 
-Displays first esc's temp
+Displays highest temp of all active ESCs, or of a specific ECS if OSDx_ESC_IDX is set
 
 |Value|Meaning|
 |:---:|:---:|
@@ -21967,7 +21979,7 @@ Vertical position on screen
 
 ## OSD1_ESCRPM_EN: ESCRPM_EN
 
-Displays first esc's rpm
+Displays highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set
 
 |Value|Meaning|
 |:---:|:---:|
@@ -21988,7 +22000,7 @@ Vertical position on screen
 
 ## OSD1_ESCAMPS_EN: ESCAMPS_EN
 
-Displays first esc's current
+Displays the current of the ESC with the highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set
 
 |Value|Meaning|
 |:---:|:---:|
@@ -22862,6 +22874,117 @@ Sets the font index for this screen (MSP DisplayPort only)
 
 - Range: 0 21
 
+## OSD1_RC_PWR_EN: RC_PWR_EN
+
+Displays the RC link transmit (TX) power in mW or W, depending on level
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## OSD1_RC_PWR_X: RC_PWR_X
+
+Horizontal position on screen
+
+- Range: 0 59
+
+## OSD1_RC_PWR_Y: RC_PWR_Y
+
+Vertical position on screen
+
+- Range: 0 21
+
+## OSD1_RSSIDBM_EN: RSSIDBM_EN
+
+Displays RC link signal strength in dBm
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## OSD1_RSSIDBM_X: RSSIDBM_X
+
+Horizontal position on screen
+
+- Range: 0 59
+
+## OSD1_RSSIDBM_Y: RSSIDBM_Y
+
+Vertical position on screen
+
+- Range: 0 21
+
+## OSD1_RC_SNR_EN: RC_SNR_EN
+
+Displays RC link signal to noise ratio in dB
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## OSD1_RC_SNR_X: RC_SNR_X
+
+Horizontal position on screen
+
+- Range: 0 59
+
+## OSD1_RC_SNR_Y: RC_SNR_Y
+
+Vertical position on screen
+
+- Range: 0 21
+
+## OSD1_RC_ANT_EN: RC_ANT_EN
+
+Displays the current RC link active antenna
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## OSD1_RC_ANT_X: RC_ANT_X
+
+Horizontal position on screen
+
+- Range: 0 59
+
+## OSD1_RC_ANT_Y: RC_ANT_Y
+
+Vertical position on screen
+
+- Range: 0 21
+
+## OSD1_RC_LQ_EN: RC_LQ_EN
+
+Displays the RC link quality (uplink, 0 to 100%) and also RF mode if bit 7 of OSD_OPTIONS is set
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## OSD1_RC_LQ_X: RC_LQ_X
+
+Horizontal position on screen
+
+- Range: 0 59
+
+## OSD1_RC_LQ_Y: RC_LQ_Y
+
+Vertical position on screen
+
+- Range: 0 21
+
+## OSD1_ESC_IDX: ESC_IDX
+
+Index of the ESC to use for displaying ESC information. 0 means use the ESC with the highest value.
+
+- Range: 0 32
+
 # OSD2 Parameters
 
 ## OSD2_ENABLE: Enable screen
@@ -23244,7 +23367,7 @@ Vertical position on screen
 
 ## OSD2_ESCTEMP_EN: ESCTEMP_EN
 
-Displays first esc's temp
+Displays highest temp of all active ESCs, or of a specific ECS if OSDx_ESC_IDX is set
 
 |Value|Meaning|
 |:---:|:---:|
@@ -23265,7 +23388,7 @@ Vertical position on screen
 
 ## OSD2_ESCRPM_EN: ESCRPM_EN
 
-Displays first esc's rpm
+Displays highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set
 
 |Value|Meaning|
 |:---:|:---:|
@@ -23286,7 +23409,7 @@ Vertical position on screen
 
 ## OSD2_ESCAMPS_EN: ESCAMPS_EN
 
-Displays first esc's current
+Displays the current of the ESC with the highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set
 
 |Value|Meaning|
 |:---:|:---:|
@@ -24160,6 +24283,117 @@ Sets the font index for this screen (MSP DisplayPort only)
 
 - Range: 0 21
 
+## OSD2_RC_PWR_EN: RC_PWR_EN
+
+Displays the RC link transmit (TX) power in mW or W, depending on level
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## OSD2_RC_PWR_X: RC_PWR_X
+
+Horizontal position on screen
+
+- Range: 0 59
+
+## OSD2_RC_PWR_Y: RC_PWR_Y
+
+Vertical position on screen
+
+- Range: 0 21
+
+## OSD2_RSSIDBM_EN: RSSIDBM_EN
+
+Displays RC link signal strength in dBm
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## OSD2_RSSIDBM_X: RSSIDBM_X
+
+Horizontal position on screen
+
+- Range: 0 59
+
+## OSD2_RSSIDBM_Y: RSSIDBM_Y
+
+Vertical position on screen
+
+- Range: 0 21
+
+## OSD2_RC_SNR_EN: RC_SNR_EN
+
+Displays RC link signal to noise ratio in dB
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## OSD2_RC_SNR_X: RC_SNR_X
+
+Horizontal position on screen
+
+- Range: 0 59
+
+## OSD2_RC_SNR_Y: RC_SNR_Y
+
+Vertical position on screen
+
+- Range: 0 21
+
+## OSD2_RC_ANT_EN: RC_ANT_EN
+
+Displays the current RC link active antenna
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## OSD2_RC_ANT_X: RC_ANT_X
+
+Horizontal position on screen
+
+- Range: 0 59
+
+## OSD2_RC_ANT_Y: RC_ANT_Y
+
+Vertical position on screen
+
+- Range: 0 21
+
+## OSD2_RC_LQ_EN: RC_LQ_EN
+
+Displays the RC link quality (uplink, 0 to 100%) and also RF mode if bit 7 of OSD_OPTIONS is set
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## OSD2_RC_LQ_X: RC_LQ_X
+
+Horizontal position on screen
+
+- Range: 0 59
+
+## OSD2_RC_LQ_Y: RC_LQ_Y
+
+Vertical position on screen
+
+- Range: 0 21
+
+## OSD2_ESC_IDX: ESC_IDX
+
+Index of the ESC to use for displaying ESC information. 0 means use the ESC with the highest value.
+
+- Range: 0 32
+
 # OSD3 Parameters
 
 ## OSD3_ENABLE: Enable screen
@@ -24542,7 +24776,7 @@ Vertical position on screen
 
 ## OSD3_ESCTEMP_EN: ESCTEMP_EN
 
-Displays first esc's temp
+Displays highest temp of all active ESCs, or of a specific ECS if OSDx_ESC_IDX is set
 
 |Value|Meaning|
 |:---:|:---:|
@@ -24563,7 +24797,7 @@ Vertical position on screen
 
 ## OSD3_ESCRPM_EN: ESCRPM_EN
 
-Displays first esc's rpm
+Displays highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set
 
 |Value|Meaning|
 |:---:|:---:|
@@ -24584,7 +24818,7 @@ Vertical position on screen
 
 ## OSD3_ESCAMPS_EN: ESCAMPS_EN
 
-Displays first esc's current
+Displays the current of the ESC with the highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set
 
 |Value|Meaning|
 |:---:|:---:|
@@ -25458,6 +25692,117 @@ Sets the font index for this screen (MSP DisplayPort only)
 
 - Range: 0 21
 
+## OSD3_RC_PWR_EN: RC_PWR_EN
+
+Displays the RC link transmit (TX) power in mW or W, depending on level
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## OSD3_RC_PWR_X: RC_PWR_X
+
+Horizontal position on screen
+
+- Range: 0 59
+
+## OSD3_RC_PWR_Y: RC_PWR_Y
+
+Vertical position on screen
+
+- Range: 0 21
+
+## OSD3_RSSIDBM_EN: RSSIDBM_EN
+
+Displays RC link signal strength in dBm
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## OSD3_RSSIDBM_X: RSSIDBM_X
+
+Horizontal position on screen
+
+- Range: 0 59
+
+## OSD3_RSSIDBM_Y: RSSIDBM_Y
+
+Vertical position on screen
+
+- Range: 0 21
+
+## OSD3_RC_SNR_EN: RC_SNR_EN
+
+Displays RC link signal to noise ratio in dB
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## OSD3_RC_SNR_X: RC_SNR_X
+
+Horizontal position on screen
+
+- Range: 0 59
+
+## OSD3_RC_SNR_Y: RC_SNR_Y
+
+Vertical position on screen
+
+- Range: 0 21
+
+## OSD3_RC_ANT_EN: RC_ANT_EN
+
+Displays the current RC link active antenna
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## OSD3_RC_ANT_X: RC_ANT_X
+
+Horizontal position on screen
+
+- Range: 0 59
+
+## OSD3_RC_ANT_Y: RC_ANT_Y
+
+Vertical position on screen
+
+- Range: 0 21
+
+## OSD3_RC_LQ_EN: RC_LQ_EN
+
+Displays the RC link quality (uplink, 0 to 100%) and also RF mode if bit 7 of OSD_OPTIONS is set
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## OSD3_RC_LQ_X: RC_LQ_X
+
+Horizontal position on screen
+
+- Range: 0 59
+
+## OSD3_RC_LQ_Y: RC_LQ_Y
+
+Vertical position on screen
+
+- Range: 0 21
+
+## OSD3_ESC_IDX: ESC_IDX
+
+Index of the ESC to use for displaying ESC information. 0 means use the ESC with the highest value.
+
+- Range: 0 32
+
 # OSD4 Parameters
 
 ## OSD4_ENABLE: Enable screen
@@ -25840,7 +26185,7 @@ Vertical position on screen
 
 ## OSD4_ESCTEMP_EN: ESCTEMP_EN
 
-Displays first esc's temp
+Displays highest temp of all active ESCs, or of a specific ECS if OSDx_ESC_IDX is set
 
 |Value|Meaning|
 |:---:|:---:|
@@ -25861,7 +26206,7 @@ Vertical position on screen
 
 ## OSD4_ESCRPM_EN: ESCRPM_EN
 
-Displays first esc's rpm
+Displays highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set
 
 |Value|Meaning|
 |:---:|:---:|
@@ -25882,7 +26227,7 @@ Vertical position on screen
 
 ## OSD4_ESCAMPS_EN: ESCAMPS_EN
 
-Displays first esc's current
+Displays the current of the ESC with the highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set
 
 |Value|Meaning|
 |:---:|:---:|
@@ -26755,6 +27100,117 @@ Sets the overlay text resolution for this screen to either LD 30x16 or HD 50x18 
 Sets the font index for this screen (MSP DisplayPort only)
 
 - Range: 0 21
+
+## OSD4_RC_PWR_EN: RC_PWR_EN
+
+Displays the RC link transmit (TX) power in mW or W, depending on level
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## OSD4_RC_PWR_X: RC_PWR_X
+
+Horizontal position on screen
+
+- Range: 0 59
+
+## OSD4_RC_PWR_Y: RC_PWR_Y
+
+Vertical position on screen
+
+- Range: 0 21
+
+## OSD4_RSSIDBM_EN: RSSIDBM_EN
+
+Displays RC link signal strength in dBm
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## OSD4_RSSIDBM_X: RSSIDBM_X
+
+Horizontal position on screen
+
+- Range: 0 59
+
+## OSD4_RSSIDBM_Y: RSSIDBM_Y
+
+Vertical position on screen
+
+- Range: 0 21
+
+## OSD4_RC_SNR_EN: RC_SNR_EN
+
+Displays RC link signal to noise ratio in dB
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## OSD4_RC_SNR_X: RC_SNR_X
+
+Horizontal position on screen
+
+- Range: 0 59
+
+## OSD4_RC_SNR_Y: RC_SNR_Y
+
+Vertical position on screen
+
+- Range: 0 21
+
+## OSD4_RC_ANT_EN: RC_ANT_EN
+
+Displays the current RC link active antenna
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## OSD4_RC_ANT_X: RC_ANT_X
+
+Horizontal position on screen
+
+- Range: 0 59
+
+## OSD4_RC_ANT_Y: RC_ANT_Y
+
+Vertical position on screen
+
+- Range: 0 21
+
+## OSD4_RC_LQ_EN: RC_LQ_EN
+
+Displays the RC link quality (uplink, 0 to 100%) and also RF mode if bit 7 of OSD_OPTIONS is set
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## OSD4_RC_LQ_X: RC_LQ_X
+
+Horizontal position on screen
+
+- Range: 0 59
+
+## OSD4_RC_LQ_Y: RC_LQ_Y
+
+Vertical position on screen
+
+- Range: 0 21
+
+## OSD4_ESC_IDX: ESC_IDX
+
+Index of the ESC to use for displaying ESC information. 0 means use the ESC with the highest value.
+
+- Range: 0 32
 
 # OSD5 Parameters
 
@@ -34804,7 +35260,7 @@ XYZ position of the optical flow sensor focal point relative to the body frame o
 
 - Units: m
 
-## SIM_WIND_T_: Wind Profile Type
+## SIM_WIND_T: Wind Profile Type
 
 Selects how wind varies from surface to WIND_T_ALT
 

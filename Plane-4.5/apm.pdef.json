@@ -16049,9 +16049,10 @@
     },
     "INS_TCAL_OPTIONS": {
       "Bitmask": {
-        "0": "PersistParams"
+        "0": "PersistTemps",
+        "1": "PersistAccels"
       },
-      "Description": "This enables optional temperature calibration features. Setting PersistParams will save the accelerometer and temperature calibration parameters in the bootloader sector on the next update of the bootloader.",
+      "Description": "This enables optional temperature calibration features. Setting of the Persist bits will save the temperature and/or accelerometer calibration parameters in the bootloader sector on the next update of the bootloader.",
       "DisplayName": "Options for temperature calibration",
       "User": "Advanced"
     },
@@ -20889,7 +20890,8 @@
         "3": "Convert feet to miles at 5280ft instead of 10000ft",
         "4": "DisableCrosshair",
         "5": "TranslateArrows",
-        "6": "AviationStyleAH"
+        "6": "AviationStyleAH",
+        "7": "Prefix LQ with RF Mode"
       },
       "Description": "This sets options that change the display",
       "DisplayName": "OSD Options",
@@ -20981,6 +20983,15 @@
       },
       "User": "Standard"
     },
+    "OSD_W_LQ": {
+      "Description": "Set level at which RC_LQ item will flash (%)",
+      "DisplayName": "RC link quality warn level (in %)",
+      "Range": {
+        "high": "100",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
     "OSD_W_NSAT": {
       "Description": "Set level at which NSAT item will flash",
       "DisplayName": "NSAT warn level",
@@ -21000,11 +21011,20 @@
       "User": "Standard"
     },
     "OSD_W_RSSI": {
-      "Description": "Set level at which RSSI item will flash",
+      "Description": "Set level at which RSSI item will flash (in positive % or negative dBm values as applicable). 30% or -100dBm are defaults.",
       "DisplayName": "RSSI warn level (in %)",
       "Range": {
-        "high": "99",
-        "low": "0"
+        "high": "100",
+        "low": "-128"
+      },
+      "User": "Standard"
+    },
+    "OSD_W_SNR": {
+      "Description": "Set level at which RC_SNR item will flash (in db)",
+      "DisplayName": "RC link SNR warn level (in %)",
+      "Range": {
+        "high": "10",
+        "low": "-20"
       },
       "User": "Standard"
     },
@@ -21624,7 +21644,7 @@
       }
     },
     "OSD1_ESCAMPS_EN": {
-      "Description": "Displays first esc's current",
+      "Description": "Displays the current of the ESC with the highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set",
       "DisplayName": "ESCAMPS_EN",
       "Values": {
         "0": "Disabled",
@@ -21648,7 +21668,7 @@
       }
     },
     "OSD1_ESCRPM_EN": {
-      "Description": "Displays first esc's rpm",
+      "Description": "Displays highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set",
       "DisplayName": "ESCRPM_EN",
       "Values": {
         "0": "Disabled",
@@ -21672,7 +21692,7 @@
       }
     },
     "OSD1_ESCTEMP_EN": {
-      "Description": "Displays first esc's temp",
+      "Description": "Displays highest temp of all active ESCs, or of a specific ECS if OSDx_ESC_IDX is set",
       "DisplayName": "ESCTEMP_EN",
       "Values": {
         "0": "Disabled",
@@ -21692,6 +21712,14 @@
       "DisplayName": "ESCTEMP_Y",
       "Range": {
         "high": "21",
+        "low": "0"
+      }
+    },
+    "OSD1_ESC_IDX": {
+      "Description": "Index of the ESC to use for displaying ESC information. 0 means use the ESC with the highest value.",
+      "DisplayName": "ESC_IDX",
+      "Range": {
+        "high": "32",
         "low": "0"
       }
     },
@@ -22112,6 +22140,102 @@
         "low": "0"
       }
     },
+    "OSD1_RC_ANT_EN": {
+      "Description": "Displays the current RC link active antenna",
+      "DisplayName": "RC_ANT_EN",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "OSD1_RC_ANT_X": {
+      "Description": "Horizontal position on screen",
+      "DisplayName": "RC_ANT_X",
+      "Range": {
+        "high": "59",
+        "low": "0"
+      }
+    },
+    "OSD1_RC_ANT_Y": {
+      "Description": "Vertical position on screen",
+      "DisplayName": "RC_ANT_Y",
+      "Range": {
+        "high": "21",
+        "low": "0"
+      }
+    },
+    "OSD1_RC_LQ_EN": {
+      "Description": "Displays the RC link quality (uplink, 0 to 100%) and also RF mode if bit 7 of OSD_OPTIONS is set",
+      "DisplayName": "RC_LQ_EN",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "OSD1_RC_LQ_X": {
+      "Description": "Horizontal position on screen",
+      "DisplayName": "RC_LQ_X",
+      "Range": {
+        "high": "59",
+        "low": "0"
+      }
+    },
+    "OSD1_RC_LQ_Y": {
+      "Description": "Vertical position on screen",
+      "DisplayName": "RC_LQ_Y",
+      "Range": {
+        "high": "21",
+        "low": "0"
+      }
+    },
+    "OSD1_RC_PWR_EN": {
+      "Description": "Displays the RC link transmit (TX) power in mW or W, depending on level",
+      "DisplayName": "RC_PWR_EN",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "OSD1_RC_PWR_X": {
+      "Description": "Horizontal position on screen",
+      "DisplayName": "RC_PWR_X",
+      "Range": {
+        "high": "59",
+        "low": "0"
+      }
+    },
+    "OSD1_RC_PWR_Y": {
+      "Description": "Vertical position on screen",
+      "DisplayName": "RC_PWR_Y",
+      "Range": {
+        "high": "21",
+        "low": "0"
+      }
+    },
+    "OSD1_RC_SNR_EN": {
+      "Description": "Displays RC link signal to noise ratio in dB",
+      "DisplayName": "RC_SNR_EN",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "OSD1_RC_SNR_X": {
+      "Description": "Horizontal position on screen",
+      "DisplayName": "RC_SNR_X",
+      "Range": {
+        "high": "59",
+        "low": "0"
+      }
+    },
+    "OSD1_RC_SNR_Y": {
+      "Description": "Vertical position on screen",
+      "DisplayName": "RC_SNR_Y",
+      "Range": {
+        "high": "21",
+        "low": "0"
+      }
+    },
     "OSD1_RESTVOLT_EN": {
       "Description": "Displays main battery resting voltage",
       "DisplayName": "RESTVOLT_EN",
@@ -22205,6 +22329,30 @@
       "DisplayName": "RPM_Y",
       "Range": {
         "high": "15",
+        "low": "0"
+      }
+    },
+    "OSD1_RSSIDBM_EN": {
+      "Description": "Displays RC link signal strength in dBm",
+      "DisplayName": "RSSIDBM_EN",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "OSD1_RSSIDBM_X": {
+      "Description": "Horizontal position on screen",
+      "DisplayName": "RSSIDBM_X",
+      "Range": {
+        "high": "59",
+        "low": "0"
+      }
+    },
+    "OSD1_RSSIDBM_Y": {
+      "Description": "Vertical position on screen",
+      "DisplayName": "RSSIDBM_Y",
+      "Range": {
+        "high": "21",
         "low": "0"
       }
     },
@@ -23111,7 +23259,7 @@
       }
     },
     "OSD2_ESCAMPS_EN": {
-      "Description": "Displays first esc's current",
+      "Description": "Displays the current of the ESC with the highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set",
       "DisplayName": "ESCAMPS_EN",
       "Values": {
         "0": "Disabled",
@@ -23135,7 +23283,7 @@
       }
     },
     "OSD2_ESCRPM_EN": {
-      "Description": "Displays first esc's rpm",
+      "Description": "Displays highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set",
       "DisplayName": "ESCRPM_EN",
       "Values": {
         "0": "Disabled",
@@ -23159,7 +23307,7 @@
       }
     },
     "OSD2_ESCTEMP_EN": {
-      "Description": "Displays first esc's temp",
+      "Description": "Displays highest temp of all active ESCs, or of a specific ECS if OSDx_ESC_IDX is set",
       "DisplayName": "ESCTEMP_EN",
       "Values": {
         "0": "Disabled",
@@ -23179,6 +23327,14 @@
       "DisplayName": "ESCTEMP_Y",
       "Range": {
         "high": "21",
+        "low": "0"
+      }
+    },
+    "OSD2_ESC_IDX": {
+      "Description": "Index of the ESC to use for displaying ESC information. 0 means use the ESC with the highest value.",
+      "DisplayName": "ESC_IDX",
+      "Range": {
+        "high": "32",
         "low": "0"
       }
     },
@@ -23599,6 +23755,102 @@
         "low": "0"
       }
     },
+    "OSD2_RC_ANT_EN": {
+      "Description": "Displays the current RC link active antenna",
+      "DisplayName": "RC_ANT_EN",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "OSD2_RC_ANT_X": {
+      "Description": "Horizontal position on screen",
+      "DisplayName": "RC_ANT_X",
+      "Range": {
+        "high": "59",
+        "low": "0"
+      }
+    },
+    "OSD2_RC_ANT_Y": {
+      "Description": "Vertical position on screen",
+      "DisplayName": "RC_ANT_Y",
+      "Range": {
+        "high": "21",
+        "low": "0"
+      }
+    },
+    "OSD2_RC_LQ_EN": {
+      "Description": "Displays the RC link quality (uplink, 0 to 100%) and also RF mode if bit 7 of OSD_OPTIONS is set",
+      "DisplayName": "RC_LQ_EN",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "OSD2_RC_LQ_X": {
+      "Description": "Horizontal position on screen",
+      "DisplayName": "RC_LQ_X",
+      "Range": {
+        "high": "59",
+        "low": "0"
+      }
+    },
+    "OSD2_RC_LQ_Y": {
+      "Description": "Vertical position on screen",
+      "DisplayName": "RC_LQ_Y",
+      "Range": {
+        "high": "21",
+        "low": "0"
+      }
+    },
+    "OSD2_RC_PWR_EN": {
+      "Description": "Displays the RC link transmit (TX) power in mW or W, depending on level",
+      "DisplayName": "RC_PWR_EN",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "OSD2_RC_PWR_X": {
+      "Description": "Horizontal position on screen",
+      "DisplayName": "RC_PWR_X",
+      "Range": {
+        "high": "59",
+        "low": "0"
+      }
+    },
+    "OSD2_RC_PWR_Y": {
+      "Description": "Vertical position on screen",
+      "DisplayName": "RC_PWR_Y",
+      "Range": {
+        "high": "21",
+        "low": "0"
+      }
+    },
+    "OSD2_RC_SNR_EN": {
+      "Description": "Displays RC link signal to noise ratio in dB",
+      "DisplayName": "RC_SNR_EN",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "OSD2_RC_SNR_X": {
+      "Description": "Horizontal position on screen",
+      "DisplayName": "RC_SNR_X",
+      "Range": {
+        "high": "59",
+        "low": "0"
+      }
+    },
+    "OSD2_RC_SNR_Y": {
+      "Description": "Vertical position on screen",
+      "DisplayName": "RC_SNR_Y",
+      "Range": {
+        "high": "21",
+        "low": "0"
+      }
+    },
     "OSD2_RESTVOLT_EN": {
       "Description": "Displays main battery resting voltage",
       "DisplayName": "RESTVOLT_EN",
@@ -23692,6 +23944,30 @@
       "DisplayName": "RPM_Y",
       "Range": {
         "high": "15",
+        "low": "0"
+      }
+    },
+    "OSD2_RSSIDBM_EN": {
+      "Description": "Displays RC link signal strength in dBm",
+      "DisplayName": "RSSIDBM_EN",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "OSD2_RSSIDBM_X": {
+      "Description": "Horizontal position on screen",
+      "DisplayName": "RSSIDBM_X",
+      "Range": {
+        "high": "59",
+        "low": "0"
+      }
+    },
+    "OSD2_RSSIDBM_Y": {
+      "Description": "Vertical position on screen",
+      "DisplayName": "RSSIDBM_Y",
+      "Range": {
+        "high": "21",
         "low": "0"
       }
     },
@@ -24598,7 +24874,7 @@
       }
     },
     "OSD3_ESCAMPS_EN": {
-      "Description": "Displays first esc's current",
+      "Description": "Displays the current of the ESC with the highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set",
       "DisplayName": "ESCAMPS_EN",
       "Values": {
         "0": "Disabled",
@@ -24622,7 +24898,7 @@
       }
     },
     "OSD3_ESCRPM_EN": {
-      "Description": "Displays first esc's rpm",
+      "Description": "Displays highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set",
       "DisplayName": "ESCRPM_EN",
       "Values": {
         "0": "Disabled",
@@ -24646,7 +24922,7 @@
       }
     },
     "OSD3_ESCTEMP_EN": {
-      "Description": "Displays first esc's temp",
+      "Description": "Displays highest temp of all active ESCs, or of a specific ECS if OSDx_ESC_IDX is set",
       "DisplayName": "ESCTEMP_EN",
       "Values": {
         "0": "Disabled",
@@ -24666,6 +24942,14 @@
       "DisplayName": "ESCTEMP_Y",
       "Range": {
         "high": "21",
+        "low": "0"
+      }
+    },
+    "OSD3_ESC_IDX": {
+      "Description": "Index of the ESC to use for displaying ESC information. 0 means use the ESC with the highest value.",
+      "DisplayName": "ESC_IDX",
+      "Range": {
+        "high": "32",
         "low": "0"
       }
     },
@@ -25086,6 +25370,102 @@
         "low": "0"
       }
     },
+    "OSD3_RC_ANT_EN": {
+      "Description": "Displays the current RC link active antenna",
+      "DisplayName": "RC_ANT_EN",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "OSD3_RC_ANT_X": {
+      "Description": "Horizontal position on screen",
+      "DisplayName": "RC_ANT_X",
+      "Range": {
+        "high": "59",
+        "low": "0"
+      }
+    },
+    "OSD3_RC_ANT_Y": {
+      "Description": "Vertical position on screen",
+      "DisplayName": "RC_ANT_Y",
+      "Range": {
+        "high": "21",
+        "low": "0"
+      }
+    },
+    "OSD3_RC_LQ_EN": {
+      "Description": "Displays the RC link quality (uplink, 0 to 100%) and also RF mode if bit 7 of OSD_OPTIONS is set",
+      "DisplayName": "RC_LQ_EN",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "OSD3_RC_LQ_X": {
+      "Description": "Horizontal position on screen",
+      "DisplayName": "RC_LQ_X",
+      "Range": {
+        "high": "59",
+        "low": "0"
+      }
+    },
+    "OSD3_RC_LQ_Y": {
+      "Description": "Vertical position on screen",
+      "DisplayName": "RC_LQ_Y",
+      "Range": {
+        "high": "21",
+        "low": "0"
+      }
+    },
+    "OSD3_RC_PWR_EN": {
+      "Description": "Displays the RC link transmit (TX) power in mW or W, depending on level",
+      "DisplayName": "RC_PWR_EN",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "OSD3_RC_PWR_X": {
+      "Description": "Horizontal position on screen",
+      "DisplayName": "RC_PWR_X",
+      "Range": {
+        "high": "59",
+        "low": "0"
+      }
+    },
+    "OSD3_RC_PWR_Y": {
+      "Description": "Vertical position on screen",
+      "DisplayName": "RC_PWR_Y",
+      "Range": {
+        "high": "21",
+        "low": "0"
+      }
+    },
+    "OSD3_RC_SNR_EN": {
+      "Description": "Displays RC link signal to noise ratio in dB",
+      "DisplayName": "RC_SNR_EN",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "OSD3_RC_SNR_X": {
+      "Description": "Horizontal position on screen",
+      "DisplayName": "RC_SNR_X",
+      "Range": {
+        "high": "59",
+        "low": "0"
+      }
+    },
+    "OSD3_RC_SNR_Y": {
+      "Description": "Vertical position on screen",
+      "DisplayName": "RC_SNR_Y",
+      "Range": {
+        "high": "21",
+        "low": "0"
+      }
+    },
     "OSD3_RESTVOLT_EN": {
       "Description": "Displays main battery resting voltage",
       "DisplayName": "RESTVOLT_EN",
@@ -25179,6 +25559,30 @@
       "DisplayName": "RPM_Y",
       "Range": {
         "high": "15",
+        "low": "0"
+      }
+    },
+    "OSD3_RSSIDBM_EN": {
+      "Description": "Displays RC link signal strength in dBm",
+      "DisplayName": "RSSIDBM_EN",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "OSD3_RSSIDBM_X": {
+      "Description": "Horizontal position on screen",
+      "DisplayName": "RSSIDBM_X",
+      "Range": {
+        "high": "59",
+        "low": "0"
+      }
+    },
+    "OSD3_RSSIDBM_Y": {
+      "Description": "Vertical position on screen",
+      "DisplayName": "RSSIDBM_Y",
+      "Range": {
+        "high": "21",
         "low": "0"
       }
     },
@@ -26085,7 +26489,7 @@
       }
     },
     "OSD4_ESCAMPS_EN": {
-      "Description": "Displays first esc's current",
+      "Description": "Displays the current of the ESC with the highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set",
       "DisplayName": "ESCAMPS_EN",
       "Values": {
         "0": "Disabled",
@@ -26109,7 +26513,7 @@
       }
     },
     "OSD4_ESCRPM_EN": {
-      "Description": "Displays first esc's rpm",
+      "Description": "Displays highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set",
       "DisplayName": "ESCRPM_EN",
       "Values": {
         "0": "Disabled",
@@ -26133,7 +26537,7 @@
       }
     },
     "OSD4_ESCTEMP_EN": {
-      "Description": "Displays first esc's temp",
+      "Description": "Displays highest temp of all active ESCs, or of a specific ECS if OSDx_ESC_IDX is set",
       "DisplayName": "ESCTEMP_EN",
       "Values": {
         "0": "Disabled",
@@ -26153,6 +26557,14 @@
       "DisplayName": "ESCTEMP_Y",
       "Range": {
         "high": "21",
+        "low": "0"
+      }
+    },
+    "OSD4_ESC_IDX": {
+      "Description": "Index of the ESC to use for displaying ESC information. 0 means use the ESC with the highest value.",
+      "DisplayName": "ESC_IDX",
+      "Range": {
+        "high": "32",
         "low": "0"
       }
     },
@@ -26573,6 +26985,102 @@
         "low": "0"
       }
     },
+    "OSD4_RC_ANT_EN": {
+      "Description": "Displays the current RC link active antenna",
+      "DisplayName": "RC_ANT_EN",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "OSD4_RC_ANT_X": {
+      "Description": "Horizontal position on screen",
+      "DisplayName": "RC_ANT_X",
+      "Range": {
+        "high": "59",
+        "low": "0"
+      }
+    },
+    "OSD4_RC_ANT_Y": {
+      "Description": "Vertical position on screen",
+      "DisplayName": "RC_ANT_Y",
+      "Range": {
+        "high": "21",
+        "low": "0"
+      }
+    },
+    "OSD4_RC_LQ_EN": {
+      "Description": "Displays the RC link quality (uplink, 0 to 100%) and also RF mode if bit 7 of OSD_OPTIONS is set",
+      "DisplayName": "RC_LQ_EN",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "OSD4_RC_LQ_X": {
+      "Description": "Horizontal position on screen",
+      "DisplayName": "RC_LQ_X",
+      "Range": {
+        "high": "59",
+        "low": "0"
+      }
+    },
+    "OSD4_RC_LQ_Y": {
+      "Description": "Vertical position on screen",
+      "DisplayName": "RC_LQ_Y",
+      "Range": {
+        "high": "21",
+        "low": "0"
+      }
+    },
+    "OSD4_RC_PWR_EN": {
+      "Description": "Displays the RC link transmit (TX) power in mW or W, depending on level",
+      "DisplayName": "RC_PWR_EN",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "OSD4_RC_PWR_X": {
+      "Description": "Horizontal position on screen",
+      "DisplayName": "RC_PWR_X",
+      "Range": {
+        "high": "59",
+        "low": "0"
+      }
+    },
+    "OSD4_RC_PWR_Y": {
+      "Description": "Vertical position on screen",
+      "DisplayName": "RC_PWR_Y",
+      "Range": {
+        "high": "21",
+        "low": "0"
+      }
+    },
+    "OSD4_RC_SNR_EN": {
+      "Description": "Displays RC link signal to noise ratio in dB",
+      "DisplayName": "RC_SNR_EN",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "OSD4_RC_SNR_X": {
+      "Description": "Horizontal position on screen",
+      "DisplayName": "RC_SNR_X",
+      "Range": {
+        "high": "59",
+        "low": "0"
+      }
+    },
+    "OSD4_RC_SNR_Y": {
+      "Description": "Vertical position on screen",
+      "DisplayName": "RC_SNR_Y",
+      "Range": {
+        "high": "21",
+        "low": "0"
+      }
+    },
     "OSD4_RESTVOLT_EN": {
       "Description": "Displays main battery resting voltage",
       "DisplayName": "RESTVOLT_EN",
@@ -26666,6 +27174,30 @@
       "DisplayName": "RPM_Y",
       "Range": {
         "high": "15",
+        "low": "0"
+      }
+    },
+    "OSD4_RSSIDBM_EN": {
+      "Description": "Displays RC link signal strength in dBm",
+      "DisplayName": "RSSIDBM_EN",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
+    },
+    "OSD4_RSSIDBM_X": {
+      "Description": "Horizontal position on screen",
+      "DisplayName": "RSSIDBM_X",
+      "Range": {
+        "high": "59",
+        "low": "0"
+      }
+    },
+    "OSD4_RSSIDBM_Y": {
+      "Description": "Vertical position on screen",
+      "DisplayName": "RSSIDBM_Y",
+      "Range": {
+        "high": "21",
         "low": "0"
       }
     },
@@ -29420,7 +29952,7 @@
       "User": "Standard"
     },
     "MIN_GROUNDSPEED": {
-      "Description": "Minimum ground speed in cm/s when under airspeed control",
+      "Description": "Minimum ground speed when under airspeed control",
       "DisplayName": "Minimum ground speed",
       "Units": "m/s",
       "User": "Advanced"
@@ -30532,7 +31064,7 @@
       "User": "Standard"
     },
     "Q_TRIM_PITCH": {
-      "Description": "This sets the compensation for the pitch angle trim difference between calibrated AHRS level and vertical flight pitch. NOTE! this is relative to calibrated AHRS trim, not forward flight trim which includes TRIM_PITCH. For tailsitters, this is relative to a baseline of 90 degrees in AHRS.",
+      "Description": "This sets the compensation for the pitch angle trim difference between calibrated AHRS level and vertical flight pitch. NOTE! this is relative to calibrated AHRS trim, not forward flight trim which includes PTCH_TRIM_DEG. For tailsitters, this is relative to a baseline of 90 degrees in AHRS.",
       "DisplayName": "Quadplane AHRS trim pitch",
       "Increment": "0.1",
       "Range": {
@@ -47814,13 +48346,7 @@
       "Units": "m/s",
       "User": "Advanced"
     },
-    "SIM_WIND_TURB": {
-      "Description": "Allows you to emulate random wind variations in sim",
-      "DisplayName": "Simulated Wind variation",
-      "Units": "m/s",
-      "User": "Advanced"
-    },
-    "SIM_WIND_T_": {
+    "SIM_WIND_T": {
       "Description": "Selects how wind varies from surface to WIND_T_ALT",
       "DisplayName": "Wind Profile Type",
       "User": "Advanced    ",
@@ -47829,6 +48355,12 @@
         "1": "none",
         "2": "linear-see WIND_T_COEF"
       }
+    },
+    "SIM_WIND_TURB": {
+      "Description": "Allows you to emulate random wind variations in sim",
+      "DisplayName": "Simulated Wind variation",
+      "Units": "m/s",
+      "User": "Advanced"
     },
     "SIM_WIND_T_ALT": {
       "Description": "Altitude at which wind reaches full strength, decaying from full strength as altitude lowers to ground level",

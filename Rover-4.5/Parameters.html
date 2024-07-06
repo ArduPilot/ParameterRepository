@@ -700,137 +700,11 @@ DO NOT EDIT
 <h1>Lua Script Parameters</h1>
 
 
-<h2>Force enable High Latency mode (RCK_FORCEHL)</h2>
+<h2>Mount POI distance max (POI_DIST_MAX)</h2>
 
-<p>Automatically enables High Latency mode if not already enabled</p>
+<p>POI&#x27;s max distance (in meters) from the vehicle</p>
 <ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Update rate (RCK_PERIOD)</h2>
-
-<p>When in High Latency mode, send Rockblock updates every N seconds</p>
-<ul>
-<li>Range: 0 600</li>
-<li>Units: seconds</li>
-</ul>
-
-
-<h2>Display Rockblock debugging text (RCK_DEBUG)</h2>
-
-<p>Sends Rockblock debug text to GCS via statustexts</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Enable Message transmission (RCK_ENABLE)</h2>
-
-<p>Enables the Rockblock sending and recieving</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>EKF Source ExternalNav Innovation Threshold (ESRC_EXTN_THRESH)</h2>
-
-<p>ExternalNav may be used if innovations are below this threshold</p>
-<ul>
-<li>Range: 0 1</li>
-</ul>
-
-
-<h2>EKF Source ExternalNav Quality Threshold (ESRC_EXTN_QUAL)</h2>
-
-<p>ExternalNav may be used if quality is above this threshold</p>
-<ul>
-<li>Range: 0 100</li>
-<li>Units: percent</li>
-</ul>
-
-
-<h2>EKF Source OpticalFlow Innovation Threshold (ESRC_FLOW_THRESH)</h2>
-
-<p>OpticalFlow may be used if innovations are below this threshold</p>
-<ul>
-<li>Range: 0 1</li>
-</ul>
-
-
-<h2>EKF Source OpticalFlow Quality Threshold (ESRC_FLOW_QUAL)</h2>
-
-<p>OpticalFlow may be used if quality is above this threshold</p>
-<ul>
-<li>Range: 0 100</li>
-<li>Units: percent</li>
-</ul>
-
-
-<h2>EKF Source Rangefinder Max (ESRC_RNGFND_MAX)</h2>
-
-<p>OpticalFlow may be used if rangefinder distance is below this threshold</p>
-<ul>
-<li>Range: 0 50</li>
-<li>Units: meters</li>
-</ul>
-
-
-<h2>Ship landing enable (SHIP_ENABLE)</h2>
-
-<p>Enable ship landing system</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Ship landing angle (SHIP_LAND_ANGLE)</h2>
-
-<p>Angle from the stern of the ship for landing approach. Use this to ensure that on a go-around that ship superstructure and cables are avoided. A value of zero means to approach from the rear of the ship. A value of 90 means the landing will approach from the port (left) side of the ship. A value of -90 will mean approaching from the starboard (right) side of the ship. A value of 180 will approach from the bow of the ship. This parameter is combined with the sign of the RTL_RADIUS parameter to determine the holdoff pattern. If RTL_RADIUS is positive then a clockwise loiter is performed, if RTL_RADIUS is negative then a counter-clockwise loiter is used.</p>
-<ul>
-<li>Range: -180 180</li>
-<li>Units: degrees</li>
-</ul>
-
-
-<h2>Ship automatic offset trigger (SHIP_AUTO_OFS)</h2>
-
-<p>Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target. NOTE: This parameter will auto-reset to zero once the offset has been calculated.</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Trigger</td></tr>
-</table>
-</ul>
-
-
-<h2>Precland altitude cutoff (PLND_ALT_CUTOFF)</h2>
-
-<p>The altitude (rangefinder distance) below which we stop using the precision landing sensor and continue landing</p>
-<ul>
-<li>Range: 0 20</li>
-<li>Units: meters</li>
-</ul>
-
-
-<h2>Precland distance cutoff (DIST_CUTOFF)</h2>
-
-<p>The distance from target beyond which the target is ignored</p>
-<ul>
-<li>Range: 0 100</li>
-<li>Units: meters</li>
+<li>Range: 0 10000</li>
 </ul>
 
 
@@ -1002,6 +876,66 @@ DO NOT EDIT
 </ul>
 
 
+<h2>parameter reversion enable (PREV_ENABLE)</h2>
+
+<p>Enable parameter reversion system</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>param reversion RC function (PREV_RC_FUNC)</h2>
+
+<p>RCn_OPTION number to used to trigger parameter reversion</p>
+<ul>
+</ul>
+
+
+<h2>Force enable High Latency mode (RCK_FORCEHL)</h2>
+
+<p>Automatically enables High Latency mode if not already enabled</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Update rate (RCK_PERIOD)</h2>
+
+<p>When in High Latency mode, send Rockblock updates every N seconds</p>
+<ul>
+<li>Range: 0 600</li>
+<li>Units: seconds</li>
+</ul>
+
+
+<h2>Display Rockblock debugging text (RCK_DEBUG)</h2>
+
+<p>Sends Rockblock debug text to GCS via statustexts</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Enable Message transmission (RCK_ENABLE)</h2>
+
+<p>Enables the Rockblock sending and recieving</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
 <h2>Rover Quicktune enable (RTUN_ENABLE)</h2>
 
 <p>Enable quicktune system</p>
@@ -1105,32 +1039,6 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Mount POI distance max (POI_DIST_MAX)</h2>
-
-<p>POI&#x27;s max distance (in meters) from the vehicle</p>
-<ul>
-<li>Range: 0 10000</li>
-</ul>
-
-
-<h2>parameter reversion enable (PREV_ENABLE)</h2>
-
-<p>Enable parameter reversion system</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>param reversion RC function (PREV_RC_FUNC)</h2>
-
-<p>RCn_OPTION number to used to trigger parameter reversion</p>
-<ul>
-</ul>
-
-
 <h2>Deadreckoning Enable (DR_ENABLE)</h2>
 
 <p>Deadreckoning Enable</p>
@@ -1217,6 +1125,94 @@ DO NOT EDIT
 <tr><td>20</td><td>Guided_NoGPS</td></tr>
 <tr><td>21</td><td>Smart_RTL</td></tr>
 <tr><td>27</td><td>Auto RTL</td></tr>
+</table>
+</ul>
+
+
+<h2>enable web server (WEB_ENABLE)</h2>
+
+<p>enable web server</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>web server TCP port (WEB_BIND_PORT)</h2>
+
+<p>web server TCP port</p>
+<ul>
+<li>Range: 1 65535</li>
+</ul>
+
+
+<h2>web server debugging (WEB_DEBUG)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>web server debugging</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>web server block size (WEB_BLOCK_SIZE)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>web server block size for download</p>
+<ul>
+<li>Range: 1 65535</li>
+</ul>
+
+
+<h2>web server timeout (WEB_TIMEOUT)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>timeout for inactive connections</p>
+<ul>
+<li>Units: seconds</li>
+<li>Range: 0.1 60</li>
+</ul>
+
+
+<h2>web server minimum file size for sendfile (WEB_SENDFILE_MIN)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>sendfile is an offloading mechanism for faster file download. If this is non-zero and the file is larger than this size then sendfile will be used for file download</p>
+<ul>
+<li>Range: 0 10000000</li>
+</ul>
+
+
+<h2>WinchControl Rate Up (WINCH_RATE_UP)</h2>
+
+<p>Maximum rate when retracting line</p>
+<ul>
+<li>Range: 0.1 5.0</li>
+</ul>
+
+
+<h2>WinchControl Rate Down (WINCH_RATE_DN)</h2>
+
+<p>Maximum rate when releasing line</p>
+<ul>
+<li>Range: 0.1 5.0</li>
+</ul>
+
+
+<h2>Winch Rate Control RC function (WINCH_RC_FUNC)</h2>
+
+<p>RCn_OPTION number to use to control winch rate</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>300</td><td>Scripting1</td></tr>
+<tr><td>301</td><td>Scripting2</td></tr>
+<tr><td>302</td><td>Scripting3</td></tr>
+<tr><td>303</td><td>Scripting4</td></tr>
+<tr><td>304</td><td>Scripting5</td></tr>
+<tr><td>305</td><td>Scripting6</td></tr>
+<tr><td>306</td><td>Scripting7</td></tr>
+<tr><td>307</td><td>Scripting8</td></tr>
 </table>
 </ul>
 
@@ -1341,61 +1337,52 @@ DO NOT EDIT
 </ul>
 
 
-<h2>WinchControl Rate Up (WINCH_RATE_UP)</h2>
+<h2>EKF Source ExternalNav Innovation Threshold (ESRC_EXTN_THRESH)</h2>
 
-<p>Maximum rate when retracting line</p>
+<p>ExternalNav may be used if innovations are below this threshold</p>
 <ul>
-<li>Range: 0.1 5.0</li>
+<li>Range: 0 1</li>
 </ul>
 
 
-<h2>WinchControl Rate Down (WINCH_RATE_DN)</h2>
+<h2>EKF Source ExternalNav Quality Threshold (ESRC_EXTN_QUAL)</h2>
 
-<p>Maximum rate when releasing line</p>
+<p>ExternalNav may be used if quality is above this threshold</p>
 <ul>
-<li>Range: 0.1 5.0</li>
+<li>Range: 0 100</li>
+<li>Units: percent</li>
 </ul>
 
 
-<h2>Winch Rate Control RC function (WINCH_RC_FUNC)</h2>
+<h2>EKF Source OpticalFlow Innovation Threshold (ESRC_FLOW_THRESH)</h2>
 
-<p>RCn_OPTION number to use to control winch rate</p>
+<p>OpticalFlow may be used if innovations are below this threshold</p>
 <ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>300</td><td>Scripting1</td></tr>
-<tr><td>301</td><td>Scripting2</td></tr>
-<tr><td>302</td><td>Scripting3</td></tr>
-<tr><td>303</td><td>Scripting4</td></tr>
-<tr><td>304</td><td>Scripting5</td></tr>
-<tr><td>305</td><td>Scripting6</td></tr>
-<tr><td>306</td><td>Scripting7</td></tr>
-<tr><td>307</td><td>Scripting8</td></tr>
-</table>
+<li>Range: 0 1</li>
 </ul>
 
 
-<h2>enable web server (WEB_ENABLE)</h2>
+<h2>EKF Source OpticalFlow Quality Threshold (ESRC_FLOW_QUAL)</h2>
 
-<p>enable web server</p>
+<p>OpticalFlow may be used if quality is above this threshold</p>
 <ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
+<li>Range: 0 100</li>
+<li>Units: percent</li>
 </ul>
 
 
-<h2>web server TCP port (WEB_BIND_PORT)</h2>
+<h2>EKF Source Rangefinder Max (ESRC_RNGFND_MAX)</h2>
 
-<p>web server TCP port</p>
+<p>OpticalFlow may be used if rangefinder distance is below this threshold</p>
 <ul>
-<li>Range: 1 65535</li>
+<li>Range: 0 50</li>
+<li>Units: meters</li>
 </ul>
 
 
-<h2>web server debugging (WEB_DEBUG)</h2><em>Note: This parameter is for advanced users</em><br>
+<h2>Ship landing enable (SHIP_ENABLE)</h2>
 
-<p>web server debugging</p>
+<p>Enable ship landing system</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
@@ -1404,28 +1391,41 @@ DO NOT EDIT
 </ul>
 
 
-<h2>web server block size (WEB_BLOCK_SIZE)</h2><em>Note: This parameter is for advanced users</em><br>
+<h2>Ship landing angle (SHIP_LAND_ANGLE)</h2>
 
-<p>web server block size for download</p>
+<p>Angle from the stern of the ship for landing approach. Use this to ensure that on a go-around that ship superstructure and cables are avoided. A value of zero means to approach from the rear of the ship. A value of 90 means the landing will approach from the port (left) side of the ship. A value of -90 will mean approaching from the starboard (right) side of the ship. A value of 180 will approach from the bow of the ship. This parameter is combined with the sign of the RTL_RADIUS parameter to determine the holdoff pattern. If RTL_RADIUS is positive then a clockwise loiter is performed, if RTL_RADIUS is negative then a counter-clockwise loiter is used.</p>
 <ul>
-<li>Range: 1 65535</li>
+<li>Range: -180 180</li>
+<li>Units: degrees</li>
 </ul>
 
 
-<h2>web server timeout (WEB_TIMEOUT)</h2><em>Note: This parameter is for advanced users</em><br>
+<h2>Ship automatic offset trigger (SHIP_AUTO_OFS)</h2>
 
-<p>timeout for inactive connections</p>
+<p>Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target. NOTE: This parameter will auto-reset to zero once the offset has been calculated.</p>
 <ul>
-<li>Units: seconds</li>
-<li>Range: 0.1 60</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Trigger</td></tr>
+</table>
 </ul>
 
 
-<h2>web server minimum file size for sendfile (WEB_SENDFILE_MIN)</h2><em>Note: This parameter is for advanced users</em><br>
+<h2>Precland altitude cutoff (PLND_ALT_CUTOFF)</h2>
 
-<p>sendfile is an offloading mechanism for faster file download. If this is non-zero and the file is larger than this size then sendfile will be used for file download</p>
+<p>The altitude (rangefinder distance) below which we stop using the precision landing sensor and continue landing</p>
 <ul>
-<li>Range: 0 10000000</li>
+<li>Range: 0 20</li>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>Precland distance cutoff (DIST_CUTOFF)</h2>
+
+<p>The distance from target beyond which the target is ignored</p>
+<ul>
+<li>Range: 0 100</li>
+<li>Units: meters</li>
 </ul>
 
 
@@ -1688,6 +1688,127 @@ DO NOT EDIT
 </ul>
 
 
+<h2>ViewPro debug (VIEP_DEBUG)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ViewPro debug</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+<tr><td>2</td><td>Enabled including attitude reporting</td></tr>
+</table>
+</ul>
+
+
+<h2>ViewPro Camera For Switch Low (VIEP_CAM_SWLOW)</h2>
+
+<p>Camera selection when switch is in low position</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>No change in camera selection</td></tr>
+<tr><td>1</td><td>EO1</td></tr>
+<tr><td>2</td><td>IR thermal</td></tr>
+<tr><td>3</td><td>EO1 + IR Picture-in-picture</td></tr>
+<tr><td>4</td><td>IR + EO1 Picture-in-picture</td></tr>
+<tr><td>5</td><td>Fusion</td></tr>
+<tr><td>6</td><td>IR1 13mm</td></tr>
+<tr><td>7</td><td>IR2 52mm</td></tr>
+</table>
+</ul>
+
+
+<h2>ViewPro Camera For Switch Mid (VIEP_CAM_SWMID)</h2>
+
+<p>Camera selection when switch is in middle position</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>No change in camera selection</td></tr>
+<tr><td>1</td><td>EO1</td></tr>
+<tr><td>2</td><td>IR thermal</td></tr>
+<tr><td>3</td><td>EO1 + IR Picture-in-picture</td></tr>
+<tr><td>4</td><td>IR + EO1 Picture-in-picture</td></tr>
+<tr><td>5</td><td>Fusion</td></tr>
+<tr><td>6</td><td>IR1 13mm</td></tr>
+<tr><td>7</td><td>IR2 52mm</td></tr>
+</table>
+</ul>
+
+
+<h2>ViewPro Camera For Switch High (VIEP_CAM_SWHIGH)</h2>
+
+<p>Camera selection when switch is in high position</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>No change in camera selection</td></tr>
+<tr><td>1</td><td>EO1</td></tr>
+<tr><td>2</td><td>IR thermal</td></tr>
+<tr><td>3</td><td>EO1 + IR Picture-in-picture</td></tr>
+<tr><td>4</td><td>IR + EO1 Picture-in-picture</td></tr>
+<tr><td>5</td><td>Fusion</td></tr>
+<tr><td>6</td><td>IR1 13mm</td></tr>
+<tr><td>7</td><td>IR2 52mm</td></tr>
+</table>
+</ul>
+
+
+<h2>ViewPro Zoom Speed (VIEP_ZOOM_SPEED)</h2>
+
+<p>ViewPro Zoom Speed.  Higher numbers result in faster zooming</p>
+<ul>
+<li>Range: 0 7</li>
+</ul>
+
+
+<h2>ViewPro Zoom Times Max (VIEP_ZOOM_MAX)</h2>
+
+<p>ViewPro Zoom Times Max</p>
+<ul>
+<li>Range: 0 30</li>
+</ul>
+
+
+<h2>EFI DLA enable (EFI_DLA_ENABLE)</h2>
+
+<p>Enable EFI DLA driver</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>EFI DLA fuel scale (EFI_DLA_LPS)</h2>
+
+<p>EFI DLA litres of fuel per second of injection time</p>
+<ul>
+<li>Range: 0.00001 1</li>
+<li>Units: litres</li>
+</ul>
+
+
+<h2>Generator SVFFI enable (EFI_SVF_ENABLE)</h2>
+
+<p>Enable SVFFI generator support</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Generator SVFFI arming check (EFI_SVF_ARMCHECK)</h2>
+
+<p>Check for Generator ARM state before arming</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
 <h2>Hobbywing ESC Enable (ESC_HW_ENABLE)</h2>
 
 <p>Enable Hobbywing ESC telemetry</p>
@@ -1712,6 +1833,17 @@ DO NOT EDIT
 <p>Motor number offset of first ESC</p>
 <ul>
 <li>Range: 0 31</li>
+</ul>
+
+
+<h2>EFI INF-Inject enable (EFI_INF_ENABLE)</h2>
+
+<p>Enable EFI INF-Inject driver</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
 </ul>
 
 
@@ -1872,82 +2004,65 @@ DO NOT EDIT
 </ul>
 
 
-<h2>ViewPro debug (VIEP_DEBUG)</h2><em>Note: This parameter is for advanced users</em><br>
+<h2>Enable ANX battery support (BATT_ANX_ENABLE)</h2>
 
-<p>ViewPro debug</p>
+<p>Enable ANX battery support</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
 <tr><td>1</td><td>Enabled</td></tr>
-<tr><td>2</td><td>Enabled including attitude reporting</td></tr>
 </table>
 </ul>
 
 
-<h2>ViewPro Camera For Switch Low (VIEP_CAM_SWLOW)</h2>
+<h2>Set ANX CAN driver (BATT_ANX_CANDRV)</h2>
 
-<p>Camera selection when switch is in low position</p>
+<p>Set ANX CAN driver</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>No change in camera selection</td></tr>
-<tr><td>1</td><td>EO1</td></tr>
-<tr><td>2</td><td>IR thermal</td></tr>
-<tr><td>3</td><td>EO1 + IR Picture-in-picture</td></tr>
-<tr><td>4</td><td>IR + EO1 Picture-in-picture</td></tr>
-<tr><td>5</td><td>Fusion</td></tr>
-<tr><td>6</td><td>IR1 13mm</td></tr>
-<tr><td>7</td><td>IR2 52mm</td></tr>
+<tr><td>0</td><td>None</td></tr>
+<tr><td>1</td><td>1stCANDriver</td></tr>
+<tr><td>2</td><td>2ndCanDriver</td></tr>
 </table>
 </ul>
 
 
-<h2>ViewPro Camera For Switch Mid (VIEP_CAM_SWMID)</h2>
+<h2>ANX CAN battery index (BATT_ANX_INDEX)</h2>
 
-<p>Camera selection when switch is in middle position</p>
+<p>ANX CAN battery index</p>
+<ul>
+<li>Range: 1 10</li>
+</ul>
+
+
+<h2>ANX CAN battery options (BATT_ANX_OPTIONS)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ANX CAN battery options</p>
+<ul>
+<li>Bitmask: 0:LogAllFrames</li>
+</ul>
+
+
+<h2>DJIRS2 debug (DJIR_DEBUG)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Enable DJIRS2 debug</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>No change in camera selection</td></tr>
-<tr><td>1</td><td>EO1</td></tr>
-<tr><td>2</td><td>IR thermal</td></tr>
-<tr><td>3</td><td>EO1 + IR Picture-in-picture</td></tr>
-<tr><td>4</td><td>IR + EO1 Picture-in-picture</td></tr>
-<tr><td>5</td><td>Fusion</td></tr>
-<tr><td>6</td><td>IR1 13mm</td></tr>
-<tr><td>7</td><td>IR2 52mm</td></tr>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+<tr><td>2</td><td>Enabled with attitude reporting</td></tr>
 </table>
 </ul>
 
 
-<h2>ViewPro Camera For Switch High (VIEP_CAM_SWHIGH)</h2>
+<h2>DJIRS2 upside down (DJIR_UPSIDEDOWN)</h2>
 
-<p>Camera selection when switch is in high position</p>
+<p>DJIRS2 upside down</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>No change in camera selection</td></tr>
-<tr><td>1</td><td>EO1</td></tr>
-<tr><td>2</td><td>IR thermal</td></tr>
-<tr><td>3</td><td>EO1 + IR Picture-in-picture</td></tr>
-<tr><td>4</td><td>IR + EO1 Picture-in-picture</td></tr>
-<tr><td>5</td><td>Fusion</td></tr>
-<tr><td>6</td><td>IR1 13mm</td></tr>
-<tr><td>7</td><td>IR2 52mm</td></tr>
+<tr><td>0</td><td>Right side up</td></tr>
+<tr><td>1</td><td>Upside down</td></tr>
 </table>
-</ul>
-
-
-<h2>ViewPro Zoom Speed (VIEP_ZOOM_SPEED)</h2>
-
-<p>ViewPro Zoom Speed.  Higher numbers result in faster zooming</p>
-<ul>
-<li>Range: 0 7</li>
-</ul>
-
-
-<h2>ViewPro Zoom Times Max (VIEP_ZOOM_MAX)</h2>
-
-<p>ViewPro Zoom Times Max</p>
-<ul>
-<li>Range: 0 30</li>
 </ul>
 
 
@@ -2005,121 +2120,6 @@ DO NOT EDIT
 <p>The capacity of the tank in litres</p>
 <ul>
 <li>Units: litres</li>
-</ul>
-
-
-<h2>EFI DLA enable (EFI_DLA_ENABLE)</h2>
-
-<p>Enable EFI DLA driver</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>EFI DLA fuel scale (EFI_DLA_LPS)</h2>
-
-<p>EFI DLA litres of fuel per second of injection time</p>
-<ul>
-<li>Range: 0.00001 1</li>
-<li>Units: litres</li>
-</ul>
-
-
-<h2>DJIRS2 debug (DJIR_DEBUG)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>Enable DJIRS2 debug</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-<tr><td>2</td><td>Enabled with attitude reporting</td></tr>
-</table>
-</ul>
-
-
-<h2>DJIRS2 upside down (DJIR_UPSIDEDOWN)</h2>
-
-<p>DJIRS2 upside down</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Right side up</td></tr>
-<tr><td>1</td><td>Upside down</td></tr>
-</table>
-</ul>
-
-
-<h2>Enable ANX battery support (BATT_ANX_ENABLE)</h2>
-
-<p>Enable ANX battery support</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Set ANX CAN driver (BATT_ANX_CANDRV)</h2>
-
-<p>Set ANX CAN driver</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
-<tr><td>1</td><td>1stCANDriver</td></tr>
-<tr><td>2</td><td>2ndCanDriver</td></tr>
-</table>
-</ul>
-
-
-<h2>ANX CAN battery index (BATT_ANX_INDEX)</h2>
-
-<p>ANX CAN battery index</p>
-<ul>
-<li>Range: 1 10</li>
-</ul>
-
-
-<h2>ANX CAN battery options (BATT_ANX_OPTIONS)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>ANX CAN battery options</p>
-<ul>
-<li>Bitmask: 0:LogAllFrames</li>
-</ul>
-
-
-<h2>EFI INF-Inject enable (EFI_INF_ENABLE)</h2>
-
-<p>Enable EFI INF-Inject driver</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Generator SVFFI enable (EFI_SVF_ENABLE)</h2>
-
-<p>Enable SVFFI generator support</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Generator SVFFI arming check (EFI_SVF_ARMCHECK)</h2>
-
-<p>Check for Generator ARM state before arming</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
 </ul>
 
 
@@ -18421,9 +18421,9 @@ DO NOT EDIT
 
 <h2>Options for temperature calibration (INS_TCAL_OPTIONS)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>This enables optional temperature calibration features. Setting PersistParams will save the accelerometer and temperature calibration parameters in the bootloader sector on the next update of the bootloader.</p>
+<p>This enables optional temperature calibration features. Setting of the Persist bits will save the temperature and/or accelerometer calibration parameters in the bootloader sector on the next update of the bootloader.</p>
 <ul>
-<li>Bitmask: 0:PersistParams</li>
+<li>Bitmask: 0:PersistTemps, 1:PersistAccels</li>
 </ul>
 
 
@@ -21713,7 +21713,7 @@ DO NOT EDIT
 
 <p>This sets options that change the display</p>
 <ul>
-<li>Bitmask: 0:UseDecimalPack, 1:InvertedWindArrow, 2:InvertedAHRoll, 3:Convert feet to miles at 5280ft instead of 10000ft, 4:DisableCrosshair, 5:TranslateArrows, 6:AviationStyleAH</li>
+<li>Bitmask: 0:UseDecimalPack, 1:InvertedWindArrow, 2:InvertedAHRoll, 3:Convert feet to miles at 5280ft instead of 10000ft, 4:DisableCrosshair, 5:TranslateArrows, 6:AviationStyleAH, 7:Prefix LQ with RF Mode</li>
 </ul>
 
 
@@ -21745,9 +21745,9 @@ DO NOT EDIT
 
 <h2>RSSI warn level (in %) (OSD_W_RSSI)</h2>
 
-<p>Set level at which RSSI item will flash</p>
+<p>Set level at which RSSI item will flash (in positive % or negative dBm values as applicable). 30% or -100dBm are defaults.</p>
 <ul>
-<li>Range: 0 99</li>
+<li>Range: -128 100</li>
 </ul>
 
 
@@ -21858,6 +21858,22 @@ DO NOT EDIT
 <p>Set level at which ACRVOLT item will flash</p>
 <ul>
 <li>Range: 0 100</li>
+</ul>
+
+
+<h2>RC link quality warn level (in %) (OSD_W_LQ)</h2>
+
+<p>Set level at which RC_LQ item will flash (%)</p>
+<ul>
+<li>Range: 0 100</li>
+</ul>
+
+
+<h2>RC link SNR warn level (in %) (OSD_W_SNR)</h2>
+
+<p>Set level at which RC_SNR item will flash (in db)</p>
+<ul>
+<li>Range: -20 10</li>
 </ul>
 
 
@@ -22368,7 +22384,7 @@ DO NOT EDIT
 
 <h2>ESCTEMP_EN (OSD1_ESCTEMP_EN)</h2>
 
-<p>Displays first esc&#x27;s temp</p>
+<p>Displays highest temp of all active ESCs, or of a specific ECS if OSDx_ESC_IDX is set</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
@@ -22395,7 +22411,7 @@ DO NOT EDIT
 
 <h2>ESCRPM_EN (OSD1_ESCRPM_EN)</h2>
 
-<p>Displays first esc&#x27;s rpm</p>
+<p>Displays highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
@@ -22422,7 +22438,7 @@ DO NOT EDIT
 
 <h2>ESCAMPS_EN (OSD1_ESCAMPS_EN)</h2>
 
-<p>Displays first esc&#x27;s current</p>
+<p>Displays the current of the ESC with the highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
@@ -23546,6 +23562,149 @@ DO NOT EDIT
 </ul>
 
 
+<h2>RC_PWR_EN (OSD1_RC_PWR_EN)</h2>
+
+<p>Displays the RC link transmit (TX) power in mW or W, depending on level</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>RC_PWR_X (OSD1_RC_PWR_X)</h2>
+
+<p>Horizontal position on screen</p>
+<ul>
+<li>Range: 0 59</li>
+</ul>
+
+
+<h2>RC_PWR_Y (OSD1_RC_PWR_Y)</h2>
+
+<p>Vertical position on screen</p>
+<ul>
+<li>Range: 0 21</li>
+</ul>
+
+
+<h2>RSSIDBM_EN (OSD1_RSSIDBM_EN)</h2>
+
+<p>Displays RC link signal strength in dBm</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>RSSIDBM_X (OSD1_RSSIDBM_X)</h2>
+
+<p>Horizontal position on screen</p>
+<ul>
+<li>Range: 0 59</li>
+</ul>
+
+
+<h2>RSSIDBM_Y (OSD1_RSSIDBM_Y)</h2>
+
+<p>Vertical position on screen</p>
+<ul>
+<li>Range: 0 21</li>
+</ul>
+
+
+<h2>RC_SNR_EN (OSD1_RC_SNR_EN)</h2>
+
+<p>Displays RC link signal to noise ratio in dB</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>RC_SNR_X (OSD1_RC_SNR_X)</h2>
+
+<p>Horizontal position on screen</p>
+<ul>
+<li>Range: 0 59</li>
+</ul>
+
+
+<h2>RC_SNR_Y (OSD1_RC_SNR_Y)</h2>
+
+<p>Vertical position on screen</p>
+<ul>
+<li>Range: 0 21</li>
+</ul>
+
+
+<h2>RC_ANT_EN (OSD1_RC_ANT_EN)</h2>
+
+<p>Displays the current RC link active antenna</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>RC_ANT_X (OSD1_RC_ANT_X)</h2>
+
+<p>Horizontal position on screen</p>
+<ul>
+<li>Range: 0 59</li>
+</ul>
+
+
+<h2>RC_ANT_Y (OSD1_RC_ANT_Y)</h2>
+
+<p>Vertical position on screen</p>
+<ul>
+<li>Range: 0 21</li>
+</ul>
+
+
+<h2>RC_LQ_EN (OSD1_RC_LQ_EN)</h2>
+
+<p>Displays the RC link quality (uplink, 0 to 100%) and also RF mode if bit 7 of OSD_OPTIONS is set</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>RC_LQ_X (OSD1_RC_LQ_X)</h2>
+
+<p>Horizontal position on screen</p>
+<ul>
+<li>Range: 0 59</li>
+</ul>
+
+
+<h2>RC_LQ_Y (OSD1_RC_LQ_Y)</h2>
+
+<p>Vertical position on screen</p>
+<ul>
+<li>Range: 0 21</li>
+</ul>
+
+
+<h2>ESC_IDX (OSD1_ESC_IDX)</h2>
+
+<p>Index of the ESC to use for displaying ESC information. 0 means use the ESC with the highest value.</p>
+<ul>
+<li>Range: 0 32</li>
+</ul>
+
+
 <h1>OSD2_ Parameters</h1>
 
 
@@ -24037,7 +24196,7 @@ DO NOT EDIT
 
 <h2>ESCTEMP_EN (OSD2_ESCTEMP_EN)</h2>
 
-<p>Displays first esc&#x27;s temp</p>
+<p>Displays highest temp of all active ESCs, or of a specific ECS if OSDx_ESC_IDX is set</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
@@ -24064,7 +24223,7 @@ DO NOT EDIT
 
 <h2>ESCRPM_EN (OSD2_ESCRPM_EN)</h2>
 
-<p>Displays first esc&#x27;s rpm</p>
+<p>Displays highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
@@ -24091,7 +24250,7 @@ DO NOT EDIT
 
 <h2>ESCAMPS_EN (OSD2_ESCAMPS_EN)</h2>
 
-<p>Displays first esc&#x27;s current</p>
+<p>Displays the current of the ESC with the highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
@@ -25215,6 +25374,149 @@ DO NOT EDIT
 </ul>
 
 
+<h2>RC_PWR_EN (OSD2_RC_PWR_EN)</h2>
+
+<p>Displays the RC link transmit (TX) power in mW or W, depending on level</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>RC_PWR_X (OSD2_RC_PWR_X)</h2>
+
+<p>Horizontal position on screen</p>
+<ul>
+<li>Range: 0 59</li>
+</ul>
+
+
+<h2>RC_PWR_Y (OSD2_RC_PWR_Y)</h2>
+
+<p>Vertical position on screen</p>
+<ul>
+<li>Range: 0 21</li>
+</ul>
+
+
+<h2>RSSIDBM_EN (OSD2_RSSIDBM_EN)</h2>
+
+<p>Displays RC link signal strength in dBm</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>RSSIDBM_X (OSD2_RSSIDBM_X)</h2>
+
+<p>Horizontal position on screen</p>
+<ul>
+<li>Range: 0 59</li>
+</ul>
+
+
+<h2>RSSIDBM_Y (OSD2_RSSIDBM_Y)</h2>
+
+<p>Vertical position on screen</p>
+<ul>
+<li>Range: 0 21</li>
+</ul>
+
+
+<h2>RC_SNR_EN (OSD2_RC_SNR_EN)</h2>
+
+<p>Displays RC link signal to noise ratio in dB</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>RC_SNR_X (OSD2_RC_SNR_X)</h2>
+
+<p>Horizontal position on screen</p>
+<ul>
+<li>Range: 0 59</li>
+</ul>
+
+
+<h2>RC_SNR_Y (OSD2_RC_SNR_Y)</h2>
+
+<p>Vertical position on screen</p>
+<ul>
+<li>Range: 0 21</li>
+</ul>
+
+
+<h2>RC_ANT_EN (OSD2_RC_ANT_EN)</h2>
+
+<p>Displays the current RC link active antenna</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>RC_ANT_X (OSD2_RC_ANT_X)</h2>
+
+<p>Horizontal position on screen</p>
+<ul>
+<li>Range: 0 59</li>
+</ul>
+
+
+<h2>RC_ANT_Y (OSD2_RC_ANT_Y)</h2>
+
+<p>Vertical position on screen</p>
+<ul>
+<li>Range: 0 21</li>
+</ul>
+
+
+<h2>RC_LQ_EN (OSD2_RC_LQ_EN)</h2>
+
+<p>Displays the RC link quality (uplink, 0 to 100%) and also RF mode if bit 7 of OSD_OPTIONS is set</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>RC_LQ_X (OSD2_RC_LQ_X)</h2>
+
+<p>Horizontal position on screen</p>
+<ul>
+<li>Range: 0 59</li>
+</ul>
+
+
+<h2>RC_LQ_Y (OSD2_RC_LQ_Y)</h2>
+
+<p>Vertical position on screen</p>
+<ul>
+<li>Range: 0 21</li>
+</ul>
+
+
+<h2>ESC_IDX (OSD2_ESC_IDX)</h2>
+
+<p>Index of the ESC to use for displaying ESC information. 0 means use the ESC with the highest value.</p>
+<ul>
+<li>Range: 0 32</li>
+</ul>
+
+
 <h1>OSD3_ Parameters</h1>
 
 
@@ -25706,7 +26008,7 @@ DO NOT EDIT
 
 <h2>ESCTEMP_EN (OSD3_ESCTEMP_EN)</h2>
 
-<p>Displays first esc&#x27;s temp</p>
+<p>Displays highest temp of all active ESCs, or of a specific ECS if OSDx_ESC_IDX is set</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
@@ -25733,7 +26035,7 @@ DO NOT EDIT
 
 <h2>ESCRPM_EN (OSD3_ESCRPM_EN)</h2>
 
-<p>Displays first esc&#x27;s rpm</p>
+<p>Displays highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
@@ -25760,7 +26062,7 @@ DO NOT EDIT
 
 <h2>ESCAMPS_EN (OSD3_ESCAMPS_EN)</h2>
 
-<p>Displays first esc&#x27;s current</p>
+<p>Displays the current of the ESC with the highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
@@ -26884,6 +27186,149 @@ DO NOT EDIT
 </ul>
 
 
+<h2>RC_PWR_EN (OSD3_RC_PWR_EN)</h2>
+
+<p>Displays the RC link transmit (TX) power in mW or W, depending on level</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>RC_PWR_X (OSD3_RC_PWR_X)</h2>
+
+<p>Horizontal position on screen</p>
+<ul>
+<li>Range: 0 59</li>
+</ul>
+
+
+<h2>RC_PWR_Y (OSD3_RC_PWR_Y)</h2>
+
+<p>Vertical position on screen</p>
+<ul>
+<li>Range: 0 21</li>
+</ul>
+
+
+<h2>RSSIDBM_EN (OSD3_RSSIDBM_EN)</h2>
+
+<p>Displays RC link signal strength in dBm</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>RSSIDBM_X (OSD3_RSSIDBM_X)</h2>
+
+<p>Horizontal position on screen</p>
+<ul>
+<li>Range: 0 59</li>
+</ul>
+
+
+<h2>RSSIDBM_Y (OSD3_RSSIDBM_Y)</h2>
+
+<p>Vertical position on screen</p>
+<ul>
+<li>Range: 0 21</li>
+</ul>
+
+
+<h2>RC_SNR_EN (OSD3_RC_SNR_EN)</h2>
+
+<p>Displays RC link signal to noise ratio in dB</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>RC_SNR_X (OSD3_RC_SNR_X)</h2>
+
+<p>Horizontal position on screen</p>
+<ul>
+<li>Range: 0 59</li>
+</ul>
+
+
+<h2>RC_SNR_Y (OSD3_RC_SNR_Y)</h2>
+
+<p>Vertical position on screen</p>
+<ul>
+<li>Range: 0 21</li>
+</ul>
+
+
+<h2>RC_ANT_EN (OSD3_RC_ANT_EN)</h2>
+
+<p>Displays the current RC link active antenna</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>RC_ANT_X (OSD3_RC_ANT_X)</h2>
+
+<p>Horizontal position on screen</p>
+<ul>
+<li>Range: 0 59</li>
+</ul>
+
+
+<h2>RC_ANT_Y (OSD3_RC_ANT_Y)</h2>
+
+<p>Vertical position on screen</p>
+<ul>
+<li>Range: 0 21</li>
+</ul>
+
+
+<h2>RC_LQ_EN (OSD3_RC_LQ_EN)</h2>
+
+<p>Displays the RC link quality (uplink, 0 to 100%) and also RF mode if bit 7 of OSD_OPTIONS is set</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>RC_LQ_X (OSD3_RC_LQ_X)</h2>
+
+<p>Horizontal position on screen</p>
+<ul>
+<li>Range: 0 59</li>
+</ul>
+
+
+<h2>RC_LQ_Y (OSD3_RC_LQ_Y)</h2>
+
+<p>Vertical position on screen</p>
+<ul>
+<li>Range: 0 21</li>
+</ul>
+
+
+<h2>ESC_IDX (OSD3_ESC_IDX)</h2>
+
+<p>Index of the ESC to use for displaying ESC information. 0 means use the ESC with the highest value.</p>
+<ul>
+<li>Range: 0 32</li>
+</ul>
+
+
 <h1>OSD4_ Parameters</h1>
 
 
@@ -27375,7 +27820,7 @@ DO NOT EDIT
 
 <h2>ESCTEMP_EN (OSD4_ESCTEMP_EN)</h2>
 
-<p>Displays first esc&#x27;s temp</p>
+<p>Displays highest temp of all active ESCs, or of a specific ECS if OSDx_ESC_IDX is set</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
@@ -27402,7 +27847,7 @@ DO NOT EDIT
 
 <h2>ESCRPM_EN (OSD4_ESCRPM_EN)</h2>
 
-<p>Displays first esc&#x27;s rpm</p>
+<p>Displays highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
@@ -27429,7 +27874,7 @@ DO NOT EDIT
 
 <h2>ESCAMPS_EN (OSD4_ESCAMPS_EN)</h2>
 
-<p>Displays first esc&#x27;s current</p>
+<p>Displays the current of the ESC with the highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
@@ -28550,6 +28995,149 @@ DO NOT EDIT
 <p>Sets the font index for this screen (MSP DisplayPort only)</p>
 <ul>
 <li>Range: 0 21</li>
+</ul>
+
+
+<h2>RC_PWR_EN (OSD4_RC_PWR_EN)</h2>
+
+<p>Displays the RC link transmit (TX) power in mW or W, depending on level</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>RC_PWR_X (OSD4_RC_PWR_X)</h2>
+
+<p>Horizontal position on screen</p>
+<ul>
+<li>Range: 0 59</li>
+</ul>
+
+
+<h2>RC_PWR_Y (OSD4_RC_PWR_Y)</h2>
+
+<p>Vertical position on screen</p>
+<ul>
+<li>Range: 0 21</li>
+</ul>
+
+
+<h2>RSSIDBM_EN (OSD4_RSSIDBM_EN)</h2>
+
+<p>Displays RC link signal strength in dBm</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>RSSIDBM_X (OSD4_RSSIDBM_X)</h2>
+
+<p>Horizontal position on screen</p>
+<ul>
+<li>Range: 0 59</li>
+</ul>
+
+
+<h2>RSSIDBM_Y (OSD4_RSSIDBM_Y)</h2>
+
+<p>Vertical position on screen</p>
+<ul>
+<li>Range: 0 21</li>
+</ul>
+
+
+<h2>RC_SNR_EN (OSD4_RC_SNR_EN)</h2>
+
+<p>Displays RC link signal to noise ratio in dB</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>RC_SNR_X (OSD4_RC_SNR_X)</h2>
+
+<p>Horizontal position on screen</p>
+<ul>
+<li>Range: 0 59</li>
+</ul>
+
+
+<h2>RC_SNR_Y (OSD4_RC_SNR_Y)</h2>
+
+<p>Vertical position on screen</p>
+<ul>
+<li>Range: 0 21</li>
+</ul>
+
+
+<h2>RC_ANT_EN (OSD4_RC_ANT_EN)</h2>
+
+<p>Displays the current RC link active antenna</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>RC_ANT_X (OSD4_RC_ANT_X)</h2>
+
+<p>Horizontal position on screen</p>
+<ul>
+<li>Range: 0 59</li>
+</ul>
+
+
+<h2>RC_ANT_Y (OSD4_RC_ANT_Y)</h2>
+
+<p>Vertical position on screen</p>
+<ul>
+<li>Range: 0 21</li>
+</ul>
+
+
+<h2>RC_LQ_EN (OSD4_RC_LQ_EN)</h2>
+
+<p>Displays the RC link quality (uplink, 0 to 100%) and also RF mode if bit 7 of OSD_OPTIONS is set</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>RC_LQ_X (OSD4_RC_LQ_X)</h2>
+
+<p>Horizontal position on screen</p>
+<ul>
+<li>Range: 0 59</li>
+</ul>
+
+
+<h2>RC_LQ_Y (OSD4_RC_LQ_Y)</h2>
+
+<p>Vertical position on screen</p>
+<ul>
+<li>Range: 0 21</li>
+</ul>
+
+
+<h2>ESC_IDX (OSD4_ESC_IDX)</h2>
+
+<p>Index of the ESC to use for displaying ESC information. 0 means use the ESC with the highest value.</p>
+<ul>
+<li>Range: 0 32</li>
 </ul>
 
 
@@ -44256,7 +44844,7 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Wind Profile Type (SIM_WIND_T_)</h2>
+<h2>Wind Profile Type (SIM_WIND_T)</h2>
 
 <p>Selects how wind varies from surface to WIND_T_ALT</p>
 <ul>

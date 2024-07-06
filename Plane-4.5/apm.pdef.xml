@@ -614,7 +614,7 @@
         <field name="Range">0 50</field>
         <field name="Increment">0.1</field>
       </param>
-      <param humanName="Minimum ground speed" name="ArduPlane:MIN_GROUNDSPEED" documentation="Minimum ground speed in cm/s when under airspeed control" user="Advanced">
+      <param humanName="Minimum ground speed" name="ArduPlane:MIN_GROUNDSPEED" documentation="Minimum ground speed when under airspeed control" user="Advanced">
         <field name="Units">m/s</field>
         <field name="UnitText">meters per second</field>
       </param>
@@ -806,76 +806,8 @@
       </param>
     </parameters>
     <parameters name="Lua Script">
-      <param humanName="Force enable High Latency mode" name="RCK_FORCEHL" documentation="Automatically enables High Latency mode if not already enabled" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Update rate" name="RCK_PERIOD" documentation="When in High Latency mode, send Rockblock updates every N seconds" user="Standard">
-        <field name="Range">0 600</field>
-        <field name="Units">s</field>
-        <field name="UnitText">seconds</field>
-      </param>
-      <param humanName="Display Rockblock debugging text" name="RCK_DEBUG" documentation="Sends Rockblock debug text to GCS via statustexts" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Enable Message transmission" name="RCK_ENABLE" documentation="Enables the Rockblock sending and recieving" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="EKF Source ExternalNav Innovation Threshold" name="ESRC_EXTN_THRESH" documentation="ExternalNav may be used if innovations are below this threshold" user="Standard">
-        <field name="Range">0 1</field>
-      </param>
-      <param humanName="EKF Source ExternalNav Quality Threshold" name="ESRC_EXTN_QUAL" documentation="ExternalNav may be used if quality is above this threshold" user="Standard">
-        <field name="Range">0 100</field>
-        <field name="Units">%</field>
-        <field name="UnitText">percent</field>
-      </param>
-      <param humanName="EKF Source OpticalFlow Innovation Threshold" name="ESRC_FLOW_THRESH" documentation="OpticalFlow may be used if innovations are below this threshold" user="Standard">
-        <field name="Range">0 1</field>
-      </param>
-      <param humanName="EKF Source OpticalFlow Quality Threshold" name="ESRC_FLOW_QUAL" documentation="OpticalFlow may be used if quality is above this threshold" user="Standard">
-        <field name="Range">0 100</field>
-        <field name="Units">%</field>
-        <field name="UnitText">percent</field>
-      </param>
-      <param humanName="EKF Source Rangefinder Max" name="ESRC_RNGFND_MAX" documentation="OpticalFlow may be used if rangefinder distance is below this threshold" user="Standard">
-        <field name="Range">0 50</field>
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-      </param>
-      <param humanName="Ship landing enable" name="SHIP_ENABLE" documentation="Enable ship landing system" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Ship landing angle" name="SHIP_LAND_ANGLE" documentation="Angle from the stern of the ship for landing approach. Use this to ensure that on a go-around that ship superstructure and cables are avoided. A value of zero means to approach from the rear of the ship. A value of 90 means the landing will approach from the port (left) side of the ship. A value of -90 will mean approaching from the starboard (right) side of the ship. A value of 180 will approach from the bow of the ship. This parameter is combined with the sign of the RTL_RADIUS parameter to determine the holdoff pattern. If RTL_RADIUS is positive then a clockwise loiter is performed, if RTL_RADIUS is negative then a counter-clockwise loiter is used." user="Standard">
-        <field name="Range">-180 180</field>
-        <field name="Units">deg</field>
-        <field name="UnitText">degrees</field>
-      </param>
-      <param humanName="Ship automatic offset trigger" name="SHIP_AUTO_OFS" documentation="Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target. NOTE: This parameter will auto-reset to zero once the offset has been calculated." user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Trigger</value>
-        </values>
-      </param>
-      <param humanName="Precland altitude cutoff" name="PLND_ALT_CUTOFF" documentation="The altitude (rangefinder distance) below which we stop using the precision landing sensor and continue landing" user="Standard">
-        <field name="Range">0 20</field>
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-      </param>
-      <param humanName="Precland distance cutoff" name="DIST_CUTOFF" documentation="The distance from target beyond which the target is ignored" user="Standard">
-        <field name="Range">0 100</field>
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
+      <param humanName="Mount POI distance max" name="POI_DIST_MAX" documentation="POI's max distance (in meters) from the vehicle" user="Standard">
+        <field name="Range">0 10000</field>
       </param>
       <param humanName="Count of SOC estimators" name="BATT_SOC_COUNT" documentation="Number of battery SOC estimators" user="Standard">
         <field name="Range">0 4</field>
@@ -940,6 +872,37 @@
       <param humanName="Battery estimator coefficient3" name="BATT_SOC4_C3" documentation="Battery estimator coefficient3" user="Standard">
         <field name="Range">0.01 0.5</field>
       </param>
+      <param humanName="parameter reversion enable" name="PREV_ENABLE" documentation="Enable parameter reversion system" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="param reversion RC function" name="PREV_RC_FUNC" documentation="RCn_OPTION number to used to trigger parameter reversion" user="Standard">
+</param>
+      <param humanName="Force enable High Latency mode" name="RCK_FORCEHL" documentation="Automatically enables High Latency mode if not already enabled" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Update rate" name="RCK_PERIOD" documentation="When in High Latency mode, send Rockblock updates every N seconds" user="Standard">
+        <field name="Range">0 600</field>
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+      </param>
+      <param humanName="Display Rockblock debugging text" name="RCK_DEBUG" documentation="Sends Rockblock debug text to GCS via statustexts" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Enable Message transmission" name="RCK_ENABLE" documentation="Enables the Rockblock sending and recieving" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
       <param humanName="Rover Quicktune enable" name="RTUN_ENABLE" documentation="Enable quicktune system" user="Standard">
         <values>
           <value code="0">Disabled</value>
@@ -989,17 +952,6 @@
           <value code="307">Scripting8</value>
         </values>
       </param>
-      <param humanName="Mount POI distance max" name="POI_DIST_MAX" documentation="POI's max distance (in meters) from the vehicle" user="Standard">
-        <field name="Range">0 10000</field>
-      </param>
-      <param humanName="parameter reversion enable" name="PREV_ENABLE" documentation="Enable parameter reversion system" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="param reversion RC function" name="PREV_RC_FUNC" documentation="RCn_OPTION number to used to trigger parameter reversion" user="Standard">
-</param>
       <param humanName="Deadreckoning Enable" name="DR_ENABLE" documentation="Deadreckoning Enable" user="Standard">
         <values>
           <value code="0">Disabled</value>
@@ -1048,6 +1000,50 @@
           <value code="20">Guided_NoGPS</value>
           <value code="21">Smart_RTL</value>
           <value code="27">Auto RTL</value>
+        </values>
+      </param>
+      <param humanName="enable web server" name="WEB_ENABLE" documentation="enable web server" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="web server TCP port" name="WEB_BIND_PORT" documentation="web server TCP port" user="Standard">
+        <field name="Range">1 65535</field>
+      </param>
+      <param humanName="web server debugging" name="WEB_DEBUG" documentation="web server debugging" user="Advanced">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="web server block size" name="WEB_BLOCK_SIZE" documentation="web server block size for download" user="Advanced">
+        <field name="Range">1 65535</field>
+      </param>
+      <param humanName="web server timeout" name="WEB_TIMEOUT" documentation="timeout for inactive connections" user="Advanced">
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+        <field name="Range">0.1 60</field>
+      </param>
+      <param humanName="web server minimum file size for sendfile" name="WEB_SENDFILE_MIN" documentation="sendfile is an offloading mechanism for faster file download. If this is non-zero and the file is larger than this size then sendfile will be used for file download" user="Advanced">
+        <field name="Range">0 10000000</field>
+      </param>
+      <param humanName="WinchControl Rate Up" name="WINCH_RATE_UP" documentation="Maximum rate when retracting line" user="Standard">
+        <field name="Range">0.1 5.0</field>
+      </param>
+      <param humanName="WinchControl Rate Down" name="WINCH_RATE_DN" documentation="Maximum rate when releasing line" user="Standard">
+        <field name="Range">0.1 5.0</field>
+      </param>
+      <param humanName="Winch Rate Control RC function" name="WINCH_RC_FUNC" documentation="RCn_OPTION number to use to control winch rate" user="Standard">
+        <values>
+          <value code="300">Scripting1</value>
+          <value code="301">Scripting2</value>
+          <value code="302">Scripting3</value>
+          <value code="303">Scripting4</value>
+          <value code="304">Scripting5</value>
+          <value code="305">Scripting6</value>
+          <value code="306">Scripting7</value>
+          <value code="307">Scripting8</value>
         </values>
       </param>
       <param humanName="Quicktune enable" name="QUIK_ENABLE" documentation="Enable quicktune system" user="Standard">
@@ -1104,49 +1100,53 @@
       <param humanName="Quicktune options" name="QUIK_OPTIONS" documentation="Additional options. When the Two Position Switch option is enabled then a high switch position will start the tune, low will disable the tune. you should also set a QUIK_AUTO_SAVE time so that you will be able to save the tune." user="Standard">
         <field name="Bitmask">0:UseTwoPositionSwitch</field>
       </param>
-      <param humanName="WinchControl Rate Up" name="WINCH_RATE_UP" documentation="Maximum rate when retracting line" user="Standard">
-        <field name="Range">0.1 5.0</field>
+      <param humanName="EKF Source ExternalNav Innovation Threshold" name="ESRC_EXTN_THRESH" documentation="ExternalNav may be used if innovations are below this threshold" user="Standard">
+        <field name="Range">0 1</field>
       </param>
-      <param humanName="WinchControl Rate Down" name="WINCH_RATE_DN" documentation="Maximum rate when releasing line" user="Standard">
-        <field name="Range">0.1 5.0</field>
+      <param humanName="EKF Source ExternalNav Quality Threshold" name="ESRC_EXTN_QUAL" documentation="ExternalNav may be used if quality is above this threshold" user="Standard">
+        <field name="Range">0 100</field>
+        <field name="Units">%</field>
+        <field name="UnitText">percent</field>
       </param>
-      <param humanName="Winch Rate Control RC function" name="WINCH_RC_FUNC" documentation="RCn_OPTION number to use to control winch rate" user="Standard">
-        <values>
-          <value code="300">Scripting1</value>
-          <value code="301">Scripting2</value>
-          <value code="302">Scripting3</value>
-          <value code="303">Scripting4</value>
-          <value code="304">Scripting5</value>
-          <value code="305">Scripting6</value>
-          <value code="306">Scripting7</value>
-          <value code="307">Scripting8</value>
-        </values>
+      <param humanName="EKF Source OpticalFlow Innovation Threshold" name="ESRC_FLOW_THRESH" documentation="OpticalFlow may be used if innovations are below this threshold" user="Standard">
+        <field name="Range">0 1</field>
       </param>
-      <param humanName="enable web server" name="WEB_ENABLE" documentation="enable web server" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
+      <param humanName="EKF Source OpticalFlow Quality Threshold" name="ESRC_FLOW_QUAL" documentation="OpticalFlow may be used if quality is above this threshold" user="Standard">
+        <field name="Range">0 100</field>
+        <field name="Units">%</field>
+        <field name="UnitText">percent</field>
       </param>
-      <param humanName="web server TCP port" name="WEB_BIND_PORT" documentation="web server TCP port" user="Standard">
-        <field name="Range">1 65535</field>
+      <param humanName="EKF Source Rangefinder Max" name="ESRC_RNGFND_MAX" documentation="OpticalFlow may be used if rangefinder distance is below this threshold" user="Standard">
+        <field name="Range">0 50</field>
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
       </param>
-      <param humanName="web server debugging" name="WEB_DEBUG" documentation="web server debugging" user="Advanced">
+      <param humanName="Ship landing enable" name="SHIP_ENABLE" documentation="Enable ship landing system" user="Standard">
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
         </values>
       </param>
-      <param humanName="web server block size" name="WEB_BLOCK_SIZE" documentation="web server block size for download" user="Advanced">
-        <field name="Range">1 65535</field>
+      <param humanName="Ship landing angle" name="SHIP_LAND_ANGLE" documentation="Angle from the stern of the ship for landing approach. Use this to ensure that on a go-around that ship superstructure and cables are avoided. A value of zero means to approach from the rear of the ship. A value of 90 means the landing will approach from the port (left) side of the ship. A value of -90 will mean approaching from the starboard (right) side of the ship. A value of 180 will approach from the bow of the ship. This parameter is combined with the sign of the RTL_RADIUS parameter to determine the holdoff pattern. If RTL_RADIUS is positive then a clockwise loiter is performed, if RTL_RADIUS is negative then a counter-clockwise loiter is used." user="Standard">
+        <field name="Range">-180 180</field>
+        <field name="Units">deg</field>
+        <field name="UnitText">degrees</field>
       </param>
-      <param humanName="web server timeout" name="WEB_TIMEOUT" documentation="timeout for inactive connections" user="Advanced">
-        <field name="Units">s</field>
-        <field name="UnitText">seconds</field>
-        <field name="Range">0.1 60</field>
+      <param humanName="Ship automatic offset trigger" name="SHIP_AUTO_OFS" documentation="Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target. NOTE: This parameter will auto-reset to zero once the offset has been calculated." user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Trigger</value>
+        </values>
       </param>
-      <param humanName="web server minimum file size for sendfile" name="WEB_SENDFILE_MIN" documentation="sendfile is an offloading mechanism for faster file download. If this is non-zero and the file is larger than this size then sendfile will be used for file download" user="Advanced">
-        <field name="Range">0 10000000</field>
+      <param humanName="Precland altitude cutoff" name="PLND_ALT_CUTOFF" documentation="The altitude (rangefinder distance) below which we stop using the precision landing sensor and continue landing" user="Standard">
+        <field name="Range">0 20</field>
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="Precland distance cutoff" name="DIST_CUTOFF" documentation="The distance from target beyond which the target is ignored" user="Standard">
+        <field name="Range">0 100</field>
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
       </param>
       <param humanName="Angular acceleration limit" name="AEROM_ANG_ACCEL" documentation="Maximum angular acceleration in maneuvers">
         <field name="Units">deg/s/s</field>
@@ -1265,6 +1265,78 @@
       <param humanName="Trik Count" name="TRIK_COUNT" documentation="Number of tricks which can be selected over the range of the trik selection RC channel">
         <field name="Range">1 11</field>
       </param>
+      <param humanName="ViewPro debug" name="VIEP_DEBUG" documentation="ViewPro debug" user="Advanced">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+          <value code="2">Enabled including attitude reporting</value>
+        </values>
+      </param>
+      <param humanName="ViewPro Camera For Switch Low" name="VIEP_CAM_SWLOW" documentation="Camera selection when switch is in low position" user="Standard">
+        <values>
+          <value code="0">No change in camera selection</value>
+          <value code="1">EO1</value>
+          <value code="2">IR thermal</value>
+          <value code="3">EO1 + IR Picture-in-picture</value>
+          <value code="4">IR + EO1 Picture-in-picture</value>
+          <value code="5">Fusion</value>
+          <value code="6">IR1 13mm</value>
+          <value code="7">IR2 52mm</value>
+        </values>
+      </param>
+      <param humanName="ViewPro Camera For Switch Mid" name="VIEP_CAM_SWMID" documentation="Camera selection when switch is in middle position" user="Standard">
+        <values>
+          <value code="0">No change in camera selection</value>
+          <value code="1">EO1</value>
+          <value code="2">IR thermal</value>
+          <value code="3">EO1 + IR Picture-in-picture</value>
+          <value code="4">IR + EO1 Picture-in-picture</value>
+          <value code="5">Fusion</value>
+          <value code="6">IR1 13mm</value>
+          <value code="7">IR2 52mm</value>
+        </values>
+      </param>
+      <param humanName="ViewPro Camera For Switch High" name="VIEP_CAM_SWHIGH" documentation="Camera selection when switch is in high position" user="Standard">
+        <values>
+          <value code="0">No change in camera selection</value>
+          <value code="1">EO1</value>
+          <value code="2">IR thermal</value>
+          <value code="3">EO1 + IR Picture-in-picture</value>
+          <value code="4">IR + EO1 Picture-in-picture</value>
+          <value code="5">Fusion</value>
+          <value code="6">IR1 13mm</value>
+          <value code="7">IR2 52mm</value>
+        </values>
+      </param>
+      <param humanName="ViewPro Zoom Speed" name="VIEP_ZOOM_SPEED" documentation="ViewPro Zoom Speed.  Higher numbers result in faster zooming" user="Standard">
+        <field name="Range">0 7</field>
+      </param>
+      <param humanName="ViewPro Zoom Times Max" name="VIEP_ZOOM_MAX" documentation="ViewPro Zoom Times Max" user="Standard">
+        <field name="Range">0 30</field>
+      </param>
+      <param humanName="EFI DLA enable" name="EFI_DLA_ENABLE" documentation="Enable EFI DLA driver" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="EFI DLA fuel scale" name="EFI_DLA_LPS" documentation="EFI DLA litres of fuel per second of injection time" user="Standard">
+        <field name="Range">0.00001 1</field>
+        <field name="Units">litres</field>
+        <field name="UnitText">litres</field>
+      </param>
+      <param humanName="Generator SVFFI enable" name="EFI_SVF_ENABLE" documentation="Enable SVFFI generator support" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Generator SVFFI arming check" name="EFI_SVF_ARMCHECK" documentation="Check for Generator ARM state before arming" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
       <param humanName="Hobbywing ESC Enable" name="ESC_HW_ENABLE" documentation="Enable Hobbywing ESC telemetry" user="Standard">
         <values>
           <value code="0">Disabled</value>
@@ -1276,6 +1348,12 @@
       </param>
       <param humanName="Hobbywing ESC motor offset" name="ESC_HW_OFS" documentation="Motor number offset of first ESC" user="Standard">
         <field name="Range">0 31</field>
+      </param>
+      <param humanName="EFI INF-Inject enable" name="EFI_INF_ENABLE" documentation="Enable EFI INF-Inject driver" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
       </param>
       <param humanName="Enable SkyPower EFI support" name="EFI_SP_ENABLE" documentation="Enable SkyPower EFI support" user="Standard">
         <values>
@@ -1369,54 +1447,37 @@
         <field name="Units">s</field>
         <field name="UnitText">seconds</field>
       </param>
-      <param humanName="ViewPro debug" name="VIEP_DEBUG" documentation="ViewPro debug" user="Advanced">
+      <param humanName="Enable ANX battery support" name="BATT_ANX_ENABLE" documentation="Enable ANX battery support" user="Standard">
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
-          <value code="2">Enabled including attitude reporting</value>
         </values>
       </param>
-      <param humanName="ViewPro Camera For Switch Low" name="VIEP_CAM_SWLOW" documentation="Camera selection when switch is in low position" user="Standard">
+      <param humanName="Set ANX CAN driver" name="BATT_ANX_CANDRV" documentation="Set ANX CAN driver" user="Standard">
         <values>
-          <value code="0">No change in camera selection</value>
-          <value code="1">EO1</value>
-          <value code="2">IR thermal</value>
-          <value code="3">EO1 + IR Picture-in-picture</value>
-          <value code="4">IR + EO1 Picture-in-picture</value>
-          <value code="5">Fusion</value>
-          <value code="6">IR1 13mm</value>
-          <value code="7">IR2 52mm</value>
+          <value code="0">None</value>
+          <value code="1">1stCANDriver</value>
+          <value code="2">2ndCanDriver</value>
         </values>
       </param>
-      <param humanName="ViewPro Camera For Switch Mid" name="VIEP_CAM_SWMID" documentation="Camera selection when switch is in middle position" user="Standard">
+      <param humanName="ANX CAN battery index" name="BATT_ANX_INDEX" documentation="ANX CAN battery index" user="Standard">
+        <field name="Range">1 10</field>
+      </param>
+      <param humanName="ANX CAN battery options" name="BATT_ANX_OPTIONS" documentation="ANX CAN battery options" user="Advanced">
+        <field name="Bitmask">0:LogAllFrames</field>
+      </param>
+      <param humanName="DJIRS2 debug" name="DJIR_DEBUG" documentation="Enable DJIRS2 debug" user="Advanced">
         <values>
-          <value code="0">No change in camera selection</value>
-          <value code="1">EO1</value>
-          <value code="2">IR thermal</value>
-          <value code="3">EO1 + IR Picture-in-picture</value>
-          <value code="4">IR + EO1 Picture-in-picture</value>
-          <value code="5">Fusion</value>
-          <value code="6">IR1 13mm</value>
-          <value code="7">IR2 52mm</value>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+          <value code="2">Enabled with attitude reporting</value>
         </values>
       </param>
-      <param humanName="ViewPro Camera For Switch High" name="VIEP_CAM_SWHIGH" documentation="Camera selection when switch is in high position" user="Standard">
+      <param humanName="DJIRS2 upside down" name="DJIR_UPSIDEDOWN" documentation="DJIRS2 upside down" user="Standard">
         <values>
-          <value code="0">No change in camera selection</value>
-          <value code="1">EO1</value>
-          <value code="2">IR thermal</value>
-          <value code="3">EO1 + IR Picture-in-picture</value>
-          <value code="4">IR + EO1 Picture-in-picture</value>
-          <value code="5">Fusion</value>
-          <value code="6">IR1 13mm</value>
-          <value code="7">IR2 52mm</value>
+          <value code="0">Right side up</value>
+          <value code="1">Upside down</value>
         </values>
-      </param>
-      <param humanName="ViewPro Zoom Speed" name="VIEP_ZOOM_SPEED" documentation="ViewPro Zoom Speed.  Higher numbers result in faster zooming" user="Standard">
-        <field name="Range">0 7</field>
-      </param>
-      <param humanName="ViewPro Zoom Times Max" name="VIEP_ZOOM_MAX" documentation="ViewPro Zoom Times Max" user="Standard">
-        <field name="Range">0 30</field>
       </param>
       <param humanName="Enable Halo6000 EFI driver" name="EFI_H6K_ENABLE" documentation="Enable Halo6000 EFI driver" user="Standard">
         <values>
@@ -1451,67 +1512,6 @@
       <param humanName="Halo6000 total fuel capacity" name="EFI_H6K_FUELTOT" documentation="The capacity of the tank in litres" user="Standard">
         <field name="Units">litres</field>
         <field name="UnitText">litres</field>
-      </param>
-      <param humanName="EFI DLA enable" name="EFI_DLA_ENABLE" documentation="Enable EFI DLA driver" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="EFI DLA fuel scale" name="EFI_DLA_LPS" documentation="EFI DLA litres of fuel per second of injection time" user="Standard">
-        <field name="Range">0.00001 1</field>
-        <field name="Units">litres</field>
-        <field name="UnitText">litres</field>
-      </param>
-      <param humanName="DJIRS2 debug" name="DJIR_DEBUG" documentation="Enable DJIRS2 debug" user="Advanced">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-          <value code="2">Enabled with attitude reporting</value>
-        </values>
-      </param>
-      <param humanName="DJIRS2 upside down" name="DJIR_UPSIDEDOWN" documentation="DJIRS2 upside down" user="Standard">
-        <values>
-          <value code="0">Right side up</value>
-          <value code="1">Upside down</value>
-        </values>
-      </param>
-      <param humanName="Enable ANX battery support" name="BATT_ANX_ENABLE" documentation="Enable ANX battery support" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Set ANX CAN driver" name="BATT_ANX_CANDRV" documentation="Set ANX CAN driver" user="Standard">
-        <values>
-          <value code="0">None</value>
-          <value code="1">1stCANDriver</value>
-          <value code="2">2ndCanDriver</value>
-        </values>
-      </param>
-      <param humanName="ANX CAN battery index" name="BATT_ANX_INDEX" documentation="ANX CAN battery index" user="Standard">
-        <field name="Range">1 10</field>
-      </param>
-      <param humanName="ANX CAN battery options" name="BATT_ANX_OPTIONS" documentation="ANX CAN battery options" user="Advanced">
-        <field name="Bitmask">0:LogAllFrames</field>
-      </param>
-      <param humanName="EFI INF-Inject enable" name="EFI_INF_ENABLE" documentation="Enable EFI INF-Inject driver" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Generator SVFFI enable" name="EFI_SVF_ENABLE" documentation="Enable SVFFI generator support" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Generator SVFFI arming check" name="EFI_SVF_ARMCHECK" documentation="Check for Generator ARM state before arming" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
       </param>
       <param humanName="TOFSENSE-M to be used as Proximity sensor" name="TOFSENSE_S1_PRX" documentation="Set 0 if sensor is to be used as a 1-D rangefinder (minimum of all distances will be sent, typically used for height detection). Set 1 if it should be used as a 3-D proximity device (Eg. Obstacle Avoidance)" user="Standard">
         <values>
@@ -11017,8 +11017,8 @@
         <field name="UnitText">degrees Celsius</field>
         <field name="Calibration">1</field>
       </param>
-      <param humanName="Options for temperature calibration" name="INS_TCAL_OPTIONS" documentation="This enables optional temperature calibration features. Setting PersistParams will save the accelerometer and temperature calibration parameters in the bootloader sector on the next update of the bootloader." user="Advanced">
-        <field name="Bitmask">0:PersistParams</field>
+      <param humanName="Options for temperature calibration" name="INS_TCAL_OPTIONS" documentation="This enables optional temperature calibration features. Setting of the Persist bits will save the temperature and/or accelerometer calibration parameters in the bootloader sector on the next update of the bootloader." user="Advanced">
+        <field name="Bitmask">0:PersistTemps, 1:PersistAccels</field>
       </param>
       <param humanName="Raw logging options" name="INS_RAW_LOG_OPT" documentation="Raw logging options bitmask" user="Advanced">
         <field name="Bitmask">0:Log primary gyro only, 1:Log all gyros, 2:Post filter, 3: Pre and post filter</field>
@@ -12899,7 +12899,7 @@
         </values>
       </param>
       <param humanName="OSD Options" name="OSD_OPTIONS" documentation="This sets options that change the display" user="Standard">
-        <field name="Bitmask">0:UseDecimalPack, 1:InvertedWindArrow, 2:InvertedAHRoll, 3:Convert feet to miles at 5280ft instead of 10000ft, 4:DisableCrosshair, 5:TranslateArrows, 6:AviationStyleAH</field>
+        <field name="Bitmask">0:UseDecimalPack, 1:InvertedWindArrow, 2:InvertedAHRoll, 3:Convert feet to miles at 5280ft instead of 10000ft, 4:DisableCrosshair, 5:TranslateArrows, 6:AviationStyleAH, 7:Prefix LQ with RF Mode</field>
       </param>
       <param humanName="OSD Font" name="OSD_FONT" documentation="This sets which OSD font to use. It is an integer from 0 to the number of fonts available" user="Standard">
         <field name="RebootRequired">True</field>
@@ -12912,8 +12912,8 @@
         <field name="Range">0 63</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="RSSI warn level (in %)" name="OSD_W_RSSI" documentation="Set level at which RSSI item will flash" user="Standard">
-        <field name="Range">0 99</field>
+      <param humanName="RSSI warn level (in %)" name="OSD_W_RSSI" documentation="Set level at which RSSI item will flash (in positive % or negative dBm values as applicable). 30% or -100dBm are defaults." user="Standard">
+        <field name="Range">-128 100</field>
       </param>
       <param humanName="NSAT warn level" name="OSD_W_NSAT" documentation="Set level at which NSAT item will flash" user="Standard">
         <field name="Range">1 30</field>
@@ -12960,6 +12960,12 @@
       </param>
       <param humanName="Avg Cell Resting Volt warn level" name="OSD_W_ACRVOLT" documentation="Set level at which ACRVOLT item will flash" user="Standard">
         <field name="Range">0 100</field>
+      </param>
+      <param humanName="RC link quality warn level (in %)" name="OSD_W_LQ" documentation="Set level at which RC_LQ item will flash (%)" user="Standard">
+        <field name="Range">0 100</field>
+      </param>
+      <param humanName="RC link SNR warn level (in %)" name="OSD_W_SNR" documentation="Set level at which RC_SNR item will flash (in db)" user="Standard">
+        <field name="Range">-20 10</field>
       </param>
       <param humanName="OSD type 2" name="OSD_TYPE2" documentation="OSD type 2. TXONLY makes the OSD parameter selection available to other modules even if there is no native OSD support on the board, for instance CRSF." user="Standard">
         <values>
@@ -13190,7 +13196,7 @@
       <param humanName="VSPEED_Y" name="OSD1_VSPEED_Y" documentation="Vertical position on screen">
         <field name="Range">0 21</field>
       </param>
-      <param humanName="ESCTEMP_EN" name="OSD1_ESCTEMP_EN" documentation="Displays first esc's temp">
+      <param humanName="ESCTEMP_EN" name="OSD1_ESCTEMP_EN" documentation="Displays highest temp of all active ESCs, or of a specific ECS if OSDx_ESC_IDX is set">
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
@@ -13202,7 +13208,7 @@
       <param humanName="ESCTEMP_Y" name="OSD1_ESCTEMP_Y" documentation="Vertical position on screen">
         <field name="Range">0 21</field>
       </param>
-      <param humanName="ESCRPM_EN" name="OSD1_ESCRPM_EN" documentation="Displays first esc's rpm">
+      <param humanName="ESCRPM_EN" name="OSD1_ESCRPM_EN" documentation="Displays highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set">
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
@@ -13214,7 +13220,7 @@
       <param humanName="ESCRPM_Y" name="OSD1_ESCRPM_Y" documentation="Vertical position on screen">
         <field name="Range">0 21</field>
       </param>
-      <param humanName="ESCAMPS_EN" name="OSD1_ESCAMPS_EN" documentation="Displays first esc's current">
+      <param humanName="ESCAMPS_EN" name="OSD1_ESCAMPS_EN" documentation="Displays the current of the ESC with the highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set">
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
@@ -13715,6 +13721,69 @@
       <param humanName="Sets the font index for this screen (MSP DisplayPort only)" name="OSD1_FONT" documentation="Sets the font index for this screen (MSP DisplayPort only)" user="Standard">
         <field name="Range">0 21</field>
       </param>
+      <param humanName="RC_PWR_EN" name="OSD1_RC_PWR_EN" documentation="Displays the RC link transmit (TX) power in mW or W, depending on level">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="RC_PWR_X" name="OSD1_RC_PWR_X" documentation="Horizontal position on screen">
+        <field name="Range">0 59</field>
+      </param>
+      <param humanName="RC_PWR_Y" name="OSD1_RC_PWR_Y" documentation="Vertical position on screen">
+        <field name="Range">0 21</field>
+      </param>
+      <param humanName="RSSIDBM_EN" name="OSD1_RSSIDBM_EN" documentation="Displays RC link signal strength in dBm">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="RSSIDBM_X" name="OSD1_RSSIDBM_X" documentation="Horizontal position on screen">
+        <field name="Range">0 59</field>
+      </param>
+      <param humanName="RSSIDBM_Y" name="OSD1_RSSIDBM_Y" documentation="Vertical position on screen">
+        <field name="Range">0 21</field>
+      </param>
+      <param humanName="RC_SNR_EN" name="OSD1_RC_SNR_EN" documentation="Displays RC link signal to noise ratio in dB">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="RC_SNR_X" name="OSD1_RC_SNR_X" documentation="Horizontal position on screen">
+        <field name="Range">0 59</field>
+      </param>
+      <param humanName="RC_SNR_Y" name="OSD1_RC_SNR_Y" documentation="Vertical position on screen">
+        <field name="Range">0 21</field>
+      </param>
+      <param humanName="RC_ANT_EN" name="OSD1_RC_ANT_EN" documentation="Displays the current RC link active antenna">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="RC_ANT_X" name="OSD1_RC_ANT_X" documentation="Horizontal position on screen">
+        <field name="Range">0 59</field>
+      </param>
+      <param humanName="RC_ANT_Y" name="OSD1_RC_ANT_Y" documentation="Vertical position on screen">
+        <field name="Range">0 21</field>
+      </param>
+      <param humanName="RC_LQ_EN" name="OSD1_RC_LQ_EN" documentation="Displays the RC link quality (uplink, 0 to 100%) and also RF mode if bit 7 of OSD_OPTIONS is set">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="RC_LQ_X" name="OSD1_RC_LQ_X" documentation="Horizontal position on screen">
+        <field name="Range">0 59</field>
+      </param>
+      <param humanName="RC_LQ_Y" name="OSD1_RC_LQ_Y" documentation="Vertical position on screen">
+        <field name="Range">0 21</field>
+      </param>
+      <param humanName="ESC_IDX" name="OSD1_ESC_IDX" documentation="Index of the ESC to use for displaying ESC information. 0 means use the ESC with the highest value.">
+        <field name="Range">0 32</field>
+      </param>
     </parameters>
     <parameters name="OSD2_">
       <param humanName="Enable screen" name="OSD2_ENABLE" documentation="Enable this screen" user="Standard">
@@ -13933,7 +14002,7 @@
       <param humanName="VSPEED_Y" name="OSD2_VSPEED_Y" documentation="Vertical position on screen">
         <field name="Range">0 21</field>
       </param>
-      <param humanName="ESCTEMP_EN" name="OSD2_ESCTEMP_EN" documentation="Displays first esc's temp">
+      <param humanName="ESCTEMP_EN" name="OSD2_ESCTEMP_EN" documentation="Displays highest temp of all active ESCs, or of a specific ECS if OSDx_ESC_IDX is set">
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
@@ -13945,7 +14014,7 @@
       <param humanName="ESCTEMP_Y" name="OSD2_ESCTEMP_Y" documentation="Vertical position on screen">
         <field name="Range">0 21</field>
       </param>
-      <param humanName="ESCRPM_EN" name="OSD2_ESCRPM_EN" documentation="Displays first esc's rpm">
+      <param humanName="ESCRPM_EN" name="OSD2_ESCRPM_EN" documentation="Displays highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set">
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
@@ -13957,7 +14026,7 @@
       <param humanName="ESCRPM_Y" name="OSD2_ESCRPM_Y" documentation="Vertical position on screen">
         <field name="Range">0 21</field>
       </param>
-      <param humanName="ESCAMPS_EN" name="OSD2_ESCAMPS_EN" documentation="Displays first esc's current">
+      <param humanName="ESCAMPS_EN" name="OSD2_ESCAMPS_EN" documentation="Displays the current of the ESC with the highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set">
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
@@ -14458,6 +14527,69 @@
       <param humanName="Sets the font index for this screen (MSP DisplayPort only)" name="OSD2_FONT" documentation="Sets the font index for this screen (MSP DisplayPort only)" user="Standard">
         <field name="Range">0 21</field>
       </param>
+      <param humanName="RC_PWR_EN" name="OSD2_RC_PWR_EN" documentation="Displays the RC link transmit (TX) power in mW or W, depending on level">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="RC_PWR_X" name="OSD2_RC_PWR_X" documentation="Horizontal position on screen">
+        <field name="Range">0 59</field>
+      </param>
+      <param humanName="RC_PWR_Y" name="OSD2_RC_PWR_Y" documentation="Vertical position on screen">
+        <field name="Range">0 21</field>
+      </param>
+      <param humanName="RSSIDBM_EN" name="OSD2_RSSIDBM_EN" documentation="Displays RC link signal strength in dBm">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="RSSIDBM_X" name="OSD2_RSSIDBM_X" documentation="Horizontal position on screen">
+        <field name="Range">0 59</field>
+      </param>
+      <param humanName="RSSIDBM_Y" name="OSD2_RSSIDBM_Y" documentation="Vertical position on screen">
+        <field name="Range">0 21</field>
+      </param>
+      <param humanName="RC_SNR_EN" name="OSD2_RC_SNR_EN" documentation="Displays RC link signal to noise ratio in dB">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="RC_SNR_X" name="OSD2_RC_SNR_X" documentation="Horizontal position on screen">
+        <field name="Range">0 59</field>
+      </param>
+      <param humanName="RC_SNR_Y" name="OSD2_RC_SNR_Y" documentation="Vertical position on screen">
+        <field name="Range">0 21</field>
+      </param>
+      <param humanName="RC_ANT_EN" name="OSD2_RC_ANT_EN" documentation="Displays the current RC link active antenna">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="RC_ANT_X" name="OSD2_RC_ANT_X" documentation="Horizontal position on screen">
+        <field name="Range">0 59</field>
+      </param>
+      <param humanName="RC_ANT_Y" name="OSD2_RC_ANT_Y" documentation="Vertical position on screen">
+        <field name="Range">0 21</field>
+      </param>
+      <param humanName="RC_LQ_EN" name="OSD2_RC_LQ_EN" documentation="Displays the RC link quality (uplink, 0 to 100%) and also RF mode if bit 7 of OSD_OPTIONS is set">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="RC_LQ_X" name="OSD2_RC_LQ_X" documentation="Horizontal position on screen">
+        <field name="Range">0 59</field>
+      </param>
+      <param humanName="RC_LQ_Y" name="OSD2_RC_LQ_Y" documentation="Vertical position on screen">
+        <field name="Range">0 21</field>
+      </param>
+      <param humanName="ESC_IDX" name="OSD2_ESC_IDX" documentation="Index of the ESC to use for displaying ESC information. 0 means use the ESC with the highest value.">
+        <field name="Range">0 32</field>
+      </param>
     </parameters>
     <parameters name="OSD3_">
       <param humanName="Enable screen" name="OSD3_ENABLE" documentation="Enable this screen" user="Standard">
@@ -14676,7 +14808,7 @@
       <param humanName="VSPEED_Y" name="OSD3_VSPEED_Y" documentation="Vertical position on screen">
         <field name="Range">0 21</field>
       </param>
-      <param humanName="ESCTEMP_EN" name="OSD3_ESCTEMP_EN" documentation="Displays first esc's temp">
+      <param humanName="ESCTEMP_EN" name="OSD3_ESCTEMP_EN" documentation="Displays highest temp of all active ESCs, or of a specific ECS if OSDx_ESC_IDX is set">
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
@@ -14688,7 +14820,7 @@
       <param humanName="ESCTEMP_Y" name="OSD3_ESCTEMP_Y" documentation="Vertical position on screen">
         <field name="Range">0 21</field>
       </param>
-      <param humanName="ESCRPM_EN" name="OSD3_ESCRPM_EN" documentation="Displays first esc's rpm">
+      <param humanName="ESCRPM_EN" name="OSD3_ESCRPM_EN" documentation="Displays highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set">
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
@@ -14700,7 +14832,7 @@
       <param humanName="ESCRPM_Y" name="OSD3_ESCRPM_Y" documentation="Vertical position on screen">
         <field name="Range">0 21</field>
       </param>
-      <param humanName="ESCAMPS_EN" name="OSD3_ESCAMPS_EN" documentation="Displays first esc's current">
+      <param humanName="ESCAMPS_EN" name="OSD3_ESCAMPS_EN" documentation="Displays the current of the ESC with the highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set">
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
@@ -15201,6 +15333,69 @@
       <param humanName="Sets the font index for this screen (MSP DisplayPort only)" name="OSD3_FONT" documentation="Sets the font index for this screen (MSP DisplayPort only)" user="Standard">
         <field name="Range">0 21</field>
       </param>
+      <param humanName="RC_PWR_EN" name="OSD3_RC_PWR_EN" documentation="Displays the RC link transmit (TX) power in mW or W, depending on level">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="RC_PWR_X" name="OSD3_RC_PWR_X" documentation="Horizontal position on screen">
+        <field name="Range">0 59</field>
+      </param>
+      <param humanName="RC_PWR_Y" name="OSD3_RC_PWR_Y" documentation="Vertical position on screen">
+        <field name="Range">0 21</field>
+      </param>
+      <param humanName="RSSIDBM_EN" name="OSD3_RSSIDBM_EN" documentation="Displays RC link signal strength in dBm">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="RSSIDBM_X" name="OSD3_RSSIDBM_X" documentation="Horizontal position on screen">
+        <field name="Range">0 59</field>
+      </param>
+      <param humanName="RSSIDBM_Y" name="OSD3_RSSIDBM_Y" documentation="Vertical position on screen">
+        <field name="Range">0 21</field>
+      </param>
+      <param humanName="RC_SNR_EN" name="OSD3_RC_SNR_EN" documentation="Displays RC link signal to noise ratio in dB">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="RC_SNR_X" name="OSD3_RC_SNR_X" documentation="Horizontal position on screen">
+        <field name="Range">0 59</field>
+      </param>
+      <param humanName="RC_SNR_Y" name="OSD3_RC_SNR_Y" documentation="Vertical position on screen">
+        <field name="Range">0 21</field>
+      </param>
+      <param humanName="RC_ANT_EN" name="OSD3_RC_ANT_EN" documentation="Displays the current RC link active antenna">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="RC_ANT_X" name="OSD3_RC_ANT_X" documentation="Horizontal position on screen">
+        <field name="Range">0 59</field>
+      </param>
+      <param humanName="RC_ANT_Y" name="OSD3_RC_ANT_Y" documentation="Vertical position on screen">
+        <field name="Range">0 21</field>
+      </param>
+      <param humanName="RC_LQ_EN" name="OSD3_RC_LQ_EN" documentation="Displays the RC link quality (uplink, 0 to 100%) and also RF mode if bit 7 of OSD_OPTIONS is set">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="RC_LQ_X" name="OSD3_RC_LQ_X" documentation="Horizontal position on screen">
+        <field name="Range">0 59</field>
+      </param>
+      <param humanName="RC_LQ_Y" name="OSD3_RC_LQ_Y" documentation="Vertical position on screen">
+        <field name="Range">0 21</field>
+      </param>
+      <param humanName="ESC_IDX" name="OSD3_ESC_IDX" documentation="Index of the ESC to use for displaying ESC information. 0 means use the ESC with the highest value.">
+        <field name="Range">0 32</field>
+      </param>
     </parameters>
     <parameters name="OSD4_">
       <param humanName="Enable screen" name="OSD4_ENABLE" documentation="Enable this screen" user="Standard">
@@ -15419,7 +15614,7 @@
       <param humanName="VSPEED_Y" name="OSD4_VSPEED_Y" documentation="Vertical position on screen">
         <field name="Range">0 21</field>
       </param>
-      <param humanName="ESCTEMP_EN" name="OSD4_ESCTEMP_EN" documentation="Displays first esc's temp">
+      <param humanName="ESCTEMP_EN" name="OSD4_ESCTEMP_EN" documentation="Displays highest temp of all active ESCs, or of a specific ECS if OSDx_ESC_IDX is set">
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
@@ -15431,7 +15626,7 @@
       <param humanName="ESCTEMP_Y" name="OSD4_ESCTEMP_Y" documentation="Vertical position on screen">
         <field name="Range">0 21</field>
       </param>
-      <param humanName="ESCRPM_EN" name="OSD4_ESCRPM_EN" documentation="Displays first esc's rpm">
+      <param humanName="ESCRPM_EN" name="OSD4_ESCRPM_EN" documentation="Displays highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set">
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
@@ -15443,7 +15638,7 @@
       <param humanName="ESCRPM_Y" name="OSD4_ESCRPM_Y" documentation="Vertical position on screen">
         <field name="Range">0 21</field>
       </param>
-      <param humanName="ESCAMPS_EN" name="OSD4_ESCAMPS_EN" documentation="Displays first esc's current">
+      <param humanName="ESCAMPS_EN" name="OSD4_ESCAMPS_EN" documentation="Displays the current of the ESC with the highest rpm of all active ESCs, or of a specific ESC if OSDx_ESC_IDX is set">
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
@@ -15943,6 +16138,69 @@
       </param>
       <param humanName="Sets the font index for this screen (MSP DisplayPort only)" name="OSD4_FONT" documentation="Sets the font index for this screen (MSP DisplayPort only)" user="Standard">
         <field name="Range">0 21</field>
+      </param>
+      <param humanName="RC_PWR_EN" name="OSD4_RC_PWR_EN" documentation="Displays the RC link transmit (TX) power in mW or W, depending on level">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="RC_PWR_X" name="OSD4_RC_PWR_X" documentation="Horizontal position on screen">
+        <field name="Range">0 59</field>
+      </param>
+      <param humanName="RC_PWR_Y" name="OSD4_RC_PWR_Y" documentation="Vertical position on screen">
+        <field name="Range">0 21</field>
+      </param>
+      <param humanName="RSSIDBM_EN" name="OSD4_RSSIDBM_EN" documentation="Displays RC link signal strength in dBm">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="RSSIDBM_X" name="OSD4_RSSIDBM_X" documentation="Horizontal position on screen">
+        <field name="Range">0 59</field>
+      </param>
+      <param humanName="RSSIDBM_Y" name="OSD4_RSSIDBM_Y" documentation="Vertical position on screen">
+        <field name="Range">0 21</field>
+      </param>
+      <param humanName="RC_SNR_EN" name="OSD4_RC_SNR_EN" documentation="Displays RC link signal to noise ratio in dB">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="RC_SNR_X" name="OSD4_RC_SNR_X" documentation="Horizontal position on screen">
+        <field name="Range">0 59</field>
+      </param>
+      <param humanName="RC_SNR_Y" name="OSD4_RC_SNR_Y" documentation="Vertical position on screen">
+        <field name="Range">0 21</field>
+      </param>
+      <param humanName="RC_ANT_EN" name="OSD4_RC_ANT_EN" documentation="Displays the current RC link active antenna">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="RC_ANT_X" name="OSD4_RC_ANT_X" documentation="Horizontal position on screen">
+        <field name="Range">0 59</field>
+      </param>
+      <param humanName="RC_ANT_Y" name="OSD4_RC_ANT_Y" documentation="Vertical position on screen">
+        <field name="Range">0 21</field>
+      </param>
+      <param humanName="RC_LQ_EN" name="OSD4_RC_LQ_EN" documentation="Displays the RC link quality (uplink, 0 to 100%) and also RF mode if bit 7 of OSD_OPTIONS is set">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="RC_LQ_X" name="OSD4_RC_LQ_X" documentation="Horizontal position on screen">
+        <field name="Range">0 59</field>
+      </param>
+      <param humanName="RC_LQ_Y" name="OSD4_RC_LQ_Y" documentation="Vertical position on screen">
+        <field name="Range">0 21</field>
+      </param>
+      <param humanName="ESC_IDX" name="OSD4_ESC_IDX" documentation="Index of the ESC to use for displaying ESC information. 0 means use the ESC with the highest value.">
+        <field name="Range">0 32</field>
       </param>
     </parameters>
     <parameters name="OSD5_">
@@ -16881,7 +17139,7 @@
         <field name="Increment">0.1</field>
         <field name="Range">0.2 5</field>
       </param>
-      <param humanName="Quadplane AHRS trim pitch" name="Q_TRIM_PITCH" documentation="This sets the compensation for the pitch angle trim difference between calibrated AHRS level and vertical flight pitch. NOTE! this is relative to calibrated AHRS trim, not forward flight trim which includes TRIM_PITCH. For tailsitters, this is relative to a baseline of 90 degrees in AHRS." user="Advanced">
+      <param humanName="Quadplane AHRS trim pitch" name="Q_TRIM_PITCH" documentation="This sets the compensation for the pitch angle trim difference between calibrated AHRS level and vertical flight pitch. NOTE! this is relative to calibrated AHRS trim, not forward flight trim which includes PTCH_TRIM_DEG. For tailsitters, this is relative to a baseline of 90 degrees in AHRS." user="Advanced">
         <field name="Units">deg</field>
         <field name="UnitText">degrees</field>
         <field name="Range">-10 +10</field>
@@ -29225,7 +29483,7 @@
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
       </param>
-      <param humanName="Wind Profile Type" name="SIM_WIND_T_" documentation="Selects how wind varies from surface to WIND_T_ALT" user="Advanced    ">
+      <param humanName="Wind Profile Type" name="SIM_WIND_T" documentation="Selects how wind varies from surface to WIND_T_ALT" user="Advanced    ">
         <values>
           <value code="0">square law</value>
           <value code="1">none</value>

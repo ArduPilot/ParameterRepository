@@ -43731,7 +43731,7 @@ INS\_TCAL\_OPTIONS: Options for temperature calibration
 
 | *Note: This parameter is for advanced users*
 
-This enables optional temperature calibration features\. Setting PersistParams will save the accelerometer and temperature calibration parameters in the bootloader sector on the next update of the bootloader\.
+This enables optional temperature calibration features\. Setting of the Persist bits will save the temperature and\/or accelerometer calibration parameters in the bootloader sector on the next update of the bootloader\.
 
 
 +-------------------------+
@@ -43740,7 +43740,9 @@ This enables optional temperature calibration features\. Setting PersistParams w
 | +-----+---------------+ |
 | | Bit | Meaning       | |
 | +=====+===============+ |
-| | 0   | PersistParams | |
+| | 0   | PersistTemps  | |
+| +-----+---------------+ |
+| | 1   | PersistAccels | |
 | +-----+---------------+ |
 |                         |
 +-------------------------+
@@ -51758,6 +51760,8 @@ This sets options that change the display
 | +-----+----------------------------------------------------+ |
 | | 6   | AviationStyleAH                                    | |
 | +-----+----------------------------------------------------+ |
+| | 7   | Prefix LQ with RF Mode                             | |
+| +-----+----------------------------------------------------+ |
 |                                                              |
 +--------------------------------------------------------------+
 
@@ -51818,14 +51822,14 @@ OSD\_W\_RSSI: RSSI warn level \(in \%\)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Set level at which RSSI item will flash
+Set level at which RSSI item will flash \(in positive \% or negative dBm values as applicable\)\. 30\% or \-100dBm are defaults\.
 
 
-+---------+
-| Range   |
-+=========+
-| 0 to 99 |
-+---------+
++-------------+
+| Range       |
++=============+
+| -128 to 100 |
++-------------+
 
 
 
@@ -52073,6 +52077,42 @@ Set level at which ACRVOLT item will flash
 +==========+
 | 0 to 100 |
 +----------+
+
+
+
+
+.. _OSD_W_LQ:
+
+OSD\_W\_LQ: RC link quality warn level \(in \%\)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Set level at which RC\_LQ item will flash \(\%\)
+
+
++----------+
+| Range    |
++==========+
+| 0 to 100 |
++----------+
+
+
+
+
+.. _OSD_W_SNR:
+
+OSD\_W\_SNR: RC link SNR warn level \(in \%\)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Set level at which RC\_SNR item will flash \(in db\)
+
+
++-----------+
+| Range     |
++===========+
+| -20 to 10 |
++-----------+
 
 
 
@@ -53222,7 +53262,7 @@ OSD1\_ESCTEMP\_EN: ESCTEMP\_EN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Displays first esc\'s temp
+Displays highest temp of all active ESCs\, or of a specific ECS if OSDx\_ESC\_IDX is set
 
 
 +----------------------+
@@ -53283,7 +53323,7 @@ OSD1\_ESCRPM\_EN: ESCRPM\_EN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Displays first esc\'s rpm
+Displays highest rpm of all active ESCs\, or of a specific ESC if OSDx\_ESC\_IDX is set
 
 
 +----------------------+
@@ -53344,7 +53384,7 @@ OSD1\_ESCAMPS\_EN: ESCAMPS\_EN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Displays first esc\'s current
+Displays the current of the ESC with the highest rpm of all active ESCs\, or of a specific ESC if OSDx\_ESC\_IDX is set
 
 
 +----------------------+
@@ -55882,6 +55922,329 @@ Sets the font index for this screen \(MSP DisplayPort only\)
 
 
 
+.. _OSD1_RC_PWR_EN:
+
+OSD1\_RC\_PWR\_EN: RC\_PWR\_EN
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Displays the RC link transmit \(TX\) power in mW or W\, depending on level
+
+
++----------------------+
+| Values               |
++======================+
+| +-------+----------+ |
+| | Value | Meaning  | |
+| +=======+==========+ |
+| | 0     | Disabled | |
+| +-------+----------+ |
+| | 1     | Enabled  | |
+| +-------+----------+ |
+|                      |
++----------------------+
+
+
+
+
+.. _OSD1_RC_PWR_X:
+
+OSD1\_RC\_PWR\_X: RC\_PWR\_X
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Horizontal position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 59 |
++---------+
+
+
+
+
+.. _OSD1_RC_PWR_Y:
+
+OSD1\_RC\_PWR\_Y: RC\_PWR\_Y
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Vertical position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 21 |
++---------+
+
+
+
+
+.. _OSD1_RSSIDBM_EN:
+
+OSD1\_RSSIDBM\_EN: RSSIDBM\_EN
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Displays RC link signal strength in dBm
+
+
++----------------------+
+| Values               |
++======================+
+| +-------+----------+ |
+| | Value | Meaning  | |
+| +=======+==========+ |
+| | 0     | Disabled | |
+| +-------+----------+ |
+| | 1     | Enabled  | |
+| +-------+----------+ |
+|                      |
++----------------------+
+
+
+
+
+.. _OSD1_RSSIDBM_X:
+
+OSD1\_RSSIDBM\_X: RSSIDBM\_X
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Horizontal position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 59 |
++---------+
+
+
+
+
+.. _OSD1_RSSIDBM_Y:
+
+OSD1\_RSSIDBM\_Y: RSSIDBM\_Y
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Vertical position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 21 |
++---------+
+
+
+
+
+.. _OSD1_RC_SNR_EN:
+
+OSD1\_RC\_SNR\_EN: RC\_SNR\_EN
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Displays RC link signal to noise ratio in dB
+
+
++----------------------+
+| Values               |
++======================+
+| +-------+----------+ |
+| | Value | Meaning  | |
+| +=======+==========+ |
+| | 0     | Disabled | |
+| +-------+----------+ |
+| | 1     | Enabled  | |
+| +-------+----------+ |
+|                      |
++----------------------+
+
+
+
+
+.. _OSD1_RC_SNR_X:
+
+OSD1\_RC\_SNR\_X: RC\_SNR\_X
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Horizontal position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 59 |
++---------+
+
+
+
+
+.. _OSD1_RC_SNR_Y:
+
+OSD1\_RC\_SNR\_Y: RC\_SNR\_Y
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Vertical position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 21 |
++---------+
+
+
+
+
+.. _OSD1_RC_ANT_EN:
+
+OSD1\_RC\_ANT\_EN: RC\_ANT\_EN
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Displays the current RC link active antenna
+
+
++----------------------+
+| Values               |
++======================+
+| +-------+----------+ |
+| | Value | Meaning  | |
+| +=======+==========+ |
+| | 0     | Disabled | |
+| +-------+----------+ |
+| | 1     | Enabled  | |
+| +-------+----------+ |
+|                      |
++----------------------+
+
+
+
+
+.. _OSD1_RC_ANT_X:
+
+OSD1\_RC\_ANT\_X: RC\_ANT\_X
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Horizontal position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 59 |
++---------+
+
+
+
+
+.. _OSD1_RC_ANT_Y:
+
+OSD1\_RC\_ANT\_Y: RC\_ANT\_Y
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Vertical position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 21 |
++---------+
+
+
+
+
+.. _OSD1_RC_LQ_EN:
+
+OSD1\_RC\_LQ\_EN: RC\_LQ\_EN
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Displays the RC link quality \(uplink\, 0 to 100\%\) and also RF mode if bit 7 of OSD\_OPTIONS is set
+
+
++----------------------+
+| Values               |
++======================+
+| +-------+----------+ |
+| | Value | Meaning  | |
+| +=======+==========+ |
+| | 0     | Disabled | |
+| +-------+----------+ |
+| | 1     | Enabled  | |
+| +-------+----------+ |
+|                      |
++----------------------+
+
+
+
+
+.. _OSD1_RC_LQ_X:
+
+OSD1\_RC\_LQ\_X: RC\_LQ\_X
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Horizontal position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 59 |
++---------+
+
+
+
+
+.. _OSD1_RC_LQ_Y:
+
+OSD1\_RC\_LQ\_Y: RC\_LQ\_Y
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Vertical position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 21 |
++---------+
+
+
+
+
+.. _OSD1_ESC_IDX:
+
+OSD1\_ESC\_IDX: ESC\_IDX
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Index of the ESC to use for displaying ESC information\. 0 means use the ESC with the highest value\.
+
+
++---------+
+| Range   |
++=========+
+| 0 to 32 |
++---------+
+
+
+
+
 
 .. _parameters_OSD2_:
 
@@ -56993,7 +57356,7 @@ OSD2\_ESCTEMP\_EN: ESCTEMP\_EN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Displays first esc\'s temp
+Displays highest temp of all active ESCs\, or of a specific ECS if OSDx\_ESC\_IDX is set
 
 
 +----------------------+
@@ -57054,7 +57417,7 @@ OSD2\_ESCRPM\_EN: ESCRPM\_EN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Displays first esc\'s rpm
+Displays highest rpm of all active ESCs\, or of a specific ESC if OSDx\_ESC\_IDX is set
 
 
 +----------------------+
@@ -57115,7 +57478,7 @@ OSD2\_ESCAMPS\_EN: ESCAMPS\_EN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Displays first esc\'s current
+Displays the current of the ESC with the highest rpm of all active ESCs\, or of a specific ESC if OSDx\_ESC\_IDX is set
 
 
 +----------------------+
@@ -59653,6 +60016,329 @@ Sets the font index for this screen \(MSP DisplayPort only\)
 
 
 
+.. _OSD2_RC_PWR_EN:
+
+OSD2\_RC\_PWR\_EN: RC\_PWR\_EN
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Displays the RC link transmit \(TX\) power in mW or W\, depending on level
+
+
++----------------------+
+| Values               |
++======================+
+| +-------+----------+ |
+| | Value | Meaning  | |
+| +=======+==========+ |
+| | 0     | Disabled | |
+| +-------+----------+ |
+| | 1     | Enabled  | |
+| +-------+----------+ |
+|                      |
++----------------------+
+
+
+
+
+.. _OSD2_RC_PWR_X:
+
+OSD2\_RC\_PWR\_X: RC\_PWR\_X
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Horizontal position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 59 |
++---------+
+
+
+
+
+.. _OSD2_RC_PWR_Y:
+
+OSD2\_RC\_PWR\_Y: RC\_PWR\_Y
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Vertical position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 21 |
++---------+
+
+
+
+
+.. _OSD2_RSSIDBM_EN:
+
+OSD2\_RSSIDBM\_EN: RSSIDBM\_EN
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Displays RC link signal strength in dBm
+
+
++----------------------+
+| Values               |
++======================+
+| +-------+----------+ |
+| | Value | Meaning  | |
+| +=======+==========+ |
+| | 0     | Disabled | |
+| +-------+----------+ |
+| | 1     | Enabled  | |
+| +-------+----------+ |
+|                      |
++----------------------+
+
+
+
+
+.. _OSD2_RSSIDBM_X:
+
+OSD2\_RSSIDBM\_X: RSSIDBM\_X
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Horizontal position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 59 |
++---------+
+
+
+
+
+.. _OSD2_RSSIDBM_Y:
+
+OSD2\_RSSIDBM\_Y: RSSIDBM\_Y
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Vertical position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 21 |
++---------+
+
+
+
+
+.. _OSD2_RC_SNR_EN:
+
+OSD2\_RC\_SNR\_EN: RC\_SNR\_EN
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Displays RC link signal to noise ratio in dB
+
+
++----------------------+
+| Values               |
++======================+
+| +-------+----------+ |
+| | Value | Meaning  | |
+| +=======+==========+ |
+| | 0     | Disabled | |
+| +-------+----------+ |
+| | 1     | Enabled  | |
+| +-------+----------+ |
+|                      |
++----------------------+
+
+
+
+
+.. _OSD2_RC_SNR_X:
+
+OSD2\_RC\_SNR\_X: RC\_SNR\_X
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Horizontal position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 59 |
++---------+
+
+
+
+
+.. _OSD2_RC_SNR_Y:
+
+OSD2\_RC\_SNR\_Y: RC\_SNR\_Y
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Vertical position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 21 |
++---------+
+
+
+
+
+.. _OSD2_RC_ANT_EN:
+
+OSD2\_RC\_ANT\_EN: RC\_ANT\_EN
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Displays the current RC link active antenna
+
+
++----------------------+
+| Values               |
++======================+
+| +-------+----------+ |
+| | Value | Meaning  | |
+| +=======+==========+ |
+| | 0     | Disabled | |
+| +-------+----------+ |
+| | 1     | Enabled  | |
+| +-------+----------+ |
+|                      |
++----------------------+
+
+
+
+
+.. _OSD2_RC_ANT_X:
+
+OSD2\_RC\_ANT\_X: RC\_ANT\_X
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Horizontal position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 59 |
++---------+
+
+
+
+
+.. _OSD2_RC_ANT_Y:
+
+OSD2\_RC\_ANT\_Y: RC\_ANT\_Y
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Vertical position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 21 |
++---------+
+
+
+
+
+.. _OSD2_RC_LQ_EN:
+
+OSD2\_RC\_LQ\_EN: RC\_LQ\_EN
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Displays the RC link quality \(uplink\, 0 to 100\%\) and also RF mode if bit 7 of OSD\_OPTIONS is set
+
+
++----------------------+
+| Values               |
++======================+
+| +-------+----------+ |
+| | Value | Meaning  | |
+| +=======+==========+ |
+| | 0     | Disabled | |
+| +-------+----------+ |
+| | 1     | Enabled  | |
+| +-------+----------+ |
+|                      |
++----------------------+
+
+
+
+
+.. _OSD2_RC_LQ_X:
+
+OSD2\_RC\_LQ\_X: RC\_LQ\_X
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Horizontal position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 59 |
++---------+
+
+
+
+
+.. _OSD2_RC_LQ_Y:
+
+OSD2\_RC\_LQ\_Y: RC\_LQ\_Y
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Vertical position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 21 |
++---------+
+
+
+
+
+.. _OSD2_ESC_IDX:
+
+OSD2\_ESC\_IDX: ESC\_IDX
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Index of the ESC to use for displaying ESC information\. 0 means use the ESC with the highest value\.
+
+
++---------+
+| Range   |
++=========+
+| 0 to 32 |
++---------+
+
+
+
+
 
 .. _parameters_OSD3_:
 
@@ -60764,7 +61450,7 @@ OSD3\_ESCTEMP\_EN: ESCTEMP\_EN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Displays first esc\'s temp
+Displays highest temp of all active ESCs\, or of a specific ECS if OSDx\_ESC\_IDX is set
 
 
 +----------------------+
@@ -60825,7 +61511,7 @@ OSD3\_ESCRPM\_EN: ESCRPM\_EN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Displays first esc\'s rpm
+Displays highest rpm of all active ESCs\, or of a specific ESC if OSDx\_ESC\_IDX is set
 
 
 +----------------------+
@@ -60886,7 +61572,7 @@ OSD3\_ESCAMPS\_EN: ESCAMPS\_EN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Displays first esc\'s current
+Displays the current of the ESC with the highest rpm of all active ESCs\, or of a specific ESC if OSDx\_ESC\_IDX is set
 
 
 +----------------------+
@@ -63424,6 +64110,329 @@ Sets the font index for this screen \(MSP DisplayPort only\)
 
 
 
+.. _OSD3_RC_PWR_EN:
+
+OSD3\_RC\_PWR\_EN: RC\_PWR\_EN
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Displays the RC link transmit \(TX\) power in mW or W\, depending on level
+
+
++----------------------+
+| Values               |
++======================+
+| +-------+----------+ |
+| | Value | Meaning  | |
+| +=======+==========+ |
+| | 0     | Disabled | |
+| +-------+----------+ |
+| | 1     | Enabled  | |
+| +-------+----------+ |
+|                      |
++----------------------+
+
+
+
+
+.. _OSD3_RC_PWR_X:
+
+OSD3\_RC\_PWR\_X: RC\_PWR\_X
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Horizontal position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 59 |
++---------+
+
+
+
+
+.. _OSD3_RC_PWR_Y:
+
+OSD3\_RC\_PWR\_Y: RC\_PWR\_Y
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Vertical position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 21 |
++---------+
+
+
+
+
+.. _OSD3_RSSIDBM_EN:
+
+OSD3\_RSSIDBM\_EN: RSSIDBM\_EN
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Displays RC link signal strength in dBm
+
+
++----------------------+
+| Values               |
++======================+
+| +-------+----------+ |
+| | Value | Meaning  | |
+| +=======+==========+ |
+| | 0     | Disabled | |
+| +-------+----------+ |
+| | 1     | Enabled  | |
+| +-------+----------+ |
+|                      |
++----------------------+
+
+
+
+
+.. _OSD3_RSSIDBM_X:
+
+OSD3\_RSSIDBM\_X: RSSIDBM\_X
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Horizontal position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 59 |
++---------+
+
+
+
+
+.. _OSD3_RSSIDBM_Y:
+
+OSD3\_RSSIDBM\_Y: RSSIDBM\_Y
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Vertical position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 21 |
++---------+
+
+
+
+
+.. _OSD3_RC_SNR_EN:
+
+OSD3\_RC\_SNR\_EN: RC\_SNR\_EN
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Displays RC link signal to noise ratio in dB
+
+
++----------------------+
+| Values               |
++======================+
+| +-------+----------+ |
+| | Value | Meaning  | |
+| +=======+==========+ |
+| | 0     | Disabled | |
+| +-------+----------+ |
+| | 1     | Enabled  | |
+| +-------+----------+ |
+|                      |
++----------------------+
+
+
+
+
+.. _OSD3_RC_SNR_X:
+
+OSD3\_RC\_SNR\_X: RC\_SNR\_X
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Horizontal position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 59 |
++---------+
+
+
+
+
+.. _OSD3_RC_SNR_Y:
+
+OSD3\_RC\_SNR\_Y: RC\_SNR\_Y
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Vertical position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 21 |
++---------+
+
+
+
+
+.. _OSD3_RC_ANT_EN:
+
+OSD3\_RC\_ANT\_EN: RC\_ANT\_EN
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Displays the current RC link active antenna
+
+
++----------------------+
+| Values               |
++======================+
+| +-------+----------+ |
+| | Value | Meaning  | |
+| +=======+==========+ |
+| | 0     | Disabled | |
+| +-------+----------+ |
+| | 1     | Enabled  | |
+| +-------+----------+ |
+|                      |
++----------------------+
+
+
+
+
+.. _OSD3_RC_ANT_X:
+
+OSD3\_RC\_ANT\_X: RC\_ANT\_X
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Horizontal position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 59 |
++---------+
+
+
+
+
+.. _OSD3_RC_ANT_Y:
+
+OSD3\_RC\_ANT\_Y: RC\_ANT\_Y
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Vertical position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 21 |
++---------+
+
+
+
+
+.. _OSD3_RC_LQ_EN:
+
+OSD3\_RC\_LQ\_EN: RC\_LQ\_EN
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Displays the RC link quality \(uplink\, 0 to 100\%\) and also RF mode if bit 7 of OSD\_OPTIONS is set
+
+
++----------------------+
+| Values               |
++======================+
+| +-------+----------+ |
+| | Value | Meaning  | |
+| +=======+==========+ |
+| | 0     | Disabled | |
+| +-------+----------+ |
+| | 1     | Enabled  | |
+| +-------+----------+ |
+|                      |
++----------------------+
+
+
+
+
+.. _OSD3_RC_LQ_X:
+
+OSD3\_RC\_LQ\_X: RC\_LQ\_X
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Horizontal position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 59 |
++---------+
+
+
+
+
+.. _OSD3_RC_LQ_Y:
+
+OSD3\_RC\_LQ\_Y: RC\_LQ\_Y
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Vertical position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 21 |
++---------+
+
+
+
+
+.. _OSD3_ESC_IDX:
+
+OSD3\_ESC\_IDX: ESC\_IDX
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Index of the ESC to use for displaying ESC information\. 0 means use the ESC with the highest value\.
+
+
++---------+
+| Range   |
++=========+
+| 0 to 32 |
++---------+
+
+
+
+
 
 .. _parameters_OSD4_:
 
@@ -64535,7 +65544,7 @@ OSD4\_ESCTEMP\_EN: ESCTEMP\_EN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Displays first esc\'s temp
+Displays highest temp of all active ESCs\, or of a specific ECS if OSDx\_ESC\_IDX is set
 
 
 +----------------------+
@@ -64596,7 +65605,7 @@ OSD4\_ESCRPM\_EN: ESCRPM\_EN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Displays first esc\'s rpm
+Displays highest rpm of all active ESCs\, or of a specific ESC if OSDx\_ESC\_IDX is set
 
 
 +----------------------+
@@ -64657,7 +65666,7 @@ OSD4\_ESCAMPS\_EN: ESCAMPS\_EN
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Displays first esc\'s current
+Displays the current of the ESC with the highest rpm of all active ESCs\, or of a specific ESC if OSDx\_ESC\_IDX is set
 
 
 +----------------------+
@@ -67190,6 +68199,329 @@ Sets the font index for this screen \(MSP DisplayPort only\)
 | Range   |
 +=========+
 | 0 to 21 |
++---------+
+
+
+
+
+.. _OSD4_RC_PWR_EN:
+
+OSD4\_RC\_PWR\_EN: RC\_PWR\_EN
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Displays the RC link transmit \(TX\) power in mW or W\, depending on level
+
+
++----------------------+
+| Values               |
++======================+
+| +-------+----------+ |
+| | Value | Meaning  | |
+| +=======+==========+ |
+| | 0     | Disabled | |
+| +-------+----------+ |
+| | 1     | Enabled  | |
+| +-------+----------+ |
+|                      |
++----------------------+
+
+
+
+
+.. _OSD4_RC_PWR_X:
+
+OSD4\_RC\_PWR\_X: RC\_PWR\_X
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Horizontal position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 59 |
++---------+
+
+
+
+
+.. _OSD4_RC_PWR_Y:
+
+OSD4\_RC\_PWR\_Y: RC\_PWR\_Y
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Vertical position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 21 |
++---------+
+
+
+
+
+.. _OSD4_RSSIDBM_EN:
+
+OSD4\_RSSIDBM\_EN: RSSIDBM\_EN
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Displays RC link signal strength in dBm
+
+
++----------------------+
+| Values               |
++======================+
+| +-------+----------+ |
+| | Value | Meaning  | |
+| +=======+==========+ |
+| | 0     | Disabled | |
+| +-------+----------+ |
+| | 1     | Enabled  | |
+| +-------+----------+ |
+|                      |
++----------------------+
+
+
+
+
+.. _OSD4_RSSIDBM_X:
+
+OSD4\_RSSIDBM\_X: RSSIDBM\_X
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Horizontal position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 59 |
++---------+
+
+
+
+
+.. _OSD4_RSSIDBM_Y:
+
+OSD4\_RSSIDBM\_Y: RSSIDBM\_Y
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Vertical position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 21 |
++---------+
+
+
+
+
+.. _OSD4_RC_SNR_EN:
+
+OSD4\_RC\_SNR\_EN: RC\_SNR\_EN
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Displays RC link signal to noise ratio in dB
+
+
++----------------------+
+| Values               |
++======================+
+| +-------+----------+ |
+| | Value | Meaning  | |
+| +=======+==========+ |
+| | 0     | Disabled | |
+| +-------+----------+ |
+| | 1     | Enabled  | |
+| +-------+----------+ |
+|                      |
++----------------------+
+
+
+
+
+.. _OSD4_RC_SNR_X:
+
+OSD4\_RC\_SNR\_X: RC\_SNR\_X
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Horizontal position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 59 |
++---------+
+
+
+
+
+.. _OSD4_RC_SNR_Y:
+
+OSD4\_RC\_SNR\_Y: RC\_SNR\_Y
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Vertical position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 21 |
++---------+
+
+
+
+
+.. _OSD4_RC_ANT_EN:
+
+OSD4\_RC\_ANT\_EN: RC\_ANT\_EN
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Displays the current RC link active antenna
+
+
++----------------------+
+| Values               |
++======================+
+| +-------+----------+ |
+| | Value | Meaning  | |
+| +=======+==========+ |
+| | 0     | Disabled | |
+| +-------+----------+ |
+| | 1     | Enabled  | |
+| +-------+----------+ |
+|                      |
++----------------------+
+
+
+
+
+.. _OSD4_RC_ANT_X:
+
+OSD4\_RC\_ANT\_X: RC\_ANT\_X
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Horizontal position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 59 |
++---------+
+
+
+
+
+.. _OSD4_RC_ANT_Y:
+
+OSD4\_RC\_ANT\_Y: RC\_ANT\_Y
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Vertical position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 21 |
++---------+
+
+
+
+
+.. _OSD4_RC_LQ_EN:
+
+OSD4\_RC\_LQ\_EN: RC\_LQ\_EN
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Displays the RC link quality \(uplink\, 0 to 100\%\) and also RF mode if bit 7 of OSD\_OPTIONS is set
+
+
++----------------------+
+| Values               |
++======================+
+| +-------+----------+ |
+| | Value | Meaning  | |
+| +=======+==========+ |
+| | 0     | Disabled | |
+| +-------+----------+ |
+| | 1     | Enabled  | |
+| +-------+----------+ |
+|                      |
++----------------------+
+
+
+
+
+.. _OSD4_RC_LQ_X:
+
+OSD4\_RC\_LQ\_X: RC\_LQ\_X
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Horizontal position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 59 |
++---------+
+
+
+
+
+.. _OSD4_RC_LQ_Y:
+
+OSD4\_RC\_LQ\_Y: RC\_LQ\_Y
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Vertical position on screen
+
+
++---------+
+| Range   |
++=========+
+| 0 to 21 |
++---------+
+
+
+
+
+.. _OSD4_ESC_IDX:
+
+OSD4\_ESC\_IDX: ESC\_IDX
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Index of the ESC to use for displaying ESC information\. 0 means use the ESC with the highest value\.
+
+
++---------+
+| Range   |
++=========+
+| 0 to 32 |
 +---------+
 
 
@@ -105380,29 +106712,10 @@ Allows you to emulate wind in sim
 
 
 
-.. _SIM_WIND_TURB:
+.. _SIM_WIND_T:
 
-SIM\_WIND\_TURB: Simulated Wind variation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Allows you to emulate random wind variations in sim
-
-
-+-------------------+
-| Units             |
-+===================+
-| meters per second |
-+-------------------+
-
-
-
-
-.. _SIM_WIND_T_:
-
-SIM\_WIND\_T\_: Wind Profile Type
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SIM\_WIND\_T: Wind Profile Type
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 Selects how wind varies from surface to WIND\_T\_ALT
@@ -105422,6 +106735,25 @@ Selects how wind varies from surface to WIND\_T\_ALT
 | +-------+------------------------+ |
 |                                    |
 +------------------------------------+
+
+
+
+
+.. _SIM_WIND_TURB:
+
+SIM\_WIND\_TURB: Simulated Wind variation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Allows you to emulate random wind variations in sim
+
+
++-------------------+
+| Units             |
++===================+
+| meters per second |
++-------------------+
 
 
 
