@@ -983,6 +983,60 @@ Minimum depth to engage SURFTRAK mode
 
 
 
+.. _ORIGIN_LAT:
+
+ORIGIN\_LAT: Backup latitude for EKF origin
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+ Backup EKF origin latitude used when not using a positioning system\.
+
+
++---------+
+| Units   |
++=========+
+| degrees |
++---------+
+
+
+
+
+.. _ORIGIN_LON:
+
+ORIGIN\_LON: Backup longitude for EKF origin
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+ Backup EKF origin longitude used when not using a positioning system\.
+
+
++---------+
+| Units   |
++=========+
+| degrees |
++---------+
+
+
+
+
+.. _ORIGIN_ALT:
+
+ORIGIN\_ALT: Backup altitude \(MSL\) for EKF origin
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+ Backup EKF origin altitude \(MSL\) used when not using a positioning system\.
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
 
 .. _parameters_AHRS_:
 

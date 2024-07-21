@@ -42117,6 +42117,24 @@
         "958": "Default+IMU"
       }
     },
+    "ORIGIN_ALT": {
+      "Description": " Backup EKF origin altitude (MSL) used when not using a positioning system.",
+      "DisplayName": "Backup altitude (MSL) for EKF origin",
+      "Units": "m",
+      "User": "Standard"
+    },
+    "ORIGIN_LAT": {
+      "Description": " Backup EKF origin latitude used when not using a positioning system.",
+      "DisplayName": "Backup latitude for EKF origin",
+      "Units": "deg",
+      "User": "Standard"
+    },
+    "ORIGIN_LON": {
+      "Description": " Backup EKF origin longitude used when not using a positioning system.",
+      "DisplayName": "Backup longitude for EKF origin",
+      "Units": "deg",
+      "User": "Standard"
+    },
     "PILOT_ACCEL_Z": {
       "Description": "The vertical acceleration used when pilot is controlling the altitude",
       "DisplayName": "Pilot vertical acceleration",
