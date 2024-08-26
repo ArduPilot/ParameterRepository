@@ -5710,6 +5710,8 @@ This sets which types of external i2c barometer to look for\. It is a bitmask of
 | +-----+---------+ |
 | | 12  | MSP     | |
 | +-----+---------+ |
+| | 13  | BMP581  | |
+| +-----+---------+ |
 |                   |
 +-------------------+
 
