@@ -12269,6 +12269,16 @@
     }
   },
   "DDS": {
+    "DDS_DOMAIN_ID": {
+      "Description": "Set the ROS_DOMAIN_ID",
+      "DisplayName": "DDS DOMAIN ID",
+      "Range": {
+        "high": "232",
+        "low": "0"
+      },
+      "RebootRequired": "True",
+      "User": "Standard"
+    },
     "DDS_ENABLE": {
       "Description": "Enable DDS subsystem",
       "DisplayName": "DDS enable",

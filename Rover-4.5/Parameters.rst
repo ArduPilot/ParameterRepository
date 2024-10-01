@@ -29831,6 +29831,25 @@ UDP port number for DDS
 
 
 
+.. _DDS_DOMAIN_ID:
+
+DDS\_DOMAIN\_ID: DDS DOMAIN ID
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: Reboot required after change*
+
+Set the ROS\_DOMAIN\_ID
+
+
++----------+
+| Range    |
++==========+
+| 0 to 232 |
++----------+
+
+
+
+
 
 .. _parameters_DDS_IP:
 
