@@ -20,16 +20,16 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8' # Set the Python version you need
+          python-version: '3.11' # Set the Python version you need
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip GitPython packaging lxml emit xmltodict
+          python -m pip install --upgrade pip GitPython packaging lxml emit xmltodict pymavlink
           # Add any other dependencies here
 
       - name: Run Python script
         run: |
-          python scripts/run_param_parse.py
+          python scripts/run_parsers.py
           python scripts/json_from_xml.py
 
       - name: Commit and push if changed
