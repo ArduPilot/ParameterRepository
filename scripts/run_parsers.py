@@ -71,7 +71,11 @@ class Groundskeeper:
         last_ground_change = Groundskeeper.get_last_ground_change(git.Repo(Path(__file__).parent.parent))
 
         # Prepare for MAVLink parsing - always use the latest script (since it might cover new messages)
-        shutil.copy(f'{self.repository_path}/Tools/scripts/mavlink_parse.py', self.temp_folder)
+        #shutil.copy(f'{self.repository_path}/Tools/scripts/mavlink_parse.py', self.temp_folder)
+        # TEMPORARY WORKAROUND UNTIL ArduPilot/ardupilot#27226 IS MERGED
+        from urllib.request import urlretrieve
+        urlretrieve("https://raw.githubusercontent.com/ES-Alexander/ardupilot/refs/heads/mavlink-messages-rst/Tools/scripts/mavlink_parse.py", f'{self.temp_folder}/mavlink_parse.py')
+        # TEMP-END
 
         # Get only valid tag names
         tags = [
