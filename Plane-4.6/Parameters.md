@@ -1758,6 +1758,120 @@ RCn_OPTION number to use to control tuning stop/start/save
 |306|Scripting7|
 |307|Scripting8|
 
+## VID1_CAMMODEL: Camera1 Video Stream Camera Model
+
+Video stream camera model
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|1|Siyi A8|
+|2|Siyi ZR10|
+|3|Siyi ZR30|
+|4|Siyi ZT30 Zoom|
+|5|Siyi ZT30 Wide|
+|6|Siyi ZT30 IR|
+|7|Siyi ZT6 RGB|
+|8|Siyi ZT6 IR|
+|9|Herelink WifiAP|
+|10|Herelink USB-tethering|
+|11|Topotek 1080p|
+|12|Topotek 480p|
+|13|Viewpro|
+
+## VID1_ID: Camera1 Video Stream Id
+
+Video stream id
+
+- Range: 0 50
+
+## VID1_TYPE: Camera1 Video Stream Type
+
+Video stream type
+
+|Value|Meaning|
+|:---:|:---:|
+|0|RTSP|
+|1|RTPUDP|
+|2|TCP_MPEG|
+|3|MPEG_TS|
+
+## VID1_FLAG: Camera1 Video Stream Flags
+
+Video stream flags
+
+- Bitmask: 0:Running,1:Thermal,2:Thermal Range Enabled
+
+## VID1_FRAME_RATE: Camera1 Video Stream Frame Rate
+
+Video stream frame rate
+
+- Range: 0 50
+
+## VID1_HRES: Camera1 Video Stream Horizontal Resolution
+
+Video stream horizontal resolution
+
+- Range: 0 4096
+
+## VID1_VRES: Camera1 Video Stream Vertical Resolution
+
+Video stream vertical resolution
+
+- Range: 0 4096
+
+## VID1_BITRATE: Camera1 Video Stream Bitrate
+
+Video stream bitrate
+
+- Range: 0 10000
+
+## VID1_HFOV: Camera1 Video Stream Horizontal FOV
+
+Video stream horizontal FOV
+
+- Range: 0 360
+
+## VID1_ENCODING: Camera1 Video Stream Encoding
+
+Video stream encoding
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|1|H264|
+|2|H265|
+
+## VID1_IPADDR0: Camera1 Video Stream IP Address 0
+
+Video stream IP Address first octet
+
+- Range: 0 255
+
+## VID1_IPADDR1: Camera1 Video Stream IP Address 1
+
+Video stream IP Address second octet
+
+- Range: 0 255
+
+## VID1_IPADDR2: Camera1 Video Stream IP Address 2
+
+Video stream IP Address third octet
+
+- Range: 0 255
+
+## VID1_IPADDR3: Camera1 Video Stream IP Address 3
+
+Video stream IP Address fourth octet
+
+- Range: 0 255
+
+## VID1_IPPORT: Camera1 Video Stream IP Address Port
+
+Video stream IP Address Port
+
+- Range: 0 65535
+
 ## WINCH_RATE_UP: WinchControl Rate Up
 
 Maximum rate when retracting line
@@ -13764,6 +13878,14 @@ Bit rate can be set up to from 1000000 to 8000000
 |5|5M|
 |8|8M|
 
+## CAN_P1_OPTIONS: CAN per-interface options
+
+*Note: This parameter is for advanced users*
+
+CAN per-interface options
+
+- Bitmask: 0:LogAllFrames
+
 # CANP2 Parameters
 
 ## CAN_P2_DRIVER: Index of virtual driver to be used with physical CAN interface
@@ -13801,6 +13923,14 @@ Bit rate can be set up to from 1000000 to 8000000
 |5|5M|
 |8|8M|
 
+## CAN_P2_OPTIONS: CAN per-interface options
+
+*Note: This parameter is for advanced users*
+
+CAN per-interface options
+
+- Bitmask: 0:LogAllFrames
+
 # CANP3 Parameters
 
 ## CAN_P3_DRIVER: Index of virtual driver to be used with physical CAN interface
@@ -13837,6 +13967,14 @@ Bit rate can be set up to from 1000000 to 8000000
 |4|4M|
 |5|5M|
 |8|8M|
+
+## CAN_P3_OPTIONS: CAN per-interface options
+
+*Note: This parameter is for advanced users*
+
+CAN per-interface options
+
+- Bitmask: 0:LogAllFrames
 
 # CANSLCAN Parameters
 
@@ -30434,6 +30572,104 @@ Target pitch for initial pullup
 
 - Range: -80 0
 
+# QWIK Parameters
+
+## QWIK_ENABLE: Quicktune enable
+
+Enable quicktune system
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## QWIK_AXES: Quicktune axes
+
+Axes to tune
+
+- Bitmask: 0:Roll,1:Pitch,2:Yaw
+
+## QWIK_DOUBLE_TIME: Quicktune doubling time
+
+Time to double a tuning parameter. Raise this for a slower tune.
+
+- Range: 5 20
+
+- Units: s
+
+## QWIK_GAIN_MARGIN: Quicktune gain margin
+
+Reduction in gain after oscillation detected. Raise this number to get a more conservative tune
+
+- Range: 20 80
+
+- Units: %
+
+## QWIK_OSC_SMAX: Quicktune oscillation rate threshold
+
+Threshold for oscillation detection. A lower value will lead to a more conservative tune.
+
+- Range: 1 10
+
+## QWIK_YAW_P_MAX: Quicktune Yaw P max
+
+Maximum value for yaw P gain
+
+- Range: 0.1 3
+
+## QWIK_YAW_D_MAX: Quicktune Yaw D max
+
+Maximum value for yaw D gain
+
+- Range: 0.001 1
+
+## QWIK_RP_PI_RATIO: Quicktune roll/pitch PI ratio
+
+Ratio between P and I gains for roll and pitch. Raise this to get a lower I gain
+
+- Range: 1.0 2.0
+
+## QWIK_Y_PI_RATIO: Quicktune Yaw PI ratio
+
+Ratio between P and I gains for yaw. Raise this to get a lower I gain
+
+- Range: 1.0 20
+
+## QWIK_AUTO_FILTER: Quicktune auto filter enable
+
+When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## QWIK_AUTO_SAVE: Quicktune auto save
+
+Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune. Zero (the default value) disables automatic saving, and you will need to have a 3 position switch to save or use GCS auxilliary functions.
+
+- Units: s
+
+## QWIK_REDUCE_MAX: Quicktune maximum gain reduction
+
+This controls how much quicktune is allowed to lower gains from the original gains. If the vehicle already has a reasonable tune and is not oscillating then you can set this to zero to prevent gain reductions. The default of 20% is reasonable for most vehicles. Using a maximum gain reduction lowers the chance of an angle P oscillation happening if quicktune gets a false positive oscillation at a low gain, which can result in very low rate gains and a dangerous angle P oscillation.
+
+- Units: %
+
+- Range: 0 100
+
+## QWIK_OPTIONS: Quicktune options
+
+Additional options. When the Two Position Switch option is enabled then a high switch position will start the tune, low will disable the tune. you should also set a QUIK_AUTO_SAVE time so that you will be able to save the tune.
+
+- Bitmask: 0:UseTwoPositionSwitch
+
+## QWIK_ANGLE_MAX: maximum angle error for tune abort
+
+If while tuning the angle error goes over this limit then the tune will aborts to prevent a bad oscillation in the case of the tuning algorithm failing. If you get an error "Quicktune: attitude error ABORTING" and you think it is a false positive then you can either raise this parameter or you can try increasing the QWIK_DOUBLE_TIME to do the tune more slowly.
+
+- Units: deg
+
 # Q Parameters
 
 ## Q_ENABLE: Enable QuadPlane
@@ -37731,7 +37967,7 @@ Amount of memory available for scripting
 
 Debugging options
 
-- Bitmask: 0: No Scripts to run message if all scripts have stopped, 1: Runtime messages for memory usage and execution time, 2: Suppress logging scripts to dataflash, 3: log runtime memory usage and execution time, 4: Disable pre-arm check, 5: Save CRC of current scripts to loaded and running checksum parameters enabling pre-arm
+- Bitmask: 0: No Scripts to run message if all scripts have stopped, 1: Runtime messages for memory usage and execution time, 2: Suppress logging scripts to dataflash, 3: log runtime memory usage and execution time, 4: Disable pre-arm check, 5: Save CRC of current scripts to loaded and running checksum parameters enabling pre-arm, 6: Disable heap expansion on allocation failure
 
 ## SCR_USER1: Scripting User Parameter1
 

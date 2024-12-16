@@ -1214,6 +1214,80 @@
           <value code="307">Scripting8</value>
         </values>
       </param>
+      <param humanName="Camera1 Video Stream Camera Model" name="VID1_CAMMODEL" documentation="Video stream camera model" user="Standard">
+        <values>
+          <value code="0">Unknown</value>
+          <value code="1">Siyi A8</value>
+          <value code="2">Siyi ZR10</value>
+          <value code="3">Siyi ZR30</value>
+          <value code="4">Siyi ZT30 Zoom</value>
+          <value code="5">Siyi ZT30 Wide</value>
+          <value code="6">Siyi ZT30 IR</value>
+          <value code="7">Siyi ZT6 RGB</value>
+          <value code="8">Siyi ZT6 IR</value>
+          <value code="9">Herelink WifiAP</value>
+          <value code="10">Herelink USB-tethering</value>
+          <value code="11">Topotek 1080p</value>
+          <value code="12">Topotek 480p</value>
+          <value code="13">Viewpro</value>
+        </values>
+      </param>
+      <param humanName="Camera1 Video Stream Id" name="VID1_ID" documentation="Video stream id" user="Standard">
+        <field name="Range">0 50</field>
+      </param>
+      <param humanName="Camera1 Video Stream Type" name="VID1_TYPE" documentation="Video stream type" user="Standard">
+        <values>
+          <value code="0">RTSP</value>
+          <value code="1">RTPUDP</value>
+          <value code="2">TCP_MPEG</value>
+          <value code="3">MPEG_TS</value>
+        </values>
+      </param>
+      <param humanName="Camera1 Video Stream Flags" name="VID1_FLAG" documentation="Video stream flags" user="Standard">
+        <bitmask>
+          <bit code="0">Running</bit>
+          <bit code="1">Thermal</bit>
+          <bit code="2">Thermal Range Enabled</bit>
+        </bitmask>
+        <field name="Bitmask">0:Running,1:Thermal,2:Thermal Range Enabled</field>
+      </param>
+      <param humanName="Camera1 Video Stream Frame Rate" name="VID1_FRAME_RATE" documentation="Video stream frame rate" user="Standard">
+        <field name="Range">0 50</field>
+      </param>
+      <param humanName="Camera1 Video Stream Horizontal Resolution" name="VID1_HRES" documentation="Video stream horizontal resolution" user="Standard">
+        <field name="Range">0 4096</field>
+      </param>
+      <param humanName="Camera1 Video Stream Vertical Resolution" name="VID1_VRES" documentation="Video stream vertical resolution" user="Standard">
+        <field name="Range">0 4096</field>
+      </param>
+      <param humanName="Camera1 Video Stream Bitrate" name="VID1_BITRATE" documentation="Video stream bitrate" user="Standard">
+        <field name="Range">0 10000</field>
+      </param>
+      <param humanName="Camera1 Video Stream Horizontal FOV" name="VID1_HFOV" documentation="Video stream horizontal FOV" user="Standard">
+        <field name="Range">0 360</field>
+      </param>
+      <param humanName="Camera1 Video Stream Encoding" name="VID1_ENCODING" documentation="Video stream encoding" user="Standard">
+        <values>
+          <value code="0">Unknown</value>
+          <value code="1">H264</value>
+          <value code="2">H265</value>
+        </values>
+      </param>
+      <param humanName="Camera1 Video Stream IP Address 0" name="VID1_IPADDR0" documentation="Video stream IP Address first octet" user="Standard">
+        <field name="Range">0 255</field>
+      </param>
+      <param humanName="Camera1 Video Stream IP Address 1" name="VID1_IPADDR1" documentation="Video stream IP Address second octet" user="Standard">
+        <field name="Range">0 255</field>
+      </param>
+      <param humanName="Camera1 Video Stream IP Address 2" name="VID1_IPADDR2" documentation="Video stream IP Address third octet" user="Standard">
+        <field name="Range">0 255</field>
+      </param>
+      <param humanName="Camera1 Video Stream IP Address 3" name="VID1_IPADDR3" documentation="Video stream IP Address fourth octet" user="Standard">
+        <field name="Range">0 255</field>
+      </param>
+      <param humanName="Camera1 Video Stream IP Address Port" name="VID1_IPPORT" documentation="Video stream IP Address Port" user="Standard">
+        <field name="Range">0 65535</field>
+      </param>
       <param humanName="WinchControl Rate Up" name="WINCH_RATE_UP" documentation="Maximum rate when retracting line" user="Standard">
         <field name="Range">0.1 5.0</field>
       </param>
@@ -10687,6 +10761,12 @@
           <value code="8">8M</value>
         </values>
       </param>
+      <param humanName="CAN per-interface options" name="CAN_P1_OPTIONS" documentation="CAN per-interface options" user="Advanced">
+        <bitmask>
+          <bit code="0">LogAllFrames</bit>
+        </bitmask>
+        <field name="Bitmask">0:LogAllFrames</field>
+      </param>
     </parameters>
     <parameters name="CAN_P2_">
       <param humanName="Index of virtual driver to be used with physical CAN interface" name="CAN_P2_DRIVER" documentation="Enabling this option enables use of CAN buses." user="Standard">
@@ -10710,6 +10790,12 @@
           <value code="8">8M</value>
         </values>
       </param>
+      <param humanName="CAN per-interface options" name="CAN_P2_OPTIONS" documentation="CAN per-interface options" user="Advanced">
+        <bitmask>
+          <bit code="0">LogAllFrames</bit>
+        </bitmask>
+        <field name="Bitmask">0:LogAllFrames</field>
+      </param>
     </parameters>
     <parameters name="CAN_P3_">
       <param humanName="Index of virtual driver to be used with physical CAN interface" name="CAN_P3_DRIVER" documentation="Enabling this option enables use of CAN buses." user="Standard">
@@ -10732,6 +10818,12 @@
           <value code="5">5M</value>
           <value code="8">8M</value>
         </values>
+      </param>
+      <param humanName="CAN per-interface options" name="CAN_P3_OPTIONS" documentation="CAN per-interface options" user="Advanced">
+        <bitmask>
+          <bit code="0">LogAllFrames</bit>
+        </bitmask>
+        <field name="Bitmask">0:LogAllFrames</field>
       </param>
     </parameters>
     <parameters name="CAN_SLCAN_">
@@ -27028,8 +27120,9 @@
           <bit code="3">log runtime memory usage and execution time</bit>
           <bit code="4">Disable pre-arm check</bit>
           <bit code="5">Save CRC of current scripts to loaded and running checksum parameters enabling pre-arm</bit>
+          <bit code="6">Disable heap expansion on allocation failure</bit>
         </bitmask>
-        <field name="Bitmask">0: No Scripts to run message if all scripts have stopped, 1: Runtime messages for memory usage and execution time, 2: Suppress logging scripts to dataflash, 3: log runtime memory usage and execution time, 4: Disable pre-arm check, 5: Save CRC of current scripts to loaded and running checksum parameters enabling pre-arm</field>
+        <field name="Bitmask">0: No Scripts to run message if all scripts have stopped, 1: Runtime messages for memory usage and execution time, 2: Suppress logging scripts to dataflash, 3: log runtime memory usage and execution time, 4: Disable pre-arm check, 5: Save CRC of current scripts to loaded and running checksum parameters enabling pre-arm, 6: Disable heap expansion on allocation failure</field>
       </param>
       <param humanName="Scripting User Parameter1" name="SCR_USER1" documentation="General purpose user variable input for scripts" user="Standard">
 </param>

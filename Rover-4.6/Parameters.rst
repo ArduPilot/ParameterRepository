@@ -28867,6 +28867,30 @@ Bit rate can be set up to from 1000000 to 8000000
 
 
 
+.. _CAN_P1_OPTIONS:
+
+CAN\_P1\_OPTIONS: CAN per\-interface options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+CAN per\-interface options
+
+
++------------------------+
+| Bitmask                |
++========================+
+| +-----+--------------+ |
+| | Bit | Meaning      | |
+| +=====+==============+ |
+| | 0   | LogAllFrames | |
+| +-----+--------------+ |
+|                        |
++------------------------+
+
+
+
+
 
 .. _parameters_CAN_P2_:
 
@@ -28955,6 +28979,30 @@ Bit rate can be set up to from 1000000 to 8000000
 
 
 
+.. _CAN_P2_OPTIONS:
+
+CAN\_P2\_OPTIONS: CAN per\-interface options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+CAN per\-interface options
+
+
++------------------------+
+| Bitmask                |
++========================+
+| +-----+--------------+ |
+| | Bit | Meaning      | |
+| +=====+==============+ |
+| | 0   | LogAllFrames | |
+| +-----+--------------+ |
+|                        |
++------------------------+
+
+
+
+
 
 .. _parameters_CAN_P3_:
 
@@ -29039,6 +29087,30 @@ Bit rate can be set up to from 1000000 to 8000000
 | +-------+---------+ |
 |                     |
 +---------------------+
+
+
+
+
+.. _CAN_P3_OPTIONS:
+
+CAN\_P3\_OPTIONS: CAN per\-interface options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+CAN per\-interface options
+
+
++------------------------+
+| Bitmask                |
++========================+
+| +-----+--------------+ |
+| | Bit | Meaning      | |
+| +=====+==============+ |
+| | 0   | LogAllFrames | |
+| +-----+--------------+ |
+|                        |
++------------------------+
 
 
 
@@ -84795,6 +84867,8 @@ Debugging options
 | | 4   | Disable pre-arm check                                                                  | |
 | +-----+----------------------------------------------------------------------------------------+ |
 | | 5   | Save CRC of current scripts to loaded and running checksum parameters enabling pre-arm | |
+| +-----+----------------------------------------------------------------------------------------+ |
+| | 6   | Disable heap expansion on allocation failure                                           | |
 | +-----+----------------------------------------------------------------------------------------+ |
 |                                                                                                  |
 +--------------------------------------------------------------------------------------------------+

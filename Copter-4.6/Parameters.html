@@ -1835,6 +1835,150 @@ DO NOT EDIT
 </ul>
 
 
+<h2>Camera1 Video Stream Camera Model (VID1_CAMMODEL)</h2>
+
+<p>Video stream camera model</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>1</td><td>Siyi A8</td></tr>
+<tr><td>2</td><td>Siyi ZR10</td></tr>
+<tr><td>3</td><td>Siyi ZR30</td></tr>
+<tr><td>4</td><td>Siyi ZT30 Zoom</td></tr>
+<tr><td>5</td><td>Siyi ZT30 Wide</td></tr>
+<tr><td>6</td><td>Siyi ZT30 IR</td></tr>
+<tr><td>7</td><td>Siyi ZT6 RGB</td></tr>
+<tr><td>8</td><td>Siyi ZT6 IR</td></tr>
+<tr><td>9</td><td>Herelink WifiAP</td></tr>
+<tr><td>10</td><td>Herelink USB-tethering</td></tr>
+<tr><td>11</td><td>Topotek 1080p</td></tr>
+<tr><td>12</td><td>Topotek 480p</td></tr>
+<tr><td>13</td><td>Viewpro</td></tr>
+</table>
+</ul>
+
+
+<h2>Camera1 Video Stream Id (VID1_ID)</h2>
+
+<p>Video stream id</p>
+<ul>
+<li>Range: 0 50</li>
+</ul>
+
+
+<h2>Camera1 Video Stream Type (VID1_TYPE)</h2>
+
+<p>Video stream type</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>RTSP</td></tr>
+<tr><td>1</td><td>RTPUDP</td></tr>
+<tr><td>2</td><td>TCP_MPEG</td></tr>
+<tr><td>3</td><td>MPEG_TS</td></tr>
+</table>
+</ul>
+
+
+<h2>Camera1 Video Stream Flags (VID1_FLAG)</h2>
+
+<p>Video stream flags</p>
+<ul>
+<li>Bitmask: 0:Running,1:Thermal,2:Thermal Range Enabled</li>
+</ul>
+
+
+<h2>Camera1 Video Stream Frame Rate (VID1_FRAME_RATE)</h2>
+
+<p>Video stream frame rate</p>
+<ul>
+<li>Range: 0 50</li>
+</ul>
+
+
+<h2>Camera1 Video Stream Horizontal Resolution (VID1_HRES)</h2>
+
+<p>Video stream horizontal resolution</p>
+<ul>
+<li>Range: 0 4096</li>
+</ul>
+
+
+<h2>Camera1 Video Stream Vertical Resolution (VID1_VRES)</h2>
+
+<p>Video stream vertical resolution</p>
+<ul>
+<li>Range: 0 4096</li>
+</ul>
+
+
+<h2>Camera1 Video Stream Bitrate (VID1_BITRATE)</h2>
+
+<p>Video stream bitrate</p>
+<ul>
+<li>Range: 0 10000</li>
+</ul>
+
+
+<h2>Camera1 Video Stream Horizontal FOV (VID1_HFOV)</h2>
+
+<p>Video stream horizontal FOV</p>
+<ul>
+<li>Range: 0 360</li>
+</ul>
+
+
+<h2>Camera1 Video Stream Encoding (VID1_ENCODING)</h2>
+
+<p>Video stream encoding</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>1</td><td>H264</td></tr>
+<tr><td>2</td><td>H265</td></tr>
+</table>
+</ul>
+
+
+<h2>Camera1 Video Stream IP Address 0 (VID1_IPADDR0)</h2>
+
+<p>Video stream IP Address first octet</p>
+<ul>
+<li>Range: 0 255</li>
+</ul>
+
+
+<h2>Camera1 Video Stream IP Address 1 (VID1_IPADDR1)</h2>
+
+<p>Video stream IP Address second octet</p>
+<ul>
+<li>Range: 0 255</li>
+</ul>
+
+
+<h2>Camera1 Video Stream IP Address 2 (VID1_IPADDR2)</h2>
+
+<p>Video stream IP Address third octet</p>
+<ul>
+<li>Range: 0 255</li>
+</ul>
+
+
+<h2>Camera1 Video Stream IP Address 3 (VID1_IPADDR3)</h2>
+
+<p>Video stream IP Address fourth octet</p>
+<ul>
+<li>Range: 0 255</li>
+</ul>
+
+
+<h2>Camera1 Video Stream IP Address Port (VID1_IPPORT)</h2>
+
+<p>Video stream IP Address Port</p>
+<ul>
+<li>Range: 0 65535</li>
+</ul>
+
+
 <h2>WinchControl Rate Up (WINCH_RATE_UP)</h2>
 
 <p>Maximum rate when retracting line</p>
@@ -15468,6 +15612,14 @@ DO NOT EDIT
 </ul>
 
 
+<h2>CAN per-interface options (CAN_P1_OPTIONS)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>CAN per-interface options</p>
+<ul>
+<li>Bitmask: 0:LogAllFrames</li>
+</ul>
+
+
 <h1>CAN_P2_ Parameters</h1>
 
 
@@ -15507,6 +15659,14 @@ DO NOT EDIT
 </ul>
 
 
+<h2>CAN per-interface options (CAN_P2_OPTIONS)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>CAN per-interface options</p>
+<ul>
+<li>Bitmask: 0:LogAllFrames</li>
+</ul>
+
+
 <h1>CAN_P3_ Parameters</h1>
 
 
@@ -15543,6 +15703,14 @@ DO NOT EDIT
 <tr><td>5</td><td>5M</td></tr>
 <tr><td>8</td><td>8M</td></tr>
 </table>
+</ul>
+
+
+<h2>CAN per-interface options (CAN_P3_OPTIONS)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>CAN per-interface options</p>
+<ul>
+<li>Bitmask: 0:LogAllFrames</li>
 </ul>
 
 
@@ -43527,7 +43695,7 @@ DO NOT EDIT
 
 <p>Debugging options</p>
 <ul>
-<li>Bitmask: 0: No Scripts to run message if all scripts have stopped, 1: Runtime messages for memory usage and execution time, 2: Suppress logging scripts to dataflash, 3: log runtime memory usage and execution time, 4: Disable pre-arm check, 5: Save CRC of current scripts to loaded and running checksum parameters enabling pre-arm</li>
+<li>Bitmask: 0: No Scripts to run message if all scripts have stopped, 1: Runtime messages for memory usage and execution time, 2: Suppress logging scripts to dataflash, 3: log runtime memory usage and execution time, 4: Disable pre-arm check, 5: Save CRC of current scripts to loaded and running checksum parameters enabling pre-arm, 6: Disable heap expansion on allocation failure</li>
 </ul>
 
 

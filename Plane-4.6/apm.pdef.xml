@@ -1248,6 +1248,80 @@
           <value code="307">Scripting8</value>
         </values>
       </param>
+      <param humanName="Camera1 Video Stream Camera Model" name="VID1_CAMMODEL" documentation="Video stream camera model" user="Standard">
+        <values>
+          <value code="0">Unknown</value>
+          <value code="1">Siyi A8</value>
+          <value code="2">Siyi ZR10</value>
+          <value code="3">Siyi ZR30</value>
+          <value code="4">Siyi ZT30 Zoom</value>
+          <value code="5">Siyi ZT30 Wide</value>
+          <value code="6">Siyi ZT30 IR</value>
+          <value code="7">Siyi ZT6 RGB</value>
+          <value code="8">Siyi ZT6 IR</value>
+          <value code="9">Herelink WifiAP</value>
+          <value code="10">Herelink USB-tethering</value>
+          <value code="11">Topotek 1080p</value>
+          <value code="12">Topotek 480p</value>
+          <value code="13">Viewpro</value>
+        </values>
+      </param>
+      <param humanName="Camera1 Video Stream Id" name="VID1_ID" documentation="Video stream id" user="Standard">
+        <field name="Range">0 50</field>
+      </param>
+      <param humanName="Camera1 Video Stream Type" name="VID1_TYPE" documentation="Video stream type" user="Standard">
+        <values>
+          <value code="0">RTSP</value>
+          <value code="1">RTPUDP</value>
+          <value code="2">TCP_MPEG</value>
+          <value code="3">MPEG_TS</value>
+        </values>
+      </param>
+      <param humanName="Camera1 Video Stream Flags" name="VID1_FLAG" documentation="Video stream flags" user="Standard">
+        <bitmask>
+          <bit code="0">Running</bit>
+          <bit code="1">Thermal</bit>
+          <bit code="2">Thermal Range Enabled</bit>
+        </bitmask>
+        <field name="Bitmask">0:Running,1:Thermal,2:Thermal Range Enabled</field>
+      </param>
+      <param humanName="Camera1 Video Stream Frame Rate" name="VID1_FRAME_RATE" documentation="Video stream frame rate" user="Standard">
+        <field name="Range">0 50</field>
+      </param>
+      <param humanName="Camera1 Video Stream Horizontal Resolution" name="VID1_HRES" documentation="Video stream horizontal resolution" user="Standard">
+        <field name="Range">0 4096</field>
+      </param>
+      <param humanName="Camera1 Video Stream Vertical Resolution" name="VID1_VRES" documentation="Video stream vertical resolution" user="Standard">
+        <field name="Range">0 4096</field>
+      </param>
+      <param humanName="Camera1 Video Stream Bitrate" name="VID1_BITRATE" documentation="Video stream bitrate" user="Standard">
+        <field name="Range">0 10000</field>
+      </param>
+      <param humanName="Camera1 Video Stream Horizontal FOV" name="VID1_HFOV" documentation="Video stream horizontal FOV" user="Standard">
+        <field name="Range">0 360</field>
+      </param>
+      <param humanName="Camera1 Video Stream Encoding" name="VID1_ENCODING" documentation="Video stream encoding" user="Standard">
+        <values>
+          <value code="0">Unknown</value>
+          <value code="1">H264</value>
+          <value code="2">H265</value>
+        </values>
+      </param>
+      <param humanName="Camera1 Video Stream IP Address 0" name="VID1_IPADDR0" documentation="Video stream IP Address first octet" user="Standard">
+        <field name="Range">0 255</field>
+      </param>
+      <param humanName="Camera1 Video Stream IP Address 1" name="VID1_IPADDR1" documentation="Video stream IP Address second octet" user="Standard">
+        <field name="Range">0 255</field>
+      </param>
+      <param humanName="Camera1 Video Stream IP Address 2" name="VID1_IPADDR2" documentation="Video stream IP Address third octet" user="Standard">
+        <field name="Range">0 255</field>
+      </param>
+      <param humanName="Camera1 Video Stream IP Address 3" name="VID1_IPADDR3" documentation="Video stream IP Address fourth octet" user="Standard">
+        <field name="Range">0 255</field>
+      </param>
+      <param humanName="Camera1 Video Stream IP Address Port" name="VID1_IPPORT" documentation="Video stream IP Address Port" user="Standard">
+        <field name="Range">0 65535</field>
+      </param>
       <param humanName="WinchControl Rate Up" name="WINCH_RATE_UP" documentation="Maximum rate when retracting line" user="Standard">
         <field name="Range">0.1 5.0</field>
       </param>
@@ -10031,6 +10105,12 @@
           <value code="8">8M</value>
         </values>
       </param>
+      <param humanName="CAN per-interface options" name="CAN_P1_OPTIONS" documentation="CAN per-interface options" user="Advanced">
+        <bitmask>
+          <bit code="0">LogAllFrames</bit>
+        </bitmask>
+        <field name="Bitmask">0:LogAllFrames</field>
+      </param>
     </parameters>
     <parameters name="CAN_P2_">
       <param humanName="Index of virtual driver to be used with physical CAN interface" name="CAN_P2_DRIVER" documentation="Enabling this option enables use of CAN buses." user="Standard">
@@ -10054,6 +10134,12 @@
           <value code="8">8M</value>
         </values>
       </param>
+      <param humanName="CAN per-interface options" name="CAN_P2_OPTIONS" documentation="CAN per-interface options" user="Advanced">
+        <bitmask>
+          <bit code="0">LogAllFrames</bit>
+        </bitmask>
+        <field name="Bitmask">0:LogAllFrames</field>
+      </param>
     </parameters>
     <parameters name="CAN_P3_">
       <param humanName="Index of virtual driver to be used with physical CAN interface" name="CAN_P3_DRIVER" documentation="Enabling this option enables use of CAN buses." user="Standard">
@@ -10076,6 +10162,12 @@
           <value code="5">5M</value>
           <value code="8">8M</value>
         </values>
+      </param>
+      <param humanName="CAN per-interface options" name="CAN_P3_OPTIONS" documentation="CAN per-interface options" user="Advanced">
+        <bitmask>
+          <bit code="0">LogAllFrames</bit>
+        </bitmask>
+        <field name="Bitmask">0:LogAllFrames</field>
       </param>
     </parameters>
     <parameters name="CAN_SLCAN_">
@@ -19615,6 +19707,72 @@
         <field name="Range">-80 0</field>
       </param>
     </parameters>
+    <parameters name="QWIK_">
+      <param humanName="Quicktune enable" name="QWIK_ENABLE" documentation="Enable quicktune system" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Quicktune axes" name="QWIK_AXES" documentation="Axes to tune" user="Standard">
+        <bitmask>
+          <bit code="0">Roll</bit>
+          <bit code="1">Pitch</bit>
+          <bit code="2">Yaw</bit>
+        </bitmask>
+        <field name="Bitmask">0:Roll,1:Pitch,2:Yaw</field>
+      </param>
+      <param humanName="Quicktune doubling time" name="QWIK_DOUBLE_TIME" documentation="Time to double a tuning parameter. Raise this for a slower tune." user="Standard">
+        <field name="Range">5 20</field>
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+      </param>
+      <param humanName="Quicktune gain margin" name="QWIK_GAIN_MARGIN" documentation="Reduction in gain after oscillation detected. Raise this number to get a more conservative tune" user="Standard">
+        <field name="Range">20 80</field>
+        <field name="Units">%</field>
+        <field name="UnitText">percent</field>
+      </param>
+      <param humanName="Quicktune oscillation rate threshold" name="QWIK_OSC_SMAX" documentation="Threshold for oscillation detection. A lower value will lead to a more conservative tune." user="Standard">
+        <field name="Range">1 10</field>
+      </param>
+      <param humanName="Quicktune Yaw P max" name="QWIK_YAW_P_MAX" documentation="Maximum value for yaw P gain" user="Standard">
+        <field name="Range">0.1 3</field>
+      </param>
+      <param humanName="Quicktune Yaw D max" name="QWIK_YAW_D_MAX" documentation="Maximum value for yaw D gain" user="Standard">
+        <field name="Range">0.001 1</field>
+      </param>
+      <param humanName="Quicktune roll/pitch PI ratio" name="QWIK_RP_PI_RATIO" documentation="Ratio between P and I gains for roll and pitch. Raise this to get a lower I gain" user="Standard">
+        <field name="Range">1.0 2.0</field>
+      </param>
+      <param humanName="Quicktune Yaw PI ratio" name="QWIK_Y_PI_RATIO" documentation="Ratio between P and I gains for yaw. Raise this to get a lower I gain" user="Standard">
+        <field name="Range">1.0 20</field>
+      </param>
+      <param humanName="Quicktune auto filter enable" name="QWIK_AUTO_FILTER" documentation="When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Quicktune auto save" name="QWIK_AUTO_SAVE" documentation="Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune. Zero (the default value) disables automatic saving, and you will need to have a 3 position switch to save or use GCS auxilliary functions." user="Standard">
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+      </param>
+      <param humanName="Quicktune maximum gain reduction" name="QWIK_REDUCE_MAX" documentation="This controls how much quicktune is allowed to lower gains from the original gains. If the vehicle already has a reasonable tune and is not oscillating then you can set this to zero to prevent gain reductions. The default of 20% is reasonable for most vehicles. Using a maximum gain reduction lowers the chance of an angle P oscillation happening if quicktune gets a false positive oscillation at a low gain, which can result in very low rate gains and a dangerous angle P oscillation." user="Standard">
+        <field name="Units">%</field>
+        <field name="UnitText">percent</field>
+        <field name="Range">0 100</field>
+      </param>
+      <param humanName="Quicktune options" name="QWIK_OPTIONS" documentation="Additional options. When the Two Position Switch option is enabled then a high switch position will start the tune, low will disable the tune. you should also set a QUIK_AUTO_SAVE time so that you will be able to save the tune." user="Standard">
+        <bitmask>
+          <bit code="0">UseTwoPositionSwitch</bit>
+        </bitmask>
+        <field name="Bitmask">0:UseTwoPositionSwitch</field>
+      </param>
+      <param humanName="maximum angle error for tune abort" name="QWIK_ANGLE_MAX" documentation="If while tuning the angle error goes over this limit then the tune will aborts to prevent a bad oscillation in the case of the tuning algorithm failing. If you get an error &quot;Quicktune: attitude error ABORTING&quot; and you think it is a false positive then you can either raise this parameter or you can try increasing the QWIK_DOUBLE_TIME to do the tune more slowly." user="Standard">
+        <field name="Units">deg</field>
+        <field name="UnitText">degrees</field>
+      </param>
+    </parameters>
     <parameters name="Q_">
       <param humanName="Enable QuadPlane" name="Q_ENABLE" documentation="This enables QuadPlane functionality, assuming multicopter motors start on output 5. If this is set to 2 then when starting AUTO mode it will initially be in VTOL AUTO mode." user="Standard">
         <values>
@@ -26563,8 +26721,9 @@
           <bit code="3">log runtime memory usage and execution time</bit>
           <bit code="4">Disable pre-arm check</bit>
           <bit code="5">Save CRC of current scripts to loaded and running checksum parameters enabling pre-arm</bit>
+          <bit code="6">Disable heap expansion on allocation failure</bit>
         </bitmask>
-        <field name="Bitmask">0: No Scripts to run message if all scripts have stopped, 1: Runtime messages for memory usage and execution time, 2: Suppress logging scripts to dataflash, 3: log runtime memory usage and execution time, 4: Disable pre-arm check, 5: Save CRC of current scripts to loaded and running checksum parameters enabling pre-arm</field>
+        <field name="Bitmask">0: No Scripts to run message if all scripts have stopped, 1: Runtime messages for memory usage and execution time, 2: Suppress logging scripts to dataflash, 3: log runtime memory usage and execution time, 4: Disable pre-arm check, 5: Save CRC of current scripts to loaded and running checksum parameters enabling pre-arm, 6: Disable heap expansion on allocation failure</field>
       </param>
       <param humanName="Scripting User Parameter1" name="SCR_USER1" documentation="General purpose user variable input for scripts" user="Standard">
 </param>

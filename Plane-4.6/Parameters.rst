@@ -30036,6 +30036,30 @@ Bit rate can be set up to from 1000000 to 8000000
 
 
 
+.. _CAN_P1_OPTIONS:
+
+CAN\_P1\_OPTIONS: CAN per\-interface options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+CAN per\-interface options
+
+
++------------------------+
+| Bitmask                |
++========================+
+| +-----+--------------+ |
+| | Bit | Meaning      | |
+| +=====+==============+ |
+| | 0   | LogAllFrames | |
+| +-----+--------------+ |
+|                        |
++------------------------+
+
+
+
+
 
 .. _parameters_CAN_P2_:
 
@@ -30124,6 +30148,30 @@ Bit rate can be set up to from 1000000 to 8000000
 
 
 
+.. _CAN_P2_OPTIONS:
+
+CAN\_P2\_OPTIONS: CAN per\-interface options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+CAN per\-interface options
+
+
++------------------------+
+| Bitmask                |
++========================+
+| +-----+--------------+ |
+| | Bit | Meaning      | |
+| +=====+==============+ |
+| | 0   | LogAllFrames | |
+| +-----+--------------+ |
+|                        |
++------------------------+
+
+
+
+
 
 .. _parameters_CAN_P3_:
 
@@ -30208,6 +30256,30 @@ Bit rate can be set up to from 1000000 to 8000000
 | +-------+---------+ |
 |                     |
 +---------------------+
+
+
+
+
+.. _CAN_P3_OPTIONS:
+
+CAN\_P3\_OPTIONS: CAN per\-interface options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+CAN per\-interface options
+
+
++------------------------+
+| Bitmask                |
++========================+
+| +-----+--------------+ |
+| | Bit | Meaning      | |
+| +=====+==============+ |
+| | 0   | LogAllFrames | |
+| +-----+--------------+ |
+|                        |
++------------------------+
 
 
 
@@ -69857,6 +69929,293 @@ Target pitch for initial pullup
 
 
 
+.. _parameters_QWIK_:
+
+QWIK\_ Parameters
+-----------------
+
+
+.. _QWIK_ENABLE:
+
+QWIK\_ENABLE: Quicktune enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Enable quicktune system
+
+
++----------------------+
+| Values               |
++======================+
+| +-------+----------+ |
+| | Value | Meaning  | |
+| +=======+==========+ |
+| | 0     | Disabled | |
+| +-------+----------+ |
+| | 1     | Enabled  | |
+| +-------+----------+ |
+|                      |
++----------------------+
+
+
+
+
+.. _QWIK_AXES:
+
+QWIK\_AXES: Quicktune axes
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Axes to tune
+
+
++-------------------+
+| Bitmask           |
++===================+
+| +-----+---------+ |
+| | Bit | Meaning | |
+| +=====+=========+ |
+| | 0   | Roll    | |
+| +-----+---------+ |
+| | 1   | Pitch   | |
+| +-----+---------+ |
+| | 2   | Yaw     | |
+| +-----+---------+ |
+|                   |
++-------------------+
+
+
+
+
+.. _QWIK_DOUBLE_TIME:
+
+QWIK\_DOUBLE\_TIME: Quicktune doubling time
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Time to double a tuning parameter\. Raise this for a slower tune\.
+
+
++---------+---------+
+| Range   | Units   |
++=========+=========+
+| 5 to 20 | seconds |
++---------+---------+
+
+
+
+
+.. _QWIK_GAIN_MARGIN:
+
+QWIK\_GAIN\_MARGIN: Quicktune gain margin
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Reduction in gain after oscillation detected\. Raise this number to get a more conservative tune
+
+
++----------+---------+
+| Range    | Units   |
++==========+=========+
+| 20 to 80 | percent |
++----------+---------+
+
+
+
+
+.. _QWIK_OSC_SMAX:
+
+QWIK\_OSC\_SMAX: Quicktune oscillation rate threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Threshold for oscillation detection\. A lower value will lead to a more conservative tune\.
+
+
++---------+
+| Range   |
++=========+
+| 1 to 10 |
++---------+
+
+
+
+
+.. _QWIK_YAW_P_MAX:
+
+QWIK\_YAW\_P\_MAX: Quicktune Yaw P max
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Maximum value for yaw P gain
+
+
++----------+
+| Range    |
++==========+
+| 0.1 to 3 |
++----------+
+
+
+
+
+.. _QWIK_YAW_D_MAX:
+
+QWIK\_YAW\_D\_MAX: Quicktune Yaw D max
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Maximum value for yaw D gain
+
+
++------------+
+| Range      |
++============+
+| 0.001 to 1 |
++------------+
+
+
+
+
+.. _QWIK_RP_PI_RATIO:
+
+QWIK\_RP\_PI\_RATIO: Quicktune roll\/pitch PI ratio
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Ratio between P and I gains for roll and pitch\. Raise this to get a lower I gain
+
+
++------------+
+| Range      |
++============+
+| 1.0 to 2.0 |
++------------+
+
+
+
+
+.. _QWIK_Y_PI_RATIO:
+
+QWIK\_Y\_PI\_RATIO: Quicktune Yaw PI ratio
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Ratio between P and I gains for yaw\. Raise this to get a lower I gain
+
+
++-----------+
+| Range     |
++===========+
+| 1.0 to 20 |
++-----------+
+
+
+
+
+.. _QWIK_AUTO_FILTER:
+
+QWIK\_AUTO\_FILTER: Quicktune auto filter enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+When enabled the PID filter settings are automatically set based on INS\_GYRO\_FILTER
+
+
++----------------------+
+| Values               |
++======================+
+| +-------+----------+ |
+| | Value | Meaning  | |
+| +=======+==========+ |
+| | 0     | Disabled | |
+| +-------+----------+ |
+| | 1     | Enabled  | |
+| +-------+----------+ |
+|                      |
++----------------------+
+
+
+
+
+.. _QWIK_AUTO_SAVE:
+
+QWIK\_AUTO\_SAVE: Quicktune auto save
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Number of seconds after completion of tune to auto\-save\. This is useful when using a 2 position switch for quicktune\. Zero \(the default value\) disables automatic saving\, and you will need to have a 3 position switch to save or use GCS auxilliary functions\.
+
+
++---------+
+| Units   |
++=========+
+| seconds |
++---------+
+
+
+
+
+.. _QWIK_REDUCE_MAX:
+
+QWIK\_REDUCE\_MAX: Quicktune maximum gain reduction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+This controls how much quicktune is allowed to lower gains from the original gains\. If the vehicle already has a reasonable tune and is not oscillating then you can set this to zero to prevent gain reductions\. The default of 20\% is reasonable for most vehicles\. Using a maximum gain reduction lowers the chance of an angle P oscillation happening if quicktune gets a false positive oscillation at a low gain\, which can result in very low rate gains and a dangerous angle P oscillation\.
+
+
++----------+---------+
+| Range    | Units   |
++==========+=========+
+| 0 to 100 | percent |
++----------+---------+
+
+
+
+
+.. _QWIK_OPTIONS:
+
+QWIK\_OPTIONS: Quicktune options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Additional options\. When the Two Position Switch option is enabled then a high switch position will start the tune\, low will disable the tune\. you should also set a QUIK\_AUTO\_SAVE time so that you will be able to save the tune\.
+
+
++--------------------------------+
+| Bitmask                        |
++================================+
+| +-----+----------------------+ |
+| | Bit | Meaning              | |
+| +=====+======================+ |
+| | 0   | UseTwoPositionSwitch | |
+| +-----+----------------------+ |
+|                                |
++--------------------------------+
+
+
+
+
+.. _QWIK_ANGLE_MAX:
+
+QWIK\_ANGLE\_MAX: maximum angle error for tune abort
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+If while tuning the angle error goes over this limit then the tune will aborts to prevent a bad oscillation in the case of the tuning algorithm failing\. If you get an error \"Quicktune\: attitude error ABORTING\" and you think it is a false positive then you can either raise this parameter or you can try increasing the QWIK\_DOUBLE\_TIME to do the tune more slowly\.
+
+
++---------+
+| Units   |
++=========+
+| degrees |
++---------+
+
+
+
+
+
 .. _parameters_Q_:
 
 Q\_ Parameters
@@ -91238,6 +91597,8 @@ Debugging options
 | | 4   | Disable pre-arm check                                                                  | |
 | +-----+----------------------------------------------------------------------------------------+ |
 | | 5   | Save CRC of current scripts to loaded and running checksum parameters enabling pre-arm | |
+| +-----+----------------------------------------------------------------------------------------+ |
+| | 6   | Disable heap expansion on allocation failure                                           | |
 | +-----+----------------------------------------------------------------------------------------+ |
 |                                                                                                  |
 +--------------------------------------------------------------------------------------------------+
