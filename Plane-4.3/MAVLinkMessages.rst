@@ -511,6 +511,7 @@ Unsupported / unhandled messages.
   `CAMERA_INFORMATION <https://mavlink.io/en/messages/common.html#CAMERA_INFORMATION>`_, UNSUPPORTED, common
   `CAMERA_SETTINGS <https://mavlink.io/en/messages/common.html#CAMERA_SETTINGS>`_, UNSUPPORTED, common
   `CAMERA_STATUS <https://mavlink.io/en/messages/ardupilotmega.html#CAMERA_STATUS>`_, UNSUPPORTED, ardupilotmega
+  `CAMERA_THERMAL_RANGE <https://mavlink.io/en/messages/common.html#CAMERA_THERMAL_RANGE>`_, UNSUPPORTED, common
   `CAMERA_TRACKING_GEO_STATUS <https://mavlink.io/en/messages/common.html#CAMERA_TRACKING_GEO_STATUS>`_, UNSUPPORTED, common
   `CAMERA_TRACKING_IMAGE_STATUS <https://mavlink.io/en/messages/common.html#CAMERA_TRACKING_IMAGE_STATUS>`_, UNSUPPORTED, common
   `CAMERA_TRIGGER <https://mavlink.io/en/messages/common.html#CAMERA_TRIGGER>`_, UNSUPPORTED, common
@@ -545,6 +546,7 @@ Unsupported / unhandled messages.
   `GIMBAL_MANAGER_STATUS <https://mavlink.io/en/messages/common.html#GIMBAL_MANAGER_STATUS>`_, UNSUPPORTED, common
   `GIMBAL_TORQUE_CMD_REPORT <https://mavlink.io/en/messages/ardupilotmega.html#GIMBAL_TORQUE_CMD_REPORT>`_, UNSUPPORTED, ardupilotmega
   `GLOBAL_POSITION_INT_COV <https://mavlink.io/en/messages/common.html#GLOBAL_POSITION_INT_COV>`_, UNSUPPORTED, common
+  `GNSS_INTEGRITY <https://mavlink.io/en/messages/development.html#GNSS_INTEGRITY>`_, UNSUPPORTED, development
   `GOPRO_GET_REQUEST <https://mavlink.io/en/messages/ardupilotmega.html#GOPRO_GET_REQUEST>`_, UNSUPPORTED, ardupilotmega
   `GOPRO_GET_RESPONSE <https://mavlink.io/en/messages/ardupilotmega.html#GOPRO_GET_RESPONSE>`_, UNSUPPORTED, ardupilotmega
   `GOPRO_SET_RESPONSE <https://mavlink.io/en/messages/ardupilotmega.html#GOPRO_SET_RESPONSE>`_, UNSUPPORTED, ardupilotmega
@@ -589,6 +591,7 @@ Unsupported / unhandled messages.
   `PARAM_EXT_VALUE <https://mavlink.io/en/messages/common.html#PARAM_EXT_VALUE>`_, UNSUPPORTED, common
   `PARAM_MAP_RC <https://mavlink.io/en/messages/common.html#PARAM_MAP_RC>`_, UNSUPPORTED, common
   `PING <https://mavlink.io/en/messages/common.html#PING>`_, UNSUPPORTED, common
+  `RADIO_RC_CHANNELS <https://mavlink.io/en/messages/development.html#RADIO_RC_CHANNELS>`_, UNSUPPORTED, development
   `RAW_PRESSURE <https://mavlink.io/en/messages/common.html#RAW_PRESSURE>`_, UNSUPPORTED, common
   `RAW_RPM <https://mavlink.io/en/messages/common.html#RAW_RPM>`_, UNSUPPORTED, common
   `RELAY_STATUS <https://mavlink.io/en/messages/common.html#RELAY_STATUS>`_, UNSUPPORTED, common
@@ -602,6 +605,8 @@ Unsupported / unhandled messages.
   `SET_MAG_OFFSETS <https://mavlink.io/en/messages/ardupilotmega.html#SET_MAG_OFFSETS>`_, UNSUPPORTED, ardupilotmega
   `SMART_BATTERY_INFO <https://mavlink.io/en/messages/common.html#SMART_BATTERY_INFO>`_, UNSUPPORTED, common
   `STORAGE_INFORMATION <https://mavlink.io/en/messages/common.html#STORAGE_INFORMATION>`_, UNSUPPORTED, common
+  `TRAJECTORY_REPRESENTATION_BEZIER <https://mavlink.io/en/messages/common.html#TRAJECTORY_REPRESENTATION_BEZIER>`_, UNSUPPORTED, common
+  `TRAJECTORY_REPRESENTATION_WAYPOINTS <https://mavlink.io/en/messages/common.html#TRAJECTORY_REPRESENTATION_WAYPOINTS>`_, UNSUPPORTED, common
   `TUNNEL <https://mavlink.io/en/messages/common.html#TUNNEL>`_, UNSUPPORTED, common
   `UAVCAN_NODE_INFO <https://mavlink.io/en/messages/common.html#UAVCAN_NODE_INFO>`_, UNSUPPORTED, common
   `UAVCAN_NODE_STATUS <https://mavlink.io/en/messages/common.html#UAVCAN_NODE_STATUS>`_, UNSUPPORTED, common
@@ -643,13 +648,17 @@ Unsupported / unhandled commands.
   `MAV_CMD_DO_LAST <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_LAST>`_, UNSUPPORTED, common
   `MAV_CMD_DO_MOUNT_CONTROL_QUAT <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_MOUNT_CONTROL_QUAT>`_, UNSUPPORTED, common
   `MAV_CMD_DO_RALLY_LAND <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_RALLY_LAND>`_, UNSUPPORTED, common
+  `MAV_CMD_DO_RETURN_PATH_START <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_RETURN_PATH_START>`_, UNSUPPORTED, common
   `MAV_CMD_DO_SET_CAM_TRIGG_INTERVAL <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_CAM_TRIGG_INTERVAL>`_, UNSUPPORTED, common
   `MAV_CMD_DO_SET_PARAMETER <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_PARAMETER>`_, UNSUPPORTED, common
   `MAV_CMD_DO_SET_ROI_NONE <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_ROI_NONE>`_, UNSUPPORTED, common
   `MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET>`_, UNSUPPORTED, common
+  `MAV_CMD_DO_SET_SAFETY_SWITCH_STATE <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_SAFETY_SWITCH_STATE>`_, UNSUPPORTED, common
+  `MAV_CMD_DO_SET_SYS_CMP_ID <https://mavlink.io/en/messages/development.html#MAV_CMD_DO_SET_SYS_CMP_ID>`_, UNSUPPORTED, development
   `MAV_CMD_DO_TRIGGER_CONTROL <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_TRIGGER_CONTROL>`_, UNSUPPORTED, common
   `MAV_CMD_ENUM_END <https://mavlink.io/en/messages/common.html#MAV_CMD_ENUM_END>`_, UNSUPPORTED, common
   `MAV_CMD_EXTERNAL_POSITION_ESTIMATE <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_EXTERNAL_POSITION_ESTIMATE>`_, UNSUPPORTED, ardupilotmega
+  `MAV_CMD_EXTERNAL_WIND_ESTIMATE <https://mavlink.io/en/messages/development.html#MAV_CMD_EXTERNAL_WIND_ESTIMATE>`_, UNSUPPORTED, development
   `MAV_CMD_FIXED_MAG_CAL <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_FIXED_MAG_CAL>`_, UNSUPPORTED, ardupilotmega
   `MAV_CMD_FIXED_MAG_CAL_FIELD <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_FIXED_MAG_CAL_FIELD>`_, UNSUPPORTED, ardupilotmega
   `MAV_CMD_GIMBAL_AXIS_CALIBRATION_STATUS <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_GIMBAL_AXIS_CALIBRATION_STATUS>`_, UNSUPPORTED, ardupilotmega
@@ -685,10 +694,13 @@ Unsupported / unhandled commands.
   `MAV_CMD_RESET_CAMERA_SETTINGS <https://mavlink.io/en/messages/common.html#MAV_CMD_RESET_CAMERA_SETTINGS>`_, UNSUPPORTED, common
   `MAV_CMD_SET_CAMERA_FOCUS <https://mavlink.io/en/messages/common.html#MAV_CMD_SET_CAMERA_FOCUS>`_, UNSUPPORTED, common
   `MAV_CMD_SET_CAMERA_MODE <https://mavlink.io/en/messages/common.html#MAV_CMD_SET_CAMERA_MODE>`_, UNSUPPORTED, common
+  `MAV_CMD_SET_CAMERA_SOURCE <https://mavlink.io/en/messages/common.html#MAV_CMD_SET_CAMERA_SOURCE>`_, UNSUPPORTED, common
   `MAV_CMD_SET_CAMERA_ZOOM <https://mavlink.io/en/messages/common.html#MAV_CMD_SET_CAMERA_ZOOM>`_, UNSUPPORTED, common
   `MAV_CMD_SET_FACTORY_TEST_MODE <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_SET_FACTORY_TEST_MODE>`_, UNSUPPORTED, ardupilotmega
   `MAV_CMD_SET_GUIDED_SUBMODE_CIRCLE <https://mavlink.io/en/messages/common.html#MAV_CMD_SET_GUIDED_SUBMODE_CIRCLE>`_, UNSUPPORTED, common
   `MAV_CMD_SET_GUIDED_SUBMODE_STANDARD <https://mavlink.io/en/messages/common.html#MAV_CMD_SET_GUIDED_SUBMODE_STANDARD>`_, UNSUPPORTED, common
+  `MAV_CMD_SET_HAGL <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_SET_HAGL>`_, UNSUPPORTED, ardupilotmega
+  `MAV_CMD_SET_STORAGE_USAGE <https://mavlink.io/en/messages/common.html#MAV_CMD_SET_STORAGE_USAGE>`_, UNSUPPORTED, common
   `MAV_CMD_SOLO_BTN_FLY_CLICK <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_SOLO_BTN_FLY_CLICK>`_, UNSUPPORTED, ardupilotmega
   `MAV_CMD_SOLO_BTN_FLY_HOLD <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_SOLO_BTN_FLY_HOLD>`_, UNSUPPORTED, ardupilotmega
   `MAV_CMD_SOLO_BTN_PAUSE_CLICK <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_SOLO_BTN_PAUSE_CLICK>`_, UNSUPPORTED, ardupilotmega

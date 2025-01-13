@@ -2788,51 +2788,31 @@ Lua Script Parameters
 ---------------------
 
 
-.. _RCK_FORCEHL:
+.. _POI_DIST_MAX:
 
-RCK\_FORCEHL: Force enable High Latency mode
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Automatically enables High Latency mode if not already enabled
+POI\_DIST\_MAX: Mount POI distance max
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
+POI\'s max distance \(in meters\) from the vehicle
+
+
++------------+
+| Range      |
++============+
+| 0 to 10000 |
++------------+
 
 
 
 
-.. _RCK_PERIOD:
+.. _SHIP_ENABLE:
 
-RCK\_PERIOD: Update rate
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-When in High Latency mode\, send Rockblock updates every N seconds
+SHIP\_ENABLE: Ship landing enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-+----------+---------+
-| Range    | Units   |
-+==========+=========+
-| 0 to 600 | seconds |
-+----------+---------+
-
-
-
-
-.. _RCK_DEBUG:
-
-RCK\_DEBUG: Display Rockblock debugging text
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Sends Rockblock debug text to GCS via statustexts
+Enable ship landing system
 
 
 +-------+----------+
@@ -2846,13 +2826,31 @@ Sends Rockblock debug text to GCS via statustexts
 
 
 
-.. _RCK_ENABLE:
+.. _SHIP_LAND_ANGLE:
 
-RCK\_ENABLE: Enable Message transmission
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SHIP\_LAND\_ANGLE: Ship landing angle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Enables the Rockblock sending and recieving
+Angle from the stern of the ship for landing approach\. Use this to ensure that on a go\-around that ship superstructure and cables are avoided\. A value of zero means to approach from the rear of the ship\. A value of 90 means the landing will approach from the port \(left\) side of the ship\. A value of \-90 will mean approaching from the starboard \(right\) side of the ship\. A value of 180 will approach from the bow of the ship\. This parameter is combined with the sign of the RTL\_RADIUS parameter to determine the holdoff pattern\. If RTL\_RADIUS is positive then a clockwise loiter is performed\, if RTL\_RADIUS is negative then a counter\-clockwise loiter is used\.
+
+
++-------------+---------+
+| Range       | Units   |
++=============+=========+
+| -180 to 180 | degrees |
++-------------+---------+
+
+
+
+
+.. _SHIP_AUTO_OFS:
+
+SHIP\_AUTO\_OFS: Ship automatic offset trigger
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target\. NOTE\: This parameter will auto\-reset to zero once the offset has been calculated\.
 
 
 +-------+----------+
@@ -2860,7 +2858,7 @@ Enables the Rockblock sending and recieving
 +=======+==========+
 | 0     | Disabled |
 +-------+----------+
-| 1     | Enabled  |
+| 1     | Trigger  |
 +-------+----------+
 
 
@@ -2893,60 +2891,6 @@ PREV\_RC\_FUNC: param reversion RC function
 
 
 RCn\_OPTION number to used to trigger parameter reversion
-
-
-.. _PLND_ALT_CUTOFF:
-
-PLND\_ALT\_CUTOFF: Precland altitude cutoff
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-The altitude \(rangefinder distance\) below which we stop using the precision landing sensor and continue landing
-
-
-+---------+--------+
-| Range   | Units  |
-+=========+========+
-| 0 to 20 | meters |
-+---------+--------+
-
-
-
-
-.. _DIST_CUTOFF:
-
-DIST\_CUTOFF: Precland distance cutoff
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-The distance from target beyond which the target is ignored
-
-
-+----------+--------+
-| Range    | Units  |
-+==========+========+
-| 0 to 100 | meters |
-+----------+--------+
-
-
-
-
-.. _POI_DIST_MAX:
-
-POI\_DIST\_MAX: Mount POI distance max
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-POI\'s max distance \(in meters\) from the vehicle
-
-
-+------------+
-| Range      |
-+============+
-| 0 to 10000 |
-+------------+
-
-
 
 
 .. _QUIK_ENABLE:
@@ -3200,13 +3144,13 @@ Additional options\. When the Two Position Switch option is enabled then a high 
 
 
 
-.. _SHIP_ENABLE:
+.. _DR_ENABLE:
 
-SHIP\_ENABLE: Ship landing enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DR\_ENABLE: Deadreckoning Enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Enable ship landing system
+Deadreckoning Enable
 
 
 +-------+----------+
@@ -3220,40 +3164,168 @@ Enable ship landing system
 
 
 
-.. _SHIP_LAND_ANGLE:
+.. _DR_ENABLE_DIST:
 
-SHIP\_LAND\_ANGLE: Ship landing angle
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Angle from the stern of the ship for landing approach\. Use this to ensure that on a go\-around that ship superstructure and cables are avoided\. A value of zero means to approach from the rear of the ship\. A value of 90 means the landing will approach from the port \(left\) side of the ship\. A value of \-90 will mean approaching from the starboard \(right\) side of the ship\. A value of 180 will approach from the bow of the ship\. This parameter is combined with the sign of the RTL\_RADIUS parameter to determine the holdoff pattern\. If RTL\_RADIUS is positive then a clockwise loiter is performed\, if RTL\_RADIUS is negative then a counter\-clockwise loiter is used\.
+DR\_ENABLE\_DIST: Deadreckoning Enable Distance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-+-------------+---------+
-| Range       | Units   |
-+=============+=========+
-| -180 to 180 | degrees |
-+-------------+---------+
+Distance from home \(in meters\) beyond which the dead reckoning will be enabled
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
 
 
 
 
-.. _SHIP_AUTO_OFS:
+.. _DR_GPS_SACC_MAX:
 
-SHIP\_AUTO\_OFS: Ship automatic offset trigger
+DR\_GPS\_SACC\_MAX: Deadreckoning GPS speed accuracy maximum threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+GPS speed accuracy maximum\, above which deadreckoning home will begin \(default is 0\.8\)\.  Lower values trigger with good GPS quality\, higher values will allow poorer GPS before triggering\. Set to 0 to disable use of GPS speed accuracy
+
+
++---------+
+| Range   |
++=========+
+| 0 to 10 |
++---------+
+
+
+
+
+.. _DR_GPS_SAT_MIN:
+
+DR\_GPS\_SAT\_MIN: Deadreckoning GPS satellite count min threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+GPS satellite count threshold below which deadreckoning home will begin \(default is 6\)\.  Higher values trigger with good GPS quality\, Lower values trigger with worse GPS quality\. Set to 0 to disable use of GPS satellite count
+
+
++---------+
+| Range   |
++=========+
+| 0 to 30 |
++---------+
+
+
+
+
+.. _DR_GPS_TRIGG_SEC:
+
+DR\_GPS\_TRIGG\_SEC: Deadreckoning GPS check trigger seconds
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+GPS checks must fail for this many seconds before dead reckoning will be triggered
+
+
++---------+
+| Units   |
++=========+
+| seconds |
++---------+
+
+
+
+
+.. _DR_FLY_ANGLE:
+
+DR\_FLY\_ANGLE: Deadreckoning Lean Angle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+lean angle \(in degrees\) during deadreckoning
+
+
++---------+---------+
+| Range   | Units   |
++=========+=========+
+| 0 to 45 | degrees |
++---------+---------+
+
+
+
+
+.. _DR_FLY_ALT_MIN:
+
+DR\_FLY\_ALT\_MIN: Deadreckoning Altitude Min
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Copter will fly at at least this altitude \(in meters\) above home during deadreckoning
+
+
++-----------+--------+
+| Range     | Units  |
++===========+========+
+| 0 to 1000 | meters |
++-----------+--------+
+
+
+
+
+.. _DR_FLY_TIMEOUT:
+
+DR\_FLY\_TIMEOUT: Deadreckoning flight timeout
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target\. NOTE\: This parameter will auto\-reset to zero once the offset has been calculated\.
+Copter will attempt to switch to NEXT\_MODE after this many seconds of deadreckoning\.  If it cannot switch modes it will continue in Guided\_NoGPS\.  Set to 0 to disable timeout
 
 
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Trigger  |
-+-------+----------+
++---------+
+| Units   |
++=========+
+| seconds |
++---------+
+
+
+
+
+.. _DR_NEXT_MODE:
+
+DR\_NEXT\_MODE: Deadreckoning Next Mode
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Copter switch to this mode after GPS recovers or DR\_FLY\_TIMEOUT has elapsed\.  Default is 6\/RTL\.  Set to \-1 to return to mode used before deadreckoning was triggered
+
+
++-------+--------------+
+| Value | Meaning      |
++=======+==============+
+| 2     | AltHold      |
++-------+--------------+
+| 3     | Auto         |
++-------+--------------+
+| 4     | Guided       |
++-------+--------------+
+| 5     | Loiter       |
++-------+--------------+
+| 6     | RTL          |
++-------+--------------+
+| 7     | Circle       |
++-------+--------------+
+| 9     | Land         |
++-------+--------------+
+| 16    | PosHold      |
++-------+--------------+
+| 17    | Brake        |
++-------+--------------+
+| 20    | Guided_NoGPS |
++-------+--------------+
+| 21    | Smart_RTL    |
++-------+--------------+
+| 27    | Auto RTL     |
++-------+--------------+
 
 
 
@@ -3370,382 +3442,6 @@ sendfile is an offloading mechanism for faster file download\. If this is non\-z
 +===============+
 | 0 to 10000000 |
 +---------------+
-
-
-
-
-.. _RTUN_ENABLE:
-
-RTUN\_ENABLE: Rover Quicktune enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Enable quicktune system
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _RTUN_AXES:
-
-RTUN\_AXES: Rover Quicktune axes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-axes to tune
-
-
-+-----+----------+
-| Bit | Meaning  |
-+=====+==========+
-| 0   | Steering |
-+-----+----------+
-| 1   | Speed    |
-+-----+----------+
-
-
-
-
-.. _RTUN_STR_FFRATIO:
-
-RTUN\_STR\_FFRATIO: Rover Quicktune Steering Rate FeedForward ratio
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Ratio between measured response and FF gain\. Raise this to get a higher FF gain
-
-
-+----------+
-| Range    |
-+==========+
-| 0 to 1.0 |
-+----------+
-
-
-
-
-.. _RTUN_STR_P_RATIO:
-
-RTUN\_STR\_P\_RATIO: Rover Quicktune Steering FF to P ratio
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Ratio between steering FF and P gains\. Raise this to get a higher P gain\, 0 to leave P unchanged
-
-
-+----------+
-| Range    |
-+==========+
-| 0 to 2.0 |
-+----------+
-
-
-
-
-.. _RTUN_STR_I_RATIO:
-
-RTUN\_STR\_I\_RATIO: Rover Quicktune Steering FF to I ratio
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Ratio between steering FF and I gains\. Raise this to get a higher I gain\, 0 to leave I unchanged
-
-
-+----------+
-| Range    |
-+==========+
-| 0 to 2.0 |
-+----------+
-
-
-
-
-.. _RTUN_SPD_FFRATIO:
-
-RTUN\_SPD\_FFRATIO: Rover Quicktune Speed FeedForward \(equivalent\) ratio
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Ratio between measured response and CRUISE\_THROTTLE value\. Raise this to get a higher CRUISE\_THROTTLE value
-
-
-+----------+
-| Range    |
-+==========+
-| 0 to 1.0 |
-+----------+
-
-
-
-
-.. _RTUN_SPD_P_RATIO:
-
-RTUN\_SPD\_P\_RATIO: Rover Quicktune Speed FF to P ratio
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Ratio between speed FF and P gain\. Raise this to get a higher P gain\, 0 to leave P unchanged
-
-
-+----------+
-| Range    |
-+==========+
-| 0 to 2.0 |
-+----------+
-
-
-
-
-.. _RTUN_SPD_I_RATIO:
-
-RTUN\_SPD\_I\_RATIO: Rover Quicktune Speed FF to I ratio
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Ratio between speed FF and I gain\. Raise this to get a higher I gain\, 0 to leave I unchanged
-
-
-+----------+
-| Range    |
-+==========+
-| 0 to 2.0 |
-+----------+
-
-
-
-
-.. _RTUN_AUTO_FILTER:
-
-RTUN\_AUTO\_FILTER: Rover Quicktune auto filter enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-When enabled the PID filter settings are automatically set based on INS\_GYRO\_FILTER
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _RTUN_AUTO_SAVE:
-
-RTUN\_AUTO\_SAVE: Rover Quicktune auto save
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Number of seconds after completion of tune to auto\-save\. This is useful when using a 2 position switch for quicktune
-
-
-+---------+
-| Units   |
-+=========+
-| seconds |
-+---------+
-
-
-
-
-.. _RTUN_RC_FUNC:
-
-RTUN\_RC\_FUNC: Rover Quicktune RC function
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-RCn\_OPTION number to use to control tuning stop\/start\/save
-
-
-+-------+------------+
-| Value | Meaning    |
-+=======+============+
-| 300   | Scripting1 |
-+-------+------------+
-| 301   | Scripting2 |
-+-------+------------+
-| 302   | Scripting3 |
-+-------+------------+
-| 303   | Scripting4 |
-+-------+------------+
-| 304   | Scripting5 |
-+-------+------------+
-| 305   | Scripting6 |
-+-------+------------+
-| 306   | Scripting7 |
-+-------+------------+
-| 307   | Scripting8 |
-+-------+------------+
-
-
-
-
-.. _WINCH_RATE_UP:
-
-WINCH\_RATE\_UP: WinchControl Rate Up
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Maximum rate when retracting line
-
-
-+------------+
-| Range      |
-+============+
-| 0.1 to 5.0 |
-+------------+
-
-
-
-
-.. _WINCH_RATE_DN:
-
-WINCH\_RATE\_DN: WinchControl Rate Down
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Maximum rate when releasing line
-
-
-+------------+
-| Range      |
-+============+
-| 0.1 to 5.0 |
-+------------+
-
-
-
-
-.. _WINCH_RC_FUNC:
-
-WINCH\_RC\_FUNC: Winch Rate Control RC function
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-RCn\_OPTION number to use to control winch rate
-
-
-+-------+------------+
-| Value | Meaning    |
-+=======+============+
-| 300   | Scripting1 |
-+-------+------------+
-| 301   | Scripting2 |
-+-------+------------+
-| 302   | Scripting3 |
-+-------+------------+
-| 303   | Scripting4 |
-+-------+------------+
-| 304   | Scripting5 |
-+-------+------------+
-| 305   | Scripting6 |
-+-------+------------+
-| 306   | Scripting7 |
-+-------+------------+
-| 307   | Scripting8 |
-+-------+------------+
-
-
-
-
-.. _ESRC_EXTN_THRESH:
-
-ESRC\_EXTN\_THRESH: EKF Source ExternalNav Innovation Threshold
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-ExternalNav may be used if innovations are below this threshold
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 1 |
-+--------+
-
-
-
-
-.. _ESRC_EXTN_QUAL:
-
-ESRC\_EXTN\_QUAL: EKF Source ExternalNav Quality Threshold
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-ExternalNav may be used if quality is above this threshold
-
-
-+----------+---------+
-| Range    | Units   |
-+==========+=========+
-| 0 to 100 | percent |
-+----------+---------+
-
-
-
-
-.. _ESRC_FLOW_THRESH:
-
-ESRC\_FLOW\_THRESH: EKF Source OpticalFlow Innovation Threshold
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-OpticalFlow may be used if innovations are below this threshold
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 1 |
-+--------+
-
-
-
-
-.. _ESRC_FLOW_QUAL:
-
-ESRC\_FLOW\_QUAL: EKF Source OpticalFlow Quality Threshold
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-OpticalFlow may be used if quality is above this threshold
-
-
-+----------+---------+
-| Range    | Units   |
-+==========+=========+
-| 0 to 100 | percent |
-+----------+---------+
-
-
-
-
-.. _ESRC_RNGFND_MAX:
-
-ESRC\_RNGFND\_MAX: EKF Source Rangefinder Max
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-OpticalFlow may be used if rangefinder distance is below this threshold
-
-
-+---------+--------+
-| Range   | Units  |
-+=========+========+
-| 0 to 50 | meters |
-+---------+--------+
 
 
 
@@ -4128,13 +3824,13 @@ Battery estimator coefficient3
 
 
 
-.. _DR_ENABLE:
+.. _RCK_FORCEHL:
 
-DR\_ENABLE: Deadreckoning Enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RCK\_FORCEHL: Force enable High Latency mode
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Deadreckoning Enable
+Automatically enables High Latency mode if not already enabled
 
 
 +-------+----------+
@@ -4148,121 +3844,329 @@ Deadreckoning Enable
 
 
 
-.. _DR_ENABLE_DIST:
+.. _RCK_PERIOD:
 
-DR\_ENABLE\_DIST: Deadreckoning Enable Distance
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Distance from home \(in meters\) beyond which the dead reckoning will be enabled
+RCK\_PERIOD: Update rate
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-+--------+
-| Units  |
-+========+
-| meters |
-+--------+
+When in High Latency mode\, send Rockblock updates every N seconds
 
 
-
-
-.. _DR_GPS_SACC_MAX:
-
-DR\_GPS\_SACC\_MAX: Deadreckoning GPS speed accuracy maximum threshold
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-GPS speed accuracy maximum\, above which deadreckoning home will begin \(default is 0\.8\)\.  Lower values trigger with good GPS quality\, higher values will allow poorer GPS before triggering\. Set to 0 to disable use of GPS speed accuracy
-
-
-+---------+
-| Range   |
-+=========+
-| 0 to 10 |
-+---------+
++----------+---------+
+| Range    | Units   |
++==========+=========+
+| 0 to 600 | seconds |
++----------+---------+
 
 
 
 
-.. _DR_GPS_SAT_MIN:
+.. _RCK_DEBUG:
 
-DR\_GPS\_SAT\_MIN: Deadreckoning GPS satellite count min threshold
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-GPS satellite count threshold below which deadreckoning home will begin \(default is 6\)\.  Higher values trigger with good GPS quality\, Lower values trigger with worse GPS quality\. Set to 0 to disable use of GPS satellite count
+RCK\_DEBUG: Display Rockblock debugging text
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-+---------+
-| Range   |
-+=========+
-| 0 to 30 |
-+---------+
+Sends Rockblock debug text to GCS via statustexts
 
 
-
-
-.. _DR_GPS_TRIGG_SEC:
-
-DR\_GPS\_TRIGG\_SEC: Deadreckoning GPS check trigger seconds
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-GPS checks must fail for this many seconds before dead reckoning will be triggered
-
-
-+---------+
-| Units   |
-+=========+
-| seconds |
-+---------+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
 
 
 
 
-.. _DR_FLY_ANGLE:
+.. _RCK_ENABLE:
 
-DR\_FLY\_ANGLE: Deadreckoning Lean Angle
+RCK\_ENABLE: Enable Message transmission
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-lean angle \(in degrees\) during deadreckoning
+Enables the Rockblock sending and recieving
 
 
-+---------+---------+
-| Range   | Units   |
-+=========+=========+
-| 0 to 45 | degrees |
-+---------+---------+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
 
 
 
 
-.. _DR_FLY_ALT_MIN:
+.. _ESRC_EXTN_THRESH:
 
-DR\_FLY\_ALT\_MIN: Deadreckoning Altitude Min
+ESRC\_EXTN\_THRESH: EKF Source ExternalNav Innovation Threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+ExternalNav may be used if innovations are below this threshold
+
+
++--------+
+| Range  |
++========+
+| 0 to 1 |
++--------+
+
+
+
+
+.. _ESRC_EXTN_QUAL:
+
+ESRC\_EXTN\_QUAL: EKF Source ExternalNav Quality Threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+ExternalNav may be used if quality is above this threshold
+
+
++----------+---------+
+| Range    | Units   |
++==========+=========+
+| 0 to 100 | percent |
++----------+---------+
+
+
+
+
+.. _ESRC_FLOW_THRESH:
+
+ESRC\_FLOW\_THRESH: EKF Source OpticalFlow Innovation Threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+OpticalFlow may be used if innovations are below this threshold
+
+
++--------+
+| Range  |
++========+
+| 0 to 1 |
++--------+
+
+
+
+
+.. _ESRC_FLOW_QUAL:
+
+ESRC\_FLOW\_QUAL: EKF Source OpticalFlow Quality Threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+OpticalFlow may be used if quality is above this threshold
+
+
++----------+---------+
+| Range    | Units   |
++==========+=========+
+| 0 to 100 | percent |
++----------+---------+
+
+
+
+
+.. _ESRC_RNGFND_MAX:
+
+ESRC\_RNGFND\_MAX: EKF Source Rangefinder Max
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Copter will fly at at least this altitude \(in meters\) above home during deadreckoning
+OpticalFlow may be used if rangefinder distance is below this threshold
 
 
-+-----------+--------+
-| Range     | Units  |
-+===========+========+
-| 0 to 1000 | meters |
-+-----------+--------+
++---------+--------+
+| Range   | Units  |
++=========+========+
+| 0 to 50 | meters |
++---------+--------+
 
 
 
 
-.. _DR_FLY_TIMEOUT:
+.. _RTUN_ENABLE:
 
-DR\_FLY\_TIMEOUT: Deadreckoning flight timeout
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RTUN\_ENABLE: Rover Quicktune enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Copter will attempt to switch to NEXT\_MODE after this many seconds of deadreckoning\.  If it cannot switch modes it will continue in Guided\_NoGPS\.  Set to 0 to disable timeout
+Enable quicktune system
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _RTUN_AXES:
+
+RTUN\_AXES: Rover Quicktune axes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+axes to tune
+
+
++-----+----------+
+| Bit | Meaning  |
++=====+==========+
+| 0   | Steering |
++-----+----------+
+| 1   | Speed    |
++-----+----------+
+
+
+
+
+.. _RTUN_STR_FFRATIO:
+
+RTUN\_STR\_FFRATIO: Rover Quicktune Steering Rate FeedForward ratio
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Ratio between measured response and FF gain\. Raise this to get a higher FF gain
+
+
++----------+
+| Range    |
++==========+
+| 0 to 1.0 |
++----------+
+
+
+
+
+.. _RTUN_STR_P_RATIO:
+
+RTUN\_STR\_P\_RATIO: Rover Quicktune Steering FF to P ratio
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Ratio between steering FF and P gains\. Raise this to get a higher P gain\, 0 to leave P unchanged
+
+
++----------+
+| Range    |
++==========+
+| 0 to 2.0 |
++----------+
+
+
+
+
+.. _RTUN_STR_I_RATIO:
+
+RTUN\_STR\_I\_RATIO: Rover Quicktune Steering FF to I ratio
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Ratio between steering FF and I gains\. Raise this to get a higher I gain\, 0 to leave I unchanged
+
+
++----------+
+| Range    |
++==========+
+| 0 to 2.0 |
++----------+
+
+
+
+
+.. _RTUN_SPD_FFRATIO:
+
+RTUN\_SPD\_FFRATIO: Rover Quicktune Speed FeedForward \(equivalent\) ratio
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Ratio between measured response and CRUISE\_THROTTLE value\. Raise this to get a higher CRUISE\_THROTTLE value
+
+
++----------+
+| Range    |
++==========+
+| 0 to 1.0 |
++----------+
+
+
+
+
+.. _RTUN_SPD_P_RATIO:
+
+RTUN\_SPD\_P\_RATIO: Rover Quicktune Speed FF to P ratio
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Ratio between speed FF and P gain\. Raise this to get a higher P gain\, 0 to leave P unchanged
+
+
++----------+
+| Range    |
++==========+
+| 0 to 2.0 |
++----------+
+
+
+
+
+.. _RTUN_SPD_I_RATIO:
+
+RTUN\_SPD\_I\_RATIO: Rover Quicktune Speed FF to I ratio
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Ratio between speed FF and I gain\. Raise this to get a higher I gain\, 0 to leave I unchanged
+
+
++----------+
+| Range    |
++==========+
+| 0 to 2.0 |
++----------+
+
+
+
+
+.. _RTUN_AUTO_FILTER:
+
+RTUN\_AUTO\_FILTER: Rover Quicktune auto filter enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+When enabled the PID filter settings are automatically set based on INS\_GYRO\_FILTER
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _RTUN_AUTO_SAVE:
+
+RTUN\_AUTO\_SAVE: Rover Quicktune auto save
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Number of seconds after completion of tune to auto\-save\. This is useful when using a 2 position switch for quicktune
 
 
 +---------+
@@ -4274,42 +4178,138 @@ Copter will attempt to switch to NEXT\_MODE after this many seconds of deadrecko
 
 
 
-.. _DR_NEXT_MODE:
+.. _RTUN_RC_FUNC:
 
-DR\_NEXT\_MODE: Deadreckoning Next Mode
+RTUN\_RC\_FUNC: Rover Quicktune RC function
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+RCn\_OPTION number to use to control tuning stop\/start\/save
+
+
++-------+------------+
+| Value | Meaning    |
++=======+============+
+| 300   | Scripting1 |
++-------+------------+
+| 301   | Scripting2 |
++-------+------------+
+| 302   | Scripting3 |
++-------+------------+
+| 303   | Scripting4 |
++-------+------------+
+| 304   | Scripting5 |
++-------+------------+
+| 305   | Scripting6 |
++-------+------------+
+| 306   | Scripting7 |
++-------+------------+
+| 307   | Scripting8 |
++-------+------------+
+
+
+
+
+.. _PLND_ALT_CUTOFF:
+
+PLND\_ALT\_CUTOFF: Precland altitude cutoff
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+The altitude \(rangefinder distance\) below which we stop using the precision landing sensor and continue landing
+
+
++---------+--------+
+| Range   | Units  |
++=========+========+
+| 0 to 20 | meters |
++---------+--------+
+
+
+
+
+.. _DIST_CUTOFF:
+
+DIST\_CUTOFF: Precland distance cutoff
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+The distance from target beyond which the target is ignored
+
+
++----------+--------+
+| Range    | Units  |
++==========+========+
+| 0 to 100 | meters |
++----------+--------+
+
+
+
+
+.. _WINCH_RATE_UP:
+
+WINCH\_RATE\_UP: WinchControl Rate Up
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Maximum rate when retracting line
+
+
++------------+
+| Range      |
++============+
+| 0.1 to 5.0 |
++------------+
+
+
+
+
+.. _WINCH_RATE_DN:
+
+WINCH\_RATE\_DN: WinchControl Rate Down
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Copter switch to this mode after GPS recovers or DR\_FLY\_TIMEOUT has elapsed\.  Default is 6\/RTL\.  Set to \-1 to return to mode used before deadreckoning was triggered
+Maximum rate when releasing line
 
 
-+-------+--------------+
-| Value | Meaning      |
-+=======+==============+
-| 2     | AltHold      |
-+-------+--------------+
-| 3     | Auto         |
-+-------+--------------+
-| 4     | Guided       |
-+-------+--------------+
-| 5     | Loiter       |
-+-------+--------------+
-| 6     | RTL          |
-+-------+--------------+
-| 7     | Circle       |
-+-------+--------------+
-| 9     | Land         |
-+-------+--------------+
-| 16    | PosHold      |
-+-------+--------------+
-| 17    | Brake        |
-+-------+--------------+
-| 20    | Guided_NoGPS |
-+-------+--------------+
-| 21    | Smart_RTL    |
-+-------+--------------+
-| 27    | Auto RTL     |
-+-------+--------------+
++------------+
+| Range      |
++============+
+| 0.1 to 5.0 |
++------------+
+
+
+
+
+.. _WINCH_RC_FUNC:
+
+WINCH\_RC\_FUNC: Winch Rate Control RC function
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+RCn\_OPTION number to use to control winch rate
+
+
++-------+------------+
+| Value | Meaning    |
++=======+============+
+| 300   | Scripting1 |
++-------+------------+
+| 301   | Scripting2 |
++-------+------------+
+| 302   | Scripting3 |
++-------+------------+
+| 303   | Scripting4 |
++-------+------------+
+| 304   | Scripting5 |
++-------+------------+
+| 305   | Scripting6 |
++-------+------------+
+| 306   | Scripting7 |
++-------+------------+
+| 307   | Scripting8 |
++-------+------------+
 
 
 
@@ -4867,6 +4867,107 @@ Number of tricks which can be selected over the range of the trik selection RC c
 
 
 
+.. _EFI_DLA_ENABLE:
+
+EFI\_DLA\_ENABLE: EFI DLA enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Enable EFI DLA driver
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _EFI_DLA_LPS:
+
+EFI\_DLA\_LPS: EFI DLA fuel scale
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+EFI DLA litres of fuel per second of injection time
+
+
++--------------+--------+
+| Range        | Units  |
++==============+========+
+| 0.00001 to 1 | litres |
++--------------+--------+
+
+
+
+
+.. _DJIR_DEBUG:
+
+DJIR\_DEBUG: DJIRS2 debug
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Enable DJIRS2 debug
+
+
++-------+---------------------------------+
+| Value | Meaning                         |
++=======+=================================+
+| 0     | Disabled                        |
++-------+---------------------------------+
+| 1     | Enabled                         |
++-------+---------------------------------+
+| 2     | Enabled with attitude reporting |
++-------+---------------------------------+
+
+
+
+
+.. _DJIR_UPSIDEDOWN:
+
+DJIR\_UPSIDEDOWN: DJIRS2 upside down
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+DJIRS2 upside down
+
+
++-------+---------------+
+| Value | Meaning       |
++=======+===============+
+| 0     | Right side up |
++-------+---------------+
+| 1     | Upside down   |
++-------+---------------+
+
+
+
+
+.. _EFI_INF_ENABLE:
+
+EFI\_INF\_ENABLE: EFI INF\-Inject enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Enable EFI INF\-Inject driver
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
 .. _VIEP_DEBUG:
 
 VIEP\_DEBUG: ViewPro debug
@@ -5018,282 +5119,6 @@ ViewPro Zoom Times Max
 +=========+
 | 0 to 30 |
 +---------+
-
-
-
-
-.. _EFI_INF_ENABLE:
-
-EFI\_INF\_ENABLE: EFI INF\-Inject enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Enable EFI INF\-Inject driver
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _EFI_SVF_ENABLE:
-
-EFI\_SVF\_ENABLE: Generator SVFFI enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Enable SVFFI generator support
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _EFI_SVF_ARMCHECK:
-
-EFI\_SVF\_ARMCHECK: Generator SVFFI arming check
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Check for Generator ARM state before arming
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _BATT_ANX_ENABLE:
-
-BATT\_ANX\_ENABLE: Enable ANX battery support
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Enable ANX battery support
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _BATT_ANX_CANDRV:
-
-BATT\_ANX\_CANDRV: Set ANX CAN driver
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Set ANX CAN driver
-
-
-+-------+--------------+
-| Value | Meaning      |
-+=======+==============+
-| 0     | None         |
-+-------+--------------+
-| 1     | 1stCANDriver |
-+-------+--------------+
-| 2     | 2ndCanDriver |
-+-------+--------------+
-
-
-
-
-.. _BATT_ANX_INDEX:
-
-BATT\_ANX\_INDEX: ANX CAN battery index
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-ANX CAN battery index
-
-
-+---------+
-| Range   |
-+=========+
-| 1 to 10 |
-+---------+
-
-
-
-
-.. _BATT_ANX_OPTIONS:
-
-BATT\_ANX\_OPTIONS: ANX CAN battery options
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-ANX CAN battery options
-
-
-+-----+--------------+
-| Bit | Meaning      |
-+=====+==============+
-| 0   | LogAllFrames |
-+-----+--------------+
-
-
-
-
-.. _EFI_DLA_ENABLE:
-
-EFI\_DLA\_ENABLE: EFI DLA enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Enable EFI DLA driver
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _EFI_DLA_LPS:
-
-EFI\_DLA\_LPS: EFI DLA fuel scale
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-EFI DLA litres of fuel per second of injection time
-
-
-+--------------+--------+
-| Range        | Units  |
-+==============+========+
-| 0.00001 to 1 | litres |
-+--------------+--------+
-
-
-
-
-.. _ESC_HW_ENABLE:
-
-ESC\_HW\_ENABLE: Hobbywing ESC Enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Enable Hobbywing ESC telemetry
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _ESC_HW_POLES:
-
-ESC\_HW\_POLES: Hobbywing ESC motor poles
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Number of motor poles for eRPM scaling
-
-
-+---------+
-| Range   |
-+=========+
-| 1 to 50 |
-+---------+
-
-
-
-
-.. _ESC_HW_OFS:
-
-ESC\_HW\_OFS: Hobbywing ESC motor offset
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Motor number offset of first ESC
-
-
-+---------+
-| Range   |
-+=========+
-| 0 to 31 |
-+---------+
-
-
-
-
-.. _DJIR_DEBUG:
-
-DJIR\_DEBUG: DJIRS2 debug
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Enable DJIRS2 debug
-
-
-+-------+---------------------------------+
-| Value | Meaning                         |
-+=======+=================================+
-| 0     | Disabled                        |
-+-------+---------------------------------+
-| 1     | Enabled                         |
-+-------+---------------------------------+
-| 2     | Enabled with attitude reporting |
-+-------+---------------------------------+
-
-
-
-
-.. _DJIR_UPSIDEDOWN:
-
-DJIR\_UPSIDEDOWN: DJIRS2 upside down
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-DJIRS2 upside down
-
-
-+-------+---------------+
-| Value | Meaning       |
-+=======+===============+
-| 0     | Right side up |
-+-------+---------------+
-| 1     | Upside down   |
-+-------+---------------+
 
 
 
@@ -5599,6 +5424,181 @@ SkyPower EFI restart time\. If engine should be running and it has stopped for t
 +=========+=========+
 | 0 to 10 | seconds |
 +---------+---------+
+
+
+
+
+.. _ESC_HW_ENABLE:
+
+ESC\_HW\_ENABLE: Hobbywing ESC Enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Enable Hobbywing ESC telemetry
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _ESC_HW_POLES:
+
+ESC\_HW\_POLES: Hobbywing ESC motor poles
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Number of motor poles for eRPM scaling
+
+
++---------+
+| Range   |
++=========+
+| 1 to 50 |
++---------+
+
+
+
+
+.. _ESC_HW_OFS:
+
+ESC\_HW\_OFS: Hobbywing ESC motor offset
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Motor number offset of first ESC
+
+
++---------+
+| Range   |
++=========+
+| 0 to 31 |
++---------+
+
+
+
+
+.. _EFI_SVF_ENABLE:
+
+EFI\_SVF\_ENABLE: Generator SVFFI enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Enable SVFFI generator support
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _EFI_SVF_ARMCHECK:
+
+EFI\_SVF\_ARMCHECK: Generator SVFFI arming check
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Check for Generator ARM state before arming
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _BATT_ANX_ENABLE:
+
+BATT\_ANX\_ENABLE: Enable ANX battery support
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Enable ANX battery support
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _BATT_ANX_CANDRV:
+
+BATT\_ANX\_CANDRV: Set ANX CAN driver
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Set ANX CAN driver
+
+
++-------+--------------+
+| Value | Meaning      |
++=======+==============+
+| 0     | None         |
++-------+--------------+
+| 1     | 1stCANDriver |
++-------+--------------+
+| 2     | 2ndCanDriver |
++-------+--------------+
+
+
+
+
+.. _BATT_ANX_INDEX:
+
+BATT\_ANX\_INDEX: ANX CAN battery index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+ANX CAN battery index
+
+
++---------+
+| Range   |
++=========+
+| 1 to 10 |
++---------+
+
+
+
+
+.. _BATT_ANX_OPTIONS:
+
+BATT\_ANX\_OPTIONS: ANX CAN battery options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+ANX CAN battery options
+
+
++-----+--------------+
+| Bit | Meaning      |
++=====+==============+
+| 0   | LogAllFrames |
++-----+--------------+
 
 
 

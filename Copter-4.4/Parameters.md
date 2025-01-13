@@ -1200,40 +1200,31 @@ Time to achieve 63.2% of the surface altitude measurement change.  If 0 filterin
 
 # Lua Script Parameters
 
-## RCK_FORCEHL: Force enable High Latency mode
+## SHIP_ENABLE: Ship landing enable
 
-Automatically enables High Latency mode if not already enabled
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## RCK_PERIOD: Update rate
-
-When in High Latency mode, send Rockblock updates every N seconds
-
-- Range: 0 600
-
-- Units: s
-
-## RCK_DEBUG: Display Rockblock debugging text
-
-Sends Rockblock debug text to GCS via statustexts
+Enable ship landing system
 
 |Value|Meaning|
 |:---:|:---:|
 |0|Disabled|
 |1|Enabled|
 
-## RCK_ENABLE: Enable Message transmission
+## SHIP_LAND_ANGLE: Ship landing angle
 
-Enables the Rockblock sending and recieving
+Angle from the stern of the ship for landing approach. Use this to ensure that on a go-around that ship superstructure and cables are avoided. A value of zero means to approach from the rear of the ship. A value of 90 means the landing will approach from the port (left) side of the ship. A value of -90 will mean approaching from the starboard (right) side of the ship. A value of 180 will approach from the bow of the ship. This parameter is combined with the sign of the RTL_RADIUS parameter to determine the holdoff pattern. If RTL_RADIUS is positive then a clockwise loiter is performed, if RTL_RADIUS is negative then a counter-clockwise loiter is used.
+
+- Range: -180 180
+
+- Units: deg
+
+## SHIP_AUTO_OFS: Ship automatic offset trigger
+
+Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target. NOTE: This parameter will auto-reset to zero once the offset has been calculated.
 
 |Value|Meaning|
 |:---:|:---:|
 |0|Disabled|
-|1|Enabled|
+|1|Trigger|
 
 ## QUIK_ENABLE: Quicktune enable
 
@@ -1397,31 +1388,40 @@ Copter switch to this mode after GPS recovers or DR_FLY_TIMEOUT has elapsed.  De
 |21|Smart_RTL|
 |27|Auto RTL|
 
-## SHIP_ENABLE: Ship landing enable
+## RCK_FORCEHL: Force enable High Latency mode
 
-Enable ship landing system
+Automatically enables High Latency mode if not already enabled
 
 |Value|Meaning|
 |:---:|:---:|
 |0|Disabled|
 |1|Enabled|
 
-## SHIP_LAND_ANGLE: Ship landing angle
+## RCK_PERIOD: Update rate
 
-Angle from the stern of the ship for landing approach. Use this to ensure that on a go-around that ship superstructure and cables are avoided. A value of zero means to approach from the rear of the ship. A value of 90 means the landing will approach from the port (left) side of the ship. A value of -90 will mean approaching from the starboard (right) side of the ship. A value of 180 will approach from the bow of the ship. This parameter is combined with the sign of the RTL_RADIUS parameter to determine the holdoff pattern. If RTL_RADIUS is positive then a clockwise loiter is performed, if RTL_RADIUS is negative then a counter-clockwise loiter is used.
+When in High Latency mode, send Rockblock updates every N seconds
 
-- Range: -180 180
+- Range: 0 600
 
-- Units: deg
+- Units: s
 
-## SHIP_AUTO_OFS: Ship automatic offset trigger
+## RCK_DEBUG: Display Rockblock debugging text
 
-Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target. NOTE: This parameter will auto-reset to zero once the offset has been calculated.
+Sends Rockblock debug text to GCS via statustexts
 
 |Value|Meaning|
 |:---:|:---:|
 |0|Disabled|
-|1|Trigger|
+|1|Enabled|
+
+## RCK_ENABLE: Enable Message transmission
+
+Enables the Rockblock sending and recieving
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
 
 ## RTUN_ENABLE: Rover Quicktune enable
 
@@ -1503,6 +1503,27 @@ RCn_OPTION number to use to control tuning stop/start/save
 |305|Scripting6|
 |306|Scripting7|
 |307|Scripting8|
+
+## DJIR_DEBUG: DJIRS2 debug
+
+*Note: This parameter is for advanced users*
+
+Enable DJIRS2 debug
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+|2|Enabled with attitude reporting|
+
+## DJIR_UPSIDEDOWN: DJIRS2 upside down
+
+DJIRS2 upside down
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Right side up|
+|1|Upside down|
 
 ## EFI_SP_ENABLE: Enable SkyPower EFI support
 
@@ -1621,27 +1642,6 @@ SkyPower EFI allow start disarmed. This controls if starting the engine while di
 |:---:|:---:|
 |0|Disabled|
 |1|Enabled|
-
-## DJIR_DEBUG: DJIRS2 debug
-
-*Note: This parameter is for advanced users*
-
-Enable DJIRS2 debug
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-|2|Enabled with attitude reporting|
-
-## DJIR_UPSIDEDOWN: DJIRS2 upside down
-
-DJIRS2 upside down
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Right side up|
-|1|Upside down|
 
 # ADSB Parameters
 

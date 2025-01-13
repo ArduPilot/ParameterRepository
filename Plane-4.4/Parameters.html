@@ -1307,9 +1307,9 @@ DO NOT EDIT
 <h1>Lua Script Parameters</h1>
 
 
-<h2>Force enable High Latency mode (RCK_FORCEHL)</h2>
+<h2>Ship landing enable (SHIP_ENABLE)</h2>
 
-<p>Automatically enables High Latency mode if not already enabled</p>
+<p>Enable ship landing system</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
@@ -1318,33 +1318,22 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Update rate (RCK_PERIOD)</h2>
+<h2>Ship landing angle (SHIP_LAND_ANGLE)</h2>
 
-<p>When in High Latency mode, send Rockblock updates every N seconds</p>
+<p>Angle from the stern of the ship for landing approach. Use this to ensure that on a go-around that ship superstructure and cables are avoided. A value of zero means to approach from the rear of the ship. A value of 90 means the landing will approach from the port (left) side of the ship. A value of -90 will mean approaching from the starboard (right) side of the ship. A value of 180 will approach from the bow of the ship. This parameter is combined with the sign of the RTL_RADIUS parameter to determine the holdoff pattern. If RTL_RADIUS is positive then a clockwise loiter is performed, if RTL_RADIUS is negative then a counter-clockwise loiter is used.</p>
 <ul>
-<li>Range: 0 600</li>
-<li>Units: seconds</li>
+<li>Range: -180 180</li>
+<li>Units: degrees</li>
 </ul>
 
 
-<h2>Display Rockblock debugging text (RCK_DEBUG)</h2>
+<h2>Ship automatic offset trigger (SHIP_AUTO_OFS)</h2>
 
-<p>Sends Rockblock debug text to GCS via statustexts</p>
+<p>Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target. NOTE: This parameter will auto-reset to zero once the offset has been calculated.</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Enable Message transmission (RCK_ENABLE)</h2>
-
-<p>Enables the Rockblock sending and recieving</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
+<tr><td>1</td><td>Trigger</td></tr>
 </table>
 </ul>
 
@@ -1551,9 +1540,9 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Ship landing enable (SHIP_ENABLE)</h2>
+<h2>Force enable High Latency mode (RCK_FORCEHL)</h2>
 
-<p>Enable ship landing system</p>
+<p>Automatically enables High Latency mode if not already enabled</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
@@ -1562,22 +1551,33 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Ship landing angle (SHIP_LAND_ANGLE)</h2>
+<h2>Update rate (RCK_PERIOD)</h2>
 
-<p>Angle from the stern of the ship for landing approach. Use this to ensure that on a go-around that ship superstructure and cables are avoided. A value of zero means to approach from the rear of the ship. A value of 90 means the landing will approach from the port (left) side of the ship. A value of -90 will mean approaching from the starboard (right) side of the ship. A value of 180 will approach from the bow of the ship. This parameter is combined with the sign of the RTL_RADIUS parameter to determine the holdoff pattern. If RTL_RADIUS is positive then a clockwise loiter is performed, if RTL_RADIUS is negative then a counter-clockwise loiter is used.</p>
+<p>When in High Latency mode, send Rockblock updates every N seconds</p>
 <ul>
-<li>Range: -180 180</li>
-<li>Units: degrees</li>
+<li>Range: 0 600</li>
+<li>Units: seconds</li>
 </ul>
 
 
-<h2>Ship automatic offset trigger (SHIP_AUTO_OFS)</h2>
+<h2>Display Rockblock debugging text (RCK_DEBUG)</h2>
 
-<p>Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target. NOTE: This parameter will auto-reset to zero once the offset has been calculated.</p>
+<p>Sends Rockblock debug text to GCS via statustexts</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Trigger</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Enable Message transmission (RCK_ENABLE)</h2>
+
+<p>Enables the Rockblock sending and recieving</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
 </table>
 </ul>
 
@@ -1681,6 +1681,29 @@ DO NOT EDIT
 <tr><td>305</td><td>Scripting6</td></tr>
 <tr><td>306</td><td>Scripting7</td></tr>
 <tr><td>307</td><td>Scripting8</td></tr>
+</table>
+</ul>
+
+
+<h2>DJIRS2 debug (DJIR_DEBUG)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Enable DJIRS2 debug</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+<tr><td>2</td><td>Enabled with attitude reporting</td></tr>
+</table>
+</ul>
+
+
+<h2>DJIRS2 upside down (DJIR_UPSIDEDOWN)</h2>
+
+<p>DJIRS2 upside down</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Right side up</td></tr>
+<tr><td>1</td><td>Upside down</td></tr>
 </table>
 </ul>
 
@@ -1807,29 +1830,6 @@ DO NOT EDIT
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
 <tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>DJIRS2 debug (DJIR_DEBUG)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>Enable DJIRS2 debug</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-<tr><td>2</td><td>Enabled with attitude reporting</td></tr>
-</table>
-</ul>
-
-
-<h2>DJIRS2 upside down (DJIR_UPSIDEDOWN)</h2>
-
-<p>DJIRS2 upside down</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Right side up</td></tr>
-<tr><td>1</td><td>Upside down</td></tr>
 </table>
 </ul>
 
