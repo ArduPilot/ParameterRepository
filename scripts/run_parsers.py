@@ -41,7 +41,7 @@ class Groundskeeper:
           return int(tag['matches']['major']), int(tag['matches']['minor'])
       else:
           # fetch number from version.h in the vehicle folder in the given tag
-          self.repository.git.checkout(tag["tag"])
+          self.repository.git.checkout(tag["tag"], force=True)
           # try to read <vehicle>/version.h
           path1 = Path(f'{self.repository_path}/{tag["matches"]["name"]}/version.h')
           path2 = Path(f'{self.repository_path}/{self.valid_name_map[tag["matches"]["name"]]}/version.h')
@@ -163,7 +163,7 @@ class Groundskeeper:
                 script_folder = f'{self.repository_path}/Tools/scripts/'
                 script_file = script_folder + 'mavlink_parse.py'
                 shutil.copy(f'{self.temp_folder}/mavlink_parse.py', script_file)
-                subprocess.run([script_file, '-cguq', '--header', 'ardupilot_wiki', '--format', 'rst',
+                subprocess.run(['python', script_file, '-cguq', '--header', 'ardupilot_wiki', '--format', 'rst',
                                 '--filename', f'{dest}/MAVLinkMessages.rst', '--branch', folder_name, '--vehicle', vehicle],
                                cwd=script_folder)
             except Exception as exception:
