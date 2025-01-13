@@ -805,27 +805,21 @@
   </vehicles>
   <libraries>
     <parameters name="Lua Script">
-      <param humanName="Force enable High Latency mode" name="RCK_FORCEHL" documentation="Automatically enables High Latency mode if not already enabled" user="Standard">
+      <param humanName="Ship landing enable" name="SHIP_ENABLE" documentation="Enable ship landing system" user="Standard">
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
         </values>
       </param>
-      <param humanName="Update rate" name="RCK_PERIOD" documentation="When in High Latency mode, send Rockblock updates every N seconds" user="Standard">
-        <field name="Range">0 600</field>
-        <field name="Units">s</field>
-        <field name="UnitText">seconds</field>
+      <param humanName="Ship landing angle" name="SHIP_LAND_ANGLE" documentation="Angle from the stern of the ship for landing approach. Use this to ensure that on a go-around that ship superstructure and cables are avoided. A value of zero means to approach from the rear of the ship. A value of 90 means the landing will approach from the port (left) side of the ship. A value of -90 will mean approaching from the starboard (right) side of the ship. A value of 180 will approach from the bow of the ship. This parameter is combined with the sign of the RTL_RADIUS parameter to determine the holdoff pattern. If RTL_RADIUS is positive then a clockwise loiter is performed, if RTL_RADIUS is negative then a counter-clockwise loiter is used." user="Standard">
+        <field name="Range">-180 180</field>
+        <field name="Units">deg</field>
+        <field name="UnitText">degrees</field>
       </param>
-      <param humanName="Display Rockblock debugging text" name="RCK_DEBUG" documentation="Sends Rockblock debug text to GCS via statustexts" user="Standard">
+      <param humanName="Ship automatic offset trigger" name="SHIP_AUTO_OFS" documentation="Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target. NOTE: This parameter will auto-reset to zero once the offset has been calculated." user="Standard">
         <values>
           <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Enable Message transmission" name="RCK_ENABLE" documentation="Enables the Rockblock sending and recieving" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
+          <value code="1">Trigger</value>
         </values>
       </param>
       <param humanName="Quicktune enable" name="QUIK_ENABLE" documentation="Enable quicktune system" user="Standard">
@@ -929,21 +923,27 @@
           <value code="27">Auto RTL</value>
         </values>
       </param>
-      <param humanName="Ship landing enable" name="SHIP_ENABLE" documentation="Enable ship landing system" user="Standard">
+      <param humanName="Force enable High Latency mode" name="RCK_FORCEHL" documentation="Automatically enables High Latency mode if not already enabled" user="Standard">
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
         </values>
       </param>
-      <param humanName="Ship landing angle" name="SHIP_LAND_ANGLE" documentation="Angle from the stern of the ship for landing approach. Use this to ensure that on a go-around that ship superstructure and cables are avoided. A value of zero means to approach from the rear of the ship. A value of 90 means the landing will approach from the port (left) side of the ship. A value of -90 will mean approaching from the starboard (right) side of the ship. A value of 180 will approach from the bow of the ship. This parameter is combined with the sign of the RTL_RADIUS parameter to determine the holdoff pattern. If RTL_RADIUS is positive then a clockwise loiter is performed, if RTL_RADIUS is negative then a counter-clockwise loiter is used." user="Standard">
-        <field name="Range">-180 180</field>
-        <field name="Units">deg</field>
-        <field name="UnitText">degrees</field>
+      <param humanName="Update rate" name="RCK_PERIOD" documentation="When in High Latency mode, send Rockblock updates every N seconds" user="Standard">
+        <field name="Range">0 600</field>
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
       </param>
-      <param humanName="Ship automatic offset trigger" name="SHIP_AUTO_OFS" documentation="Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target. NOTE: This parameter will auto-reset to zero once the offset has been calculated." user="Standard">
+      <param humanName="Display Rockblock debugging text" name="RCK_DEBUG" documentation="Sends Rockblock debug text to GCS via statustexts" user="Standard">
         <values>
           <value code="0">Disabled</value>
-          <value code="1">Trigger</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Enable Message transmission" name="RCK_ENABLE" documentation="Enables the Rockblock sending and recieving" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
         </values>
       </param>
       <param humanName="Rover Quicktune enable" name="RTUN_ENABLE" documentation="Enable quicktune system" user="Standard">
@@ -993,6 +993,19 @@
           <value code="305">Scripting6</value>
           <value code="306">Scripting7</value>
           <value code="307">Scripting8</value>
+        </values>
+      </param>
+      <param humanName="DJIRS2 debug" name="DJIR_DEBUG" documentation="Enable DJIRS2 debug" user="Advanced">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+          <value code="2">Enabled with attitude reporting</value>
+        </values>
+      </param>
+      <param humanName="DJIRS2 upside down" name="DJIR_UPSIDEDOWN" documentation="DJIRS2 upside down" user="Standard">
+        <values>
+          <value code="0">Right side up</value>
+          <value code="1">Upside down</value>
         </values>
       </param>
       <param humanName="Enable SkyPower EFI support" name="EFI_SP_ENABLE" documentation="Enable SkyPower EFI support" user="Standard">
@@ -1068,19 +1081,6 @@
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="DJIRS2 debug" name="DJIR_DEBUG" documentation="Enable DJIRS2 debug" user="Advanced">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-          <value code="2">Enabled with attitude reporting</value>
-        </values>
-      </param>
-      <param humanName="DJIRS2 upside down" name="DJIR_UPSIDEDOWN" documentation="DJIRS2 upside down" user="Standard">
-        <values>
-          <value code="0">Right side up</value>
-          <value code="1">Upside down</value>
         </values>
       </param>
     </parameters>
