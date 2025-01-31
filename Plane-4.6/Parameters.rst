@@ -6808,6 +6808,8 @@ This sets options to change the behaviour of the battery monitor
 | +-----+---------------------------------------------------------+ |
 | | 7   | Allow DroneCAN InfoAux to be from a different CAN node  | |
 | +-----+---------------------------------------------------------+ |
+| | 8   | Battery is for internal autopilot use only              | |
+| +-----+---------------------------------------------------------+ |
 | | 9   | Sum monitor measures minimum voltage instead of average | |
 | +-----+---------------------------------------------------------+ |
 |                                                                   |
@@ -7807,6 +7809,8 @@ This sets options to change the behaviour of the battery monitor
 | | 6   | Send resistance compensated voltage to GCS              | |
 | +-----+---------------------------------------------------------+ |
 | | 7   | Allow DroneCAN InfoAux to be from a different CAN node  | |
+| +-----+---------------------------------------------------------+ |
+| | 8   | Battery is for internal autopilot use only              | |
 | +-----+---------------------------------------------------------+ |
 | | 9   | Sum monitor measures minimum voltage instead of average | |
 | +-----+---------------------------------------------------------+ |
@@ -8808,6 +8812,8 @@ This sets options to change the behaviour of the battery monitor
 | +-----+---------------------------------------------------------+ |
 | | 7   | Allow DroneCAN InfoAux to be from a different CAN node  | |
 | +-----+---------------------------------------------------------+ |
+| | 8   | Battery is for internal autopilot use only              | |
+| +-----+---------------------------------------------------------+ |
 | | 9   | Sum monitor measures minimum voltage instead of average | |
 | +-----+---------------------------------------------------------+ |
 |                                                                   |
@@ -9807,6 +9813,8 @@ This sets options to change the behaviour of the battery monitor
 | | 6   | Send resistance compensated voltage to GCS              | |
 | +-----+---------------------------------------------------------+ |
 | | 7   | Allow DroneCAN InfoAux to be from a different CAN node  | |
+| +-----+---------------------------------------------------------+ |
+| | 8   | Battery is for internal autopilot use only              | |
 | +-----+---------------------------------------------------------+ |
 | | 9   | Sum monitor measures minimum voltage instead of average | |
 | +-----+---------------------------------------------------------+ |
@@ -10808,6 +10816,8 @@ This sets options to change the behaviour of the battery monitor
 | +-----+---------------------------------------------------------+ |
 | | 7   | Allow DroneCAN InfoAux to be from a different CAN node  | |
 | +-----+---------------------------------------------------------+ |
+| | 8   | Battery is for internal autopilot use only              | |
+| +-----+---------------------------------------------------------+ |
 | | 9   | Sum monitor measures minimum voltage instead of average | |
 | +-----+---------------------------------------------------------+ |
 |                                                                   |
@@ -11807,6 +11817,8 @@ This sets options to change the behaviour of the battery monitor
 | | 6   | Send resistance compensated voltage to GCS              | |
 | +-----+---------------------------------------------------------+ |
 | | 7   | Allow DroneCAN InfoAux to be from a different CAN node  | |
+| +-----+---------------------------------------------------------+ |
+| | 8   | Battery is for internal autopilot use only              | |
 | +-----+---------------------------------------------------------+ |
 | | 9   | Sum monitor measures minimum voltage instead of average | |
 | +-----+---------------------------------------------------------+ |
@@ -12808,6 +12820,8 @@ This sets options to change the behaviour of the battery monitor
 | +-----+---------------------------------------------------------+ |
 | | 7   | Allow DroneCAN InfoAux to be from a different CAN node  | |
 | +-----+---------------------------------------------------------+ |
+| | 8   | Battery is for internal autopilot use only              | |
+| +-----+---------------------------------------------------------+ |
 | | 9   | Sum monitor measures minimum voltage instead of average | |
 | +-----+---------------------------------------------------------+ |
 |                                                                   |
@@ -13807,6 +13821,8 @@ This sets options to change the behaviour of the battery monitor
 | | 6   | Send resistance compensated voltage to GCS              | |
 | +-----+---------------------------------------------------------+ |
 | | 7   | Allow DroneCAN InfoAux to be from a different CAN node  | |
+| +-----+---------------------------------------------------------+ |
+| | 8   | Battery is for internal autopilot use only              | |
 | +-----+---------------------------------------------------------+ |
 | | 9   | Sum monitor measures minimum voltage instead of average | |
 | +-----+---------------------------------------------------------+ |
@@ -14808,6 +14824,8 @@ This sets options to change the behaviour of the battery monitor
 | +-----+---------------------------------------------------------+ |
 | | 7   | Allow DroneCAN InfoAux to be from a different CAN node  | |
 | +-----+---------------------------------------------------------+ |
+| | 8   | Battery is for internal autopilot use only              | |
+| +-----+---------------------------------------------------------+ |
 | | 9   | Sum monitor measures minimum voltage instead of average | |
 | +-----+---------------------------------------------------------+ |
 |                                                                   |
@@ -15807,6 +15825,8 @@ This sets options to change the behaviour of the battery monitor
 | | 6   | Send resistance compensated voltage to GCS              | |
 | +-----+---------------------------------------------------------+ |
 | | 7   | Allow DroneCAN InfoAux to be from a different CAN node  | |
+| +-----+---------------------------------------------------------+ |
+| | 8   | Battery is for internal autopilot use only              | |
 | +-----+---------------------------------------------------------+ |
 | | 9   | Sum monitor measures minimum voltage instead of average | |
 | +-----+---------------------------------------------------------+ |
@@ -16808,6 +16828,8 @@ This sets options to change the behaviour of the battery monitor
 | +-----+---------------------------------------------------------+ |
 | | 7   | Allow DroneCAN InfoAux to be from a different CAN node  | |
 | +-----+---------------------------------------------------------+ |
+| | 8   | Battery is for internal autopilot use only              | |
+| +-----+---------------------------------------------------------+ |
 | | 9   | Sum monitor measures minimum voltage instead of average | |
 | +-----+---------------------------------------------------------+ |
 |                                                                   |
@@ -17807,6 +17829,8 @@ This sets options to change the behaviour of the battery monitor
 | | 6   | Send resistance compensated voltage to GCS              | |
 | +-----+---------------------------------------------------------+ |
 | | 7   | Allow DroneCAN InfoAux to be from a different CAN node  | |
+| +-----+---------------------------------------------------------+ |
+| | 8   | Battery is for internal autopilot use only              | |
 | +-----+---------------------------------------------------------+ |
 | | 9   | Sum monitor measures minimum voltage instead of average | |
 | +-----+---------------------------------------------------------+ |
@@ -18808,6 +18832,8 @@ This sets options to change the behaviour of the battery monitor
 | +-----+---------------------------------------------------------+ |
 | | 7   | Allow DroneCAN InfoAux to be from a different CAN node  | |
 | +-----+---------------------------------------------------------+ |
+| | 8   | Battery is for internal autopilot use only              | |
+| +-----+---------------------------------------------------------+ |
 | | 9   | Sum monitor measures minimum voltage instead of average | |
 | +-----+---------------------------------------------------------+ |
 |                                                                   |
@@ -19807,6 +19833,8 @@ This sets options to change the behaviour of the battery monitor
 | | 6   | Send resistance compensated voltage to GCS              | |
 | +-----+---------------------------------------------------------+ |
 | | 7   | Allow DroneCAN InfoAux to be from a different CAN node  | |
+| +-----+---------------------------------------------------------+ |
+| | 8   | Battery is for internal autopilot use only              | |
 | +-----+---------------------------------------------------------+ |
 | | 9   | Sum monitor measures minimum voltage instead of average | |
 | +-----+---------------------------------------------------------+ |
@@ -20808,6 +20836,8 @@ This sets options to change the behaviour of the battery monitor
 | +-----+---------------------------------------------------------+ |
 | | 7   | Allow DroneCAN InfoAux to be from a different CAN node  | |
 | +-----+---------------------------------------------------------+ |
+| | 8   | Battery is for internal autopilot use only              | |
+| +-----+---------------------------------------------------------+ |
 | | 9   | Sum monitor measures minimum voltage instead of average | |
 | +-----+---------------------------------------------------------+ |
 |                                                                   |
@@ -21807,6 +21837,8 @@ This sets options to change the behaviour of the battery monitor
 | | 6   | Send resistance compensated voltage to GCS              | |
 | +-----+---------------------------------------------------------+ |
 | | 7   | Allow DroneCAN InfoAux to be from a different CAN node  | |
+| +-----+---------------------------------------------------------+ |
+| | 8   | Battery is for internal autopilot use only              | |
 | +-----+---------------------------------------------------------+ |
 | | 9   | Sum monitor measures minimum voltage instead of average | |
 | +-----+---------------------------------------------------------+ |
@@ -24102,6 +24134,8 @@ Auxiliary RC Options function executed on pin change
 | +-------+-----------------------------------------------------+ |
 | | 180   | Test autotuned gains after tune is complete         | |
 | +-------+-----------------------------------------------------+ |
+| | 181   | QuickTune                                           | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -24322,6 +24356,8 @@ Auxiliary RC Options function executed on pin change
 | | 179   | ICEngine start / stop                               | |
 | +-------+-----------------------------------------------------+ |
 | | 180   | Test autotuned gains after tune is complete         | |
+| +-------+-----------------------------------------------------+ |
+| | 181   | QuickTune                                           | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -24544,6 +24580,8 @@ Auxiliary RC Options function executed on pin change
 | +-------+-----------------------------------------------------+ |
 | | 180   | Test autotuned gains after tune is complete         | |
 | +-------+-----------------------------------------------------+ |
+| | 181   | QuickTune                                           | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -24764,6 +24802,8 @@ Auxiliary RC Options function executed on pin change
 | | 179   | ICEngine start / stop                               | |
 | +-------+-----------------------------------------------------+ |
 | | 180   | Test autotuned gains after tune is complete         | |
+| +-------+-----------------------------------------------------+ |
+| | 181   | QuickTune                                           | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -47410,7 +47450,7 @@ NAVL1\_PERIOD: L1 control period
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Period in seconds of L1 tracking loop\. This parameter is the primary control for agressiveness of turns in auto mode\. This needs to be larger for less responsive airframes\. The default of 20 is quite conservative\, but for most RC aircraft will lead to reasonable flight\. For smaller more agile aircraft a value closer to 15 is appropriate\, or even as low as 10 for some very agile aircraft\. When tuning\, change this value in small increments\, as a value that is much too small \(say 5 or 10 below the right value\) can lead to very radical turns\, and a risk of stalling\.
+Period in seconds of L1 tracking loop\. This parameter is the primary control for agressiveness of turns in auto mode\. This needs to be larger for less responsive airframes\. The default is quite conservative\, but for most RC aircraft will lead to reasonable flight\. For smaller more agile aircraft a value closer to 15 is appropriate\, or even as low as 10 for some very agile aircraft\. When tuning\, change this value in small increments\, as a value that is much too small \(say 5 or 10 below the right value\) can lead to very radical turns\, and a risk of stalling\.
 
 
 +-----------+---------+---------+
@@ -75507,6 +75547,8 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 180   | Test autotuned gains after tune is complete         | |
 | +-------+-----------------------------------------------------+ |
+| | 181   | QuickTune                                           | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -75836,6 +75878,8 @@ Function assigned to this RC channel
 | | 179   | ICEngine start / stop                               | |
 | +-------+-----------------------------------------------------+ |
 | | 180   | Test autotuned gains after tune is complete         | |
+| +-------+-----------------------------------------------------+ |
+| | 181   | QuickTune                                           | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -76167,6 +76211,8 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 180   | Test autotuned gains after tune is complete         | |
 | +-------+-----------------------------------------------------+ |
+| | 181   | QuickTune                                           | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -76496,6 +76542,8 @@ Function assigned to this RC channel
 | | 179   | ICEngine start / stop                               | |
 | +-------+-----------------------------------------------------+ |
 | | 180   | Test autotuned gains after tune is complete         | |
+| +-------+-----------------------------------------------------+ |
+| | 181   | QuickTune                                           | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -76827,6 +76875,8 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 180   | Test autotuned gains after tune is complete         | |
 | +-------+-----------------------------------------------------+ |
+| | 181   | QuickTune                                           | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -77156,6 +77206,8 @@ Function assigned to this RC channel
 | | 179   | ICEngine start / stop                               | |
 | +-------+-----------------------------------------------------+ |
 | | 180   | Test autotuned gains after tune is complete         | |
+| +-------+-----------------------------------------------------+ |
+| | 181   | QuickTune                                           | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -77487,6 +77539,8 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 180   | Test autotuned gains after tune is complete         | |
 | +-------+-----------------------------------------------------+ |
+| | 181   | QuickTune                                           | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -77816,6 +77870,8 @@ Function assigned to this RC channel
 | | 179   | ICEngine start / stop                               | |
 | +-------+-----------------------------------------------------+ |
 | | 180   | Test autotuned gains after tune is complete         | |
+| +-------+-----------------------------------------------------+ |
+| | 181   | QuickTune                                           | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -78147,6 +78203,8 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 180   | Test autotuned gains after tune is complete         | |
 | +-------+-----------------------------------------------------+ |
+| | 181   | QuickTune                                           | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -78476,6 +78534,8 @@ Function assigned to this RC channel
 | | 179   | ICEngine start / stop                               | |
 | +-------+-----------------------------------------------------+ |
 | | 180   | Test autotuned gains after tune is complete         | |
+| +-------+-----------------------------------------------------+ |
+| | 181   | QuickTune                                           | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -78807,6 +78867,8 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 180   | Test autotuned gains after tune is complete         | |
 | +-------+-----------------------------------------------------+ |
+| | 181   | QuickTune                                           | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -79136,6 +79198,8 @@ Function assigned to this RC channel
 | | 179   | ICEngine start / stop                               | |
 | +-------+-----------------------------------------------------+ |
 | | 180   | Test autotuned gains after tune is complete         | |
+| +-------+-----------------------------------------------------+ |
+| | 181   | QuickTune                                           | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -79467,6 +79531,8 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 180   | Test autotuned gains after tune is complete         | |
 | +-------+-----------------------------------------------------+ |
+| | 181   | QuickTune                                           | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -79796,6 +79862,8 @@ Function assigned to this RC channel
 | | 179   | ICEngine start / stop                               | |
 | +-------+-----------------------------------------------------+ |
 | | 180   | Test autotuned gains after tune is complete         | |
+| +-------+-----------------------------------------------------+ |
+| | 181   | QuickTune                                           | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -80127,6 +80195,8 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 180   | Test autotuned gains after tune is complete         | |
 | +-------+-----------------------------------------------------+ |
+| | 181   | QuickTune                                           | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -80456,6 +80526,8 @@ Function assigned to this RC channel
 | | 179   | ICEngine start / stop                               | |
 | +-------+-----------------------------------------------------+ |
 | | 180   | Test autotuned gains after tune is complete         | |
+| +-------+-----------------------------------------------------+ |
+| | 181   | QuickTune                                           | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |

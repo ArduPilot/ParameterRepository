@@ -2237,6 +2237,7 @@
         "5": "MPPT Powered on at boot",
         "6": "Send resistance compensated voltage to GCS",
         "7": "Allow DroneCAN InfoAux to be from a different CAN node",
+        "8": "Battery is for internal autopilot use only",
         "9": "Sum monitor measures minimum voltage instead of average"
       },
       "Description": "This sets options to change the behaviour of the battery monitor",
@@ -2646,6 +2647,7 @@
         "5": "MPPT Powered on at boot",
         "6": "Send resistance compensated voltage to GCS",
         "7": "Allow DroneCAN InfoAux to be from a different CAN node",
+        "8": "Battery is for internal autopilot use only",
         "9": "Sum monitor measures minimum voltage instead of average"
       },
       "Description": "This sets options to change the behaviour of the battery monitor",
@@ -3055,6 +3057,7 @@
         "5": "MPPT Powered on at boot",
         "6": "Send resistance compensated voltage to GCS",
         "7": "Allow DroneCAN InfoAux to be from a different CAN node",
+        "8": "Battery is for internal autopilot use only",
         "9": "Sum monitor measures minimum voltage instead of average"
       },
       "Description": "This sets options to change the behaviour of the battery monitor",
@@ -3464,6 +3467,7 @@
         "5": "MPPT Powered on at boot",
         "6": "Send resistance compensated voltage to GCS",
         "7": "Allow DroneCAN InfoAux to be from a different CAN node",
+        "8": "Battery is for internal autopilot use only",
         "9": "Sum monitor measures minimum voltage instead of average"
       },
       "Description": "This sets options to change the behaviour of the battery monitor",
@@ -3873,6 +3877,7 @@
         "5": "MPPT Powered on at boot",
         "6": "Send resistance compensated voltage to GCS",
         "7": "Allow DroneCAN InfoAux to be from a different CAN node",
+        "8": "Battery is for internal autopilot use only",
         "9": "Sum monitor measures minimum voltage instead of average"
       },
       "Description": "This sets options to change the behaviour of the battery monitor",
@@ -4282,6 +4287,7 @@
         "5": "MPPT Powered on at boot",
         "6": "Send resistance compensated voltage to GCS",
         "7": "Allow DroneCAN InfoAux to be from a different CAN node",
+        "8": "Battery is for internal autopilot use only",
         "9": "Sum monitor measures minimum voltage instead of average"
       },
       "Description": "This sets options to change the behaviour of the battery monitor",
@@ -4691,6 +4697,7 @@
         "5": "MPPT Powered on at boot",
         "6": "Send resistance compensated voltage to GCS",
         "7": "Allow DroneCAN InfoAux to be from a different CAN node",
+        "8": "Battery is for internal autopilot use only",
         "9": "Sum monitor measures minimum voltage instead of average"
       },
       "Description": "This sets options to change the behaviour of the battery monitor",
@@ -5100,6 +5107,7 @@
         "5": "MPPT Powered on at boot",
         "6": "Send resistance compensated voltage to GCS",
         "7": "Allow DroneCAN InfoAux to be from a different CAN node",
+        "8": "Battery is for internal autopilot use only",
         "9": "Sum monitor measures minimum voltage instead of average"
       },
       "Description": "This sets options to change the behaviour of the battery monitor",
@@ -5509,6 +5517,7 @@
         "5": "MPPT Powered on at boot",
         "6": "Send resistance compensated voltage to GCS",
         "7": "Allow DroneCAN InfoAux to be from a different CAN node",
+        "8": "Battery is for internal autopilot use only",
         "9": "Sum monitor measures minimum voltage instead of average"
       },
       "Description": "This sets options to change the behaviour of the battery monitor",
@@ -5918,6 +5927,7 @@
         "5": "MPPT Powered on at boot",
         "6": "Send resistance compensated voltage to GCS",
         "7": "Allow DroneCAN InfoAux to be from a different CAN node",
+        "8": "Battery is for internal autopilot use only",
         "9": "Sum monitor measures minimum voltage instead of average"
       },
       "Description": "This sets options to change the behaviour of the battery monitor",
@@ -6327,6 +6337,7 @@
         "5": "MPPT Powered on at boot",
         "6": "Send resistance compensated voltage to GCS",
         "7": "Allow DroneCAN InfoAux to be from a different CAN node",
+        "8": "Battery is for internal autopilot use only",
         "9": "Sum monitor measures minimum voltage instead of average"
       },
       "Description": "This sets options to change the behaviour of the battery monitor",
@@ -6736,6 +6747,7 @@
         "5": "MPPT Powered on at boot",
         "6": "Send resistance compensated voltage to GCS",
         "7": "Allow DroneCAN InfoAux to be from a different CAN node",
+        "8": "Battery is for internal autopilot use only",
         "9": "Sum monitor measures minimum voltage instead of average"
       },
       "Description": "This sets options to change the behaviour of the battery monitor",
@@ -7145,6 +7157,7 @@
         "5": "MPPT Powered on at boot",
         "6": "Send resistance compensated voltage to GCS",
         "7": "Allow DroneCAN InfoAux to be from a different CAN node",
+        "8": "Battery is for internal autopilot use only",
         "9": "Sum monitor measures minimum voltage instead of average"
       },
       "Description": "This sets options to change the behaviour of the battery monitor",
@@ -7554,6 +7567,7 @@
         "5": "MPPT Powered on at boot",
         "6": "Send resistance compensated voltage to GCS",
         "7": "Allow DroneCAN InfoAux to be from a different CAN node",
+        "8": "Battery is for internal autopilot use only",
         "9": "Sum monitor measures minimum voltage instead of average"
       },
       "Description": "This sets options to change the behaviour of the battery monitor",
@@ -7963,6 +7977,7 @@
         "5": "MPPT Powered on at boot",
         "6": "Send resistance compensated voltage to GCS",
         "7": "Allow DroneCAN InfoAux to be from a different CAN node",
+        "8": "Battery is for internal autopilot use only",
         "9": "Sum monitor measures minimum voltage instead of average"
       },
       "Description": "This sets options to change the behaviour of the battery monitor",
@@ -8372,6 +8387,7 @@
         "5": "MPPT Powered on at boot",
         "6": "Send resistance compensated voltage to GCS",
         "7": "Allow DroneCAN InfoAux to be from a different CAN node",
+        "8": "Battery is for internal autopilot use only",
         "9": "Sum monitor measures minimum voltage instead of average"
       },
       "Description": "This sets options to change the behaviour of the battery monitor",
@@ -19611,6 +19627,12 @@
     "PREV_RC_FUNC": {
       "Description": "RCn_OPTION number to used to trigger parameter reversion",
       "DisplayName": "param reversion RC function",
+      "User": "Standard"
+    },
+    "QUIK_ANGLE_MAX": {
+      "Description": "If while tuning the angle error goes over this limit then the tune will aborts to prevent a bad oscillation in the case of the tuning algorithm failing. If you get an error \"Tuning: attitude error ABORTING\" and you think it is a false positive then you can either raise this parameter or you can try increasing the QUIK_DOUBLE_TIME to do the tune more slowly. A value of zero disables this check.",
+      "DisplayName": "maximum angle error for tune abort",
+      "Units": "deg",
       "User": "Standard"
     },
     "QUIK_AUTO_FILTER": {

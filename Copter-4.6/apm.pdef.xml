@@ -929,6 +929,88 @@
       </param>
     </parameters>
     <parameters name="Lua Script">
+      <param humanName="Camera1 Thermal Palette" name="CAM1_THERM_PAL" documentation="thermal image colour palette" user="Standard">
+        <values>
+          <value code="-1">Leave Unchanged</value>
+          <value code="0">WhiteHot</value>
+          <value code="2">Sepia</value>
+          <value code="3">IronBow</value>
+          <value code="4">Rainbow</value>
+          <value code="5">Night</value>
+          <value code="6">Aurora</value>
+          <value code="7">RedHot</value>
+          <value code="8">Jungle</value>
+          <value code="9">Medical</value>
+          <value code="10">BlackHot</value>
+          <value code="11">GloryHot</value>
+        </values>
+      </param>
+      <param humanName="Camera1 Thermal Gain" name="CAM1_THERM_GAIN" documentation="thermal image temperature range" user="Standard">
+        <values>
+          <value code="-1">Leave Unchanged</value>
+          <value code="0">LowGain (50C to 550C)</value>
+          <value code="1">HighGain (-20C to 150C)</value>
+        </values>
+      </param>
+      <param humanName="Camera1 Thermal Raw Data" name="CAM1_THERM_RAW" documentation="save images with raw temperatures" user="Standard">
+        <values>
+          <value code="-1">Leave Unchanged</value>
+          <value code="0">Disabled (30fps)</value>
+          <value code="1">Enabled (25 fps)</value>
+        </values>
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="Deadreckoning Enable" name="DR_ENABLE" documentation="Deadreckoning Enable" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Deadreckoning Enable Distance" name="DR_ENABLE_DIST" documentation="Distance from home (in meters) beyond which the dead reckoning will be enabled" user="Standard">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="Deadreckoning GPS speed accuracy maximum threshold" name="DR_GPS_SACC_MAX" documentation="GPS speed accuracy maximum, above which deadreckoning home will begin (default is 0.8).  Lower values trigger with good GPS quality, higher values will allow poorer GPS before triggering. Set to 0 to disable use of GPS speed accuracy" user="Standard">
+        <field name="Range">0 10</field>
+      </param>
+      <param humanName="Deadreckoning GPS satellite count min threshold" name="DR_GPS_SAT_MIN" documentation="GPS satellite count threshold below which deadreckoning home will begin (default is 6).  Higher values trigger with good GPS quality, Lower values trigger with worse GPS quality. Set to 0 to disable use of GPS satellite count" user="Standard">
+        <field name="Range">0 30</field>
+      </param>
+      <param humanName="Deadreckoning GPS check trigger seconds" name="DR_GPS_TRIGG_SEC" documentation="GPS checks must fail for this many seconds before dead reckoning will be triggered" user="Standard">
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+      </param>
+      <param humanName="Deadreckoning Lean Angle" name="DR_FLY_ANGLE" documentation="lean angle (in degrees) during deadreckoning" user="Standard">
+        <field name="Units">deg</field>
+        <field name="UnitText">degrees</field>
+        <field name="Range">0 45</field>
+      </param>
+      <param humanName="Deadreckoning Altitude Min" name="DR_FLY_ALT_MIN" documentation="Copter will fly at at least this altitude (in meters) above home during deadreckoning" user="Standard">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+        <field name="Range">0 1000</field>
+      </param>
+      <param humanName="Deadreckoning flight timeout" name="DR_FLY_TIMEOUT" documentation="Copter will attempt to switch to NEXT_MODE after this many seconds of deadreckoning.  If it cannot switch modes it will continue in Guided_NoGPS.  Set to 0 to disable timeout" user="Standard">
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+      </param>
+      <param humanName="Deadreckoning Next Mode" name="DR_NEXT_MODE" documentation="Copter switch to this mode after GPS recovers or DR_FLY_TIMEOUT has elapsed.  Default is 6/RTL.  Set to -1 to return to mode used before deadreckoning was triggered" user="Standard">
+        <values>
+          <value code="2">AltHold</value>
+          <value code="3">Auto</value>
+          <value code="4">Guided</value>
+          <value code="5">Loiter</value>
+          <value code="6">RTL</value>
+          <value code="7">Circle</value>
+          <value code="9">Land</value>
+          <value code="16">PosHold</value>
+          <value code="17">Brake</value>
+          <value code="20">Guided_NoGPS</value>
+          <value code="21">Smart_RTL</value>
+          <value code="27">Auto RTL</value>
+        </values>
+      </param>
       <param humanName="Slung Payload enable" name="SLUP_ENABLE" documentation="Slung Payload enable" user="Standard">
         <values>
           <value code="0">Disabled</value>
@@ -956,26 +1038,160 @@
           <value code="1">Enabled</value>
         </values>
       </param>
-      <param humanName="Mount POI distance max" name="POI_DIST_MAX" documentation="POI's max distance (in meters) from the vehicle" user="Standard">
-        <field name="Range">0 10000</field>
+      <param humanName="CoG adjustment ratio" name="CGA_RATIO" documentation="The ratio between the front and back motor outputs during steady-state hover. Positive when the CoG is in front of the motors midpoint (front motors work harder)." user="Advanced">
+        <field name="Range">0.5 2</field>
       </param>
-      <param humanName="Ship landing enable" name="SHIP_ENABLE" documentation="Enable ship landing system" user="Standard">
+      <param humanName="Rover Quicktune enable" name="RTUN_ENABLE" documentation="Enable quicktune system" user="Standard">
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
         </values>
       </param>
-      <param humanName="Ship landing angle" name="SHIP_LAND_ANGLE" documentation="Angle from the stern of the ship for landing approach. Use this to ensure that on a go-around that ship superstructure and cables are avoided. A value of zero means to approach from the rear of the ship. A value of 90 means the landing will approach from the port (left) side of the ship. A value of -90 will mean approaching from the starboard (right) side of the ship. A value of 180 will approach from the bow of the ship. This parameter is combined with the sign of the RTL_RADIUS parameter to determine the holdoff pattern. If RTL_RADIUS is positive then a clockwise loiter is performed, if RTL_RADIUS is negative then a counter-clockwise loiter is used." user="Standard">
-        <field name="Range">-180 180</field>
+      <param humanName="Rover Quicktune axes" name="RTUN_AXES" documentation="axes to tune" user="Standard">
+        <bitmask>
+          <bit code="0">Steering</bit>
+          <bit code="1">Speed</bit>
+        </bitmask>
+        <field name="Bitmask">0:Steering,1:Speed</field>
+      </param>
+      <param humanName="Rover Quicktune Steering Rate FeedForward ratio" name="RTUN_STR_FFRATIO" documentation="Ratio between measured response and FF gain. Raise this to get a higher FF gain" user="Standard">
+        <field name="Range">0 1.0</field>
+      </param>
+      <param humanName="Rover Quicktune Steering FF to P ratio" name="RTUN_STR_P_RATIO" documentation="Ratio between steering FF and P gains. Raise this to get a higher P gain, 0 to leave P unchanged" user="Standard">
+        <field name="Range">0 2.0</field>
+      </param>
+      <param humanName="Rover Quicktune Steering FF to I ratio" name="RTUN_STR_I_RATIO" documentation="Ratio between steering FF and I gains. Raise this to get a higher I gain, 0 to leave I unchanged" user="Standard">
+        <field name="Range">0 2.0</field>
+      </param>
+      <param humanName="Rover Quicktune Speed FeedForward (equivalent) ratio" name="RTUN_SPD_FFRATIO" documentation="Ratio between measured response and CRUISE_THROTTLE value. Raise this to get a higher CRUISE_THROTTLE value" user="Standard">
+        <field name="Range">0 1.0</field>
+      </param>
+      <param humanName="Rover Quicktune Speed FF to P ratio" name="RTUN_SPD_P_RATIO" documentation="Ratio between speed FF and P gain. Raise this to get a higher P gain, 0 to leave P unchanged" user="Standard">
+        <field name="Range">0 2.0</field>
+      </param>
+      <param humanName="Rover Quicktune Speed FF to I ratio" name="RTUN_SPD_I_RATIO" documentation="Ratio between speed FF and I gain. Raise this to get a higher I gain, 0 to leave I unchanged" user="Standard">
+        <field name="Range">0 2.0</field>
+      </param>
+      <param humanName="Rover Quicktune auto filter enable" name="RTUN_AUTO_FILTER" documentation="When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Rover Quicktune auto save" name="RTUN_AUTO_SAVE" documentation="Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune" user="Standard">
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+      </param>
+      <param humanName="Rover Quicktune RC function" name="RTUN_RC_FUNC" documentation="RCn_OPTION number to use to control tuning stop/start/save" user="Standard">
+        <values>
+          <value code="300">Scripting1</value>
+          <value code="301">Scripting2</value>
+          <value code="302">Scripting3</value>
+          <value code="303">Scripting4</value>
+          <value code="304">Scripting5</value>
+          <value code="305">Scripting6</value>
+          <value code="306">Scripting7</value>
+          <value code="307">Scripting8</value>
+        </values>
+      </param>
+      <param humanName="Mount POI distance max" name="POI_DIST_MAX" documentation="POI's max distance (in meters) from the vehicle" user="Standard">
+        <field name="Range">0 10000</field>
+      </param>
+      <param humanName="Quicktune enable" name="QUIK_ENABLE" documentation="Enable quicktune system" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Quicktune axes" name="QUIK_AXES" documentation="axes to tune" user="Standard">
+        <bitmask>
+          <bit code="0">Roll</bit>
+          <bit code="1">Pitch</bit>
+          <bit code="2">Yaw</bit>
+        </bitmask>
+        <field name="Bitmask">0:Roll,1:Pitch,2:Yaw</field>
+      </param>
+      <param humanName="Quicktune doubling time" name="QUIK_DOUBLE_TIME" documentation="Time to double a tuning parameter. Raise this for a slower tune." user="Standard">
+        <field name="Range">5 20</field>
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+      </param>
+      <param humanName="Quicktune gain margin" name="QUIK_GAIN_MARGIN" documentation="Reduction in gain after oscillation detected. Raise this number to get a more conservative tune" user="Standard">
+        <field name="Range">20 80</field>
+        <field name="Units">%</field>
+        <field name="UnitText">percent</field>
+      </param>
+      <param humanName="Quicktune oscillation rate threshold" name="QUIK_OSC_SMAX" documentation="Threshold for oscillation detection. A lower value will lead to a more conservative tune." user="Standard">
+        <field name="Range">1 10</field>
+      </param>
+      <param humanName="Quicktune Yaw P max" name="QUIK_YAW_P_MAX" documentation="Maximum value for yaw P gain" user="Standard">
+        <field name="Range">0.1 3</field>
+      </param>
+      <param humanName="Quicktune Yaw D max" name="QUIK_YAW_D_MAX" documentation="Maximum value for yaw D gain" user="Standard">
+        <field name="Range">0.001 1</field>
+      </param>
+      <param humanName="Quicktune roll/pitch PI ratio" name="QUIK_RP_PI_RATIO" documentation="Ratio between P and I gains for roll and pitch. Raise this to get a lower I gain" user="Standard">
+        <field name="Range">0.5 1.0</field>
+      </param>
+      <param humanName="Quicktune Yaw PI ratio" name="QUIK_Y_PI_RATIO" documentation="Ratio between P and I gains for yaw. Raise this to get a lower I gain" user="Standard">
+        <field name="Range">0.5 20</field>
+      </param>
+      <param humanName="Quicktune auto filter enable" name="QUIK_AUTO_FILTER" documentation="When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Quicktune auto save" name="QUIK_AUTO_SAVE" documentation="Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune" user="Standard">
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+      </param>
+      <param humanName="Quicktune RC function" name="QUIK_RC_FUNC" documentation="RCn_OPTION number to use to control tuning stop/start/save" user="Standard">
+</param>
+      <param humanName="Quicktune maximum gain reduction" name="QUIK_MAX_REDUCE" documentation="This controls how much quicktune is allowed to lower gains from the original gains. If the vehicle already has a reasonable tune and is not oscillating then you can set this to zero to prevent gain reductions. The default of 20% is reasonable for most vehicles. Using a maximum gain reduction lowers the chance of an angle P oscillation happening if quicktune gets a false positive oscillation at a low gain, which can result in very low rate gains and a dangerous angle P oscillation." user="Standard">
+        <field name="Units">%</field>
+        <field name="UnitText">percent</field>
+        <field name="Range">0 100</field>
+      </param>
+      <param humanName="Quicktune options" name="QUIK_OPTIONS" documentation="Additional options. When the Two Position Switch option is enabled then a high switch position will start the tune, low will disable the tune. you should also set a QUIK_AUTO_SAVE time so that you will be able to save the tune." user="Standard">
+        <bitmask>
+          <bit code="0">UseTwoPositionSwitch</bit>
+        </bitmask>
+        <field name="Bitmask">0:UseTwoPositionSwitch</field>
+      </param>
+      <param humanName="maximum angle error for tune abort" name="QUIK_ANGLE_MAX" documentation="If while tuning the angle error goes over this limit then the tune will aborts to prevent a bad oscillation in the case of the tuning algorithm failing. If you get an error &quot;Tuning: attitude error ABORTING&quot; and you think it is a false positive then you can either raise this parameter or you can try increasing the QUIK_DOUBLE_TIME to do the tune more slowly. A value of zero disables this check." user="Standard">
         <field name="Units">deg</field>
         <field name="UnitText">degrees</field>
       </param>
-      <param humanName="Ship automatic offset trigger" name="SHIP_AUTO_OFS" documentation="Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target. NOTE: This parameter will auto-reset to zero once the offset has been calculated." user="Standard">
+      <param humanName="terrain brake enable" name="TERR_BRK_ENABLE" documentation="terrain brake enable" user="Standard">
         <values>
           <value code="0">Disabled</value>
-          <value code="1">Trigger</value>
+          <value code="1">Enabled</value>
         </values>
       </param>
+      <param humanName="terrain brake altitude" name="TERR_BRK_ALT" documentation="terrain brake altitude. The altitude above the ground below which BRAKE mode will be engaged if in LOITER mode." user="Standard">
+        <field name="Range">1 100</field>
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="terrain brake home distance" name="TERR_BRK_HDIST" documentation="terrain brake home distance. The distance from home where the auto BRAKE will be enabled. When within this distance of home the script will not activate" user="Standard">
+        <field name="Range">0 1000</field>
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="terrain brake speed threshold" name="TERR_BRK_SPD" documentation="terrain brake speed threshold. Don't trigger BRAKE if both horizontal speed and descent rate are below this threshold. By setting this to a small value this can be used to allow the user to climb up to a safe altitude in LOITER mode. A value of 0.5 is recommended if you want to use LOITER to recover from an emergency terrain BRAKE mode change." user="Standard">
+        <field name="Range">0 5</field>
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+      </param>
+      <param humanName="parameter reversion enable" name="PREV_ENABLE" documentation="Enable parameter reversion system" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="param reversion RC function" name="PREV_RC_FUNC" documentation="RCn_OPTION number to used to trigger parameter reversion" user="Standard">
+</param>
       <param humanName="Camera1 Video Stream Camera Model" name="VID1_CAMMODEL" documentation="Video stream camera model" user="Standard">
         <values>
           <value code="0">Unknown</value>
@@ -1050,124 +1266,42 @@
       <param humanName="Camera1 Video Stream IP Address Port" name="VID1_IPPORT" documentation="Video stream IP Address Port" user="Standard">
         <field name="Range">0 65535</field>
       </param>
-      <param humanName="parameter reversion enable" name="PREV_ENABLE" documentation="Enable parameter reversion system" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
+      <param humanName="EKF Source ExternalNav Innovation Threshold" name="ESRC_EXTN_THRESH" documentation="ExternalNav may be used if innovations are below this threshold" user="Standard">
+        <field name="Range">0 1</field>
       </param>
-      <param humanName="param reversion RC function" name="PREV_RC_FUNC" documentation="RCn_OPTION number to used to trigger parameter reversion" user="Standard">
-</param>
-      <param humanName="Quicktune enable" name="QUIK_ENABLE" documentation="Enable quicktune system" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Quicktune axes" name="QUIK_AXES" documentation="axes to tune" user="Standard">
-        <bitmask>
-          <bit code="0">Roll</bit>
-          <bit code="1">Pitch</bit>
-          <bit code="2">Yaw</bit>
-        </bitmask>
-        <field name="Bitmask">0:Roll,1:Pitch,2:Yaw</field>
-      </param>
-      <param humanName="Quicktune doubling time" name="QUIK_DOUBLE_TIME" documentation="Time to double a tuning parameter. Raise this for a slower tune." user="Standard">
-        <field name="Range">5 20</field>
-        <field name="Units">s</field>
-        <field name="UnitText">seconds</field>
-      </param>
-      <param humanName="Quicktune gain margin" name="QUIK_GAIN_MARGIN" documentation="Reduction in gain after oscillation detected. Raise this number to get a more conservative tune" user="Standard">
-        <field name="Range">20 80</field>
-        <field name="Units">%</field>
-        <field name="UnitText">percent</field>
-      </param>
-      <param humanName="Quicktune oscillation rate threshold" name="QUIK_OSC_SMAX" documentation="Threshold for oscillation detection. A lower value will lead to a more conservative tune." user="Standard">
-        <field name="Range">1 10</field>
-      </param>
-      <param humanName="Quicktune Yaw P max" name="QUIK_YAW_P_MAX" documentation="Maximum value for yaw P gain" user="Standard">
-        <field name="Range">0.1 3</field>
-      </param>
-      <param humanName="Quicktune Yaw D max" name="QUIK_YAW_D_MAX" documentation="Maximum value for yaw D gain" user="Standard">
-        <field name="Range">0.001 1</field>
-      </param>
-      <param humanName="Quicktune roll/pitch PI ratio" name="QUIK_RP_PI_RATIO" documentation="Ratio between P and I gains for roll and pitch. Raise this to get a lower I gain" user="Standard">
-        <field name="Range">0.5 1.0</field>
-      </param>
-      <param humanName="Quicktune Yaw PI ratio" name="QUIK_Y_PI_RATIO" documentation="Ratio between P and I gains for yaw. Raise this to get a lower I gain" user="Standard">
-        <field name="Range">0.5 20</field>
-      </param>
-      <param humanName="Quicktune auto filter enable" name="QUIK_AUTO_FILTER" documentation="When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Quicktune auto save" name="QUIK_AUTO_SAVE" documentation="Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune" user="Standard">
-        <field name="Units">s</field>
-        <field name="UnitText">seconds</field>
-      </param>
-      <param humanName="Quicktune RC function" name="QUIK_RC_FUNC" documentation="RCn_OPTION number to use to control tuning stop/start/save" user="Standard">
-</param>
-      <param humanName="Quicktune maximum gain reduction" name="QUIK_MAX_REDUCE" documentation="This controls how much quicktune is allowed to lower gains from the original gains. If the vehicle already has a reasonable tune and is not oscillating then you can set this to zero to prevent gain reductions. The default of 20% is reasonable for most vehicles. Using a maximum gain reduction lowers the chance of an angle P oscillation happening if quicktune gets a false positive oscillation at a low gain, which can result in very low rate gains and a dangerous angle P oscillation." user="Standard">
-        <field name="Units">%</field>
-        <field name="UnitText">percent</field>
+      <param humanName="EKF Source ExternalNav Quality Threshold" name="ESRC_EXTN_QUAL" documentation="ExternalNav may be used if quality is above this threshold" user="Standard">
         <field name="Range">0 100</field>
+        <field name="Units">%</field>
+        <field name="UnitText">percent</field>
       </param>
-      <param humanName="Quicktune options" name="QUIK_OPTIONS" documentation="Additional options. When the Two Position Switch option is enabled then a high switch position will start the tune, low will disable the tune. you should also set a QUIK_AUTO_SAVE time so that you will be able to save the tune." user="Standard">
-        <bitmask>
-          <bit code="0">UseTwoPositionSwitch</bit>
-        </bitmask>
-        <field name="Bitmask">0:UseTwoPositionSwitch</field>
+      <param humanName="EKF Source OpticalFlow Innovation Threshold" name="ESRC_FLOW_THRESH" documentation="OpticalFlow may be used if innovations are below this threshold" user="Standard">
+        <field name="Range">0 1</field>
       </param>
-      <param humanName="Deadreckoning Enable" name="DR_ENABLE" documentation="Deadreckoning Enable" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
+      <param humanName="EKF Source OpticalFlow Quality Threshold" name="ESRC_FLOW_QUAL" documentation="OpticalFlow may be used if quality is above this threshold" user="Standard">
+        <field name="Range">0 100</field>
+        <field name="Units">%</field>
+        <field name="UnitText">percent</field>
       </param>
-      <param humanName="Deadreckoning Enable Distance" name="DR_ENABLE_DIST" documentation="Distance from home (in meters) beyond which the dead reckoning will be enabled" user="Standard">
+      <param humanName="EKF Source Rangefinder Max" name="ESRC_RNGFND_MAX" documentation="OpticalFlow may be used if rangefinder distance is below this threshold" user="Standard">
+        <field name="Range">0 50</field>
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
       </param>
-      <param humanName="Deadreckoning GPS speed accuracy maximum threshold" name="DR_GPS_SACC_MAX" documentation="GPS speed accuracy maximum, above which deadreckoning home will begin (default is 0.8).  Lower values trigger with good GPS quality, higher values will allow poorer GPS before triggering. Set to 0 to disable use of GPS speed accuracy" user="Standard">
-        <field name="Range">0 10</field>
+      <param humanName="Ship landing enable" name="SHIP_ENABLE" documentation="Enable ship landing system" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
       </param>
-      <param humanName="Deadreckoning GPS satellite count min threshold" name="DR_GPS_SAT_MIN" documentation="GPS satellite count threshold below which deadreckoning home will begin (default is 6).  Higher values trigger with good GPS quality, Lower values trigger with worse GPS quality. Set to 0 to disable use of GPS satellite count" user="Standard">
-        <field name="Range">0 30</field>
-      </param>
-      <param humanName="Deadreckoning GPS check trigger seconds" name="DR_GPS_TRIGG_SEC" documentation="GPS checks must fail for this many seconds before dead reckoning will be triggered" user="Standard">
-        <field name="Units">s</field>
-        <field name="UnitText">seconds</field>
-      </param>
-      <param humanName="Deadreckoning Lean Angle" name="DR_FLY_ANGLE" documentation="lean angle (in degrees) during deadreckoning" user="Standard">
+      <param humanName="Ship landing angle" name="SHIP_LAND_ANGLE" documentation="Angle from the stern of the ship for landing approach. Use this to ensure that on a go-around that ship superstructure and cables are avoided. A value of zero means to approach from the rear of the ship. A value of 90 means the landing will approach from the port (left) side of the ship. A value of -90 will mean approaching from the starboard (right) side of the ship. A value of 180 will approach from the bow of the ship. This parameter is combined with the sign of the RTL_RADIUS parameter to determine the holdoff pattern. If RTL_RADIUS is positive then a clockwise loiter is performed, if RTL_RADIUS is negative then a counter-clockwise loiter is used." user="Standard">
+        <field name="Range">-180 180</field>
         <field name="Units">deg</field>
         <field name="UnitText">degrees</field>
-        <field name="Range">0 45</field>
       </param>
-      <param humanName="Deadreckoning Altitude Min" name="DR_FLY_ALT_MIN" documentation="Copter will fly at at least this altitude (in meters) above home during deadreckoning" user="Standard">
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-        <field name="Range">0 1000</field>
-      </param>
-      <param humanName="Deadreckoning flight timeout" name="DR_FLY_TIMEOUT" documentation="Copter will attempt to switch to NEXT_MODE after this many seconds of deadreckoning.  If it cannot switch modes it will continue in Guided_NoGPS.  Set to 0 to disable timeout" user="Standard">
-        <field name="Units">s</field>
-        <field name="UnitText">seconds</field>
-      </param>
-      <param humanName="Deadreckoning Next Mode" name="DR_NEXT_MODE" documentation="Copter switch to this mode after GPS recovers or DR_FLY_TIMEOUT has elapsed.  Default is 6/RTL.  Set to -1 to return to mode used before deadreckoning was triggered" user="Standard">
+      <param humanName="Ship automatic offset trigger" name="SHIP_AUTO_OFS" documentation="Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target. NOTE: This parameter will auto-reset to zero once the offset has been calculated." user="Standard">
         <values>
-          <value code="2">AltHold</value>
-          <value code="3">Auto</value>
-          <value code="4">Guided</value>
-          <value code="5">Loiter</value>
-          <value code="6">RTL</value>
-          <value code="7">Circle</value>
-          <value code="9">Land</value>
-          <value code="16">PosHold</value>
-          <value code="17">Brake</value>
-          <value code="20">Guided_NoGPS</value>
-          <value code="21">Smart_RTL</value>
-          <value code="27">Auto RTL</value>
+          <value code="0">Disabled</value>
+          <value code="1">Trigger</value>
         </values>
       </param>
       <param humanName="enable web server" name="WEB_ENABLE" documentation="enable web server" user="Standard">
@@ -1195,6 +1329,57 @@
       </param>
       <param humanName="web server minimum file size for sendfile" name="WEB_SENDFILE_MIN" documentation="sendfile is an offloading mechanism for faster file download. If this is non-zero and the file is larger than this size then sendfile will be used for file download" user="Advanced">
         <field name="Range">0 10000000</field>
+      </param>
+      <param humanName="Force enable High Latency mode" name="RCK_FORCEHL" documentation="Automatically enables High Latency mode if not already enabled" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Update rate" name="RCK_PERIOD" documentation="When in High Latency mode, send Rockblock updates every N seconds" user="Standard">
+        <field name="Range">0 600</field>
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+      </param>
+      <param humanName="Display Rockblock debugging text" name="RCK_DEBUG" documentation="Sends Rockblock debug text to GCS via statustexts" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Enable Message transmission" name="RCK_ENABLE" documentation="Enables the Rockblock sending and recieving" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Precland altitude cutoff" name="PLND_ALT_CUTOFF" documentation="The altitude (rangefinder distance) below which we stop using the precision landing sensor and continue landing" user="Standard">
+        <field name="Range">0 20</field>
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="Precland distance cutoff" name="DIST_CUTOFF" documentation="The distance from target beyond which the target is ignored" user="Standard">
+        <field name="Range">0 100</field>
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="WinchControl Rate Up" name="WINCH_RATE_UP" documentation="Maximum rate when retracting line" user="Standard">
+        <field name="Range">0.1 5.0</field>
+      </param>
+      <param humanName="WinchControl Rate Down" name="WINCH_RATE_DN" documentation="Maximum rate when releasing line" user="Standard">
+        <field name="Range">0.1 5.0</field>
+      </param>
+      <param humanName="Winch Rate Control RC function" name="WINCH_RC_FUNC" documentation="RCn_OPTION number to use to control winch rate" user="Standard">
+        <values>
+          <value code="300">Scripting1</value>
+          <value code="301">Scripting2</value>
+          <value code="302">Scripting3</value>
+          <value code="303">Scripting4</value>
+          <value code="304">Scripting5</value>
+          <value code="305">Scripting6</value>
+          <value code="306">Scripting7</value>
+          <value code="307">Scripting8</value>
+        </values>
       </param>
       <param humanName="Count of SOC estimators" name="BATT_SOC_COUNT" documentation="Number of battery SOC estimators" user="Standard">
         <field name="Range">0 4</field>
@@ -1258,187 +1443,6 @@
       </param>
       <param humanName="Battery estimator coefficient3" name="BATT_SOC4_C3" documentation="Battery estimator coefficient3" user="Standard">
         <field name="Range">0.01 0.5</field>
-      </param>
-      <param humanName="Camera1 Thermal Palette" name="CAM1_THERM_PAL" documentation="thermal image colour palette" user="Standard">
-        <values>
-          <value code="-1">Leave Unchanged</value>
-          <value code="0">WhiteHot</value>
-          <value code="2">Sepia</value>
-          <value code="3">IronBow</value>
-          <value code="4">Rainbow</value>
-          <value code="5">Night</value>
-          <value code="6">Aurora</value>
-          <value code="7">RedHot</value>
-          <value code="8">Jungle</value>
-          <value code="9">Medical</value>
-          <value code="10">BlackHot</value>
-          <value code="11">GloryHot</value>
-        </values>
-      </param>
-      <param humanName="Camera1 Thermal Gain" name="CAM1_THERM_GAIN" documentation="thermal image temperature range" user="Standard">
-        <values>
-          <value code="-1">Leave Unchanged</value>
-          <value code="0">LowGain (50C to 550C)</value>
-          <value code="1">HighGain (-20C to 150C)</value>
-        </values>
-      </param>
-      <param humanName="Camera1 Thermal Raw Data" name="CAM1_THERM_RAW" documentation="save images with raw temperatures" user="Standard">
-        <values>
-          <value code="-1">Leave Unchanged</value>
-          <value code="0">Disabled (30fps)</value>
-          <value code="1">Enabled (25 fps)</value>
-        </values>
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-      </param>
-      <param humanName="Force enable High Latency mode" name="RCK_FORCEHL" documentation="Automatically enables High Latency mode if not already enabled" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Update rate" name="RCK_PERIOD" documentation="When in High Latency mode, send Rockblock updates every N seconds" user="Standard">
-        <field name="Range">0 600</field>
-        <field name="Units">s</field>
-        <field name="UnitText">seconds</field>
-      </param>
-      <param humanName="Display Rockblock debugging text" name="RCK_DEBUG" documentation="Sends Rockblock debug text to GCS via statustexts" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Enable Message transmission" name="RCK_ENABLE" documentation="Enables the Rockblock sending and recieving" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="EKF Source ExternalNav Innovation Threshold" name="ESRC_EXTN_THRESH" documentation="ExternalNav may be used if innovations are below this threshold" user="Standard">
-        <field name="Range">0 1</field>
-      </param>
-      <param humanName="EKF Source ExternalNav Quality Threshold" name="ESRC_EXTN_QUAL" documentation="ExternalNav may be used if quality is above this threshold" user="Standard">
-        <field name="Range">0 100</field>
-        <field name="Units">%</field>
-        <field name="UnitText">percent</field>
-      </param>
-      <param humanName="EKF Source OpticalFlow Innovation Threshold" name="ESRC_FLOW_THRESH" documentation="OpticalFlow may be used if innovations are below this threshold" user="Standard">
-        <field name="Range">0 1</field>
-      </param>
-      <param humanName="EKF Source OpticalFlow Quality Threshold" name="ESRC_FLOW_QUAL" documentation="OpticalFlow may be used if quality is above this threshold" user="Standard">
-        <field name="Range">0 100</field>
-        <field name="Units">%</field>
-        <field name="UnitText">percent</field>
-      </param>
-      <param humanName="EKF Source Rangefinder Max" name="ESRC_RNGFND_MAX" documentation="OpticalFlow may be used if rangefinder distance is below this threshold" user="Standard">
-        <field name="Range">0 50</field>
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-      </param>
-      <param humanName="Rover Quicktune enable" name="RTUN_ENABLE" documentation="Enable quicktune system" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Rover Quicktune axes" name="RTUN_AXES" documentation="axes to tune" user="Standard">
-        <bitmask>
-          <bit code="0">Steering</bit>
-          <bit code="1">Speed</bit>
-        </bitmask>
-        <field name="Bitmask">0:Steering,1:Speed</field>
-      </param>
-      <param humanName="Rover Quicktune Steering Rate FeedForward ratio" name="RTUN_STR_FFRATIO" documentation="Ratio between measured response and FF gain. Raise this to get a higher FF gain" user="Standard">
-        <field name="Range">0 1.0</field>
-      </param>
-      <param humanName="Rover Quicktune Steering FF to P ratio" name="RTUN_STR_P_RATIO" documentation="Ratio between steering FF and P gains. Raise this to get a higher P gain, 0 to leave P unchanged" user="Standard">
-        <field name="Range">0 2.0</field>
-      </param>
-      <param humanName="Rover Quicktune Steering FF to I ratio" name="RTUN_STR_I_RATIO" documentation="Ratio between steering FF and I gains. Raise this to get a higher I gain, 0 to leave I unchanged" user="Standard">
-        <field name="Range">0 2.0</field>
-      </param>
-      <param humanName="Rover Quicktune Speed FeedForward (equivalent) ratio" name="RTUN_SPD_FFRATIO" documentation="Ratio between measured response and CRUISE_THROTTLE value. Raise this to get a higher CRUISE_THROTTLE value" user="Standard">
-        <field name="Range">0 1.0</field>
-      </param>
-      <param humanName="Rover Quicktune Speed FF to P ratio" name="RTUN_SPD_P_RATIO" documentation="Ratio between speed FF and P gain. Raise this to get a higher P gain, 0 to leave P unchanged" user="Standard">
-        <field name="Range">0 2.0</field>
-      </param>
-      <param humanName="Rover Quicktune Speed FF to I ratio" name="RTUN_SPD_I_RATIO" documentation="Ratio between speed FF and I gain. Raise this to get a higher I gain, 0 to leave I unchanged" user="Standard">
-        <field name="Range">0 2.0</field>
-      </param>
-      <param humanName="Rover Quicktune auto filter enable" name="RTUN_AUTO_FILTER" documentation="When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Rover Quicktune auto save" name="RTUN_AUTO_SAVE" documentation="Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune" user="Standard">
-        <field name="Units">s</field>
-        <field name="UnitText">seconds</field>
-      </param>
-      <param humanName="Rover Quicktune RC function" name="RTUN_RC_FUNC" documentation="RCn_OPTION number to use to control tuning stop/start/save" user="Standard">
-        <values>
-          <value code="300">Scripting1</value>
-          <value code="301">Scripting2</value>
-          <value code="302">Scripting3</value>
-          <value code="303">Scripting4</value>
-          <value code="304">Scripting5</value>
-          <value code="305">Scripting6</value>
-          <value code="306">Scripting7</value>
-          <value code="307">Scripting8</value>
-        </values>
-      </param>
-      <param humanName="Precland altitude cutoff" name="PLND_ALT_CUTOFF" documentation="The altitude (rangefinder distance) below which we stop using the precision landing sensor and continue landing" user="Standard">
-        <field name="Range">0 20</field>
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-      </param>
-      <param humanName="Precland distance cutoff" name="DIST_CUTOFF" documentation="The distance from target beyond which the target is ignored" user="Standard">
-        <field name="Range">0 100</field>
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-      </param>
-      <param humanName="WinchControl Rate Up" name="WINCH_RATE_UP" documentation="Maximum rate when retracting line" user="Standard">
-        <field name="Range">0.1 5.0</field>
-      </param>
-      <param humanName="WinchControl Rate Down" name="WINCH_RATE_DN" documentation="Maximum rate when releasing line" user="Standard">
-        <field name="Range">0.1 5.0</field>
-      </param>
-      <param humanName="Winch Rate Control RC function" name="WINCH_RC_FUNC" documentation="RCn_OPTION number to use to control winch rate" user="Standard">
-        <values>
-          <value code="300">Scripting1</value>
-          <value code="301">Scripting2</value>
-          <value code="302">Scripting3</value>
-          <value code="303">Scripting4</value>
-          <value code="304">Scripting5</value>
-          <value code="305">Scripting6</value>
-          <value code="306">Scripting7</value>
-          <value code="307">Scripting8</value>
-        </values>
-      </param>
-      <param humanName="CoG adjustment ratio" name="CGA_RATIO" documentation="The ratio between the front and back motor outputs during steady-state hover. Positive when the CoG is in front of the motors midpoint (front motors work harder)." user="Advanced">
-        <field name="Range">0.5 2</field>
-      </param>
-      <param humanName="terrain brake enable" name="TERR_BRK_ENABLE" documentation="terrain brake enable" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="terrain brake altitude" name="TERR_BRK_ALT" documentation="terrain brake altitude. The altitude above the ground below which BRAKE mode will be engaged if in LOITER mode." user="Standard">
-        <field name="Range">1 100</field>
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-      </param>
-      <param humanName="terrain brake home distance" name="TERR_BRK_HDIST" documentation="terrain brake home distance. The distance from home where the auto BRAKE will be enabled. When within this distance of home the script will not activate" user="Standard">
-        <field name="Range">0 1000</field>
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-      </param>
-      <param humanName="terrain brake speed threshold" name="TERR_BRK_SPD" documentation="terrain brake speed threshold. Don't trigger BRAKE if both horizontal speed and descent rate are below this threshold. By setting this to a small value this can be used to allow the user to climb up to a safe altitude in LOITER mode. A value of 0.5 is recommended if you want to use LOITER to recover from an emergency terrain BRAKE mode change." user="Standard">
-        <field name="Range">0 5</field>
-        <field name="Units">m/s</field>
-        <field name="UnitText">meters per second</field>
       </param>
       <param humanName="Angular acceleration limit" name="AEROM_ANG_ACCEL" documentation="Maximum angular acceleration in maneuvers">
         <field name="Units">deg/s/s</field>
@@ -1562,49 +1566,18 @@
       <param humanName="Trik Count" name="TRIK_COUNT" documentation="Number of tricks which can be selected over the range of the trik selection RC channel">
         <field name="Range">1 11</field>
       </param>
-      <param humanName="EFI DLA enable" name="EFI_DLA_ENABLE" documentation="Enable EFI DLA driver" user="Standard">
+      <param humanName="Generator SVFFI enable" name="EFI_SVF_ENABLE" documentation="Enable SVFFI generator support" user="Standard">
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
         </values>
       </param>
-      <param humanName="EFI DLA fuel scale" name="EFI_DLA_LPS" documentation="EFI DLA litres of fuel per second of injection time" user="Standard">
-        <field name="Range">0.00001 1</field>
-        <field name="Units">litres</field>
-        <field name="UnitText">litres</field>
-      </param>
-      <param humanName="DJIRS2 debug" name="DJIR_DEBUG" documentation="Enable DJIRS2 debug" user="Advanced">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-          <value code="2">Enabled with attitude reporting</value>
-        </values>
-      </param>
-      <param humanName="DJIRS2 upside down" name="DJIR_UPSIDEDOWN" documentation="DJIRS2 upside down" user="Standard">
-        <values>
-          <value code="0">Right side up</value>
-          <value code="1">Upside down</value>
-        </values>
-      </param>
-      <param humanName="EFI INF-Inject enable" name="EFI_INF_ENABLE" documentation="Enable EFI INF-Inject driver" user="Standard">
+      <param humanName="Generator SVFFI arming check" name="EFI_SVF_ARMCHECK" documentation="Check for Generator ARM state before arming" user="Standard">
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
         </values>
       </param>
-      <param humanName="EFI INF-Inject options" name="EFI_INF_OPTIONS" documentation="EFI INF driver options" user="Standard">
-        <bitmask>
-          <bit code="0">EnableLogging</bit>
-        </bitmask>
-        <field name="Bitmask">0:EnableLogging</field>
-      </param>
-      <param humanName="EFI INF-Inject throttle rate" name="EFI_INF_THR_HZ" documentation="EFI INF throttle output rate" user="Standard">
-        <field name="Range">0 50</field>
-        <field name="Units">Hz</field>
-        <field name="UnitText">hertz</field>
-      </param>
-      <param humanName="EFI INF-Inject ignition aux function" name="EFI_INF_IGN_AUX" documentation="EFI INF throttle ignition aux function" user="Standard">
-</param>
       <param humanName="ViewPro debug" name="VIEP_DEBUG" documentation="ViewPro debug" user="Advanced">
         <values>
           <value code="0">Disabled</value>
@@ -1654,6 +1627,66 @@
       <param humanName="ViewPro Zoom Times Max" name="VIEP_ZOOM_MAX" documentation="ViewPro Zoom Times Max" user="Standard">
         <field name="Range">0 30</field>
       </param>
+      <param humanName="Enable ANX battery support" name="BATT_ANX_ENABLE" documentation="Enable ANX battery support" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Set ANX CAN driver" name="BATT_ANX_CANDRV" documentation="Set ANX CAN driver" user="Standard">
+        <values>
+          <value code="0">None</value>
+          <value code="1">1stCANDriver</value>
+          <value code="2">2ndCanDriver</value>
+        </values>
+      </param>
+      <param humanName="ANX CAN battery index" name="BATT_ANX_INDEX" documentation="ANX CAN battery index" user="Standard">
+        <field name="Range">1 10</field>
+      </param>
+      <param humanName="ANX CAN battery options" name="BATT_ANX_OPTIONS" documentation="ANX CAN battery options" user="Advanced">
+        <bitmask>
+          <bit code="0">LogAllFrames</bit>
+        </bitmask>
+        <field name="Bitmask">0:LogAllFrames</field>
+      </param>
+      <param humanName="Enable NMEA 2000 EFI driver" name="EFI_2K_ENABLE" documentation="Enable NMEA 2000 EFI driver" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="NMEA 2000 CAN driver" name="EFI_2K_CANDRV" documentation="NMEA 2000 CAN driver. Use 1 for first CAN scripting driver, 2 for 2nd driver" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">FirstCAN</value>
+          <value code="2">SecondCAN</value>
+        </values>
+      </param>
+      <param humanName="NMEA 2000 options" name="EFI_2K_OPTIONS" documentation="NMEA 2000 driver options" user="Standard">
+        <bitmask>
+          <bit code="0">EnableLogging</bit>
+        </bitmask>
+        <field name="Bitmask">0:EnableLogging</field>
+      </param>
+      <param humanName="EFI INF-Inject enable" name="EFI_INF_ENABLE" documentation="Enable EFI INF-Inject driver" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="EFI INF-Inject options" name="EFI_INF_OPTIONS" documentation="EFI INF driver options" user="Standard">
+        <bitmask>
+          <bit code="0">EnableLogging</bit>
+        </bitmask>
+        <field name="Bitmask">0:EnableLogging</field>
+      </param>
+      <param humanName="EFI INF-Inject throttle rate" name="EFI_INF_THR_HZ" documentation="EFI INF throttle output rate" user="Standard">
+        <field name="Range">0 50</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="EFI INF-Inject ignition aux function" name="EFI_INF_IGN_AUX" documentation="EFI INF throttle ignition aux function" user="Standard">
+</param>
       <param humanName="Enable SkyPower EFI support" name="EFI_SP_ENABLE" documentation="Enable SkyPower EFI support" user="Standard">
         <values>
           <value code="0">Disabled</value>
@@ -1746,52 +1779,6 @@
         <field name="Units">s</field>
         <field name="UnitText">seconds</field>
       </param>
-      <param humanName="Hobbywing ESC Enable" name="ESC_HW_ENABLE" documentation="Enable Hobbywing ESC telemetry" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Hobbywing ESC motor poles" name="ESC_HW_POLES" documentation="Number of motor poles for eRPM scaling" user="Standard">
-        <field name="Range">1 50</field>
-      </param>
-      <param humanName="Hobbywing ESC motor offset" name="ESC_HW_OFS" documentation="Motor number offset of first ESC" user="Standard">
-        <field name="Range">0 31</field>
-      </param>
-      <param humanName="Generator SVFFI enable" name="EFI_SVF_ENABLE" documentation="Enable SVFFI generator support" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Generator SVFFI arming check" name="EFI_SVF_ARMCHECK" documentation="Check for Generator ARM state before arming" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Enable ANX battery support" name="BATT_ANX_ENABLE" documentation="Enable ANX battery support" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Set ANX CAN driver" name="BATT_ANX_CANDRV" documentation="Set ANX CAN driver" user="Standard">
-        <values>
-          <value code="0">None</value>
-          <value code="1">1stCANDriver</value>
-          <value code="2">2ndCanDriver</value>
-        </values>
-      </param>
-      <param humanName="ANX CAN battery index" name="BATT_ANX_INDEX" documentation="ANX CAN battery index" user="Standard">
-        <field name="Range">1 10</field>
-      </param>
-      <param humanName="ANX CAN battery options" name="BATT_ANX_OPTIONS" documentation="ANX CAN battery options" user="Advanced">
-        <bitmask>
-          <bit code="0">LogAllFrames</bit>
-        </bitmask>
-        <field name="Bitmask">0:LogAllFrames</field>
-      </param>
       <param humanName="Enable Halo6000 EFI driver" name="EFI_H6K_ENABLE" documentation="Enable Halo6000 EFI driver" user="Standard">
         <values>
           <value code="0">Disabled</value>
@@ -1832,24 +1819,41 @@
         </bitmask>
         <field name="Bitmask">0:LogAllCanPackets</field>
       </param>
-      <param humanName="Enable NMEA 2000 EFI driver" name="EFI_2K_ENABLE" documentation="Enable NMEA 2000 EFI driver" user="Standard">
+      <param humanName="EFI DLA enable" name="EFI_DLA_ENABLE" documentation="Enable EFI DLA driver" user="Standard">
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
         </values>
       </param>
-      <param humanName="NMEA 2000 CAN driver" name="EFI_2K_CANDRV" documentation="NMEA 2000 CAN driver. Use 1 for first CAN scripting driver, 2 for 2nd driver" user="Standard">
+      <param humanName="EFI DLA fuel scale" name="EFI_DLA_LPS" documentation="EFI DLA litres of fuel per second of injection time" user="Standard">
+        <field name="Range">0.00001 1</field>
+        <field name="Units">litres</field>
+        <field name="UnitText">litres</field>
+      </param>
+      <param humanName="DJIRS2 debug" name="DJIR_DEBUG" documentation="Enable DJIRS2 debug" user="Advanced">
         <values>
           <value code="0">Disabled</value>
-          <value code="1">FirstCAN</value>
-          <value code="2">SecondCAN</value>
+          <value code="1">Enabled</value>
+          <value code="2">Enabled with attitude reporting</value>
         </values>
       </param>
-      <param humanName="NMEA 2000 options" name="EFI_2K_OPTIONS" documentation="NMEA 2000 driver options" user="Standard">
-        <bitmask>
-          <bit code="0">EnableLogging</bit>
-        </bitmask>
-        <field name="Bitmask">0:EnableLogging</field>
+      <param humanName="DJIRS2 upside down" name="DJIR_UPSIDEDOWN" documentation="DJIRS2 upside down" user="Standard">
+        <values>
+          <value code="0">Right side up</value>
+          <value code="1">Upside down</value>
+        </values>
+      </param>
+      <param humanName="Hobbywing ESC Enable" name="ESC_HW_ENABLE" documentation="Enable Hobbywing ESC telemetry" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Hobbywing ESC motor poles" name="ESC_HW_POLES" documentation="Number of motor poles for eRPM scaling" user="Standard">
+        <field name="Range">1 50</field>
+      </param>
+      <param humanName="Hobbywing ESC motor offset" name="ESC_HW_OFS" documentation="Motor number offset of first ESC" user="Standard">
+        <field name="Range">0 31</field>
       </param>
       <param humanName="TOFSENSE-M to be used as Proximity sensor" name="TOFSENSE_PRX" documentation="Set 0 if sensor is to be used as a 1-D rangefinder (minimum of all distances will be sent, typically used for height detection). Set 1 if it should be used as a 3-D proximity device (Eg. Obstacle Avoidance)" user="Standard">
         <values>
@@ -3573,9 +3577,10 @@
           <bit code="5">MPPT Powered on at boot</bit>
           <bit code="6">Send resistance compensated voltage to GCS</bit>
           <bit code="7">Allow DroneCAN InfoAux to be from a different CAN node</bit>
+          <bit code="8">Battery is for internal autopilot use only</bit>
           <bit code="9">Sum monitor measures minimum voltage instead of average</bit>
         </bitmask>
-        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 9:Sum monitor measures minimum voltage instead of average</field>
+        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 8:Battery is for internal autopilot use only, 9:Sum monitor measures minimum voltage instead of average</field>
       </param>
       <param humanName="ESC Telemetry Index to write to" name="BATT2_ESC_INDEX" documentation="ESC Telemetry Index to write voltage, current, consumption and temperature data to. Use 0 to disable." user="Advanced">
         <field name="Range">0 10</field>
@@ -3855,9 +3860,10 @@
           <bit code="5">MPPT Powered on at boot</bit>
           <bit code="6">Send resistance compensated voltage to GCS</bit>
           <bit code="7">Allow DroneCAN InfoAux to be from a different CAN node</bit>
+          <bit code="8">Battery is for internal autopilot use only</bit>
           <bit code="9">Sum monitor measures minimum voltage instead of average</bit>
         </bitmask>
-        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 9:Sum monitor measures minimum voltage instead of average</field>
+        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 8:Battery is for internal autopilot use only, 9:Sum monitor measures minimum voltage instead of average</field>
       </param>
       <param humanName="ESC Telemetry Index to write to" name="BATT3_ESC_INDEX" documentation="ESC Telemetry Index to write voltage, current, consumption and temperature data to. Use 0 to disable." user="Advanced">
         <field name="Range">0 10</field>
@@ -4137,9 +4143,10 @@
           <bit code="5">MPPT Powered on at boot</bit>
           <bit code="6">Send resistance compensated voltage to GCS</bit>
           <bit code="7">Allow DroneCAN InfoAux to be from a different CAN node</bit>
+          <bit code="8">Battery is for internal autopilot use only</bit>
           <bit code="9">Sum monitor measures minimum voltage instead of average</bit>
         </bitmask>
-        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 9:Sum monitor measures minimum voltage instead of average</field>
+        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 8:Battery is for internal autopilot use only, 9:Sum monitor measures minimum voltage instead of average</field>
       </param>
       <param humanName="ESC Telemetry Index to write to" name="BATT4_ESC_INDEX" documentation="ESC Telemetry Index to write voltage, current, consumption and temperature data to. Use 0 to disable." user="Advanced">
         <field name="Range">0 10</field>
@@ -4419,9 +4426,10 @@
           <bit code="5">MPPT Powered on at boot</bit>
           <bit code="6">Send resistance compensated voltage to GCS</bit>
           <bit code="7">Allow DroneCAN InfoAux to be from a different CAN node</bit>
+          <bit code="8">Battery is for internal autopilot use only</bit>
           <bit code="9">Sum monitor measures minimum voltage instead of average</bit>
         </bitmask>
-        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 9:Sum monitor measures minimum voltage instead of average</field>
+        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 8:Battery is for internal autopilot use only, 9:Sum monitor measures minimum voltage instead of average</field>
       </param>
       <param humanName="ESC Telemetry Index to write to" name="BATT5_ESC_INDEX" documentation="ESC Telemetry Index to write voltage, current, consumption and temperature data to. Use 0 to disable." user="Advanced">
         <field name="Range">0 10</field>
@@ -4701,9 +4709,10 @@
           <bit code="5">MPPT Powered on at boot</bit>
           <bit code="6">Send resistance compensated voltage to GCS</bit>
           <bit code="7">Allow DroneCAN InfoAux to be from a different CAN node</bit>
+          <bit code="8">Battery is for internal autopilot use only</bit>
           <bit code="9">Sum monitor measures minimum voltage instead of average</bit>
         </bitmask>
-        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 9:Sum monitor measures minimum voltage instead of average</field>
+        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 8:Battery is for internal autopilot use only, 9:Sum monitor measures minimum voltage instead of average</field>
       </param>
       <param humanName="ESC Telemetry Index to write to" name="BATT6_ESC_INDEX" documentation="ESC Telemetry Index to write voltage, current, consumption and temperature data to. Use 0 to disable." user="Advanced">
         <field name="Range">0 10</field>
@@ -4983,9 +4992,10 @@
           <bit code="5">MPPT Powered on at boot</bit>
           <bit code="6">Send resistance compensated voltage to GCS</bit>
           <bit code="7">Allow DroneCAN InfoAux to be from a different CAN node</bit>
+          <bit code="8">Battery is for internal autopilot use only</bit>
           <bit code="9">Sum monitor measures minimum voltage instead of average</bit>
         </bitmask>
-        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 9:Sum monitor measures minimum voltage instead of average</field>
+        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 8:Battery is for internal autopilot use only, 9:Sum monitor measures minimum voltage instead of average</field>
       </param>
       <param humanName="ESC Telemetry Index to write to" name="BATT7_ESC_INDEX" documentation="ESC Telemetry Index to write voltage, current, consumption and temperature data to. Use 0 to disable." user="Advanced">
         <field name="Range">0 10</field>
@@ -5265,9 +5275,10 @@
           <bit code="5">MPPT Powered on at boot</bit>
           <bit code="6">Send resistance compensated voltage to GCS</bit>
           <bit code="7">Allow DroneCAN InfoAux to be from a different CAN node</bit>
+          <bit code="8">Battery is for internal autopilot use only</bit>
           <bit code="9">Sum monitor measures minimum voltage instead of average</bit>
         </bitmask>
-        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 9:Sum monitor measures minimum voltage instead of average</field>
+        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 8:Battery is for internal autopilot use only, 9:Sum monitor measures minimum voltage instead of average</field>
       </param>
       <param humanName="ESC Telemetry Index to write to" name="BATT8_ESC_INDEX" documentation="ESC Telemetry Index to write voltage, current, consumption and temperature data to. Use 0 to disable." user="Advanced">
         <field name="Range">0 10</field>
@@ -5547,9 +5558,10 @@
           <bit code="5">MPPT Powered on at boot</bit>
           <bit code="6">Send resistance compensated voltage to GCS</bit>
           <bit code="7">Allow DroneCAN InfoAux to be from a different CAN node</bit>
+          <bit code="8">Battery is for internal autopilot use only</bit>
           <bit code="9">Sum monitor measures minimum voltage instead of average</bit>
         </bitmask>
-        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 9:Sum monitor measures minimum voltage instead of average</field>
+        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 8:Battery is for internal autopilot use only, 9:Sum monitor measures minimum voltage instead of average</field>
       </param>
       <param humanName="ESC Telemetry Index to write to" name="BATT9_ESC_INDEX" documentation="ESC Telemetry Index to write voltage, current, consumption and temperature data to. Use 0 to disable." user="Advanced">
         <field name="Range">0 10</field>
@@ -5829,9 +5841,10 @@
           <bit code="5">MPPT Powered on at boot</bit>
           <bit code="6">Send resistance compensated voltage to GCS</bit>
           <bit code="7">Allow DroneCAN InfoAux to be from a different CAN node</bit>
+          <bit code="8">Battery is for internal autopilot use only</bit>
           <bit code="9">Sum monitor measures minimum voltage instead of average</bit>
         </bitmask>
-        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 9:Sum monitor measures minimum voltage instead of average</field>
+        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 8:Battery is for internal autopilot use only, 9:Sum monitor measures minimum voltage instead of average</field>
       </param>
       <param humanName="ESC Telemetry Index to write to" name="BATTA_ESC_INDEX" documentation="ESC Telemetry Index to write voltage, current, consumption and temperature data to. Use 0 to disable." user="Advanced">
         <field name="Range">0 10</field>
@@ -6111,9 +6124,10 @@
           <bit code="5">MPPT Powered on at boot</bit>
           <bit code="6">Send resistance compensated voltage to GCS</bit>
           <bit code="7">Allow DroneCAN InfoAux to be from a different CAN node</bit>
+          <bit code="8">Battery is for internal autopilot use only</bit>
           <bit code="9">Sum monitor measures minimum voltage instead of average</bit>
         </bitmask>
-        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 9:Sum monitor measures minimum voltage instead of average</field>
+        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 8:Battery is for internal autopilot use only, 9:Sum monitor measures minimum voltage instead of average</field>
       </param>
       <param humanName="ESC Telemetry Index to write to" name="BATTB_ESC_INDEX" documentation="ESC Telemetry Index to write voltage, current, consumption and temperature data to. Use 0 to disable." user="Advanced">
         <field name="Range">0 10</field>
@@ -6393,9 +6407,10 @@
           <bit code="5">MPPT Powered on at boot</bit>
           <bit code="6">Send resistance compensated voltage to GCS</bit>
           <bit code="7">Allow DroneCAN InfoAux to be from a different CAN node</bit>
+          <bit code="8">Battery is for internal autopilot use only</bit>
           <bit code="9">Sum monitor measures minimum voltage instead of average</bit>
         </bitmask>
-        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 9:Sum monitor measures minimum voltage instead of average</field>
+        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 8:Battery is for internal autopilot use only, 9:Sum monitor measures minimum voltage instead of average</field>
       </param>
       <param humanName="ESC Telemetry Index to write to" name="BATTC_ESC_INDEX" documentation="ESC Telemetry Index to write voltage, current, consumption and temperature data to. Use 0 to disable." user="Advanced">
         <field name="Range">0 10</field>
@@ -6675,9 +6690,10 @@
           <bit code="5">MPPT Powered on at boot</bit>
           <bit code="6">Send resistance compensated voltage to GCS</bit>
           <bit code="7">Allow DroneCAN InfoAux to be from a different CAN node</bit>
+          <bit code="8">Battery is for internal autopilot use only</bit>
           <bit code="9">Sum monitor measures minimum voltage instead of average</bit>
         </bitmask>
-        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 9:Sum monitor measures minimum voltage instead of average</field>
+        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 8:Battery is for internal autopilot use only, 9:Sum monitor measures minimum voltage instead of average</field>
       </param>
       <param humanName="ESC Telemetry Index to write to" name="BATTD_ESC_INDEX" documentation="ESC Telemetry Index to write voltage, current, consumption and temperature data to. Use 0 to disable." user="Advanced">
         <field name="Range">0 10</field>
@@ -6957,9 +6973,10 @@
           <bit code="5">MPPT Powered on at boot</bit>
           <bit code="6">Send resistance compensated voltage to GCS</bit>
           <bit code="7">Allow DroneCAN InfoAux to be from a different CAN node</bit>
+          <bit code="8">Battery is for internal autopilot use only</bit>
           <bit code="9">Sum monitor measures minimum voltage instead of average</bit>
         </bitmask>
-        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 9:Sum monitor measures minimum voltage instead of average</field>
+        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 8:Battery is for internal autopilot use only, 9:Sum monitor measures minimum voltage instead of average</field>
       </param>
       <param humanName="ESC Telemetry Index to write to" name="BATTE_ESC_INDEX" documentation="ESC Telemetry Index to write voltage, current, consumption and temperature data to. Use 0 to disable." user="Advanced">
         <field name="Range">0 10</field>
@@ -7239,9 +7256,10 @@
           <bit code="5">MPPT Powered on at boot</bit>
           <bit code="6">Send resistance compensated voltage to GCS</bit>
           <bit code="7">Allow DroneCAN InfoAux to be from a different CAN node</bit>
+          <bit code="8">Battery is for internal autopilot use only</bit>
           <bit code="9">Sum monitor measures minimum voltage instead of average</bit>
         </bitmask>
-        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 9:Sum monitor measures minimum voltage instead of average</field>
+        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 8:Battery is for internal autopilot use only, 9:Sum monitor measures minimum voltage instead of average</field>
       </param>
       <param humanName="ESC Telemetry Index to write to" name="BATTF_ESC_INDEX" documentation="ESC Telemetry Index to write voltage, current, consumption and temperature data to. Use 0 to disable." user="Advanced">
         <field name="Range">0 10</field>
@@ -7521,9 +7539,10 @@
           <bit code="5">MPPT Powered on at boot</bit>
           <bit code="6">Send resistance compensated voltage to GCS</bit>
           <bit code="7">Allow DroneCAN InfoAux to be from a different CAN node</bit>
+          <bit code="8">Battery is for internal autopilot use only</bit>
           <bit code="9">Sum monitor measures minimum voltage instead of average</bit>
         </bitmask>
-        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 9:Sum monitor measures minimum voltage instead of average</field>
+        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 8:Battery is for internal autopilot use only, 9:Sum monitor measures minimum voltage instead of average</field>
       </param>
       <param humanName="ESC Telemetry Index to write to" name="BATTG_ESC_INDEX" documentation="ESC Telemetry Index to write voltage, current, consumption and temperature data to. Use 0 to disable." user="Advanced">
         <field name="Range">0 10</field>
@@ -7803,9 +7822,10 @@
           <bit code="5">MPPT Powered on at boot</bit>
           <bit code="6">Send resistance compensated voltage to GCS</bit>
           <bit code="7">Allow DroneCAN InfoAux to be from a different CAN node</bit>
+          <bit code="8">Battery is for internal autopilot use only</bit>
           <bit code="9">Sum monitor measures minimum voltage instead of average</bit>
         </bitmask>
-        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 9:Sum monitor measures minimum voltage instead of average</field>
+        <field name="Bitmask">0:Ignore DroneCAN SoC, 1:MPPT reports input voltage and current, 2:MPPT Powered off when disarmed, 3:MPPT Powered on when armed, 4:MPPT Powered off at boot, 5:MPPT Powered on at boot, 6:Send resistance compensated voltage to GCS, 7:Allow DroneCAN InfoAux to be from a different CAN node, 8:Battery is for internal autopilot use only, 9:Sum monitor measures minimum voltage instead of average</field>
       </param>
       <param humanName="ESC Telemetry Index to write to" name="BATT_ESC_INDEX" documentation="ESC Telemetry Index to write voltage, current, consumption and temperature data to. Use 0 to disable." user="Advanced">
         <field name="Range">0 10</field>
