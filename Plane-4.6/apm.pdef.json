@@ -8382,6 +8382,34 @@
         "3": "RS-485 Driver enable RTS pin"
       }
     },
+    "BRD_SER6_RTSCTS": {
+      "Description": "Enable flow control on serial 6. You must have the RTS and CTS pins connected to your radio. The standard DF13 6 pin connector for a 3DR radio does have those pins connected. If this is set to 2 then flow control will be auto-detected by checking for the output buffer filling on startup.",
+      "DisplayName": "Serial 6 flow control",
+      "RebootRequired": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled",
+        "2": "Auto",
+        "3": "RS-485 Driver enable RTS pin"
+      }
+    },
+    "BRD_SER7_RTSCTS": {
+      "Description": "Enable flow control on serial 7. You must have the RTS and CTS pins connected to your radio. The standard DF13 6 pin connector for a 3DR radio does have those pins connected. If this is set to 2 then flow control will be auto-detected by checking for the output buffer filling on startup.",
+      "DisplayName": "Serial 7 flow control",
+      "RebootRequired": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled",
+        "2": "Auto",
+        "3": "RS-485 Driver enable RTS pin"
+      }
+    },
+    "BRD_SER8_RTSCTS": {
+      "Description": "Enable flow control on serial 8. You must have the RTS and CTS pins connected to your radio. The standard DF13 6 pin connector for a 3DR radio does have those pins connected. If this is set to 2 then flow control will be auto-detected by checking for the output buffer filling on startup.",
+      "DisplayName": "Serial 8 flow control"
+    },
     "BRD_SERIAL_NUM": {
       "Description": "User-defined serial number of this vehicle, it can be any arbitrary number you want and has no effect on the autopilot",
       "DisplayName": "User-defined serial number",
@@ -9923,6 +9951,7 @@
         "45": "DDS XRCE",
         "46": "IMUDATA",
         "48": "PPP",
+        "49": "i-BUS Telemetry",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
         "8": "Gimbal",
@@ -10031,6 +10060,7 @@
         "45": "DDS XRCE",
         "46": "IMUDATA",
         "48": "PPP",
+        "49": "i-BUS Telemetry",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
         "8": "Gimbal",
@@ -10139,6 +10169,7 @@
         "45": "DDS XRCE",
         "46": "IMUDATA",
         "48": "PPP",
+        "49": "i-BUS Telemetry",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
         "8": "Gimbal",
@@ -10588,6 +10619,7 @@
         "45": "DDS XRCE",
         "46": "IMUDATA",
         "48": "PPP",
+        "49": "i-BUS Telemetry",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
         "8": "Gimbal",
@@ -10696,6 +10728,7 @@
         "45": "DDS XRCE",
         "46": "IMUDATA",
         "48": "PPP",
+        "49": "i-BUS Telemetry",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
         "8": "Gimbal",
@@ -10804,6 +10837,7 @@
         "45": "DDS XRCE",
         "46": "IMUDATA",
         "48": "PPP",
+        "49": "i-BUS Telemetry",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
         "8": "Gimbal",
@@ -11253,6 +11287,7 @@
         "45": "DDS XRCE",
         "46": "IMUDATA",
         "48": "PPP",
+        "49": "i-BUS Telemetry",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
         "8": "Gimbal",
@@ -11361,6 +11396,7 @@
         "45": "DDS XRCE",
         "46": "IMUDATA",
         "48": "PPP",
+        "49": "i-BUS Telemetry",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
         "8": "Gimbal",
@@ -11469,6 +11505,7 @@
         "45": "DDS XRCE",
         "46": "IMUDATA",
         "48": "PPP",
+        "49": "i-BUS Telemetry",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
         "8": "Gimbal",
@@ -12752,12 +12789,12 @@
       }
     },
     "DDS_MAX_RETRY": {
-      "Description": "The maximum number of times the DDS client will attempt to ping the XRCE agent before exiting.",
+      "Description": "The maximum number of times the DDS client will attempt to ping the XRCE agent before exiting. Set to 0 to allow unlimited retries.",
       "DisplayName": "DDS ping max attempts",
       "Increment": "1",
       "Range": {
         "high": "100",
-        "low": "1"
+        "low": "0"
       },
       "RebootRequired": "True",
       "User": "Standard"
@@ -20590,6 +20627,55 @@
         "low": "301"
       }
     },
+    "UM_CANDRV": {
+      "Description": "Set CAN driver",
+      "DisplayName": "Set CAN driver",
+      "User": "Standard",
+      "Values": {
+        "0": "None",
+        "1": "1stCANDriver",
+        "2": "2ndCanDriver"
+      }
+    },
+    "UM_OPTIONS": {
+      "Bitmask": {
+        "0": "LogAllFrames",
+        "1": "ParseTelemetry",
+        "2": "SendPosAsNamedValueFloat"
+      },
+      "Description": "Optional settings",
+      "DisplayName": "Optional settings",
+      "User": "Standard"
+    },
+    "UM_RATE_HZ": {
+      "Description": "Update rate for UltraMotion servos",
+      "DisplayName": "Update rate for UltraMotion servos",
+      "Range": {
+        "high": "400",
+        "low": "1"
+      },
+      "Units": "Hz",
+      "User": "Standard"
+    },
+    "UM_SERVO_MASK": {
+      "Bitmask": {
+        "0": "SERVO1",
+        "1": "SERVO2",
+        "10": "SERVO11",
+        "11": "SERVO12",
+        "2": "SERVO3",
+        "3": "SERVO4",
+        "4": "SERVO5",
+        "5": "SERVO6",
+        "6": "SERVO7",
+        "7": "SERVO8",
+        "8": "SERVO9",
+        "9": "SERVO10"
+      },
+      "Description": "Mask of UltraMotion servos",
+      "DisplayName": "Mask of UltraMotion servos",
+      "User": "Standard"
+    },
     "VID1_BITRATE": {
       "Description": "Video stream bitrate",
       "DisplayName": "Camera1 Video Stream Bitrate",
@@ -21123,6 +21209,7 @@
         "10": "Xacti",
         "11": "Viewpro",
         "12": "Topotek",
+        "13": "CADDX",
         "2": "3DR Solo",
         "3": "Alexmos Serial",
         "4": "SToRM32 MAVLink",
@@ -21344,6 +21431,7 @@
         "10": "Xacti",
         "11": "Viewpro",
         "12": "Topotek",
+        "13": "CADDX",
         "2": "3DR Solo",
         "3": "Alexmos Serial",
         "4": "SToRM32 MAVLink",
@@ -21488,8 +21576,10 @@
     "NET_OPTIONS": {
       "Bitmask": {
         "0": "EnablePPP Ethernet gateway",
-        "1": "Enable CAN1 multicast gateway",
-        "2": "Enable CAN2 multicast gateway"
+        "1": "Enable CAN1 multicast endpoint",
+        "2": "Enable CAN2 multicast endpoint",
+        "3": "Enable CAN1 multicast bridged",
+        "4": "Enable CAN2 multicast bridged"
       },
       "Description": "Networking options",
       "DisplayName": "Networking options",
@@ -21706,6 +21796,7 @@
         "45": "DDS XRCE",
         "46": "IMUDATA",
         "48": "PPP",
+        "49": "i-BUS Telemetry",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
         "8": "Gimbal",
@@ -21823,6 +21914,7 @@
         "45": "DDS XRCE",
         "46": "IMUDATA",
         "48": "PPP",
+        "49": "i-BUS Telemetry",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
         "8": "Gimbal",
@@ -21940,6 +22032,7 @@
         "45": "DDS XRCE",
         "46": "IMUDATA",
         "48": "PPP",
+        "49": "i-BUS Telemetry",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
         "8": "Gimbal",
@@ -22057,6 +22150,7 @@
         "45": "DDS XRCE",
         "46": "IMUDATA",
         "48": "PPP",
+        "49": "i-BUS Telemetry",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
         "8": "Gimbal",
@@ -42365,6 +42459,7 @@
         "45": "DDS XRCE",
         "46": "IMUDATA",
         "48": "PPP",
+        "49": "i-BUS Telemetry",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
         "8": "Gimbal",
@@ -42419,6 +42514,7 @@
         "45": "DDS XRCE",
         "46": "IMUDATA",
         "48": "PPP",
+        "49": "i-BUS Telemetry",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
         "8": "Gimbal",
@@ -42473,6 +42569,7 @@
         "45": "DDS XRCE",
         "46": "IMUDATA",
         "48": "PPP",
+        "49": "i-BUS Telemetry",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
         "8": "Gimbal",
@@ -42673,6 +42770,7 @@
         "45": "DDS XRCE",
         "46": "IMUDATA",
         "48": "PPP",
+        "49": "i-BUS Telemetry",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
         "8": "Gimbal",
@@ -42771,6 +42869,7 @@
         "45": "DDS XRCE",
         "46": "IMUDATA",
         "48": "PPP",
+        "49": "i-BUS Telemetry",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
         "8": "Gimbal",
@@ -42869,6 +42968,7 @@
         "45": "DDS XRCE",
         "46": "IMUDATA",
         "48": "PPP",
+        "49": "i-BUS Telemetry",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
         "8": "Gimbal",
@@ -42967,6 +43067,7 @@
         "45": "DDS XRCE",
         "46": "IMUDATA",
         "48": "PPP",
+        "49": "i-BUS Telemetry",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
         "8": "Gimbal",
@@ -43065,6 +43166,7 @@
         "45": "DDS XRCE",
         "46": "IMUDATA",
         "48": "PPP",
+        "49": "i-BUS Telemetry",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
         "8": "Gimbal",
@@ -43163,6 +43265,7 @@
         "45": "DDS XRCE",
         "46": "IMUDATA",
         "48": "PPP",
+        "49": "i-BUS Telemetry",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
         "8": "Gimbal",
@@ -43261,6 +43364,7 @@
         "45": "DDS XRCE",
         "46": "IMUDATA",
         "48": "PPP",
+        "49": "i-BUS Telemetry",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
         "8": "Gimbal",
@@ -43359,6 +43463,7 @@
         "45": "DDS XRCE",
         "46": "IMUDATA",
         "48": "PPP",
+        "49": "i-BUS Telemetry",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
         "8": "Gimbal",
@@ -43457,6 +43562,7 @@
         "45": "DDS XRCE",
         "46": "IMUDATA",
         "48": "PPP",
+        "49": "i-BUS Telemetry",
         "5": "GPS",
         "7": "Alexmos Gimbal Serial",
         "8": "Gimbal",
