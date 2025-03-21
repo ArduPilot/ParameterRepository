@@ -24964,7 +24964,8 @@
         "5": "DShot300",
         "6": "DShot600",
         "7": "DShot1200",
-        "8": "PWMRange"
+        "8": "PWMRange",
+        "9": "PWMAngle"
       }
     },
     "MOT_SAFE_DISARM": {

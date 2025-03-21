@@ -53855,6 +53855,8 @@ This selects the output PWM type\, allowing for normal PWM continuous output\, O
 | +-------+------------+ |
 | | 8     | PWMRange   | |
 | +-------+------------+ |
+| | 9     | PWMAngle   | |
+| +-------+------------+ |
 |                        |
 +------------------------+
 
