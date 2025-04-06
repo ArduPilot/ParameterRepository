@@ -65,7 +65,7 @@
       }
     },
     "ADSB_LIST_ALT": {
-      "Description": "ADSB vehicle list altitude filter. Vehicles detected above this altitude will be completely ignored. They will not show up in the SRx_ADSB stream to the GCS and will not be considered in any avoidance calculations. A value of 0 will disable this filter.",
+      "Description": "ADSB vehicle list altitude filter. Vehicles detected more than this altitude above our own altitude will be completely ignored. They will not show up in the SRx_ADSB stream to the GCS and will not be considered in any avoidance calculations. A value of 0 will disable this filter.",
       "DisplayName": "ADSB vehicle list altitude filter",
       "Range": {
         "high": "32767",
@@ -2622,7 +2622,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATT2_FS_LOW_ACT": {
@@ -2636,7 +2637,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATT2_FS_VOLTSRC": {
@@ -3034,7 +3036,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATT3_FS_LOW_ACT": {
@@ -3048,7 +3051,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATT3_FS_VOLTSRC": {
@@ -3446,7 +3450,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATT4_FS_LOW_ACT": {
@@ -3460,7 +3465,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATT4_FS_VOLTSRC": {
@@ -3858,7 +3864,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATT5_FS_LOW_ACT": {
@@ -3872,7 +3879,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATT5_FS_VOLTSRC": {
@@ -4270,7 +4278,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATT6_FS_LOW_ACT": {
@@ -4284,7 +4293,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATT6_FS_VOLTSRC": {
@@ -4682,7 +4692,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATT7_FS_LOW_ACT": {
@@ -4696,7 +4707,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATT7_FS_VOLTSRC": {
@@ -5094,7 +5106,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATT8_FS_LOW_ACT": {
@@ -5108,7 +5121,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATT8_FS_VOLTSRC": {
@@ -5506,7 +5520,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATT9_FS_LOW_ACT": {
@@ -5520,7 +5535,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATT9_FS_VOLTSRC": {
@@ -5918,7 +5934,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATTA_FS_LOW_ACT": {
@@ -5932,7 +5949,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATTA_FS_VOLTSRC": {
@@ -6330,7 +6348,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATTB_FS_LOW_ACT": {
@@ -6344,7 +6363,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATTB_FS_VOLTSRC": {
@@ -6742,7 +6762,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATTC_FS_LOW_ACT": {
@@ -6756,7 +6777,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATTC_FS_VOLTSRC": {
@@ -7154,7 +7176,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATTD_FS_LOW_ACT": {
@@ -7168,7 +7191,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATTD_FS_VOLTSRC": {
@@ -7566,7 +7590,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATTE_FS_LOW_ACT": {
@@ -7580,7 +7605,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATTE_FS_VOLTSRC": {
@@ -7978,7 +8004,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATTF_FS_LOW_ACT": {
@@ -7992,7 +8019,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATTF_FS_VOLTSRC": {
@@ -8390,7 +8418,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATTG_FS_LOW_ACT": {
@@ -8404,7 +8433,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATTG_FS_VOLTSRC": {
@@ -8802,7 +8832,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATT_FS_LOW_ACT": {
@@ -8816,7 +8847,8 @@
         "3": "SmartRTL or RTL",
         "4": "SmartRTL or Land",
         "5": "Terminate",
-        "6": "Auto DO_LAND_START or RTL"
+        "6": "Auto DO_LAND_START or RTL",
+        "7": "Brake or Land"
       }
     },
     "BATT_FS_VOLTSRC": {
@@ -10598,7 +10630,7 @@
         "11": "Benewake",
         "12": "Scripting2",
         "13": "TOFSenseP",
-        "14": "NanoRadar",
+        "14": "RadarCAN (NanoRadar/Hexsoon)",
         "4": "PiccoloCAN",
         "6": "EFI_NWPMU",
         "7": "USD1",
@@ -10616,7 +10648,7 @@
         "11": "Benewake",
         "12": "Scripting2",
         "13": "TOFSenseP",
-        "14": "NanoRadar",
+        "14": "RadarCAN (NanoRadar/Hexsoon)",
         "7": "USD1"
       }
     }
@@ -10876,10 +10908,11 @@
         "1": "1200",
         "111": "111100",
         "115": "115200",
-        "1500": "1500000",
+        "12500000": "12.5MBaud",
+        "1500": "1.5MBaud",
         "19": "19200",
         "2": "2400",
-        "2000": "2000000",
+        "2000": "2MBaud",
         "230": "230400",
         "256": "256000",
         "38": "38400",
@@ -10985,10 +11018,11 @@
         "1": "1200",
         "111": "111100",
         "115": "115200",
-        "1500": "1500000",
+        "12500000": "12.5MBaud",
+        "1500": "1.5MBaud",
         "19": "19200",
         "2": "2400",
-        "2000": "2000000",
+        "2000": "2MBaud",
         "230": "230400",
         "256": "256000",
         "38": "38400",
@@ -11094,10 +11128,11 @@
         "1": "1200",
         "111": "111100",
         "115": "115200",
-        "1500": "1500000",
+        "12500000": "12.5MBaud",
+        "1500": "1.5MBaud",
         "19": "19200",
         "2": "2400",
-        "2000": "2000000",
+        "2000": "2MBaud",
         "230": "230400",
         "256": "256000",
         "38": "38400",
@@ -11266,7 +11301,7 @@
         "11": "Benewake",
         "12": "Scripting2",
         "13": "TOFSenseP",
-        "14": "NanoRadar",
+        "14": "RadarCAN (NanoRadar/Hexsoon)",
         "4": "PiccoloCAN",
         "6": "EFI_NWPMU",
         "7": "USD1",
@@ -11284,7 +11319,7 @@
         "11": "Benewake",
         "12": "Scripting2",
         "13": "TOFSenseP",
-        "14": "NanoRadar",
+        "14": "RadarCAN (NanoRadar/Hexsoon)",
         "7": "USD1"
       }
     }
@@ -11544,10 +11579,11 @@
         "1": "1200",
         "111": "111100",
         "115": "115200",
-        "1500": "1500000",
+        "12500000": "12.5MBaud",
+        "1500": "1.5MBaud",
         "19": "19200",
         "2": "2400",
-        "2000": "2000000",
+        "2000": "2MBaud",
         "230": "230400",
         "256": "256000",
         "38": "38400",
@@ -11653,10 +11689,11 @@
         "1": "1200",
         "111": "111100",
         "115": "115200",
-        "1500": "1500000",
+        "12500000": "12.5MBaud",
+        "1500": "1.5MBaud",
         "19": "19200",
         "2": "2400",
-        "2000": "2000000",
+        "2000": "2MBaud",
         "230": "230400",
         "256": "256000",
         "38": "38400",
@@ -11762,10 +11799,11 @@
         "1": "1200",
         "111": "111100",
         "115": "115200",
-        "1500": "1500000",
+        "12500000": "12.5MBaud",
+        "1500": "1.5MBaud",
         "19": "19200",
         "2": "2400",
-        "2000": "2000000",
+        "2000": "2MBaud",
         "230": "230400",
         "256": "256000",
         "38": "38400",
@@ -11934,7 +11972,7 @@
         "11": "Benewake",
         "12": "Scripting2",
         "13": "TOFSenseP",
-        "14": "NanoRadar",
+        "14": "RadarCAN (NanoRadar/Hexsoon)",
         "4": "PiccoloCAN",
         "6": "EFI_NWPMU",
         "7": "USD1",
@@ -11952,7 +11990,7 @@
         "11": "Benewake",
         "12": "Scripting2",
         "13": "TOFSenseP",
-        "14": "NanoRadar",
+        "14": "RadarCAN (NanoRadar/Hexsoon)",
         "7": "USD1"
       }
     }
@@ -12212,10 +12250,11 @@
         "1": "1200",
         "111": "111100",
         "115": "115200",
-        "1500": "1500000",
+        "12500000": "12.5MBaud",
+        "1500": "1.5MBaud",
         "19": "19200",
         "2": "2400",
-        "2000": "2000000",
+        "2000": "2MBaud",
         "230": "230400",
         "256": "256000",
         "38": "38400",
@@ -12321,10 +12360,11 @@
         "1": "1200",
         "111": "111100",
         "115": "115200",
-        "1500": "1500000",
+        "12500000": "12.5MBaud",
+        "1500": "1.5MBaud",
         "19": "19200",
         "2": "2400",
-        "2000": "2000000",
+        "2000": "2MBaud",
         "230": "230400",
         "256": "256000",
         "38": "38400",
@@ -12430,10 +12470,11 @@
         "1": "1200",
         "111": "111100",
         "115": "115200",
-        "1500": "1500000",
+        "12500000": "12.5MBaud",
+        "1500": "1.5MBaud",
         "19": "19200",
         "2": "2400",
-        "2000": "2000000",
+        "2000": "2MBaud",
         "230": "230400",
         "256": "256000",
         "38": "38400",
@@ -13105,6 +13146,7 @@
         "2": "AK8963",
         "20": "QMC5883P",
         "21": "BMM350",
+        "22": "IIS2MDC",
         "3": "BMM150",
         "4": "LSM9DS1",
         "5": "LIS3MDL",
@@ -14599,7 +14641,7 @@
         "8": "Mission Commands",
         "9": "Battery Monitor"
       },
-      "Description": "Bitmap of what on-board log types to enable. This value is made up of the sum of each of the log types you want to be saved. It is usually best just to enable all basiclog types by setting this to 65535.",
+      "Description": "Bitmap of what on-board log types to enable. This value is made up of the sum of each of the log types you want to be saved. It is usually best just to enable all basiclog types by setting this to 65535. Note that if you want to reduce log sizes you should consider using LOG_FILE_RATEMAX instead of disabling logging items with this parameter.",
       "DisplayName": "Log bitmask",
       "User": "Standard"
     },
@@ -15210,7 +15252,7 @@
       "RebootRequired": "True"
     },
     "DDS_IP2": {
-      "Description": "IPv4 address. Example: xxx.xxx.13.xxx",
+      "Description": "IPv4 address. Example: xxx.xxx.144.xxx",
       "DisplayName": "IPv4 Address 3rd byte",
       "Range": {
         "high": "255",
@@ -21714,8 +21756,13 @@
       }
     },
     "LOG_FILE_BUFSIZE": {
-      "Description": "The File and Block backends use a buffer to store data before writing to the block device.  Raising this value may reduce \"gaps\" in your SD card logging.  This buffer size may be reduced depending on available memory.  PixHawk requires at least 4 kilobytes.  Maximum value available here is 64 kilobytes.",
-      "DisplayName": "Maximum AP_Logger File and Block Backend buffer size (in kilobytes)",
+      "Description": "The File and Block backends use a buffer to store data before writing to the block device.  Raising this value may reduce \"gaps\" in your SD card logging but increases memory usage.  This buffer size may be reduced to free up available memory",
+      "DisplayName": "Logging File and Block Backend buffer size max (in kilobytes)",
+      "Range": {
+        "high": "200",
+        "low": "4"
+      },
+      "Units": "kB",
       "User": "Standard"
     },
     "LOG_FILE_DSRMROT": {
@@ -24391,8 +24438,8 @@
       "Description": "Motor thrust needed to hover expressed as a number from 0 to 1",
       "DisplayName": "Thrust Hover Value",
       "Range": {
-        "high": "0.8",
-        "low": "0.2"
+        "high": "0.6875",
+        "low": "0.125"
       },
       "User": "Advanced"
     },
@@ -24529,7 +24576,7 @@
       "RebootRequired": "True"
     },
     "NET_GWADDR2": {
-      "Description": "IPv4 address. Example: xxx.xxx.13.xxx",
+      "Description": "IPv4 address. Example: xxx.xxx.144.xxx",
       "DisplayName": "IPv4 Address 3rd byte",
       "Range": {
         "high": "255",
@@ -24567,7 +24614,7 @@
       "RebootRequired": "True"
     },
     "NET_IPADDR2": {
-      "Description": "IPv4 address. Example: xxx.xxx.13.xxx",
+      "Description": "IPv4 address. Example: xxx.xxx.144.xxx",
       "DisplayName": "IPv4 Address 3rd byte",
       "Range": {
         "high": "255",
@@ -24747,7 +24794,7 @@
       "RebootRequired": "True"
     },
     "NET_P1_IP2": {
-      "Description": "IPv4 address. Example: xxx.xxx.13.xxx",
+      "Description": "IPv4 address. Example: xxx.xxx.144.xxx",
       "DisplayName": "IPv4 Address 3rd byte",
       "Range": {
         "high": "255",
@@ -24865,7 +24912,7 @@
       "RebootRequired": "True"
     },
     "NET_P2_IP2": {
-      "Description": "IPv4 address. Example: xxx.xxx.13.xxx",
+      "Description": "IPv4 address. Example: xxx.xxx.144.xxx",
       "DisplayName": "IPv4 Address 3rd byte",
       "Range": {
         "high": "255",
@@ -24983,7 +25030,7 @@
       "RebootRequired": "True"
     },
     "NET_P3_IP2": {
-      "Description": "IPv4 address. Example: xxx.xxx.13.xxx",
+      "Description": "IPv4 address. Example: xxx.xxx.144.xxx",
       "DisplayName": "IPv4 Address 3rd byte",
       "Range": {
         "high": "255",
@@ -25101,7 +25148,7 @@
       "RebootRequired": "True"
     },
     "NET_P4_IP2": {
-      "Description": "IPv4 address. Example: xxx.xxx.13.xxx",
+      "Description": "IPv4 address. Example: xxx.xxx.144.xxx",
       "DisplayName": "IPv4 Address 3rd byte",
       "Range": {
         "high": "255",
@@ -25139,7 +25186,7 @@
       "RebootRequired": "True"
     },
     "NET_REMPPP_IP2": {
-      "Description": "IPv4 address. Example: xxx.xxx.13.xxx",
+      "Description": "IPv4 address. Example: xxx.xxx.144.xxx",
       "DisplayName": "IPv4 Address 3rd byte",
       "Range": {
         "high": "255",
@@ -25177,7 +25224,7 @@
       "RebootRequired": "True"
     },
     "NET_TEST_IP2": {
-      "Description": "IPv4 address. Example: xxx.xxx.13.xxx",
+      "Description": "IPv4 address. Example: xxx.xxx.144.xxx",
       "DisplayName": "IPv4 Address 3rd byte",
       "Range": {
         "high": "255",
@@ -33855,6 +33902,7 @@
         "15": "Scripting",
         "16": "LD06",
         "17": "MR72_CAN",
+        "18": "HexsoonRadar",
         "2": "MAVLink",
         "3": "TeraRangerTower",
         "4": "RangeFinder",
@@ -34020,6 +34068,7 @@
         "15": "Scripting",
         "16": "LD06",
         "17": "MR72_CAN",
+        "18": "HexsoonRadar",
         "2": "MAVLink",
         "3": "TeraRangerTower",
         "4": "RangeFinder",
@@ -34185,6 +34234,7 @@
         "15": "Scripting",
         "16": "LD06",
         "17": "MR72_CAN",
+        "18": "HexsoonRadar",
         "2": "MAVLink",
         "3": "TeraRangerTower",
         "4": "RangeFinder",
@@ -34350,6 +34400,7 @@
         "15": "Scripting",
         "16": "LD06",
         "17": "MR72_CAN",
+        "18": "HexsoonRadar",
         "2": "MAVLink",
         "3": "TeraRangerTower",
         "4": "RangeFinder",
@@ -39142,6 +39193,7 @@
         "41": "JRE_Serial",
         "42": "Ainstein_LR_D1",
         "43": "RDS02UF",
+        "44": "HexsoonRadar",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -39434,6 +39486,7 @@
         "41": "JRE_Serial",
         "42": "Ainstein_LR_D1",
         "43": "RDS02UF",
+        "44": "HexsoonRadar",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -39726,6 +39779,7 @@
         "41": "JRE_Serial",
         "42": "Ainstein_LR_D1",
         "43": "RDS02UF",
+        "44": "HexsoonRadar",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -40018,6 +40072,7 @@
         "41": "JRE_Serial",
         "42": "Ainstein_LR_D1",
         "43": "RDS02UF",
+        "44": "HexsoonRadar",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -40310,6 +40365,7 @@
         "41": "JRE_Serial",
         "42": "Ainstein_LR_D1",
         "43": "RDS02UF",
+        "44": "HexsoonRadar",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -40602,6 +40658,7 @@
         "41": "JRE_Serial",
         "42": "Ainstein_LR_D1",
         "43": "RDS02UF",
+        "44": "HexsoonRadar",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -40894,6 +40951,7 @@
         "41": "JRE_Serial",
         "42": "Ainstein_LR_D1",
         "43": "RDS02UF",
+        "44": "HexsoonRadar",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -41186,6 +41244,7 @@
         "41": "JRE_Serial",
         "42": "Ainstein_LR_D1",
         "43": "RDS02UF",
+        "44": "HexsoonRadar",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -41478,6 +41537,7 @@
         "41": "JRE_Serial",
         "42": "Ainstein_LR_D1",
         "43": "RDS02UF",
+        "44": "HexsoonRadar",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -41770,6 +41830,7 @@
         "41": "JRE_Serial",
         "42": "Ainstein_LR_D1",
         "43": "RDS02UF",
+        "44": "HexsoonRadar",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -42638,10 +42699,11 @@
         "1": "1200",
         "111": "111100",
         "115": "115200",
-        "1500": "1500000",
+        "12500000": "12.5MBaud",
+        "1500": "1.5MBaud",
         "19": "19200",
         "2": "2400",
-        "2000": "2000000",
+        "2000": "2MBaud",
         "230": "230400",
         "256": "256000",
         "38": "38400",
@@ -42671,10 +42733,11 @@
         "1": "1200",
         "111": "111100",
         "115": "115200",
-        "1500": "1500000",
+        "12500000": "12.5MBaud",
+        "1500": "1.5MBaud",
         "19": "19200",
         "2": "2400",
-        "2000": "2000000",
+        "2000": "2MBaud",
         "230": "230400",
         "256": "256000",
         "38": "38400",
@@ -42770,10 +42833,11 @@
         "1": "1200",
         "111": "111100",
         "115": "115200",
-        "1500": "1500000",
+        "12500000": "12.5MBaud",
+        "1500": "1.5MBaud",
         "19": "19200",
         "2": "2400",
-        "2000": "2000000",
+        "2000": "2MBaud",
         "230": "230400",
         "256": "256000",
         "38": "38400",
@@ -42869,10 +42933,11 @@
         "1": "1200",
         "111": "111100",
         "115": "115200",
-        "1500": "1500000",
+        "12500000": "12.5MBaud",
+        "1500": "1.5MBaud",
         "19": "19200",
         "2": "2400",
-        "2000": "2000000",
+        "2000": "2MBaud",
         "230": "230400",
         "256": "256000",
         "38": "38400",
@@ -42968,10 +43033,11 @@
         "1": "1200",
         "111": "111100",
         "115": "115200",
-        "1500": "1500000",
+        "12500000": "12.5MBaud",
+        "1500": "1.5MBaud",
         "19": "19200",
         "2": "2400",
-        "2000": "2000000",
+        "2000": "2MBaud",
         "230": "230400",
         "256": "256000",
         "38": "38400",
@@ -43067,10 +43133,11 @@
         "1": "1200",
         "111": "111100",
         "115": "115200",
-        "1500": "1500000",
+        "12500000": "12.5MBaud",
+        "1500": "1.5MBaud",
         "19": "19200",
         "2": "2400",
-        "2000": "2000000",
+        "2000": "2MBaud",
         "230": "230400",
         "256": "256000",
         "38": "38400",
@@ -43166,10 +43233,11 @@
         "1": "1200",
         "111": "111100",
         "115": "115200",
-        "1500": "1500000",
+        "12500000": "12.5MBaud",
+        "1500": "1.5MBaud",
         "19": "19200",
         "2": "2400",
-        "2000": "2000000",
+        "2000": "2MBaud",
         "230": "230400",
         "256": "256000",
         "38": "38400",
@@ -43265,10 +43333,11 @@
         "1": "1200",
         "111": "111100",
         "115": "115200",
-        "1500": "1500000",
+        "12500000": "12.5MBaud",
+        "1500": "1.5MBaud",
         "19": "19200",
         "2": "2400",
-        "2000": "2000000",
+        "2000": "2MBaud",
         "230": "230400",
         "256": "256000",
         "38": "38400",
@@ -43364,10 +43433,11 @@
         "1": "1200",
         "111": "111100",
         "115": "115200",
-        "1500": "1500000",
+        "12500000": "12.5MBaud",
+        "1500": "1.5MBaud",
         "19": "19200",
         "2": "2400",
-        "2000": "2000000",
+        "2000": "2MBaud",
         "230": "230400",
         "256": "256000",
         "38": "38400",
@@ -43463,10 +43533,11 @@
         "1": "1200",
         "111": "111100",
         "115": "115200",
-        "1500": "1500000",
+        "12500000": "12.5MBaud",
+        "1500": "1.5MBaud",
         "19": "19200",
         "2": "2400",
-        "2000": "2000000",
+        "2000": "2MBaud",
         "230": "230400",
         "256": "256000",
         "38": "38400",
