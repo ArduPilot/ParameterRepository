@@ -16232,8 +16232,10 @@
           <bit code="2">Enable CAN2 multicast endpoint</bit>
           <bit code="3">Enable CAN1 multicast bridged</bit>
           <bit code="4">Enable CAN2 multicast bridged</bit>
+          <bit code="5">DisablePPPTimeout</bit>
+          <bit code="6">DisablePPPEchoLimit</bit>
         </bitmask>
-        <field name="Bitmask">0:EnablePPP Ethernet gateway, 1:Enable CAN1 multicast endpoint, 2:Enable CAN2 multicast endpoint, 3:Enable CAN1 multicast bridged, 4:Enable CAN2 multicast bridged</field>
+        <field name="Bitmask">0:EnablePPP Ethernet gateway, 1:Enable CAN1 multicast endpoint, 2:Enable CAN2 multicast endpoint, 3:Enable CAN1 multicast bridged, 4:Enable CAN2 multicast bridged, 5:DisablePPPTimeout, 6:DisablePPPEchoLimit</field>
         <field name="RebootRequired">True</field>
       </param>
     </parameters>
