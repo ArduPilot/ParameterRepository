@@ -1044,9 +1044,10 @@ Automatically begin landing sequence after arriving at RTL location. This requir
 |Value|Meaning|
 |:---:|:---:|
 |0|Disable|
-|1|Fly HOME then land|
-|2|Go directly to landing sequence|
+|1|Fly HOME then land via DO_LAND_START mission item|
+|2|Go directly to landing sequence via DO_LAND_START mission item|
 |3|OnlyForGoAround|
+|4|Go directly to landing sequence via DO_RETURN_PATH_START mission item|
 
 ## CRASH_ACC_THRESH: Crash Deceleration Threshold
 
@@ -11635,6 +11636,7 @@ Auxiliary RC Options function executed on pin change
 |179|ICEngine start / stop|
 |180|Test autotuned gains after tune is complete|
 |181|QuickTune|
+|184|System ID Chirp (Quadplane only)|
 |208|Flap|
 |209|VTOL Forward Throttle|
 |210|Airbrakes|
@@ -11743,6 +11745,7 @@ Auxiliary RC Options function executed on pin change
 |179|ICEngine start / stop|
 |180|Test autotuned gains after tune is complete|
 |181|QuickTune|
+|184|System ID Chirp (Quadplane only)|
 |208|Flap|
 |209|VTOL Forward Throttle|
 |210|Airbrakes|
@@ -11851,6 +11854,7 @@ Auxiliary RC Options function executed on pin change
 |179|ICEngine start / stop|
 |180|Test autotuned gains after tune is complete|
 |181|QuickTune|
+|184|System ID Chirp (Quadplane only)|
 |208|Flap|
 |209|VTOL Forward Throttle|
 |210|Airbrakes|
@@ -11959,6 +11963,7 @@ Auxiliary RC Options function executed on pin change
 |179|ICEngine start / stop|
 |180|Test autotuned gains after tune is complete|
 |181|QuickTune|
+|184|System ID Chirp (Quadplane only)|
 |208|Flap|
 |209|VTOL Forward Throttle|
 |210|Airbrakes|
@@ -33241,6 +33246,7 @@ Function assigned to this RC channel
 |179|ICEngine start / stop|
 |180|Test autotuned gains after tune is complete|
 |181|QuickTune|
+|184|System ID Chirp (Quadplane only)|
 |208|Flap|
 |209|VTOL Forward Throttle|
 |210|Airbrakes|
@@ -39698,6 +39704,79 @@ Enable of volz servo protocol to specific channels
 Range to map between 1000 and 2000 PWM. Default value of 200 gives full +-100 deg range of extended position command. This results in 0.2 deg movement per US change in PWM. If the full range is not needed it can be reduced to increase resolution. 40 deg range gives 0.04 deg movement per US change in PWM, this is higher resolution than possible with the VOLZ protocol so further reduction in range will not improve resolution. Reduced range does allow PWMs outside the 1000 to 2000 range, with 40 deg range 750 PWM results in a angle of -30 deg, 2250 would be +30 deg. This is still limited by the 200 deg maximum range of the actuator.
 
 - Units: deg
+
+# SID Parameters
+
+## SID_AXIS: System identification axis
+
+Controls which axis are being excited.  Set to non-zero to see more parameters
+
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|1|Input Roll Angle|
+|2|Input Pitch Angle|
+|3|Input Yaw Angle|
+|4|Recovery Roll Angle|
+|5|Recovery Pitch Angle|
+|6|Recovery Yaw Angle|
+|7|Rate Roll|
+|8|Rate Pitch|
+|9|Rate Yaw|
+|10|Mixer Roll|
+|11|Mixer Pitch|
+|12|Mixer Yaw|
+|13|Mixer Thrust|
+
+## SID_MAGNITUDE: System identification Chirp Magnitude
+
+Magnitude of sweep in deg, deg/s and 0-1 for mixer outputs.
+
+## SID_F_START_HZ: System identification Start Frequency
+
+Frequency at the start of the sweep
+
+- Range: 0.01 100
+
+- Units: Hz
+
+## SID_F_STOP_HZ: System identification Stop Frequency
+
+Frequency at the end of the sweep
+
+- Range: 0.01 100
+
+- Units: Hz
+
+## SID_T_FADE_IN: System identification Fade in time
+
+Time to reach maximum amplitude of sweep
+
+- Range: 0 20
+
+- Units: s
+
+## SID_T_REC: System identification Total Sweep length
+
+Time taken to complete the sweep
+
+- Range: 0 255
+
+- Units: s
+
+## SID_T_FADE_OUT: System identification Fade out time
+
+Time to reach zero amplitude at the end of the sweep
+
+- Range: 0 5
+
+- Units: s
+
+## SID_XY_CTRL_MUL: System identification XY control multiplier
+
+A multiplier for the XY velocity and position controller when using systemID in VTOL modes that do horizontal position and velocity control
+
+- Range: 0.05 1.0
 
 # SIM Parameters
 
