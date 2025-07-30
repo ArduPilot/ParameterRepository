@@ -20,13 +20,18 @@ class Groundskeeper:
     temp_folder = tempfile.mkdtemp()
 
     valid_name_map = {
+        'AntennaTracker': 'Tracker',
+        'AP_Periph': 'AP_Periph',
         'APMrover2': 'Rover',
         'ArduCopter': 'Copter',
         'ArduPlane': 'Plane',
         'ArduSub': 'Sub',
+        'Blimp': 'Blimp',
         'Copter': 'Copter',
         'Plane': 'Plane',
         'Rover': 'Rover',
+        'Sub': 'Sub',
+        'Tracker': 'Tracker'
     }
 
     def __init__(self):
@@ -79,6 +84,10 @@ class Groundskeeper:
 
     @staticmethod
     def get_vehicle_prefix(vehicle_type: str):
+        if vehicle_type == 'AP_Periph':
+            return 'Tools/'
+        if vehicle_type == 'Tracker':
+            return 'Antenna'
         if vehicle_type in ('Copter', 'Plane', 'Sub'):
             return 'Ardu'
         return ''  # No prefix, or unknown vehicle type
@@ -158,7 +167,7 @@ class Groundskeeper:
 
             print(f'Processing: {folder_name}..')
             # Old versions are not mantained and generation of the files is not fully supported
-            if tag_major_version < 4:
+            if vehicle_type != "AP_Periph" and tag_major_version < 4:
                 print("Ignoring old version")
                 continue
 
@@ -187,6 +196,10 @@ class Groundskeeper:
             for data in glob.glob(f'{self.repository_path}/apm.pdef.*'):
                 shutil.copy2(data, dest)
                 os.remove(data)
+
+            if vehicle_type == 'AP_Periph':
+                print('Skipping MAVLink parsing for AP_Periph firmware - unsupported.')
+                continue
 
             # Run MAVLink messages parser
             vehicle = f'{self.get_vehicle_prefix(vehicle_type)}{vehicle_type}'
