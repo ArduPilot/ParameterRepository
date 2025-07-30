@@ -20,13 +20,18 @@ class Groundskeeper:
     temp_folder = tempfile.mkdtemp()
 
     valid_name_map = {
+        'AntennaTracker': 'Tracker',
+        'AP_Periph': 'AP_Periph',
         'APMrover2': 'Rover',
         'ArduCopter': 'Copter',
         'ArduPlane': 'Plane',
         'ArduSub': 'Sub',
+        'Blimp': 'Blimp',
         'Copter': 'Copter',
         'Plane': 'Plane',
         'Rover': 'Rover',
+        'Sub': 'Sub',
+        'Tracker': 'Tracker'
     }
 
     def __init__(self):
@@ -45,7 +50,19 @@ class Groundskeeper:
           # try to read <vehicle>/version.h
           path1 = Path(f'{self.repository_path}/{tag["matches"]["name"]}/version.h')
           path2 = Path(f'{self.repository_path}/{self.valid_name_map[tag["matches"]["name"]]}/version.h')
-          file = path1 if path1.exists() else path2
+          path3 = Path(f'{self.repository_path}/Tools/{tag["matches"]["name"]}/version.h')
+          path4 = Path(f'{self.repository_path}/Tools/{self.valid_name_map[tag["matches"]["name"]]}/version.h')
+          if path1.exists():
+            file = path1
+          elif path2.exists():
+            file = path2
+          elif path3.exists():
+            file = path3
+          elif path4.exists():
+            file = path4
+          else:
+            raise FileNotFoundError(f'No version.h found for tag {tag["matches"]["name"]}')
+
           with open(file=file, mode='r') as version_file:
               content = version_file.read()
               match = re.search(r'#define\s+FW_MAJOR\s+(\d+)', content)
@@ -126,7 +143,7 @@ class Groundskeeper:
 
             print(f'Processing: {folder_name}..')
             # Old versions are not mantained and generation of the files is not fully supported
-            if tag_major_version < 4:
+            if vehicle_type != "AP_Periph" and tag_major_version < 4:
                 print("Ignoring old version")
                 continue
 
@@ -157,7 +174,7 @@ class Groundskeeper:
                 os.remove(data)
 
             # Run MAVLink messages parser
-            vehicle = f'{"Ardu" if vehicle_type != "Rover" else ""}{vehicle_type}'
+            vehicle = f'{"Ardu" if vehicle_type in ["Copter", "Plane", "Sub"] else ""}{vehicle_type}'
             try:
                 # The parser expects to be run from its normal place in the repository
                 script_folder = f'{self.repository_path}/Tools/scripts/'
