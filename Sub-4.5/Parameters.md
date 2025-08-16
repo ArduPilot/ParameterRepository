@@ -431,99 +431,6 @@ Minimum depth to engage SURFTRAK mode
 
 # Lua Script Parameters
 
-## RCK_FORCEHL: Force enable High Latency mode
-
-Automatically enables High Latency mode if not already enabled
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## RCK_PERIOD: Update rate
-
-When in High Latency mode, send Rockblock updates every N seconds
-
-- Range: 0 600
-
-- Units: s
-
-## RCK_DEBUG: Display Rockblock debugging text
-
-Sends Rockblock debug text to GCS via statustexts
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## RCK_ENABLE: Enable Message transmission
-
-Enables the Rockblock sending and recieving
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## WEB_ENABLE: enable web server
-
-enable web server
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## WEB_BIND_PORT: web server TCP port
-
-web server TCP port
-
-- Range: 1 65535
-
-## WEB_DEBUG: web server debugging
-
-*Note: This parameter is for advanced users*
-
-web server debugging
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## WEB_BLOCK_SIZE: web server block size
-
-*Note: This parameter is for advanced users*
-
-web server block size for download
-
-- Range: 1 65535
-
-## WEB_TIMEOUT: web server timeout
-
-*Note: This parameter is for advanced users*
-
-timeout for inactive connections
-
-- Units: s
-
-- Range: 0.1 60
-
-## WEB_SENDFILE_MIN: web server minimum file size for sendfile
-
-*Note: This parameter is for advanced users*
-
-sendfile is an offloading mechanism for faster file download. If this is non-zero and the file is larger than this size then sendfile will be used for file download
-
-- Range: 0 10000000
-
-## POI_DIST_MAX: Mount POI distance max
-
-POI's max distance (in meters) from the vehicle
-
-- Range: 0 10000
-
 ## WINCH_RATE_UP: WinchControl Rate Up
 
 Maximum rate when retracting line
@@ -539,181 +446,6 @@ Maximum rate when releasing line
 ## WINCH_RC_FUNC: Winch Rate Control RC function
 
 RCn_OPTION number to use to control winch rate
-
-|Value|Meaning|
-|:---:|:---:|
-|300|Scripting1|
-|301|Scripting2|
-|302|Scripting3|
-|303|Scripting4|
-|304|Scripting5|
-|305|Scripting6|
-|306|Scripting7|
-|307|Scripting8|
-
-## QUIK_ENABLE: Quicktune enable
-
-Enable quicktune system
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## QUIK_AXES: Quicktune axes
-
-axes to tune
-
-- Bitmask: 0:Roll,1:Pitch,2:Yaw
-
-## QUIK_DOUBLE_TIME: Quicktune doubling time
-
-Time to double a tuning parameter. Raise this for a slower tune.
-
-- Range: 5 20
-
-- Units: s
-
-## QUIK_GAIN_MARGIN: Quicktune gain margin
-
-Reduction in gain after oscillation detected. Raise this number to get a more conservative tune
-
-- Range: 20 80
-
-- Units: %
-
-## QUIK_OSC_SMAX: Quicktune oscillation rate threshold
-
-Threshold for oscillation detection. A lower value will lead to a more conservative tune.
-
-- Range: 1 10
-
-## QUIK_YAW_P_MAX: Quicktune Yaw P max
-
-Maximum value for yaw P gain
-
-- Range: 0.1 3
-
-## QUIK_YAW_D_MAX: Quicktune Yaw D max
-
-Maximum value for yaw D gain
-
-- Range: 0.001 1
-
-## QUIK_RP_PI_RATIO: Quicktune roll/pitch PI ratio
-
-Ratio between P and I gains for roll and pitch. Raise this to get a lower I gain
-
-- Range: 0.5 1.0
-
-## QUIK_Y_PI_RATIO: Quicktune Yaw PI ratio
-
-Ratio between P and I gains for yaw. Raise this to get a lower I gain
-
-- Range: 0.5 20
-
-## QUIK_AUTO_FILTER: Quicktune auto filter enable
-
-When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## QUIK_AUTO_SAVE: Quicktune auto save
-
-Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune
-
-- Units: s
-
-## QUIK_RC_FUNC: Quicktune RC function
-
-RCn_OPTION number to use to control tuning stop/start/save
-
-## QUIK_MAX_REDUCE: Quicktune maximum gain reduction
-
-This controls how much quicktune is allowed to lower gains from the original gains. If the vehicle already has a reasonable tune and is not oscillating then you can set this to zero to prevent gain reductions. The default of 20% is reasonable for most vehicles. Using a maximum gain reduction lowers the chance of an angle P oscillation happening if quicktune gets a false positive oscillation at a low gain, which can result in very low rate gains and a dangerous angle P oscillation.
-
-- Units: %
-
-- Range: 0 100
-
-## QUIK_OPTIONS: Quicktune options
-
-Additional options. When the Two Position Switch option is enabled then a high switch position will start the tune, low will disable the tune. you should also set a QUIK_AUTO_SAVE time so that you will be able to save the tune.
-
-- Bitmask: 0:UseTwoPositionSwitch
-
-## RTUN_ENABLE: Rover Quicktune enable
-
-Enable quicktune system
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## RTUN_AXES: Rover Quicktune axes
-
-axes to tune
-
-- Bitmask: 0:Steering,1:Speed
-
-## RTUN_STR_FFRATIO: Rover Quicktune Steering Rate FeedForward ratio
-
-Ratio between measured response and FF gain. Raise this to get a higher FF gain
-
-- Range: 0 1.0
-
-## RTUN_STR_P_RATIO: Rover Quicktune Steering FF to P ratio
-
-Ratio between steering FF and P gains. Raise this to get a higher P gain, 0 to leave P unchanged
-
-- Range: 0 2.0
-
-## RTUN_STR_I_RATIO: Rover Quicktune Steering FF to I ratio
-
-Ratio between steering FF and I gains. Raise this to get a higher I gain, 0 to leave I unchanged
-
-- Range: 0 2.0
-
-## RTUN_SPD_FFRATIO: Rover Quicktune Speed FeedForward (equivalent) ratio
-
-Ratio between measured response and CRUISE_THROTTLE value. Raise this to get a higher CRUISE_THROTTLE value
-
-- Range: 0 1.0
-
-## RTUN_SPD_P_RATIO: Rover Quicktune Speed FF to P ratio
-
-Ratio between speed FF and P gain. Raise this to get a higher P gain, 0 to leave P unchanged
-
-- Range: 0 2.0
-
-## RTUN_SPD_I_RATIO: Rover Quicktune Speed FF to I ratio
-
-Ratio between speed FF and I gain. Raise this to get a higher I gain, 0 to leave I unchanged
-
-- Range: 0 2.0
-
-## RTUN_AUTO_FILTER: Rover Quicktune auto filter enable
-
-When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## RTUN_AUTO_SAVE: Rover Quicktune auto save
-
-Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune
-
-- Units: s
-
-## RTUN_RC_FUNC: Rover Quicktune RC function
-
-RCn_OPTION number to use to control tuning stop/start/save
 
 |Value|Meaning|
 |:---:|:---:|
@@ -852,6 +584,141 @@ Battery estimator coefficient3
 
 - Range: 0.01 0.5
 
+## RTUN_ENABLE: Rover Quicktune enable
+
+Enable quicktune system
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## RTUN_AXES: Rover Quicktune axes
+
+axes to tune
+
+- Bitmask: 0:Steering,1:Speed
+
+## RTUN_STR_FFRATIO: Rover Quicktune Steering Rate FeedForward ratio
+
+Ratio between measured response and FF gain. Raise this to get a higher FF gain
+
+- Range: 0 1.0
+
+## RTUN_STR_P_RATIO: Rover Quicktune Steering FF to P ratio
+
+Ratio between steering FF and P gains. Raise this to get a higher P gain, 0 to leave P unchanged
+
+- Range: 0 2.0
+
+## RTUN_STR_I_RATIO: Rover Quicktune Steering FF to I ratio
+
+Ratio between steering FF and I gains. Raise this to get a higher I gain, 0 to leave I unchanged
+
+- Range: 0 2.0
+
+## RTUN_SPD_FFRATIO: Rover Quicktune Speed FeedForward (equivalent) ratio
+
+Ratio between measured response and CRUISE_THROTTLE value. Raise this to get a higher CRUISE_THROTTLE value
+
+- Range: 0 1.0
+
+## RTUN_SPD_P_RATIO: Rover Quicktune Speed FF to P ratio
+
+Ratio between speed FF and P gain. Raise this to get a higher P gain, 0 to leave P unchanged
+
+- Range: 0 2.0
+
+## RTUN_SPD_I_RATIO: Rover Quicktune Speed FF to I ratio
+
+Ratio between speed FF and I gain. Raise this to get a higher I gain, 0 to leave I unchanged
+
+- Range: 0 2.0
+
+## RTUN_AUTO_FILTER: Rover Quicktune auto filter enable
+
+When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## RTUN_AUTO_SAVE: Rover Quicktune auto save
+
+Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune
+
+- Units: s
+
+## RTUN_RC_FUNC: Rover Quicktune RC function
+
+RCn_OPTION number to use to control tuning stop/start/save
+
+|Value|Meaning|
+|:---:|:---:|
+|300|Scripting1|
+|301|Scripting2|
+|302|Scripting3|
+|303|Scripting4|
+|304|Scripting5|
+|305|Scripting6|
+|306|Scripting7|
+|307|Scripting8|
+
+## PREV_ENABLE: parameter reversion enable
+
+Enable parameter reversion system
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## PREV_RC_FUNC: param reversion RC function
+
+RCn_OPTION number to used to trigger parameter reversion
+
+## RCK_FORCEHL: Force enable High Latency mode
+
+Automatically enables High Latency mode if not already enabled
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## RCK_PERIOD: Update rate
+
+When in High Latency mode, send Rockblock updates every N seconds
+
+- Range: 0 600
+
+- Units: s
+
+## RCK_DEBUG: Display Rockblock debugging text
+
+Sends Rockblock debug text to GCS via statustexts
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## RCK_ENABLE: Enable Message transmission
+
+Enables the Rockblock sending and recieving
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## POI_DIST_MAX: Mount POI distance max
+
+POI's max distance (in meters) from the vehicle
+
+- Range: 0 10000
+
 ## SHIP_ENABLE: Ship landing enable
 
 Enable ship landing system
@@ -877,19 +744,6 @@ Settings this parameter to one triggers an automatic follow offset calculation b
 |:---:|:---:|
 |0|Disabled|
 |1|Trigger|
-
-## PREV_ENABLE: parameter reversion enable
-
-Enable parameter reversion system
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## PREV_RC_FUNC: param reversion RC function
-
-RCn_OPTION number to used to trigger parameter reversion
 
 ## DR_ENABLE: Deadreckoning Enable
 
@@ -964,6 +818,152 @@ Copter switch to this mode after GPS recovers or DR_FLY_TIMEOUT has elapsed.  De
 |20|Guided_NoGPS|
 |21|Smart_RTL|
 |27|Auto RTL|
+
+## WEB_ENABLE: enable web server
+
+enable web server
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## WEB_BIND_PORT: web server TCP port
+
+web server TCP port
+
+- Range: 1 65535
+
+## WEB_DEBUG: web server debugging
+
+*Note: This parameter is for advanced users*
+
+web server debugging
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## WEB_BLOCK_SIZE: web server block size
+
+*Note: This parameter is for advanced users*
+
+web server block size for download
+
+- Range: 1 65535
+
+## WEB_TIMEOUT: web server timeout
+
+*Note: This parameter is for advanced users*
+
+timeout for inactive connections
+
+- Units: s
+
+- Range: 0.1 60
+
+## WEB_SENDFILE_MIN: web server minimum file size for sendfile
+
+*Note: This parameter is for advanced users*
+
+sendfile is an offloading mechanism for faster file download. If this is non-zero and the file is larger than this size then sendfile will be used for file download
+
+- Range: 0 10000000
+
+## QUIK_ENABLE: Quicktune enable
+
+Enable quicktune system
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## QUIK_AXES: Quicktune axes
+
+axes to tune
+
+- Bitmask: 0:Roll,1:Pitch,2:Yaw
+
+## QUIK_DOUBLE_TIME: Quicktune doubling time
+
+Time to double a tuning parameter. Raise this for a slower tune.
+
+- Range: 5 20
+
+- Units: s
+
+## QUIK_GAIN_MARGIN: Quicktune gain margin
+
+Reduction in gain after oscillation detected. Raise this number to get a more conservative tune
+
+- Range: 20 80
+
+- Units: %
+
+## QUIK_OSC_SMAX: Quicktune oscillation rate threshold
+
+Threshold for oscillation detection. A lower value will lead to a more conservative tune.
+
+- Range: 1 10
+
+## QUIK_YAW_P_MAX: Quicktune Yaw P max
+
+Maximum value for yaw P gain
+
+- Range: 0.1 3
+
+## QUIK_YAW_D_MAX: Quicktune Yaw D max
+
+Maximum value for yaw D gain
+
+- Range: 0.001 1
+
+## QUIK_RP_PI_RATIO: Quicktune roll/pitch PI ratio
+
+Ratio between P and I gains for roll and pitch. Raise this to get a lower I gain
+
+- Range: 0.5 1.0
+
+## QUIK_Y_PI_RATIO: Quicktune Yaw PI ratio
+
+Ratio between P and I gains for yaw. Raise this to get a lower I gain
+
+- Range: 0.5 20
+
+## QUIK_AUTO_FILTER: Quicktune auto filter enable
+
+When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## QUIK_AUTO_SAVE: Quicktune auto save
+
+Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune
+
+- Units: s
+
+## QUIK_RC_FUNC: Quicktune RC function
+
+RCn_OPTION number to use to control tuning stop/start/save
+
+## QUIK_MAX_REDUCE: Quicktune maximum gain reduction
+
+This controls how much quicktune is allowed to lower gains from the original gains. If the vehicle already has a reasonable tune and is not oscillating then you can set this to zero to prevent gain reductions. The default of 20% is reasonable for most vehicles. Using a maximum gain reduction lowers the chance of an angle P oscillation happening if quicktune gets a false positive oscillation at a low gain, which can result in very low rate gains and a dangerous angle P oscillation.
+
+- Units: %
+
+- Range: 0 100
+
+## QUIK_OPTIONS: Quicktune options
+
+Additional options. When the Two Position Switch option is enabled then a high switch position will start the tune, low will disable the tune. you should also set a QUIK_AUTO_SAVE time so that you will be able to save the tune.
+
+- Bitmask: 0:UseTwoPositionSwitch
 
 ## AEROM_ANG_ACCEL: Angular acceleration limit
 
@@ -1153,6 +1153,105 @@ Number of tricks which can be selected over the range of the trik selection RC c
 
 - Range: 1 11
 
+## VIEP_DEBUG: ViewPro debug
+
+*Note: This parameter is for advanced users*
+
+ViewPro debug
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+|2|Enabled including attitude reporting|
+
+## VIEP_CAM_SWLOW: ViewPro Camera For Switch Low
+
+Camera selection when switch is in low position
+
+|Value|Meaning|
+|:---:|:---:|
+|0|No change in camera selection|
+|1|EO1|
+|2|IR thermal|
+|3|EO1 + IR Picture-in-picture|
+|4|IR + EO1 Picture-in-picture|
+|5|Fusion|
+|6|IR1 13mm|
+|7|IR2 52mm|
+
+## VIEP_CAM_SWMID: ViewPro Camera For Switch Mid
+
+Camera selection when switch is in middle position
+
+|Value|Meaning|
+|:---:|:---:|
+|0|No change in camera selection|
+|1|EO1|
+|2|IR thermal|
+|3|EO1 + IR Picture-in-picture|
+|4|IR + EO1 Picture-in-picture|
+|5|Fusion|
+|6|IR1 13mm|
+|7|IR2 52mm|
+
+## VIEP_CAM_SWHIGH: ViewPro Camera For Switch High
+
+Camera selection when switch is in high position
+
+|Value|Meaning|
+|:---:|:---:|
+|0|No change in camera selection|
+|1|EO1|
+|2|IR thermal|
+|3|EO1 + IR Picture-in-picture|
+|4|IR + EO1 Picture-in-picture|
+|5|Fusion|
+|6|IR1 13mm|
+|7|IR2 52mm|
+
+## VIEP_ZOOM_SPEED: ViewPro Zoom Speed
+
+ViewPro Zoom Speed.  Higher numbers result in faster zooming
+
+- Range: 0 7
+
+## VIEP_ZOOM_MAX: ViewPro Zoom Times Max
+
+ViewPro Zoom Times Max
+
+- Range: 0 30
+
+## EFI_INF_ENABLE: EFI INF-Inject enable
+
+Enable EFI INF-Inject driver
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## DJIR_DEBUG: DJIRS2 debug
+
+*Note: This parameter is for advanced users*
+
+Enable DJIRS2 debug
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+|2|Enabled with attitude reporting|
+
+## DJIR_UPSIDEDOWN: DJIRS2 upside down
+
+DJIRS2 upside down
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Right side up|
+|1|Upside down|
+
 ## EFI_SP_ENABLE: Enable SkyPower EFI support
 
 Enable SkyPower EFI support
@@ -1297,26 +1396,38 @@ SkyPower EFI restart time. If engine should be running and it has stopped for th
 
 - Units: s
 
-## ESC_HW_ENABLE: Hobbywing ESC Enable
+## BATT_ANX_ENABLE: Enable ANX battery support
 
-Enable Hobbywing ESC telemetry
+Enable ANX battery support
 
 |Value|Meaning|
 |:---:|:---:|
 |0|Disabled|
 |1|Enabled|
 
-## ESC_HW_POLES: Hobbywing ESC motor poles
+## BATT_ANX_CANDRV: Set ANX CAN driver
 
-Number of motor poles for eRPM scaling
+Set ANX CAN driver
 
-- Range: 1 50
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|1|1stCANDriver|
+|2|2ndCanDriver|
 
-## ESC_HW_OFS: Hobbywing ESC motor offset
+## BATT_ANX_INDEX: ANX CAN battery index
 
-Motor number offset of first ESC
+ANX CAN battery index
 
-- Range: 0 31
+- Range: 1 10
+
+## BATT_ANX_OPTIONS: ANX CAN battery options
+
+*Note: This parameter is for advanced users*
+
+ANX CAN battery options
+
+- Bitmask: 0:LogAllFrames
 
 ## EFI_SVF_ENABLE: Generator SVFFI enable
 
@@ -1330,101 +1441,6 @@ Enable SVFFI generator support
 ## EFI_SVF_ARMCHECK: Generator SVFFI arming check
 
 Check for Generator ARM state before arming
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## EFI_DLA_ENABLE: EFI DLA enable
-
-Enable EFI DLA driver
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## EFI_DLA_LPS: EFI DLA fuel scale
-
-EFI DLA litres of fuel per second of injection time
-
-- Range: 0.00001 1
-
-- Units: litres
-
-## VIEP_DEBUG: ViewPro debug
-
-*Note: This parameter is for advanced users*
-
-ViewPro debug
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-|2|Enabled including attitude reporting|
-
-## VIEP_CAM_SWLOW: ViewPro Camera For Switch Low
-
-Camera selection when switch is in low position
-
-|Value|Meaning|
-|:---:|:---:|
-|0|No change in camera selection|
-|1|EO1|
-|2|IR thermal|
-|3|EO1 + IR Picture-in-picture|
-|4|IR + EO1 Picture-in-picture|
-|5|Fusion|
-|6|IR1 13mm|
-|7|IR2 52mm|
-
-## VIEP_CAM_SWMID: ViewPro Camera For Switch Mid
-
-Camera selection when switch is in middle position
-
-|Value|Meaning|
-|:---:|:---:|
-|0|No change in camera selection|
-|1|EO1|
-|2|IR thermal|
-|3|EO1 + IR Picture-in-picture|
-|4|IR + EO1 Picture-in-picture|
-|5|Fusion|
-|6|IR1 13mm|
-|7|IR2 52mm|
-
-## VIEP_CAM_SWHIGH: ViewPro Camera For Switch High
-
-Camera selection when switch is in high position
-
-|Value|Meaning|
-|:---:|:---:|
-|0|No change in camera selection|
-|1|EO1|
-|2|IR thermal|
-|3|EO1 + IR Picture-in-picture|
-|4|IR + EO1 Picture-in-picture|
-|5|Fusion|
-|6|IR1 13mm|
-|7|IR2 52mm|
-
-## VIEP_ZOOM_SPEED: ViewPro Zoom Speed
-
-ViewPro Zoom Speed.  Higher numbers result in faster zooming
-
-- Range: 0 7
-
-## VIEP_ZOOM_MAX: ViewPro Zoom Times Max
-
-ViewPro Zoom Times Max
-
-- Range: 0 30
-
-## EFI_INF_ENABLE: EFI INF-Inject enable
-
-Enable EFI INF-Inject driver
 
 |Value|Meaning|
 |:---:|:---:|
@@ -1478,59 +1494,62 @@ The capacity of the tank in litres
 
 - Units: litres
 
-## BATT_ANX_ENABLE: Enable ANX battery support
+## ESC_HW_ENABLE: Hobbywing ESC Enable
 
-Enable ANX battery support
+Enable Hobbywing ESC telemetry
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## ESC_HW_POLES: Hobbywing ESC motor poles
+
+Number of motor poles for eRPM scaling
+
+- Range: 1 50
+
+## ESC_HW_OFS: Hobbywing ESC motor offset
+
+Motor number offset of first ESC
+
+- Range: 0 31
+
+## EFI_DLA_ENABLE: EFI DLA enable
+
+Enable EFI DLA driver
 
 |Value|Meaning|
 |:---:|:---:|
 |0|Disabled|
 |1|Enabled|
 
-## BATT_ANX_CANDRV: Set ANX CAN driver
+## EFI_DLA_LPS: EFI DLA fuel scale
 
-Set ANX CAN driver
+EFI DLA litres of fuel per second of injection time
 
-|Value|Meaning|
-|:---:|:---:|
-|0|None|
-|1|1stCANDriver|
-|2|2ndCanDriver|
+- Range: 0.00001 1
 
-## BATT_ANX_INDEX: ANX CAN battery index
+- Units: litres
 
-ANX CAN battery index
+## TOFSENSE_S1_PRX: TOFSENSE-M to be used as Proximity sensor
 
-- Range: 1 10
-
-## BATT_ANX_OPTIONS: ANX CAN battery options
-
-*Note: This parameter is for advanced users*
-
-ANX CAN battery options
-
-- Bitmask: 0:LogAllFrames
-
-## DJIR_DEBUG: DJIRS2 debug
-
-*Note: This parameter is for advanced users*
-
-Enable DJIRS2 debug
+Set 0 if sensor is to be used as a 1-D rangefinder (minimum of all distances will be sent, typically used for height detection). Set 1 if it should be used as a 3-D proximity device (Eg. Obstacle Avoidance)
 
 |Value|Meaning|
 |:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-|2|Enabled with attitude reporting|
+|0|Set as Rangefinder|
+|1|Set as Proximity sensor|
 
-## DJIR_UPSIDEDOWN: DJIRS2 upside down
+## TOFSENSE_S1_SP: TOFSENSE-M serial port config
 
-DJIRS2 upside down
+UART instance sensor is connected to. Set 1 if sensor is connected to the port with fist SERIALx_PROTOCOL = 28. 
 
-|Value|Meaning|
-|:---:|:---:|
-|0|Right side up|
-|1|Upside down|
+- Range: 1 4
+
+## TOFSENSE_S1_BR: TOFSENSE-M serial port baudrate
+
+Serial Port baud rate. Sensor baud rate can be changed from Nassistant software
 
 ## TOFSENSE_PRX: TOFSENSE-M to be used as Proximity sensor
 
@@ -1592,24 +1611,43 @@ Third TOFSENSE-M sensor ID. This cannot be 0. You can change ID of sensor from N
 
 - Range: 1 255
 
-## TOFSENSE_S1_PRX: TOFSENSE-M to be used as Proximity sensor
+# ACTUATOR Parameters
 
-Set 0 if sensor is to be used as a 1-D rangefinder (minimum of all distances will be sent, typically used for height detection). Set 1 if it should be used as a 3-D proximity device (Eg. Obstacle Avoidance)
+## ACTUATOR1_INC: Increment step for actuator 1
 
-|Value|Meaning|
-|:---:|:---:|
-|0|Set as Rangefinder|
-|1|Set as Proximity sensor|
+ Initial increment step for changing the actuator's PWM
 
-## TOFSENSE_S1_SP: TOFSENSE-M serial port config
+- Units: us
 
-UART instance sensor is connected to. Set 1 if sensor is connected to the port with fist SERIALx_PROTOCOL = 28. 
+## ACTUATOR2_INC: Increment step for actuator 2
 
-- Range: 1 4
+ Initial increment step for changing the actuator's PWM
 
-## TOFSENSE_S1_BR: TOFSENSE-M serial port baudrate
+- Units: us
 
-Serial Port baud rate. Sensor baud rate can be changed from Nassistant software
+## ACTUATOR3_INC: Increment step for actuator 3
+
+ Initial increment step for changing the actuator's PWM
+
+- Units: us
+
+## ACTUATOR4_INC: Increment step for actuator 4
+
+ Initial increment step for changing the actuator's PWM
+
+- Units: us
+
+## ACTUATOR5_INC: Increment step for actuator 5
+
+ Initial increment step for changing the actuator's PWM
+
+- Units: us
+
+## ACTUATOR6_INC: Increment step for actuator 6
+
+ Initial increment step for changing the actuator's PWM
+
+- Units: us
 
 # AHRS Parameters
 
@@ -9883,33 +9921,33 @@ Set to 0 to disable or choose a function
 |57|relay_3_on|
 |58|relay_3_off|
 |59|relay_3_toggle|
-|61|servo_1_inc|
-|62|servo_1_dec|
-|63|servo_1_min|
-|64|servo_1_max|
-|65|servo_1_center|
-|66|servo_2_inc|
-|67|servo_2_dec|
-|68|servo_2_min|
-|69|servo_2_max|
-|70|servo_2_center|
-|71|servo_3_inc|
-|72|servo_3_dec|
-|73|servo_3_min|
-|74|servo_3_max|
-|75|servo_3_center|
-|76|servo_1_min_momentary|
-|77|servo_1_max_momentary|
-|78|servo_1_min_toggle|
-|79|servo_1_max_toggle|
-|80|servo_2_min_momentary|
-|81|servo_2_max_momentary|
-|82|servo_2_min_toggle|
-|83|servo_2_max_toggle|
-|84|servo_3_min_momentary|
-|85|servo_3_max_momentary|
-|86|servo_3_min_toggle|
-|87|servo_3_max_toggle|
+|61|actuator_1_inc|
+|62|actuator_1_dec|
+|63|actuator_1_min|
+|64|actuator_1_max|
+|65|actuator_1_center|
+|66|actuator_2_inc|
+|67|actuator_2_dec|
+|68|actuator_2_min|
+|69|actuator_2_max|
+|70|actuator_2_center|
+|71|actuator_3_inc|
+|72|actuator_3_dec|
+|73|actuator_3_min|
+|74|actuator_3_max|
+|75|actuator_3_center|
+|76|actuator_1_min_momentary|
+|77|actuator_1_max_momentary|
+|78|actuator_1_min_toggle|
+|79|actuator_1_max_toggle|
+|80|actuator_2_min_momentary|
+|81|actuator_2_max_momentary|
+|82|actuator_2_min_toggle|
+|83|actuator_2_max_toggle|
+|84|actuator_3_min_momentary|
+|85|actuator_3_max_momentary|
+|86|actuator_3_min_toggle|
+|87|actuator_3_max_toggle|
 |91|custom_1|
 |92|custom_2|
 |93|custom_3|
@@ -9927,6 +9965,33 @@ Set to 0 to disable or choose a function
 |109|script_2|
 |110|script_3|
 |111|script_4|
+|112|actuator_4_min|
+|113|actuator_4_max|
+|114|actuator_4_center|
+|115|actuator_4_inc|
+|116|actuator_4_dec|
+|117|actuator_4_min_momentary|
+|118|actuator_4_max_momentary|
+|119|actuator_4_min_toggle|
+|120|actuator_4_max_toggle|
+|121|actuator_5_min|
+|122|actuator_5_max|
+|123|actuator_5_center|
+|124|actuator_5_inc|
+|125|actuator_5_dec|
+|126|actuator_5_min_momentary|
+|127|actuator_5_max_momentary|
+|128|actuator_5_min_toggle|
+|129|actuator_5_max_toggle|
+|130|actuator_6_min|
+|131|actuator_6_max|
+|132|actuator_6_center|
+|133|actuator_6_inc|
+|134|actuator_6_dec|
+|135|actuator_6_min_momentary|
+|136|actuator_6_max_momentary|
+|137|actuator_6_min_toggle|
+|138|actuator_6_max_toggle|
 
 ## BTNn_SFUNCTION: Function for button when the shift mode is toggled on
 
@@ -9979,33 +10044,33 @@ Set to 0 to disable or choose a function
 |57|relay_3_on|
 |58|relay_3_off|
 |59|relay_3_toggle|
-|61|servo_1_inc|
-|62|servo_1_dec|
-|63|servo_1_min|
-|64|servo_1_max|
-|65|servo_1_center|
-|66|servo_2_inc|
-|67|servo_2_dec|
-|68|servo_2_min|
-|69|servo_2_max|
-|70|servo_2_center|
-|71|servo_3_inc|
-|72|servo_3_dec|
-|73|servo_3_min|
-|74|servo_3_max|
-|75|servo_3_center|
-|76|servo_1_min_momentary|
-|77|servo_1_max_momentary|
-|78|servo_1_min_toggle|
-|79|servo_1_max_toggle|
-|80|servo_2_min_momentary|
-|81|servo_2_max_momentary|
-|82|servo_2_min_toggle|
-|83|servo_2_max_toggle|
-|84|servo_3_min_momentary|
-|85|servo_3_max_momentary|
-|86|servo_3_min_toggle|
-|87|servo_3_max_toggle|
+|61|actuator_1_inc|
+|62|actuator_1_dec|
+|63|actuator_1_min|
+|64|actuator_1_max|
+|65|actuator_1_center|
+|66|actuator_2_inc|
+|67|actuator_2_dec|
+|68|actuator_2_min|
+|69|actuator_2_max|
+|70|actuator_2_center|
+|71|actuator_3_inc|
+|72|actuator_3_dec|
+|73|actuator_3_min|
+|74|actuator_3_max|
+|75|actuator_3_center|
+|76|actuator_1_min_momentary|
+|77|actuator_1_max_momentary|
+|78|actuator_1_min_toggle|
+|79|actuator_1_max_toggle|
+|80|actuator_2_min_momentary|
+|81|actuator_2_max_momentary|
+|82|actuator_2_min_toggle|
+|83|actuator_2_max_toggle|
+|84|actuator_3_min_momentary|
+|85|actuator_3_max_momentary|
+|86|actuator_3_min_toggle|
+|87|actuator_3_max_toggle|
 |91|custom_1|
 |92|custom_2|
 |93|custom_3|
@@ -10023,6 +10088,33 @@ Set to 0 to disable or choose a function
 |109|script_2|
 |110|script_3|
 |111|script_4|
+|112|actuator_4_min|
+|113|actuator_4_max|
+|114|actuator_4_center|
+|115|actuator_4_inc|
+|116|actuator_4_dec|
+|117|actuator_4_min_momentary|
+|118|actuator_4_max_momentary|
+|119|actuator_4_min_toggle|
+|120|actuator_4_max_toggle|
+|121|actuator_5_min|
+|122|actuator_5_max|
+|123|actuator_5_center|
+|124|actuator_5_inc|
+|125|actuator_5_dec|
+|126|actuator_5_min_momentary|
+|127|actuator_5_max_momentary|
+|128|actuator_5_min_toggle|
+|129|actuator_5_max_toggle|
+|130|actuator_6_min|
+|131|actuator_6_max|
+|132|actuator_6_center|
+|133|actuator_6_inc|
+|134|actuator_6_dec|
+|135|actuator_6_min_momentary|
+|136|actuator_6_max_momentary|
+|137|actuator_6_min_toggle|
+|138|actuator_6_max_toggle|
 
 # CAM Parameters
 
@@ -26578,33 +26670,11 @@ Function assigned to this servo. Setting this to Disabled(0) will setup this out
 |-1|GPIO|
 |0|Disabled|
 |1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
 |6|Mount1Yaw|
 |7|Mount1Pitch|
 |8|Mount1Roll|
 |9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
 |28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
 |33|Motor1|
 |34|Motor2|
 |35|Motor3|
@@ -26613,18 +26683,14 @@ Function assigned to this servo. Setting this to Disabled(0) will setup this out
 |38|Motor6|
 |39|Motor7|
 |40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
+|51|RCIN1/Pitch|
+|52|RCIN2/Roll|
+|53|RCIN3/HeaveVertical|
+|54|RCIN4/YawTurn|
+|55|RCIN5/SurgeForward|
+|56|RCIN6/SwayLateral|
+|57|RCIN7/CameraPan|
+|58|RCIN8/CameraTilt|
 |59|RCIN9|
 |60|RCIN10|
 |61|RCIN11|
@@ -26633,28 +26699,11 @@ Function assigned to this servo. Setting this to Disabled(0) will setup this out
 |64|RCIN14|
 |65|RCIN15|
 |66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
 |82|Motor9|
 |83|Motor10|
 |84|Motor11|
 |85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
 |88|Winch|
-|89|Main Sail|
 |90|CameraISO|
 |91|CameraAperture|
 |92|CameraFocus|
@@ -26679,38 +26728,19 @@ Function assigned to this servo. Setting this to Disabled(0) will setup this out
 |121|NeoPixel2|
 |122|NeoPixel3|
 |123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
 |134|SERVOn_MIN|
 |135|SERVOn_TRIM|
 |136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
+|180|CameraZoom|
+|181|Lights1|
+|182|Lights2|
+|183|VideoSwitch|
+|184|Actuator1|
+|185|Actuator2|
+|186|Actuator3|
+|187|Actuator4|
+|188|Actuator5|
+|189|Actuator6|
 
 - RebootRequired: True
 
