@@ -159,6 +159,15 @@ def process(path):
     elif 'Sub' in folder.name:
         vehicle_type = 'ArduSub'
         vehicle_json_type = 'Sub'
+    elif 'Tracker' in folder.name:
+        vehicle_type = 'AntennaTracker'
+        vehicle_json_type = 'Tracker'
+    elif 'Blimp' in folder.name:
+        vehicle_type = 'Blimp'
+        vehicle_json_type = 'Blimp'
+    elif 'AP_Periph' in folder.name:
+        vehicle_type = 'AP_Periph'
+        vehicle_json_type = 'AP_Periph'
 
     xml = folder / 'apm.pdef.xml'
     json_path = folder / 'apm.pdef.json'
