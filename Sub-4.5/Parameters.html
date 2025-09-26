@@ -484,66 +484,6 @@ DO NOT EDIT
 <h1>Lua Script Parameters</h1>
 
 
-<h2>parameter reversion enable (PREV_ENABLE)</h2>
-
-<p>Enable parameter reversion system</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>param reversion RC function (PREV_RC_FUNC)</h2>
-
-<p>RCn_OPTION number to used to trigger parameter reversion</p>
-<ul>
-</ul>
-
-
-<h2>Force enable High Latency mode (RCK_FORCEHL)</h2>
-
-<p>Automatically enables High Latency mode if not already enabled</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Update rate (RCK_PERIOD)</h2>
-
-<p>When in High Latency mode, send Rockblock updates every N seconds</p>
-<ul>
-<li>Range: 0 600</li>
-<li>Units: seconds</li>
-</ul>
-
-
-<h2>Display Rockblock debugging text (RCK_DEBUG)</h2>
-
-<p>Sends Rockblock debug text to GCS via statustexts</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Enable Message transmission (RCK_ENABLE)</h2>
-
-<p>Enables the Rockblock sending and recieving</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
 <h2>Deadreckoning Enable (DR_ENABLE)</h2>
 
 <p>Deadreckoning Enable</p>
@@ -631,6 +571,14 @@ DO NOT EDIT
 <tr><td>21</td><td>Smart_RTL</td></tr>
 <tr><td>27</td><td>Auto RTL</td></tr>
 </table>
+</ul>
+
+
+<h2>Mount POI distance max (POI_DIST_MAX)</h2>
+
+<p>POI&#x27;s max distance (in meters) from the vehicle</p>
+<ul>
+<li>Range: 0 10000</li>
 </ul>
 
 
@@ -922,44 +870,34 @@ DO NOT EDIT
 </ul>
 
 
-<h2>WinchControl Rate Up (WINCH_RATE_UP)</h2>
+<h2>Ship landing enable (SHIP_ENABLE)</h2>
 
-<p>Maximum rate when retracting line</p>
-<ul>
-<li>Range: 0.1 5.0</li>
-</ul>
-
-
-<h2>WinchControl Rate Down (WINCH_RATE_DN)</h2>
-
-<p>Maximum rate when releasing line</p>
-<ul>
-<li>Range: 0.1 5.0</li>
-</ul>
-
-
-<h2>Winch Rate Control RC function (WINCH_RC_FUNC)</h2>
-
-<p>RCn_OPTION number to use to control winch rate</p>
+<p>Enable ship landing system</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>300</td><td>Scripting1</td></tr>
-<tr><td>301</td><td>Scripting2</td></tr>
-<tr><td>302</td><td>Scripting3</td></tr>
-<tr><td>303</td><td>Scripting4</td></tr>
-<tr><td>304</td><td>Scripting5</td></tr>
-<tr><td>305</td><td>Scripting6</td></tr>
-<tr><td>306</td><td>Scripting7</td></tr>
-<tr><td>307</td><td>Scripting8</td></tr>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
 </table>
 </ul>
 
 
-<h2>Mount POI distance max (POI_DIST_MAX)</h2>
+<h2>Ship landing angle (SHIP_LAND_ANGLE)</h2>
 
-<p>POI&#x27;s max distance (in meters) from the vehicle</p>
+<p>Angle from the stern of the ship for landing approach. Use this to ensure that on a go-around that ship superstructure and cables are avoided. A value of zero means to approach from the rear of the ship. A value of 90 means the landing will approach from the port (left) side of the ship. A value of -90 will mean approaching from the starboard (right) side of the ship. A value of 180 will approach from the bow of the ship. This parameter is combined with the sign of the RTL_RADIUS parameter to determine the holdoff pattern. If RTL_RADIUS is positive then a clockwise loiter is performed, if RTL_RADIUS is negative then a counter-clockwise loiter is used.</p>
 <ul>
-<li>Range: 0 10000</li>
+<li>Range: -180 180</li>
+<li>Units: degrees</li>
+</ul>
+
+
+<h2>Ship automatic offset trigger (SHIP_AUTO_OFS)</h2>
+
+<p>Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target. NOTE: This parameter will auto-reset to zero once the offset has been calculated.</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Trigger</td></tr>
+</table>
 </ul>
 
 
@@ -1018,9 +956,9 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Ship landing enable (SHIP_ENABLE)</h2>
+<h2>parameter reversion enable (PREV_ENABLE)</h2>
 
-<p>Enable ship landing system</p>
+<p>Enable parameter reversion system</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
@@ -1029,22 +967,51 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Ship landing angle (SHIP_LAND_ANGLE)</h2>
+<h2>param reversion RC function (PREV_RC_FUNC)</h2>
 
-<p>Angle from the stern of the ship for landing approach. Use this to ensure that on a go-around that ship superstructure and cables are avoided. A value of zero means to approach from the rear of the ship. A value of 90 means the landing will approach from the port (left) side of the ship. A value of -90 will mean approaching from the starboard (right) side of the ship. A value of 180 will approach from the bow of the ship. This parameter is combined with the sign of the RTL_RADIUS parameter to determine the holdoff pattern. If RTL_RADIUS is positive then a clockwise loiter is performed, if RTL_RADIUS is negative then a counter-clockwise loiter is used.</p>
+<p>RCn_OPTION number to used to trigger parameter reversion</p>
 <ul>
-<li>Range: -180 180</li>
-<li>Units: degrees</li>
 </ul>
 
 
-<h2>Ship automatic offset trigger (SHIP_AUTO_OFS)</h2>
+<h2>Force enable High Latency mode (RCK_FORCEHL)</h2>
 
-<p>Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target. NOTE: This parameter will auto-reset to zero once the offset has been calculated.</p>
+<p>Automatically enables High Latency mode if not already enabled</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Trigger</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Update rate (RCK_PERIOD)</h2>
+
+<p>When in High Latency mode, send Rockblock updates every N seconds</p>
+<ul>
+<li>Range: 0 600</li>
+<li>Units: seconds</li>
+</ul>
+
+
+<h2>Display Rockblock debugging text (RCK_DEBUG)</h2>
+
+<p>Sends Rockblock debug text to GCS via statustexts</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Enable Message transmission (RCK_ENABLE)</h2>
+
+<p>Enables the Rockblock sending and recieving</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
 </table>
 </ul>
 
@@ -1138,6 +1105,39 @@ DO NOT EDIT
 <h2>Rover Quicktune RC function (RTUN_RC_FUNC)</h2>
 
 <p>RCn_OPTION number to use to control tuning stop/start/save</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>300</td><td>Scripting1</td></tr>
+<tr><td>301</td><td>Scripting2</td></tr>
+<tr><td>302</td><td>Scripting3</td></tr>
+<tr><td>303</td><td>Scripting4</td></tr>
+<tr><td>304</td><td>Scripting5</td></tr>
+<tr><td>305</td><td>Scripting6</td></tr>
+<tr><td>306</td><td>Scripting7</td></tr>
+<tr><td>307</td><td>Scripting8</td></tr>
+</table>
+</ul>
+
+
+<h2>WinchControl Rate Up (WINCH_RATE_UP)</h2>
+
+<p>Maximum rate when retracting line</p>
+<ul>
+<li>Range: 0.1 5.0</li>
+</ul>
+
+
+<h2>WinchControl Rate Down (WINCH_RATE_DN)</h2>
+
+<p>Maximum rate when releasing line</p>
+<ul>
+<li>Range: 0.1 5.0</li>
+</ul>
+
+
+<h2>Winch Rate Control RC function (WINCH_RC_FUNC)</h2>
+
+<p>RCn_OPTION number to use to control winch rate</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>300</td><td>Scripting1</td></tr>
@@ -1411,9 +1411,9 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Generator SVFFI enable (EFI_SVF_ENABLE)</h2>
+<h2>EFI DLA enable (EFI_DLA_ENABLE)</h2>
 
-<p>Enable SVFFI generator support</p>
+<p>Enable EFI DLA driver</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
@@ -1422,14 +1422,39 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Generator SVFFI arming check (EFI_SVF_ARMCHECK)</h2>
+<h2>EFI DLA fuel scale (EFI_DLA_LPS)</h2>
 
-<p>Check for Generator ARM state before arming</p>
+<p>EFI DLA litres of fuel per second of injection time</p>
+<ul>
+<li>Range: 0.00001 1</li>
+<li>Units: litres</li>
+</ul>
+
+
+<h2>Hobbywing ESC Enable (ESC_HW_ENABLE)</h2>
+
+<p>Enable Hobbywing ESC telemetry</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
 <tr><td>1</td><td>Enabled</td></tr>
 </table>
+</ul>
+
+
+<h2>Hobbywing ESC motor poles (ESC_HW_POLES)</h2>
+
+<p>Number of motor poles for eRPM scaling</p>
+<ul>
+<li>Range: 1 50</li>
+</ul>
+
+
+<h2>Hobbywing ESC motor offset (ESC_HW_OFS)</h2>
+
+<p>Motor number offset of first ESC</p>
+<ul>
+<li>Range: 0 31</li>
 </ul>
 
 
@@ -1490,62 +1515,82 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Enable ANX battery support (BATT_ANX_ENABLE)</h2>
+<h2>ViewPro debug (VIEP_DEBUG)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Enable ANX battery support</p>
+<p>ViewPro debug</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
 <tr><td>1</td><td>Enabled</td></tr>
+<tr><td>2</td><td>Enabled including attitude reporting</td></tr>
 </table>
 </ul>
 
 
-<h2>Set ANX CAN driver (BATT_ANX_CANDRV)</h2>
+<h2>ViewPro Camera For Switch Low (VIEP_CAM_SWLOW)</h2>
 
-<p>Set ANX CAN driver</p>
+<p>Camera selection when switch is in low position</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
-<tr><td>1</td><td>1stCANDriver</td></tr>
-<tr><td>2</td><td>2ndCanDriver</td></tr>
+<tr><td>0</td><td>No change in camera selection</td></tr>
+<tr><td>1</td><td>EO1</td></tr>
+<tr><td>2</td><td>IR thermal</td></tr>
+<tr><td>3</td><td>EO1 + IR Picture-in-picture</td></tr>
+<tr><td>4</td><td>IR + EO1 Picture-in-picture</td></tr>
+<tr><td>5</td><td>Fusion</td></tr>
+<tr><td>6</td><td>IR1 13mm</td></tr>
+<tr><td>7</td><td>IR2 52mm</td></tr>
 </table>
 </ul>
 
 
-<h2>ANX CAN battery index (BATT_ANX_INDEX)</h2>
+<h2>ViewPro Camera For Switch Mid (VIEP_CAM_SWMID)</h2>
 
-<p>ANX CAN battery index</p>
-<ul>
-<li>Range: 1 10</li>
-</ul>
-
-
-<h2>ANX CAN battery options (BATT_ANX_OPTIONS)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>ANX CAN battery options</p>
-<ul>
-<li>Bitmask: 0:LogAllFrames</li>
-</ul>
-
-
-<h2>EFI DLA enable (EFI_DLA_ENABLE)</h2>
-
-<p>Enable EFI DLA driver</p>
+<p>Camera selection when switch is in middle position</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
+<tr><td>0</td><td>No change in camera selection</td></tr>
+<tr><td>1</td><td>EO1</td></tr>
+<tr><td>2</td><td>IR thermal</td></tr>
+<tr><td>3</td><td>EO1 + IR Picture-in-picture</td></tr>
+<tr><td>4</td><td>IR + EO1 Picture-in-picture</td></tr>
+<tr><td>5</td><td>Fusion</td></tr>
+<tr><td>6</td><td>IR1 13mm</td></tr>
+<tr><td>7</td><td>IR2 52mm</td></tr>
 </table>
 </ul>
 
 
-<h2>EFI DLA fuel scale (EFI_DLA_LPS)</h2>
+<h2>ViewPro Camera For Switch High (VIEP_CAM_SWHIGH)</h2>
 
-<p>EFI DLA litres of fuel per second of injection time</p>
+<p>Camera selection when switch is in high position</p>
 <ul>
-<li>Range: 0.00001 1</li>
-<li>Units: litres</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>No change in camera selection</td></tr>
+<tr><td>1</td><td>EO1</td></tr>
+<tr><td>2</td><td>IR thermal</td></tr>
+<tr><td>3</td><td>EO1 + IR Picture-in-picture</td></tr>
+<tr><td>4</td><td>IR + EO1 Picture-in-picture</td></tr>
+<tr><td>5</td><td>Fusion</td></tr>
+<tr><td>6</td><td>IR1 13mm</td></tr>
+<tr><td>7</td><td>IR2 52mm</td></tr>
+</table>
+</ul>
+
+
+<h2>ViewPro Zoom Speed (VIEP_ZOOM_SPEED)</h2>
+
+<p>ViewPro Zoom Speed.  Higher numbers result in faster zooming</p>
+<ul>
+<li>Range: 0 7</li>
+</ul>
+
+
+<h2>ViewPro Zoom Times Max (VIEP_ZOOM_MAX)</h2>
+
+<p>ViewPro Zoom Times Max</p>
+<ul>
+<li>Range: 0 30</li>
 </ul>
 
 
@@ -1706,88 +1751,9 @@ DO NOT EDIT
 </ul>
 
 
-<h2>ViewPro debug (VIEP_DEBUG)</h2><em>Note: This parameter is for advanced users</em><br>
+<h2>Generator SVFFI enable (EFI_SVF_ENABLE)</h2>
 
-<p>ViewPro debug</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-<tr><td>2</td><td>Enabled including attitude reporting</td></tr>
-</table>
-</ul>
-
-
-<h2>ViewPro Camera For Switch Low (VIEP_CAM_SWLOW)</h2>
-
-<p>Camera selection when switch is in low position</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>No change in camera selection</td></tr>
-<tr><td>1</td><td>EO1</td></tr>
-<tr><td>2</td><td>IR thermal</td></tr>
-<tr><td>3</td><td>EO1 + IR Picture-in-picture</td></tr>
-<tr><td>4</td><td>IR + EO1 Picture-in-picture</td></tr>
-<tr><td>5</td><td>Fusion</td></tr>
-<tr><td>6</td><td>IR1 13mm</td></tr>
-<tr><td>7</td><td>IR2 52mm</td></tr>
-</table>
-</ul>
-
-
-<h2>ViewPro Camera For Switch Mid (VIEP_CAM_SWMID)</h2>
-
-<p>Camera selection when switch is in middle position</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>No change in camera selection</td></tr>
-<tr><td>1</td><td>EO1</td></tr>
-<tr><td>2</td><td>IR thermal</td></tr>
-<tr><td>3</td><td>EO1 + IR Picture-in-picture</td></tr>
-<tr><td>4</td><td>IR + EO1 Picture-in-picture</td></tr>
-<tr><td>5</td><td>Fusion</td></tr>
-<tr><td>6</td><td>IR1 13mm</td></tr>
-<tr><td>7</td><td>IR2 52mm</td></tr>
-</table>
-</ul>
-
-
-<h2>ViewPro Camera For Switch High (VIEP_CAM_SWHIGH)</h2>
-
-<p>Camera selection when switch is in high position</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>No change in camera selection</td></tr>
-<tr><td>1</td><td>EO1</td></tr>
-<tr><td>2</td><td>IR thermal</td></tr>
-<tr><td>3</td><td>EO1 + IR Picture-in-picture</td></tr>
-<tr><td>4</td><td>IR + EO1 Picture-in-picture</td></tr>
-<tr><td>5</td><td>Fusion</td></tr>
-<tr><td>6</td><td>IR1 13mm</td></tr>
-<tr><td>7</td><td>IR2 52mm</td></tr>
-</table>
-</ul>
-
-
-<h2>ViewPro Zoom Speed (VIEP_ZOOM_SPEED)</h2>
-
-<p>ViewPro Zoom Speed.  Higher numbers result in faster zooming</p>
-<ul>
-<li>Range: 0 7</li>
-</ul>
-
-
-<h2>ViewPro Zoom Times Max (VIEP_ZOOM_MAX)</h2>
-
-<p>ViewPro Zoom Times Max</p>
-<ul>
-<li>Range: 0 30</li>
-</ul>
-
-
-<h2>Hobbywing ESC Enable (ESC_HW_ENABLE)</h2>
-
-<p>Enable Hobbywing ESC telemetry</p>
+<p>Enable SVFFI generator support</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
@@ -1796,19 +1762,53 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Hobbywing ESC motor poles (ESC_HW_POLES)</h2>
+<h2>Generator SVFFI arming check (EFI_SVF_ARMCHECK)</h2>
 
-<p>Number of motor poles for eRPM scaling</p>
+<p>Check for Generator ARM state before arming</p>
 <ul>
-<li>Range: 1 50</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
 </ul>
 
 
-<h2>Hobbywing ESC motor offset (ESC_HW_OFS)</h2>
+<h2>Enable ANX battery support (BATT_ANX_ENABLE)</h2>
 
-<p>Motor number offset of first ESC</p>
+<p>Enable ANX battery support</p>
 <ul>
-<li>Range: 0 31</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Set ANX CAN driver (BATT_ANX_CANDRV)</h2>
+
+<p>Set ANX CAN driver</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>None</td></tr>
+<tr><td>1</td><td>1stCANDriver</td></tr>
+<tr><td>2</td><td>2ndCanDriver</td></tr>
+</table>
+</ul>
+
+
+<h2>ANX CAN battery index (BATT_ANX_INDEX)</h2>
+
+<p>ANX CAN battery index</p>
+<ul>
+<li>Range: 1 10</li>
+</ul>
+
+
+<h2>ANX CAN battery options (BATT_ANX_OPTIONS)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ANX CAN battery options</p>
+<ul>
+<li>Bitmask: 0:LogAllFrames</li>
 </ul>
 
 
