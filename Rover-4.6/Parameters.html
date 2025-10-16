@@ -687,49 +687,139 @@ DO NOT EDIT
 <h1>Lua Script Parameters</h1>
 
 
-<h2>Camera1 Thermal Palette (CAM1_THERM_PAL)</h2>
+<h2>terrain brake enable (TERR_BRK_ENABLE)</h2>
 
-<p>thermal image colour palette</p>
+<p>terrain brake enable</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>-1</td><td>Leave Unchanged</td></tr>
-<tr><td>0</td><td>WhiteHot</td></tr>
-<tr><td>2</td><td>Sepia</td></tr>
-<tr><td>3</td><td>IronBow</td></tr>
-<tr><td>4</td><td>Rainbow</td></tr>
-<tr><td>5</td><td>Night</td></tr>
-<tr><td>6</td><td>Aurora</td></tr>
-<tr><td>7</td><td>RedHot</td></tr>
-<tr><td>8</td><td>Jungle</td></tr>
-<tr><td>9</td><td>Medical</td></tr>
-<tr><td>10</td><td>BlackHot</td></tr>
-<tr><td>11</td><td>GloryHot</td></tr>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
 </table>
 </ul>
 
 
-<h2>Camera1 Thermal Gain (CAM1_THERM_GAIN)</h2>
+<h2>terrain brake altitude (TERR_BRK_ALT)</h2>
 
-<p>thermal image temperature range</p>
+<p>terrain brake altitude. The altitude above the ground below which BRAKE mode will be engaged if in LOITER mode.</p>
 <ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>-1</td><td>Leave Unchanged</td></tr>
-<tr><td>0</td><td>LowGain (50C to 550C)</td></tr>
-<tr><td>1</td><td>HighGain (-20C to 150C)</td></tr>
-</table>
-</ul>
-
-
-<h2>Camera1 Thermal Raw Data (CAM1_THERM_RAW)</h2>
-
-<p>save images with raw temperatures</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>-1</td><td>Leave Unchanged</td></tr>
-<tr><td>0</td><td>Disabled (30fps)</td></tr>
-<tr><td>1</td><td>Enabled (25 fps)</td></tr>
-</table>
+<li>Range: 1 100</li>
 <li>Units: meters</li>
+</ul>
+
+
+<h2>terrain brake home distance (TERR_BRK_HDIST)</h2>
+
+<p>terrain brake home distance. The distance from home where the auto BRAKE will be enabled. When within this distance of home the script will not activate</p>
+<ul>
+<li>Range: 0 1000</li>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>terrain brake speed threshold (TERR_BRK_SPD)</h2>
+
+<p>terrain brake speed threshold. Don&#x27;t trigger BRAKE if both horizontal speed and descent rate are below this threshold. By setting this to a small value this can be used to allow the user to climb up to a safe altitude in LOITER mode. A value of 0.5 is recommended if you want to use LOITER to recover from an emergency terrain BRAKE mode change.</p>
+<ul>
+<li>Range: 0 5</li>
+<li>Units: meters per second</li>
+</ul>
+
+
+<h2>Deadreckoning Enable (DR_ENABLE)</h2>
+
+<p>Deadreckoning Enable</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Deadreckoning Enable Distance (DR_ENABLE_DIST)</h2>
+
+<p>Distance from home (in meters) beyond which the dead reckoning will be enabled</p>
+<ul>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>Deadreckoning GPS speed accuracy maximum threshold (DR_GPS_SACC_MAX)</h2>
+
+<p>GPS speed accuracy maximum, above which deadreckoning home will begin (default is 0.8).  Lower values trigger with good GPS quality, higher values will allow poorer GPS before triggering. Set to 0 to disable use of GPS speed accuracy</p>
+<ul>
+<li>Range: 0 10</li>
+</ul>
+
+
+<h2>Deadreckoning GPS satellite count min threshold (DR_GPS_SAT_MIN)</h2>
+
+<p>GPS satellite count threshold below which deadreckoning home will begin (default is 6).  Higher values trigger with good GPS quality, Lower values trigger with worse GPS quality. Set to 0 to disable use of GPS satellite count</p>
+<ul>
+<li>Range: 0 30</li>
+</ul>
+
+
+<h2>Deadreckoning GPS check trigger seconds (DR_GPS_TRIGG_SEC)</h2>
+
+<p>GPS checks must fail for this many seconds before dead reckoning will be triggered</p>
+<ul>
+<li>Units: seconds</li>
+</ul>
+
+
+<h2>Deadreckoning Lean Angle (DR_FLY_ANGLE)</h2>
+
+<p>lean angle (in degrees) during deadreckoning</p>
+<ul>
+<li>Units: degrees</li>
+<li>Range: 0 45</li>
+</ul>
+
+
+<h2>Deadreckoning Altitude Min (DR_FLY_ALT_MIN)</h2>
+
+<p>Copter will fly at at least this altitude (in meters) above home during deadreckoning</p>
+<ul>
+<li>Units: meters</li>
+<li>Range: 0 1000</li>
+</ul>
+
+
+<h2>Deadreckoning flight timeout (DR_FLY_TIMEOUT)</h2>
+
+<p>Copter will attempt to switch to NEXT_MODE after this many seconds of deadreckoning.  If it cannot switch modes it will continue in Guided_NoGPS.  Set to 0 to disable timeout</p>
+<ul>
+<li>Units: seconds</li>
+</ul>
+
+
+<h2>Deadreckoning Next Mode (DR_NEXT_MODE)</h2>
+
+<p>Copter switch to this mode after GPS recovers or DR_FLY_TIMEOUT has elapsed.  Default is 6/RTL.  Set to -1 to return to mode used before deadreckoning was triggered</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>2</td><td>AltHold</td></tr>
+<tr><td>3</td><td>Auto</td></tr>
+<tr><td>4</td><td>Guided</td></tr>
+<tr><td>5</td><td>Loiter</td></tr>
+<tr><td>6</td><td>RTL</td></tr>
+<tr><td>7</td><td>Circle</td></tr>
+<tr><td>9</td><td>Land</td></tr>
+<tr><td>16</td><td>PosHold</td></tr>
+<tr><td>17</td><td>Brake</td></tr>
+<tr><td>20</td><td>Guided_NoGPS</td></tr>
+<tr><td>21</td><td>Smart_RTL</td></tr>
+<tr><td>27</td><td>Auto RTL</td></tr>
+</table>
+</ul>
+
+
+<h2>Mount POI distance max (POI_DIST_MAX)</h2>
+
+<p>POI&#x27;s max distance (in meters) from the vehicle</p>
+<ul>
+<li>Range: 0 10000</li>
 </ul>
 
 
@@ -901,6 +991,494 @@ DO NOT EDIT
 </ul>
 
 
+<h2>MAV_SYSID must be set (ARM_SYSID)</h2>
+
+<p>Check that MAV_SYSID (or SYDID_THISMAV) has been set. 3 or less to prevent arming. -1 to disable.</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>-1</td><td>Disabled</td></tr>
+<tr><td>0</td><td>Emergency(PreArm)</td></tr>
+<tr><td>1</td><td>Alert(PreArm)</td></tr>
+<tr><td>2</td><td>Critical(PreArm)</td></tr>
+<tr><td>3</td><td>Error(PreArm)</td></tr>
+<tr><td>4</td><td>Warning</td></tr>
+<tr><td>5</td><td>Notice</td></tr>
+<tr><td>6</td><td>Info</td></tr>
+<tr><td>7</td><td>Debug</td></tr>
+</table>
+</ul>
+
+
+<h2>FOLL_SYSID must be set  (ARM_FOLL_SYSID)</h2>
+
+<p>If FOLL_ENABLE = 1, check that FOLL_SYSID has been set. 3 or less to prevent arming. -1 to disable.</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>-1</td><td>Disabled</td></tr>
+<tr><td>0</td><td>Emergency(PreArm)</td></tr>
+<tr><td>1</td><td>Alert(PreArm)</td></tr>
+<tr><td>2</td><td>Critical(PreArm)</td></tr>
+<tr><td>3</td><td>Error(PreArm)</td></tr>
+<tr><td>4</td><td>Warning</td></tr>
+<tr><td>5</td><td>Notice</td></tr>
+<tr><td>6</td><td>Info</td></tr>
+<tr><td>7</td><td>Debug</td></tr>
+</table>
+</ul>
+
+
+<h2>Vehicle should not follow itself (ARM_FOLL_SYSID_X)</h2>
+
+<p>If FOLL_ENABLE = 1, check that FOLL_SYSID is different to MAV_SYSID. 3 or less to prevent arming. -1 to disable.</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>-1</td><td>Disabled</td></tr>
+<tr><td>0</td><td>Emergency(PreArm)</td></tr>
+<tr><td>1</td><td>Alert(PreArm)</td></tr>
+<tr><td>2</td><td>Critical(PreArm)</td></tr>
+<tr><td>3</td><td>Error(PreArm)</td></tr>
+<tr><td>4</td><td>Warning</td></tr>
+<tr><td>5</td><td>Notice</td></tr>
+<tr><td>6</td><td>Info</td></tr>
+<tr><td>7</td><td>Debug</td></tr>
+</table>
+</ul>
+
+
+<h2>Follow Offsets defaulted (ARM_FOLL_OFS_DEF)</h2>
+
+<p>Follow offsets should not be left as default (zero) if FOLL_ENABLE = 1. 3 or less to prevent arming. -1 to disable.</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>-1</td><td>Disabled</td></tr>
+<tr><td>0</td><td>Emergency(PreArm)</td></tr>
+<tr><td>1</td><td>Alert(PreArm)</td></tr>
+<tr><td>2</td><td>Critical(PreArm)</td></tr>
+<tr><td>3</td><td>Error(PreArm)</td></tr>
+<tr><td>4</td><td>Warning</td></tr>
+<tr><td>5</td><td>Notice</td></tr>
+<tr><td>6</td><td>Info</td></tr>
+<tr><td>7</td><td>Debug</td></tr>
+</table>
+</ul>
+
+
+<h2>Follow and Mount should follow the same vehicle (ARM_MNTX_SYSID)</h2>
+
+<p>If FOLL_ENABLE = 1 and MNTx_SYSID_DEFLT is set, check that FOLL_SYSID is equal MNTx. 3 or less to prevent arming. -1 to disable.</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>-1</td><td>Disabled</td></tr>
+<tr><td>0</td><td>Emergency(PreArm)</td></tr>
+<tr><td>1</td><td>Alert(PreArm)</td></tr>
+<tr><td>2</td><td>Critical(PreArm)</td></tr>
+<tr><td>3</td><td>Error(PreArm)</td></tr>
+<tr><td>4</td><td>Warning</td></tr>
+<tr><td>5</td><td>Notice</td></tr>
+<tr><td>6</td><td>Info</td></tr>
+<tr><td>7</td><td>Debug</td></tr>
+</table>
+</ul>
+
+
+<h2>RTL_CLIMB_MIN should be a valid value (ARM_RTL_CLIMB)</h2>
+
+<p>RTL_CLIMB_MIN should be &lt; 120m (400ft). 3 or less to prevent arming. -1 to disable.</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>-1</td><td>Disabled</td></tr>
+<tr><td>0</td><td>Emergency(PreArm)</td></tr>
+<tr><td>1</td><td>Alert(PreArm)</td></tr>
+<tr><td>2</td><td>Critical(PreArm)</td></tr>
+<tr><td>3</td><td>Error(PreArm)</td></tr>
+<tr><td>4</td><td>Warning</td></tr>
+<tr><td>5</td><td>Notice</td></tr>
+<tr><td>6</td><td>Info</td></tr>
+<tr><td>7</td><td>Debug</td></tr>
+</table>
+</ul>
+
+
+<h2>Motors EStopped (ARM_ESTOP)</h2>
+
+<p>Emergency Stop disables arming. 3 or less to prevent arming. -1 to disable.</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>-1</td><td>Disabled</td></tr>
+<tr><td>0</td><td>Emergency(PreArm)</td></tr>
+<tr><td>1</td><td>Alert(PreArm)</td></tr>
+<tr><td>2</td><td>Critical(PreArm)</td></tr>
+<tr><td>3</td><td>Error(PreArm)</td></tr>
+<tr><td>4</td><td>Warning</td></tr>
+<tr><td>5</td><td>Notice</td></tr>
+<tr><td>6</td><td>Info</td></tr>
+<tr><td>7</td><td>Debug</td></tr>
+</table>
+</ul>
+
+
+<h2>Fence not enabled (ARM_FENCE)</h2>
+
+<p>Fences loaded but no fence enabled. 3 or less to prevent arming. -1 to disable.</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>-1</td><td>Disabled</td></tr>
+<tr><td>0</td><td>Emergency(PreArm)</td></tr>
+<tr><td>1</td><td>Alert(PreArm)</td></tr>
+<tr><td>2</td><td>Critical(PreArm)</td></tr>
+<tr><td>3</td><td>Error(PreArm)</td></tr>
+<tr><td>4</td><td>Warning</td></tr>
+<tr><td>5</td><td>Notice</td></tr>
+<tr><td>6</td><td>Info</td></tr>
+<tr><td>7</td><td>Debug</td></tr>
+</table>
+</ul>
+
+
+<h2>Rally too far (ARM_RALLY)</h2>
+
+<p>Rally Point more than RALLY_LIMIT_KM kilometers away. 3 or less to prevent arming. -1 to disable.</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>-1</td><td>Disabled</td></tr>
+<tr><td>0</td><td>Emergency(PreArm)</td></tr>
+<tr><td>1</td><td>Alert(PreArm)</td></tr>
+<tr><td>2</td><td>Critical(PreArm)</td></tr>
+<tr><td>3</td><td>Error(PreArm)</td></tr>
+<tr><td>4</td><td>Warning</td></tr>
+<tr><td>5</td><td>Notice</td></tr>
+<tr><td>6</td><td>Info</td></tr>
+<tr><td>7</td><td>Debug</td></tr>
+</table>
+</ul>
+
+
+<h2>RTL_ALT should be a valid value (ARM_C_RTL_ALT)</h2>
+
+<p>RTL_ALT should be &lt; 120m (400ft). 3 or less to prevent arming. -1 to disable.</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>-1</td><td>Disabled</td></tr>
+<tr><td>0</td><td>Emergency(PreArm)</td></tr>
+<tr><td>1</td><td>Alert(PreArm)</td></tr>
+<tr><td>2</td><td>Critical(PreArm)</td></tr>
+<tr><td>3</td><td>Error(PreArm)</td></tr>
+<tr><td>4</td><td>Warning</td></tr>
+<tr><td>5</td><td>Notice</td></tr>
+<tr><td>6</td><td>Info</td></tr>
+<tr><td>7</td><td>Debug</td></tr>
+</table>
+</ul>
+
+
+<h2>Warn if Q failsafe will land (ARM_P_Q_FS_LAND)</h2>
+
+<p>Notify the user that on failsafe a QuadPlan will land. 3 or less to prevent arming. -1 to disable.</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>-1</td><td>Disabled</td></tr>
+<tr><td>0</td><td>Emergency(PreArm)</td></tr>
+<tr><td>1</td><td>Alert(PreArm)</td></tr>
+<tr><td>2</td><td>Critical(PreArm)</td></tr>
+<tr><td>3</td><td>Error(PreArm)</td></tr>
+<tr><td>4</td><td>Warning</td></tr>
+<tr><td>5</td><td>Notice</td></tr>
+<tr><td>6</td><td>Info</td></tr>
+<tr><td>7</td><td>Debug</td></tr>
+</table>
+</ul>
+
+
+<h2>Warn if Q failsafe will QRTL (ARM_P_Q_FS_RTL)</h2>
+
+<p>Notify the user that on failsafe a QuadPlan will QRTL. 3 or less to prevent arming. -1 to disable.</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>-1</td><td>Disabled</td></tr>
+<tr><td>0</td><td>Emergency(PreArm)</td></tr>
+<tr><td>1</td><td>Alert(PreArm)</td></tr>
+<tr><td>2</td><td>Critical(PreArm)</td></tr>
+<tr><td>3</td><td>Error(PreArm)</td></tr>
+<tr><td>4</td><td>Warning</td></tr>
+<tr><td>5</td><td>Notice</td></tr>
+<tr><td>6</td><td>Info</td></tr>
+<tr><td>7</td><td>Debug</td></tr>
+</table>
+</ul>
+
+
+<h2>Check AIRSPEED_ parameters (ARM_P_AIRSPEED)</h2>
+
+<p>Validate that AIRSPEED_STALL(if set) &lt; MIN &lt; CRUISE &lt; MAX d. 3 or less to prevent arming. -1 to disable.</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>-1</td><td>Disabled</td></tr>
+<tr><td>0</td><td>Emergency(PreArm)</td></tr>
+<tr><td>1</td><td>Alert(PreArm)</td></tr>
+<tr><td>2</td><td>Critical(PreArm)</td></tr>
+<tr><td>3</td><td>Error(PreArm)</td></tr>
+<tr><td>4</td><td>Warning</td></tr>
+<tr><td>5</td><td>Notice</td></tr>
+<tr><td>6</td><td>Info</td></tr>
+<tr><td>7</td><td>Debug</td></tr>
+</table>
+</ul>
+
+
+<h2>AIRSPEED_MIN should be 25% above STALL (ARM_P_STALL)</h2>
+
+<p>Validate that AIRSPEED_MIN is at least 25% above AIRSPEED_STALL(if set). 3 or less to prevent arming. -1 to disable.</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>-1</td><td>Disabled</td></tr>
+<tr><td>0</td><td>Emergency(PreArm)</td></tr>
+<tr><td>1</td><td>Alert(PreArm)</td></tr>
+<tr><td>2</td><td>Critical(PreArm)</td></tr>
+<tr><td>3</td><td>Error(PreArm)</td></tr>
+<tr><td>4</td><td>Warning</td></tr>
+<tr><td>5</td><td>Notice</td></tr>
+<tr><td>6</td><td>Info</td></tr>
+<tr><td>7</td><td>Debug</td></tr>
+</table>
+</ul>
+
+
+<h2>SCALING_SPEED valid (ARM_P_SCALING)</h2>
+
+<p>Validate that SCALING_SPEED is within 20% of AIRSPEED_CRUISE. If SCALING_SPEED changes the vehicle may need to be retuned. 3 or less to prevent arming. -1 to disable.</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>-1</td><td>Disabled</td></tr>
+<tr><td>0</td><td>Emergency(PreArm)</td></tr>
+<tr><td>1</td><td>Alert(PreArm)</td></tr>
+<tr><td>2</td><td>Critical(PreArm)</td></tr>
+<tr><td>3</td><td>Error(PreArm)</td></tr>
+<tr><td>4</td><td>Warning</td></tr>
+<tr><td>5</td><td>Notice</td></tr>
+<tr><td>6</td><td>Info</td></tr>
+<tr><td>7</td><td>Debug</td></tr>
+</table>
+</ul>
+
+
+<h2>RTL_ALTITUDE should be a valid value (ARM_P_RTL_ALT)</h2>
+
+<p>RTL_ALTITITUDE should be &lt; 120m (400ft). 3 or less to prevent arming. -1 to disable.</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>-1</td><td>Disabled</td></tr>
+<tr><td>0</td><td>Emergency(PreArm)</td></tr>
+<tr><td>1</td><td>Alert(PreArm)</td></tr>
+<tr><td>2</td><td>Critical(PreArm)</td></tr>
+<tr><td>3</td><td>Error(PreArm)</td></tr>
+<tr><td>4</td><td>Warning</td></tr>
+<tr><td>5</td><td>Notice</td></tr>
+<tr><td>6</td><td>Info</td></tr>
+<tr><td>7</td><td>Debug</td></tr>
+</table>
+</ul>
+
+
+<h2>Q_RTL_ALT should be a valid value (ARM_P_QRTL_ALT)</h2>
+
+<p>Q_RTL_ALT should be &lt; 120m (400ft). 3 or less to prevent arming. -1 to disable.</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>-1</td><td>Disabled</td></tr>
+<tr><td>0</td><td>Emergency(PreArm)</td></tr>
+<tr><td>1</td><td>Alert(PreArm)</td></tr>
+<tr><td>2</td><td>Critical(PreArm)</td></tr>
+<tr><td>3</td><td>Error(PreArm)</td></tr>
+<tr><td>4</td><td>Warning</td></tr>
+<tr><td>5</td><td>Notice</td></tr>
+<tr><td>6</td><td>Info</td></tr>
+<tr><td>7</td><td>Debug</td></tr>
+</table>
+</ul>
+
+
+<h2>Legal max altitude (ARM_V_ALT_LEGAL)</h2>
+
+<p>Legal max altitude for UAV/RPAS/drones in your jurisdiction</p>
+<ul>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>Quicktune enable (QUIK_ENABLE)</h2>
+
+<p>Enable quicktune system</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Quicktune axes (QUIK_AXES)</h2>
+
+<p>axes to tune</p>
+<ul>
+<li>Bitmask: 0:Roll,1:Pitch,2:Yaw</li>
+</ul>
+
+
+<h2>Quicktune doubling time (QUIK_DOUBLE_TIME)</h2>
+
+<p>Time to double a tuning parameter. Raise this for a slower tune.</p>
+<ul>
+<li>Range: 5 20</li>
+<li>Units: seconds</li>
+</ul>
+
+
+<h2>Quicktune gain margin (QUIK_GAIN_MARGIN)</h2>
+
+<p>Reduction in gain after oscillation detected. Raise this number to get a more conservative tune</p>
+<ul>
+<li>Range: 20 80</li>
+<li>Units: percent</li>
+</ul>
+
+
+<h2>Quicktune oscillation rate threshold (QUIK_OSC_SMAX)</h2>
+
+<p>Threshold for oscillation detection. A lower value will lead to a more conservative tune.</p>
+<ul>
+<li>Range: 1 10</li>
+</ul>
+
+
+<h2>Quicktune Yaw P max (QUIK_YAW_P_MAX)</h2>
+
+<p>Maximum value for yaw P gain</p>
+<ul>
+<li>Range: 0.1 3</li>
+</ul>
+
+
+<h2>Quicktune Yaw D max (QUIK_YAW_D_MAX)</h2>
+
+<p>Maximum value for yaw D gain</p>
+<ul>
+<li>Range: 0.001 1</li>
+</ul>
+
+
+<h2>Quicktune roll/pitch PI ratio (QUIK_RP_PI_RATIO)</h2>
+
+<p>Ratio between P and I gains for roll and pitch. Raise this to get a lower I gain</p>
+<ul>
+<li>Range: 0.5 1.0</li>
+</ul>
+
+
+<h2>Quicktune Yaw PI ratio (QUIK_Y_PI_RATIO)</h2>
+
+<p>Ratio between P and I gains for yaw. Raise this to get a lower I gain</p>
+<ul>
+<li>Range: 0.5 20</li>
+</ul>
+
+
+<h2>Quicktune auto filter enable (QUIK_AUTO_FILTER)</h2>
+
+<p>When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Quicktune auto save (QUIK_AUTO_SAVE)</h2>
+
+<p>Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune</p>
+<ul>
+<li>Units: seconds</li>
+</ul>
+
+
+<h2>Quicktune RC function (QUIK_RC_FUNC)</h2>
+
+<p>RCn_OPTION number to use to control tuning stop/start/save</p>
+<ul>
+</ul>
+
+
+<h2>Quicktune maximum gain reduction (QUIK_MAX_REDUCE)</h2>
+
+<p>This controls how much quicktune is allowed to lower gains from the original gains. If the vehicle already has a reasonable tune and is not oscillating then you can set this to zero to prevent gain reductions. The default of 20% is reasonable for most vehicles. Using a maximum gain reduction lowers the chance of an angle P oscillation happening if quicktune gets a false positive oscillation at a low gain, which can result in very low rate gains and a dangerous angle P oscillation.</p>
+<ul>
+<li>Units: percent</li>
+<li>Range: 0 100</li>
+</ul>
+
+
+<h2>Quicktune options (QUIK_OPTIONS)</h2>
+
+<p>Additional options. When the Two Position Switch option is enabled then a high switch position will start the tune, low will disable the tune. you should also set a QUIK_AUTO_SAVE time so that you will be able to save the tune.</p>
+<ul>
+<li>Bitmask: 0:UseTwoPositionSwitch</li>
+</ul>
+
+
+<h2>maximum angle error for tune abort (QUIK_ANGLE_MAX)</h2>
+
+<p>If while tuning the angle error goes over this limit then the tune will aborts to prevent a bad oscillation in the case of the tuning algorithm failing. If you get an error &quot;Tuning: attitude error ABORTING&quot; and you think it is a false positive then you can either raise this parameter or you can try increasing the QUIK_DOUBLE_TIME to do the tune more slowly. A value of zero disables this check.</p>
+<ul>
+<li>Units: degrees</li>
+</ul>
+
+
+<h2>Camera1 Thermal Palette (CAM1_THERM_PAL)</h2>
+
+<p>thermal image colour palette</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>-1</td><td>Leave Unchanged</td></tr>
+<tr><td>0</td><td>WhiteHot</td></tr>
+<tr><td>2</td><td>Sepia</td></tr>
+<tr><td>3</td><td>IronBow</td></tr>
+<tr><td>4</td><td>Rainbow</td></tr>
+<tr><td>5</td><td>Night</td></tr>
+<tr><td>6</td><td>Aurora</td></tr>
+<tr><td>7</td><td>RedHot</td></tr>
+<tr><td>8</td><td>Jungle</td></tr>
+<tr><td>9</td><td>Medical</td></tr>
+<tr><td>10</td><td>BlackHot</td></tr>
+<tr><td>11</td><td>GloryHot</td></tr>
+</table>
+</ul>
+
+
+<h2>Camera1 Thermal Gain (CAM1_THERM_GAIN)</h2>
+
+<p>thermal image temperature range</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>-1</td><td>Leave Unchanged</td></tr>
+<tr><td>0</td><td>LowGain (50C to 550C)</td></tr>
+<tr><td>1</td><td>HighGain (-20C to 150C)</td></tr>
+</table>
+</ul>
+
+
+<h2>Camera1 Thermal Raw Data (CAM1_THERM_RAW)</h2>
+
+<p>save images with raw temperatures</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>-1</td><td>Leave Unchanged</td></tr>
+<tr><td>0</td><td>Disabled (30fps)</td></tr>
+<tr><td>1</td><td>Enabled (25 fps)</td></tr>
+</table>
+<li>Units: meters</li>
+</ul>
+
+
 <h2>EKF Source ExternalNav Innovation Threshold (ESRC_EXTN_THRESH)</h2>
 
 <p>ExternalNav may be used if innovations are below this threshold</p>
@@ -941,6 +1519,99 @@ DO NOT EDIT
 <ul>
 <li>Range: 0 50</li>
 <li>Units: meters</li>
+</ul>
+
+
+<h2>Slung Payload enable (SLUP_ENABLE)</h2>
+
+<p>Slung Payload enable</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Slung Payload Velocity P gain (SLUP_VEL_P)</h2>
+
+<p>Slung Payload Velocity P gain, higher values will result in faster movements in sync with payload</p>
+<ul>
+<li>Range: 0 0.8</li>
+</ul>
+
+
+<h2>Slung Payload horizontal distance max (SLUP_DIST_MAX)</h2>
+
+<p>Oscillation is suppressed when vehicle and payload are no more than this distance horizontally.  Set to 0 to always suppress</p>
+<ul>
+<li>Range: 0 30</li>
+</ul>
+
+
+<h2>Slung Payload mavlink system id (SLUP_SYSID)</h2>
+
+<p>Slung Payload mavlink system id.  0 to use any/all system ids</p>
+<ul>
+<li>Range: 0 255</li>
+</ul>
+
+
+<h2>Slung Payload return to WP position P gain (SLUP_WP_POS_P)</h2>
+
+<p>WP position P gain. higher values will result in vehicle moving more quickly back to the original waypoint</p>
+<ul>
+<li>Range: 0 1</li>
+</ul>
+
+
+<h2>Slung Payload resting offset estimate filter time constant (SLUP_RESTOFS_TC)</h2>
+
+<p>payload&#x27;s position estimator&#x27;s time constant used to compensate for GPS errors and wind.  Higher values result in smoother estimate but slower response</p>
+<ul>
+<li>Range: 1 20</li>
+</ul>
+
+
+<h2>Slung Payload debug output (SLUP_DEBUG)</h2>
+
+<p>Slung payload debug output, set to 1 to enable debug</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Ship landing enable (SHIP_ENABLE)</h2>
+
+<p>Enable ship landing system</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Ship landing angle (SHIP_LAND_ANGLE)</h2>
+
+<p>Angle from the stern of the ship for landing approach. Use this to ensure that on a go-around that ship superstructure and cables are avoided. A value of zero means to approach from the rear of the ship. A value of 90 means the landing will approach from the port (left) side of the ship. A value of -90 will mean approaching from the starboard (right) side of the ship. A value of 180 will approach from the bow of the ship. This parameter is combined with the sign of the RTL_RADIUS parameter to determine the holdoff pattern. If RTL_RADIUS is positive then a clockwise loiter is performed, if RTL_RADIUS is negative then a counter-clockwise loiter is used.</p>
+<ul>
+<li>Range: -180 180</li>
+<li>Units: degrees</li>
+</ul>
+
+
+<h2>Ship automatic offset trigger (SHIP_AUTO_OFS)</h2>
+
+<p>Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target. NOTE: This parameter will auto-reset to zero once the offset has been calculated.</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Trigger</td></tr>
+</table>
 </ul>
 
 
@@ -999,9 +1670,17 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Deadreckoning Enable (DR_ENABLE)</h2>
+<h2>CoG adjustment ratio (CGA_RATIO)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Deadreckoning Enable</p>
+<p>The ratio between the front and back motor outputs during steady-state hover. Positive when the CoG is in front of the motors midpoint (front motors work harder).</p>
+<ul>
+<li>Range: 0.5 2</li>
+</ul>
+
+
+<h2>parameter reversion enable (PREV_ENABLE)</h2>
+
+<p>Enable parameter reversion system</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
@@ -1010,82 +1689,133 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Deadreckoning Enable Distance (DR_ENABLE_DIST)</h2>
+<h2>param reversion RC function (PREV_RC_FUNC)</h2>
 
-<p>Distance from home (in meters) beyond which the dead reckoning will be enabled</p>
+<p>RCn_OPTION number to used to trigger parameter reversion</p>
+<ul>
+</ul>
+
+
+<h2>Activation Function for Terrain Avoidance (TA_ACT_FN)</h2>
+
+<p>Setting an RC channel&#x27;s _OPTION to this value will use it for Terrain Avoidance enable/disable</p>
+<ul>
+<li>Range: 300 307</li>
+</ul>
+
+
+<h2>down distance minimum for Pitching (TA_PTCH_DWN_MIN)</h2>
+
+<p>If the downward distance is less than this value then start Pitching up to gain altitude.</p>
 <ul>
 <li>Units: meters</li>
 </ul>
 
 
-<h2>Deadreckoning GPS speed accuracy maximum threshold (DR_GPS_SACC_MAX)</h2>
+<h2>forward distance minimum for Pitching (TA_PTCH_FWD_MIN)</h2>
 
-<p>GPS speed accuracy maximum, above which deadreckoning home will begin (default is 0.8).  Lower values trigger with good GPS quality, higher values will allow poorer GPS before triggering. Set to 0 to disable use of GPS speed accuracy</p>
-<ul>
-<li>Range: 0 10</li>
-</ul>
-
-
-<h2>Deadreckoning GPS satellite count min threshold (DR_GPS_SAT_MIN)</h2>
-
-<p>GPS satellite count threshold below which deadreckoning home will begin (default is 6).  Higher values trigger with good GPS quality, Lower values trigger with worse GPS quality. Set to 0 to disable use of GPS satellite count</p>
-<ul>
-<li>Range: 0 30</li>
-</ul>
-
-
-<h2>Deadreckoning GPS check trigger seconds (DR_GPS_TRIGG_SEC)</h2>
-
-<p>GPS checks must fail for this many seconds before dead reckoning will be triggered</p>
-<ul>
-<li>Units: seconds</li>
-</ul>
-
-
-<h2>Deadreckoning Lean Angle (DR_FLY_ANGLE)</h2>
-
-<p>lean angle (in degrees) during deadreckoning</p>
-<ul>
-<li>Units: degrees</li>
-<li>Range: 0 45</li>
-</ul>
-
-
-<h2>Deadreckoning Altitude Min (DR_FLY_ALT_MIN)</h2>
-
-<p>Copter will fly at at least this altitude (in meters) above home during deadreckoning</p>
+<p>If the farwardward distance is less than this value then start Pitching up to gain altitude.</p>
 <ul>
 <li>Units: meters</li>
-<li>Range: 0 1000</li>
 </ul>
 
 
-<h2>Deadreckoning flight timeout (DR_FLY_TIMEOUT)</h2>
+<h2>Downward distance minimum Quading (TA_QUAD_DWN_MIN)</h2>
 
-<p>Copter will attempt to switch to NEXT_MODE after this many seconds of deadreckoning.  If it cannot switch modes it will continue in Guided_NoGPS.  Set to 0 to disable timeout</p>
+<p>If the downward distance is less than this value then start Quading up to gain altitude.</p>
+<ul>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>minimum forward distance for Quading (TA_QUAD_FWD_MIN)</h2>
+
+<p>If the farwardward distance is less than this value then start Quading up to gain altitude.</p>
+<ul>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>minimum ground speed for Pitching (TA_PTCH_GSP_MIN)</h2>
+
+<p>Minimum Groundspeed (not airspeed) to be flying for Pitching to be used.</p>
+<ul>
+<li>Units: meters per second</li>
+</ul>
+
+
+<h2>timeout Pitching (TA_PTCH_TIMEOUT)</h2>
+
+<p>Minimum down or forward distance must be triggered for more than this many seconds to start Pitching</p>
 <ul>
 <li>Units: seconds</li>
 </ul>
 
 
-<h2>Deadreckoning Next Mode (DR_NEXT_MODE)</h2>
+<h2>safe distance around home (TA_HOME_DIST)</h2>
 
-<p>Copter switch to this mode after GPS recovers or DR_FLY_TIMEOUT has elapsed.  Default is 6/RTL.  Set to -1 to return to mode used before deadreckoning was triggered</p>
+<p>Terrain avoidance will not be applied if the vehicle is less than this distance from home</p>
 <ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>2</td><td>AltHold</td></tr>
-<tr><td>3</td><td>Auto</td></tr>
-<tr><td>4</td><td>Guided</td></tr>
-<tr><td>5</td><td>Loiter</td></tr>
-<tr><td>6</td><td>RTL</td></tr>
-<tr><td>7</td><td>Circle</td></tr>
-<tr><td>9</td><td>Land</td></tr>
-<tr><td>16</td><td>PosHold</td></tr>
-<tr><td>17</td><td>Brake</td></tr>
-<tr><td>20</td><td>Guided_NoGPS</td></tr>
-<tr><td>21</td><td>Smart_RTL</td></tr>
-<tr><td>27</td><td>Auto RTL</td></tr>
-</table>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>ceiling for pitching/quading (TA_ALT_MAX)</h2>
+
+<p>This is a limit on how high the terrain avoidane will take the vehicle. It acts a failsafe to prevent vertical flyaways.</p>
+<ul>
+<li>Range: 20 1000</li>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>Maximum Groundspeed (TA_GSP_MAX)</h2>
+
+<p>This is a limit on how fast in groundspeeed terrain avoidance will take the vehicle. This is to allow for reliable sensor readings. -1 for disabled.</p>
+<ul>
+<li>Range: 10 40</li>
+<li>Units: meters per second</li>
+</ul>
+
+
+<h2>Groudspeed Airbrake limt (TA_GSP_AIRBRAKE)</h2>
+
+<p>This is the limit for triggering airbrake to slow groundspeed as a difference between the airspeed and groundspeed. -1 for disabled.</p>
+<ul>
+<li>Range: -1 -10</li>
+<li>Units: meters per second</li>
+</ul>
+
+
+<h2>CMTC Height (TA_CMTC_HGT)</h2>
+
+<p>The minimum Height above terrain to maintain when following an AUTO mission or RTL. If zero(0) use TA_PTCH_DOW_MIN.</p>
+<ul>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>CMTC Enable (TA_CMTC_ENABLE)</h2>
+
+<p>Whether to enable Can&#x27;t Make That Climb while running Terrain Avoidance</p>
+<ul>
+<li>Range: 0 1</li>
+</ul>
+
+
+<h2>Frequency to process avoidance (TA_UPDATE_RATE)</h2>
+
+<p>Avoidance processing rate</p>
+<ul>
+<li>Units: hertz</li>
+</ul>
+
+
+<h2>CMTC loiter radius (TA_CMTC_RAD)</h2>
+
+<p>Use this radius for the loiter when trying to gain altitude. If not set or &lt;=0 use WP_LOITER_RAD</p>
+<ul>
+<li>Units: meters</li>
 </ul>
 
 
@@ -1233,6 +1963,66 @@ DO NOT EDIT
 </ul>
 
 
+<h2>Force enable High Latency mode (RCK_FORCEHL)</h2>
+
+<p>Automatically enables High Latency mode if not already enabled</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Update rate (RCK_PERIOD)</h2>
+
+<p>When in High Latency mode, send Rockblock updates every N seconds</p>
+<ul>
+<li>Range: 0 600</li>
+<li>Units: seconds</li>
+</ul>
+
+
+<h2>Display Rockblock debugging text (RCK_DEBUG)</h2>
+
+<p>Sends Rockblock debug text to GCS via statustexts</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Enable Message transmission (RCK_ENABLE)</h2>
+
+<p>Enables the Rockblock sending and recieving</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Precland altitude cutoff (PLND_ALT_CUTOFF)</h2>
+
+<p>The altitude (rangefinder distance) below which we stop using the precision landing sensor and continue landing</p>
+<ul>
+<li>Range: 0 20</li>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>Precland distance cutoff (DIST_CUTOFF)</h2>
+
+<p>The distance from target beyond which the target is ignored</p>
+<ul>
+<li>Range: 0 100</li>
+<li>Units: meters</li>
+</ul>
+
+
 <h2>Rover Quicktune enable (RTUN_ENABLE)</h2>
 
 <p>Enable quicktune system</p>
@@ -1345,62 +2135,6 @@ DO NOT EDIT
 </ul>
 
 
-<h2>parameter reversion enable (PREV_ENABLE)</h2>
-
-<p>Enable parameter reversion system</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>param reversion RC function (PREV_RC_FUNC)</h2>
-
-<p>RCn_OPTION number to used to trigger parameter reversion</p>
-<ul>
-</ul>
-
-
-<h2>terrain brake enable (TERR_BRK_ENABLE)</h2>
-
-<p>terrain brake enable</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>terrain brake altitude (TERR_BRK_ALT)</h2>
-
-<p>terrain brake altitude. The altitude above the ground below which BRAKE mode will be engaged if in LOITER mode.</p>
-<ul>
-<li>Range: 1 100</li>
-<li>Units: meters</li>
-</ul>
-
-
-<h2>terrain brake home distance (TERR_BRK_HDIST)</h2>
-
-<p>terrain brake home distance. The distance from home where the auto BRAKE will be enabled. When within this distance of home the script will not activate</p>
-<ul>
-<li>Range: 0 1000</li>
-<li>Units: meters</li>
-</ul>
-
-
-<h2>terrain brake speed threshold (TERR_BRK_SPD)</h2>
-
-<p>terrain brake speed threshold. Don&#x27;t trigger BRAKE if both horizontal speed and descent rate are below this threshold. By setting this to a small value this can be used to allow the user to climb up to a safe altitude in LOITER mode. A value of 0.5 is recommended if you want to use LOITER to recover from an emergency terrain BRAKE mode change.</p>
-<ul>
-<li>Range: 0 5</li>
-<li>Units: meters per second</li>
-</ul>
-
-
 <h2>WinchControl Rate Up (WINCH_RATE_UP)</h2>
 
 <p>Maximum rate when retracting line</p>
@@ -1430,303 +2164,6 @@ DO NOT EDIT
 <tr><td>305</td><td>Scripting6</td></tr>
 <tr><td>306</td><td>Scripting7</td></tr>
 <tr><td>307</td><td>Scripting8</td></tr>
-</table>
-</ul>
-
-
-<h2>Mount POI distance max (POI_DIST_MAX)</h2>
-
-<p>POI&#x27;s max distance (in meters) from the vehicle</p>
-<ul>
-<li>Range: 0 10000</li>
-</ul>
-
-
-<h2>Ship landing enable (SHIP_ENABLE)</h2>
-
-<p>Enable ship landing system</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Ship landing angle (SHIP_LAND_ANGLE)</h2>
-
-<p>Angle from the stern of the ship for landing approach. Use this to ensure that on a go-around that ship superstructure and cables are avoided. A value of zero means to approach from the rear of the ship. A value of 90 means the landing will approach from the port (left) side of the ship. A value of -90 will mean approaching from the starboard (right) side of the ship. A value of 180 will approach from the bow of the ship. This parameter is combined with the sign of the RTL_RADIUS parameter to determine the holdoff pattern. If RTL_RADIUS is positive then a clockwise loiter is performed, if RTL_RADIUS is negative then a counter-clockwise loiter is used.</p>
-<ul>
-<li>Range: -180 180</li>
-<li>Units: degrees</li>
-</ul>
-
-
-<h2>Ship automatic offset trigger (SHIP_AUTO_OFS)</h2>
-
-<p>Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target. NOTE: This parameter will auto-reset to zero once the offset has been calculated.</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Trigger</td></tr>
-</table>
-</ul>
-
-
-<h2>Quicktune enable (QUIK_ENABLE)</h2>
-
-<p>Enable quicktune system</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Quicktune axes (QUIK_AXES)</h2>
-
-<p>axes to tune</p>
-<ul>
-<li>Bitmask: 0:Roll,1:Pitch,2:Yaw</li>
-</ul>
-
-
-<h2>Quicktune doubling time (QUIK_DOUBLE_TIME)</h2>
-
-<p>Time to double a tuning parameter. Raise this for a slower tune.</p>
-<ul>
-<li>Range: 5 20</li>
-<li>Units: seconds</li>
-</ul>
-
-
-<h2>Quicktune gain margin (QUIK_GAIN_MARGIN)</h2>
-
-<p>Reduction in gain after oscillation detected. Raise this number to get a more conservative tune</p>
-<ul>
-<li>Range: 20 80</li>
-<li>Units: percent</li>
-</ul>
-
-
-<h2>Quicktune oscillation rate threshold (QUIK_OSC_SMAX)</h2>
-
-<p>Threshold for oscillation detection. A lower value will lead to a more conservative tune.</p>
-<ul>
-<li>Range: 1 10</li>
-</ul>
-
-
-<h2>Quicktune Yaw P max (QUIK_YAW_P_MAX)</h2>
-
-<p>Maximum value for yaw P gain</p>
-<ul>
-<li>Range: 0.1 3</li>
-</ul>
-
-
-<h2>Quicktune Yaw D max (QUIK_YAW_D_MAX)</h2>
-
-<p>Maximum value for yaw D gain</p>
-<ul>
-<li>Range: 0.001 1</li>
-</ul>
-
-
-<h2>Quicktune roll/pitch PI ratio (QUIK_RP_PI_RATIO)</h2>
-
-<p>Ratio between P and I gains for roll and pitch. Raise this to get a lower I gain</p>
-<ul>
-<li>Range: 0.5 1.0</li>
-</ul>
-
-
-<h2>Quicktune Yaw PI ratio (QUIK_Y_PI_RATIO)</h2>
-
-<p>Ratio between P and I gains for yaw. Raise this to get a lower I gain</p>
-<ul>
-<li>Range: 0.5 20</li>
-</ul>
-
-
-<h2>Quicktune auto filter enable (QUIK_AUTO_FILTER)</h2>
-
-<p>When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Quicktune auto save (QUIK_AUTO_SAVE)</h2>
-
-<p>Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune</p>
-<ul>
-<li>Units: seconds</li>
-</ul>
-
-
-<h2>Quicktune RC function (QUIK_RC_FUNC)</h2>
-
-<p>RCn_OPTION number to use to control tuning stop/start/save</p>
-<ul>
-</ul>
-
-
-<h2>Quicktune maximum gain reduction (QUIK_MAX_REDUCE)</h2>
-
-<p>This controls how much quicktune is allowed to lower gains from the original gains. If the vehicle already has a reasonable tune and is not oscillating then you can set this to zero to prevent gain reductions. The default of 20% is reasonable for most vehicles. Using a maximum gain reduction lowers the chance of an angle P oscillation happening if quicktune gets a false positive oscillation at a low gain, which can result in very low rate gains and a dangerous angle P oscillation.</p>
-<ul>
-<li>Units: percent</li>
-<li>Range: 0 100</li>
-</ul>
-
-
-<h2>Quicktune options (QUIK_OPTIONS)</h2>
-
-<p>Additional options. When the Two Position Switch option is enabled then a high switch position will start the tune, low will disable the tune. you should also set a QUIK_AUTO_SAVE time so that you will be able to save the tune.</p>
-<ul>
-<li>Bitmask: 0:UseTwoPositionSwitch</li>
-</ul>
-
-
-<h2>maximum angle error for tune abort (QUIK_ANGLE_MAX)</h2>
-
-<p>If while tuning the angle error goes over this limit then the tune will aborts to prevent a bad oscillation in the case of the tuning algorithm failing. If you get an error &quot;Tuning: attitude error ABORTING&quot; and you think it is a false positive then you can either raise this parameter or you can try increasing the QUIK_DOUBLE_TIME to do the tune more slowly. A value of zero disables this check.</p>
-<ul>
-<li>Units: degrees</li>
-</ul>
-
-
-<h2>Precland altitude cutoff (PLND_ALT_CUTOFF)</h2>
-
-<p>The altitude (rangefinder distance) below which we stop using the precision landing sensor and continue landing</p>
-<ul>
-<li>Range: 0 20</li>
-<li>Units: meters</li>
-</ul>
-
-
-<h2>Precland distance cutoff (DIST_CUTOFF)</h2>
-
-<p>The distance from target beyond which the target is ignored</p>
-<ul>
-<li>Range: 0 100</li>
-<li>Units: meters</li>
-</ul>
-
-
-<h2>Force enable High Latency mode (RCK_FORCEHL)</h2>
-
-<p>Automatically enables High Latency mode if not already enabled</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Update rate (RCK_PERIOD)</h2>
-
-<p>When in High Latency mode, send Rockblock updates every N seconds</p>
-<ul>
-<li>Range: 0 600</li>
-<li>Units: seconds</li>
-</ul>
-
-
-<h2>Display Rockblock debugging text (RCK_DEBUG)</h2>
-
-<p>Sends Rockblock debug text to GCS via statustexts</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Enable Message transmission (RCK_ENABLE)</h2>
-
-<p>Enables the Rockblock sending and recieving</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>CoG adjustment ratio (CGA_RATIO)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>The ratio between the front and back motor outputs during steady-state hover. Positive when the CoG is in front of the motors midpoint (front motors work harder).</p>
-<ul>
-<li>Range: 0.5 2</li>
-</ul>
-
-
-<h2>Slung Payload enable (SLUP_ENABLE)</h2>
-
-<p>Slung Payload enable</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Slung Payload Velocity P gain (SLUP_VEL_P)</h2>
-
-<p>Slung Payload Velocity P gain, higher values will result in faster movements in sync with payload</p>
-<ul>
-<li>Range: 0 0.8</li>
-</ul>
-
-
-<h2>Slung Payload horizontal distance max (SLUP_DIST_MAX)</h2>
-
-<p>Oscillation is suppressed when vehicle and payload are no more than this distance horizontally.  Set to 0 to always suppress</p>
-<ul>
-<li>Range: 0 30</li>
-</ul>
-
-
-<h2>Slung Payload mavlink system id (SLUP_SYSID)</h2>
-
-<p>Slung Payload mavlink system id.  0 to use any/all system ids</p>
-<ul>
-<li>Range: 0 255</li>
-</ul>
-
-
-<h2>Slung Payload return to WP position P gain (SLUP_WP_POS_P)</h2>
-
-<p>WP position P gain. higher values will result in vehicle moving more quickly back to the original waypoint</p>
-<ul>
-<li>Range: 0 1</li>
-</ul>
-
-
-<h2>Slung Payload resting offset estimate filter time constant (SLUP_RESTOFS_TC)</h2>
-
-<p>payload&#x27;s position estimator&#x27;s time constant used to compensate for GPS errors and wind.  Higher values result in smoother estimate but slower response</p>
-<ul>
-<li>Range: 1 20</li>
-</ul>
-
-
-<h2>Slung Payload debug output (SLUP_DEBUG)</h2>
-
-<p>Slung payload debug output, set to 1 to enable debug</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
 </table>
 </ul>
 
@@ -1990,125 +2427,6 @@ DO NOT EDIT
 </ul>
 
 
-<h2>EFI INF-Inject enable (EFI_INF_ENABLE)</h2>
-
-<p>Enable EFI INF-Inject driver</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>EFI INF-Inject options (EFI_INF_OPTIONS)</h2>
-
-<p>EFI INF driver options</p>
-<ul>
-<li>Bitmask: 0:EnableLogging</li>
-</ul>
-
-
-<h2>EFI INF-Inject throttle rate (EFI_INF_THR_HZ)</h2>
-
-<p>EFI INF throttle output rate</p>
-<ul>
-<li>Range: 0 50</li>
-<li>Units: hertz</li>
-</ul>
-
-
-<h2>EFI INF-Inject ignition aux function (EFI_INF_IGN_AUX)</h2>
-
-<p>EFI INF throttle ignition aux function</p>
-<ul>
-</ul>
-
-
-<h2>DJIRS2 debug (DJIR_DEBUG)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>Enable DJIRS2 debug</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-<tr><td>2</td><td>Enabled with attitude reporting</td></tr>
-</table>
-</ul>
-
-
-<h2>DJIRS2 upside down (DJIR_UPSIDEDOWN)</h2>
-
-<p>DJIRS2 upside down</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Right side up</td></tr>
-<tr><td>1</td><td>Upside down</td></tr>
-</table>
-</ul>
-
-
-<h2>Generator SVFFI enable (EFI_SVF_ENABLE)</h2>
-
-<p>Enable SVFFI generator support</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Generator SVFFI arming check (EFI_SVF_ARMCHECK)</h2>
-
-<p>Check for Generator ARM state before arming</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Enable ANX battery support (BATT_ANX_ENABLE)</h2>
-
-<p>Enable ANX battery support</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Set ANX CAN driver (BATT_ANX_CANDRV)</h2>
-
-<p>Set ANX CAN driver</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
-<tr><td>1</td><td>1stCANDriver</td></tr>
-<tr><td>2</td><td>2ndCanDriver</td></tr>
-</table>
-</ul>
-
-
-<h2>ANX CAN battery index (BATT_ANX_INDEX)</h2>
-
-<p>ANX CAN battery index</p>
-<ul>
-<li>Range: 1 10</li>
-</ul>
-
-
-<h2>ANX CAN battery options (BATT_ANX_OPTIONS)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>ANX CAN battery options</p>
-<ul>
-<li>Bitmask: 0:LogAllFrames</li>
-</ul>
-
-
 <h2>EFI DLA enable (EFI_DLA_ENABLE)</h2>
 
 <p>Enable EFI DLA driver</p>
@@ -2126,6 +2444,214 @@ DO NOT EDIT
 <ul>
 <li>Range: 0.00001 1</li>
 <li>Units: litres</li>
+</ul>
+
+
+<h2>Hobbywing ESC Enable (ESC_HW_ENABLE)</h2>
+
+<p>Enable Hobbywing ESC telemetry</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Hobbywing ESC motor poles (ESC_HW_POLES)</h2>
+
+<p>Number of motor poles for eRPM scaling</p>
+<ul>
+<li>Range: 1 50</li>
+</ul>
+
+
+<h2>Hobbywing ESC motor offset (ESC_HW_OFS)</h2>
+
+<p>Motor number offset of first ESC</p>
+<ul>
+<li>Range: 0 31</li>
+</ul>
+
+
+<h2>Enable Halo6000 EFI driver (EFI_H6K_ENABLE)</h2>
+
+<p>Enable Halo6000 EFI driver</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Halo6000 CAN driver (EFI_H6K_CANDRV)</h2>
+
+<p>Halo6000 CAN driver. Use 1 for first CAN scripting driver, 2 for 2nd driver</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>FirstCAN</td></tr>
+<tr><td>2</td><td>SecondCAN</td></tr>
+</table>
+</ul>
+
+
+<h2>Halo6000 start auxilliary function (EFI_H6K_START_FN)</h2>
+
+<p>The RC auxilliary function number for start/stop of the generator. Zero to disable start function</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>300</td><td>300</td></tr>
+<tr><td>301</td><td>301</td></tr>
+<tr><td>302</td><td>302</td></tr>
+<tr><td>303</td><td>303</td></tr>
+<tr><td>304</td><td>304</td></tr>
+<tr><td>305</td><td>305</td></tr>
+<tr><td>306</td><td>306</td></tr>
+<tr><td>307</td><td>307</td></tr>
+</table>
+</ul>
+
+
+<h2>Halo6000 telemetry rate (EFI_H6K_TELEM_RT)</h2>
+
+<p>The rate that additional generator telemetry is sent</p>
+<ul>
+<li>Units: hertz</li>
+</ul>
+
+
+<h2>Halo6000 total fuel capacity (EFI_H6K_FUELTOT)</h2>
+
+<p>The capacity of the tank in litres</p>
+<ul>
+<li>Units: litres</li>
+</ul>
+
+
+<h2>Halo6000 options (EFI_H6K_OPTIONS)</h2>
+
+<p>Halo6000 options</p>
+<ul>
+<li>Bitmask: 0:LogAllCanPackets</li>
+</ul>
+
+
+<h2>Mask of UltraMotion servos (UM_SERVO_MASK)</h2>
+
+<p>Mask of UltraMotion servos</p>
+<ul>
+<li>Bitmask: 0:SERVO1,1:SERVO2,2:SERVO3,3:SERVO4,4:SERVO5,5:SERVO6,6:SERVO7,7:SERVO8,8:SERVO9,9:SERVO10,10:SERVO11,11:SERVO12</li>
+</ul>
+
+
+<h2>Set CAN driver (UM_CANDRV)</h2>
+
+<p>Set CAN driver</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>None</td></tr>
+<tr><td>1</td><td>1stCANDriver</td></tr>
+<tr><td>2</td><td>2ndCanDriver</td></tr>
+</table>
+</ul>
+
+
+<h2>Update rate for UltraMotion servos (UM_RATE_HZ)</h2>
+
+<p>Update rate for UltraMotion servos</p>
+<ul>
+<li>Units: hertz</li>
+<li>Range: 1 400</li>
+</ul>
+
+
+<h2>Optional settings (UM_OPTIONS)</h2>
+
+<p>Optional settings</p>
+<ul>
+<li>Bitmask: 0:LogAllFrames,1:ParseTelemetry,2:SendPosAsNamedValueFloat</li>
+</ul>
+
+
+<h2>ViewPro debug (VIEP_DEBUG)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ViewPro debug</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+<tr><td>2</td><td>Enabled including attitude reporting</td></tr>
+</table>
+</ul>
+
+
+<h2>ViewPro Camera For Switch Low (VIEP_CAM_SWLOW)</h2>
+
+<p>Camera selection when switch is in low position</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>No change in camera selection</td></tr>
+<tr><td>1</td><td>EO1</td></tr>
+<tr><td>2</td><td>IR thermal</td></tr>
+<tr><td>3</td><td>EO1 + IR Picture-in-picture</td></tr>
+<tr><td>4</td><td>IR + EO1 Picture-in-picture</td></tr>
+<tr><td>5</td><td>Fusion</td></tr>
+<tr><td>6</td><td>IR1 13mm</td></tr>
+<tr><td>7</td><td>IR2 52mm</td></tr>
+</table>
+</ul>
+
+
+<h2>ViewPro Camera For Switch Mid (VIEP_CAM_SWMID)</h2>
+
+<p>Camera selection when switch is in middle position</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>No change in camera selection</td></tr>
+<tr><td>1</td><td>EO1</td></tr>
+<tr><td>2</td><td>IR thermal</td></tr>
+<tr><td>3</td><td>EO1 + IR Picture-in-picture</td></tr>
+<tr><td>4</td><td>IR + EO1 Picture-in-picture</td></tr>
+<tr><td>5</td><td>Fusion</td></tr>
+<tr><td>6</td><td>IR1 13mm</td></tr>
+<tr><td>7</td><td>IR2 52mm</td></tr>
+</table>
+</ul>
+
+
+<h2>ViewPro Camera For Switch High (VIEP_CAM_SWHIGH)</h2>
+
+<p>Camera selection when switch is in high position</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>No change in camera selection</td></tr>
+<tr><td>1</td><td>EO1</td></tr>
+<tr><td>2</td><td>IR thermal</td></tr>
+<tr><td>3</td><td>EO1 + IR Picture-in-picture</td></tr>
+<tr><td>4</td><td>IR + EO1 Picture-in-picture</td></tr>
+<tr><td>5</td><td>Fusion</td></tr>
+<tr><td>6</td><td>IR1 13mm</td></tr>
+<tr><td>7</td><td>IR2 52mm</td></tr>
+</table>
+</ul>
+
+
+<h2>ViewPro Zoom Speed (VIEP_ZOOM_SPEED)</h2>
+
+<p>ViewPro Zoom Speed.  Higher numbers result in faster zooming</p>
+<ul>
+<li>Range: 0 7</li>
+</ul>
+
+
+<h2>ViewPro Zoom Times Max (VIEP_ZOOM_MAX)</h2>
+
+<p>ViewPro Zoom Times Max</p>
+<ul>
+<li>Range: 0 30</li>
 </ul>
 
 
@@ -2286,71 +2812,6 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Enable Halo6000 EFI driver (EFI_H6K_ENABLE)</h2>
-
-<p>Enable Halo6000 EFI driver</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Halo6000 CAN driver (EFI_H6K_CANDRV)</h2>
-
-<p>Halo6000 CAN driver. Use 1 for first CAN scripting driver, 2 for 2nd driver</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>FirstCAN</td></tr>
-<tr><td>2</td><td>SecondCAN</td></tr>
-</table>
-</ul>
-
-
-<h2>Halo6000 start auxilliary function (EFI_H6K_START_FN)</h2>
-
-<p>The RC auxilliary function number for start/stop of the generator. Zero to disable start function</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>300</td><td>300</td></tr>
-<tr><td>301</td><td>301</td></tr>
-<tr><td>302</td><td>302</td></tr>
-<tr><td>303</td><td>303</td></tr>
-<tr><td>304</td><td>304</td></tr>
-<tr><td>305</td><td>305</td></tr>
-<tr><td>306</td><td>306</td></tr>
-<tr><td>307</td><td>307</td></tr>
-</table>
-</ul>
-
-
-<h2>Halo6000 telemetry rate (EFI_H6K_TELEM_RT)</h2>
-
-<p>The rate that additional generator telemetry is sent</p>
-<ul>
-<li>Units: hertz</li>
-</ul>
-
-
-<h2>Halo6000 total fuel capacity (EFI_H6K_FUELTOT)</h2>
-
-<p>The capacity of the tank in litres</p>
-<ul>
-<li>Units: litres</li>
-</ul>
-
-
-<h2>Halo6000 options (EFI_H6K_OPTIONS)</h2>
-
-<p>Halo6000 options</p>
-<ul>
-<li>Bitmask: 0:LogAllCanPackets</li>
-</ul>
-
-
 <h2>Enable NMEA 2000 EFI driver (EFI_2K_ENABLE)</h2>
 
 <p>Enable NMEA 2000 EFI driver</p>
@@ -2382,9 +2843,9 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Hobbywing ESC Enable (ESC_HW_ENABLE)</h2>
+<h2>Generator SVFFI enable (EFI_SVF_ENABLE)</h2>
 
-<p>Enable Hobbywing ESC telemetry</p>
+<p>Enable SVFFI generator support</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
@@ -2393,112 +2854,31 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Hobbywing ESC motor poles (ESC_HW_POLES)</h2>
+<h2>Generator SVFFI arming check (EFI_SVF_ARMCHECK)</h2>
 
-<p>Number of motor poles for eRPM scaling</p>
-<ul>
-<li>Range: 1 50</li>
-</ul>
-
-
-<h2>Hobbywing ESC motor offset (ESC_HW_OFS)</h2>
-
-<p>Motor number offset of first ESC</p>
-<ul>
-<li>Range: 0 31</li>
-</ul>
-
-
-<h2>ViewPro debug (VIEP_DEBUG)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>ViewPro debug</p>
+<p>Check for Generator ARM state before arming</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
 <tr><td>1</td><td>Enabled</td></tr>
-<tr><td>2</td><td>Enabled including attitude reporting</td></tr>
 </table>
 </ul>
 
 
-<h2>ViewPro Camera For Switch Low (VIEP_CAM_SWLOW)</h2>
+<h2>Enable ANX battery support (BATT_ANX_ENABLE)</h2>
 
-<p>Camera selection when switch is in low position</p>
+<p>Enable ANX battery support</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>No change in camera selection</td></tr>
-<tr><td>1</td><td>EO1</td></tr>
-<tr><td>2</td><td>IR thermal</td></tr>
-<tr><td>3</td><td>EO1 + IR Picture-in-picture</td></tr>
-<tr><td>4</td><td>IR + EO1 Picture-in-picture</td></tr>
-<tr><td>5</td><td>Fusion</td></tr>
-<tr><td>6</td><td>IR1 13mm</td></tr>
-<tr><td>7</td><td>IR2 52mm</td></tr>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
 </table>
 </ul>
 
 
-<h2>ViewPro Camera For Switch Mid (VIEP_CAM_SWMID)</h2>
+<h2>Set ANX CAN driver (BATT_ANX_CANDRV)</h2>
 
-<p>Camera selection when switch is in middle position</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>No change in camera selection</td></tr>
-<tr><td>1</td><td>EO1</td></tr>
-<tr><td>2</td><td>IR thermal</td></tr>
-<tr><td>3</td><td>EO1 + IR Picture-in-picture</td></tr>
-<tr><td>4</td><td>IR + EO1 Picture-in-picture</td></tr>
-<tr><td>5</td><td>Fusion</td></tr>
-<tr><td>6</td><td>IR1 13mm</td></tr>
-<tr><td>7</td><td>IR2 52mm</td></tr>
-</table>
-</ul>
-
-
-<h2>ViewPro Camera For Switch High (VIEP_CAM_SWHIGH)</h2>
-
-<p>Camera selection when switch is in high position</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>No change in camera selection</td></tr>
-<tr><td>1</td><td>EO1</td></tr>
-<tr><td>2</td><td>IR thermal</td></tr>
-<tr><td>3</td><td>EO1 + IR Picture-in-picture</td></tr>
-<tr><td>4</td><td>IR + EO1 Picture-in-picture</td></tr>
-<tr><td>5</td><td>Fusion</td></tr>
-<tr><td>6</td><td>IR1 13mm</td></tr>
-<tr><td>7</td><td>IR2 52mm</td></tr>
-</table>
-</ul>
-
-
-<h2>ViewPro Zoom Speed (VIEP_ZOOM_SPEED)</h2>
-
-<p>ViewPro Zoom Speed.  Higher numbers result in faster zooming</p>
-<ul>
-<li>Range: 0 7</li>
-</ul>
-
-
-<h2>ViewPro Zoom Times Max (VIEP_ZOOM_MAX)</h2>
-
-<p>ViewPro Zoom Times Max</p>
-<ul>
-<li>Range: 0 30</li>
-</ul>
-
-
-<h2>Mask of UltraMotion servos (UM_SERVO_MASK)</h2>
-
-<p>Mask of UltraMotion servos</p>
-<ul>
-<li>Bitmask: 0:SERVO1,1:SERVO2,2:SERVO3,3:SERVO4,4:SERVO5,5:SERVO6,6:SERVO7,7:SERVO8,8:SERVO9,9:SERVO10,10:SERVO11,11:SERVO12</li>
-</ul>
-
-
-<h2>Set CAN driver (UM_CANDRV)</h2>
-
-<p>Set CAN driver</p>
+<p>Set ANX CAN driver</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>None</td></tr>
@@ -2508,20 +2888,103 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Update rate for UltraMotion servos (UM_RATE_HZ)</h2>
+<h2>ANX CAN battery index (BATT_ANX_INDEX)</h2>
 
-<p>Update rate for UltraMotion servos</p>
+<p>ANX CAN battery index</p>
 <ul>
-<li>Units: hertz</li>
-<li>Range: 1 400</li>
+<li>Range: 1 10</li>
 </ul>
 
 
-<h2>Optional settings (UM_OPTIONS)</h2>
+<h2>ANX CAN battery options (BATT_ANX_OPTIONS)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Optional settings</p>
+<p>ANX CAN battery options</p>
 <ul>
-<li>Bitmask: 0:LogAllFrames,1:ParseTelemetry,2:SendPosAsNamedValueFloat</li>
+<li>Bitmask: 0:LogAllFrames</li>
+</ul>
+
+
+<h2>DJIRS2 debug (DJIR_DEBUG)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Enable DJIRS2 debug</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+<tr><td>2</td><td>Enabled with attitude reporting</td></tr>
+</table>
+</ul>
+
+
+<h2>DJIRS2 upside down (DJIR_UPSIDEDOWN)</h2>
+
+<p>DJIRS2 upside down</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Right side up</td></tr>
+<tr><td>1</td><td>Upside down</td></tr>
+</table>
+</ul>
+
+
+<h2>EFI INF-Inject enable (EFI_INF_ENABLE)</h2>
+
+<p>Enable EFI INF-Inject driver</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>EFI INF-Inject options (EFI_INF_OPTIONS)</h2>
+
+<p>EFI INF driver options</p>
+<ul>
+<li>Bitmask: 0:EnableLogging</li>
+</ul>
+
+
+<h2>EFI INF-Inject throttle rate (EFI_INF_THR_HZ)</h2>
+
+<p>EFI INF throttle output rate</p>
+<ul>
+<li>Range: 0 50</li>
+<li>Units: hertz</li>
+</ul>
+
+
+<h2>EFI INF-Inject ignition aux function (EFI_INF_IGN_AUX)</h2>
+
+<p>EFI INF throttle ignition aux function</p>
+<ul>
+</ul>
+
+
+<h2>TOFSENSE-M to be used as Proximity sensor (TOFSENSE_S1_PRX)</h2>
+
+<p>Set 0 if sensor is to be used as a 1-D rangefinder (minimum of all distances will be sent, typically used for height detection). Set 1 if it should be used as a 3-D proximity device (Eg. Obstacle Avoidance)</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Set as Rangefinder</td></tr>
+<tr><td>1</td><td>Set as Proximity sensor</td></tr>
+</table>
+</ul>
+
+
+<h2>TOFSENSE-M serial port config (TOFSENSE_S1_SP)</h2>
+
+<p>UART instance sensor is connected to. Set 1 if sensor is connected to the port with fist SERIALx_PROTOCOL = 28. </p>
+<ul>
+<li>Range: 1 4</li>
+</ul>
+
+
+<h2>TOFSENSE-M serial port baudrate (TOFSENSE_S1_BR)</h2>
+
+<p>Serial Port baud rate. Sensor baud rate can be changed from Nassistant software</p>
+<ul>
 </ul>
 
 
@@ -2600,32 +3063,6 @@ DO NOT EDIT
 <p>Third TOFSENSE-M sensor ID. This cannot be 0. You can change ID of sensor from NAssistant Software</p>
 <ul>
 <li>Range: 1 255</li>
-</ul>
-
-
-<h2>TOFSENSE-M to be used as Proximity sensor (TOFSENSE_S1_PRX)</h2>
-
-<p>Set 0 if sensor is to be used as a 1-D rangefinder (minimum of all distances will be sent, typically used for height detection). Set 1 if it should be used as a 3-D proximity device (Eg. Obstacle Avoidance)</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Set as Rangefinder</td></tr>
-<tr><td>1</td><td>Set as Proximity sensor</td></tr>
-</table>
-</ul>
-
-
-<h2>TOFSENSE-M serial port config (TOFSENSE_S1_SP)</h2>
-
-<p>UART instance sensor is connected to. Set 1 if sensor is connected to the port with fist SERIALx_PROTOCOL = 28. </p>
-<ul>
-<li>Range: 1 4</li>
-</ul>
-
-
-<h2>TOFSENSE-M serial port baudrate (TOFSENSE_S1_BR)</h2>
-
-<p>Serial Port baud rate. Sensor baud rate can be changed from Nassistant software</p>
-<ul>
 </ul>
 
 
@@ -3114,7 +3551,7 @@ DO NOT EDIT
 
 <p>Options that can be applied to change arming behaviour</p>
 <ul>
-<li>Bitmask: 0:Disable prearm display,1:Do not send status text on state change</li>
+<li>Bitmask: 0:Disable prearm display,1:Do not send status text on state change,2:Skip IMU consistency checks when ICE motor running</li>
 </ul>
 
 
@@ -21670,9 +22107,9 @@ DO NOT EDIT
 
 <h2>MSP OSD Options (MSP_OPTIONS)</h2>
 
-<p>A bitmask to set some MSP specific options: EnableTelemetryMode-allows &quot;push&quot; mode telemetry when only rx line of OSD ic connected to autopilot,  EnableBTFLFonts-uses indexes corresponding to Betaflight fonts if OSD uses those instead of ArduPilot fonts.</p>
+<p>A bitmask to set some MSP specific options: EnableTelemetryMode-allows &quot;push&quot; mode telemetry when only rx line of OSD ic connected to autopilot,  EnableBTFLFonts-uses indexes corresponding to Betaflight fonts if OSD uses those instead of ArduPilot fonts. EnableINAVFonts uses INAV fonts and overrides EnableBTFLFonts if that option is enabled.</p>
 <ul>
-<li>Bitmask: 0:EnableTelemetryMode, 1: unused, 2:EnableBTFLFonts</li>
+<li>Bitmask: 0:EnableTelemetryMode, 1: unused, 2:EnableBTFLFonts, 3:EnableINAVFonts</li>
 </ul>
 
 

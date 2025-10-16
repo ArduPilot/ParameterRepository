@@ -663,7 +663,8 @@
     "ARMING_OPTIONS": {
       "Bitmask": {
         "0": "Disable prearm display",
-        "1": "Do not send status text on state change"
+        "1": "Do not send status text on state change",
+        "2": "Skip IMU consistency checks when ICE motor running"
       },
       "Description": "Options that can be applied to change arming behaviour",
       "DisplayName": "Arming options",
@@ -19324,6 +19325,284 @@
       "DisplayName": "Yaw acceleration",
       "Units": "deg/s/s"
     },
+    "ARM_C_RTL_ALT": {
+      "Description": "RTL_ALT should be < 120m (400ft). 3 or less to prevent arming. -1 to disable.",
+      "DisplayName": "RTL_ALT should be a valid value",
+      "User": "Standard",
+      "Values": {
+        "-1": "Disabled",
+        "0": "Emergency(PreArm)",
+        "1": "Alert(PreArm)",
+        "2": "Critical(PreArm)",
+        "3": "Error(PreArm)",
+        "4": "Warning",
+        "5": "Notice",
+        "6": "Info",
+        "7": "Debug"
+      }
+    },
+    "ARM_ESTOP": {
+      "Description": "Emergency Stop disables arming. 3 or less to prevent arming. -1 to disable.",
+      "DisplayName": "Motors EStopped",
+      "User": "Standard",
+      "Values": {
+        "-1": "Disabled",
+        "0": "Emergency(PreArm)",
+        "1": "Alert(PreArm)",
+        "2": "Critical(PreArm)",
+        "3": "Error(PreArm)",
+        "4": "Warning",
+        "5": "Notice",
+        "6": "Info",
+        "7": "Debug"
+      }
+    },
+    "ARM_FENCE": {
+      "Description": "Fences loaded but no fence enabled. 3 or less to prevent arming. -1 to disable.",
+      "DisplayName": "Fence not enabled",
+      "User": "Standard",
+      "Values": {
+        "-1": "Disabled",
+        "0": "Emergency(PreArm)",
+        "1": "Alert(PreArm)",
+        "2": "Critical(PreArm)",
+        "3": "Error(PreArm)",
+        "4": "Warning",
+        "5": "Notice",
+        "6": "Info",
+        "7": "Debug"
+      }
+    },
+    "ARM_FOLL_OFS_DEF": {
+      "Description": "Follow offsets should not be left as default (zero) if FOLL_ENABLE = 1. 3 or less to prevent arming. -1 to disable.",
+      "DisplayName": "Follow Offsets defaulted",
+      "User": "Standard",
+      "Values": {
+        "-1": "Disabled",
+        "0": "Emergency(PreArm)",
+        "1": "Alert(PreArm)",
+        "2": "Critical(PreArm)",
+        "3": "Error(PreArm)",
+        "4": "Warning",
+        "5": "Notice",
+        "6": "Info",
+        "7": "Debug"
+      }
+    },
+    "ARM_FOLL_SYSID": {
+      "Description": "If FOLL_ENABLE = 1, check that FOLL_SYSID has been set. 3 or less to prevent arming. -1 to disable.",
+      "DisplayName": "FOLL_SYSID must be set ",
+      "User": "Standard",
+      "Values": {
+        "-1": "Disabled",
+        "0": "Emergency(PreArm)",
+        "1": "Alert(PreArm)",
+        "2": "Critical(PreArm)",
+        "3": "Error(PreArm)",
+        "4": "Warning",
+        "5": "Notice",
+        "6": "Info",
+        "7": "Debug"
+      }
+    },
+    "ARM_FOLL_SYSID_X": {
+      "Description": "If FOLL_ENABLE = 1, check that FOLL_SYSID is different to MAV_SYSID. 3 or less to prevent arming. -1 to disable.",
+      "DisplayName": "Vehicle should not follow itself",
+      "User": "Standard",
+      "Values": {
+        "-1": "Disabled",
+        "0": "Emergency(PreArm)",
+        "1": "Alert(PreArm)",
+        "2": "Critical(PreArm)",
+        "3": "Error(PreArm)",
+        "4": "Warning",
+        "5": "Notice",
+        "6": "Info",
+        "7": "Debug"
+      }
+    },
+    "ARM_MNTX_SYSID": {
+      "Description": "If FOLL_ENABLE = 1 and MNTx_SYSID_DEFLT is set, check that FOLL_SYSID is equal MNTx. 3 or less to prevent arming. -1 to disable.",
+      "DisplayName": "Follow and Mount should follow the same vehicle",
+      "User": "Standard",
+      "Values": {
+        "-1": "Disabled",
+        "0": "Emergency(PreArm)",
+        "1": "Alert(PreArm)",
+        "2": "Critical(PreArm)",
+        "3": "Error(PreArm)",
+        "4": "Warning",
+        "5": "Notice",
+        "6": "Info",
+        "7": "Debug"
+      }
+    },
+    "ARM_P_AIRSPEED": {
+      "Description": "Validate that AIRSPEED_STALL(if set) < MIN < CRUISE < MAX d. 3 or less to prevent arming. -1 to disable.",
+      "DisplayName": "Check AIRSPEED_ parameters",
+      "User": "Standard",
+      "Values": {
+        "-1": "Disabled",
+        "0": "Emergency(PreArm)",
+        "1": "Alert(PreArm)",
+        "2": "Critical(PreArm)",
+        "3": "Error(PreArm)",
+        "4": "Warning",
+        "5": "Notice",
+        "6": "Info",
+        "7": "Debug"
+      }
+    },
+    "ARM_P_QRTL_ALT": {
+      "Description": "Q_RTL_ALT should be < 120m (400ft). 3 or less to prevent arming. -1 to disable.",
+      "DisplayName": "Q_RTL_ALT should be a valid value",
+      "User": "Standard",
+      "Values": {
+        "-1": "Disabled",
+        "0": "Emergency(PreArm)",
+        "1": "Alert(PreArm)",
+        "2": "Critical(PreArm)",
+        "3": "Error(PreArm)",
+        "4": "Warning",
+        "5": "Notice",
+        "6": "Info",
+        "7": "Debug"
+      }
+    },
+    "ARM_P_Q_FS_LAND": {
+      "Description": "Notify the user that on failsafe a QuadPlan will land. 3 or less to prevent arming. -1 to disable.",
+      "DisplayName": "Warn if Q failsafe will land",
+      "User": "Standard",
+      "Values": {
+        "-1": "Disabled",
+        "0": "Emergency(PreArm)",
+        "1": "Alert(PreArm)",
+        "2": "Critical(PreArm)",
+        "3": "Error(PreArm)",
+        "4": "Warning",
+        "5": "Notice",
+        "6": "Info",
+        "7": "Debug"
+      }
+    },
+    "ARM_P_Q_FS_RTL": {
+      "Description": "Notify the user that on failsafe a QuadPlan will QRTL. 3 or less to prevent arming. -1 to disable.",
+      "DisplayName": "Warn if Q failsafe will QRTL",
+      "User": "Standard",
+      "Values": {
+        "-1": "Disabled",
+        "0": "Emergency(PreArm)",
+        "1": "Alert(PreArm)",
+        "2": "Critical(PreArm)",
+        "3": "Error(PreArm)",
+        "4": "Warning",
+        "5": "Notice",
+        "6": "Info",
+        "7": "Debug"
+      }
+    },
+    "ARM_P_RTL_ALT": {
+      "Description": "RTL_ALTITITUDE should be < 120m (400ft). 3 or less to prevent arming. -1 to disable.",
+      "DisplayName": "RTL_ALTITUDE should be a valid value",
+      "User": "Standard",
+      "Values": {
+        "-1": "Disabled",
+        "0": "Emergency(PreArm)",
+        "1": "Alert(PreArm)",
+        "2": "Critical(PreArm)",
+        "3": "Error(PreArm)",
+        "4": "Warning",
+        "5": "Notice",
+        "6": "Info",
+        "7": "Debug"
+      }
+    },
+    "ARM_P_SCALING": {
+      "Description": "Validate that SCALING_SPEED is within 20% of AIRSPEED_CRUISE. If SCALING_SPEED changes the vehicle may need to be retuned. 3 or less to prevent arming. -1 to disable.",
+      "DisplayName": "SCALING_SPEED valid",
+      "User": "Standard",
+      "Values": {
+        "-1": "Disabled",
+        "0": "Emergency(PreArm)",
+        "1": "Alert(PreArm)",
+        "2": "Critical(PreArm)",
+        "3": "Error(PreArm)",
+        "4": "Warning",
+        "5": "Notice",
+        "6": "Info",
+        "7": "Debug"
+      }
+    },
+    "ARM_P_STALL": {
+      "Description": "Validate that AIRSPEED_MIN is at least 25% above AIRSPEED_STALL(if set). 3 or less to prevent arming. -1 to disable.",
+      "DisplayName": "AIRSPEED_MIN should be 25% above STALL",
+      "User": "Standard",
+      "Values": {
+        "-1": "Disabled",
+        "0": "Emergency(PreArm)",
+        "1": "Alert(PreArm)",
+        "2": "Critical(PreArm)",
+        "3": "Error(PreArm)",
+        "4": "Warning",
+        "5": "Notice",
+        "6": "Info",
+        "7": "Debug"
+      }
+    },
+    "ARM_RALLY": {
+      "Description": "Rally Point more than RALLY_LIMIT_KM kilometers away. 3 or less to prevent arming. -1 to disable.",
+      "DisplayName": "Rally too far",
+      "User": "Standard",
+      "Values": {
+        "-1": "Disabled",
+        "0": "Emergency(PreArm)",
+        "1": "Alert(PreArm)",
+        "2": "Critical(PreArm)",
+        "3": "Error(PreArm)",
+        "4": "Warning",
+        "5": "Notice",
+        "6": "Info",
+        "7": "Debug"
+      }
+    },
+    "ARM_RTL_CLIMB": {
+      "Description": "RTL_CLIMB_MIN should be < 120m (400ft). 3 or less to prevent arming. -1 to disable.",
+      "DisplayName": "RTL_CLIMB_MIN should be a valid value",
+      "User": "Standard",
+      "Values": {
+        "-1": "Disabled",
+        "0": "Emergency(PreArm)",
+        "1": "Alert(PreArm)",
+        "2": "Critical(PreArm)",
+        "3": "Error(PreArm)",
+        "4": "Warning",
+        "5": "Notice",
+        "6": "Info",
+        "7": "Debug"
+      }
+    },
+    "ARM_SYSID": {
+      "Description": "Check that MAV_SYSID (or SYDID_THISMAV) has been set. 3 or less to prevent arming. -1 to disable.",
+      "DisplayName": "MAV_SYSID must be set",
+      "User": "Standard",
+      "Values": {
+        "-1": "Disabled",
+        "0": "Emergency(PreArm)",
+        "1": "Alert(PreArm)",
+        "2": "Critical(PreArm)",
+        "3": "Error(PreArm)",
+        "4": "Warning",
+        "5": "Notice",
+        "6": "Info",
+        "7": "Debug"
+      }
+    },
+    "ARM_V_ALT_LEGAL": {
+      "Description": "Legal max altitude for UAV/RPAS/drones in your jurisdiction",
+      "DisplayName": "Legal max altitude",
+      "Units": "m",
+      "User": "Standard"
+    },
     "BATT_ANX_CANDRV": {
       "Description": "Set ANX CAN driver",
       "DisplayName": "Set ANX CAN driver",
@@ -20485,6 +20764,99 @@
       },
       "User": "Standard"
     },
+    "TA_ACT_FN": {
+      "Description": "Setting an RC channel's _OPTION to this value will use it for Terrain Avoidance enable/disable",
+      "DisplayName": "Activation Function for Terrain Avoidance",
+      "Range": {
+        "high": "307",
+        "low": "300"
+      }
+    },
+    "TA_ALT_MAX": {
+      "Description": "This is a limit on how high the terrain avoidane will take the vehicle. It acts a failsafe to prevent vertical flyaways.",
+      "DisplayName": "ceiling for pitching/quading",
+      "Range": {
+        "high": "1000",
+        "low": "20"
+      },
+      "Units": "m"
+    },
+    "TA_CMTC_ENABLE": {
+      "Description": "Whether to enable Can't Make That Climb while running Terrain Avoidance",
+      "DisplayName": "CMTC Enable",
+      "Range": {
+        "high": "1",
+        "low": "0"
+      }
+    },
+    "TA_CMTC_HGT": {
+      "Description": "The minimum Height above terrain to maintain when following an AUTO mission or RTL. If zero(0) use TA_PTCH_DOW_MIN.",
+      "DisplayName": "CMTC Height",
+      "Units": "m"
+    },
+    "TA_CMTC_RAD": {
+      "Description": "Use this radius for the loiter when trying to gain altitude. If not set or <=0 use WP_LOITER_RAD",
+      "DisplayName": "CMTC loiter radius",
+      "Units": "m"
+    },
+    "TA_GSP_AIRBRAKE": {
+      "Description": "This is the limit for triggering airbrake to slow groundspeed as a difference between the airspeed and groundspeed. -1 for disabled.",
+      "DisplayName": "Groudspeed Airbrake limt",
+      "Range": {
+        "high": "-10",
+        "low": "-1"
+      },
+      "Units": "m/s"
+    },
+    "TA_GSP_MAX": {
+      "Description": "This is a limit on how fast in groundspeeed terrain avoidance will take the vehicle. This is to allow for reliable sensor readings. -1 for disabled.",
+      "DisplayName": "Maximum Groundspeed",
+      "Range": {
+        "high": "40",
+        "low": "10"
+      },
+      "Units": "m/s"
+    },
+    "TA_HOME_DIST": {
+      "Description": "Terrain avoidance will not be applied if the vehicle is less than this distance from home",
+      "DisplayName": "safe distance around home",
+      "Units": "m"
+    },
+    "TA_PTCH_DWN_MIN": {
+      "Description": "If the downward distance is less than this value then start Pitching up to gain altitude.",
+      "DisplayName": "down distance minimum for Pitching",
+      "Units": "m"
+    },
+    "TA_PTCH_FWD_MIN": {
+      "Description": "If the farwardward distance is less than this value then start Pitching up to gain altitude.",
+      "DisplayName": "forward distance minimum for Pitching",
+      "Units": "m"
+    },
+    "TA_PTCH_GSP_MIN": {
+      "Description": "Minimum Groundspeed (not airspeed) to be flying for Pitching to be used.",
+      "DisplayName": "minimum ground speed for Pitching",
+      "Units": "m/s"
+    },
+    "TA_PTCH_TIMEOUT": {
+      "Description": "Minimum down or forward distance must be triggered for more than this many seconds to start Pitching",
+      "DisplayName": "timeout Pitching",
+      "Units": "s"
+    },
+    "TA_QUAD_DWN_MIN": {
+      "Description": "If the downward distance is less than this value then start Quading up to gain altitude.",
+      "DisplayName": "Downward distance minimum Quading",
+      "Units": "m"
+    },
+    "TA_QUAD_FWD_MIN": {
+      "Description": "If the farwardward distance is less than this value then start Quading up to gain altitude.",
+      "DisplayName": "minimum forward distance for Quading",
+      "Units": "m"
+    },
+    "TA_UPDATE_RATE": {
+      "Description": "Avoidance processing rate",
+      "DisplayName": "Frequency to process avoidance",
+      "Units": "Hz"
+    },
     "TERR_BRK_ALT": {
       "Description": "terrain brake altitude. The altitude above the ground below which BRAKE mode will be engaged if in LOITER mode.",
       "DisplayName": "terrain brake altitude",
@@ -21499,9 +21871,10 @@
       "Bitmask": {
         "0": "EnableTelemetryMode",
         "1": "unused",
-        "2": "EnableBTFLFonts"
+        "2": "EnableBTFLFonts",
+        "3": "EnableINAVFonts"
       },
-      "Description": "A bitmask to set some MSP specific options: EnableTelemetryMode-allows \"push\" mode telemetry when only rx line of OSD ic connected to autopilot,  EnableBTFLFonts-uses indexes corresponding to Betaflight fonts if OSD uses those instead of ArduPilot fonts.",
+      "Description": "A bitmask to set some MSP specific options: EnableTelemetryMode-allows \"push\" mode telemetry when only rx line of OSD ic connected to autopilot,  EnableBTFLFonts-uses indexes corresponding to Betaflight fonts if OSD uses those instead of ArduPilot fonts. EnableINAVFonts uses INAV fonts and overrides EnableBTFLFonts if that option is enabled.",
       "DisplayName": "MSP OSD Options",
       "User": "Standard"
     },
@@ -31796,13 +32169,15 @@
       "User": "Standard"
     },
     "RNGFND_LANDING": {
-      "Description": "This enables the use of a rangefinder for automatic landing. The rangefinder will be used both on the landing approach and for final flare",
-      "DisplayName": "Enable rangefinder for landing",
-      "User": "Standard",
-      "Values": {
-        "0": "Disabled",
-        "1": "Enabled"
-      }
+      "Bitmask": {
+        "0": "All",
+        "1": "TakeoffAndLanding",
+        "2": "Assist",
+        "3": "InitialClimb"
+      },
+      "Description": "Sets the use of a rangefinder for automatic landing and other use cases. When enabled for landing and takeoff the rangefinder will be used both on the landing approach and for final flare as well as as VTOL landing and for takeoffs and throttle suppression when close to the ground. When enabled for assist the rangefinder will be used for VTOL assistance. When enabled for climb the rangefinder will be used for the initial climb in QRTL and AUTO. Set to 0 to disable use of the rangefinder.",
+      "DisplayName": "Enable use of rangefinder",
+      "User": "Standard"
     },
     "RNGFND_LND_ORNT": {
       "Description": "The orientation of rangefinder to use for landing detection. Should be set to Down for normal downward facing rangefinder and Back for rearward facing rangefinder for quadplane tailsitters. Custom orientation can be used with Custom1 or Custom2. The orientation must match at least one of the available rangefinders.",

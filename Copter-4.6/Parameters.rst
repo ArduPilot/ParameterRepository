@@ -2020,7 +2020,7 @@ TUNE\_MIN: Tuning minimum
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Minimum value that the parameter currently being tuned with the transmitter\'s channel 6 knob will be set to
+Transmitter Tuning minum value\. The parameter being tuned will have its value set to this minimum value when the tuning knob is at its lowest position
 
 
 .. _TUNE_MAX:
@@ -2029,7 +2029,7 @@ TUNE\_MAX: Tuning maximum
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Maximum value that the parameter currently being tuned with the transmitter\'s channel 6 knob will be set to
+Transmitter Tuning maximum value\. The parameter being tuned will have its value set to this maximum value when the tuning knob is at its highest position
 
 
 .. _FS_VIBE_ENABLE:
@@ -4363,18 +4363,20 @@ ARMING\_OPTIONS: Arming options
 Options that can be applied to change arming behaviour
 
 
-+---------------------------------------------------+
-| Bitmask                                           |
-+===================================================+
-| +-----+-----------------------------------------+ |
-| | Bit | Meaning                                 | |
-| +=====+=========================================+ |
-| | 0   | Disable prearm display                  | |
-| +-----+-----------------------------------------+ |
-| | 1   | Do not send status text on state change | |
-| +-----+-----------------------------------------+ |
-|                                                   |
-+---------------------------------------------------+
++--------------------------------------------------------------+
+| Bitmask                                                      |
++==============================================================+
+| +-----+----------------------------------------------------+ |
+| | Bit | Meaning                                            | |
+| +=====+====================================================+ |
+| | 0   | Disable prearm display                             | |
+| +-----+----------------------------------------------------+ |
+| | 1   | Do not send status text on state change            | |
+| +-----+----------------------------------------------------+ |
+| | 2   | Skip IMU consistency checks when ICE motor running | |
+| +-----+----------------------------------------------------+ |
+|                                                              |
++--------------------------------------------------------------+
 
 
 
@@ -51649,7 +51651,7 @@ MSP\_OPTIONS: MSP OSD Options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-A bitmask to set some MSP specific options\: EnableTelemetryMode\-allows \"push\" mode telemetry when only rx line of OSD ic connected to autopilot\,  EnableBTFLFonts\-uses indexes corresponding to Betaflight fonts if OSD uses those instead of ArduPilot fonts\.
+A bitmask to set some MSP specific options\: EnableTelemetryMode\-allows \"push\" mode telemetry when only rx line of OSD ic connected to autopilot\,  EnableBTFLFonts\-uses indexes corresponding to Betaflight fonts if OSD uses those instead of ArduPilot fonts\. EnableINAVFonts uses INAV fonts and overrides EnableBTFLFonts if that option is enabled\.
 
 
 +-------------------------------+
@@ -51663,6 +51665,8 @@ A bitmask to set some MSP specific options\: EnableTelemetryMode\-allows \"push\
 | | 1   | unused              | |
 | +-----+---------------------+ |
 | | 2   | EnableBTFLFonts     | |
+| +-----+---------------------+ |
+| | 3   | EnableINAVFonts     | |
 | +-----+---------------------+ |
 |                               |
 +-------------------------------+
