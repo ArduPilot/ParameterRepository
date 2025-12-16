@@ -77,6 +77,20 @@ class Groundskeeper:
         #return git.Repo(self.repository_path)
         return git.Repo.clone_from(self.repository_url, self.repository_path)
 
+    def tag_latest_versions(self):
+        ''' Creates a VehicleType-Major.Minor.Patch tag from master, for each vehicle type.
+
+        The version is extracted from the version.h file in the vehicle's source folder.
+        '''
+        for vehicle_type in set(self.valid_name_map.values()):
+            if not (version := self.get_version_from_source(vehicle_type)):
+                continue
+            major, minor, patch = version
+            try:
+                self.repository.create_tag(f'{vehicle_type}-{major}.{minor}.{patch}')
+            except Exception:
+                pass  # If the tag already exists, we are happy
+
     @staticmethod
     def get_last_ground_change(repository: git.Repo):
         last_commit_date = repository.head.commit.committed_date
@@ -94,6 +108,7 @@ class Groundskeeper:
 
     def run(self):
         self.repository = self.clone_repository()
+        self.tag_latest_versions()  # Create temporary/local tags, to include development versions in metadata generation
         tag_names = [tag.path[len('refs/tags/'):] for tag in self.repository.tags]
         last_ground_change = self.get_last_ground_change(git.Repo(Path(__file__).parent.parent))
 
