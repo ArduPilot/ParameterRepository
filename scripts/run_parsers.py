@@ -24,6 +24,7 @@ class Groundskeeper:
         'ArduCopter': 'Copter',
         'ArduPlane': 'Plane',
         'ArduSub': 'Sub',
+        'Sub': 'Sub',
         'Copter': 'Copter',
         'Plane': 'Plane',
         'Rover': 'Rover',
@@ -55,20 +56,43 @@ class Groundskeeper:
           else:
               print(f'No version.h found for {tag["name"]}')
               return 0, 0
-          
-          with open(file=file, mode='r') as version_file:
-              content = version_file.read()
-              match = re.search(r'#define\s+FW_MAJOR\s+(\d+)', content)
-              major = int(match.group(1))
-              match = re.search(r'#define\s+FW_MINOR\s+(\d+)', content)
-              minor = int(match.group(1))
-              return major, minor
+
+          major, minor, _ = self.get_version_from_version_h(file)
+          return major, minor
 
     def clone_repository(self):
         print(f'Starting cloning to: {self.repository_path}')
         #self.repository_path = '/tmp/tmpetcgh7ni/ardupilot'
         #return git.Repo(self.repository_path)
         return git.Repo.clone_from(self.repository_url, self.repository_path)
+
+    def get_version_from_version_h(self, version_path: Path) -> Tuple[int, int, int] | None:
+        with open(file=version_path, mode='r') as version_file:
+            content = version_file.read()
+            match = re.search(r'#define\s+FW_MAJOR\s+(\d+)', content)
+            major = int(match.group(1))
+            match = re.search(r'#define\s+FW_MINOR\s+(\d+)', content)
+            minor = int(match.group(1))
+            match = re.search(r'#define\s+FW_PATCH\s+(\d+)', content)
+            patch = int(match.group(1))
+            return major, minor, patch
+
+    def tag_latest_versions(self):
+        # Creates a tag pointing to master for each vehicle type
+        # The version is extracted from version.h in the vehicle folder
+        # And a tag "VehicleType-Major.Minor.Patch" is created
+        for vehicle_type in set(self.valid_name_map.values()):
+            version_path = Path(f'{self.repository_path}/{vehicle_type}/version.h')
+            version_path2 = Path(f'{self.repository_path}/Ardu{vehicle_type}/version.h')
+            path = version_path if version_path.exists() else version_path2
+            if not (version := self.get_version_from_version_h(path)):
+                continue
+            major, minor, patch = version
+            try:
+                self.repository.create_tag(f'{vehicle_type}-{major}.{minor}.{patch}')
+            except Exception as exception:
+                # If the tag already exists, we are happy
+                pass
 
     def get_last_ground_change(repository: git.Repo):
         last_commit_date = repository.head.commit.committed_date
@@ -77,6 +101,7 @@ class Groundskeeper:
 
     def run(self):
         self.repository = self.clone_repository()
+        self.tag_latest_versions()
         tag_names = [tag.path[len('refs/tags/'):] for tag in self.repository.tags]
         last_ground_change = Groundskeeper.get_last_ground_change(git.Repo(Path(__file__).parent.parent))
 
