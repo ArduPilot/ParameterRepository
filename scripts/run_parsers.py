@@ -37,15 +37,25 @@ class Groundskeeper:
 """)
 
     def get_version_for_tag(self, tag) -> Tuple[int, int]:
-      if tag['matches']['major'] is not None:
-          return int(tag['matches']['major']), int(tag['matches']['minor'])
+      if tag['major'] > 0:
+          return tag['major'], tag['minor']
       else:
           # fetch number from version.h in the vehicle folder in the given tag
           self.repository.git.checkout(tag["tag"], force=True)
           # try to read <vehicle>/version.h
-          path1 = Path(f'{self.repository_path}/{tag["matches"]["name"]}/version.h')
-          path2 = Path(f'{self.repository_path}/{self.valid_name_map[tag["matches"]["name"]]}/version.h')
-          file = path1 if path1.exists() else path2
+          repo_path = Path(self.repository_path)
+          potential_paths = (
+              repo_path / tag['name'] / 'version.h',
+              repo_path / tag['vehicle_type'] / 'version.h',
+              repo_path / f'Ardu{tag["vehicle_type"]}' / 'version.h',
+          )
+          for file in potential_paths:
+              if file.exists():
+                  break  # We found a valid file
+          else:
+              print(f'No version.h found for {tag["name"]}')
+              return 0, 0
+          
           with open(file=file, mode='r') as version_file:
               content = version_file.read()
               match = re.search(r'#define\s+FW_MAJOR\s+(\d+)', content)
@@ -78,31 +88,46 @@ class Groundskeeper:
         # TEMP-END
 
         # Get only valid tag names
-        tags = [
-            {
-                'tag': self.tag_regex.search(tag)[0],
+        tags = []
+        for tag in tag_names:
+            tag_data = self.tag_regex.search(tag)
+            if not tag_data:
+                continue  # Not a recognisable tag --> ignore
+            matches = tag_data.groupdict()
+            if not (vehicle_type := self.valid_name_map.get(matches['name'])):
+                continue  # Not a vehicle tag --> ignore
+            major, minor, patch = (int(matches[field] or 0) for field in ('major', 'minor', 'patch'))
+            tags.append({
+                'tag': tag_data[0],
                 'reference': tag,
-                'matches': {**self.tag_regex.search(tag).groupdict()}
-            } for tag in tag_names if self.tag_regex.search(tag)
-        ]
-        tags = [tag for tag in tags if self.valid_name_map.get(tag['matches']['name'])]
+                'name': matches['name'],
+                'vehicle_type': vehicle_type,
+                'major': major,
+                'minor': minor,
+                'patch': patch,
+                'beta': matches['beta'],
+            })
+
+        # Sort the tags so they appear in sequence, grouped by vehicle type
+        tags.sort(key=lambda tag: tuple(tag[field] for field in ('vehicle_type', 'major', 'minor', 'patch')))
+
         # Get only the newest patch version
         old_versions = []
         previous_tag = None
         for tag in tags:
             # Beta releases are unique, we don't need to compare them
-            if tag['matches']['beta']:
+            if tag['beta']:
                 continue
             if previous_tag:
                 print(f'{previous_tag["tag"]} => {tag["tag"]}')
             if not previous_tag or (
-                    tag['matches']['name'] != previous_tag['matches']['name']
-                    or tag['matches']['major'] != previous_tag['matches']['major']
-                    or tag['matches']['minor'] != previous_tag['matches']['minor']
+                    tag['vehicle_type'] != previous_tag['vehicle_type']
+                    or tag['major'] != previous_tag['major']
+                    or tag['minor'] != previous_tag['minor']
                 ):
                 previous_tag = tag
                 continue
-            if tag['matches']['patch'] > previous_tag['matches']['patch']:
+            if tag['patch'] > previous_tag['patch']:
                 print(f'Remove {previous_tag["tag"]}')
                 old_versions.append(previous_tag['tag'])
                 previous_tag = tag
@@ -114,11 +139,10 @@ class Groundskeeper:
 
         # Generate parameters for all tags
         for tag in tags:
-            tag_name = tag['tag']
-            tag_simple_name = tag['matches']['name']
+            tag_name, vehicle_type, tag_reference = (
+                tag[field] for field in ('tag', 'vehicle_type', 'reference')
+            )
             tag_major_version, tag_minor_version = self.get_version_for_tag(tag)
-            vehicle_type = self.valid_name_map.get(tag_simple_name)
-            tag_reference = tag['reference']
             folder_name = f'{vehicle_type}-{tag_major_version}.{tag_minor_version}'
 
             if not vehicle_type:
