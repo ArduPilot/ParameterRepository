@@ -158,12 +158,14 @@ class Groundskeeper:
 
             # Run MAVLink messages parser
             vehicle = f'{"Ardu" if vehicle_type != "Rover" else ""}{vehicle_type}'
+            # The parser expects to be run from its normal place in the repository
+            script_folder = f'{self.repository_path}/Tools/scripts/'
+            script_file = script_folder + 'mavlink_parse.py'
+            # Stream groups were added in 4.1, and removed in 4.7, so only include them when relevant
+            stream_groups = 'g' if (4, 0) < (tag_major_version, tag_minor_version) < (4, 7) else ''
             try:
-                # The parser expects to be run from its normal place in the repository
-                script_folder = f'{self.repository_path}/Tools/scripts/'
-                script_file = script_folder + 'mavlink_parse.py'
                 shutil.copy(f'{self.temp_folder}/mavlink_parse.py', script_file)
-                subprocess.run(['python', script_file, '-cguq', '--header', 'ardupilot_wiki', '--format', 'rst',
+                subprocess.run(['python', script_file, f'-c{stream_groups}uq', '--header', 'ardupilot_wiki', '--format', 'rst',
                                 '--filename', f'{dest}/MAVLinkMessages.rst', '--branch', folder_name, '--vehicle', vehicle],
                                cwd=script_folder)
             except Exception as exception:
