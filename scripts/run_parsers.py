@@ -119,7 +119,7 @@ class Groundskeeper:
         # Sort the tags so they appear in sequence, grouped by vehicle type
         tags.sort(key=lambda tag: tuple(tag[field] for field in ('vehicle_type', 'major', 'minor', 'patch')))
 
-        # Get only the newest patch version
+        # Get only the newest patch of each version
         old_versions = []
         previous_tag = None
         for tag in tags:
@@ -127,21 +127,21 @@ class Groundskeeper:
             if tag['beta']:
                 continue
             if previous_tag:
-                print(f'{previous_tag["tag"]} => {tag["tag"]}')
-            if not previous_tag or (
-                    tag['vehicle_type'] != previous_tag['vehicle_type']
-                    or tag['major'] != previous_tag['major']
-                    or tag['minor'] != previous_tag['minor']
-                ):
+                patch_update = (
+                    tag['vehicle_type'] == previous_tag['vehicle_type']
+                    and tag['major'] == previous_tag['major']
+                    and tag['minor'] == previous_tag['minor']
+                )
+                if patch_update:
+                    print(f' => {tag["tag"]}', end='')
+            if not previous_tag or not patch_update:
+                print('\n', tag['tag'], end='')
                 previous_tag = tag
                 continue
-            if tag['patch'] > previous_tag['patch']:
-                print(f'Remove {previous_tag["tag"]}')
-                old_versions.append(previous_tag['tag'])
-                previous_tag = tag
-            else:
-                print(f'Remove {tag["tag"]}')
-                old_versions.append(tag['tag'])
+            # Tags are sorted, so this is a patch update
+            old_versions.append(previous_tag['tag'])
+            previous_tag = tag
+        print()
 
         tags = [tag for tag in tags if tag['tag'] not in old_versions]
 
