@@ -2827,87 +2827,13 @@ Lua Script Parameters
 ---------------------
 
 
-.. _TERR_BRK_ENABLE:
+.. _SLUP_ENABLE:
 
-TERR\_BRK\_ENABLE: terrain brake enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-terrain brake enable
+SLUP\_ENABLE: Slung Payload enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _TERR_BRK_ALT:
-
-TERR\_BRK\_ALT: terrain brake altitude
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-terrain brake altitude\. The altitude above the ground below which BRAKE mode will be engaged if in LOITER mode\.
-
-
-+----------+--------+
-| Range    | Units  |
-+==========+========+
-| 1 to 100 | meters |
-+----------+--------+
-
-
-
-
-.. _TERR_BRK_HDIST:
-
-TERR\_BRK\_HDIST: terrain brake home distance
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-terrain brake home distance\. The distance from home where the auto BRAKE will be enabled\. When within this distance of home the script will not activate
-
-
-+-----------+--------+
-| Range     | Units  |
-+===========+========+
-| 0 to 1000 | meters |
-+-----------+--------+
-
-
-
-
-.. _TERR_BRK_SPD:
-
-TERR\_BRK\_SPD: terrain brake speed threshold
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-terrain brake speed threshold\. Don\'t trigger BRAKE if both horizontal speed and descent rate are below this threshold\. By setting this to a small value this can be used to allow the user to climb up to a safe altitude in LOITER mode\. A value of 0\.5 is recommended if you want to use LOITER to recover from an emergency terrain BRAKE mode change\.
-
-
-+--------+-------------------+
-| Range  | Units             |
-+========+===================+
-| 0 to 5 | meters per second |
-+--------+-------------------+
-
-
-
-
-.. _DR_ENABLE:
-
-DR\_ENABLE: Deadreckoning Enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Deadreckoning Enable
+Slung Payload enable
 
 
 +-------+----------+
@@ -2921,49 +2847,31 @@ Deadreckoning Enable
 
 
 
-.. _DR_ENABLE_DIST:
+.. _SLUP_VEL_P:
 
-DR\_ENABLE\_DIST: Deadreckoning Enable Distance
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Distance from home \(in meters\) beyond which the dead reckoning will be enabled
+SLUP\_VEL\_P: Slung Payload Velocity P gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-+--------+
-| Units  |
-+========+
-| meters |
-+--------+
+Slung Payload Velocity P gain\, higher values will result in faster movements in sync with payload
 
 
-
-
-.. _DR_GPS_SACC_MAX:
-
-DR\_GPS\_SACC\_MAX: Deadreckoning GPS speed accuracy maximum threshold
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-GPS speed accuracy maximum\, above which deadreckoning home will begin \(default is 0\.8\)\.  Lower values trigger with good GPS quality\, higher values will allow poorer GPS before triggering\. Set to 0 to disable use of GPS speed accuracy
-
-
-+---------+
-| Range   |
-+=========+
-| 0 to 10 |
-+---------+
++----------+
+| Range    |
++==========+
+| 0 to 0.8 |
++----------+
 
 
 
 
-.. _DR_GPS_SAT_MIN:
+.. _SLUP_DIST_MAX:
 
-DR\_GPS\_SAT\_MIN: Deadreckoning GPS satellite count min threshold
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SLUP\_DIST\_MAX: Slung Payload horizontal distance max
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-GPS satellite count threshold below which deadreckoning home will begin \(default is 6\)\.  Higher values trigger with good GPS quality\, Lower values trigger with worse GPS quality\. Set to 0 to disable use of GPS satellite count
+Oscillation is suppressed when vehicle and payload are no more than this distance horizontally\.  Set to 0 to always suppress
 
 
 +---------+
@@ -2975,510 +2883,76 @@ GPS satellite count threshold below which deadreckoning home will begin \(defaul
 
 
 
-.. _DR_GPS_TRIGG_SEC:
+.. _SLUP_SYSID:
 
-DR\_GPS\_TRIGG\_SEC: Deadreckoning GPS check trigger seconds
+SLUP\_SYSID: Slung Payload mavlink system id
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Slung Payload mavlink system id\.  0 to use any\/all system ids
+
+
++----------+
+| Range    |
++==========+
+| 0 to 255 |
++----------+
+
+
+
+
+.. _SLUP_WP_POS_P:
+
+SLUP\_WP\_POS\_P: Slung Payload return to WP position P gain
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-GPS checks must fail for this many seconds before dead reckoning will be triggered
+WP position P gain\. higher values will result in vehicle moving more quickly back to the original waypoint
+
+
++--------+
+| Range  |
++========+
+| 0 to 1 |
++--------+
+
+
+
+
+.. _SLUP_RESTOFS_TC:
+
+SLUP\_RESTOFS\_TC: Slung Payload resting offset estimate filter time constant
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+payload\'s position estimator\'s time constant used to compensate for GPS errors and wind\.  Higher values result in smoother estimate but slower response
 
 
 +---------+
-| Units   |
+| Range   |
 +=========+
-| seconds |
+| 1 to 20 |
 +---------+
 
 
 
 
-.. _DR_FLY_ANGLE:
+.. _SLUP_DEBUG:
 
-DR\_FLY\_ANGLE: Deadreckoning Lean Angle
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-lean angle \(in degrees\) during deadreckoning
-
-
-+---------+---------+
-| Range   | Units   |
-+=========+=========+
-| 0 to 45 | degrees |
-+---------+---------+
-
-
-
-
-.. _DR_FLY_ALT_MIN:
-
-DR\_FLY\_ALT\_MIN: Deadreckoning Altitude Min
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Copter will fly at at least this altitude \(in meters\) above home during deadreckoning
-
-
-+-----------+--------+
-| Range     | Units  |
-+===========+========+
-| 0 to 1000 | meters |
-+-----------+--------+
-
-
-
-
-.. _DR_FLY_TIMEOUT:
-
-DR\_FLY\_TIMEOUT: Deadreckoning flight timeout
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Copter will attempt to switch to NEXT\_MODE after this many seconds of deadreckoning\.  If it cannot switch modes it will continue in Guided\_NoGPS\.  Set to 0 to disable timeout
-
-
-+---------+
-| Units   |
-+=========+
-| seconds |
-+---------+
-
-
-
-
-.. _DR_NEXT_MODE:
-
-DR\_NEXT\_MODE: Deadreckoning Next Mode
+SLUP\_DEBUG: Slung Payload debug output
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Copter switch to this mode after GPS recovers or DR\_FLY\_TIMEOUT has elapsed\.  Default is 6\/RTL\.  Set to \-1 to return to mode used before deadreckoning was triggered
-
-
-+-------+--------------+
-| Value | Meaning      |
-+=======+==============+
-| 2     | AltHold      |
-+-------+--------------+
-| 3     | Auto         |
-+-------+--------------+
-| 4     | Guided       |
-+-------+--------------+
-| 5     | Loiter       |
-+-------+--------------+
-| 6     | RTL          |
-+-------+--------------+
-| 7     | Circle       |
-+-------+--------------+
-| 9     | Land         |
-+-------+--------------+
-| 16    | PosHold      |
-+-------+--------------+
-| 17    | Brake        |
-+-------+--------------+
-| 20    | Guided_NoGPS |
-+-------+--------------+
-| 21    | Smart_RTL    |
-+-------+--------------+
-| 27    | Auto RTL     |
-+-------+--------------+
-
-
-
-
-.. _POI_DIST_MAX:
-
-POI\_DIST\_MAX: Mount POI distance max
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-POI\'s max distance \(in meters\) from the vehicle
-
-
-+------------+
-| Range      |
-+============+
-| 0 to 10000 |
-+------------+
-
-
-
-
-.. _BATT_SOC_COUNT:
-
-BATT\_SOC\_COUNT: Count of SOC estimators
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Number of battery SOC estimators
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 4 |
-+--------+
-
-
-
-
-.. _BATT_SOC1_IDX:
-
-BATT\_SOC1\_IDX: Battery estimator index
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator index
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 4 |
-+--------+
-
-
-
-
-.. _BATT_SOC1_NCELL:
-
-BATT\_SOC1\_NCELL: Battery estimator cell count
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator cell count
-
-
-+---------+
-| Range   |
-+=========+
-| 0 to 48 |
-+---------+
-
-
-
-
-.. _BATT_SOC1_C1:
-
-BATT\_SOC1\_C1: Battery estimator coefficient1
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient1
-
-
-+------------+
-| Range      |
-+============+
-| 100 to 200 |
-+------------+
-
-
-
-
-.. _BATT_SOC1_C2:
-
-BATT\_SOC1\_C2: Battery estimator coefficient2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient2
-
-
-+--------+
-| Range  |
-+========+
-| 2 to 5 |
-+--------+
-
-
-
-
-.. _BATT_SOC1_C3:
-
-BATT\_SOC1\_C3: Battery estimator coefficient3
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient3
-
-
-+-------------+
-| Range       |
-+=============+
-| 0.01 to 0.5 |
-+-------------+
-
-
-
-
-.. _BATT_SOC2_IDX:
-
-BATT\_SOC2\_IDX: Battery estimator index
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator index
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 4 |
-+--------+
-
-
-
-
-.. _BATT_SOC2_NCELL:
-
-BATT\_SOC2\_NCELL: Battery estimator cell count
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator cell count
-
-
-+---------+
-| Range   |
-+=========+
-| 0 to 48 |
-+---------+
-
-
-
-
-.. _BATT_SOC2_C1:
-
-BATT\_SOC2\_C1: Battery estimator coefficient1
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient1
-
-
-+------------+
-| Range      |
-+============+
-| 100 to 200 |
-+------------+
-
-
-
-
-.. _BATT_SOC2_C2:
-
-BATT\_SOC2\_C2: Battery estimator coefficient2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient2
-
-
-+--------+
-| Range  |
-+========+
-| 2 to 5 |
-+--------+
-
-
-
-
-.. _BATT_SOC2_C3:
-
-BATT\_SOC2\_C3: Battery estimator coefficient3
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient3
-
-
-+-------------+
-| Range       |
-+=============+
-| 0.01 to 0.5 |
-+-------------+
-
-
-
-
-.. _BATT_SOC3_IDX:
-
-BATT\_SOC3\_IDX: Battery estimator index
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator index
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 4 |
-+--------+
-
-
-
-
-.. _BATT_SOC3_NCELL:
-
-BATT\_SOC3\_NCELL: Battery estimator cell count
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator cell count
-
-
-+---------+
-| Range   |
-+=========+
-| 0 to 48 |
-+---------+
-
-
-
-
-.. _BATT_SOC3_C1:
-
-BATT\_SOC3\_C1: Battery estimator coefficient1
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient1
-
-
-+------------+
-| Range      |
-+============+
-| 100 to 200 |
-+------------+
-
-
-
-
-.. _BATT_SOC3_C2:
-
-BATT\_SOC3\_C2: Battery estimator coefficient2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient2
-
-
-+--------+
-| Range  |
-+========+
-| 2 to 5 |
-+--------+
-
-
-
-
-.. _BATT_SOC3_C3:
-
-BATT\_SOC3\_C3: Battery estimator coefficient3
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient3
-
-
-+-------------+
-| Range       |
-+=============+
-| 0.01 to 0.5 |
-+-------------+
-
-
-
-
-.. _BATT_SOC4_IDX:
-
-BATT\_SOC4\_IDX: Battery estimator index
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator index
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 4 |
-+--------+
-
-
-
-
-.. _BATT_SOC4_NCELL:
-
-BATT\_SOC4\_NCELL: Battery estimator cell count
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator cell count
-
-
-+---------+
-| Range   |
-+=========+
-| 0 to 48 |
-+---------+
-
-
-
-
-.. _BATT_SOC4_C1:
-
-BATT\_SOC4\_C1: Battery estimator coefficient1
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient1
-
-
-+------------+
-| Range      |
-+============+
-| 100 to 200 |
-+------------+
-
-
-
-
-.. _BATT_SOC4_C2:
-
-BATT\_SOC4\_C2: Battery estimator coefficient2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient2
-
-
-+--------+
-| Range  |
-+========+
-| 2 to 5 |
-+--------+
-
-
-
-
-.. _BATT_SOC4_C3:
-
-BATT\_SOC4\_C3: Battery estimator coefficient3
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient3
-
-
-+-------------+
-| Range       |
-+=============+
-| 0.01 to 0.5 |
-+-------------+
+Slung payload debug output\, set to 1 to enable debug
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
 
 
 
@@ -4079,584 +3553,20 @@ Legal max altitude for UAV\/RPAS\/drones in your jurisdiction
 
 
 
-.. _QUIK_ENABLE:
+.. _POI_DIST_MAX:
 
-QUIK\_ENABLE: Quicktune enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Enable quicktune system
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _QUIK_AXES:
-
-QUIK\_AXES: Quicktune axes
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-axes to tune
-
-
-+-----+---------+
-| Bit | Meaning |
-+=====+=========+
-| 0   | Roll    |
-+-----+---------+
-| 1   | Pitch   |
-+-----+---------+
-| 2   | Yaw     |
-+-----+---------+
-
-
-
-
-.. _QUIK_DOUBLE_TIME:
-
-QUIK\_DOUBLE\_TIME: Quicktune doubling time
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Time to double a tuning parameter\. Raise this for a slower tune\.
-
-
-+---------+---------+
-| Range   | Units   |
-+=========+=========+
-| 5 to 20 | seconds |
-+---------+---------+
-
-
-
-
-.. _QUIK_GAIN_MARGIN:
-
-QUIK\_GAIN\_MARGIN: Quicktune gain margin
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Reduction in gain after oscillation detected\. Raise this number to get a more conservative tune
-
-
-+----------+---------+
-| Range    | Units   |
-+==========+=========+
-| 20 to 80 | percent |
-+----------+---------+
-
-
-
-
-.. _QUIK_OSC_SMAX:
-
-QUIK\_OSC\_SMAX: Quicktune oscillation rate threshold
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Threshold for oscillation detection\. A lower value will lead to a more conservative tune\.
-
-
-+---------+
-| Range   |
-+=========+
-| 1 to 10 |
-+---------+
-
-
-
-
-.. _QUIK_YAW_P_MAX:
-
-QUIK\_YAW\_P\_MAX: Quicktune Yaw P max
+POI\_DIST\_MAX: Mount POI distance max
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Maximum value for yaw P gain
-
-
-+----------+
-| Range    |
-+==========+
-| 0.1 to 3 |
-+----------+
-
-
-
-
-.. _QUIK_YAW_D_MAX:
-
-QUIK\_YAW\_D\_MAX: Quicktune Yaw D max
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Maximum value for yaw D gain
+POI\'s max distance \(in meters\) from the vehicle
 
 
 +------------+
 | Range      |
 +============+
-| 0.001 to 1 |
+| 0 to 10000 |
 +------------+
-
-
-
-
-.. _QUIK_RP_PI_RATIO:
-
-QUIK\_RP\_PI\_RATIO: Quicktune roll\/pitch PI ratio
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Ratio between P and I gains for roll and pitch\. Raise this to get a lower I gain
-
-
-+------------+
-| Range      |
-+============+
-| 0.5 to 1.0 |
-+------------+
-
-
-
-
-.. _QUIK_Y_PI_RATIO:
-
-QUIK\_Y\_PI\_RATIO: Quicktune Yaw PI ratio
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Ratio between P and I gains for yaw\. Raise this to get a lower I gain
-
-
-+-----------+
-| Range     |
-+===========+
-| 0.5 to 20 |
-+-----------+
-
-
-
-
-.. _QUIK_AUTO_FILTER:
-
-QUIK\_AUTO\_FILTER: Quicktune auto filter enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-When enabled the PID filter settings are automatically set based on INS\_GYRO\_FILTER
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _QUIK_AUTO_SAVE:
-
-QUIK\_AUTO\_SAVE: Quicktune auto save
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Number of seconds after completion of tune to auto\-save\. This is useful when using a 2 position switch for quicktune
-
-
-+---------+
-| Units   |
-+=========+
-| seconds |
-+---------+
-
-
-
-
-.. _QUIK_RC_FUNC:
-
-QUIK\_RC\_FUNC: Quicktune RC function
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-RCn\_OPTION number to use to control tuning stop\/start\/save
-
-
-.. _QUIK_MAX_REDUCE:
-
-QUIK\_MAX\_REDUCE: Quicktune maximum gain reduction
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-This controls how much quicktune is allowed to lower gains from the original gains\. If the vehicle already has a reasonable tune and is not oscillating then you can set this to zero to prevent gain reductions\. The default of 20\% is reasonable for most vehicles\. Using a maximum gain reduction lowers the chance of an angle P oscillation happening if quicktune gets a false positive oscillation at a low gain\, which can result in very low rate gains and a dangerous angle P oscillation\.
-
-
-+----------+---------+
-| Range    | Units   |
-+==========+=========+
-| 0 to 100 | percent |
-+----------+---------+
-
-
-
-
-.. _QUIK_OPTIONS:
-
-QUIK\_OPTIONS: Quicktune options
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Additional options\. When the Two Position Switch option is enabled then a high switch position will start the tune\, low will disable the tune\. you should also set a QUIK\_AUTO\_SAVE time so that you will be able to save the tune\.
-
-
-+-----+----------------------+
-| Bit | Meaning              |
-+=====+======================+
-| 0   | UseTwoPositionSwitch |
-+-----+----------------------+
-
-
-
-
-.. _QUIK_ANGLE_MAX:
-
-QUIK\_ANGLE\_MAX: maximum angle error for tune abort
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-If while tuning the angle error goes over this limit then the tune will aborts to prevent a bad oscillation in the case of the tuning algorithm failing\. If you get an error \"Tuning\: attitude error ABORTING\" and you think it is a false positive then you can either raise this parameter or you can try increasing the QUIK\_DOUBLE\_TIME to do the tune more slowly\. A value of zero disables this check\.
-
-
-+---------+
-| Units   |
-+=========+
-| degrees |
-+---------+
-
-
-
-
-.. _CAM1_THERM_PAL:
-
-CAM1\_THERM\_PAL: Camera1 Thermal Palette
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-thermal image colour palette
-
-
-+-------+-----------------+
-| Value | Meaning         |
-+=======+=================+
-| -1    | Leave Unchanged |
-+-------+-----------------+
-| 0     | WhiteHot        |
-+-------+-----------------+
-| 2     | Sepia           |
-+-------+-----------------+
-| 3     | IronBow         |
-+-------+-----------------+
-| 4     | Rainbow         |
-+-------+-----------------+
-| 5     | Night           |
-+-------+-----------------+
-| 6     | Aurora          |
-+-------+-----------------+
-| 7     | RedHot          |
-+-------+-----------------+
-| 8     | Jungle          |
-+-------+-----------------+
-| 9     | Medical         |
-+-------+-----------------+
-| 10    | BlackHot        |
-+-------+-----------------+
-| 11    | GloryHot        |
-+-------+-----------------+
-
-
-
-
-.. _CAM1_THERM_GAIN:
-
-CAM1\_THERM\_GAIN: Camera1 Thermal Gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-thermal image temperature range
-
-
-+-------+-------------------------+
-| Value | Meaning                 |
-+=======+=========================+
-| -1    | Leave Unchanged         |
-+-------+-------------------------+
-| 0     | LowGain (50C to 550C)   |
-+-------+-------------------------+
-| 1     | HighGain (-20C to 150C) |
-+-------+-------------------------+
-
-
-
-
-.. _CAM1_THERM_RAW:
-
-CAM1\_THERM\_RAW: Camera1 Thermal Raw Data
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-save images with raw temperatures
-
-
-+-------+------------------+
-| Value | Meaning          |
-+=======+==================+
-| -1    | Leave Unchanged  |
-+-------+------------------+
-| 0     | Disabled (30fps) |
-+-------+------------------+
-| 1     | Enabled (25 fps) |
-+-------+------------------+
-
-
-
-
-+--------+
-| Units  |
-+========+
-| meters |
-+--------+
-
-
-
-
-.. _ESRC_EXTN_THRESH:
-
-ESRC\_EXTN\_THRESH: EKF Source ExternalNav Innovation Threshold
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-ExternalNav may be used if innovations are below this threshold
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 1 |
-+--------+
-
-
-
-
-.. _ESRC_EXTN_QUAL:
-
-ESRC\_EXTN\_QUAL: EKF Source ExternalNav Quality Threshold
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-ExternalNav may be used if quality is above this threshold
-
-
-+----------+---------+
-| Range    | Units   |
-+==========+=========+
-| 0 to 100 | percent |
-+----------+---------+
-
-
-
-
-.. _ESRC_FLOW_THRESH:
-
-ESRC\_FLOW\_THRESH: EKF Source OpticalFlow Innovation Threshold
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-OpticalFlow may be used if innovations are below this threshold
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 1 |
-+--------+
-
-
-
-
-.. _ESRC_FLOW_QUAL:
-
-ESRC\_FLOW\_QUAL: EKF Source OpticalFlow Quality Threshold
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-OpticalFlow may be used if quality is above this threshold
-
-
-+----------+---------+
-| Range    | Units   |
-+==========+=========+
-| 0 to 100 | percent |
-+----------+---------+
-
-
-
-
-.. _ESRC_RNGFND_MAX:
-
-ESRC\_RNGFND\_MAX: EKF Source Rangefinder Max
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-OpticalFlow may be used if rangefinder distance is below this threshold
-
-
-+---------+--------+
-| Range   | Units  |
-+=========+========+
-| 0 to 50 | meters |
-+---------+--------+
-
-
-
-
-.. _SLUP_ENABLE:
-
-SLUP\_ENABLE: Slung Payload enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Slung Payload enable
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _SLUP_VEL_P:
-
-SLUP\_VEL\_P: Slung Payload Velocity P gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Slung Payload Velocity P gain\, higher values will result in faster movements in sync with payload
-
-
-+----------+
-| Range    |
-+==========+
-| 0 to 0.8 |
-+----------+
-
-
-
-
-.. _SLUP_DIST_MAX:
-
-SLUP\_DIST\_MAX: Slung Payload horizontal distance max
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Oscillation is suppressed when vehicle and payload are no more than this distance horizontally\.  Set to 0 to always suppress
-
-
-+---------+
-| Range   |
-+=========+
-| 0 to 30 |
-+---------+
-
-
-
-
-.. _SLUP_SYSID:
-
-SLUP\_SYSID: Slung Payload mavlink system id
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Slung Payload mavlink system id\.  0 to use any\/all system ids
-
-
-+----------+
-| Range    |
-+==========+
-| 0 to 255 |
-+----------+
-
-
-
-
-.. _SLUP_WP_POS_P:
-
-SLUP\_WP\_POS\_P: Slung Payload return to WP position P gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-WP position P gain\. higher values will result in vehicle moving more quickly back to the original waypoint
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 1 |
-+--------+
-
-
-
-
-.. _SLUP_RESTOFS_TC:
-
-SLUP\_RESTOFS\_TC: Slung Payload resting offset estimate filter time constant
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-payload\'s position estimator\'s time constant used to compensate for GPS errors and wind\.  Higher values result in smoother estimate but slower response
-
-
-+---------+
-| Range   |
-+=========+
-| 1 to 20 |
-+---------+
-
-
-
-
-.. _SLUP_DEBUG:
-
-SLUP\_DEBUG: Slung Payload debug output
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Slung payload debug output\, set to 1 to enable debug
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
 
 
 
@@ -4715,440 +3625,6 @@ Settings this parameter to one triggers an automatic follow offset calculation b
 +-------+----------+
 | 1     | Trigger  |
 +-------+----------+
-
-
-
-
-.. _WEB_ENABLE:
-
-WEB\_ENABLE: enable web server
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-enable web server
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _WEB_BIND_PORT:
-
-WEB\_BIND\_PORT: web server TCP port
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-web server TCP port
-
-
-+------------+
-| Range      |
-+============+
-| 1 to 65535 |
-+------------+
-
-
-
-
-.. _WEB_DEBUG:
-
-WEB\_DEBUG: web server debugging
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-web server debugging
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _WEB_BLOCK_SIZE:
-
-WEB\_BLOCK\_SIZE: web server block size
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-web server block size for download
-
-
-+------------+
-| Range      |
-+============+
-| 1 to 65535 |
-+------------+
-
-
-
-
-.. _WEB_TIMEOUT:
-
-WEB\_TIMEOUT: web server timeout
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-timeout for inactive connections
-
-
-+-----------+---------+
-| Range     | Units   |
-+===========+=========+
-| 0.1 to 60 | seconds |
-+-----------+---------+
-
-
-
-
-.. _WEB_SENDFILE_MIN:
-
-WEB\_SENDFILE\_MIN: web server minimum file size for sendfile
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-sendfile is an offloading mechanism for faster file download\. If this is non\-zero and the file is larger than this size then sendfile will be used for file download
-
-
-+---------------+
-| Range         |
-+===============+
-| 0 to 10000000 |
-+---------------+
-
-
-
-
-.. _CGA_RATIO:
-
-CGA\_RATIO: CoG adjustment ratio
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-The ratio between the front and back motor outputs during steady\-state hover\. Positive when the CoG is in front of the motors midpoint \(front motors work harder\)\.
-
-
-+----------+
-| Range    |
-+==========+
-| 0.5 to 2 |
-+----------+
-
-
-
-
-.. _PREV_ENABLE:
-
-PREV\_ENABLE: parameter reversion enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Enable parameter reversion system
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _PREV_RC_FUNC:
-
-PREV\_RC\_FUNC: param reversion RC function
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-RCn\_OPTION number to used to trigger parameter reversion
-
-
-.. _TA_ACT_FN:
-
-TA\_ACT\_FN: Activation Function for Terrain Avoidance
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Setting an RC channel\'s \_OPTION to this value will use it for Terrain Avoidance enable\/disable
-
-
-+------------+
-| Range      |
-+============+
-| 300 to 307 |
-+------------+
-
-
-
-
-.. _TA_PTCH_DWN_MIN:
-
-TA\_PTCH\_DWN\_MIN: down distance minimum for Pitching
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-If the downward distance is less than this value then start Pitching up to gain altitude\.
-
-
-+--------+
-| Units  |
-+========+
-| meters |
-+--------+
-
-
-
-
-.. _TA_PTCH_FWD_MIN:
-
-TA\_PTCH\_FWD\_MIN: forward distance minimum for Pitching
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-If the farwardward distance is less than this value then start Pitching up to gain altitude\.
-
-
-+--------+
-| Units  |
-+========+
-| meters |
-+--------+
-
-
-
-
-.. _TA_QUAD_DWN_MIN:
-
-TA\_QUAD\_DWN\_MIN: Downward distance minimum Quading
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-If the downward distance is less than this value then start Quading up to gain altitude\.
-
-
-+--------+
-| Units  |
-+========+
-| meters |
-+--------+
-
-
-
-
-.. _TA_QUAD_FWD_MIN:
-
-TA\_QUAD\_FWD\_MIN: minimum forward distance for Quading
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-If the farwardward distance is less than this value then start Quading up to gain altitude\.
-
-
-+--------+
-| Units  |
-+========+
-| meters |
-+--------+
-
-
-
-
-.. _TA_PTCH_GSP_MIN:
-
-TA\_PTCH\_GSP\_MIN: minimum ground speed for Pitching
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Minimum Groundspeed \(not airspeed\) to be flying for Pitching to be used\.
-
-
-+-------------------+
-| Units             |
-+===================+
-| meters per second |
-+-------------------+
-
-
-
-
-.. _TA_PTCH_TIMEOUT:
-
-TA\_PTCH\_TIMEOUT: timeout Pitching
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Minimum down or forward distance must be triggered for more than this many seconds to start Pitching
-
-
-+---------+
-| Units   |
-+=========+
-| seconds |
-+---------+
-
-
-
-
-.. _TA_HOME_DIST:
-
-TA\_HOME\_DIST: safe distance around home
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Terrain avoidance will not be applied if the vehicle is less than this distance from home
-
-
-+--------+
-| Units  |
-+========+
-| meters |
-+--------+
-
-
-
-
-.. _TA_ALT_MAX:
-
-TA\_ALT\_MAX: ceiling for pitching\/quading
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-This is a limit on how high the terrain avoidane will take the vehicle\. It acts a failsafe to prevent vertical flyaways\.
-
-
-+------------+--------+
-| Range      | Units  |
-+============+========+
-| 20 to 1000 | meters |
-+------------+--------+
-
-
-
-
-.. _TA_GSP_MAX:
-
-TA\_GSP\_MAX: Maximum Groundspeed
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-This is a limit on how fast in groundspeeed terrain avoidance will take the vehicle\. This is to allow for reliable sensor readings\. \-1 for disabled\.
-
-
-+----------+-------------------+
-| Range    | Units             |
-+==========+===================+
-| 10 to 40 | meters per second |
-+----------+-------------------+
-
-
-
-
-.. _TA_GSP_AIRBRAKE:
-
-TA\_GSP\_AIRBRAKE: Groudspeed Airbrake limt
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-This is the limit for triggering airbrake to slow groundspeed as a difference between the airspeed and groundspeed\. \-1 for disabled\.
-
-
-+-----------+-------------------+
-| Range     | Units             |
-+===========+===================+
-| -1 to -10 | meters per second |
-+-----------+-------------------+
-
-
-
-
-.. _TA_CMTC_HGT:
-
-TA\_CMTC\_HGT: CMTC Height
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-The minimum Height above terrain to maintain when following an AUTO mission or RTL\. If zero\(0\) use TA\_PTCH\_DOW\_MIN\.
-
-
-+--------+
-| Units  |
-+========+
-| meters |
-+--------+
-
-
-
-
-.. _TA_CMTC_ENABLE:
-
-TA\_CMTC\_ENABLE: CMTC Enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Whether to enable Can\'t Make That Climb while running Terrain Avoidance
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 1 |
-+--------+
-
-
-
-
-.. _TA_UPDATE_RATE:
-
-TA\_UPDATE\_RATE: Frequency to process avoidance
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Avoidance processing rate
-
-
-+-------+
-| Units |
-+=======+
-| hertz |
-+-------+
-
-
-
-
-.. _TA_CMTC_RAD:
-
-TA\_CMTC\_RAD: CMTC loiter radius
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Use this radius for the loiter when trying to gain altitude\. If not set or \<\=0 use WP\_LOITER\_RAD
-
-
-+--------+
-| Units  |
-+========+
-| meters |
-+--------+
 
 
 
@@ -5463,6 +3939,1077 @@ Video stream IP Address Port
 
 
 
+.. _PREV_ENABLE:
+
+PREV\_ENABLE: parameter reversion enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Enable parameter reversion system
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _PREV_RC_FUNC:
+
+PREV\_RC\_FUNC: param reversion RC function
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+RCn\_OPTION number to used to trigger parameter reversion
+
+
+.. _QUIK_ENABLE:
+
+QUIK\_ENABLE: Quicktune enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Enable quicktune system
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _QUIK_AXES:
+
+QUIK\_AXES: Quicktune axes
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+axes to tune
+
+
++-----+---------+
+| Bit | Meaning |
++=====+=========+
+| 0   | Roll    |
++-----+---------+
+| 1   | Pitch   |
++-----+---------+
+| 2   | Yaw     |
++-----+---------+
+
+
+
+
+.. _QUIK_DOUBLE_TIME:
+
+QUIK\_DOUBLE\_TIME: Quicktune doubling time
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Time to double a tuning parameter\. Raise this for a slower tune\.
+
+
++---------+---------+
+| Range   | Units   |
++=========+=========+
+| 5 to 20 | seconds |
++---------+---------+
+
+
+
+
+.. _QUIK_GAIN_MARGIN:
+
+QUIK\_GAIN\_MARGIN: Quicktune gain margin
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Reduction in gain after oscillation detected\. Raise this number to get a more conservative tune
+
+
++----------+---------+
+| Range    | Units   |
++==========+=========+
+| 20 to 80 | percent |
++----------+---------+
+
+
+
+
+.. _QUIK_OSC_SMAX:
+
+QUIK\_OSC\_SMAX: Quicktune oscillation rate threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Threshold for oscillation detection\. A lower value will lead to a more conservative tune\.
+
+
++---------+
+| Range   |
++=========+
+| 1 to 10 |
++---------+
+
+
+
+
+.. _QUIK_YAW_P_MAX:
+
+QUIK\_YAW\_P\_MAX: Quicktune Yaw P max
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Maximum value for yaw P gain
+
+
++----------+
+| Range    |
++==========+
+| 0.1 to 3 |
++----------+
+
+
+
+
+.. _QUIK_YAW_D_MAX:
+
+QUIK\_YAW\_D\_MAX: Quicktune Yaw D max
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Maximum value for yaw D gain
+
+
++------------+
+| Range      |
++============+
+| 0.001 to 1 |
++------------+
+
+
+
+
+.. _QUIK_RP_PI_RATIO:
+
+QUIK\_RP\_PI\_RATIO: Quicktune roll\/pitch PI ratio
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Ratio between P and I gains for roll and pitch\. Raise this to get a lower I gain
+
+
++------------+
+| Range      |
++============+
+| 0.5 to 1.0 |
++------------+
+
+
+
+
+.. _QUIK_Y_PI_RATIO:
+
+QUIK\_Y\_PI\_RATIO: Quicktune Yaw PI ratio
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Ratio between P and I gains for yaw\. Raise this to get a lower I gain
+
+
++-----------+
+| Range     |
++===========+
+| 0.5 to 20 |
++-----------+
+
+
+
+
+.. _QUIK_AUTO_FILTER:
+
+QUIK\_AUTO\_FILTER: Quicktune auto filter enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+When enabled the PID filter settings are automatically set based on INS\_GYRO\_FILTER
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _QUIK_AUTO_SAVE:
+
+QUIK\_AUTO\_SAVE: Quicktune auto save
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Number of seconds after completion of tune to auto\-save\. This is useful when using a 2 position switch for quicktune
+
+
++---------+
+| Units   |
++=========+
+| seconds |
++---------+
+
+
+
+
+.. _QUIK_RC_FUNC:
+
+QUIK\_RC\_FUNC: Quicktune RC function
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+RCn\_OPTION number to use to control tuning stop\/start\/save
+
+
+.. _QUIK_MAX_REDUCE:
+
+QUIK\_MAX\_REDUCE: Quicktune maximum gain reduction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+This controls how much quicktune is allowed to lower gains from the original gains\. If the vehicle already has a reasonable tune and is not oscillating then you can set this to zero to prevent gain reductions\. The default of 20\% is reasonable for most vehicles\. Using a maximum gain reduction lowers the chance of an angle P oscillation happening if quicktune gets a false positive oscillation at a low gain\, which can result in very low rate gains and a dangerous angle P oscillation\.
+
+
++----------+---------+
+| Range    | Units   |
++==========+=========+
+| 0 to 100 | percent |
++----------+---------+
+
+
+
+
+.. _QUIK_OPTIONS:
+
+QUIK\_OPTIONS: Quicktune options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Additional options\. When the Two Position Switch option is enabled then a high switch position will start the tune\, low will disable the tune\. you should also set a QUIK\_AUTO\_SAVE time so that you will be able to save the tune\.
+
+
++-----+----------------------+
+| Bit | Meaning              |
++=====+======================+
+| 0   | UseTwoPositionSwitch |
++-----+----------------------+
+
+
+
+
+.. _QUIK_ANGLE_MAX:
+
+QUIK\_ANGLE\_MAX: maximum angle error for tune abort
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+If while tuning the angle error goes over this limit then the tune will aborts to prevent a bad oscillation in the case of the tuning algorithm failing\. If you get an error \"Tuning\: attitude error ABORTING\" and you think it is a false positive then you can either raise this parameter or you can try increasing the QUIK\_DOUBLE\_TIME to do the tune more slowly\. A value of zero disables this check\.
+
+
++---------+
+| Units   |
++=========+
+| degrees |
++---------+
+
+
+
+
+.. _DR_ENABLE:
+
+DR\_ENABLE: Deadreckoning Enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Deadreckoning Enable
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _DR_ENABLE_DIST:
+
+DR\_ENABLE\_DIST: Deadreckoning Enable Distance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Distance from home \(in meters\) beyond which the dead reckoning will be enabled
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
+.. _DR_GPS_SACC_MAX:
+
+DR\_GPS\_SACC\_MAX: Deadreckoning GPS speed accuracy maximum threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+GPS speed accuracy maximum\, above which deadreckoning home will begin \(default is 0\.8\)\.  Lower values trigger with good GPS quality\, higher values will allow poorer GPS before triggering\. Set to 0 to disable use of GPS speed accuracy
+
+
++---------+
+| Range   |
++=========+
+| 0 to 10 |
++---------+
+
+
+
+
+.. _DR_GPS_SAT_MIN:
+
+DR\_GPS\_SAT\_MIN: Deadreckoning GPS satellite count min threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+GPS satellite count threshold below which deadreckoning home will begin \(default is 6\)\.  Higher values trigger with good GPS quality\, Lower values trigger with worse GPS quality\. Set to 0 to disable use of GPS satellite count
+
+
++---------+
+| Range   |
++=========+
+| 0 to 30 |
++---------+
+
+
+
+
+.. _DR_GPS_TRIGG_SEC:
+
+DR\_GPS\_TRIGG\_SEC: Deadreckoning GPS check trigger seconds
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+GPS checks must fail for this many seconds before dead reckoning will be triggered
+
+
++---------+
+| Units   |
++=========+
+| seconds |
++---------+
+
+
+
+
+.. _DR_FLY_ANGLE:
+
+DR\_FLY\_ANGLE: Deadreckoning Lean Angle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+lean angle \(in degrees\) during deadreckoning
+
+
++---------+---------+
+| Range   | Units   |
++=========+=========+
+| 0 to 45 | degrees |
++---------+---------+
+
+
+
+
+.. _DR_FLY_ALT_MIN:
+
+DR\_FLY\_ALT\_MIN: Deadreckoning Altitude Min
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Copter will fly at at least this altitude \(in meters\) above home during deadreckoning
+
+
++-----------+--------+
+| Range     | Units  |
++===========+========+
+| 0 to 1000 | meters |
++-----------+--------+
+
+
+
+
+.. _DR_FLY_TIMEOUT:
+
+DR\_FLY\_TIMEOUT: Deadreckoning flight timeout
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Copter will attempt to switch to NEXT\_MODE after this many seconds of deadreckoning\.  If it cannot switch modes it will continue in Guided\_NoGPS\.  Set to 0 to disable timeout
+
+
++---------+
+| Units   |
++=========+
+| seconds |
++---------+
+
+
+
+
+.. _DR_NEXT_MODE:
+
+DR\_NEXT\_MODE: Deadreckoning Next Mode
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Copter switch to this mode after GPS recovers or DR\_FLY\_TIMEOUT has elapsed\.  Default is 6\/RTL\.  Set to \-1 to return to mode used before deadreckoning was triggered
+
+
++-------+--------------+
+| Value | Meaning      |
++=======+==============+
+| 2     | AltHold      |
++-------+--------------+
+| 3     | Auto         |
++-------+--------------+
+| 4     | Guided       |
++-------+--------------+
+| 5     | Loiter       |
++-------+--------------+
+| 6     | RTL          |
++-------+--------------+
+| 7     | Circle       |
++-------+--------------+
+| 9     | Land         |
++-------+--------------+
+| 16    | PosHold      |
++-------+--------------+
+| 17    | Brake        |
++-------+--------------+
+| 20    | Guided_NoGPS |
++-------+--------------+
+| 21    | Smart_RTL    |
++-------+--------------+
+| 27    | Auto RTL     |
++-------+--------------+
+
+
+
+
+.. _WEB_ENABLE:
+
+WEB\_ENABLE: enable web server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+enable web server
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _WEB_BIND_PORT:
+
+WEB\_BIND\_PORT: web server TCP port
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+web server TCP port
+
+
++------------+
+| Range      |
++============+
+| 1 to 65535 |
++------------+
+
+
+
+
+.. _WEB_DEBUG:
+
+WEB\_DEBUG: web server debugging
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+web server debugging
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _WEB_BLOCK_SIZE:
+
+WEB\_BLOCK\_SIZE: web server block size
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+web server block size for download
+
+
++------------+
+| Range      |
++============+
+| 1 to 65535 |
++------------+
+
+
+
+
+.. _WEB_TIMEOUT:
+
+WEB\_TIMEOUT: web server timeout
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+timeout for inactive connections
+
+
++-----------+---------+
+| Range     | Units   |
++===========+=========+
+| 0.1 to 60 | seconds |
++-----------+---------+
+
+
+
+
+.. _WEB_SENDFILE_MIN:
+
+WEB\_SENDFILE\_MIN: web server minimum file size for sendfile
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+sendfile is an offloading mechanism for faster file download\. If this is non\-zero and the file is larger than this size then sendfile will be used for file download
+
+
++---------------+
+| Range         |
++===============+
+| 0 to 10000000 |
++---------------+
+
+
+
+
+.. _BATT_SOC_COUNT:
+
+BATT\_SOC\_COUNT: Count of SOC estimators
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Number of battery SOC estimators
+
+
++--------+
+| Range  |
++========+
+| 0 to 4 |
++--------+
+
+
+
+
+.. _BATT_SOC1_IDX:
+
+BATT\_SOC1\_IDX: Battery estimator index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator index
+
+
++--------+
+| Range  |
++========+
+| 0 to 4 |
++--------+
+
+
+
+
+.. _BATT_SOC1_NCELL:
+
+BATT\_SOC1\_NCELL: Battery estimator cell count
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator cell count
+
+
++---------+
+| Range   |
++=========+
+| 0 to 48 |
++---------+
+
+
+
+
+.. _BATT_SOC1_C1:
+
+BATT\_SOC1\_C1: Battery estimator coefficient1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient1
+
+
++------------+
+| Range      |
++============+
+| 100 to 200 |
++------------+
+
+
+
+
+.. _BATT_SOC1_C2:
+
+BATT\_SOC1\_C2: Battery estimator coefficient2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient2
+
+
++--------+
+| Range  |
++========+
+| 2 to 5 |
++--------+
+
+
+
+
+.. _BATT_SOC1_C3:
+
+BATT\_SOC1\_C3: Battery estimator coefficient3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient3
+
+
++-------------+
+| Range       |
++=============+
+| 0.01 to 0.5 |
++-------------+
+
+
+
+
+.. _BATT_SOC2_IDX:
+
+BATT\_SOC2\_IDX: Battery estimator index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator index
+
+
++--------+
+| Range  |
++========+
+| 0 to 4 |
++--------+
+
+
+
+
+.. _BATT_SOC2_NCELL:
+
+BATT\_SOC2\_NCELL: Battery estimator cell count
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator cell count
+
+
++---------+
+| Range   |
++=========+
+| 0 to 48 |
++---------+
+
+
+
+
+.. _BATT_SOC2_C1:
+
+BATT\_SOC2\_C1: Battery estimator coefficient1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient1
+
+
++------------+
+| Range      |
++============+
+| 100 to 200 |
++------------+
+
+
+
+
+.. _BATT_SOC2_C2:
+
+BATT\_SOC2\_C2: Battery estimator coefficient2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient2
+
+
++--------+
+| Range  |
++========+
+| 2 to 5 |
++--------+
+
+
+
+
+.. _BATT_SOC2_C3:
+
+BATT\_SOC2\_C3: Battery estimator coefficient3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient3
+
+
++-------------+
+| Range       |
++=============+
+| 0.01 to 0.5 |
++-------------+
+
+
+
+
+.. _BATT_SOC3_IDX:
+
+BATT\_SOC3\_IDX: Battery estimator index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator index
+
+
++--------+
+| Range  |
++========+
+| 0 to 4 |
++--------+
+
+
+
+
+.. _BATT_SOC3_NCELL:
+
+BATT\_SOC3\_NCELL: Battery estimator cell count
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator cell count
+
+
++---------+
+| Range   |
++=========+
+| 0 to 48 |
++---------+
+
+
+
+
+.. _BATT_SOC3_C1:
+
+BATT\_SOC3\_C1: Battery estimator coefficient1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient1
+
+
++------------+
+| Range      |
++============+
+| 100 to 200 |
++------------+
+
+
+
+
+.. _BATT_SOC3_C2:
+
+BATT\_SOC3\_C2: Battery estimator coefficient2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient2
+
+
++--------+
+| Range  |
++========+
+| 2 to 5 |
++--------+
+
+
+
+
+.. _BATT_SOC3_C3:
+
+BATT\_SOC3\_C3: Battery estimator coefficient3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient3
+
+
++-------------+
+| Range       |
++=============+
+| 0.01 to 0.5 |
++-------------+
+
+
+
+
+.. _BATT_SOC4_IDX:
+
+BATT\_SOC4\_IDX: Battery estimator index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator index
+
+
++--------+
+| Range  |
++========+
+| 0 to 4 |
++--------+
+
+
+
+
+.. _BATT_SOC4_NCELL:
+
+BATT\_SOC4\_NCELL: Battery estimator cell count
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator cell count
+
+
++---------+
+| Range   |
++=========+
+| 0 to 48 |
++---------+
+
+
+
+
+.. _BATT_SOC4_C1:
+
+BATT\_SOC4\_C1: Battery estimator coefficient1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient1
+
+
++------------+
+| Range      |
++============+
+| 100 to 200 |
++------------+
+
+
+
+
+.. _BATT_SOC4_C2:
+
+BATT\_SOC4\_C2: Battery estimator coefficient2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient2
+
+
++--------+
+| Range  |
++========+
+| 2 to 5 |
++--------+
+
+
+
+
+.. _BATT_SOC4_C3:
+
+BATT\_SOC4\_C3: Battery estimator coefficient3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient3
+
+
++-------------+
+| Range       |
++=============+
+| 0.01 to 0.5 |
++-------------+
+
+
+
+
+.. _CAM1_THERM_PAL:
+
+CAM1\_THERM\_PAL: Camera1 Thermal Palette
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+thermal image colour palette
+
+
++-------+-----------------+
+| Value | Meaning         |
++=======+=================+
+| -1    | Leave Unchanged |
++-------+-----------------+
+| 0     | WhiteHot        |
++-------+-----------------+
+| 2     | Sepia           |
++-------+-----------------+
+| 3     | IronBow         |
++-------+-----------------+
+| 4     | Rainbow         |
++-------+-----------------+
+| 5     | Night           |
++-------+-----------------+
+| 6     | Aurora          |
++-------+-----------------+
+| 7     | RedHot          |
++-------+-----------------+
+| 8     | Jungle          |
++-------+-----------------+
+| 9     | Medical         |
++-------+-----------------+
+| 10    | BlackHot        |
++-------+-----------------+
+| 11    | GloryHot        |
++-------+-----------------+
+
+
+
+
+.. _CAM1_THERM_GAIN:
+
+CAM1\_THERM\_GAIN: Camera1 Thermal Gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+thermal image temperature range
+
+
++-------+-------------------------+
+| Value | Meaning                 |
++=======+=========================+
+| -1    | Leave Unchanged         |
++-------+-------------------------+
+| 0     | LowGain (50C to 550C)   |
++-------+-------------------------+
+| 1     | HighGain (-20C to 150C) |
++-------+-------------------------+
+
+
+
+
+.. _CAM1_THERM_RAW:
+
+CAM1\_THERM\_RAW: Camera1 Thermal Raw Data
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+save images with raw temperatures
+
+
++-------+------------------+
+| Value | Meaning          |
++=======+==================+
+| -1    | Leave Unchanged  |
++-------+------------------+
+| 0     | Disabled (30fps) |
++-------+------------------+
+| 1     | Enabled (25 fps) |
++-------+------------------+
+
+
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
 .. _RCK_FORCEHL:
 
 RCK\_FORCEHL: Force enable High Latency mode
@@ -5541,38 +5088,92 @@ Enables the Rockblock sending and recieving
 
 
 
-.. _PLND_ALT_CUTOFF:
+.. _ESRC_EXTN_THRESH:
 
-PLND\_ALT\_CUTOFF: Precland altitude cutoff
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ESRC\_EXTN\_THRESH: EKF Source ExternalNav Innovation Threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-The altitude \(rangefinder distance\) below which we stop using the precision landing sensor and continue landing
+ExternalNav may be used if innovations are below this threshold
+
+
++--------+
+| Range  |
++========+
+| 0 to 1 |
++--------+
+
+
+
+
+.. _ESRC_EXTN_QUAL:
+
+ESRC\_EXTN\_QUAL: EKF Source ExternalNav Quality Threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+ExternalNav may be used if quality is above this threshold
+
+
++----------+---------+
+| Range    | Units   |
++==========+=========+
+| 0 to 100 | percent |
++----------+---------+
+
+
+
+
+.. _ESRC_FLOW_THRESH:
+
+ESRC\_FLOW\_THRESH: EKF Source OpticalFlow Innovation Threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+OpticalFlow may be used if innovations are below this threshold
+
+
++--------+
+| Range  |
++========+
+| 0 to 1 |
++--------+
+
+
+
+
+.. _ESRC_FLOW_QUAL:
+
+ESRC\_FLOW\_QUAL: EKF Source OpticalFlow Quality Threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+OpticalFlow may be used if quality is above this threshold
+
+
++----------+---------+
+| Range    | Units   |
++==========+=========+
+| 0 to 100 | percent |
++----------+---------+
+
+
+
+
+.. _ESRC_RNGFND_MAX:
+
+ESRC\_RNGFND\_MAX: EKF Source Rangefinder Max
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+OpticalFlow may be used if rangefinder distance is below this threshold
 
 
 +---------+--------+
 | Range   | Units  |
 +=========+========+
-| 0 to 20 | meters |
+| 0 to 50 | meters |
 +---------+--------+
-
-
-
-
-.. _DIST_CUTOFF:
-
-DIST\_CUTOFF: Precland distance cutoff
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-The distance from target beyond which the target is ignored
-
-
-+----------+--------+
-| Range    | Units  |
-+==========+========+
-| 0 to 100 | meters |
-+----------+--------+
 
 
 
@@ -5813,6 +5414,42 @@ The mimimum speed in m\/s required for tuning to start
 
 
 
+.. _PLND_ALT_CUTOFF:
+
+PLND\_ALT\_CUTOFF: Precland altitude cutoff
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+The altitude \(rangefinder distance\) below which we stop using the precision landing sensor and continue landing
+
+
++---------+--------+
+| Range   | Units  |
++=========+========+
+| 0 to 20 | meters |
++---------+--------+
+
+
+
+
+.. _DIST_CUTOFF:
+
+DIST\_CUTOFF: Precland distance cutoff
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+The distance from target beyond which the target is ignored
+
+
++----------+--------+
+| Range    | Units  |
++==========+========+
+| 0 to 100 | meters |
++----------+--------+
+
+
+
+
 .. _WINCH_RATE_UP:
 
 WINCH\_RATE\_UP: WinchControl Rate Up
@@ -5877,6 +5514,369 @@ RCn\_OPTION number to use to control winch rate
 +-------+------------+
 | 307   | Scripting8 |
 +-------+------------+
+
+
+
+
+.. _CGA_RATIO:
+
+CGA\_RATIO: CoG adjustment ratio
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+The ratio between the front and back motor outputs during steady\-state hover\. Positive when the CoG is in front of the motors midpoint \(front motors work harder\)\.
+
+
++----------+
+| Range    |
++==========+
+| 0.5 to 2 |
++----------+
+
+
+
+
+.. _TA_ACT_FN:
+
+TA\_ACT\_FN: Activation Function for Terrain Avoidance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Setting an RC channel\'s \_OPTION to this value will use it for Terrain Avoidance enable\/disable
+
+
++------------+
+| Range      |
++============+
+| 300 to 307 |
++------------+
+
+
+
+
+.. _TA_PTCH_DWN_MIN:
+
+TA\_PTCH\_DWN\_MIN: down distance minimum for Pitching
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+If the downward distance is less than this value then start Pitching up to gain altitude\.
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
+.. _TA_PTCH_FWD_MIN:
+
+TA\_PTCH\_FWD\_MIN: forward distance minimum for Pitching
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+If the farwardward distance is less than this value then start Pitching up to gain altitude\.
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
+.. _TA_QUAD_DWN_MIN:
+
+TA\_QUAD\_DWN\_MIN: Downward distance minimum Quading
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+If the downward distance is less than this value then start Quading up to gain altitude\.
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
+.. _TA_QUAD_FWD_MIN:
+
+TA\_QUAD\_FWD\_MIN: minimum forward distance for Quading
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+If the farwardward distance is less than this value then start Quading up to gain altitude\.
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
+.. _TA_PTCH_GSP_MIN:
+
+TA\_PTCH\_GSP\_MIN: minimum ground speed for Pitching
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Minimum Groundspeed \(not airspeed\) to be flying for Pitching to be used\.
+
+
++-------------------+
+| Units             |
++===================+
+| meters per second |
++-------------------+
+
+
+
+
+.. _TA_PTCH_TIMEOUT:
+
+TA\_PTCH\_TIMEOUT: timeout Pitching
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Minimum down or forward distance must be triggered for more than this many seconds to start Pitching
+
+
++---------+
+| Units   |
++=========+
+| seconds |
++---------+
+
+
+
+
+.. _TA_HOME_DIST:
+
+TA\_HOME\_DIST: safe distance around home
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Terrain avoidance will not be applied if the vehicle is less than this distance from home
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
+.. _TA_ALT_MAX:
+
+TA\_ALT\_MAX: ceiling for pitching\/quading
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+This is a limit on how high the terrain avoidane will take the vehicle\. It acts a failsafe to prevent vertical flyaways\.
+
+
++------------+--------+
+| Range      | Units  |
++============+========+
+| 20 to 1000 | meters |
++------------+--------+
+
+
+
+
+.. _TA_GSP_MAX:
+
+TA\_GSP\_MAX: Maximum Groundspeed
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+This is a limit on how fast in groundspeeed terrain avoidance will take the vehicle\. This is to allow for reliable sensor readings\. \-1 for disabled\.
+
+
++----------+-------------------+
+| Range    | Units             |
++==========+===================+
+| 10 to 40 | meters per second |
++----------+-------------------+
+
+
+
+
+.. _TA_GSP_AIRBRAKE:
+
+TA\_GSP\_AIRBRAKE: Groudspeed Airbrake limt
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+This is the limit for triggering airbrake to slow groundspeed as a difference between the airspeed and groundspeed\. \-1 for disabled\.
+
+
++-----------+-------------------+
+| Range     | Units             |
++===========+===================+
+| -1 to -10 | meters per second |
++-----------+-------------------+
+
+
+
+
+.. _TA_CMTC_HGT:
+
+TA\_CMTC\_HGT: CMTC Height
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+The minimum Height above terrain to maintain when following an AUTO mission or RTL\. If zero\(0\) use TA\_PTCH\_DOW\_MIN\.
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
+.. _TA_CMTC_ENABLE:
+
+TA\_CMTC\_ENABLE: CMTC Enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Whether to enable Can\'t Make That Climb while running Terrain Avoidance
+
+
++--------+
+| Range  |
++========+
+| 0 to 1 |
++--------+
+
+
+
+
+.. _TA_UPDATE_RATE:
+
+TA\_UPDATE\_RATE: Frequency to process avoidance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Avoidance processing rate
+
+
++-------+
+| Units |
++=======+
+| hertz |
++-------+
+
+
+
+
+.. _TA_CMTC_RAD:
+
+TA\_CMTC\_RAD: CMTC loiter radius
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Use this radius for the loiter when trying to gain altitude\. If not set or \<\=0 use WP\_LOITER\_RAD
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
+.. _TERR_BRK_ENABLE:
+
+TERR\_BRK\_ENABLE: terrain brake enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+terrain brake enable
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _TERR_BRK_ALT:
+
+TERR\_BRK\_ALT: terrain brake altitude
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+terrain brake altitude\. The altitude above the ground below which BRAKE mode will be engaged if in LOITER mode\.
+
+
++----------+--------+
+| Range    | Units  |
++==========+========+
+| 1 to 100 | meters |
++----------+--------+
+
+
+
+
+.. _TERR_BRK_HDIST:
+
+TERR\_BRK\_HDIST: terrain brake home distance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+terrain brake home distance\. The distance from home where the auto BRAKE will be enabled\. When within this distance of home the script will not activate
+
+
++-----------+--------+
+| Range     | Units  |
++===========+========+
+| 0 to 1000 | meters |
++-----------+--------+
+
+
+
+
+.. _TERR_BRK_SPD:
+
+TERR\_BRK\_SPD: terrain brake speed threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+terrain brake speed threshold\. Don\'t trigger BRAKE if both horizontal speed and descent rate are below this threshold\. By setting this to a small value this can be used to allow the user to climb up to a safe altitude in LOITER mode\. A value of 0\.5 is recommended if you want to use LOITER to recover from an emergency terrain BRAKE mode change\.
+
+
++--------+-------------------+
+| Range  | Units             |
++========+===================+
+| 0 to 5 | meters per second |
++--------+-------------------+
 
 
 
@@ -6434,230 +6434,6 @@ Number of tricks which can be selected over the range of the trik selection RC c
 
 
 
-.. _EFI_DLA_ENABLE:
-
-EFI\_DLA\_ENABLE: EFI DLA enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Enable EFI DLA driver
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _EFI_DLA_LPS:
-
-EFI\_DLA\_LPS: EFI DLA fuel scale
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-EFI DLA litres of fuel per second of injection time
-
-
-+--------------+--------+
-| Range        | Units  |
-+==============+========+
-| 0.00001 to 1 | litres |
-+--------------+--------+
-
-
-
-
-.. _ESC_HW_ENABLE:
-
-ESC\_HW\_ENABLE: Hobbywing ESC Enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Enable Hobbywing ESC telemetry
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _ESC_HW_POLES:
-
-ESC\_HW\_POLES: Hobbywing ESC motor poles
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Number of motor poles for eRPM scaling
-
-
-+---------+
-| Range   |
-+=========+
-| 1 to 50 |
-+---------+
-
-
-
-
-.. _ESC_HW_OFS:
-
-ESC\_HW\_OFS: Hobbywing ESC motor offset
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Motor number offset of first ESC
-
-
-+---------+
-| Range   |
-+=========+
-| 0 to 31 |
-+---------+
-
-
-
-
-.. _EFI_H6K_ENABLE:
-
-EFI\_H6K\_ENABLE: Enable Halo6000 EFI driver
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Enable Halo6000 EFI driver
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _EFI_H6K_CANDRV:
-
-EFI\_H6K\_CANDRV: Halo6000 CAN driver
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Halo6000 CAN driver\. Use 1 for first CAN scripting driver\, 2 for 2nd driver
-
-
-+-------+-----------+
-| Value | Meaning   |
-+=======+===========+
-| 0     | Disabled  |
-+-------+-----------+
-| 1     | FirstCAN  |
-+-------+-----------+
-| 2     | SecondCAN |
-+-------+-----------+
-
-
-
-
-.. _EFI_H6K_START_FN:
-
-EFI\_H6K\_START\_FN: Halo6000 start auxilliary function
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-The RC auxilliary function number for start\/stop of the generator\. Zero to disable start function
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 300   | 300      |
-+-------+----------+
-| 301   | 301      |
-+-------+----------+
-| 302   | 302      |
-+-------+----------+
-| 303   | 303      |
-+-------+----------+
-| 304   | 304      |
-+-------+----------+
-| 305   | 305      |
-+-------+----------+
-| 306   | 306      |
-+-------+----------+
-| 307   | 307      |
-+-------+----------+
-
-
-
-
-.. _EFI_H6K_TELEM_RT:
-
-EFI\_H6K\_TELEM\_RT: Halo6000 telemetry rate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-The rate that additional generator telemetry is sent
-
-
-+-------+
-| Units |
-+=======+
-| hertz |
-+-------+
-
-
-
-
-.. _EFI_H6K_FUELTOT:
-
-EFI\_H6K\_FUELTOT: Halo6000 total fuel capacity
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-The capacity of the tank in litres
-
-
-+--------+
-| Units  |
-+========+
-| litres |
-+--------+
-
-
-
-
-.. _EFI_H6K_OPTIONS:
-
-EFI\_H6K\_OPTIONS: Halo6000 options
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Halo6000 options
-
-
-+-----+------------------+
-| Bit | Meaning          |
-+=====+==================+
-| 0   | LogAllCanPackets |
-+-----+------------------+
-
-
-
-
 .. _UM_SERVO_MASK:
 
 UM\_SERVO\_MASK: Mask of UltraMotion servos
@@ -6758,6 +6534,152 @@ Optional settings
 +-----+--------------------------+
 
 
+
+
+.. _EFI_DLA_ENABLE:
+
+EFI\_DLA\_ENABLE: EFI DLA enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Enable EFI DLA driver
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _EFI_DLA_LPS:
+
+EFI\_DLA\_LPS: EFI DLA fuel scale
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+EFI DLA litres of fuel per second of injection time
+
+
++--------------+--------+
+| Range        | Units  |
++==============+========+
+| 0.00001 to 1 | litres |
++--------------+--------+
+
+
+
+
+.. _DJIR_DEBUG:
+
+DJIR\_DEBUG: DJIRS2 debug
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Enable DJIRS2 debug
+
+
++-------+---------------------------------+
+| Value | Meaning                         |
++=======+=================================+
+| 0     | Disabled                        |
++-------+---------------------------------+
+| 1     | Enabled                         |
++-------+---------------------------------+
+| 2     | Enabled with attitude reporting |
++-------+---------------------------------+
+
+
+
+
+.. _DJIR_UPSIDEDOWN:
+
+DJIR\_UPSIDEDOWN: DJIRS2 upside down
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+DJIRS2 upside down
+
+
++-------+---------------+
+| Value | Meaning       |
++=======+===============+
+| 0     | Right side up |
++-------+---------------+
+| 1     | Upside down   |
++-------+---------------+
+
+
+
+
+.. _EFI_INF_ENABLE:
+
+EFI\_INF\_ENABLE: EFI INF\-Inject enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Enable EFI INF\-Inject driver
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _EFI_INF_OPTIONS:
+
+EFI\_INF\_OPTIONS: EFI INF\-Inject options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+EFI INF driver options
+
+
++-----+---------------+
+| Bit | Meaning       |
++=====+===============+
+| 0   | EnableLogging |
++-----+---------------+
+
+
+
+
+.. _EFI_INF_THR_HZ:
+
+EFI\_INF\_THR\_HZ: EFI INF\-Inject throttle rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+EFI INF throttle output rate
+
+
++---------+-------+
+| Range   | Units |
++=========+=======+
+| 0 to 50 | hertz |
++---------+-------+
+
+
+
+
+.. _EFI_INF_IGN_AUX:
+
+EFI\_INF\_IGN\_AUX: EFI INF\-Inject ignition aux function
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+EFI INF throttle ignition aux function
 
 
 .. _VIEP_DEBUG:
@@ -7220,13 +7142,13 @@ SkyPower EFI restart time\. If engine should be running and it has stopped for t
 
 
 
-.. _EFI_2K_ENABLE:
+.. _ESC_HW_ENABLE:
 
-EFI\_2K\_ENABLE: Enable NMEA 2000 EFI driver
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ESC\_HW\_ENABLE: Hobbywing ESC Enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Enable NMEA 2000 EFI driver
+Enable Hobbywing ESC telemetry
 
 
 +-------+----------+
@@ -7240,42 +7162,38 @@ Enable NMEA 2000 EFI driver
 
 
 
-.. _EFI_2K_CANDRV:
+.. _ESC_HW_POLES:
 
-EFI\_2K\_CANDRV: NMEA 2000 CAN driver
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-NMEA 2000 CAN driver\. Use 1 for first CAN scripting driver\, 2 for 2nd driver
+ESC\_HW\_POLES: Hobbywing ESC motor poles
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-+-------+-----------+
-| Value | Meaning   |
-+=======+===========+
-| 0     | Disabled  |
-+-------+-----------+
-| 1     | FirstCAN  |
-+-------+-----------+
-| 2     | SecondCAN |
-+-------+-----------+
+Number of motor poles for eRPM scaling
+
+
++---------+
+| Range   |
++=========+
+| 1 to 50 |
++---------+
 
 
 
 
-.. _EFI_2K_OPTIONS:
+.. _ESC_HW_OFS:
 
-EFI\_2K\_OPTIONS: NMEA 2000 options
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-NMEA 2000 driver options
+ESC\_HW\_OFS: Hobbywing ESC motor offset
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-+-----+---------------+
-| Bit | Meaning       |
-+=====+===============+
-| 0   | EnableLogging |
-+-----+---------------+
+Motor number offset of first ESC
+
+
++---------+
+| Range   |
++=========+
+| 0 to 31 |
++---------+
 
 
 
@@ -7399,56 +7317,13 @@ ANX CAN battery options
 
 
 
-.. _DJIR_DEBUG:
+.. _EFI_H6K_ENABLE:
 
-DJIR\_DEBUG: DJIRS2 debug
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Enable DJIRS2 debug
+EFI\_H6K\_ENABLE: Enable Halo6000 EFI driver
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-+-------+---------------------------------+
-| Value | Meaning                         |
-+=======+=================================+
-| 0     | Disabled                        |
-+-------+---------------------------------+
-| 1     | Enabled                         |
-+-------+---------------------------------+
-| 2     | Enabled with attitude reporting |
-+-------+---------------------------------+
-
-
-
-
-.. _DJIR_UPSIDEDOWN:
-
-DJIR\_UPSIDEDOWN: DJIRS2 upside down
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-DJIRS2 upside down
-
-
-+-------+---------------+
-| Value | Meaning       |
-+=======+===============+
-| 0     | Right side up |
-+-------+---------------+
-| 1     | Upside down   |
-+-------+---------------+
-
-
-
-
-.. _EFI_INF_ENABLE:
-
-EFI\_INF\_ENABLE: EFI INF\-Inject enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Enable EFI INF\-Inject driver
+Enable Halo6000 EFI driver
 
 
 +-------+----------+
@@ -7462,13 +7337,165 @@ Enable EFI INF\-Inject driver
 
 
 
-.. _EFI_INF_OPTIONS:
+.. _EFI_H6K_CANDRV:
 
-EFI\_INF\_OPTIONS: EFI INF\-Inject options
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+EFI\_H6K\_CANDRV: Halo6000 CAN driver
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-EFI INF driver options
+Halo6000 CAN driver\. Use 1 for first CAN scripting driver\, 2 for 2nd driver
+
+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Disabled  |
++-------+-----------+
+| 1     | FirstCAN  |
++-------+-----------+
+| 2     | SecondCAN |
++-------+-----------+
+
+
+
+
+.. _EFI_H6K_START_FN:
+
+EFI\_H6K\_START\_FN: Halo6000 start auxilliary function
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+The RC auxilliary function number for start\/stop of the generator\. Zero to disable start function
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 300   | 300      |
++-------+----------+
+| 301   | 301      |
++-------+----------+
+| 302   | 302      |
++-------+----------+
+| 303   | 303      |
++-------+----------+
+| 304   | 304      |
++-------+----------+
+| 305   | 305      |
++-------+----------+
+| 306   | 306      |
++-------+----------+
+| 307   | 307      |
++-------+----------+
+
+
+
+
+.. _EFI_H6K_TELEM_RT:
+
+EFI\_H6K\_TELEM\_RT: Halo6000 telemetry rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+The rate that additional generator telemetry is sent
+
+
++-------+
+| Units |
++=======+
+| hertz |
++-------+
+
+
+
+
+.. _EFI_H6K_FUELTOT:
+
+EFI\_H6K\_FUELTOT: Halo6000 total fuel capacity
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+The capacity of the tank in litres
+
+
++--------+
+| Units  |
++========+
+| litres |
++--------+
+
+
+
+
+.. _EFI_H6K_OPTIONS:
+
+EFI\_H6K\_OPTIONS: Halo6000 options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Halo6000 options
+
+
++-----+------------------+
+| Bit | Meaning          |
++=====+==================+
+| 0   | LogAllCanPackets |
++-----+------------------+
+
+
+
+
+.. _EFI_2K_ENABLE:
+
+EFI\_2K\_ENABLE: Enable NMEA 2000 EFI driver
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Enable NMEA 2000 EFI driver
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _EFI_2K_CANDRV:
+
+EFI\_2K\_CANDRV: NMEA 2000 CAN driver
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+NMEA 2000 CAN driver\. Use 1 for first CAN scripting driver\, 2 for 2nd driver
+
+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Disabled  |
++-------+-----------+
+| 1     | FirstCAN  |
++-------+-----------+
+| 2     | SecondCAN |
++-------+-----------+
+
+
+
+
+.. _EFI_2K_OPTIONS:
+
+EFI\_2K\_OPTIONS: NMEA 2000 options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+NMEA 2000 driver options
 
 
 +-----+---------------+
@@ -7478,80 +7505,6 @@ EFI INF driver options
 +-----+---------------+
 
 
-
-
-.. _EFI_INF_THR_HZ:
-
-EFI\_INF\_THR\_HZ: EFI INF\-Inject throttle rate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-EFI INF throttle output rate
-
-
-+---------+-------+
-| Range   | Units |
-+=========+=======+
-| 0 to 50 | hertz |
-+---------+-------+
-
-
-
-
-.. _EFI_INF_IGN_AUX:
-
-EFI\_INF\_IGN\_AUX: EFI INF\-Inject ignition aux function
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-EFI INF throttle ignition aux function
-
-
-.. _TOFSENSE_S1_PRX:
-
-TOFSENSE\_S1\_PRX: TOFSENSE\-M to be used as Proximity sensor
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Set 0 if sensor is to be used as a 1\-D rangefinder \(minimum of all distances will be sent\, typically used for height detection\)\. Set 1 if it should be used as a 3\-D proximity device \(Eg\. Obstacle Avoidance\)
-
-
-+-------+-------------------------+
-| Value | Meaning                 |
-+=======+=========================+
-| 0     | Set as Rangefinder      |
-+-------+-------------------------+
-| 1     | Set as Proximity sensor |
-+-------+-------------------------+
-
-
-
-
-.. _TOFSENSE_S1_SP:
-
-TOFSENSE\_S1\_SP: TOFSENSE\-M serial port config
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-UART instance sensor is connected to\. Set 1 if sensor is connected to the port with fist SERIALx\_PROTOCOL \= 28\. 
-
-
-+--------+
-| Range  |
-+========+
-| 1 to 4 |
-+--------+
-
-
-
-
-.. _TOFSENSE_S1_BR:
-
-TOFSENSE\_S1\_BR: TOFSENSE\-M serial port baudrate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Serial Port baud rate\. Sensor baud rate can be changed from Nassistant software
 
 
 .. _TOFSENSE_PRX:
@@ -7718,6 +7671,53 @@ Third TOFSENSE\-M sensor ID\. This cannot be 0\. You can change ID of sensor fro
 +----------+
 
 
+
+
+.. _TOFSENSE_S1_PRX:
+
+TOFSENSE\_S1\_PRX: TOFSENSE\-M to be used as Proximity sensor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Set 0 if sensor is to be used as a 1\-D rangefinder \(minimum of all distances will be sent\, typically used for height detection\)\. Set 1 if it should be used as a 3\-D proximity device \(Eg\. Obstacle Avoidance\)
+
+
++-------+-------------------------+
+| Value | Meaning                 |
++=======+=========================+
+| 0     | Set as Rangefinder      |
++-------+-------------------------+
+| 1     | Set as Proximity sensor |
++-------+-------------------------+
+
+
+
+
+.. _TOFSENSE_S1_SP:
+
+TOFSENSE\_S1\_SP: TOFSENSE\-M serial port config
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+UART instance sensor is connected to\. Set 1 if sensor is connected to the port with fist SERIALx\_PROTOCOL \= 28\. 
+
+
++--------+
+| Range  |
++========+
+| 1 to 4 |
++--------+
+
+
+
+
+.. _TOFSENSE_S1_BR:
+
+TOFSENSE\_S1\_BR: TOFSENSE\-M serial port baudrate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Serial Port baud rate\. Sensor baud rate can be changed from Nassistant software
 
 
 

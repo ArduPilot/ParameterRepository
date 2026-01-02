@@ -431,6 +431,145 @@ Minimum depth to engage SURFTRAK mode
 
 # Lua Script Parameters
 
+## POI_DIST_MAX: Mount POI distance max
+
+POI's max distance (in meters) from the vehicle
+
+- Range: 0 10000
+
+## SHIP_ENABLE: Ship landing enable
+
+Enable ship landing system
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## SHIP_LAND_ANGLE: Ship landing angle
+
+Angle from the stern of the ship for landing approach. Use this to ensure that on a go-around that ship superstructure and cables are avoided. A value of zero means to approach from the rear of the ship. A value of 90 means the landing will approach from the port (left) side of the ship. A value of -90 will mean approaching from the starboard (right) side of the ship. A value of 180 will approach from the bow of the ship. This parameter is combined with the sign of the RTL_RADIUS parameter to determine the holdoff pattern. If RTL_RADIUS is positive then a clockwise loiter is performed, if RTL_RADIUS is negative then a counter-clockwise loiter is used.
+
+- Range: -180 180
+
+- Units: deg
+
+## SHIP_AUTO_OFS: Ship automatic offset trigger
+
+Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target. NOTE: This parameter will auto-reset to zero once the offset has been calculated.
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Trigger|
+
+## PREV_ENABLE: parameter reversion enable
+
+Enable parameter reversion system
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## PREV_RC_FUNC: param reversion RC function
+
+RCn_OPTION number to used to trigger parameter reversion
+
+## QUIK_ENABLE: Quicktune enable
+
+Enable quicktune system
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## QUIK_AXES: Quicktune axes
+
+axes to tune
+
+- Bitmask: 0:Roll,1:Pitch,2:Yaw
+
+## QUIK_DOUBLE_TIME: Quicktune doubling time
+
+Time to double a tuning parameter. Raise this for a slower tune.
+
+- Range: 5 20
+
+- Units: s
+
+## QUIK_GAIN_MARGIN: Quicktune gain margin
+
+Reduction in gain after oscillation detected. Raise this number to get a more conservative tune
+
+- Range: 20 80
+
+- Units: %
+
+## QUIK_OSC_SMAX: Quicktune oscillation rate threshold
+
+Threshold for oscillation detection. A lower value will lead to a more conservative tune.
+
+- Range: 1 10
+
+## QUIK_YAW_P_MAX: Quicktune Yaw P max
+
+Maximum value for yaw P gain
+
+- Range: 0.1 3
+
+## QUIK_YAW_D_MAX: Quicktune Yaw D max
+
+Maximum value for yaw D gain
+
+- Range: 0.001 1
+
+## QUIK_RP_PI_RATIO: Quicktune roll/pitch PI ratio
+
+Ratio between P and I gains for roll and pitch. Raise this to get a lower I gain
+
+- Range: 0.5 1.0
+
+## QUIK_Y_PI_RATIO: Quicktune Yaw PI ratio
+
+Ratio between P and I gains for yaw. Raise this to get a lower I gain
+
+- Range: 0.5 20
+
+## QUIK_AUTO_FILTER: Quicktune auto filter enable
+
+When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## QUIK_AUTO_SAVE: Quicktune auto save
+
+Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune
+
+- Units: s
+
+## QUIK_RC_FUNC: Quicktune RC function
+
+RCn_OPTION number to use to control tuning stop/start/save
+
+## QUIK_MAX_REDUCE: Quicktune maximum gain reduction
+
+This controls how much quicktune is allowed to lower gains from the original gains. If the vehicle already has a reasonable tune and is not oscillating then you can set this to zero to prevent gain reductions. The default of 20% is reasonable for most vehicles. Using a maximum gain reduction lowers the chance of an angle P oscillation happening if quicktune gets a false positive oscillation at a low gain, which can result in very low rate gains and a dangerous angle P oscillation.
+
+- Units: %
+
+- Range: 0 100
+
+## QUIK_OPTIONS: Quicktune options
+
+Additional options. When the Two Position Switch option is enabled then a high switch position will start the tune, low will disable the tune. you should also set a QUIK_AUTO_SAVE time so that you will be able to save the tune.
+
+- Bitmask: 0:UseTwoPositionSwitch
+
 ## DR_ENABLE: Deadreckoning Enable
 
 Deadreckoning Enable
@@ -505,11 +644,57 @@ Copter switch to this mode after GPS recovers or DR_FLY_TIMEOUT has elapsed.  De
 |21|Smart_RTL|
 |27|Auto RTL|
 
-## POI_DIST_MAX: Mount POI distance max
+## WEB_ENABLE: enable web server
 
-POI's max distance (in meters) from the vehicle
+enable web server
 
-- Range: 0 10000
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## WEB_BIND_PORT: web server TCP port
+
+web server TCP port
+
+- Range: 1 65535
+
+## WEB_DEBUG: web server debugging
+
+*Note: This parameter is for advanced users*
+
+web server debugging
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## WEB_BLOCK_SIZE: web server block size
+
+*Note: This parameter is for advanced users*
+
+web server block size for download
+
+- Range: 1 65535
+
+## WEB_TIMEOUT: web server timeout
+
+*Note: This parameter is for advanced users*
+
+timeout for inactive connections
+
+- Units: s
+
+- Range: 0.1 60
+
+## WEB_SENDFILE_MIN: web server minimum file size for sendfile
+
+*Note: This parameter is for advanced users*
+
+sendfile is an offloading mechanism for faster file download. If this is non-zero and the file is larger than this size then sendfile will be used for file download
+
+- Range: 0 10000000
 
 ## BATT_SOC_COUNT: Count of SOC estimators
 
@@ -636,191 +821,6 @@ Battery estimator coefficient2
 Battery estimator coefficient3
 
 - Range: 0.01 0.5
-
-## QUIK_ENABLE: Quicktune enable
-
-Enable quicktune system
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## QUIK_AXES: Quicktune axes
-
-axes to tune
-
-- Bitmask: 0:Roll,1:Pitch,2:Yaw
-
-## QUIK_DOUBLE_TIME: Quicktune doubling time
-
-Time to double a tuning parameter. Raise this for a slower tune.
-
-- Range: 5 20
-
-- Units: s
-
-## QUIK_GAIN_MARGIN: Quicktune gain margin
-
-Reduction in gain after oscillation detected. Raise this number to get a more conservative tune
-
-- Range: 20 80
-
-- Units: %
-
-## QUIK_OSC_SMAX: Quicktune oscillation rate threshold
-
-Threshold for oscillation detection. A lower value will lead to a more conservative tune.
-
-- Range: 1 10
-
-## QUIK_YAW_P_MAX: Quicktune Yaw P max
-
-Maximum value for yaw P gain
-
-- Range: 0.1 3
-
-## QUIK_YAW_D_MAX: Quicktune Yaw D max
-
-Maximum value for yaw D gain
-
-- Range: 0.001 1
-
-## QUIK_RP_PI_RATIO: Quicktune roll/pitch PI ratio
-
-Ratio between P and I gains for roll and pitch. Raise this to get a lower I gain
-
-- Range: 0.5 1.0
-
-## QUIK_Y_PI_RATIO: Quicktune Yaw PI ratio
-
-Ratio between P and I gains for yaw. Raise this to get a lower I gain
-
-- Range: 0.5 20
-
-## QUIK_AUTO_FILTER: Quicktune auto filter enable
-
-When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## QUIK_AUTO_SAVE: Quicktune auto save
-
-Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune
-
-- Units: s
-
-## QUIK_RC_FUNC: Quicktune RC function
-
-RCn_OPTION number to use to control tuning stop/start/save
-
-## QUIK_MAX_REDUCE: Quicktune maximum gain reduction
-
-This controls how much quicktune is allowed to lower gains from the original gains. If the vehicle already has a reasonable tune and is not oscillating then you can set this to zero to prevent gain reductions. The default of 20% is reasonable for most vehicles. Using a maximum gain reduction lowers the chance of an angle P oscillation happening if quicktune gets a false positive oscillation at a low gain, which can result in very low rate gains and a dangerous angle P oscillation.
-
-- Units: %
-
-- Range: 0 100
-
-## QUIK_OPTIONS: Quicktune options
-
-Additional options. When the Two Position Switch option is enabled then a high switch position will start the tune, low will disable the tune. you should also set a QUIK_AUTO_SAVE time so that you will be able to save the tune.
-
-- Bitmask: 0:UseTwoPositionSwitch
-
-## SHIP_ENABLE: Ship landing enable
-
-Enable ship landing system
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## SHIP_LAND_ANGLE: Ship landing angle
-
-Angle from the stern of the ship for landing approach. Use this to ensure that on a go-around that ship superstructure and cables are avoided. A value of zero means to approach from the rear of the ship. A value of 90 means the landing will approach from the port (left) side of the ship. A value of -90 will mean approaching from the starboard (right) side of the ship. A value of 180 will approach from the bow of the ship. This parameter is combined with the sign of the RTL_RADIUS parameter to determine the holdoff pattern. If RTL_RADIUS is positive then a clockwise loiter is performed, if RTL_RADIUS is negative then a counter-clockwise loiter is used.
-
-- Range: -180 180
-
-- Units: deg
-
-## SHIP_AUTO_OFS: Ship automatic offset trigger
-
-Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target. NOTE: This parameter will auto-reset to zero once the offset has been calculated.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Trigger|
-
-## WEB_ENABLE: enable web server
-
-enable web server
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## WEB_BIND_PORT: web server TCP port
-
-web server TCP port
-
-- Range: 1 65535
-
-## WEB_DEBUG: web server debugging
-
-*Note: This parameter is for advanced users*
-
-web server debugging
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## WEB_BLOCK_SIZE: web server block size
-
-*Note: This parameter is for advanced users*
-
-web server block size for download
-
-- Range: 1 65535
-
-## WEB_TIMEOUT: web server timeout
-
-*Note: This parameter is for advanced users*
-
-timeout for inactive connections
-
-- Units: s
-
-- Range: 0.1 60
-
-## WEB_SENDFILE_MIN: web server minimum file size for sendfile
-
-*Note: This parameter is for advanced users*
-
-sendfile is an offloading mechanism for faster file download. If this is non-zero and the file is larger than this size then sendfile will be used for file download
-
-- Range: 0 10000000
-
-## PREV_ENABLE: parameter reversion enable
-
-Enable parameter reversion system
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## PREV_RC_FUNC: param reversion RC function
-
-RCn_OPTION number to used to trigger parameter reversion
 
 ## RCK_FORCEHL: Force enable High Latency mode
 
@@ -1170,73 +1170,35 @@ EFI DLA litres of fuel per second of injection time
 
 - Units: litres
 
-## ESC_HW_ENABLE: Hobbywing ESC Enable
+## DJIR_DEBUG: DJIRS2 debug
 
-Enable Hobbywing ESC telemetry
+*Note: This parameter is for advanced users*
 
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## ESC_HW_POLES: Hobbywing ESC motor poles
-
-Number of motor poles for eRPM scaling
-
-- Range: 1 50
-
-## ESC_HW_OFS: Hobbywing ESC motor offset
-
-Motor number offset of first ESC
-
-- Range: 0 31
-
-## EFI_H6K_ENABLE: Enable Halo6000 EFI driver
-
-Enable Halo6000 EFI driver
+Enable DJIRS2 debug
 
 |Value|Meaning|
 |:---:|:---:|
 |0|Disabled|
 |1|Enabled|
+|2|Enabled with attitude reporting|
 
-## EFI_H6K_CANDRV: Halo6000 CAN driver
+## DJIR_UPSIDEDOWN: DJIRS2 upside down
 
-Halo6000 CAN driver. Use 1 for first CAN scripting driver, 2 for 2nd driver
+DJIRS2 upside down
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Right side up|
+|1|Upside down|
+
+## EFI_INF_ENABLE: EFI INF-Inject enable
+
+Enable EFI INF-Inject driver
 
 |Value|Meaning|
 |:---:|:---:|
 |0|Disabled|
-|1|FirstCAN|
-|2|SecondCAN|
-
-## EFI_H6K_START_FN: Halo6000 start auxilliary function
-
-The RC auxilliary function number for start/stop of the generator. Zero to disable start function
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|300|300|
-|301|301|
-|302|302|
-|303|303|
-|304|304|
-|305|305|
-|306|306|
-|307|307|
-
-## EFI_H6K_TELEM_RT: Halo6000 telemetry rate
-
-The rate that additional generator telemetry is sent
-
-- Units: Hz
-
-## EFI_H6K_FUELTOT: Halo6000 total fuel capacity
-
-The capacity of the tank in litres
-
-- Units: litres
+|1|Enabled|
 
 ## VIEP_DEBUG: ViewPro debug
 
@@ -1451,6 +1413,27 @@ SkyPower EFI restart time. If engine should be running and it has stopped for th
 
 - Units: s
 
+## ESC_HW_ENABLE: Hobbywing ESC Enable
+
+Enable Hobbywing ESC telemetry
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## ESC_HW_POLES: Hobbywing ESC motor poles
+
+Number of motor poles for eRPM scaling
+
+- Range: 1 50
+
+## ESC_HW_OFS: Hobbywing ESC motor offset
+
+Motor number offset of first ESC
+
+- Range: 0 31
+
 ## EFI_SVF_ENABLE: Generator SVFFI enable
 
 Enable SVFFI generator support
@@ -1502,54 +1485,52 @@ ANX CAN battery options
 
 - Bitmask: 0:LogAllFrames
 
-## DJIR_DEBUG: DJIRS2 debug
+## EFI_H6K_ENABLE: Enable Halo6000 EFI driver
 
-*Note: This parameter is for advanced users*
-
-Enable DJIRS2 debug
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-|2|Enabled with attitude reporting|
-
-## DJIR_UPSIDEDOWN: DJIRS2 upside down
-
-DJIRS2 upside down
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Right side up|
-|1|Upside down|
-
-## EFI_INF_ENABLE: EFI INF-Inject enable
-
-Enable EFI INF-Inject driver
+Enable Halo6000 EFI driver
 
 |Value|Meaning|
 |:---:|:---:|
 |0|Disabled|
 |1|Enabled|
 
-## TOFSENSE_S1_PRX: TOFSENSE-M to be used as Proximity sensor
+## EFI_H6K_CANDRV: Halo6000 CAN driver
 
-Set 0 if sensor is to be used as a 1-D rangefinder (minimum of all distances will be sent, typically used for height detection). Set 1 if it should be used as a 3-D proximity device (Eg. Obstacle Avoidance)
+Halo6000 CAN driver. Use 1 for first CAN scripting driver, 2 for 2nd driver
 
 |Value|Meaning|
 |:---:|:---:|
-|0|Set as Rangefinder|
-|1|Set as Proximity sensor|
+|0|Disabled|
+|1|FirstCAN|
+|2|SecondCAN|
 
-## TOFSENSE_S1_SP: TOFSENSE-M serial port config
+## EFI_H6K_START_FN: Halo6000 start auxilliary function
 
-UART instance sensor is connected to. Set 1 if sensor is connected to the port with fist SERIALx_PROTOCOL = 28. 
+The RC auxilliary function number for start/stop of the generator. Zero to disable start function
 
-- Range: 1 4
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|300|300|
+|301|301|
+|302|302|
+|303|303|
+|304|304|
+|305|305|
+|306|306|
+|307|307|
 
-## TOFSENSE_S1_BR: TOFSENSE-M serial port baudrate
+## EFI_H6K_TELEM_RT: Halo6000 telemetry rate
 
-Serial Port baud rate. Sensor baud rate can be changed from Nassistant software
+The rate that additional generator telemetry is sent
+
+- Units: Hz
+
+## EFI_H6K_FUELTOT: Halo6000 total fuel capacity
+
+The capacity of the tank in litres
+
+- Units: litres
 
 ## TOFSENSE_PRX: TOFSENSE-M to be used as Proximity sensor
 
@@ -1610,6 +1591,25 @@ Third TOFSENSE-M sensors backend Instance. Setting this to 3 will pick the secon
 Third TOFSENSE-M sensor ID. This cannot be 0. You can change ID of sensor from NAssistant Software
 
 - Range: 1 255
+
+## TOFSENSE_S1_PRX: TOFSENSE-M to be used as Proximity sensor
+
+Set 0 if sensor is to be used as a 1-D rangefinder (minimum of all distances will be sent, typically used for height detection). Set 1 if it should be used as a 3-D proximity device (Eg. Obstacle Avoidance)
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Set as Rangefinder|
+|1|Set as Proximity sensor|
+
+## TOFSENSE_S1_SP: TOFSENSE-M serial port config
+
+UART instance sensor is connected to. Set 1 if sensor is connected to the port with fist SERIALx_PROTOCOL = 28. 
+
+- Range: 1 4
+
+## TOFSENSE_S1_BR: TOFSENSE-M serial port baudrate
+
+Serial Port baud rate. Sensor baud rate can be changed from Nassistant software
 
 # ACTUATOR Parameters
 
