@@ -37,32 +37,34 @@ class Groundskeeper:
 """)
 
     def get_version_for_tag(self, tag) -> Tuple[int, int]:
-      if tag['major'] > 0:
-          return tag['major'], tag['minor']
-      else:
-          # fetch number from version.h in the vehicle folder in the given tag
-          self.repository.git.checkout(tag["tag"], force=True)
-          # try to read <vehicle>/version.h
-          repo_path = Path(self.repository_path)
-          potential_paths = (
-              repo_path / tag['name'] / 'version.h',
-              repo_path / tag['vehicle_type'] / 'version.h',
-              repo_path / f'Ardu{tag["vehicle_type"]}' / 'version.h',
-          )
-          for file in potential_paths:
-              if file.exists():
-                  break  # We found a valid file
-          else:
-              print(f'No version.h found for {tag["name"]}')
-              return 0, 0
-          
-          with open(file=file, mode='r') as version_file:
-              content = version_file.read()
-              match = re.search(r'#define\s+FW_MAJOR\s+(\d+)', content)
-              major = int(match.group(1))
-              match = re.search(r'#define\s+FW_MINOR\s+(\d+)', content)
-              minor = int(match.group(1))
-              return major, minor
+        if tag['major'] > 0:
+            return tag['major'], tag['minor']
+        else:
+            # fetch number from version.h in the vehicle folder in the given tag
+            self.repository.git.checkout(tag["tag"], force=True)
+
+            version = self.get_version_from_source(tag['name'])
+            if version is None:  # Try with an alternative path
+                version = self.get_version_from_source(tag['vehicle_type'])
+            if version is None:  # No luck
+                print(f'Failed to get version for {tag["vehicle_type"]}')
+                return (0, 0)
+            return version[:2]  # major, minor
+
+    def get_version_from_source(self, vehicle_type: str) -> Tuple[int, int, int] | None:
+        # try to read <vehicle_type>/version.h
+        repo_path = Path(self.repository_path)
+        prefix = self.get_vehicle_prefix(vehicle_type)
+        version_file = repo_path / f'{prefix}{vehicle_type}' / 'version.h'
+
+        if not version_file.exists():
+            return
+
+        content = version_file.read_text()
+        return tuple(
+            int(re.search(rf'#define\s+FW_{v}\s+(\d+)', content).group(1))
+            for v in ('MAJOR', 'MINOR', 'PATCH')
+        )
 
     def clone_repository(self):
         print(f'Starting cloning to: {self.repository_path}')
@@ -75,6 +77,11 @@ class Groundskeeper:
         last_commit_date = repository.head.commit.committed_date
         return datetime.fromtimestamp(last_commit_date)
 
+    @staticmethod
+    def get_vehicle_prefix(vehicle_type: str):
+        if vehicle_type in ('Copter', 'Plane', 'Sub'):
+            return 'Ardu'
+        return ''  # No prefix, or unknown vehicle type
 
     def run(self):
         self.repository = self.clone_repository()
@@ -182,7 +189,7 @@ class Groundskeeper:
                 os.remove(data)
 
             # Run MAVLink messages parser
-            vehicle = f'{"Ardu" if vehicle_type != "Rover" else ""}{vehicle_type}'
+            vehicle = f'{self.get_vehicle_prefix(vehicle_type)}{vehicle_type}'
             # The parser expects to be run from its normal place in the repository
             script_folder = f'{self.repository_path}/Tools/scripts/'
             script_file = script_folder + 'mavlink_parse.py'
