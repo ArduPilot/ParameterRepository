@@ -70,6 +70,7 @@ class Groundskeeper:
         #return git.Repo(self.repository_path)
         return git.Repo.clone_from(self.repository_url, self.repository_path)
 
+    @staticmethod
     def get_last_ground_change(repository: git.Repo):
         last_commit_date = repository.head.commit.committed_date
         return datetime.fromtimestamp(last_commit_date)
@@ -78,7 +79,7 @@ class Groundskeeper:
     def run(self):
         self.repository = self.clone_repository()
         tag_names = [tag.path[len('refs/tags/'):] for tag in self.repository.tags]
-        last_ground_change = Groundskeeper.get_last_ground_change(git.Repo(Path(__file__).parent.parent))
+        last_ground_change = self.get_last_ground_change(git.Repo(Path(__file__).parent.parent))
 
         # Prepare for MAVLink parsing - always use the latest script (since it might cover new messages)
         #shutil.copy(f'{self.repository_path}/Tools/scripts/mavlink_parse.py', self.temp_folder)
@@ -156,7 +157,7 @@ class Groundskeeper:
 
             # Ignore local changes (they're automated anyway)
             self.repository.git.checkout(tag_reference, force=True)
-            tag_date = Groundskeeper.get_last_ground_change(self.repository)
+            tag_date = self.get_last_ground_change(self.repository)
             if last_ground_change > tag_date:
                 print(f"Version already generated for {tag_date}")
                 continue
