@@ -23718,8 +23718,6 @@ This allows selection of a PX4 or VRBRAIN board type\. If set to zero then the b
 | +-------+----------------+ |
 | | 20    | AUAV2.1        | |
 | +-------+----------------+ |
-| | 22    | MINDPXV2       | |
-| +-------+----------------+ |
 | | 39    | PX4 FMUV6      | |
 | +-------+----------------+ |
 | | 100   | PX4 OLDDRIVERS | |
@@ -76349,6 +76347,30 @@ SIM\_GPS1\_NUMSATS: GPS Num Satellites
 Number of satellites GPS has in view
 
 
+.. _SIM_GPS1_OPTIONS:
+
+SIM\_GPS1\_OPTIONS: GPS Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+GPS Options bitmask
+
+
++----------------------------+
+| Bitmask                    |
++============================+
+| +-----+------------------+ |
+| | Bit | Meaning          | |
+| +=====+==================+ |
+| | 0   | UBlox GPS is F9P | |
+| +-----+------------------+ |
+|                            |
++----------------------------+
+
+
+
+
 .. _SIM_GPS1_POS_X:
 
 SIM\_GPS1\_POS\_X: GPS Position
@@ -76745,6 +76767,30 @@ SIM\_GPS2\_NUMSATS: GPS Num Satellites
 
 
 Number of satellites GPS has in view
+
+
+.. _SIM_GPS2_OPTIONS:
+
+SIM\_GPS2\_OPTIONS: GPS Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+GPS Options bitmask
+
+
++----------------------------+
+| Bitmask                    |
++============================+
+| +-----+------------------+ |
+| | Bit | Meaning          | |
+| +=====+==================+ |
+| | 0   | UBlox GPS is F9P | |
+| +-----+------------------+ |
+|                            |
++----------------------------+
+
+
 
 
 .. _SIM_GPS2_POS_X:
@@ -77145,6 +77191,30 @@ SIM\_GPS3\_NUMSATS: GPS Num Satellites
 Number of satellites GPS has in view
 
 
+.. _SIM_GPS3_OPTIONS:
+
+SIM\_GPS3\_OPTIONS: GPS Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+GPS Options bitmask
+
+
++----------------------------+
+| Bitmask                    |
++============================+
+| +-----+------------------+ |
+| | Bit | Meaning          | |
+| +=====+==================+ |
+| | 0   | UBlox GPS is F9P | |
+| +-----+------------------+ |
+|                            |
++----------------------------+
+
+
+
+
 .. _SIM_GPS3_POS_X:
 
 SIM\_GPS3\_POS\_X: GPS Position
@@ -77541,6 +77611,30 @@ SIM\_GPS4\_NUMSATS: GPS Num Satellites
 
 
 Number of satellites GPS has in view
+
+
+.. _SIM_GPS4_OPTIONS:
+
+SIM\_GPS4\_OPTIONS: GPS Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+GPS Options bitmask
+
+
++----------------------------+
+| Bitmask                    |
++============================+
+| +-----+------------------+ |
+| | Bit | Meaning          | |
+| +=====+==================+ |
+| | 0   | UBlox GPS is F9P | |
+| +-----+------------------+ |
+|                            |
++----------------------------+
+
+
 
 
 .. _SIM_GPS4_POS_X:

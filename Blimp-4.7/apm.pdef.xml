@@ -8466,7 +8466,6 @@
           <value code="13">Intel Aero FC</value>
           <value code="14">Pixhawk Pro</value>
           <value code="20">AUAV2.1</value>
-          <value code="22">MINDPXV2</value>
           <value code="39">PX4 FMUV6</value>
           <value code="100">PX4 OLDDRIVERS</value>
         </values>
@@ -17819,6 +17818,7 @@
           <value code="111">Loweheiser starter</value>
           <value code="218">Loweheiser throttle</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="46">RC Override Enable</value>
@@ -17897,6 +17897,7 @@
           <value code="111">Loweheiser starter</value>
           <value code="218">Loweheiser throttle</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="46">RC Override Enable</value>
@@ -17975,6 +17976,7 @@
           <value code="111">Loweheiser starter</value>
           <value code="218">Loweheiser throttle</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="46">RC Override Enable</value>
@@ -18053,6 +18055,7 @@
           <value code="111">Loweheiser starter</value>
           <value code="218">Loweheiser throttle</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="46">RC Override Enable</value>
@@ -18131,6 +18134,7 @@
           <value code="111">Loweheiser starter</value>
           <value code="218">Loweheiser throttle</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="46">RC Override Enable</value>
@@ -18209,6 +18213,7 @@
           <value code="111">Loweheiser starter</value>
           <value code="218">Loweheiser throttle</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="46">RC Override Enable</value>
@@ -18287,6 +18292,7 @@
           <value code="111">Loweheiser starter</value>
           <value code="218">Loweheiser throttle</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="46">RC Override Enable</value>
@@ -18365,6 +18371,7 @@
           <value code="111">Loweheiser starter</value>
           <value code="218">Loweheiser throttle</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="46">RC Override Enable</value>
@@ -18443,6 +18450,7 @@
           <value code="111">Loweheiser starter</value>
           <value code="218">Loweheiser throttle</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="46">RC Override Enable</value>
@@ -18521,6 +18529,7 @@
           <value code="111">Loweheiser starter</value>
           <value code="218">Loweheiser throttle</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="46">RC Override Enable</value>
@@ -18599,6 +18608,7 @@
           <value code="111">Loweheiser starter</value>
           <value code="218">Loweheiser throttle</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="46">RC Override Enable</value>
@@ -18677,6 +18687,7 @@
           <value code="111">Loweheiser starter</value>
           <value code="218">Loweheiser throttle</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="46">RC Override Enable</value>
@@ -18755,6 +18766,7 @@
           <value code="111">Loweheiser starter</value>
           <value code="218">Loweheiser throttle</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="46">RC Override Enable</value>
@@ -18833,6 +18845,7 @@
           <value code="111">Loweheiser starter</value>
           <value code="218">Loweheiser throttle</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="46">RC Override Enable</value>
@@ -18911,6 +18924,7 @@
           <value code="111">Loweheiser starter</value>
           <value code="218">Loweheiser throttle</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="46">RC Override Enable</value>
@@ -18989,6 +19003,7 @@
           <value code="111">Loweheiser starter</value>
           <value code="218">Loweheiser throttle</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="164">Pause Stream Logging</value>
           <value code="46">RC Override Enable</value>

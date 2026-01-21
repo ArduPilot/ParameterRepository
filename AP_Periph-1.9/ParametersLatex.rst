@@ -87031,6 +87031,25 @@ SIM\_GPS1\_HDG\_OFS: GPS heading offset
 GPS heading offset in degrees\. how off the simulated GPS heading is from the actual heading
 
 
+.. _SIM_GPS1_OPTIONS:
+
+SIM\_GPS1\_OPTIONS: GPS Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+GPS Options bitmask
+
+
++-----+------------------+
+| Bit | Meaning          |
++=====+==================+
+| 0   | UBlox GPS is F9P |
++-----+------------------+
+
+
+
+
 
 .. _SIM_GPS2_ENABLE:
 
@@ -87408,6 +87427,25 @@ SIM\_GPS2\_HDG\_OFS: GPS heading offset
 | *Note: This parameter is for advanced users*
 
 GPS heading offset in degrees\. how off the simulated GPS heading is from the actual heading
+
+
+.. _SIM_GPS2_OPTIONS:
+
+SIM\_GPS2\_OPTIONS: GPS Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+GPS Options bitmask
+
+
++-----+------------------+
+| Bit | Meaning          |
++=====+==================+
+| 0   | UBlox GPS is F9P |
++-----+------------------+
+
+
 
 
 
@@ -87789,6 +87827,25 @@ SIM\_GPS3\_HDG\_OFS: GPS heading offset
 GPS heading offset in degrees\. how off the simulated GPS heading is from the actual heading
 
 
+.. _SIM_GPS3_OPTIONS:
+
+SIM\_GPS3\_OPTIONS: GPS Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+GPS Options bitmask
+
+
++-----+------------------+
+| Bit | Meaning          |
++=====+==================+
+| 0   | UBlox GPS is F9P |
++-----+------------------+
+
+
+
+
 
 .. _SIM_GPS4_ENABLE:
 
@@ -88166,6 +88223,25 @@ SIM\_GPS4\_HDG\_OFS: GPS heading offset
 | *Note: This parameter is for advanced users*
 
 GPS heading offset in degrees\. how off the simulated GPS heading is from the actual heading
+
+
+.. _SIM_GPS4_OPTIONS:
+
+SIM\_GPS4\_OPTIONS: GPS Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+GPS Options bitmask
+
+
++-----+------------------+
+| Bit | Meaning          |
++=====+==================+
+| 0   | UBlox GPS is F9P |
++-----+------------------+
+
+
 
 
 

@@ -41252,6 +41252,14 @@ Enable simulated GPS jamming
 
 GPS heading offset in degrees. how off the simulated GPS heading is from the actual heading
 
+## SIM_GPS1_OPTIONS: GPS Options
+
+*Note: This parameter is for advanced users*
+
+GPS Options bitmask
+
+- Bitmask: 0:UBlox GPS is F9P
+
 # SIMGPS2 Parameters
 
 ## SIM_GPS2_ENABLE: GPS enable
@@ -41429,6 +41437,14 @@ Enable simulated GPS jamming
 *Note: This parameter is for advanced users*
 
 GPS heading offset in degrees. how off the simulated GPS heading is from the actual heading
+
+## SIM_GPS2_OPTIONS: GPS Options
+
+*Note: This parameter is for advanced users*
+
+GPS Options bitmask
+
+- Bitmask: 0:UBlox GPS is F9P
 
 # SIMGPS3 Parameters
 
@@ -41608,6 +41624,14 @@ Enable simulated GPS jamming
 
 GPS heading offset in degrees. how off the simulated GPS heading is from the actual heading
 
+## SIM_GPS3_OPTIONS: GPS Options
+
+*Note: This parameter is for advanced users*
+
+GPS Options bitmask
+
+- Bitmask: 0:UBlox GPS is F9P
+
 # SIMGPS4 Parameters
 
 ## SIM_GPS4_ENABLE: GPS enable
@@ -41785,6 +41809,14 @@ Enable simulated GPS jamming
 *Note: This parameter is for advanced users*
 
 GPS heading offset in degrees. how off the simulated GPS heading is from the actual heading
+
+## SIM_GPS4_OPTIONS: GPS Options
+
+*Note: This parameter is for advanced users*
+
+GPS Options bitmask
+
+- Bitmask: 0:UBlox GPS is F9P
 
 # SIMGRPE Parameters
 

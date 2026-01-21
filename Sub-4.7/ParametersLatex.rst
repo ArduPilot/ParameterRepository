@@ -31608,8 +31608,6 @@ This allows selection of a PX4 or VRBRAIN board type\. If set to zero then the b
 +-------+----------------+
 | 20    | AUAV2.1        |
 +-------+----------------+
-| 22    | MINDPXV2       |
-+-------+----------------+
 | 39    | PX4 FMUV6      |
 +-------+----------------+
 | 100   | PX4 OLDDRIVERS |
@@ -100486,6 +100484,8 @@ Function assigned to this RC channel
 +-------+----------------------------+
 | 185   | Mount Roll/Pitch Lock      |
 +-------+----------------------------+
+| 186   | Mount POI Lock             |
++-------+----------------------------+
 | 212   | Mount1 Roll                |
 +-------+----------------------------+
 | 213   | Mount1 Pitch               |
@@ -100739,6 +100739,8 @@ Function assigned to this RC channel
 | 177   | Mount LRF enable           |
 +-------+----------------------------+
 | 185   | Mount Roll/Pitch Lock      |
++-------+----------------------------+
+| 186   | Mount POI Lock             |
 +-------+----------------------------+
 | 212   | Mount1 Roll                |
 +-------+----------------------------+
@@ -100994,6 +100996,8 @@ Function assigned to this RC channel
 +-------+----------------------------+
 | 185   | Mount Roll/Pitch Lock      |
 +-------+----------------------------+
+| 186   | Mount POI Lock             |
++-------+----------------------------+
 | 212   | Mount1 Roll                |
 +-------+----------------------------+
 | 213   | Mount1 Pitch               |
@@ -101247,6 +101251,8 @@ Function assigned to this RC channel
 | 177   | Mount LRF enable           |
 +-------+----------------------------+
 | 185   | Mount Roll/Pitch Lock      |
++-------+----------------------------+
+| 186   | Mount POI Lock             |
 +-------+----------------------------+
 | 212   | Mount1 Roll                |
 +-------+----------------------------+
@@ -101502,6 +101508,8 @@ Function assigned to this RC channel
 +-------+----------------------------+
 | 185   | Mount Roll/Pitch Lock      |
 +-------+----------------------------+
+| 186   | Mount POI Lock             |
++-------+----------------------------+
 | 212   | Mount1 Roll                |
 +-------+----------------------------+
 | 213   | Mount1 Pitch               |
@@ -101755,6 +101763,8 @@ Function assigned to this RC channel
 | 177   | Mount LRF enable           |
 +-------+----------------------------+
 | 185   | Mount Roll/Pitch Lock      |
++-------+----------------------------+
+| 186   | Mount POI Lock             |
 +-------+----------------------------+
 | 212   | Mount1 Roll                |
 +-------+----------------------------+
@@ -102010,6 +102020,8 @@ Function assigned to this RC channel
 +-------+----------------------------+
 | 185   | Mount Roll/Pitch Lock      |
 +-------+----------------------------+
+| 186   | Mount POI Lock             |
++-------+----------------------------+
 | 212   | Mount1 Roll                |
 +-------+----------------------------+
 | 213   | Mount1 Pitch               |
@@ -102263,6 +102275,8 @@ Function assigned to this RC channel
 | 177   | Mount LRF enable           |
 +-------+----------------------------+
 | 185   | Mount Roll/Pitch Lock      |
++-------+----------------------------+
+| 186   | Mount POI Lock             |
 +-------+----------------------------+
 | 212   | Mount1 Roll                |
 +-------+----------------------------+
@@ -102518,6 +102532,8 @@ Function assigned to this RC channel
 +-------+----------------------------+
 | 185   | Mount Roll/Pitch Lock      |
 +-------+----------------------------+
+| 186   | Mount POI Lock             |
++-------+----------------------------+
 | 212   | Mount1 Roll                |
 +-------+----------------------------+
 | 213   | Mount1 Pitch               |
@@ -102771,6 +102787,8 @@ Function assigned to this RC channel
 | 177   | Mount LRF enable           |
 +-------+----------------------------+
 | 185   | Mount Roll/Pitch Lock      |
++-------+----------------------------+
+| 186   | Mount POI Lock             |
 +-------+----------------------------+
 | 212   | Mount1 Roll                |
 +-------+----------------------------+
@@ -103026,6 +103044,8 @@ Function assigned to this RC channel
 +-------+----------------------------+
 | 185   | Mount Roll/Pitch Lock      |
 +-------+----------------------------+
+| 186   | Mount POI Lock             |
++-------+----------------------------+
 | 212   | Mount1 Roll                |
 +-------+----------------------------+
 | 213   | Mount1 Pitch               |
@@ -103279,6 +103299,8 @@ Function assigned to this RC channel
 | 177   | Mount LRF enable           |
 +-------+----------------------------+
 | 185   | Mount Roll/Pitch Lock      |
++-------+----------------------------+
+| 186   | Mount POI Lock             |
 +-------+----------------------------+
 | 212   | Mount1 Roll                |
 +-------+----------------------------+
@@ -103534,6 +103556,8 @@ Function assigned to this RC channel
 +-------+----------------------------+
 | 185   | Mount Roll/Pitch Lock      |
 +-------+----------------------------+
+| 186   | Mount POI Lock             |
++-------+----------------------------+
 | 212   | Mount1 Roll                |
 +-------+----------------------------+
 | 213   | Mount1 Pitch               |
@@ -103787,6 +103811,8 @@ Function assigned to this RC channel
 | 177   | Mount LRF enable           |
 +-------+----------------------------+
 | 185   | Mount Roll/Pitch Lock      |
++-------+----------------------------+
+| 186   | Mount POI Lock             |
 +-------+----------------------------+
 | 212   | Mount1 Roll                |
 +-------+----------------------------+
@@ -104042,6 +104068,8 @@ Function assigned to this RC channel
 +-------+----------------------------+
 | 185   | Mount Roll/Pitch Lock      |
 +-------+----------------------------+
+| 186   | Mount POI Lock             |
++-------+----------------------------+
 | 212   | Mount1 Roll                |
 +-------+----------------------------+
 | 213   | Mount1 Pitch               |
@@ -104295,6 +104323,8 @@ Function assigned to this RC channel
 | 177   | Mount LRF enable           |
 +-------+----------------------------+
 | 185   | Mount Roll/Pitch Lock      |
++-------+----------------------------+
+| 186   | Mount POI Lock             |
 +-------+----------------------------+
 | 212   | Mount1 Roll                |
 +-------+----------------------------+
@@ -132962,6 +132992,25 @@ SIM\_GPS1\_HDG\_OFS: GPS heading offset
 GPS heading offset in degrees\. how off the simulated GPS heading is from the actual heading
 
 
+.. _SIM_GPS1_OPTIONS:
+
+SIM\_GPS1\_OPTIONS: GPS Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+GPS Options bitmask
+
+
++-----+------------------+
+| Bit | Meaning          |
++=====+==================+
+| 0   | UBlox GPS is F9P |
++-----+------------------+
+
+
+
+
 
 .. _SIM_GPS2_ENABLE:
 
@@ -133339,6 +133388,25 @@ SIM\_GPS2\_HDG\_OFS: GPS heading offset
 | *Note: This parameter is for advanced users*
 
 GPS heading offset in degrees\. how off the simulated GPS heading is from the actual heading
+
+
+.. _SIM_GPS2_OPTIONS:
+
+SIM\_GPS2\_OPTIONS: GPS Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+GPS Options bitmask
+
+
++-----+------------------+
+| Bit | Meaning          |
++=====+==================+
+| 0   | UBlox GPS is F9P |
++-----+------------------+
+
+
 
 
 
@@ -133720,6 +133788,25 @@ SIM\_GPS3\_HDG\_OFS: GPS heading offset
 GPS heading offset in degrees\. how off the simulated GPS heading is from the actual heading
 
 
+.. _SIM_GPS3_OPTIONS:
+
+SIM\_GPS3\_OPTIONS: GPS Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+GPS Options bitmask
+
+
++-----+------------------+
+| Bit | Meaning          |
++=====+==================+
+| 0   | UBlox GPS is F9P |
++-----+------------------+
+
+
+
+
 
 .. _SIM_GPS4_ENABLE:
 
@@ -134097,6 +134184,25 @@ SIM\_GPS4\_HDG\_OFS: GPS heading offset
 | *Note: This parameter is for advanced users*
 
 GPS heading offset in degrees\. how off the simulated GPS heading is from the actual heading
+
+
+.. _SIM_GPS4_OPTIONS:
+
+SIM\_GPS4\_OPTIONS: GPS Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+GPS Options bitmask
+
+
++-----+------------------+
+| Bit | Meaning          |
++=====+==================+
+| 0   | UBlox GPS is F9P |
++-----+------------------+
+
+
 
 
 

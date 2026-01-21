@@ -30419,8 +30419,6 @@ This allows selection of a PX4 or VRBRAIN board type\. If set to zero then the b
 +-------+----------------+
 | 20    | AUAV2.1        |
 +-------+----------------+
-| 22    | MINDPXV2       |
-+-------+----------------+
 | 39    | PX4 FMUV6      |
 +-------+----------------+
 | 100   | PX4 OLDDRIVERS |
@@ -59706,6 +59704,8 @@ Function assigned to this RC channel
 +-------+-------------------------+
 | 185   | Mount Roll/Pitch Lock   |
 +-------+-------------------------+
+| 186   | Mount POI Lock          |
++-------+-------------------------+
 | 218   | Loweheiser throttle     |
 +-------+-------------------------+
 | 300   | Scripting1              |
@@ -59911,6 +59911,8 @@ Function assigned to this RC channel
 | 177   | Mount LRF enable        |
 +-------+-------------------------+
 | 185   | Mount Roll/Pitch Lock   |
++-------+-------------------------+
+| 186   | Mount POI Lock          |
 +-------+-------------------------+
 | 218   | Loweheiser throttle     |
 +-------+-------------------------+
@@ -60118,6 +60120,8 @@ Function assigned to this RC channel
 +-------+-------------------------+
 | 185   | Mount Roll/Pitch Lock   |
 +-------+-------------------------+
+| 186   | Mount POI Lock          |
++-------+-------------------------+
 | 218   | Loweheiser throttle     |
 +-------+-------------------------+
 | 300   | Scripting1              |
@@ -60323,6 +60327,8 @@ Function assigned to this RC channel
 | 177   | Mount LRF enable        |
 +-------+-------------------------+
 | 185   | Mount Roll/Pitch Lock   |
++-------+-------------------------+
+| 186   | Mount POI Lock          |
 +-------+-------------------------+
 | 218   | Loweheiser throttle     |
 +-------+-------------------------+
@@ -60530,6 +60536,8 @@ Function assigned to this RC channel
 +-------+-------------------------+
 | 185   | Mount Roll/Pitch Lock   |
 +-------+-------------------------+
+| 186   | Mount POI Lock          |
++-------+-------------------------+
 | 218   | Loweheiser throttle     |
 +-------+-------------------------+
 | 300   | Scripting1              |
@@ -60735,6 +60743,8 @@ Function assigned to this RC channel
 | 177   | Mount LRF enable        |
 +-------+-------------------------+
 | 185   | Mount Roll/Pitch Lock   |
++-------+-------------------------+
+| 186   | Mount POI Lock          |
 +-------+-------------------------+
 | 218   | Loweheiser throttle     |
 +-------+-------------------------+
@@ -60942,6 +60952,8 @@ Function assigned to this RC channel
 +-------+-------------------------+
 | 185   | Mount Roll/Pitch Lock   |
 +-------+-------------------------+
+| 186   | Mount POI Lock          |
++-------+-------------------------+
 | 218   | Loweheiser throttle     |
 +-------+-------------------------+
 | 300   | Scripting1              |
@@ -61147,6 +61159,8 @@ Function assigned to this RC channel
 | 177   | Mount LRF enable        |
 +-------+-------------------------+
 | 185   | Mount Roll/Pitch Lock   |
++-------+-------------------------+
+| 186   | Mount POI Lock          |
 +-------+-------------------------+
 | 218   | Loweheiser throttle     |
 +-------+-------------------------+
@@ -61354,6 +61368,8 @@ Function assigned to this RC channel
 +-------+-------------------------+
 | 185   | Mount Roll/Pitch Lock   |
 +-------+-------------------------+
+| 186   | Mount POI Lock          |
++-------+-------------------------+
 | 218   | Loweheiser throttle     |
 +-------+-------------------------+
 | 300   | Scripting1              |
@@ -61559,6 +61575,8 @@ Function assigned to this RC channel
 | 177   | Mount LRF enable        |
 +-------+-------------------------+
 | 185   | Mount Roll/Pitch Lock   |
++-------+-------------------------+
+| 186   | Mount POI Lock          |
 +-------+-------------------------+
 | 218   | Loweheiser throttle     |
 +-------+-------------------------+
@@ -61766,6 +61784,8 @@ Function assigned to this RC channel
 +-------+-------------------------+
 | 185   | Mount Roll/Pitch Lock   |
 +-------+-------------------------+
+| 186   | Mount POI Lock          |
++-------+-------------------------+
 | 218   | Loweheiser throttle     |
 +-------+-------------------------+
 | 300   | Scripting1              |
@@ -61971,6 +61991,8 @@ Function assigned to this RC channel
 | 177   | Mount LRF enable        |
 +-------+-------------------------+
 | 185   | Mount Roll/Pitch Lock   |
++-------+-------------------------+
+| 186   | Mount POI Lock          |
 +-------+-------------------------+
 | 218   | Loweheiser throttle     |
 +-------+-------------------------+
@@ -62178,6 +62200,8 @@ Function assigned to this RC channel
 +-------+-------------------------+
 | 185   | Mount Roll/Pitch Lock   |
 +-------+-------------------------+
+| 186   | Mount POI Lock          |
++-------+-------------------------+
 | 218   | Loweheiser throttle     |
 +-------+-------------------------+
 | 300   | Scripting1              |
@@ -62383,6 +62407,8 @@ Function assigned to this RC channel
 | 177   | Mount LRF enable        |
 +-------+-------------------------+
 | 185   | Mount Roll/Pitch Lock   |
++-------+-------------------------+
+| 186   | Mount POI Lock          |
 +-------+-------------------------+
 | 218   | Loweheiser throttle     |
 +-------+-------------------------+
@@ -62590,6 +62616,8 @@ Function assigned to this RC channel
 +-------+-------------------------+
 | 185   | Mount Roll/Pitch Lock   |
 +-------+-------------------------+
+| 186   | Mount POI Lock          |
++-------+-------------------------+
 | 218   | Loweheiser throttle     |
 +-------+-------------------------+
 | 300   | Scripting1              |
@@ -62795,6 +62823,8 @@ Function assigned to this RC channel
 | 177   | Mount LRF enable        |
 +-------+-------------------------+
 | 185   | Mount Roll/Pitch Lock   |
++-------+-------------------------+
+| 186   | Mount POI Lock          |
 +-------+-------------------------+
 | 218   | Loweheiser throttle     |
 +-------+-------------------------+

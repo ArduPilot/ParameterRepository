@@ -9289,7 +9289,6 @@
         "14": "Pixhawk Pro",
         "2": "Pixhawk",
         "20": "AUAV2.1",
-        "22": "MINDPXV2",
         "3": "Cube/Pixhawk2",
         "39": "PX4 FMUV6",
         "5": "PixhawkMini",
@@ -45381,6 +45380,7 @@
         "175": "Camera Lens",
         "177": "Mount LRF enable",
         "185": "Mount Roll/Pitch Lock",
+        "186": "Mount POI Lock",
         "212": "Mount1 Roll",
         "213": "Mount1 Pitch",
         "214": "Mount1 Yaw",
@@ -45509,6 +45509,7 @@
         "175": "Camera Lens",
         "177": "Mount LRF enable",
         "185": "Mount Roll/Pitch Lock",
+        "186": "Mount POI Lock",
         "212": "Mount1 Roll",
         "213": "Mount1 Pitch",
         "214": "Mount1 Yaw",
@@ -45637,6 +45638,7 @@
         "175": "Camera Lens",
         "177": "Mount LRF enable",
         "185": "Mount Roll/Pitch Lock",
+        "186": "Mount POI Lock",
         "212": "Mount1 Roll",
         "213": "Mount1 Pitch",
         "214": "Mount1 Yaw",
@@ -45765,6 +45767,7 @@
         "175": "Camera Lens",
         "177": "Mount LRF enable",
         "185": "Mount Roll/Pitch Lock",
+        "186": "Mount POI Lock",
         "212": "Mount1 Roll",
         "213": "Mount1 Pitch",
         "214": "Mount1 Yaw",
@@ -45893,6 +45896,7 @@
         "175": "Camera Lens",
         "177": "Mount LRF enable",
         "185": "Mount Roll/Pitch Lock",
+        "186": "Mount POI Lock",
         "212": "Mount1 Roll",
         "213": "Mount1 Pitch",
         "214": "Mount1 Yaw",
@@ -46021,6 +46025,7 @@
         "175": "Camera Lens",
         "177": "Mount LRF enable",
         "185": "Mount Roll/Pitch Lock",
+        "186": "Mount POI Lock",
         "212": "Mount1 Roll",
         "213": "Mount1 Pitch",
         "214": "Mount1 Yaw",
@@ -46149,6 +46154,7 @@
         "175": "Camera Lens",
         "177": "Mount LRF enable",
         "185": "Mount Roll/Pitch Lock",
+        "186": "Mount POI Lock",
         "212": "Mount1 Roll",
         "213": "Mount1 Pitch",
         "214": "Mount1 Yaw",
@@ -46277,6 +46283,7 @@
         "175": "Camera Lens",
         "177": "Mount LRF enable",
         "185": "Mount Roll/Pitch Lock",
+        "186": "Mount POI Lock",
         "212": "Mount1 Roll",
         "213": "Mount1 Pitch",
         "214": "Mount1 Yaw",
@@ -46405,6 +46412,7 @@
         "175": "Camera Lens",
         "177": "Mount LRF enable",
         "185": "Mount Roll/Pitch Lock",
+        "186": "Mount POI Lock",
         "212": "Mount1 Roll",
         "213": "Mount1 Pitch",
         "214": "Mount1 Yaw",
@@ -46533,6 +46541,7 @@
         "175": "Camera Lens",
         "177": "Mount LRF enable",
         "185": "Mount Roll/Pitch Lock",
+        "186": "Mount POI Lock",
         "212": "Mount1 Roll",
         "213": "Mount1 Pitch",
         "214": "Mount1 Yaw",
@@ -46661,6 +46670,7 @@
         "175": "Camera Lens",
         "177": "Mount LRF enable",
         "185": "Mount Roll/Pitch Lock",
+        "186": "Mount POI Lock",
         "212": "Mount1 Roll",
         "213": "Mount1 Pitch",
         "214": "Mount1 Yaw",
@@ -46789,6 +46799,7 @@
         "175": "Camera Lens",
         "177": "Mount LRF enable",
         "185": "Mount Roll/Pitch Lock",
+        "186": "Mount POI Lock",
         "212": "Mount1 Roll",
         "213": "Mount1 Pitch",
         "214": "Mount1 Yaw",
@@ -46917,6 +46928,7 @@
         "175": "Camera Lens",
         "177": "Mount LRF enable",
         "185": "Mount Roll/Pitch Lock",
+        "186": "Mount POI Lock",
         "212": "Mount1 Roll",
         "213": "Mount1 Pitch",
         "214": "Mount1 Yaw",
@@ -47045,6 +47057,7 @@
         "175": "Camera Lens",
         "177": "Mount LRF enable",
         "185": "Mount Roll/Pitch Lock",
+        "186": "Mount POI Lock",
         "212": "Mount1 Roll",
         "213": "Mount1 Pitch",
         "214": "Mount1 Yaw",
@@ -47173,6 +47186,7 @@
         "175": "Camera Lens",
         "177": "Mount LRF enable",
         "185": "Mount Roll/Pitch Lock",
+        "186": "Mount POI Lock",
         "212": "Mount1 Roll",
         "213": "Mount1 Pitch",
         "214": "Mount1 Yaw",
@@ -47301,6 +47315,7 @@
         "175": "Camera Lens",
         "177": "Mount LRF enable",
         "185": "Mount Roll/Pitch Lock",
+        "186": "Mount POI Lock",
         "212": "Mount1 Roll",
         "213": "Mount1 Pitch",
         "214": "Mount1 Yaw",
@@ -60879,6 +60894,14 @@
       "Description": "Number of satellites GPS has in view",
       "DisplayName": "GPS Num Satellites"
     },
+    "SIM_GPS1_OPTIONS": {
+      "Bitmask": {
+        "0": "UBlox GPS is F9P"
+      },
+      "Description": "GPS Options bitmask",
+      "DisplayName": "GPS Options",
+      "User": "Advanced"
+    },
     "SIM_GPS1_POS_X": {
       "Description": "GPS antenna phase center position relative to the body frame origin (X-axis)",
       "DisplayName": "GPS Position",
@@ -61025,6 +61048,14 @@
     "SIM_GPS2_NUMSATS": {
       "Description": "Number of satellites GPS has in view",
       "DisplayName": "GPS Num Satellites"
+    },
+    "SIM_GPS2_OPTIONS": {
+      "Bitmask": {
+        "0": "UBlox GPS is F9P"
+      },
+      "Description": "GPS Options bitmask",
+      "DisplayName": "GPS Options",
+      "User": "Advanced"
     },
     "SIM_GPS2_POS_X": {
       "Description": "GPS antenna phase center position relative to the body frame origin (X-axis)",
@@ -61173,6 +61204,14 @@
       "Description": "Number of satellites GPS has in view",
       "DisplayName": "GPS Num Satellites"
     },
+    "SIM_GPS3_OPTIONS": {
+      "Bitmask": {
+        "0": "UBlox GPS is F9P"
+      },
+      "Description": "GPS Options bitmask",
+      "DisplayName": "GPS Options",
+      "User": "Advanced"
+    },
     "SIM_GPS3_POS_X": {
       "Description": "GPS antenna phase center position relative to the body frame origin (X-axis)",
       "DisplayName": "GPS Position",
@@ -61319,6 +61358,14 @@
     "SIM_GPS4_NUMSATS": {
       "Description": "Number of satellites GPS has in view",
       "DisplayName": "GPS Num Satellites"
+    },
+    "SIM_GPS4_OPTIONS": {
+      "Bitmask": {
+        "0": "UBlox GPS is F9P"
+      },
+      "Description": "GPS Options bitmask",
+      "DisplayName": "GPS Options",
+      "User": "Advanced"
     },
     "SIM_GPS4_POS_X": {
       "Description": "GPS antenna phase center position relative to the body frame origin (X-axis)",

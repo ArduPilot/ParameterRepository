@@ -10184,7 +10184,6 @@
           <value code="13">Intel Aero FC</value>
           <value code="14">Pixhawk Pro</value>
           <value code="20">AUAV2.1</value>
-          <value code="22">MINDPXV2</value>
           <value code="39">PX4 FMUV6</value>
           <value code="100">PX4 OLDDRIVERS</value>
         </values>
@@ -10547,6 +10546,7 @@
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="163">Mount Yaw Lock</value>
           <value code="213">Mount1 Pitch</value>
@@ -10685,6 +10685,7 @@
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="163">Mount Yaw Lock</value>
           <value code="213">Mount1 Pitch</value>
@@ -10823,6 +10824,7 @@
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="163">Mount Yaw Lock</value>
           <value code="213">Mount1 Pitch</value>
@@ -10961,6 +10963,7 @@
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="163">Mount Yaw Lock</value>
           <value code="213">Mount1 Pitch</value>
@@ -26636,6 +26639,7 @@
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="163">Mount Yaw Lock</value>
           <value code="213">Mount1 Pitch</value>
@@ -26805,6 +26809,7 @@
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="163">Mount Yaw Lock</value>
           <value code="213">Mount1 Pitch</value>
@@ -26974,6 +26979,7 @@
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="163">Mount Yaw Lock</value>
           <value code="213">Mount1 Pitch</value>
@@ -27143,6 +27149,7 @@
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="163">Mount Yaw Lock</value>
           <value code="213">Mount1 Pitch</value>
@@ -27312,6 +27319,7 @@
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="163">Mount Yaw Lock</value>
           <value code="213">Mount1 Pitch</value>
@@ -27481,6 +27489,7 @@
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="163">Mount Yaw Lock</value>
           <value code="213">Mount1 Pitch</value>
@@ -27650,6 +27659,7 @@
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="163">Mount Yaw Lock</value>
           <value code="213">Mount1 Pitch</value>
@@ -27819,6 +27829,7 @@
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="163">Mount Yaw Lock</value>
           <value code="213">Mount1 Pitch</value>
@@ -27988,6 +27999,7 @@
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="163">Mount Yaw Lock</value>
           <value code="213">Mount1 Pitch</value>
@@ -28157,6 +28169,7 @@
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="163">Mount Yaw Lock</value>
           <value code="213">Mount1 Pitch</value>
@@ -28326,6 +28339,7 @@
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="163">Mount Yaw Lock</value>
           <value code="213">Mount1 Pitch</value>
@@ -28495,6 +28509,7 @@
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="163">Mount Yaw Lock</value>
           <value code="213">Mount1 Pitch</value>
@@ -28664,6 +28679,7 @@
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="163">Mount Yaw Lock</value>
           <value code="213">Mount1 Pitch</value>
@@ -28833,6 +28849,7 @@
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="163">Mount Yaw Lock</value>
           <value code="213">Mount1 Pitch</value>
@@ -29002,6 +29019,7 @@
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="163">Mount Yaw Lock</value>
           <value code="213">Mount1 Pitch</value>
@@ -29171,6 +29189,7 @@
           <value code="31">Motor Emergency Stop</value>
           <value code="32">Motor Interlock</value>
           <value code="177">Mount LRF enable</value>
+          <value code="186">Mount POI Lock</value>
           <value code="185">Mount Roll/Pitch Lock</value>
           <value code="163">Mount Yaw Lock</value>
           <value code="213">Mount1 Pitch</value>
@@ -40876,6 +40895,12 @@
       </param>
       <param humanName="GPS heading offset" name="SIM_GPS1_HDG_OFS" documentation="GPS heading offset in degrees. how off the simulated GPS heading is from the actual heading" user="Advanced">
 </param>
+      <param humanName="GPS Options" name="SIM_GPS1_OPTIONS" documentation="GPS Options bitmask" user="Advanced">
+        <bitmask>
+          <bit code="0">UBlox GPS is F9P</bit>
+        </bitmask>
+        <field name="Bitmask">0:UBlox GPS is F9P</field>
+      </param>
     </parameters>
     <parameters name="SIM_GPS2_">
       <param humanName="GPS enable" name="SIM_GPS2_ENABLE" documentation="Enable simulated GPS" user="Advanced">
@@ -40970,6 +40995,12 @@
       </param>
       <param humanName="GPS heading offset" name="SIM_GPS2_HDG_OFS" documentation="GPS heading offset in degrees. how off the simulated GPS heading is from the actual heading" user="Advanced">
 </param>
+      <param humanName="GPS Options" name="SIM_GPS2_OPTIONS" documentation="GPS Options bitmask" user="Advanced">
+        <bitmask>
+          <bit code="0">UBlox GPS is F9P</bit>
+        </bitmask>
+        <field name="Bitmask">0:UBlox GPS is F9P</field>
+      </param>
     </parameters>
     <parameters name="SIM_GPS3_">
       <param humanName="GPS enable" name="SIM_GPS3_ENABLE" documentation="Enable simulated GPS" user="Advanced">
@@ -41064,6 +41095,12 @@
       </param>
       <param humanName="GPS heading offset" name="SIM_GPS3_HDG_OFS" documentation="GPS heading offset in degrees. how off the simulated GPS heading is from the actual heading" user="Advanced">
 </param>
+      <param humanName="GPS Options" name="SIM_GPS3_OPTIONS" documentation="GPS Options bitmask" user="Advanced">
+        <bitmask>
+          <bit code="0">UBlox GPS is F9P</bit>
+        </bitmask>
+        <field name="Bitmask">0:UBlox GPS is F9P</field>
+      </param>
     </parameters>
     <parameters name="SIM_GPS4_">
       <param humanName="GPS enable" name="SIM_GPS4_ENABLE" documentation="Enable simulated GPS" user="Advanced">
@@ -41158,6 +41195,12 @@
       </param>
       <param humanName="GPS heading offset" name="SIM_GPS4_HDG_OFS" documentation="GPS heading offset in degrees. how off the simulated GPS heading is from the actual heading" user="Advanced">
 </param>
+      <param humanName="GPS Options" name="SIM_GPS4_OPTIONS" documentation="GPS Options bitmask" user="Advanced">
+        <bitmask>
+          <bit code="0">UBlox GPS is F9P</bit>
+        </bitmask>
+        <field name="Bitmask">0:UBlox GPS is F9P</field>
+      </param>
     </parameters>
     <parameters name="SIM_GRPE_">
       <param humanName="Gripper servo Sim enable/disable" name="SIM_GRPE_ENABLE" documentation="Allows you to enable (1) or disable (0) the gripper servo simulation" user="Advanced">
