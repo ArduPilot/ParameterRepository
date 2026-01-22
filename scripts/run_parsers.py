@@ -92,7 +92,15 @@ class Groundskeeper:
                 pass  # If the tag already exists, we are happy
 
     @staticmethod
-    def get_last_ground_change(repository: git.Repo):
+    def get_last_ground_change(repository: git.Repo|None = None):
+        if repository is None:
+            # Determine last ground change of the repo of this file
+            source = git.Git(Path(__file__).parent.parent)
+            # Ignore irrelevant files, and extract date of latest change in an unambiguous format
+            last_relevant_commit_date = source.log('-1', '--format=%cI', '--', ':^.github', ':^README.md', ':^scripts')
+            return datetime.fromisoformat(last_relevant_commit_date)
+
+        # Determine last ground change of some other repo
         last_commit_date = repository.head.commit.committed_date
         return datetime.fromtimestamp(last_commit_date)
 
@@ -110,7 +118,7 @@ class Groundskeeper:
         self.repository = self.clone_repository()
         self.tag_latest_versions()  # Create temporary/local tags, to include development versions in metadata generation
         tag_names = [tag.path[len('refs/tags/'):] for tag in self.repository.tags]
-        last_ground_change = self.get_last_ground_change(git.Repo(Path(__file__).parent.parent))
+        last_ground_change = self.get_last_ground_change()
 
         # Prepare for MAVLink parsing - always use the latest script (since it might cover new messages)
         #shutil.copy(f'{self.repository_path}/Tools/scripts/mavlink_parse.py', self.temp_folder)
