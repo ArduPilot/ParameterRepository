@@ -120,12 +120,8 @@ class Groundskeeper:
         tag_names = [tag.path[len('refs/tags/'):] for tag in self.repository.tags]
         last_ground_change = self.get_last_ground_change()
 
-        # Prepare for MAVLink parsing - always use the latest script (since it might cover new messages)
-        #shutil.copy(f'{self.repository_path}/Tools/scripts/mavlink_parse.py', self.temp_folder)
-        # TEMPORARY WORKAROUND UNTIL ArduPilot/ardupilot#27226 IS MERGED
-        from urllib.request import urlretrieve
-        urlretrieve("https://raw.githubusercontent.com/ES-Alexander/ardupilot/refs/heads/mavlink-messages-rst/Tools/scripts/mavlink_parse.py", f'{self.temp_folder}/mavlink_parse.py')
-        # TEMP-END
+        # Prepare for MAVLink parsing - always use the latest script (since it might cover new dialects or messages)
+        shutil.copy(f'{self.repository_path}/Tools/scripts/mavlink_parse.py', self.temp_folder)
 
         # Get only valid tag names
         tags = []
