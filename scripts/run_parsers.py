@@ -11,7 +11,7 @@ import tempfile
 from pathlib import Path
 
 from packaging import version
-from datetime import datetime
+from datetime import datetime, timezone
 
 class Groundskeeper:
     repository_url = 'https://github.com/ArduPilot/ardupilot'
@@ -102,7 +102,7 @@ class Groundskeeper:
 
         # Determine last ground change of some other repo
         last_commit_date = repository.head.commit.committed_date
-        return datetime.fromtimestamp(last_commit_date)
+        return datetime.fromtimestamp(last_commit_date).astimezone(timezone.utc)
 
     @staticmethod
     def get_vehicle_prefix(vehicle_type: str):
