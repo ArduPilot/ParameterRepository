@@ -43632,24 +43632,6 @@ CIRCLE\_ Parameters
 -------------------
 
 
-.. _CIRCLE_RADIUS:
-
-CIRCLE\_RADIUS: Circle Radius
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Defines the radius of the circle the vehicle will fly when in Circle flight mode
-
-
-+-----------+-------------+-------------+
-| Increment | Range       | Units       |
-+===========+=============+=============+
-| 100       | 0 to 200000 | centimeters |
-+-----------+-------------+-------------+
-
-
-
-
 .. _CIRCLE_RATE:
 
 CIRCLE\_RATE: Circle rate
@@ -43688,6 +43670,24 @@ CIRCLE\_OPTIONS: Circle options
 +-----+------------------------------------------+
 | 3   | Make Mount ROI the center of the circle  |
 +-----+------------------------------------------+
+
+
+
+
+.. _CIRCLE_RADIUS_M:
+
+CIRCLE\_RADIUS\_M: Circle Radius
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Radius of the circle the vehicle will fly when in Circle flight mode
+
+
++-----------+-----------+--------+
+| Increment | Range     | Units  |
++===========+===========+========+
+| 1         | 0 to 2000 | meters |
++-----------+-----------+--------+
 
 
 

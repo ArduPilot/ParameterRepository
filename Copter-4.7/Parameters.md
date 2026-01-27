@@ -18769,16 +18769,6 @@ Optional behaviour for parachute
 
 # CIRCLE Parameters
 
-## CIRCLE_RADIUS: Circle Radius
-
-Defines the radius of the circle the vehicle will fly when in Circle flight mode
-
-- Units: cm
-
-- Range: 0 200000
-
-- Increment: 100
-
 ## CIRCLE_RATE: Circle rate
 
 Circle mode's maximum turn rate in deg/sec.  Positive to turn clockwise, negative for counter clockwise. Final circle rate is also limited by speed and acceleration settings.
@@ -18794,6 +18784,16 @@ Circle mode's maximum turn rate in deg/sec.  Positive to turn clockwise, negativ
 0:Enable or disable using the pitch/roll stick control circle mode's radius and rate
 
 - Bitmask: 0:manual control, 1:face direction of travel, 2:Start at center rather than on perimeter, 3:Make Mount ROI the center of the circle
+
+## CIRCLE_RADIUS_M: Circle Radius
+
+Radius of the circle the vehicle will fly when in Circle flight mode
+
+- Units: m
+
+- Range: 0 2000
+
+- Increment: 1
 
 # COMPASS Parameters
 

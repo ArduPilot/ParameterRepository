@@ -13927,15 +13927,15 @@
       "DisplayName": "Circle options",
       "User": "Standard"
     },
-    "CIRCLE_RADIUS": {
-      "Description": "Defines the radius of the circle the vehicle will fly when in Circle flight mode",
+    "CIRCLE_RADIUS_M": {
+      "Description": "Radius of the circle the vehicle will fly when in Circle flight mode",
       "DisplayName": "Circle Radius",
-      "Increment": "100",
+      "Increment": "1",
       "Range": {
-        "high": "200000",
+        "high": "2000",
         "low": "0"
       },
-      "Units": "cm",
+      "Units": "m",
       "User": "Standard"
     },
     "CIRCLE_RATE": {

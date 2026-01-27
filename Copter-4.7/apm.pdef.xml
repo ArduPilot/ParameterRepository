@@ -13106,12 +13106,6 @@
       </param>
     </parameters>
     <parameters name="CIRCLE_">
-      <param humanName="Circle Radius" name="CIRCLE_RADIUS" documentation="Defines the radius of the circle the vehicle will fly when in Circle flight mode" user="Standard">
-        <field name="Units">cm</field>
-        <field name="UnitText">centimeters</field>
-        <field name="Range">0 200000</field>
-        <field name="Increment">100</field>
-      </param>
       <param humanName="Circle rate" name="CIRCLE_RATE" documentation="Circle mode's maximum turn rate in deg/sec.  Positive to turn clockwise, negative for counter clockwise. Final circle rate is also limited by speed and acceleration settings." user="Standard">
         <field name="Units">deg/s</field>
         <field name="UnitText">degrees per second</field>
@@ -13126,6 +13120,12 @@
           <bit code="3">Make Mount ROI the center of the circle</bit>
         </bitmask>
         <field name="Bitmask">0:manual control, 1:face direction of travel, 2:Start at center rather than on perimeter, 3:Make Mount ROI the center of the circle</field>
+      </param>
+      <param humanName="Circle Radius" name="CIRCLE_RADIUS_M" documentation="Radius of the circle the vehicle will fly when in Circle flight mode" user="Standard">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+        <field name="Range">0 2000</field>
+        <field name="Increment">1</field>
       </param>
     </parameters>
     <parameters name="COMPASS_">

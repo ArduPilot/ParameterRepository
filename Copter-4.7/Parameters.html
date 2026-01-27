@@ -19603,16 +19603,6 @@ DO NOT EDIT
 <h1>CIRCLE_ Parameters</h1>
 
 
-<h2>Circle Radius (CIRCLE_RADIUS)</h2>
-
-<p>Defines the radius of the circle the vehicle will fly when in Circle flight mode</p>
-<ul>
-<li>Units: centimeters</li>
-<li>Range: 0 200000</li>
-<li>Increment: 100</li>
-</ul>
-
-
 <h2>Circle rate (CIRCLE_RATE)</h2>
 
 <p>Circle mode&#x27;s maximum turn rate in deg/sec.  Positive to turn clockwise, negative for counter clockwise. Final circle rate is also limited by speed and acceleration settings.</p>
@@ -19628,6 +19618,16 @@ DO NOT EDIT
 <p>0:Enable or disable using the pitch/roll stick control circle mode&#x27;s radius and rate</p>
 <ul>
 <li>Bitmask: 0:manual control, 1:face direction of travel, 2:Start at center rather than on perimeter, 3:Make Mount ROI the center of the circle</li>
+</ul>
+
+
+<h2>Circle Radius (CIRCLE_RADIUS_M)</h2>
+
+<p>Radius of the circle the vehicle will fly when in Circle flight mode</p>
+<ul>
+<li>Units: meters</li>
+<li>Range: 0 2000</li>
+<li>Increment: 1</li>
 </ul>
 
 
