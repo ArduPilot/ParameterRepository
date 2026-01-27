@@ -7033,7 +7033,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -7068,7 +7068,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -8256,7 +8256,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -8291,7 +8291,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -9479,7 +9479,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -9514,7 +9514,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -10702,7 +10702,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -10737,7 +10737,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -11925,7 +11925,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -11960,7 +11960,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -13148,7 +13148,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -13183,7 +13183,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -14371,7 +14371,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -14406,7 +14406,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -15594,7 +15594,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -15629,7 +15629,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -16817,7 +16817,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -16852,7 +16852,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -18040,7 +18040,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -18075,7 +18075,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -19263,7 +19263,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -19298,7 +19298,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -20486,7 +20486,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -20521,7 +20521,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -21709,7 +21709,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -21744,7 +21744,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -22932,7 +22932,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -22967,7 +22967,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -24155,7 +24155,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -24190,7 +24190,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -25378,7 +25378,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -25413,7 +25413,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 | +-------+------------------+ |
 | | Value | Meaning          | |
 | +=======+==================+ |
-| | 0     | None             | |
+| | 0     | Warn only        | |
 | +-------+------------------+ |
 | | 1     | RTL              | |
 | +-------+------------------+ |
@@ -37521,7 +37521,7 @@ EAHRS\_LOG\_RATE: AHRS logging rate
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Logging rate for EARHS devices
+Logging rate for EAHRS devices
 
 
 +-------+
@@ -122704,6 +122704,25 @@ SITL vicon position standard deviation for gaussian noise
 +========+
 | meters |
 +--------+
+
+
+
+
+.. _SIM_VICON_QUAL:
+
+SIM\_VICON\_QUAL: SITL vicon odometry quality
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+SITL vicon odometry quality field sent in MAVLink ODOMETRY message \(\-1\=failure\, 0\=unknown\, 1\-100\=quality\)
+
+
++-----------+---------+
+| Range     | Units   |
++===========+=========+
+| -1 to 100 | percent |
++-----------+---------+
 
 
 

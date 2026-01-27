@@ -61,16 +61,6 @@ DO NOT EDIT
 </ul>
 
 
-<h2>RTL Altitude (ArduCopter:RTL_ALT)</h2>
-
-<p>The minimum alt above home the vehicle will climb to before returning.  If the vehicle is flying higher than this value it will return at its current altitude.</p>
-<ul>
-<li>Units: centimeters</li>
-<li>Range: 30 300000</li>
-<li>Increment: 1</li>
-</ul>
-
-
 <h2>RTL cone slope (ArduCopter:RTL_CONE_SLOPE)</h2>
 
 <p>Defines a cone above home which determines maximum climb</p>
@@ -82,36 +72,6 @@ DO NOT EDIT
 <tr><td>1</td><td>Shallow</td></tr>
 <tr><td>3</td><td>Steep</td></tr>
 </table>
-</ul>
-
-
-<h2>RTL speed (ArduCopter:RTL_SPEED)</h2>
-
-<p>Defines the speed in cm/s which the aircraft will attempt to maintain horizontally while flying home. If this is set to zero, WPNAV_SPEED will be used instead.</p>
-<ul>
-<li>Units: centimeters per second</li>
-<li>Range: 0 2000</li>
-<li>Increment: 50</li>
-</ul>
-
-
-<h2>RTL Final Altitude (ArduCopter:RTL_ALT_FINAL)</h2>
-
-<p>This is the altitude the vehicle will move to as the final stage of Returning to Launch or after completing a mission.  Set to zero to land.</p>
-<ul>
-<li>Units: centimeters</li>
-<li>Range: 0 1000</li>
-<li>Increment: 1</li>
-</ul>
-
-
-<h2>RTL minimum climb (ArduCopter:RTL_CLIMB_MIN)</h2>
-
-<p>The vehicle will climb this many cm during the initial climb portion of the RTL</p>
-<ul>
-<li>Units: centimeters</li>
-<li>Range: 0 3000</li>
-<li>Increment: 10</li>
 </ul>
 
 
@@ -179,26 +139,6 @@ DO NOT EDIT
 <tr><td>2</td><td>Face next waypoint except RTL</td></tr>
 <tr><td>3</td><td>Face along GPS course</td></tr>
 </table>
-</ul>
-
-
-<h2>Land speed (ArduCopter:LAND_SPEED)</h2>
-
-<p>The descent speed for the final stage of landing in cm/s</p>
-<ul>
-<li>Units: centimeters per second</li>
-<li>Range: 30 200</li>
-<li>Increment: 10</li>
-</ul>
-
-
-<h2>Land speed high (ArduCopter:LAND_SPEED_HIGH)</h2>
-
-<p>The descent speed for the first stage of landing in cm/s. If this is zero then WPNAV_SPEED_DN is used</p>
-<ul>
-<li>Units: centimeters per second</li>
-<li>Range: 0 500</li>
-<li>Increment: 10</li>
 </ul>
 
 
@@ -894,16 +834,6 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Land alt low (ArduCopter:LAND_ALT_LOW)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>Altitude during Landing at which vehicle slows to LAND_SPEED</p>
-<ul>
-<li>Units: centimeters</li>
-<li>Range: 100 10000</li>
-<li>Increment: 10</li>
-</ul>
-
-
 <h2>Tuning minimum (ArduCopter:TUNE_MIN)</h2>
 
 <p>Transmitter Tuning minum value. The parameter being tuned will have its value set to this minimum value when the tuning knob is at its lowest position</p>
@@ -1214,7 +1144,7 @@ DO NOT EDIT
 
 <h2>Payload Place decent speed (ArduCopter:PLDP_SPEED_DN)</h2>
 
-<p>The maximum vertical decent velocity in m/s. If 0 LAND_SPEED value is used.</p>
+<p>The maximum vertical decent velocity in m/s. If 0 LAND_SPD_MS value is used.</p>
 <ul>
 <li>Units: meters per second</li>
 <li>Range: 0 5</li>
@@ -1848,9 +1778,9 @@ DO NOT EDIT
 </ul>
 
 
-<h2>RTL_ALT should be a valid value (ARM_C_RTL_ALT)</h2>
+<h2>RTL_ALT_M should be a valid value (ARM_C_RTL_ALT_M)</h2>
 
-<p>RTL_ALT should be &lt; 120m (400ft). 3 or less to prevent arming. -1 to disable.</p>
+<p>RTL_ALT_M should be &lt; 120m (400ft). 3 or less to prevent arming. -1 to disable.</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>-1</td><td>Disabled</td></tr>
@@ -7919,7 +7849,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a low battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -7936,7 +7866,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a critical battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -8434,7 +8364,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a low battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -8451,7 +8381,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a critical battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -8949,7 +8879,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a low battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -8966,7 +8896,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a critical battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -9464,7 +9394,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a low battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -9481,7 +9411,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a critical battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -9979,7 +9909,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a low battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -9996,7 +9926,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a critical battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -10494,7 +10424,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a low battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -10511,7 +10441,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a critical battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -11009,7 +10939,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a low battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -11026,7 +10956,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a critical battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -11524,7 +11454,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a low battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -11541,7 +11471,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a critical battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -12039,7 +11969,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a low battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -12056,7 +11986,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a critical battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -12554,7 +12484,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a low battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -12571,7 +12501,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a critical battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -13069,7 +12999,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a low battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -13086,7 +13016,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a critical battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -13584,7 +13514,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a low battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -13601,7 +13531,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a critical battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -14099,7 +14029,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a low battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -14116,7 +14046,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a critical battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -14614,7 +14544,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a low battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -14631,7 +14561,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a critical battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -15129,7 +15059,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a low battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -15146,7 +15076,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a critical battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -15644,7 +15574,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a low battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -15661,7 +15591,7 @@ DO NOT EDIT
 <p>What action the vehicle should perform if it hits a critical battery failsafe</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
+<tr><td>0</td><td>Warn only</td></tr>
 <tr><td>1</td><td>Land</td></tr>
 <tr><td>2</td><td>RTL</td></tr>
 <tr><td>3</td><td>SmartRTL or RTL</td></tr>
@@ -20924,7 +20854,7 @@ DO NOT EDIT
 
 <h2>AHRS logging rate (EAHRS_LOG_RATE)</h2>
 
-<p>Logging rate for EARHS devices</p>
+<p>Logging rate for EAHRS devices</p>
 <ul>
 <li>Units: hertz</li>
 </ul>
@@ -27612,6 +27542,39 @@ DO NOT EDIT
 
 <p>Sets the number of motor poles to calculate the correct RPM value</p>
 <ul>
+</ul>
+
+
+<h1>LAND_ Parameters</h1>
+
+
+<h2>Land speed (LAND_SPD_MS)</h2>
+
+<p>The descent speed for the final stage of landing in m/s</p>
+<ul>
+<li>Units: meters per second</li>
+<li>Range: 0.3 2</li>
+<li>Increment: 0.1</li>
+</ul>
+
+
+<h2>Land speed high (LAND_SPD_HIGH_MS)</h2>
+
+<p>The descent speed for the first stage of landing in m/s. If this is zero then WPNAV_SPEED_DN is used</p>
+<ul>
+<li>Units: meters per second</li>
+<li>Range: 0 5</li>
+<li>Increment: 0.1</li>
+</ul>
+
+
+<h2>Land alt low (LAND_ALT_LOW_M)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Altitude during Landing at which vehicle slows to LAND_SPD_MS</p>
+<ul>
+<li>Units: meters</li>
+<li>Range: 1 100</li>
+<li>Increment: 0.1</li>
 </ul>
 
 
@@ -52507,6 +52470,49 @@ DO NOT EDIT
 </ul>
 
 
+<h1>RTL_ Parameters</h1>
+
+
+<h2>RTL Altitude (RTL_ALT_M)</h2>
+
+<p>The minimum alt above home the vehicle will climb to before returning. If the vehicle is flying higher than this value it will return at its current altitude.</p>
+<ul>
+<li>Units: meters</li>
+<li>Range: 0.30 3000</li>
+<li>Increment: 0.1</li>
+</ul>
+
+
+<h2>RTL Final Altitude (RTL_ALT_FINAL_M)</h2>
+
+<p>Altitude the vehicle will move to as the final stage of Returning to Launch or after completing a mission. Set to zero to land.</p>
+<ul>
+<li>Units: meters</li>
+<li>Range: 0 10</li>
+<li>Increment: 0.1</li>
+</ul>
+
+
+<h2>RTL minimum climb (RTL_CLIMB_MIN_M)</h2>
+
+<p>The vehicle will climb this many meters during the initial climb portion of the RTL</p>
+<ul>
+<li>Units: meters</li>
+<li>Range: 0 30</li>
+<li>Increment: 0.1</li>
+</ul>
+
+
+<h2>RTL speed (RTL_SPEED_MS)</h2>
+
+<p>The speed in m/s which the aircraft will attempt to maintain horizontally while flying home. If this is set to zero, WPNAV_SPEED will be used instead.</p>
+<ul>
+<li>Units: meters per second</li>
+<li>Range: 0 20</li>
+<li>Increment: 0.5</li>
+</ul>
+
+
 <h1>SCHED_ Parameters</h1>
 
 
@@ -64822,6 +64828,15 @@ DO NOT EDIT
 <p>SITL vicon rate</p>
 <ul>
 <li>Units: hertz</li>
+</ul>
+
+
+<h2>SITL vicon odometry quality (SIM_VICON_QUAL)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>SITL vicon odometry quality field sent in MAVLink ODOMETRY message (-1=failure, 0=unknown, 1-100=quality)</p>
+<ul>
+<li>Units: percent</li>
+<li>Range: -1 100</li>
 </ul>
 
 

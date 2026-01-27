@@ -2756,13 +2756,13 @@ Rally Point more than RALLY\_LIMIT\_KM kilometers away\. 3 or less to prevent ar
 
 
 
-.. _ARM_C_RTL_ALT:
+.. _ARM_C_RTL_ALT_M:
 
-ARM\_C\_RTL\_ALT: RTL\_ALT should be a valid value
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ARM\_C\_RTL\_ALT\_M: RTL\_ALT\_M should be a valid value
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-RTL\_ALT should be \< 120m \(400ft\)\. 3 or less to prevent arming\. \-1 to disable\.
+RTL\_ALT\_M should be \< 120m \(400ft\)\. 3 or less to prevent arming\. \-1 to disable\.
 
 
 +-------+-------------------+
@@ -11546,13 +11546,13 @@ BATT2\_FS\_LOW\_ACT: Low battery failsafe action
 What action the vehicle should perform if it hits a low battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -11566,13 +11566,13 @@ BATT2\_FS\_CRT\_ACT: Critical battery failsafe action
 What action the vehicle should perform if it hits a critical battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -12715,13 +12715,13 @@ BATT3\_FS\_LOW\_ACT: Low battery failsafe action
 What action the vehicle should perform if it hits a low battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -12735,13 +12735,13 @@ BATT3\_FS\_CRT\_ACT: Critical battery failsafe action
 What action the vehicle should perform if it hits a critical battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -13884,13 +13884,13 @@ BATT4\_FS\_LOW\_ACT: Low battery failsafe action
 What action the vehicle should perform if it hits a low battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -13904,13 +13904,13 @@ BATT4\_FS\_CRT\_ACT: Critical battery failsafe action
 What action the vehicle should perform if it hits a critical battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -15053,13 +15053,13 @@ BATT5\_FS\_LOW\_ACT: Low battery failsafe action
 What action the vehicle should perform if it hits a low battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -15073,13 +15073,13 @@ BATT5\_FS\_CRT\_ACT: Critical battery failsafe action
 What action the vehicle should perform if it hits a critical battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -16222,13 +16222,13 @@ BATT6\_FS\_LOW\_ACT: Low battery failsafe action
 What action the vehicle should perform if it hits a low battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -16242,13 +16242,13 @@ BATT6\_FS\_CRT\_ACT: Critical battery failsafe action
 What action the vehicle should perform if it hits a critical battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -17391,13 +17391,13 @@ BATT7\_FS\_LOW\_ACT: Low battery failsafe action
 What action the vehicle should perform if it hits a low battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -17411,13 +17411,13 @@ BATT7\_FS\_CRT\_ACT: Critical battery failsafe action
 What action the vehicle should perform if it hits a critical battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -18560,13 +18560,13 @@ BATT8\_FS\_LOW\_ACT: Low battery failsafe action
 What action the vehicle should perform if it hits a low battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -18580,13 +18580,13 @@ BATT8\_FS\_CRT\_ACT: Critical battery failsafe action
 What action the vehicle should perform if it hits a critical battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -19729,13 +19729,13 @@ BATT9\_FS\_LOW\_ACT: Low battery failsafe action
 What action the vehicle should perform if it hits a low battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -19749,13 +19749,13 @@ BATT9\_FS\_CRT\_ACT: Critical battery failsafe action
 What action the vehicle should perform if it hits a critical battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -20898,13 +20898,13 @@ BATTA\_FS\_LOW\_ACT: Low battery failsafe action
 What action the vehicle should perform if it hits a low battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -20918,13 +20918,13 @@ BATTA\_FS\_CRT\_ACT: Critical battery failsafe action
 What action the vehicle should perform if it hits a critical battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -22067,13 +22067,13 @@ BATTB\_FS\_LOW\_ACT: Low battery failsafe action
 What action the vehicle should perform if it hits a low battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -22087,13 +22087,13 @@ BATTB\_FS\_CRT\_ACT: Critical battery failsafe action
 What action the vehicle should perform if it hits a critical battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -23236,13 +23236,13 @@ BATTC\_FS\_LOW\_ACT: Low battery failsafe action
 What action the vehicle should perform if it hits a low battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -23256,13 +23256,13 @@ BATTC\_FS\_CRT\_ACT: Critical battery failsafe action
 What action the vehicle should perform if it hits a critical battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -24405,13 +24405,13 @@ BATTD\_FS\_LOW\_ACT: Low battery failsafe action
 What action the vehicle should perform if it hits a low battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -24425,13 +24425,13 @@ BATTD\_FS\_CRT\_ACT: Critical battery failsafe action
 What action the vehicle should perform if it hits a critical battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -25574,13 +25574,13 @@ BATTE\_FS\_LOW\_ACT: Low battery failsafe action
 What action the vehicle should perform if it hits a low battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -25594,13 +25594,13 @@ BATTE\_FS\_CRT\_ACT: Critical battery failsafe action
 What action the vehicle should perform if it hits a critical battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -26743,13 +26743,13 @@ BATTF\_FS\_LOW\_ACT: Low battery failsafe action
 What action the vehicle should perform if it hits a low battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -26763,13 +26763,13 @@ BATTF\_FS\_CRT\_ACT: Critical battery failsafe action
 What action the vehicle should perform if it hits a critical battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -27912,13 +27912,13 @@ BATTG\_FS\_LOW\_ACT: Low battery failsafe action
 What action the vehicle should perform if it hits a low battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -27932,13 +27932,13 @@ BATTG\_FS\_CRT\_ACT: Critical battery failsafe action
 What action the vehicle should perform if it hits a critical battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -29081,13 +29081,13 @@ BATT\_FS\_LOW\_ACT: Low battery failsafe action
 What action the vehicle should perform if it hits a low battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -29101,13 +29101,13 @@ BATT\_FS\_CRT\_ACT: Critical battery failsafe action
 What action the vehicle should perform if it hits a critical battery failsafe
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Land    |
-+-------+---------+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Warn only |
++-------+-----------+
+| 1     | Land      |
++-------+-----------+
 
 
 
@@ -38413,7 +38413,7 @@ EAHRS\_LOG\_RATE: AHRS logging rate
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Logging rate for EARHS devices
+Logging rate for EAHRS devices
 
 
 +-------+

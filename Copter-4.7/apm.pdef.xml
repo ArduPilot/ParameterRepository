@@ -34,12 +34,6 @@
         </bitmask>
         <field name="Bitmask">0:Roll,1:Pitch,2:Yaw,3:AccelZ</field>
       </param>
-      <param humanName="RTL Altitude" name="ArduCopter:RTL_ALT" documentation="The minimum alt above home the vehicle will climb to before returning.  If the vehicle is flying higher than this value it will return at its current altitude." user="Standard">
-        <field name="Units">cm</field>
-        <field name="UnitText">centimeters</field>
-        <field name="Range">30 300000</field>
-        <field name="Increment">1</field>
-      </param>
       <param humanName="RTL cone slope" name="ArduCopter:RTL_CONE_SLOPE" documentation="Defines a cone above home which determines maximum climb" user="Standard">
         <field name="Range">0 10.0</field>
         <field name="Increment">0.1</field>
@@ -48,24 +42,6 @@
           <value code="1">Shallow</value>
           <value code="3">Steep</value>
         </values>
-      </param>
-      <param humanName="RTL speed" name="ArduCopter:RTL_SPEED" documentation="Defines the speed in cm/s which the aircraft will attempt to maintain horizontally while flying home. If this is set to zero, WPNAV_SPEED will be used instead." user="Standard">
-        <field name="Units">cm/s</field>
-        <field name="UnitText">centimeters per second</field>
-        <field name="Range">0 2000</field>
-        <field name="Increment">50</field>
-      </param>
-      <param humanName="RTL Final Altitude" name="ArduCopter:RTL_ALT_FINAL" documentation="This is the altitude the vehicle will move to as the final stage of Returning to Launch or after completing a mission.  Set to zero to land." user="Standard">
-        <field name="Units">cm</field>
-        <field name="UnitText">centimeters</field>
-        <field name="Range">0 1000</field>
-        <field name="Increment">1</field>
-      </param>
-      <param humanName="RTL minimum climb" name="ArduCopter:RTL_CLIMB_MIN" documentation="The vehicle will climb this many cm during the initial climb portion of the RTL" user="Standard">
-        <field name="Units">cm</field>
-        <field name="UnitText">centimeters</field>
-        <field name="Range">0 3000</field>
-        <field name="Increment">10</field>
       </param>
       <param humanName="RTL loiter time" name="ArduCopter:RTL_LOIT_TIME" documentation="Time (in milliseconds) to loiter above home before beginning final descent" user="Standard">
         <field name="Units">ms</field>
@@ -112,18 +88,6 @@
           <value code="2">Face next waypoint except RTL</value>
           <value code="3">Face along GPS course</value>
         </values>
-      </param>
-      <param humanName="Land speed" name="ArduCopter:LAND_SPEED" documentation="The descent speed for the final stage of landing in cm/s" user="Standard">
-        <field name="Units">cm/s</field>
-        <field name="UnitText">centimeters per second</field>
-        <field name="Range">30 200</field>
-        <field name="Increment">10</field>
-      </param>
-      <param humanName="Land speed high" name="ArduCopter:LAND_SPEED_HIGH" documentation="The descent speed for the first stage of landing in cm/s. If this is zero then WPNAV_SPEED_DN is used" user="Standard">
-        <field name="Units">cm/s</field>
-        <field name="UnitText">centimeters per second</field>
-        <field name="Range">0 500</field>
-        <field name="Increment">10</field>
       </param>
       <param humanName="Pilot maximum vertical speed ascending" name="ArduCopter:PILOT_SPEED_UP" documentation="The maximum vertical ascending velocity the pilot may request in cm/s" user="Standard">
         <field name="Units">cm/s</field>
@@ -651,12 +615,6 @@
         <field name="Range">0 500</field>
         <field name="Increment">10</field>
       </param>
-      <param humanName="Land alt low" name="ArduCopter:LAND_ALT_LOW" documentation="Altitude during Landing at which vehicle slows to LAND_SPEED" user="Advanced">
-        <field name="Units">cm</field>
-        <field name="UnitText">centimeters</field>
-        <field name="Range">100 10000</field>
-        <field name="Increment">10</field>
-      </param>
       <param humanName="Tuning minimum" name="ArduCopter:TUNE_MIN" documentation="Transmitter Tuning minum value. The parameter being tuned will have its value set to this minimum value when the tuning knob is at its lowest position" user="Standard">
 </param>
       <param humanName="Tuning maximum" name="ArduCopter:TUNE_MAX" documentation="Transmitter Tuning maximum value. The parameter being tuned will have its value set to this maximum value when the tuning knob is at its highest position" user="Standard">
@@ -867,7 +825,7 @@
         <field name="UnitText">seconds</field>
         <field name="Range">0 120</field>
       </param>
-      <param humanName="Payload Place decent speed" name="ArduCopter:PLDP_SPEED_DN" documentation="The maximum vertical decent velocity in m/s. If 0 LAND_SPEED value is used." user="Standard">
+      <param humanName="Payload Place decent speed" name="ArduCopter:PLDP_SPEED_DN" documentation="The maximum vertical decent velocity in m/s. If 0 LAND_SPD_MS value is used." user="Standard">
         <field name="Units">m/s</field>
         <field name="UnitText">meters per second</field>
         <field name="Range">0 5</field>
@@ -1245,7 +1203,7 @@
           <value code="7">Debug</value>
         </values>
       </param>
-      <param humanName="RTL_ALT should be a valid value" name="ARM_C_RTL_ALT" documentation="RTL_ALT should be &lt; 120m (400ft). 3 or less to prevent arming. -1 to disable." user="Standard">
+      <param humanName="RTL_ALT_M should be a valid value" name="ARM_C_RTL_ALT_M" documentation="RTL_ALT_M should be &lt; 120m (400ft). 3 or less to prevent arming. -1 to disable." user="Standard">
         <values>
           <value code="-1">Disabled</value>
           <value code="0">Emergency(PreArm)</value>
@@ -4612,7 +4570,7 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATT2_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -4624,7 +4582,7 @@
       </param>
       <param humanName="Critical battery failsafe action" name="BATT2_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -4954,7 +4912,7 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATT3_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -4966,7 +4924,7 @@
       </param>
       <param humanName="Critical battery failsafe action" name="BATT3_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -5296,7 +5254,7 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATT4_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -5308,7 +5266,7 @@
       </param>
       <param humanName="Critical battery failsafe action" name="BATT4_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -5638,7 +5596,7 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATT5_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -5650,7 +5608,7 @@
       </param>
       <param humanName="Critical battery failsafe action" name="BATT5_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -5980,7 +5938,7 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATT6_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -5992,7 +5950,7 @@
       </param>
       <param humanName="Critical battery failsafe action" name="BATT6_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -6322,7 +6280,7 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATT7_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -6334,7 +6292,7 @@
       </param>
       <param humanName="Critical battery failsafe action" name="BATT7_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -6664,7 +6622,7 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATT8_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -6676,7 +6634,7 @@
       </param>
       <param humanName="Critical battery failsafe action" name="BATT8_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -7006,7 +6964,7 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATT9_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -7018,7 +6976,7 @@
       </param>
       <param humanName="Critical battery failsafe action" name="BATT9_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -7348,7 +7306,7 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATTA_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -7360,7 +7318,7 @@
       </param>
       <param humanName="Critical battery failsafe action" name="BATTA_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -7690,7 +7648,7 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATTB_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -7702,7 +7660,7 @@
       </param>
       <param humanName="Critical battery failsafe action" name="BATTB_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -8032,7 +7990,7 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATTC_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -8044,7 +8002,7 @@
       </param>
       <param humanName="Critical battery failsafe action" name="BATTC_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -8374,7 +8332,7 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATTD_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -8386,7 +8344,7 @@
       </param>
       <param humanName="Critical battery failsafe action" name="BATTD_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -8716,7 +8674,7 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATTE_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -8728,7 +8686,7 @@
       </param>
       <param humanName="Critical battery failsafe action" name="BATTE_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -9058,7 +9016,7 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATTF_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -9070,7 +9028,7 @@
       </param>
       <param humanName="Critical battery failsafe action" name="BATTF_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -9400,7 +9358,7 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATTG_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -9412,7 +9370,7 @@
       </param>
       <param humanName="Critical battery failsafe action" name="BATTG_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -9742,7 +9700,7 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATT_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -9754,7 +9712,7 @@
       </param>
       <param humanName="Critical battery failsafe action" name="BATT_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
           <value code="2">RTL</value>
           <value code="3">SmartRTL or RTL</value>
@@ -13895,7 +13853,7 @@
         </bitmask>
         <field name="Bitmask">0:GPS,1:IMU,2:Baro,3:Compass</field>
       </param>
-      <param humanName="AHRS logging rate" name="EAHRS_LOG_RATE" documentation="Logging rate for EARHS devices" user="Standard">
+      <param humanName="AHRS logging rate" name="EAHRS_LOG_RATE" documentation="Logging rate for EAHRS devices" user="Standard">
         <field name="Units">Hz</field>
         <field name="UnitText">hertz</field>
       </param>
@@ -17870,6 +17828,26 @@
     <parameters name="KDE_">
       <param humanName="Number of motor poles" name="KDE_NPOLE" documentation="Sets the number of motor poles to calculate the correct RPM value">
 </param>
+    </parameters>
+    <parameters name="LAND_">
+      <param humanName="Land speed" name="LAND_SPD_MS" documentation="The descent speed for the final stage of landing in m/s" user="Standard">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+        <field name="Range">0.3 2</field>
+        <field name="Increment">0.1</field>
+      </param>
+      <param humanName="Land speed high" name="LAND_SPD_HIGH_MS" documentation="The descent speed for the first stage of landing in m/s. If this is zero then WPNAV_SPEED_DN is used" user="Standard">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+        <field name="Range">0 5</field>
+        <field name="Increment">0.1</field>
+      </param>
+      <param humanName="Land alt low" name="LAND_ALT_LOW_M" documentation="Altitude during Landing at which vehicle slows to LAND_SPD_MS" user="Advanced">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+        <field name="Range">1 100</field>
+        <field name="Increment">0.1</field>
+      </param>
     </parameters>
     <parameters name="LGR_">
       <param humanName="Enable landing gear" name="LGR_ENABLE" documentation="Enable landing gear control" user="Standard">
@@ -32754,6 +32732,32 @@
         <field name="Range">0 2000</field>
       </param>
     </parameters>
+    <parameters name="RTL_">
+      <param humanName="RTL Altitude" name="RTL_ALT_M" documentation="The minimum alt above home the vehicle will climb to before returning. If the vehicle is flying higher than this value it will return at its current altitude." user="Standard">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+        <field name="Range">0.30 3000</field>
+        <field name="Increment">0.1</field>
+      </param>
+      <param humanName="RTL Final Altitude" name="RTL_ALT_FINAL_M" documentation="Altitude the vehicle will move to as the final stage of Returning to Launch or after completing a mission. Set to zero to land." user="Standard">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+        <field name="Range">0 10</field>
+        <field name="Increment">0.1</field>
+      </param>
+      <param humanName="RTL minimum climb" name="RTL_CLIMB_MIN_M" documentation="The vehicle will climb this many meters during the initial climb portion of the RTL" user="Standard">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+        <field name="Range">0 30</field>
+        <field name="Increment">0.1</field>
+      </param>
+      <param humanName="RTL speed" name="RTL_SPEED_MS" documentation="The speed in m/s which the aircraft will attempt to maintain horizontally while flying home. If this is set to zero, WPNAV_SPEED will be used instead." user="Standard">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+        <field name="Range">0 20</field>
+        <field name="Increment">0.5</field>
+      </param>
+    </parameters>
     <parameters name="SCHED_">
       <param humanName="Scheduler debug level" name="SCHED_DEBUG" documentation="Set to non-zero to enable scheduler debug messages. When set to show &quot;Slips&quot; the scheduler will display a message whenever a scheduled task is delayed due to too much CPU load. When set to ShowOverruns the scheduled will display a message whenever a task takes longer than the limit promised in the task table." user="Advanced">
         <values>
@@ -41623,6 +41627,11 @@
       <param humanName="SITL vicon rate" name="SIM_VICON_RATE" documentation="SITL vicon rate" user="Advanced">
         <field name="Units">Hz</field>
         <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="SITL vicon odometry quality" name="SIM_VICON_QUAL" documentation="SITL vicon odometry quality field sent in MAVLink ODOMETRY message (-1=failure, 0=unknown, 1-100=quality)" user="Advanced">
+        <field name="Units">%</field>
+        <field name="UnitText">percent</field>
+        <field name="Range">-1 100</field>
       </param>
     </parameters>
     <parameters name="SIM_VOLZ_">

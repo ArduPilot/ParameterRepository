@@ -730,7 +730,7 @@
           <value code="7">Debug</value>
         </values>
       </param>
-      <param humanName="RTL_ALT should be a valid value" name="ARM_C_RTL_ALT" documentation="RTL_ALT should be &lt; 120m (400ft). 3 or less to prevent arming. -1 to disable." user="Standard">
+      <param humanName="RTL_ALT_M should be a valid value" name="ARM_C_RTL_ALT_M" documentation="RTL_ALT_M should be &lt; 120m (400ft). 3 or less to prevent arming. -1 to disable." user="Standard">
         <values>
           <value code="-1">Disabled</value>
           <value code="0">Emergency(PreArm)</value>
@@ -3121,13 +3121,13 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATT2_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
       <param humanName="Critical battery failsafe action" name="BATT2_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
@@ -3451,13 +3451,13 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATT3_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
       <param humanName="Critical battery failsafe action" name="BATT3_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
@@ -3781,13 +3781,13 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATT4_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
       <param humanName="Critical battery failsafe action" name="BATT4_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
@@ -4111,13 +4111,13 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATT5_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
       <param humanName="Critical battery failsafe action" name="BATT5_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
@@ -4441,13 +4441,13 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATT6_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
       <param humanName="Critical battery failsafe action" name="BATT6_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
@@ -4771,13 +4771,13 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATT7_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
       <param humanName="Critical battery failsafe action" name="BATT7_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
@@ -5101,13 +5101,13 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATT8_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
       <param humanName="Critical battery failsafe action" name="BATT8_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
@@ -5431,13 +5431,13 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATT9_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
       <param humanName="Critical battery failsafe action" name="BATT9_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
@@ -5761,13 +5761,13 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATTA_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
       <param humanName="Critical battery failsafe action" name="BATTA_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
@@ -6091,13 +6091,13 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATTB_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
       <param humanName="Critical battery failsafe action" name="BATTB_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
@@ -6421,13 +6421,13 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATTC_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
       <param humanName="Critical battery failsafe action" name="BATTC_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
@@ -6751,13 +6751,13 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATTD_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
       <param humanName="Critical battery failsafe action" name="BATTD_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
@@ -7081,13 +7081,13 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATTE_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
       <param humanName="Critical battery failsafe action" name="BATTE_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
@@ -7411,13 +7411,13 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATTF_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
       <param humanName="Critical battery failsafe action" name="BATTF_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
@@ -7741,13 +7741,13 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATTG_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
       <param humanName="Critical battery failsafe action" name="BATTG_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
@@ -8071,13 +8071,13 @@
       </param>
       <param humanName="Low battery failsafe action" name="BATT_FS_LOW_ACT" documentation="What action the vehicle should perform if it hits a low battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
       <param humanName="Critical battery failsafe action" name="BATT_FS_CRT_ACT" documentation="What action the vehicle should perform if it hits a critical battery failsafe" user="Standard">
         <values>
-          <value code="0">None</value>
+          <value code="0">Warn only</value>
           <value code="1">Land</value>
         </values>
       </param>
@@ -11181,7 +11181,7 @@
         </bitmask>
         <field name="Bitmask">0:GPS,1:IMU,2:Baro,3:Compass</field>
       </param>
-      <param humanName="AHRS logging rate" name="EAHRS_LOG_RATE" documentation="Logging rate for EARHS devices" user="Standard">
+      <param humanName="AHRS logging rate" name="EAHRS_LOG_RATE" documentation="Logging rate for EAHRS devices" user="Standard">
         <field name="Units">Hz</field>
         <field name="UnitText">hertz</field>
       </param>

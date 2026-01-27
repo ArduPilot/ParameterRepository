@@ -1718,9 +1718,9 @@ Rally Point more than RALLY_LIMIT_KM kilometers away. 3 or less to prevent armin
 |6|Info|
 |7|Debug|
 
-## ARM_C_RTL_ALT: RTL_ALT should be a valid value
+## ARM_C_RTL_ALT_M: RTL_ALT_M should be a valid value
 
-RTL_ALT should be < 120m (400ft). 3 or less to prevent arming. -1 to disable.
+RTL_ALT_M should be < 120m (400ft). 3 or less to prevent arming. -1 to disable.
 
 |Value|Meaning|
 |:---:|:---:|
@@ -6055,7 +6055,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -6070,7 +6070,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -6572,7 +6572,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -6587,7 +6587,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -7089,7 +7089,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -7104,7 +7104,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -7606,7 +7606,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -7621,7 +7621,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -8123,7 +8123,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -8138,7 +8138,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -8640,7 +8640,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -8655,7 +8655,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -9157,7 +9157,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -9172,7 +9172,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -9674,7 +9674,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -9689,7 +9689,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -10191,7 +10191,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -10206,7 +10206,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -10708,7 +10708,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -10723,7 +10723,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -11225,7 +11225,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -11240,7 +11240,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -11742,7 +11742,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -11757,7 +11757,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -12259,7 +12259,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -12274,7 +12274,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -12776,7 +12776,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -12791,7 +12791,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -13293,7 +13293,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -13308,7 +13308,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -13810,7 +13810,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -13825,7 +13825,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|RTL|
 |2|Land|
 |3|Terminate|
@@ -18903,7 +18903,7 @@ External AHRS sensors bitmask
 
 ## EAHRS_LOG_RATE: AHRS logging rate
 
-Logging rate for EARHS devices
+Logging rate for EAHRS devices
 
 - Units: Hz
 
@@ -39929,6 +39929,12 @@ Auto takeoff (in Auto or Guided) is not permitted until motors report no more th
 
 - Range: 0 10000
 
+## Q_THRST_LOSS_OPT: VTOL thrust loss detection options
+
+Configuration for thrust loss detection detection, this results in "Potential VTOL Thrust Loss" warnings. This detection also allows the motor mixer to ignore the failed motor allowing better use of the remaining motors.
+
+- Bitmask: 0: Disable thrust loss detection., 1: Disable thrust loss detection in transtions and fixed wing modes. Thrust loss detection will only run in VTOL modes.
+
 # QAUTOTUNE Parameters
 
 ## Q_AUTOTUNE_AXES: Autotune axis bitmask
@@ -53200,6 +53206,16 @@ SITL vicon velocity standard deviation for gaussian noise
 SITL vicon rate
 
 - Units: Hz
+
+## SIM_VICON_QUAL: SITL vicon odometry quality
+
+*Note: This parameter is for advanced users*
+
+SITL vicon odometry quality field sent in MAVLink ODOMETRY message (-1=failure, 0=unknown, 1-100=quality)
+
+- Units: %
+
+- Range: -1 100
 
 # SIMVOLZ Parameters
 

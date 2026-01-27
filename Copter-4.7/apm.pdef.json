@@ -3195,7 +3195,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -3210,7 +3210,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -3623,7 +3623,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -3638,7 +3638,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -4051,7 +4051,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -4066,7 +4066,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -4479,7 +4479,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -4494,7 +4494,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -4907,7 +4907,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -4922,7 +4922,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -5335,7 +5335,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -5350,7 +5350,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -5763,7 +5763,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -5778,7 +5778,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -6191,7 +6191,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -6206,7 +6206,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -6619,7 +6619,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -6634,7 +6634,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -7047,7 +7047,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -7062,7 +7062,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -7475,7 +7475,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -7490,7 +7490,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -7903,7 +7903,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -7918,7 +7918,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -8331,7 +8331,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -8346,7 +8346,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -8759,7 +8759,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -8774,7 +8774,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -9187,7 +9187,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -9202,7 +9202,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -9615,7 +9615,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -9630,7 +9630,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "1": "Land",
         "2": "RTL",
         "3": "SmartRTL or RTL",
@@ -15606,17 +15606,6 @@
         "9": "Land"
       }
     },
-    "LAND_ALT_LOW": {
-      "Description": "Altitude during Landing at which vehicle slows to LAND_SPEED",
-      "DisplayName": "Land alt low",
-      "Increment": "10",
-      "Range": {
-        "high": "10000",
-        "low": "100"
-      },
-      "Units": "cm",
-      "User": "Advanced"
-    },
     "LAND_REPOSITION": {
       "Description": "Enables user input during LAND mode, the landing phase of RTL, and auto mode landings.",
       "DisplayName": "Land repositioning",
@@ -15625,28 +15614,6 @@
         "0": "No repositioning",
         "1": "Repositioning"
       }
-    },
-    "LAND_SPEED": {
-      "Description": "The descent speed for the final stage of landing in cm/s",
-      "DisplayName": "Land speed",
-      "Increment": "10",
-      "Range": {
-        "high": "200",
-        "low": "30"
-      },
-      "Units": "cm/s",
-      "User": "Standard"
-    },
-    "LAND_SPEED_HIGH": {
-      "Description": "The descent speed for the first stage of landing in cm/s. If this is zero then WPNAV_SPEED_DN is used",
-      "DisplayName": "Land speed high",
-      "Increment": "10",
-      "Range": {
-        "high": "500",
-        "low": "0"
-      },
-      "Units": "cm/s",
-      "User": "Standard"
     },
     "LOG_BITMASK": {
       "Bitmask": {
@@ -15827,7 +15794,7 @@
       "User": "Standard"
     },
     "PLDP_SPEED_DN": {
-      "Description": "The maximum vertical decent velocity in m/s. If 0 LAND_SPEED value is used.",
+      "Description": "The maximum vertical decent velocity in m/s. If 0 LAND_SPD_MS value is used.",
       "DisplayName": "Payload Place decent speed",
       "Range": {
         "high": "5",
@@ -15868,28 +15835,6 @@
       "Units": "Hz",
       "User": "Standard"
     },
-    "RTL_ALT": {
-      "Description": "The minimum alt above home the vehicle will climb to before returning.  If the vehicle is flying higher than this value it will return at its current altitude.",
-      "DisplayName": "RTL Altitude",
-      "Increment": "1",
-      "Range": {
-        "high": "300000",
-        "low": "30"
-      },
-      "Units": "cm",
-      "User": "Standard"
-    },
-    "RTL_ALT_FINAL": {
-      "Description": "This is the altitude the vehicle will move to as the final stage of Returning to Launch or after completing a mission.  Set to zero to land.",
-      "DisplayName": "RTL Final Altitude",
-      "Increment": "1",
-      "Range": {
-        "high": "1000",
-        "low": "0"
-      },
-      "Units": "cm",
-      "User": "Standard"
-    },
     "RTL_ALT_TYPE": {
       "Description": "RTL altitude type.  Set to 1 for Terrain following during RTL and then set WPNAV_RFND_USE=1 to use rangefinder or WPNAV_RFND_USE=0 to use Terrain database",
       "DisplayName": "RTL mode altitude type",
@@ -15898,17 +15843,6 @@
         "0": "Relative to Home",
         "1": "Terrain"
       }
-    },
-    "RTL_CLIMB_MIN": {
-      "Description": "The vehicle will climb this many cm during the initial climb portion of the RTL",
-      "DisplayName": "RTL minimum climb",
-      "Increment": "10",
-      "Range": {
-        "high": "3000",
-        "low": "0"
-      },
-      "Units": "cm",
-      "User": "Standard"
     },
     "RTL_CONE_SLOPE": {
       "Description": "Defines a cone above home which determines maximum climb",
@@ -15943,17 +15877,6 @@
       "Description": "Options that can be applied to change RTL mode behaviour",
       "DisplayName": "RTL mode options",
       "User": "Advanced"
-    },
-    "RTL_SPEED": {
-      "Description": "Defines the speed in cm/s which the aircraft will attempt to maintain horizontally while flying home. If this is set to zero, WPNAV_SPEED will be used instead.",
-      "DisplayName": "RTL speed",
-      "Increment": "50",
-      "Range": {
-        "high": "2000",
-        "low": "0"
-      },
-      "Units": "cm/s",
-      "User": "Standard"
     },
     "SIMPLE": {
       "Bitmask": {
@@ -16379,7 +16302,7 @@
   },
   "EAHRS": {
     "EAHRS_LOG_RATE": {
-      "Description": "Logging rate for EARHS devices",
+      "Description": "Logging rate for EAHRS devices",
       "DisplayName": "AHRS logging rate",
       "Units": "Hz",
       "User": "Standard"
@@ -23053,6 +22976,41 @@
       "DisplayName": "Number of motor poles"
     }
   },
+  "LAND_": {
+    "LAND_ALT_LOW_M": {
+      "Description": "Altitude during Landing at which vehicle slows to LAND_SPD_MS",
+      "DisplayName": "Land alt low",
+      "Increment": "0.1",
+      "Range": {
+        "high": "100",
+        "low": "1"
+      },
+      "Units": "m",
+      "User": "Advanced"
+    },
+    "LAND_SPD_HIGH_MS": {
+      "Description": "The descent speed for the first stage of landing in m/s. If this is zero then WPNAV_SPEED_DN is used",
+      "DisplayName": "Land speed high",
+      "Increment": "0.1",
+      "Range": {
+        "high": "5",
+        "low": "0"
+      },
+      "Units": "m/s",
+      "User": "Standard"
+    },
+    "LAND_SPD_MS": {
+      "Description": "The descent speed for the final stage of landing in m/s",
+      "DisplayName": "Land speed",
+      "Increment": "0.1",
+      "Range": {
+        "high": "2",
+        "low": "0.3"
+      },
+      "Units": "m/s",
+      "User": "Standard"
+    }
+  },
   "LGR_": {
     "LGR_DEPLOY_ALT": {
       "Description": "Altitude where the landing gear will be deployed. This should be lower than the RETRACT_ALT. If zero then altitude is not used for deploying landing gear. Only applies when vehicle is armed.",
@@ -23570,9 +23528,9 @@
       "Units": "m",
       "User": "Standard"
     },
-    "ARM_C_RTL_ALT": {
-      "Description": "RTL_ALT should be < 120m (400ft). 3 or less to prevent arming. -1 to disable.",
-      "DisplayName": "RTL_ALT should be a valid value",
+    "ARM_C_RTL_ALT_M": {
+      "Description": "RTL_ALT_M should be < 120m (400ft). 3 or less to prevent arming. -1 to disable.",
+      "DisplayName": "RTL_ALT_M should be a valid value",
       "User": "Standard",
       "Values": {
         "-1": "Disabled",
@@ -50153,6 +50111,52 @@
       }
     }
   },
+  "RTL_": {
+    "RTL_ALT_FINAL_M": {
+      "Description": "Altitude the vehicle will move to as the final stage of Returning to Launch or after completing a mission. Set to zero to land.",
+      "DisplayName": "RTL Final Altitude",
+      "Increment": "0.1",
+      "Range": {
+        "high": "10",
+        "low": "0"
+      },
+      "Units": "m",
+      "User": "Standard"
+    },
+    "RTL_ALT_M": {
+      "Description": "The minimum alt above home the vehicle will climb to before returning. If the vehicle is flying higher than this value it will return at its current altitude.",
+      "DisplayName": "RTL Altitude",
+      "Increment": "0.1",
+      "Range": {
+        "high": "3000",
+        "low": "0.30"
+      },
+      "Units": "m",
+      "User": "Standard"
+    },
+    "RTL_CLIMB_MIN_M": {
+      "Description": "The vehicle will climb this many meters during the initial climb portion of the RTL",
+      "DisplayName": "RTL minimum climb",
+      "Increment": "0.1",
+      "Range": {
+        "high": "30",
+        "low": "0"
+      },
+      "Units": "m",
+      "User": "Standard"
+    },
+    "RTL_SPEED_MS": {
+      "Description": "The speed in m/s which the aircraft will attempt to maintain horizontally while flying home. If this is set to zero, WPNAV_SPEED will be used instead.",
+      "DisplayName": "RTL speed",
+      "Increment": "0.5",
+      "Range": {
+        "high": "20",
+        "low": "0"
+      },
+      "Units": "m/s",
+      "User": "Standard"
+    }
+  },
   "SCHED_": {
     "SCHED_DEBUG": {
       "Description": "Set to non-zero to enable scheduler debug messages. When set to show \"Slips\" the scheduler will display a message whenever a scheduled task is delayed due to too much CPU load. When set to ShowOverruns the scheduled will display a message whenever a task takes longer than the limit promised in the task table.",
@@ -61513,6 +61517,16 @@
       "Description": "SITL vicon position standard deviation for gaussian noise",
       "DisplayName": "SITL vicon position standard deviation for gaussian noise",
       "Units": "m",
+      "User": "Advanced"
+    },
+    "SIM_VICON_QUAL": {
+      "Description": "SITL vicon odometry quality field sent in MAVLink ODOMETRY message (-1=failure, 0=unknown, 1-100=quality)",
+      "DisplayName": "SITL vicon odometry quality",
+      "Range": {
+        "high": "100",
+        "low": "-1"
+      },
+      "Units": "%",
       "User": "Advanced"
     },
     "SIM_VICON_RATE": {

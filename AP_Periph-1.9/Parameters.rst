@@ -85653,6 +85653,25 @@ SITL vicon position standard deviation for gaussian noise
 
 
 
+.. _SIM_VICON_QUAL:
+
+SIM\_VICON\_QUAL: SITL vicon odometry quality
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+SITL vicon odometry quality field sent in MAVLink ODOMETRY message \(\-1\=failure\, 0\=unknown\, 1\-100\=quality\)
+
+
++-----------+---------+
+| Range     | Units   |
++===========+=========+
+| -1 to 100 | percent |
++-----------+---------+
+
+
+
+
 .. _SIM_VICON_RATE:
 
 SIM\_VICON\_RATE: SITL vicon rate

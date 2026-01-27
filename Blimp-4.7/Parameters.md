@@ -1231,9 +1231,9 @@ Rally Point more than RALLY_LIMIT_KM kilometers away. 3 or less to prevent armin
 |6|Info|
 |7|Debug|
 
-## ARM_C_RTL_ALT: RTL_ALT should be a valid value
+## ARM_C_RTL_ALT_M: RTL_ALT_M should be a valid value
 
-RTL_ALT should be < 120m (400ft). 3 or less to prevent arming. -1 to disable.
+RTL_ALT_M should be < 120m (400ft). 3 or less to prevent arming. -1 to disable.
 
 |Value|Meaning|
 |:---:|:---:|
@@ -5001,7 +5001,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATT2_FS_CRT_ACT: Critical battery failsafe action
@@ -5010,7 +5010,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATT2_ARM_VOLT: Required arming voltage
@@ -5496,7 +5496,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATT3_FS_CRT_ACT: Critical battery failsafe action
@@ -5505,7 +5505,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATT3_ARM_VOLT: Required arming voltage
@@ -5991,7 +5991,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATT4_FS_CRT_ACT: Critical battery failsafe action
@@ -6000,7 +6000,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATT4_ARM_VOLT: Required arming voltage
@@ -6486,7 +6486,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATT5_FS_CRT_ACT: Critical battery failsafe action
@@ -6495,7 +6495,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATT5_ARM_VOLT: Required arming voltage
@@ -6981,7 +6981,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATT6_FS_CRT_ACT: Critical battery failsafe action
@@ -6990,7 +6990,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATT6_ARM_VOLT: Required arming voltage
@@ -7476,7 +7476,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATT7_FS_CRT_ACT: Critical battery failsafe action
@@ -7485,7 +7485,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATT7_ARM_VOLT: Required arming voltage
@@ -7971,7 +7971,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATT8_FS_CRT_ACT: Critical battery failsafe action
@@ -7980,7 +7980,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATT8_ARM_VOLT: Required arming voltage
@@ -8466,7 +8466,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATT9_FS_CRT_ACT: Critical battery failsafe action
@@ -8475,7 +8475,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATT9_ARM_VOLT: Required arming voltage
@@ -8961,7 +8961,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATTA_FS_CRT_ACT: Critical battery failsafe action
@@ -8970,7 +8970,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATTA_ARM_VOLT: Required arming voltage
@@ -9456,7 +9456,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATTB_FS_CRT_ACT: Critical battery failsafe action
@@ -9465,7 +9465,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATTB_ARM_VOLT: Required arming voltage
@@ -9951,7 +9951,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATTC_FS_CRT_ACT: Critical battery failsafe action
@@ -9960,7 +9960,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATTC_ARM_VOLT: Required arming voltage
@@ -10446,7 +10446,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATTD_FS_CRT_ACT: Critical battery failsafe action
@@ -10455,7 +10455,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATTD_ARM_VOLT: Required arming voltage
@@ -10941,7 +10941,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATTE_FS_CRT_ACT: Critical battery failsafe action
@@ -10950,7 +10950,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATTE_ARM_VOLT: Required arming voltage
@@ -11436,7 +11436,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATTF_FS_CRT_ACT: Critical battery failsafe action
@@ -11445,7 +11445,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATTF_ARM_VOLT: Required arming voltage
@@ -11931,7 +11931,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATTG_FS_CRT_ACT: Critical battery failsafe action
@@ -11940,7 +11940,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATTG_ARM_VOLT: Required arming voltage
@@ -12426,7 +12426,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATT_FS_CRT_ACT: Critical battery failsafe action
@@ -12435,7 +12435,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 
 ## BATT_ARM_VOLT: Required arming voltage
@@ -16467,7 +16467,7 @@ External AHRS sensors bitmask
 
 ## EAHRS_LOG_RATE: AHRS logging rate
 
-Logging rate for EARHS devices
+Logging rate for EAHRS devices
 
 - Units: Hz
 

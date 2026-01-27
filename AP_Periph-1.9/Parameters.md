@@ -1112,9 +1112,9 @@ Rally Point more than RALLY_LIMIT_KM kilometers away. 3 or less to prevent armin
 |6|Info|
 |7|Debug|
 
-## ARM_C_RTL_ALT: RTL_ALT should be a valid value
+## ARM_C_RTL_ALT_M: RTL_ALT_M should be a valid value
 
-RTL_ALT should be < 120m (400ft). 3 or less to prevent arming. -1 to disable.
+RTL_ALT_M should be < 120m (400ft). 3 or less to prevent arming. -1 to disable.
 
 |Value|Meaning|
 |:---:|:---:|
@@ -42573,6 +42573,16 @@ SITL vicon velocity standard deviation for gaussian noise
 SITL vicon rate
 
 - Units: Hz
+
+## SIM_VICON_QUAL: SITL vicon odometry quality
+
+*Note: This parameter is for advanced users*
+
+SITL vicon odometry quality field sent in MAVLink ODOMETRY message (-1=failure, 0=unknown, 1-100=quality)
+
+- Units: %
+
+- Range: -1 100
 
 # SIMVOLZ Parameters
 

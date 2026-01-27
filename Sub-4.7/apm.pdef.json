@@ -2472,7 +2472,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -2482,7 +2482,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -2890,7 +2890,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -2900,7 +2900,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -3308,7 +3308,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -3318,7 +3318,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -3726,7 +3726,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -3736,7 +3736,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -4144,7 +4144,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -4154,7 +4154,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -4562,7 +4562,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -4572,7 +4572,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -4980,7 +4980,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -4990,7 +4990,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -5398,7 +5398,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -5408,7 +5408,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -5816,7 +5816,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -5826,7 +5826,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -6234,7 +6234,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -6244,7 +6244,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -6652,7 +6652,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -6662,7 +6662,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -7070,7 +7070,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -7080,7 +7080,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -7488,7 +7488,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -7498,7 +7498,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -7906,7 +7906,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -7916,7 +7916,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -8324,7 +8324,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -8334,7 +8334,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -8742,7 +8742,7 @@
       "DisplayName": "Critical battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -8752,7 +8752,7 @@
       "DisplayName": "Low battery failsafe action",
       "User": "Standard",
       "Values": {
-        "0": "None",
+        "0": "Warn only",
         "2": "Disarm",
         "3": "Enter surface mode"
       }
@@ -21226,7 +21226,7 @@
   },
   "EAHRS": {
     "EAHRS_LOG_RATE": {
-      "Description": "Logging rate for EARHS devices",
+      "Description": "Logging rate for EAHRS devices",
       "DisplayName": "AHRS logging rate",
       "Units": "Hz",
       "User": "Standard"
@@ -27300,9 +27300,9 @@
       "Units": "m",
       "User": "Standard"
     },
-    "ARM_C_RTL_ALT": {
-      "Description": "RTL_ALT should be < 120m (400ft). 3 or less to prevent arming. -1 to disable.",
-      "DisplayName": "RTL_ALT should be a valid value",
+    "ARM_C_RTL_ALT_M": {
+      "Description": "RTL_ALT_M should be < 120m (400ft). 3 or less to prevent arming. -1 to disable.",
+      "DisplayName": "RTL_ALT_M should be a valid value",
       "User": "Standard",
       "Values": {
         "-1": "Disabled",
@@ -62049,6 +62049,16 @@
       "Description": "SITL vicon position standard deviation for gaussian noise",
       "DisplayName": "SITL vicon position standard deviation for gaussian noise",
       "Units": "m",
+      "User": "Advanced"
+    },
+    "SIM_VICON_QUAL": {
+      "Description": "SITL vicon odometry quality field sent in MAVLink ODOMETRY message (-1=failure, 0=unknown, 1-100=quality)",
+      "DisplayName": "SITL vicon odometry quality",
+      "Range": {
+        "high": "100",
+        "low": "-1"
+      },
+      "Units": "%",
       "User": "Advanced"
     },
     "SIM_VICON_RATE": {

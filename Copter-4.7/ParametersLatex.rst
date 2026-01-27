@@ -116,24 +116,6 @@ bitmask of PIDs to send MAVLink PID\_TUNING messages for
 
 
 
-.. _RTL_ALT:
-
-RTL\_ALT: RTL Altitude
-~~~~~~~~~~~~~~~~~~~~~~
-
-
-The minimum alt above home the vehicle will climb to before returning\.  If the vehicle is flying higher than this value it will return at its current altitude\.
-
-
-+-----------+--------------+-------------+
-| Increment | Range        | Units       |
-+===========+==============+=============+
-| 1         | 30 to 300000 | centimeters |
-+-----------+--------------+-------------+
-
-
-
-
 .. _RTL_CONE_SLOPE:
 
 RTL\_CONE\_SLOPE: RTL cone slope
@@ -161,60 +143,6 @@ Defines a cone above home which determines maximum climb
 +===========+===========+
 | 0.1       | 0 to 10.0 |
 +-----------+-----------+
-
-
-
-
-.. _RTL_SPEED:
-
-RTL\_SPEED: RTL speed
-~~~~~~~~~~~~~~~~~~~~~
-
-
-Defines the speed in cm\/s which the aircraft will attempt to maintain horizontally while flying home\. If this is set to zero\, WPNAV\_SPEED will be used instead\.
-
-
-+-----------+-----------+------------------------+
-| Increment | Range     | Units                  |
-+===========+===========+========================+
-| 50        | 0 to 2000 | centimeters per second |
-+-----------+-----------+------------------------+
-
-
-
-
-.. _RTL_ALT_FINAL:
-
-RTL\_ALT\_FINAL: RTL Final Altitude
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-This is the altitude the vehicle will move to as the final stage of Returning to Launch or after completing a mission\.  Set to zero to land\.
-
-
-+-----------+-----------+-------------+
-| Increment | Range     | Units       |
-+===========+===========+=============+
-| 1         | 0 to 1000 | centimeters |
-+-----------+-----------+-------------+
-
-
-
-
-.. _RTL_CLIMB_MIN:
-
-RTL\_CLIMB\_MIN: RTL minimum climb
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-The vehicle will climb this many cm during the initial climb portion of the RTL
-
-
-+-----------+-----------+-------------+
-| Increment | Range     | Units       |
-+===========+===========+=============+
-| 10        | 0 to 3000 | centimeters |
-+-----------+-----------+-------------+
 
 
 
@@ -356,42 +284,6 @@ Determines how the autopilot controls the yaw during missions and RTL
 +-------+-------------------------------+
 | 3     | Face along GPS course         |
 +-------+-------------------------------+
-
-
-
-
-.. _LAND_SPEED:
-
-LAND\_SPEED: Land speed
-~~~~~~~~~~~~~~~~~~~~~~~
-
-
-The descent speed for the final stage of landing in cm\/s
-
-
-+-----------+-----------+------------------------+
-| Increment | Range     | Units                  |
-+===========+===========+========================+
-| 10        | 30 to 200 | centimeters per second |
-+-----------+-----------+------------------------+
-
-
-
-
-.. _LAND_SPEED_HIGH:
-
-LAND\_SPEED\_HIGH: Land speed high
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-The descent speed for the first stage of landing in cm\/s\. If this is zero then WPNAV\_SPEED\_DN is used
-
-
-+-----------+----------+------------------------+
-| Increment | Range    | Units                  |
-+===========+==========+========================+
-| 10        | 0 to 500 | centimeters per second |
-+-----------+----------+------------------------+
 
 
 
@@ -1814,25 +1706,6 @@ The maximum vertical descending velocity the pilot may request in cm\/s\.  If 0 
 
 
 
-.. _LAND_ALT_LOW:
-
-LAND\_ALT\_LOW: Land alt low
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Altitude during Landing at which vehicle slows to LAND\_SPEED
-
-
-+-----------+--------------+-------------+
-| Increment | Range        | Units       |
-+===========+==============+=============+
-| 10        | 100 to 10000 | centimeters |
-+-----------+--------------+-------------+
-
-
-
-
 .. _TUNE_MIN:
 
 TUNE\_MIN: Tuning minimum
@@ -2514,7 +2387,7 @@ PLDP\_SPEED\_DN: Payload Place decent speed
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-The maximum vertical decent velocity in m\/s\. If 0 LAND\_SPEED value is used\.
+The maximum vertical decent velocity in m\/s\. If 0 LAND\_SPD\_MS value is used\.
 
 
 +--------+-------------------+
@@ -3865,13 +3738,13 @@ Rally Point more than RALLY\_LIMIT\_KM kilometers away\. 3 or less to prevent ar
 
 
 
-.. _ARM_C_RTL_ALT:
+.. _ARM_C_RTL_ALT_M:
 
-ARM\_C\_RTL\_ALT: RTL\_ALT should be a valid value
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ARM\_C\_RTL\_ALT\_M: RTL\_ALT\_M should be a valid value
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-RTL\_ALT should be \< 120m \(400ft\)\. 3 or less to prevent arming\. \-1 to disable\.
+RTL\_ALT\_M should be \< 120m \(400ft\)\. 3 or less to prevent arming\. \-1 to disable\.
 
 
 +-------+-------------------+
@@ -16390,7 +16263,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -16422,7 +16295,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -17583,7 +17456,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -17615,7 +17488,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -18776,7 +18649,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -18808,7 +18681,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -19969,7 +19842,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -20001,7 +19874,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -21162,7 +21035,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -21194,7 +21067,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -22355,7 +22228,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -22387,7 +22260,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -23548,7 +23421,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -23580,7 +23453,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -24741,7 +24614,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -24773,7 +24646,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -25934,7 +25807,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -25966,7 +25839,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -27127,7 +27000,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -27159,7 +27032,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -28320,7 +28193,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -28352,7 +28225,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -29513,7 +29386,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -29545,7 +29418,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -30706,7 +30579,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -30738,7 +30611,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -31899,7 +31772,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -31931,7 +31804,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -33092,7 +32965,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -33124,7 +32997,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -34285,7 +34158,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -34317,7 +34190,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 +-------+------------------------------------------------+
 | Value | Meaning                                        |
 +=======+================================================+
-| 0     | None                                           |
+| 0     | Warn only                                      |
 +-------+------------------------------------------------+
 | 1     | Land                                           |
 +-------+------------------------------------------------+
@@ -46295,7 +46168,7 @@ EAHRS\_LOG\_RATE: AHRS logging rate
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Logging rate for EARHS devices
+Logging rate for EAHRS devices
 
 
 +-------+
@@ -59981,6 +59854,68 @@ KDE\_NPOLE: Number of motor poles
 
 
 Sets the number of motor poles to calculate the correct RPM value
+
+
+
+.. _parameters_LAND_:
+
+LAND\_ Parameters
+-----------------
+
+
+.. _LAND_SPD_MS:
+
+LAND\_SPD\_MS: Land speed
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+The descent speed for the final stage of landing in m\/s
+
+
++-----------+----------+-------------------+
+| Increment | Range    | Units             |
++===========+==========+===================+
+| 0.1       | 0.3 to 2 | meters per second |
++-----------+----------+-------------------+
+
+
+
+
+.. _LAND_SPD_HIGH_MS:
+
+LAND\_SPD\_HIGH\_MS: Land speed high
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+The descent speed for the first stage of landing in m\/s\. If this is zero then WPNAV\_SPEED\_DN is used
+
+
++-----------+--------+-------------------+
+| Increment | Range  | Units             |
++===========+========+===================+
+| 0.1       | 0 to 5 | meters per second |
++-----------+--------+-------------------+
+
+
+
+
+.. _LAND_ALT_LOW_M:
+
+LAND\_ALT\_LOW\_M: Land alt low
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Altitude during Landing at which vehicle slows to LAND\_SPD\_MS
+
+
++-----------+----------+--------+
+| Increment | Range    | Units  |
++===========+==========+========+
+| 0.1       | 1 to 100 | meters |
++-----------+----------+--------+
+
+
 
 
 
@@ -109955,6 +109890,85 @@ PWM value that the radio receiver will put on the RSSI\_CHANNEL or RSSI\_ANA\_PI
 
 
 
+.. _parameters_RTL_:
+
+RTL\_ Parameters
+----------------
+
+
+.. _RTL_ALT_M:
+
+RTL\_ALT\_M: RTL Altitude
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+The minimum alt above home the vehicle will climb to before returning\. If the vehicle is flying higher than this value it will return at its current altitude\.
+
+
++-----------+--------------+--------+
+| Increment | Range        | Units  |
++===========+==============+========+
+| 0.1       | 0.30 to 3000 | meters |
++-----------+--------------+--------+
+
+
+
+
+.. _RTL_ALT_FINAL_M:
+
+RTL\_ALT\_FINAL\_M: RTL Final Altitude
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Altitude the vehicle will move to as the final stage of Returning to Launch or after completing a mission\. Set to zero to land\.
+
+
++-----------+---------+--------+
+| Increment | Range   | Units  |
++===========+=========+========+
+| 0.1       | 0 to 10 | meters |
++-----------+---------+--------+
+
+
+
+
+.. _RTL_CLIMB_MIN_M:
+
+RTL\_CLIMB\_MIN\_M: RTL minimum climb
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+The vehicle will climb this many meters during the initial climb portion of the RTL
+
+
++-----------+---------+--------+
+| Increment | Range   | Units  |
++===========+=========+========+
+| 0.1       | 0 to 30 | meters |
++-----------+---------+--------+
+
+
+
+
+.. _RTL_SPEED_MS:
+
+RTL\_SPEED\_MS: RTL speed
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+The speed in m\/s which the aircraft will attempt to maintain horizontally while flying home\. If this is set to zero\, WPNAV\_SPEED will be used instead\.
+
+
++-----------+---------+-------------------+
+| Increment | Range   | Units             |
++===========+=========+===================+
+| 0.5       | 0 to 20 | meters per second |
++-----------+---------+-------------------+
+
+
+
+
+
 .. _parameters_SCHED_:
 
 SCHED\_ Parameters
@@ -134154,6 +134168,25 @@ SITL vicon rate
 +=======+
 | hertz |
 +-------+
+
+
+
+
+.. _SIM_VICON_QUAL:
+
+SIM\_VICON\_QUAL: SITL vicon odometry quality
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+SITL vicon odometry quality field sent in MAVLink ODOMETRY message \(\-1\=failure\, 0\=unknown\, 1\-100\=quality\)
+
+
++-----------+---------+
+| Range     | Units   |
++===========+=========+
+| -1 to 100 | percent |
++-----------+---------+
 
 
 

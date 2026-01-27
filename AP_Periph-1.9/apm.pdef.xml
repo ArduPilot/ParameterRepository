@@ -698,7 +698,7 @@
           <value code="7">Debug</value>
         </values>
       </param>
-      <param humanName="RTL_ALT should be a valid value" name="ARM_C_RTL_ALT" documentation="RTL_ALT should be &lt; 120m (400ft). 3 or less to prevent arming. -1 to disable." user="Standard">
+      <param humanName="RTL_ALT_M should be a valid value" name="ARM_C_RTL_ALT_M" documentation="RTL_ALT_M should be &lt; 120m (400ft). 3 or less to prevent arming. -1 to disable." user="Standard">
         <values>
           <value code="-1">Disabled</value>
           <value code="0">Emergency(PreArm)</value>
@@ -29060,6 +29060,11 @@
       <param humanName="SITL vicon rate" name="SIM_VICON_RATE" documentation="SITL vicon rate" user="Advanced">
         <field name="Units">Hz</field>
         <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="SITL vicon odometry quality" name="SIM_VICON_QUAL" documentation="SITL vicon odometry quality field sent in MAVLink ODOMETRY message (-1=failure, 0=unknown, 1-100=quality)" user="Advanced">
+        <field name="Units">%</field>
+        <field name="UnitText">percent</field>
+        <field name="Range">-1 100</field>
       </param>
     </parameters>
     <parameters name="SIM_VOLZ_">

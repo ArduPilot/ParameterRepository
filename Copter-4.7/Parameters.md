@@ -45,16 +45,6 @@ bitmask of PIDs to send MAVLink PID_TUNING messages for
 
 - Bitmask: 0:Roll,1:Pitch,2:Yaw,3:AccelZ
 
-## RTL_ALT: RTL Altitude
-
-The minimum alt above home the vehicle will climb to before returning.  If the vehicle is flying higher than this value it will return at its current altitude.
-
-- Units: cm
-
-- Range: 30 300000
-
-- Increment: 1
-
 ## RTL_CONE_SLOPE: RTL cone slope
 
 Defines a cone above home which determines maximum climb
@@ -68,36 +58,6 @@ Defines a cone above home which determines maximum climb
 |0|Disabled|
 |1|Shallow|
 |3|Steep|
-
-## RTL_SPEED: RTL speed
-
-Defines the speed in cm/s which the aircraft will attempt to maintain horizontally while flying home. If this is set to zero, WPNAV_SPEED will be used instead.
-
-- Units: cm/s
-
-- Range: 0 2000
-
-- Increment: 50
-
-## RTL_ALT_FINAL: RTL Final Altitude
-
-This is the altitude the vehicle will move to as the final stage of Returning to Launch or after completing a mission.  Set to zero to land.
-
-- Units: cm
-
-- Range: 0 1000
-
-- Increment: 1
-
-## RTL_CLIMB_MIN: RTL minimum climb
-
-The vehicle will climb this many cm during the initial climb portion of the RTL
-
-- Units: cm
-
-- Range: 0 3000
-
-- Increment: 10
 
 ## RTL_LOIT_TIME: RTL loiter time
 
@@ -157,26 +117,6 @@ Determines how the autopilot controls the yaw during missions and RTL
 |1|Face next waypoint|
 |2|Face next waypoint except RTL|
 |3|Face along GPS course|
-
-## LAND_SPEED: Land speed
-
-The descent speed for the final stage of landing in cm/s
-
-- Units: cm/s
-
-- Range: 30 200
-
-- Increment: 10
-
-## LAND_SPEED_HIGH: Land speed high
-
-The descent speed for the first stage of landing in cm/s. If this is zero then WPNAV_SPEED_DN is used
-
-- Units: cm/s
-
-- Range: 0 500
-
-- Increment: 10
 
 ## PILOT_SPEED_UP: Pilot maximum vertical speed ascending
 
@@ -854,18 +794,6 @@ The maximum vertical descending velocity the pilot may request in cm/s.  If 0 PI
 
 - Increment: 10
 
-## LAND_ALT_LOW: Land alt low
-
-*Note: This parameter is for advanced users*
-
-Altitude during Landing at which vehicle slows to LAND_SPEED
-
-- Units: cm
-
-- Range: 100 10000
-
-- Increment: 10
-
 ## TUNE_MIN: Tuning minimum
 
 Transmitter Tuning minum value. The parameter being tuned will have its value set to this minimum value when the tuning knob is at its lowest position
@@ -1163,7 +1091,7 @@ Delay after release, in seconds, before aircraft starts to climb back to startin
 
 ## PLDP_SPEED_DN: Payload Place decent speed
 
-The maximum vertical decent velocity in m/s. If 0 LAND_SPEED value is used.
+The maximum vertical decent velocity in m/s. If 0 LAND_SPD_MS value is used.
 
 - Units: m/s
 
@@ -1693,9 +1621,9 @@ Rally Point more than RALLY_LIMIT_KM kilometers away. 3 or less to prevent armin
 |6|Info|
 |7|Debug|
 
-## ARM_C_RTL_ALT: RTL_ALT should be a valid value
+## ARM_C_RTL_ALT_M: RTL_ALT_M should be a valid value
 
-RTL_ALT should be < 120m (400ft). 3 or less to prevent arming. -1 to disable.
+RTL_ALT_M should be < 120m (400ft). 3 or less to prevent arming. -1 to disable.
 
 |Value|Meaning|
 |:---:|:---:|
@@ -7221,7 +7149,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -7236,7 +7164,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -7728,7 +7656,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -7743,7 +7671,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -8235,7 +8163,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -8250,7 +8178,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -8742,7 +8670,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -8757,7 +8685,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -9249,7 +9177,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -9264,7 +9192,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -9756,7 +9684,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -9771,7 +9699,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -10263,7 +10191,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -10278,7 +10206,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -10770,7 +10698,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -10785,7 +10713,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -11277,7 +11205,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -11292,7 +11220,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -11784,7 +11712,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -11799,7 +11727,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -12291,7 +12219,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -12306,7 +12234,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -12798,7 +12726,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -12813,7 +12741,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -13305,7 +13233,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -13320,7 +13248,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -13812,7 +13740,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -13827,7 +13755,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -14319,7 +14247,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -14334,7 +14262,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -14826,7 +14754,7 @@ What action the vehicle should perform if it hits a low battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -14841,7 +14769,7 @@ What action the vehicle should perform if it hits a critical battery failsafe
 
 |Value|Meaning|
 |:---:|:---:|
-|0|None|
+|0|Warn only|
 |1|Land|
 |2|RTL|
 |3|SmartRTL or RTL|
@@ -20103,7 +20031,7 @@ External AHRS sensors bitmask
 
 ## EAHRS_LOG_RATE: AHRS logging rate
 
-Logging rate for EARHS devices
+Logging rate for EAHRS devices
 
 - Units: Hz
 
@@ -27097,6 +27025,40 @@ This is the 3rd order temperature coefficient from a temperature calibration
 ## KDE_NPOLE: Number of motor poles
 
 Sets the number of motor poles to calculate the correct RPM value
+
+# LAND Parameters
+
+## LAND_SPD_MS: Land speed
+
+The descent speed for the final stage of landing in m/s
+
+- Units: m/s
+
+- Range: 0.3 2
+
+- Increment: 0.1
+
+## LAND_SPD_HIGH_MS: Land speed high
+
+The descent speed for the first stage of landing in m/s. If this is zero then WPNAV_SPEED_DN is used
+
+- Units: m/s
+
+- Range: 0 5
+
+- Increment: 0.1
+
+## LAND_ALT_LOW_M: Land alt low
+
+*Note: This parameter is for advanced users*
+
+Altitude during Landing at which vehicle slows to LAND_SPD_MS
+
+- Units: m
+
+- Range: 1 100
+
+- Increment: 0.1
 
 # LGR Parameters
 
@@ -47401,6 +47363,48 @@ PWM value that the radio receiver will put on the RSSI_CHANNEL or RSSI_ANA_PIN w
 
 - Range: 0 2000
 
+# RTL Parameters
+
+## RTL_ALT_M: RTL Altitude
+
+The minimum alt above home the vehicle will climb to before returning. If the vehicle is flying higher than this value it will return at its current altitude.
+
+- Units: m
+
+- Range: 0.30 3000
+
+- Increment: 0.1
+
+## RTL_ALT_FINAL_M: RTL Final Altitude
+
+Altitude the vehicle will move to as the final stage of Returning to Launch or after completing a mission. Set to zero to land.
+
+- Units: m
+
+- Range: 0 10
+
+- Increment: 0.1
+
+## RTL_CLIMB_MIN_M: RTL minimum climb
+
+The vehicle will climb this many meters during the initial climb portion of the RTL
+
+- Units: m
+
+- Range: 0 30
+
+- Increment: 0.1
+
+## RTL_SPEED_MS: RTL speed
+
+The speed in m/s which the aircraft will attempt to maintain horizontally while flying home. If this is set to zero, WPNAV_SPEED will be used instead.
+
+- Units: m/s
+
+- Range: 0 20
+
+- Increment: 0.5
+
 # SCHED Parameters
 
 ## SCHED_DEBUG: Scheduler debug level
@@ -53467,6 +53471,16 @@ SITL vicon velocity standard deviation for gaussian noise
 SITL vicon rate
 
 - Units: Hz
+
+## SIM_VICON_QUAL: SITL vicon odometry quality
+
+*Note: This parameter is for advanced users*
+
+SITL vicon odometry quality field sent in MAVLink ODOMETRY message (-1=failure, 0=unknown, 1-100=quality)
+
+- Units: %
+
+- Range: -1 100
 
 # SIMVOLZ Parameters
 

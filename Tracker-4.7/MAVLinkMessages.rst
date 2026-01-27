@@ -109,6 +109,8 @@ Messages the autopilot handles when received.
   #11, `SET_MODE <https://mavlink.io/en/messages/common.html#SET_MODE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Tracker-4.7/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #253, `STATUSTEXT <https://mavlink.io/en/messages/common.html#STATUSTEXT>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Tracker-4.7/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #2, `SYSTEM_TIME <https://mavlink.io/en/messages/common.html#SYSTEM_TIME>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Tracker-4.7/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
+  #135, `TERRAIN_CHECK <https://mavlink.io/en/messages/common.html#TERRAIN_CHECK>`_, `AP_Terrain/TerrainGCS.cpp <https://github.com/ArduPilot/ardupilot/tree/Tracker-4.7/libraries/AP_Terrain/TerrainGCS.cpp>`_, common
+  #134, `TERRAIN_DATA <https://mavlink.io/en/messages/common.html#TERRAIN_DATA>`_, `AP_Terrain/TerrainGCS.cpp <https://github.com/ArduPilot/ardupilot/tree/Tracker-4.7/libraries/AP_Terrain/TerrainGCS.cpp>`_, common
   #111, `TIMESYNC <https://mavlink.io/en/messages/common.html#TIMESYNC>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Tracker-4.7/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #10001, `UAVIONIX_ADSB_OUT_CFG <https://mavlink.io/en/messages/uAvionix.html#UAVIONIX_ADSB_OUT_CFG>`_, `AP_ADSB/AP_ADSB.cpp <https://github.com/ArduPilot/ardupilot/tree/Tracker-4.7/libraries/AP_ADSB/AP_ADSB.cpp>`_, uAvionix
   #10007, `UAVIONIX_ADSB_OUT_CONTROL <https://mavlink.io/en/messages/uAvionix.html#UAVIONIX_ADSB_OUT_CONTROL>`_, `AP_ADSB/AP_ADSB.cpp <https://github.com/ArduPilot/ardupilot/tree/Tracker-4.7/libraries/AP_ADSB/AP_ADSB.cpp>`_, uAvionix
@@ -439,8 +441,6 @@ Messages the autopilot will send automatically (unrequested).
   #253, `STATUSTEXT <https://mavlink.io/en/messages/common.html#STATUSTEXT>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Tracker-4.7/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #2, `SYSTEM_TIME <https://mavlink.io/en/messages/common.html#SYSTEM_TIME>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Tracker-4.7/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #1, `SYS_STATUS <https://mavlink.io/en/messages/common.html#SYS_STATUS>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Tracker-4.7/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #136, `TERRAIN_REPORT <https://mavlink.io/en/messages/common.html#TERRAIN_REPORT>`_, `AP_Terrain/TerrainGCS.cpp <https://github.com/ArduPilot/ardupilot/tree/Tracker-4.7/libraries/AP_Terrain/TerrainGCS.cpp>`_, common
-  #133, `TERRAIN_REQUEST <https://mavlink.io/en/messages/common.html#TERRAIN_REQUEST>`_, `AP_Terrain/TerrainGCS.cpp <https://github.com/ArduPilot/ardupilot/tree/Tracker-4.7/libraries/AP_Terrain/TerrainGCS.cpp>`_, common
   #111, `TIMESYNC <https://mavlink.io/en/messages/common.html#TIMESYNC>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Tracker-4.7/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #10001, `UAVIONIX_ADSB_OUT_CFG <https://mavlink.io/en/messages/uAvionix.html#UAVIONIX_ADSB_OUT_CFG>`_, `AP_ADSB/AP_ADSB_uAvionix_MAVLink.cpp <https://github.com/ArduPilot/ardupilot/tree/Tracker-4.7/libraries/AP_ADSB/AP_ADSB_uAvionix_MAVLink.cpp>`_, uAvionix
   #10002, `UAVIONIX_ADSB_OUT_DYNAMIC <https://mavlink.io/en/messages/uAvionix.html#UAVIONIX_ADSB_OUT_DYNAMIC>`_, `AP_ADSB/AP_ADSB_uAvionix_MAVLink.cpp <https://github.com/ArduPilot/ardupilot/tree/Tracker-4.7/libraries/AP_ADSB/AP_ADSB_uAvionix_MAVLink.cpp>`_, uAvionix
@@ -468,8 +468,25 @@ Unsupported / unhandled messages.
   #52001, `AIRLINK_AUTH_RESPONSE <https://mavlink.io/en/messages/csAirLink.html#AIRLINK_AUTH_RESPONSE>`_, UNSUPPORTED, csAirLink
   #174, `AIRSPEED_AUTOCAL <https://mavlink.io/en/messages/ardupilotmega.html#AIRSPEED_AUTOCAL>`_, UNSUPPORTED, ardupilotmega
   #141, `ALTITUDE <https://mavlink.io/en/messages/common.html#ALTITUDE>`_, UNSUPPORTED, common
+  #17150, `ARRAY_TEST_0 <https://mavlink.io/en/messages/all.html#ARRAY_TEST_0>`_, UNSUPPORTED, all
+  #17151, `ARRAY_TEST_1 <https://mavlink.io/en/messages/all.html#ARRAY_TEST_1>`_, UNSUPPORTED, all
+  #17153, `ARRAY_TEST_3 <https://mavlink.io/en/messages/all.html#ARRAY_TEST_3>`_, UNSUPPORTED, all
+  #17154, `ARRAY_TEST_4 <https://mavlink.io/en/messages/all.html#ARRAY_TEST_4>`_, UNSUPPORTED, all
+  #17155, `ARRAY_TEST_5 <https://mavlink.io/en/messages/all.html#ARRAY_TEST_5>`_, UNSUPPORTED, all
+  #17156, `ARRAY_TEST_6 <https://mavlink.io/en/messages/all.html#ARRAY_TEST_6>`_, UNSUPPORTED, all
+  #17157, `ARRAY_TEST_7 <https://mavlink.io/en/messages/all.html#ARRAY_TEST_7>`_, UNSUPPORTED, all
+  #17158, `ARRAY_TEST_8 <https://mavlink.io/en/messages/all.html#ARRAY_TEST_8>`_, UNSUPPORTED, all
+  #8004, `ASLCTRL_DATA <https://mavlink.io/en/messages/all.html#ASLCTRL_DATA>`_, UNSUPPORTED, all
+  #8005, `ASLCTRL_DEBUG <https://mavlink.io/en/messages/all.html#ASLCTRL_DEBUG>`_, UNSUPPORTED, all
+  #8006, `ASLUAV_STATUS <https://mavlink.io/en/messages/all.html#ASLUAV_STATUS>`_, UNSUPPORTED, all
+  #8008, `ASL_OBCTRL <https://mavlink.io/en/messages/all.html#ASL_OBCTRL>`_, UNSUPPORTED, all
   #61, `ATTITUDE_QUATERNION_COV <https://mavlink.io/en/messages/common.html#ATTITUDE_QUATERNION_COV>`_, UNSUPPORTED, common
   #7, `AUTH_KEY <https://mavlink.io/en/messages/common.html#AUTH_KEY>`_, UNSUPPORTED, common
+  #60000, `AUTOPILOT_STATE_FOR_GIMBAL_DEVICE_EXT <https://mavlink.io/en/messages/all.html#AUTOPILOT_STATE_FOR_GIMBAL_DEVICE_EXT>`_, UNSUPPORTED, all
+  #60052, `AVSS_DRONE_IMU <https://mavlink.io/en/messages/all.html#AVSS_DRONE_IMU>`_, UNSUPPORTED, all
+  #60053, `AVSS_DRONE_OPERATION_MODE <https://mavlink.io/en/messages/all.html#AVSS_DRONE_OPERATION_MODE>`_, UNSUPPORTED, all
+  #60051, `AVSS_DRONE_POSITION <https://mavlink.io/en/messages/all.html#AVSS_DRONE_POSITION>`_, UNSUPPORTED, all
+  #60050, `AVSS_PRS_SYS_STATUS <https://mavlink.io/en/messages/all.html#AVSS_PRS_SYS_STATUS>`_, UNSUPPORTED, all
   #-1, `BAD_DATA <https://mavlink.io/en/messages/minimal.html#BAD_DATA>`_, UNSUPPORTED, minimal
   #181, `BATTERY2 <https://mavlink.io/en/messages/ardupilotmega.html#BATTERY2>`_, UNSUPPORTED, ardupilotmega
   #257, `BUTTON_CHANGE <https://mavlink.io/en/messages/common.html#BUTTON_CHANGE>`_, UNSUPPORTED, common
@@ -481,6 +498,8 @@ Unsupported / unhandled messages.
   #5, `CHANGE_OPERATOR_CONTROL <https://mavlink.io/en/messages/common.html#CHANGE_OPERATOR_CONTROL>`_, UNSUPPORTED, common
   #6, `CHANGE_OPERATOR_CONTROL_ACK <https://mavlink.io/en/messages/common.html#CHANGE_OPERATOR_CONTROL_ACK>`_, UNSUPPORTED, common
   #247, `COLLISION <https://mavlink.io/en/messages/common.html#COLLISION>`_, UNSUPPORTED, common
+  #223, `COMMAND_INT_STAMPED <https://mavlink.io/en/messages/all.html#COMMAND_INT_STAMPED>`_, UNSUPPORTED, all
+  #224, `COMMAND_LONG_STAMPED <https://mavlink.io/en/messages/all.html#COMMAND_LONG_STAMPED>`_, UNSUPPORTED, all
   #177, `COMPASSMOT_STATUS <https://mavlink.io/en/messages/ardupilotmega.html#COMPASSMOT_STATUS>`_, UNSUPPORTED, ardupilotmega
   #146, `CONTROL_SYSTEM_STATE <https://mavlink.io/en/messages/common.html#CONTROL_SYSTEM_STATE>`_, UNSUPPORTED, common
   #50005, `CUBEPILOT_FIRMWARE_UPDATE_RESP <https://mavlink.io/en/messages/cubepilot.html#CUBEPILOT_FIRMWARE_UPDATE_RESP>`_, UNSUPPORTED, cubepilot
@@ -495,6 +514,7 @@ Unsupported / unhandled messages.
   #350, `DEBUG_FLOAT_ARRAY <https://mavlink.io/en/messages/common.html#DEBUG_FLOAT_ARRAY>`_, UNSUPPORTED, common
   #250, `DEBUG_VECT <https://mavlink.io/en/messages/common.html#DEBUG_VECT>`_, UNSUPPORTED, common
   #154, `DIGICAM_CONFIGURE <https://mavlink.io/en/messages/ardupilotmega.html#DIGICAM_CONFIGURE>`_, UNSUPPORTED, ardupilotmega
+  #8007, `EKF_EXT <https://mavlink.io/en/messages/all.html#EKF_EXT>`_, UNSUPPORTED, all
   #131, `ENCAPSULATED_DATA <https://mavlink.io/en/messages/common.html#ENCAPSULATED_DATA>`_, UNSUPPORTED, common
   #11040, `ESC_TELEMETRY_13_TO_16 <https://mavlink.io/en/messages/ardupilotmega.html#ESC_TELEMETRY_13_TO_16>`_, UNSUPPORTED, ardupilotmega
   #11041, `ESC_TELEMETRY_17_TO_20 <https://mavlink.io/en/messages/ardupilotmega.html#ESC_TELEMETRY_17_TO_20>`_, UNSUPPORTED, ardupilotmega
@@ -504,6 +524,8 @@ Unsupported / unhandled messages.
   #11031, `ESC_TELEMETRY_5_TO_8 <https://mavlink.io/en/messages/ardupilotmega.html#ESC_TELEMETRY_5_TO_8>`_, UNSUPPORTED, ardupilotmega
   #11032, `ESC_TELEMETRY_9_TO_12 <https://mavlink.io/en/messages/ardupilotmega.html#ESC_TELEMETRY_9_TO_12>`_, UNSUPPORTED, ardupilotmega
   #230, `ESTIMATOR_STATUS <https://mavlink.io/en/messages/common.html#ESTIMATOR_STATUS>`_, UNSUPPORTED, common
+  #60040, `FRSKY_PASSTHROUGH_ARRAY <https://mavlink.io/en/messages/all.html#FRSKY_PASSTHROUGH_ARRAY>`_, UNSUPPORTED, all
+  #8011, `FW_SOARING_DATA <https://mavlink.io/en/messages/all.html#FW_SOARING_DATA>`_, UNSUPPORTED, all
   #284, `GIMBAL_DEVICE_SET_ATTITUDE <https://mavlink.io/en/messages/common.html#GIMBAL_DEVICE_SET_ATTITUDE>`_, UNSUPPORTED, common
   #288, `GIMBAL_MANAGER_SET_MANUAL_CONTROL <https://mavlink.io/en/messages/common.html#GIMBAL_MANAGER_SET_MANUAL_CONTROL>`_, UNSUPPORTED, common
   #214, `GIMBAL_TORQUE_CMD_REPORT <https://mavlink.io/en/messages/ardupilotmega.html#GIMBAL_TORQUE_CMD_REPORT>`_, UNSUPPORTED, ardupilotmega
@@ -513,6 +535,7 @@ Unsupported / unhandled messages.
   #217, `GOPRO_GET_RESPONSE <https://mavlink.io/en/messages/ardupilotmega.html#GOPRO_GET_RESPONSE>`_, UNSUPPORTED, ardupilotmega
   #219, `GOPRO_SET_RESPONSE <https://mavlink.io/en/messages/ardupilotmega.html#GOPRO_SET_RESPONSE>`_, UNSUPPORTED, ardupilotmega
   #25, `GPS_STATUS <https://mavlink.io/en/messages/common.html#GPS_STATUS>`_, UNSUPPORTED, common
+  #8014, `GSM_LINK_STATUS <https://mavlink.io/en/messages/all.html#GSM_LINK_STATUS>`_, UNSUPPORTED, all
   #50003, `HERELINK_TELEM <https://mavlink.io/en/messages/cubepilot.html#HERELINK_TELEM>`_, UNSUPPORTED, cubepilot
   #50002, `HERELINK_VIDEO_STREAM_INFORMATION <https://mavlink.io/en/messages/cubepilot.html#HERELINK_VIDEO_STREAM_INFORMATION>`_, UNSUPPORTED, cubepilot
   #234, `HIGH_LATENCY <https://mavlink.io/en/messages/common.html#HIGH_LATENCY>`_, UNSUPPORTED, common
@@ -539,11 +562,15 @@ Unsupported / unhandled messages.
   #249, `MEMORY_VECT <https://mavlink.io/en/messages/common.html#MEMORY_VECT>`_, UNSUPPORTED, common
   #53, `MISSION_CHECKSUM <https://mavlink.io/en/messages/development.html#MISSION_CHECKSUM>`_, UNSUPPORTED, development
   #37, `MISSION_REQUEST_PARTIAL_LIST <https://mavlink.io/en/messages/common.html#MISSION_REQUEST_PARTIAL_LIST>`_, UNSUPPORTED, common
+  #60047, `MLRS_RADIO_LINK_FLOW_CONTROL <https://mavlink.io/en/messages/all.html#MLRS_RADIO_LINK_FLOW_CONTROL>`_, UNSUPPORTED, all
+  #60046, `MLRS_RADIO_LINK_INFORMATION <https://mavlink.io/en/messages/all.html#MLRS_RADIO_LINK_INFORMATION>`_, UNSUPPORTED, all
+  #60045, `MLRS_RADIO_LINK_STATS <https://mavlink.io/en/messages/all.html#MLRS_RADIO_LINK_STATS>`_, UNSUPPORTED, all
   #156, `MOUNT_CONFIGURE <https://mavlink.io/en/messages/ardupilotmega.html#MOUNT_CONFIGURE>`_, UNSUPPORTED, ardupilotmega
   #157, `MOUNT_CONTROL <https://mavlink.io/en/messages/ardupilotmega.html#MOUNT_CONTROL>`_, UNSUPPORTED, ardupilotmega
   #265, `MOUNT_ORIENTATION <https://mavlink.io/en/messages/common.html#MOUNT_ORIENTATION>`_, UNSUPPORTED, common
   #158, `MOUNT_STATUS <https://mavlink.io/en/messages/ardupilotmega.html#MOUNT_STATUS>`_, UNSUPPORTED, ardupilotmega
   #252, `NAMED_VALUE_INT <https://mavlink.io/en/messages/common.html#NAMED_VALUE_INT>`_, UNSUPPORTED, common
+  #220, `NAV_FILTER_BIAS <https://mavlink.io/en/messages/all.html#NAV_FILTER_BIAS>`_, UNSUPPORTED, all
   #12902, `OPEN_DRONE_ID_AUTHENTICATION <https://mavlink.io/en/messages/common.html#OPEN_DRONE_ID_AUTHENTICATION>`_, UNSUPPORTED, common
   #12901, `OPEN_DRONE_ID_LOCATION <https://mavlink.io/en/messages/common.html#OPEN_DRONE_ID_LOCATION>`_, UNSUPPORTED, common
   #12915, `OPEN_DRONE_ID_MESSAGE_PACK <https://mavlink.io/en/messages/common.html#OPEN_DRONE_ID_MESSAGE_PACK>`_, UNSUPPORTED, common
@@ -554,25 +581,41 @@ Unsupported / unhandled messages.
   #323, `PARAM_EXT_SET <https://mavlink.io/en/messages/common.html#PARAM_EXT_SET>`_, UNSUPPORTED, common
   #322, `PARAM_EXT_VALUE <https://mavlink.io/en/messages/common.html#PARAM_EXT_VALUE>`_, UNSUPPORTED, common
   #50, `PARAM_MAP_RC <https://mavlink.io/en/messages/common.html#PARAM_MAP_RC>`_, UNSUPPORTED, common
+  #60041, `PARAM_VALUE_ARRAY <https://mavlink.io/en/messages/all.html#PARAM_VALUE_ARRAY>`_, UNSUPPORTED, all
   #4, `PING <https://mavlink.io/en/messages/common.html#PING>`_, UNSUPPORTED, common
+  #60020, `QSHOT_STATUS <https://mavlink.io/en/messages/all.html#QSHOT_STATUS>`_, UNSUPPORTED, all
+  #221, `RADIO_CALIBRATION <https://mavlink.io/en/messages/all.html#RADIO_CALIBRATION>`_, UNSUPPORTED, all
   #28, `RAW_PRESSURE <https://mavlink.io/en/messages/common.html#RAW_PRESSURE>`_, UNSUPPORTED, common
   #339, `RAW_RPM <https://mavlink.io/en/messages/common.html#RAW_RPM>`_, UNSUPPORTED, common
   #184, `REMOTE_LOG_DATA_BLOCK <https://mavlink.io/en/messages/ardupilotmega.html#REMOTE_LOG_DATA_BLOCK>`_, UNSUPPORTED, ardupilotmega
   #142, `RESOURCE_REQUEST <https://mavlink.io/en/messages/common.html#RESOURCE_REQUEST>`_, UNSUPPORTED, common
   #55, `SAFETY_ALLOWED_AREA <https://mavlink.io/en/messages/common.html#SAFETY_ALLOWED_AREA>`_, UNSUPPORTED, common
   #54, `SAFETY_SET_ALLOWED_AREA <https://mavlink.io/en/messages/common.html#SAFETY_SET_ALLOWED_AREA>`_, UNSUPPORTED, common
+  #8015, `SATCOM_LINK_STATUS <https://mavlink.io/en/messages/all.html#SATCOM_LINK_STATUS>`_, UNSUPPORTED, all
+  #8012, `SENSORPOD_STATUS <https://mavlink.io/en/messages/all.html#SENSORPOD_STATUS>`_, UNSUPPORTED, all
+  #8016, `SENSOR_AIRFLOW_ANGLES <https://mavlink.io/en/messages/all.html#SENSOR_AIRFLOW_ANGLES>`_, UNSUPPORTED, all
   #150, `SENSOR_OFFSETS <https://mavlink.io/en/messages/ardupilotmega.html#SENSOR_OFFSETS>`_, UNSUPPORTED, ardupilotmega
+  #8009, `SENS_ATMOS <https://mavlink.io/en/messages/all.html#SENS_ATMOS>`_, UNSUPPORTED, all
+  #8010, `SENS_BATMON <https://mavlink.io/en/messages/all.html#SENS_BATMON>`_, UNSUPPORTED, all
+  #8003, `SENS_MPPT <https://mavlink.io/en/messages/all.html#SENS_MPPT>`_, UNSUPPORTED, all
+  #8002, `SENS_POWER <https://mavlink.io/en/messages/all.html#SENS_POWER>`_, UNSUPPORTED, all
+  #8013, `SENS_POWER_BOARD <https://mavlink.io/en/messages/all.html#SENS_POWER_BOARD>`_, UNSUPPORTED, all
   #139, `SET_ACTUATOR_CONTROL_TARGET <https://mavlink.io/en/messages/common.html#SET_ACTUATOR_CONTROL_TARGET>`_, UNSUPPORTED, common
   #243, `SET_HOME_POSITION <https://mavlink.io/en/messages/common.html#SET_HOME_POSITION>`_, UNSUPPORTED, common
   #151, `SET_MAG_OFFSETS <https://mavlink.io/en/messages/ardupilotmega.html#SET_MAG_OFFSETS>`_, UNSUPPORTED, ardupilotmega
   #84, `SET_POSITION_TARGET_LOCAL_NED <https://mavlink.io/en/messages/common.html#SET_POSITION_TARGET_LOCAL_NED>`_, UNSUPPORTED, common
   #370, `SMART_BATTERY_INFO <https://mavlink.io/en/messages/common.html#SMART_BATTERY_INFO>`_, UNSUPPORTED, common
   #261, `STORAGE_INFORMATION <https://mavlink.io/en/messages/common.html#STORAGE_INFORMATION>`_, UNSUPPORTED, common
-  #135, `TERRAIN_CHECK <https://mavlink.io/en/messages/common.html#TERRAIN_CHECK>`_, UNSUPPORTED, common
-  #134, `TERRAIN_DATA <https://mavlink.io/en/messages/common.html#TERRAIN_DATA>`_, UNSUPPORTED, common
+  #60012, `STORM32_GIMBAL_MANAGER_CONTROL <https://mavlink.io/en/messages/all.html#STORM32_GIMBAL_MANAGER_CONTROL>`_, UNSUPPORTED, all
+  #60013, `STORM32_GIMBAL_MANAGER_CONTROL_PITCHYAW <https://mavlink.io/en/messages/all.html#STORM32_GIMBAL_MANAGER_CONTROL_PITCHYAW>`_, UNSUPPORTED, all
+  #60014, `STORM32_GIMBAL_MANAGER_CORRECT_ROLL <https://mavlink.io/en/messages/all.html#STORM32_GIMBAL_MANAGER_CORRECT_ROLL>`_, UNSUPPORTED, all
+  #60010, `STORM32_GIMBAL_MANAGER_INFORMATION <https://mavlink.io/en/messages/all.html#STORM32_GIMBAL_MANAGER_INFORMATION>`_, UNSUPPORTED, all
+  #60011, `STORM32_GIMBAL_MANAGER_STATUS <https://mavlink.io/en/messages/all.html#STORM32_GIMBAL_MANAGER_STATUS>`_, UNSUPPORTED, all
+  #17000, `TEST_TYPES <https://mavlink.io/en/messages/all.html#TEST_TYPES>`_, UNSUPPORTED, all
   #333, `TRAJECTORY_REPRESENTATION_BEZIER <https://mavlink.io/en/messages/common.html#TRAJECTORY_REPRESENTATION_BEZIER>`_, UNSUPPORTED, common
   #332, `TRAJECTORY_REPRESENTATION_WAYPOINTS <https://mavlink.io/en/messages/common.html#TRAJECTORY_REPRESENTATION_WAYPOINTS>`_, UNSUPPORTED, common
   #385, `TUNNEL <https://mavlink.io/en/messages/common.html#TUNNEL>`_, UNSUPPORTED, common
+  #222, `UALBERTA_SYS_STATUS <https://mavlink.io/en/messages/all.html#UALBERTA_SYS_STATUS>`_, UNSUPPORTED, all
   #311, `UAVCAN_NODE_INFO <https://mavlink.io/en/messages/common.html#UAVCAN_NODE_INFO>`_, UNSUPPORTED, common
   #310, `UAVCAN_NODE_STATUS <https://mavlink.io/en/messages/common.html#UAVCAN_NODE_STATUS>`_, UNSUPPORTED, common
   #10006, `UAVIONIX_ADSB_GET <https://mavlink.io/en/messages/uAvionix.html#UAVIONIX_ADSB_GET>`_, UNSUPPORTED, uAvionix
@@ -635,9 +678,18 @@ Unsupported / unhandled commands.
   #260, `MAV_CMD_OBLIQUE_SURVEY <https://mavlink.io/en/messages/common.html#MAV_CMD_OBLIQUE_SURVEY>`_, UNSUPPORTED, common
   #252, `MAV_CMD_OVERRIDE_GOTO <https://mavlink.io/en/messages/common.html#MAV_CMD_OVERRIDE_GOTO>`_, UNSUPPORTED, common
   #2800, `MAV_CMD_PANORAMA_CREATE <https://mavlink.io/en/messages/common.html#MAV_CMD_PANORAMA_CREATE>`_, UNSUPPORTED, common
+  #40002, `MAV_CMD_PAYLOAD_CONTROL <https://mavlink.io/en/messages/all.html#MAV_CMD_PAYLOAD_CONTROL>`_, UNSUPPORTED, all
   #30002, `MAV_CMD_PAYLOAD_CONTROL_DEPLOY <https://mavlink.io/en/messages/common.html#MAV_CMD_PAYLOAD_CONTROL_DEPLOY>`_, UNSUPPORTED, common
   #30001, `MAV_CMD_PAYLOAD_PREPARE_DEPLOY <https://mavlink.io/en/messages/common.html#MAV_CMD_PAYLOAD_PREPARE_DEPLOY>`_, UNSUPPORTED, common
   #42000, `MAV_CMD_POWER_OFF_INITIATED <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_POWER_OFF_INITIATED>`_, UNSUPPORTED, ardupilotmega
+  #60051, `MAV_CMD_PRS_GET_ARM <https://mavlink.io/en/messages/all.html#MAV_CMD_PRS_GET_ARM>`_, UNSUPPORTED, all
+  #60071, `MAV_CMD_PRS_GET_ARM_ALTI <https://mavlink.io/en/messages/all.html#MAV_CMD_PRS_GET_ARM_ALTI>`_, UNSUPPORTED, all
+  #60052, `MAV_CMD_PRS_GET_BATTERY <https://mavlink.io/en/messages/all.html#MAV_CMD_PRS_GET_BATTERY>`_, UNSUPPORTED, all
+  #60053, `MAV_CMD_PRS_GET_ERR <https://mavlink.io/en/messages/all.html#MAV_CMD_PRS_GET_ERR>`_, UNSUPPORTED, all
+  #60050, `MAV_CMD_PRS_SET_ARM <https://mavlink.io/en/messages/all.html#MAV_CMD_PRS_SET_ARM>`_, UNSUPPORTED, all
+  #60070, `MAV_CMD_PRS_SET_ARM_ALTI <https://mavlink.io/en/messages/all.html#MAV_CMD_PRS_SET_ARM_ALTI>`_, UNSUPPORTED, all
+  #60072, `MAV_CMD_PRS_SHUTDOWN <https://mavlink.io/en/messages/all.html#MAV_CMD_PRS_SHUTDOWN>`_, UNSUPPORTED, all
+  #60020, `MAV_CMD_QSHOT_DO_CONFIGURE <https://mavlink.io/en/messages/all.html#MAV_CMD_QSHOT_DO_CONFIGURE>`_, UNSUPPORTED, all
   #527, `MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS <https://mavlink.io/en/messages/common.html#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS>`_, UNSUPPORTED, common
   #521, `MAV_CMD_REQUEST_CAMERA_INFORMATION <https://mavlink.io/en/messages/common.html#MAV_CMD_REQUEST_CAMERA_INFORMATION>`_, UNSUPPORTED, common
   #522, `MAV_CMD_REQUEST_CAMERA_SETTINGS <https://mavlink.io/en/messages/common.html#MAV_CMD_REQUEST_CAMERA_SETTINGS>`_, UNSUPPORTED, common
@@ -647,6 +699,7 @@ Unsupported / unhandled commands.
   #2504, `MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION <https://mavlink.io/en/messages/common.html#MAV_CMD_REQUEST_VIDEO_STREAM_INFORMATION>`_, UNSUPPORTED, common
   #2505, `MAV_CMD_REQUEST_VIDEO_STREAM_STATUS <https://mavlink.io/en/messages/common.html#MAV_CMD_REQUEST_VIDEO_STREAM_STATUS>`_, UNSUPPORTED, common
   #529, `MAV_CMD_RESET_CAMERA_SETTINGS <https://mavlink.io/en/messages/common.html#MAV_CMD_RESET_CAMERA_SETTINGS>`_, UNSUPPORTED, common
+  #40001, `MAV_CMD_RESET_MPPT <https://mavlink.io/en/messages/all.html#MAV_CMD_RESET_MPPT>`_, UNSUPPORTED, all
   #530, `MAV_CMD_SET_CAMERA_MODE <https://mavlink.io/en/messages/common.html#MAV_CMD_SET_CAMERA_MODE>`_, UNSUPPORTED, common
   #42427, `MAV_CMD_SET_FACTORY_TEST_MODE <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_SET_FACTORY_TEST_MODE>`_, UNSUPPORTED, ardupilotmega
   #4001, `MAV_CMD_SET_GUIDED_SUBMODE_CIRCLE <https://mavlink.io/en/messages/common.html#MAV_CMD_SET_GUIDED_SUBMODE_CIRCLE>`_, UNSUPPORTED, common
@@ -661,6 +714,8 @@ Unsupported / unhandled commands.
   #31007, `MAV_CMD_SPATIAL_USER_3 <https://mavlink.io/en/messages/common.html#MAV_CMD_SPATIAL_USER_3>`_, UNSUPPORTED, common
   #31008, `MAV_CMD_SPATIAL_USER_4 <https://mavlink.io/en/messages/common.html#MAV_CMD_SPATIAL_USER_4>`_, UNSUPPORTED, common
   #31009, `MAV_CMD_SPATIAL_USER_5 <https://mavlink.io/en/messages/common.html#MAV_CMD_SPATIAL_USER_5>`_, UNSUPPORTED, common
+  #60002, `MAV_CMD_STORM32_DO_GIMBAL_MANAGER_CONTROL_PITCHYAW <https://mavlink.io/en/messages/all.html#MAV_CMD_STORM32_DO_GIMBAL_MANAGER_CONTROL_PITCHYAW>`_, UNSUPPORTED, all
+  #60010, `MAV_CMD_STORM32_DO_GIMBAL_MANAGER_SETUP <https://mavlink.io/en/messages/all.html#MAV_CMD_STORM32_DO_GIMBAL_MANAGER_SETUP>`_, UNSUPPORTED, all
   #5200, `MAV_CMD_UAVCAN_GET_NODE_INFO <https://mavlink.io/en/messages/common.html#MAV_CMD_UAVCAN_GET_NODE_INFO>`_, UNSUPPORTED, common
   #31010, `MAV_CMD_USER_1 <https://mavlink.io/en/messages/common.html#MAV_CMD_USER_1>`_, UNSUPPORTED, common
   #31011, `MAV_CMD_USER_2 <https://mavlink.io/en/messages/common.html#MAV_CMD_USER_2>`_, UNSUPPORTED, common
