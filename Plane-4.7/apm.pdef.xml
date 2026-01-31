@@ -24852,12 +24852,6 @@
         </values>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Angle Max" name="Q_ANGLE_MAX" documentation="Maximum lean angle in all VTOL flight modes" user="Advanced">
-        <field name="Units">cdeg</field>
-        <field name="UnitText">centidegrees</field>
-        <field name="Increment">10</field>
-        <field name="Range">1000 8000</field>
-      </param>
       <param humanName="Transition time" name="Q_TRANSITION_MS" documentation="Transition time in milliseconds after minimum airspeed is reached" user="Advanced">
         <field name="Units">ms</field>
         <field name="UnitText">milliseconds</field>
@@ -25044,7 +25038,7 @@
           <bit code="11">Delay Spoolup-delay VTOL spoolup for 2 seconds after arming</bit>
           <bit code="12">Disable speed based Qassist when using synthetic airspeed estimates</bit>
           <bit code="13">Disable Ground Effect Compensation-on baro altitude reports</bit>
-          <bit code="14">Ignore forward flight angle limits-in Qmodes and use Q_ANGLE_MAX exclusively</bit>
+          <bit code="14">Ignore forward flight angle limits-in Qmodes and use Q_A_ANGLE_MAX exclusively</bit>
           <bit code="15">ThrLandControl-enable throttle stick control of landing rate</bit>
           <bit code="16">DisableApproach-disable use of approach and airbrake stages in VTOL landing</bit>
           <bit code="17">EnableLandResposition-enable pilot controlled repositioning in AUTO land.Descent will pause while repositioning</bit>
@@ -25054,7 +25048,7 @@
           <bit code="21">Tilt rotor-tilt motors up when disarmed in FW modes (except manual) to prevent ground strikes.</bit>
           <bit code="22">Scale FF by the ratio of VTOL to plane angle P gains in Position 1 phase of transition into VTOL flight as well as reducing VTOL angle P based on airspeed.</bit>
         </bitmask>
-        <field name="Bitmask">0: Level Transition-keep wings within LEVEL_ROLL_LIMIT and only use forward motor(s) for climb during transition, 1: Allow FW Takeoff-if bit is not set then NAV_TAKEOFF command on quadplanes will instead perform a NAV_VTOL takeoff, 2: Allow FW Land-if bit is not set then NAV_LAND command on quadplanes will instead perform a NAV_VTOL_LAND, 3: Vtol Takeoff Frame-command NAV_VTOL_TAKEOFF alt set by the command's reference frame not above current location, 4: Always use FW spiral approach-always use Use a fixed wing spiral approach for VTOL landings, 5: USE QRTL-instead of QLAND for rc failsafe when in VTOL modes, 6: Use Governor-use ICE Idle Governor in MANUAL for forward motor, 7: Force Qassist-on always, 8: Mtrs_Only_Qassist-in tailsitters only uses VTOL motors and not flying surfaces for QASSIST, 10: Disarmed Yaw Tilt-enable motor tilt for yaw when disarmed, 11: Delay Spoolup-delay VTOL spoolup for 2 seconds after arming, 12: Disable speed based Qassist when using synthetic airspeed estimates, 13: Disable Ground Effect Compensation-on baro altitude reports, 14: Ignore forward flight angle limits-in Qmodes and use Q_ANGLE_MAX exclusively, 15: ThrLandControl-enable throttle stick control of landing rate, 16: DisableApproach-disable use of approach and airbrake stages in VTOL landing, 17: EnableLandResposition-enable pilot controlled repositioning in AUTO land.Descent will pause while repositioning, 18: ARMVTOL-arm only in VTOL modes (or AUTO mode when current nav cmd is VTOL Takeoff), 19: CompleteTransition-to fixed wing if Q_TRANS_FAIL timer times out instead of QLAND, 20: Force RTL mode-forces RTL mode on rc failsafe in VTOL modes overriding bit 5(USE_QRTL), 21: Tilt rotor-tilt motors up when disarmed in FW modes (except manual) to prevent ground strikes., 22: Scale FF by the ratio of VTOL to plane angle P gains in Position 1 phase of transition into VTOL flight as well as reducing VTOL angle P based on airspeed.</field>
+        <field name="Bitmask">0: Level Transition-keep wings within LEVEL_ROLL_LIMIT and only use forward motor(s) for climb during transition, 1: Allow FW Takeoff-if bit is not set then NAV_TAKEOFF command on quadplanes will instead perform a NAV_VTOL takeoff, 2: Allow FW Land-if bit is not set then NAV_LAND command on quadplanes will instead perform a NAV_VTOL_LAND, 3: Vtol Takeoff Frame-command NAV_VTOL_TAKEOFF alt set by the command's reference frame not above current location, 4: Always use FW spiral approach-always use Use a fixed wing spiral approach for VTOL landings, 5: USE QRTL-instead of QLAND for rc failsafe when in VTOL modes, 6: Use Governor-use ICE Idle Governor in MANUAL for forward motor, 7: Force Qassist-on always, 8: Mtrs_Only_Qassist-in tailsitters only uses VTOL motors and not flying surfaces for QASSIST, 10: Disarmed Yaw Tilt-enable motor tilt for yaw when disarmed, 11: Delay Spoolup-delay VTOL spoolup for 2 seconds after arming, 12: Disable speed based Qassist when using synthetic airspeed estimates, 13: Disable Ground Effect Compensation-on baro altitude reports, 14: Ignore forward flight angle limits-in Qmodes and use Q_A_ANGLE_MAX exclusively, 15: ThrLandControl-enable throttle stick control of landing rate, 16: DisableApproach-disable use of approach and airbrake stages in VTOL landing, 17: EnableLandResposition-enable pilot controlled repositioning in AUTO land.Descent will pause while repositioning, 18: ARMVTOL-arm only in VTOL modes (or AUTO mode when current nav cmd is VTOL Takeoff), 19: CompleteTransition-to fixed wing if Q_TRANS_FAIL timer times out instead of QLAND, 20: Force RTL mode-forces RTL mode on rc failsafe in VTOL modes overriding bit 5(USE_QRTL), 21: Tilt rotor-tilt motors up when disarmed in FW modes (except manual) to prevent ground strikes., 22: Scale FF by the ratio of VTOL to plane angle P gains in Position 1 phase of transition into VTOL flight as well as reducing VTOL angle P based on airspeed.</field>
       </param>
       <param humanName="Transition deceleration" name="Q_TRANS_DECEL" documentation="This is deceleration rate that will be used in calculating the stopping distance when transitioning from fixed wing flight to multicopter flight." user="Standard">
         <field name="Units">m/s/s</field>
@@ -25203,7 +25197,7 @@
           <value code="2">On in all Q modes except QAUTOTUNE and QACRO</value>
         </values>
       </param>
-      <param humanName="Q mode rearward pitch limit" name="Q_BCK_PIT_LIM" documentation="This sets the maximum number of degrees of back or pitch up in Q modes when the airspeed is at AIRSPEED_MIN, and is used to prevent excessive sutructural loads when pitching up decelerate. If airspeed is above or below AIRSPEED_MIN, the pitch up/back will be adjusted according to the formula pitch_limit = Q_BCK_PIT_LIM * (AIRSPEED_MIN / IAS)^2. The backwards/up pitch limit controlled by this parameter is in addition to limiting applied by PTCH_LIM_MAX_DEG and Q_ANGLE_MAX. The BCK_PIT_LIM limit is only applied when Q_FWD_THR_USE is set to 1 or 2 and the vehicle is flying in a mode that uses forward throttle instead of forward tilt to generate forward speed. Set to a non positive value 0 to deactivate this limit." user="Standard">
+      <param humanName="Q mode rearward pitch limit" name="Q_BCK_PIT_LIM" documentation="This sets the maximum number of degrees of back or pitch up in Q modes when the airspeed is at AIRSPEED_MIN, and is used to prevent excessive sutructural loads when pitching up decelerate. If airspeed is above or below AIRSPEED_MIN, the pitch up/back will be adjusted according to the formula pitch_limit = Q_BCK_PIT_LIM * (AIRSPEED_MIN / IAS)^2. The backwards/up pitch limit controlled by this parameter is in addition to limiting applied by PTCH_LIM_MAX_DEG and Q_A_ANGLE_MAX. The BCK_PIT_LIM limit is only applied when Q_FWD_THR_USE is set to 1 or 2 and the vehicle is flying in a mode that uses forward throttle instead of forward tilt to generate forward speed. Set to a non positive value 0 to deactivate this limit." user="Standard">
         <field name="Units">deg</field>
         <field name="UnitText">degrees</field>
         <field name="Range">0.0 15.0</field>
@@ -25379,6 +25373,12 @@
       </param>
       <param humanName="Landed yaw gain multiplier" name="Q_A_LAND_Y_MULT" documentation="Yaw gain multiplier active when landed. A factor of 1.0 means no reduction in gain while landed. Reduce this factor to reduce ground oscitation in the yaw axis." user="Advanced">
         <field name="Range">0.25 1.0</field>
+      </param>
+      <param humanName="Angle Max" name="Q_A_ANGLE_MAX" documentation="Maximum lean angle in all flight modes" user="Standard">
+        <field name="Units">deg</field>
+        <field name="UnitText">degrees</field>
+        <field name="Increment">0.1</field>
+        <field name="Range">10.0 80.0</field>
       </param>
       <param humanName="Roll axis rate controller P gain" name="Q_A_RAT_RLL_P" documentation="Roll axis rate controller P gain.  Corrects in proportion to the difference between the desired roll rate vs actual roll rate" user="Standard">
         <field name="Range">0.01 0.5</field>
@@ -25564,7 +25564,7 @@
       </param>
     </parameters>
     <parameters name="Q_LOIT_">
-      <param humanName="Loiter pilot angle max" name="Q_LOIT_ANG_MAX" documentation="Loiter maximum pilot requested lean angle. Set to zero for 2/3 of Q_P_ANGLE_MAX/Q_ANGLE_MAX. The maximum vehicle lean angle is still limited by Q_P_ANGLE_MAX/Q_ANGLE_MAX" user="Advanced">
+      <param humanName="Loiter pilot angle max" name="Q_LOIT_ANG_MAX" documentation="Loiter maximum pilot requested lean angle. Set to zero for 2/3 of Q_P_ANGLE_MAX/Q_A_ANGLE_MAX. The maximum vehicle lean angle is still limited by Q_P_ANGLE_MAX/Q_A_ANGLE_MAX" user="Advanced">
         <field name="Units">deg</field>
         <field name="UnitText">degrees</field>
         <field name="Range">0 45</field>
@@ -25950,7 +25950,7 @@
       <param humanName="Maximum tailsitter gain scaling" name="Q_TAILSIT_GSCMAX" documentation="Maximum gain scaling for tailsitter Q_TAILSIT_GSCMSK options" user="Standard">
         <field name="Range">1 5</field>
       </param>
-      <param humanName="Maximum Roll angle" name="Q_TAILSIT_RLL_MX" documentation="Maximum Allowed roll angle for tailsitters. If this is zero then Q_ANGLE_MAX is used." user="Standard">
+      <param humanName="Maximum Roll angle" name="Q_TAILSIT_RLL_MX" documentation="Maximum Allowed roll angle for tailsitters. If this is zero then Q_A_ANGLE_MAX is used." user="Standard">
         <field name="Units">deg</field>
         <field name="UnitText">degrees</field>
         <field name="Range">0 80</field>

@@ -1683,6 +1683,17 @@
         "1": "Enabled"
       }
     },
+    "ATC_ANGLE_MAX": {
+      "Description": "Maximum lean angle in all flight modes",
+      "DisplayName": "Angle Max",
+      "Increment": "0.1",
+      "Range": {
+        "high": "80.0",
+        "low": "10.0"
+      },
+      "Units": "deg",
+      "User": "Standard"
+    },
     "ATC_ANG_LIM_TC": {
       "Description": "Angle Limit (to maintain altitude) Time Constant",
       "DisplayName": "Angle Limit (to maintain altitude) Time Constant",
@@ -15028,17 +15039,6 @@
         "0.5": "Very Soft"
       }
     },
-    "ANGLE_MAX": {
-      "Description": "Maximum lean angle in all flight modes",
-      "DisplayName": "Angle Max",
-      "Increment": "10",
-      "Range": {
-        "high": "8000",
-        "low": "1000"
-      },
-      "Units": "cdeg",
-      "User": "Advanced"
-    },
     "AUTO_OPTIONS": {
       "Bitmask": {
         "0": "Allow Arming",
@@ -23260,7 +23260,7 @@
       "User": "Advanced"
     },
     "LOIT_ANG_MAX": {
-      "Description": "Loiter maximum pilot requested lean angle. Set to zero for 2/3 of PSC_ANGLE_MAX/ANGLE_MAX. The maximum vehicle lean angle is still limited by PSC_ANGLE_MAX/ANGLE_MAX",
+      "Description": "Loiter maximum pilot requested lean angle. Set to zero for 2/3 of PSC_ANGLE_MAX/ATC_ANGLE_MAX. The maximum vehicle lean angle is still limited by PSC_ANGLE_MAX/ATC_ANGLE_MAX",
       "DisplayName": "Loiter pilot angle max",
       "Increment": "1",
       "Range": {

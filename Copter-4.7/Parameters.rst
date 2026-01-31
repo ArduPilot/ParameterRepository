@@ -1268,25 +1268,6 @@ Delay before automatic disarm in seconds after landing touchdown detection\. A v
 
 
 
-.. _ANGLE_MAX:
-
-ANGLE\_MAX: Angle Max
-~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Maximum lean angle in all flight modes
-
-
-+-----------+--------------+--------------+
-| Increment | Range        | Units        |
-+===========+==============+==============+
-| 10        | 1000 to 8000 | centidegrees |
-+-----------+--------------+--------------+
-
-
-
-
 .. _PHLD_BRAKE_RATE:
 
 PHLD\_BRAKE\_RATE: PosHold braking rate
@@ -7127,6 +7108,24 @@ Yaw gain multiplier active when landed\. A factor of 1\.0 means no reduction in 
 +=============+
 | 0.25 to 1.0 |
 +-------------+
+
+
+
+
+.. _ATC_ANGLE_MAX:
+
+ATC\_ANGLE\_MAX: Angle Max
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Maximum lean angle in all flight modes
+
+
++-----------+--------------+---------+
+| Increment | Range        | Units   |
++===========+==============+=========+
+| 0.1       | 10.0 to 80.0 | degrees |
++-----------+--------------+---------+
 
 
 
@@ -56077,7 +56076,7 @@ LOIT\_ANG\_MAX: Loiter pilot angle max
 
 | *Note: This parameter is for advanced users*
 
-Loiter maximum pilot requested lean angle\. Set to zero for 2\/3 of PSC\_ANGLE\_MAX\/ANGLE\_MAX\. The maximum vehicle lean angle is still limited by PSC\_ANGLE\_MAX\/ANGLE\_MAX
+Loiter maximum pilot requested lean angle\. Set to zero for 2\/3 of PSC\_ANGLE\_MAX\/ATC\_ANGLE\_MAX\. The maximum vehicle lean angle is still limited by PSC\_ANGLE\_MAX\/ATC\_ANGLE\_MAX
 
 
 +-----------+---------+---------+

@@ -86829,25 +86829,6 @@ This enables QuadPlane functionality\, assuming multicopter motors start on outp
 
 
 
-.. _Q_ANGLE_MAX:
-
-Q\_ANGLE\_MAX: Angle Max
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Maximum lean angle in all VTOL flight modes
-
-
-+-----------+--------------+--------------+
-| Increment | Range        | Units        |
-+===========+==============+==============+
-| 10        | 1000 to 8000 | centidegrees |
-+-----------+--------------+--------------+
-
-
-
-
 .. _Q_TRANSITION_MS:
 
 Q\_TRANSITION\_MS: Transition time
@@ -87381,7 +87362,7 @@ See description for each bitmask bit description
 +-----+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 13  | Disable Ground Effect Compensation-on baro altitude reports                                                                                                 |
 +-----+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| 14  | Ignore forward flight angle limits-in Qmodes and use Q_ANGLE_MAX exclusively                                                                                |
+| 14  | Ignore forward flight angle limits-in Qmodes and use Q_A_ANGLE_MAX exclusively                                                                              |
 +-----+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | 15  | ThrLandControl-enable throttle stick control of landing rate                                                                                                |
 +-----+-------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -87894,7 +87875,7 @@ Q\_BCK\_PIT\_LIM: Q mode rearward pitch limit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-This sets the maximum number of degrees of back or pitch up in Q modes when the airspeed is at AIRSPEED\_MIN\, and is used to prevent excessive sutructural loads when pitching up decelerate\. If airspeed is above or below AIRSPEED\_MIN\, the pitch up\/back will be adjusted according to the formula pitch\_limit \= Q\_BCK\_PIT\_LIM \* \(AIRSPEED\_MIN \/ IAS\)\^2\. The backwards\/up pitch limit controlled by this parameter is in addition to limiting applied by PTCH\_LIM\_MAX\_DEG and Q\_ANGLE\_MAX\. The BCK\_PIT\_LIM limit is only applied when Q\_FWD\_THR\_USE is set to 1 or 2 and the vehicle is flying in a mode that uses forward throttle instead of forward tilt to generate forward speed\. Set to a non positive value 0 to deactivate this limit\.
+This sets the maximum number of degrees of back or pitch up in Q modes when the airspeed is at AIRSPEED\_MIN\, and is used to prevent excessive sutructural loads when pitching up decelerate\. If airspeed is above or below AIRSPEED\_MIN\, the pitch up\/back will be adjusted according to the formula pitch\_limit \= Q\_BCK\_PIT\_LIM \* \(AIRSPEED\_MIN \/ IAS\)\^2\. The backwards\/up pitch limit controlled by this parameter is in addition to limiting applied by PTCH\_LIM\_MAX\_DEG and Q\_A\_ANGLE\_MAX\. The BCK\_PIT\_LIM limit is only applied when Q\_FWD\_THR\_USE is set to 1 or 2 and the vehicle is flying in a mode that uses forward throttle instead of forward tilt to generate forward speed\. Set to a non positive value 0 to deactivate this limit\.
 
 
 +-----------+-------------+---------+
@@ -88504,6 +88485,24 @@ Yaw gain multiplier active when landed\. A factor of 1\.0 means no reduction in 
 +=============+
 | 0.25 to 1.0 |
 +-------------+
+
+
+
+
+.. _Q_A_ANGLE_MAX:
+
+Q\_A\_ANGLE\_MAX: Angle Max
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Maximum lean angle in all flight modes
+
+
++-----------+--------------+---------+
+| Increment | Range        | Units   |
++===========+==============+=========+
+| 0.1       | 10.0 to 80.0 | degrees |
++-----------+--------------+---------+
 
 
 
@@ -89312,7 +89311,7 @@ Q\_LOIT\_ANG\_MAX: Loiter pilot angle max
 
 | *Note: This parameter is for advanced users*
 
-Loiter maximum pilot requested lean angle\. Set to zero for 2\/3 of Q\_P\_ANGLE\_MAX\/Q\_ANGLE\_MAX\. The maximum vehicle lean angle is still limited by Q\_P\_ANGLE\_MAX\/Q\_ANGLE\_MAX
+Loiter maximum pilot requested lean angle\. Set to zero for 2\/3 of Q\_P\_ANGLE\_MAX\/Q\_A\_ANGLE\_MAX\. The maximum vehicle lean angle is still limited by Q\_P\_ANGLE\_MAX\/Q\_A\_ANGLE\_MAX
 
 
 +-----------+---------+---------+
@@ -90739,7 +90738,7 @@ Q\_TAILSIT\_RLL\_MX: Maximum Roll angle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Maximum Allowed roll angle for tailsitters\. If this is zero then Q\_ANGLE\_MAX is used\.
+Maximum Allowed roll angle for tailsitters\. If this is zero then Q\_A\_ANGLE\_MAX is used\.
 
 
 +---------+---------+

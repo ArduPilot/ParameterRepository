@@ -39286,17 +39286,6 @@
       "Units": "deg/s",
       "User": "Standard"
     },
-    "Q_ANGLE_MAX": {
-      "Description": "Maximum lean angle in all VTOL flight modes",
-      "DisplayName": "Angle Max",
-      "Increment": "10",
-      "Range": {
-        "high": "8000",
-        "low": "1000"
-      },
-      "Units": "cdeg",
-      "User": "Advanced"
-    },
     "Q_APPROACH_DIST": {
       "Description": "The minimum distance from the destination to use the fixed wing airbrake and approach code for landing approach. This is useful if you don't want the fixed wing approach logic to be used when you are close to the destination. Set to zero to always use fixed wing approach.",
       "DisplayName": "Q mode approach distance",
@@ -39371,7 +39360,7 @@
       "Units": "ms"
     },
     "Q_BCK_PIT_LIM": {
-      "Description": "This sets the maximum number of degrees of back or pitch up in Q modes when the airspeed is at AIRSPEED_MIN, and is used to prevent excessive sutructural loads when pitching up decelerate. If airspeed is above or below AIRSPEED_MIN, the pitch up/back will be adjusted according to the formula pitch_limit = Q_BCK_PIT_LIM * (AIRSPEED_MIN / IAS)^2. The backwards/up pitch limit controlled by this parameter is in addition to limiting applied by PTCH_LIM_MAX_DEG and Q_ANGLE_MAX. The BCK_PIT_LIM limit is only applied when Q_FWD_THR_USE is set to 1 or 2 and the vehicle is flying in a mode that uses forward throttle instead of forward tilt to generate forward speed. Set to a non positive value 0 to deactivate this limit.",
+      "Description": "This sets the maximum number of degrees of back or pitch up in Q modes when the airspeed is at AIRSPEED_MIN, and is used to prevent excessive sutructural loads when pitching up decelerate. If airspeed is above or below AIRSPEED_MIN, the pitch up/back will be adjusted according to the formula pitch_limit = Q_BCK_PIT_LIM * (AIRSPEED_MIN / IAS)^2. The backwards/up pitch limit controlled by this parameter is in addition to limiting applied by PTCH_LIM_MAX_DEG and Q_A_ANGLE_MAX. The BCK_PIT_LIM limit is only applied when Q_FWD_THR_USE is set to 1 or 2 and the vehicle is flying in a mode that uses forward throttle instead of forward tilt to generate forward speed. Set to a non positive value 0 to deactivate this limit.",
       "DisplayName": "Q mode rearward pitch limit",
       "Increment": "0.1",
       "Range": {
@@ -39585,7 +39574,7 @@
         "11": "Delay Spoolup-delay VTOL spoolup for 2 seconds after arming",
         "12": "Disable speed based Qassist when using synthetic airspeed estimates",
         "13": "Disable Ground Effect Compensation-on baro altitude reports",
-        "14": "Ignore forward flight angle limits-in Qmodes and use Q_ANGLE_MAX exclusively",
+        "14": "Ignore forward flight angle limits-in Qmodes and use Q_A_ANGLE_MAX exclusively",
         "15": "ThrLandControl-enable throttle stick control of landing rate",
         "16": "DisableApproach-disable use of approach and airbrake stages in VTOL landing",
         "17": "EnableLandResposition-enable pilot controlled repositioning in AUTO land.Descent will pause while repositioning",
@@ -39984,6 +39973,17 @@
         "0": "Disabled",
         "1": "Enabled"
       }
+    },
+    "Q_A_ANGLE_MAX": {
+      "Description": "Maximum lean angle in all flight modes",
+      "DisplayName": "Angle Max",
+      "Increment": "0.1",
+      "Range": {
+        "high": "80.0",
+        "low": "10.0"
+      },
+      "Units": "deg",
+      "User": "Standard"
     },
     "Q_A_ANG_LIM_TC": {
       "Description": "Angle Limit (to maintain altitude) Time Constant",
@@ -40581,7 +40581,7 @@
       "User": "Advanced"
     },
     "Q_LOIT_ANG_MAX": {
-      "Description": "Loiter maximum pilot requested lean angle. Set to zero for 2/3 of Q_P_ANGLE_MAX/Q_ANGLE_MAX. The maximum vehicle lean angle is still limited by Q_P_ANGLE_MAX/Q_ANGLE_MAX",
+      "Description": "Loiter maximum pilot requested lean angle. Set to zero for 2/3 of Q_P_ANGLE_MAX/Q_A_ANGLE_MAX. The maximum vehicle lean angle is still limited by Q_P_ANGLE_MAX/Q_A_ANGLE_MAX",
       "DisplayName": "Loiter pilot angle max",
       "Increment": "1",
       "Range": {
@@ -41365,7 +41365,7 @@
       "Units": "deg/s"
     },
     "Q_TAILSIT_RLL_MX": {
-      "Description": "Maximum Allowed roll angle for tailsitters. If this is zero then Q_ANGLE_MAX is used.",
+      "Description": "Maximum Allowed roll angle for tailsitters. If this is zero then Q_A_ANGLE_MAX is used.",
       "DisplayName": "Maximum Roll angle",
       "Range": {
         "high": "80",

@@ -280,12 +280,6 @@
         </bitmask>
         <field name="Bitmask">0:ATTITUDE_FAST,1:ATTITUDE_MED,2:GPS,3:PM,4:CTUN,5:NTUN,6:RCIN,7:IMU,8:CMD,9:CURRENT,10:RCOUT,11:OPTFLOW,12:PID,13:COMPASS,14:INAV,15:CAMERA,17:MOTBATT,18:IMU_FAST,19:IMU_RAW</field>
       </param>
-      <param humanName="Angle Max" name="ArduSub:ANGLE_MAX" documentation="Maximum lean angle in all flight modes" user="Advanced">
-        <field name="Units">cdeg</field>
-        <field name="UnitText">centidegrees</field>
-        <field name="Increment">10</field>
-        <field name="Range">1000 8000</field>
-      </param>
       <param humanName="EKF Failsafe Action" name="ArduSub:FS_EKF_ACTION" documentation="Controls the action that will be taken when an EKF failsafe is invoked" user="Advanced">
         <values>
           <value code="0">Disabled</value>
@@ -2934,6 +2928,12 @@
       </param>
       <param humanName="Landed yaw gain multiplier" name="ATC_LAND_Y_MULT" documentation="Yaw gain multiplier active when landed. A factor of 1.0 means no reduction in gain while landed. Reduce this factor to reduce ground oscitation in the yaw axis." user="Advanced">
         <field name="Range">0.25 1.0</field>
+      </param>
+      <param humanName="Angle Max" name="ATC_ANGLE_MAX" documentation="Maximum lean angle in all flight modes" user="Standard">
+        <field name="Units">deg</field>
+        <field name="UnitText">degrees</field>
+        <field name="Increment">0.1</field>
+        <field name="Range">10.0 80.0</field>
       </param>
       <param humanName="Roll axis rate controller P gain" name="ATC_RAT_RLL_P" documentation="Roll axis rate controller P gain.  Corrects in proportion to the difference between the desired roll rate vs actual roll rate" user="Standard">
         <field name="Range">0.0 0.30</field>
@@ -23038,7 +23038,7 @@
       </param>
     </parameters>
     <parameters name="LOIT_">
-      <param humanName="Loiter pilot angle max" name="LOIT_ANG_MAX" documentation="Loiter maximum pilot requested lean angle. Set to zero for 2/3 of PSC_ANGLE_MAX/ANGLE_MAX. The maximum vehicle lean angle is still limited by PSC_ANGLE_MAX/ANGLE_MAX" user="Advanced">
+      <param humanName="Loiter pilot angle max" name="LOIT_ANG_MAX" documentation="Loiter maximum pilot requested lean angle. Set to zero for 2/3 of PSC_ANGLE_MAX/ATC_ANGLE_MAX. The maximum vehicle lean angle is still limited by PSC_ANGLE_MAX/ATC_ANGLE_MAX" user="Advanced">
         <field name="Units">deg</field>
         <field name="UnitText">degrees</field>
         <field name="Range">0 45</field>

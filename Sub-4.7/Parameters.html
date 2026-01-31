@@ -418,16 +418,6 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Angle Max (ArduSub:ANGLE_MAX)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>Maximum lean angle in all flight modes</p>
-<ul>
-<li>Units: centidegrees</li>
-<li>Increment: 10</li>
-<li>Range: 1000 8000</li>
-</ul>
-
-
 <h2>EKF Failsafe Action (ArduSub:FS_EKF_ACTION)</h2><em>Note: This parameter is for advanced users</em><br>
 
 <p>Controls the action that will be taken when an EKF failsafe is invoked</p>
@@ -5177,6 +5167,16 @@ DO NOT EDIT
 <p>Yaw gain multiplier active when landed. A factor of 1.0 means no reduction in gain while landed. Reduce this factor to reduce ground oscitation in the yaw axis.</p>
 <ul>
 <li>Range: 0.25 1.0</li>
+</ul>
+
+
+<h2>Angle Max (ATC_ANGLE_MAX)</h2>
+
+<p>Maximum lean angle in all flight modes</p>
+<ul>
+<li>Units: degrees</li>
+<li>Increment: 0.1</li>
+<li>Range: 10.0 80.0</li>
 </ul>
 
 
@@ -31989,7 +31989,7 @@ DO NOT EDIT
 
 <h2>Loiter pilot angle max (LOIT_ANG_MAX)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Loiter maximum pilot requested lean angle. Set to zero for 2/3 of PSC_ANGLE_MAX/ANGLE_MAX. The maximum vehicle lean angle is still limited by PSC_ANGLE_MAX/ANGLE_MAX</p>
+<p>Loiter maximum pilot requested lean angle. Set to zero for 2/3 of PSC_ANGLE_MAX/ATC_ANGLE_MAX. The maximum vehicle lean angle is still limited by PSC_ANGLE_MAX/ATC_ANGLE_MAX</p>
 <ul>
 <li>Units: degrees</li>
 <li>Range: 0 45</li>

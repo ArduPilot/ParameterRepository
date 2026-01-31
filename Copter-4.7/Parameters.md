@@ -530,18 +530,6 @@ Delay before automatic disarm in seconds after landing touchdown detection. A va
 
 - Range: 0 127
 
-## ANGLE_MAX: Angle Max
-
-*Note: This parameter is for advanced users*
-
-Maximum lean angle in all flight modes
-
-- Units: cdeg
-
-- Increment: 10
-
-- Range: 1000 8000
-
 ## PHLD_BRAKE_RATE: PosHold braking rate
 
 *Note: This parameter is for advanced users*
@@ -5620,6 +5608,16 @@ Pitch gain multiplier active when landed. A factor of 1.0 means no reduction in 
 Yaw gain multiplier active when landed. A factor of 1.0 means no reduction in gain while landed. Reduce this factor to reduce ground oscitation in the yaw axis.
 
 - Range: 0.25 1.0
+
+## ATC_ANGLE_MAX: Angle Max
+
+Maximum lean angle in all flight modes
+
+- Units: deg
+
+- Increment: 0.1
+
+- Range: 10.0 80.0
 
 ## ATC_RAT_RLL_P: Roll axis rate controller P gain
 
@@ -27286,7 +27284,7 @@ This sets the maximum number of log file that will be written on dataflash or sd
 
 *Note: This parameter is for advanced users*
 
-Loiter maximum pilot requested lean angle. Set to zero for 2/3 of PSC_ANGLE_MAX/ANGLE_MAX. The maximum vehicle lean angle is still limited by PSC_ANGLE_MAX/ANGLE_MAX
+Loiter maximum pilot requested lean angle. Set to zero for 2/3 of PSC_ANGLE_MAX/ATC_ANGLE_MAX. The maximum vehicle lean angle is still limited by PSC_ANGLE_MAX/ATC_ANGLE_MAX
 
 - Units: deg
 
