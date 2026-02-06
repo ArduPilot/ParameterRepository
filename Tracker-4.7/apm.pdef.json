@@ -89,9 +89,11 @@
       "Bitmask": {
         "0": "DisableDCMFallbackFW",
         "1": "DisableDCMFallbackVTOL",
-        "2": "DontDisableAirspeedUsingEKF"
+        "2": "DontDisableAirspeedUsingEKF",
+        "3": "RecordOrigin",
+        "4": "UseRecordedOriginForNonGPS"
       },
-      "Description": "This controls optional AHRS behaviour. Setting DisableDCMFallbackFW will change the AHRS behaviour for fixed wing aircraft in fly-forward flight to not fall back to DCM when the EKF stops navigating. Setting DisableDCMFallbackVTOL will change the AHRS behaviour for fixed wing aircraft in non fly-forward (VTOL) flight to not fall back to DCM when the EKF stops navigating. Setting DontDisableAirspeedUsingEKF disables the EKF based innovation check for airspeed consistency",
+      "Description": "This controls optional AHRS behaviour. Setting DisableDCMFallbackFW will change the AHRS behaviour for fixed wing aircraft in fly-forward flight to not fall back to DCM when the EKF stops navigating. Setting DisableDCMFallbackVTOL will change the AHRS behaviour for fixed wing aircraft in non fly-forward (VTOL) flight to not fall back to DCM when the EKF stops navigating. Setting DontDisableAirspeedUsingEKF disables the EKF based innovation check for airspeed consistency. Setting AutoRecordOrigin will auto-save the EKF origin to parameters when it becomes valid.",
       "DisplayName": "Optional AHRS behaviour",
       "User": "Advanced"
     },
@@ -147,6 +149,34 @@
         "8": "Roll180",
         "9": "Yaw45Roll180"
       }
+    },
+    "AHRS_ORIGIN_ALT": {
+      "Description": "AHRS last origin altitude in meters",
+      "DisplayName": "AHRS last origin altitude",
+      "Range": {
+        "high": "5000",
+        "low": "-200"
+      },
+      "User": "Advanced"
+    },
+    "AHRS_ORIGIN_LAT": {
+      "Description": "AHRS last origin latitude in degrees",
+      "DisplayName": "AHRS last origin latitude",
+      "Increment": "1",
+      "Range": {
+        "high": "180",
+        "low": "-180"
+      },
+      "User": "Advanced"
+    },
+    "AHRS_ORIGIN_LON": {
+      "Description": "AHRS last origin longitude in degrees",
+      "DisplayName": "AHRS last origin longitude",
+      "Range": {
+        "high": "180",
+        "low": "-180"
+      },
+      "User": "Advanced"
     },
     "AHRS_RP_P": {
       "Description": "This controls how fast the accelerometers correct the attitude",

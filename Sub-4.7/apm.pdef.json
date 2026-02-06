@@ -127,9 +127,11 @@
       "Bitmask": {
         "0": "DisableDCMFallbackFW",
         "1": "DisableDCMFallbackVTOL",
-        "2": "DontDisableAirspeedUsingEKF"
+        "2": "DontDisableAirspeedUsingEKF",
+        "3": "RecordOrigin",
+        "4": "UseRecordedOriginForNonGPS"
       },
-      "Description": "This controls optional AHRS behaviour. Setting DisableDCMFallbackFW will change the AHRS behaviour for fixed wing aircraft in fly-forward flight to not fall back to DCM when the EKF stops navigating. Setting DisableDCMFallbackVTOL will change the AHRS behaviour for fixed wing aircraft in non fly-forward (VTOL) flight to not fall back to DCM when the EKF stops navigating. Setting DontDisableAirspeedUsingEKF disables the EKF based innovation check for airspeed consistency",
+      "Description": "This controls optional AHRS behaviour. Setting DisableDCMFallbackFW will change the AHRS behaviour for fixed wing aircraft in fly-forward flight to not fall back to DCM when the EKF stops navigating. Setting DisableDCMFallbackVTOL will change the AHRS behaviour for fixed wing aircraft in non fly-forward (VTOL) flight to not fall back to DCM when the EKF stops navigating. Setting DontDisableAirspeedUsingEKF disables the EKF based innovation check for airspeed consistency. Setting AutoRecordOrigin will auto-save the EKF origin to parameters when it becomes valid.",
       "DisplayName": "Optional AHRS behaviour",
       "User": "Advanced"
     },
@@ -185,6 +187,34 @@
         "8": "Roll180",
         "9": "Yaw45Roll180"
       }
+    },
+    "AHRS_ORIGIN_ALT": {
+      "Description": "AHRS last origin altitude in meters",
+      "DisplayName": "AHRS last origin altitude",
+      "Range": {
+        "high": "5000",
+        "low": "-200"
+      },
+      "User": "Advanced"
+    },
+    "AHRS_ORIGIN_LAT": {
+      "Description": "AHRS last origin latitude in degrees",
+      "DisplayName": "AHRS last origin latitude",
+      "Increment": "1",
+      "Range": {
+        "high": "180",
+        "low": "-180"
+      },
+      "User": "Advanced"
+    },
+    "AHRS_ORIGIN_LON": {
+      "Description": "AHRS last origin longitude in degrees",
+      "DisplayName": "AHRS last origin longitude",
+      "Range": {
+        "high": "180",
+        "low": "-180"
+      },
+      "User": "Advanced"
     },
     "AHRS_RP_P": {
       "Description": "This controls how fast the accelerometers correct the attitude",
@@ -27031,15 +27061,15 @@
     }
   },
   "LOIT_": {
-    "LOIT_ACC_MAX": {
-      "Description": "Loiter maximum correction acceleration in cm/s/s.  Higher values cause the copter to correct position errors more aggressively.",
+    "LOIT_ACC_MAX_M": {
+      "Description": "Loiter maximum correction acceleration in m/s/s.  Higher values cause the copter to correct position errors more aggressively.",
       "DisplayName": "Loiter maximum correction acceleration",
-      "Increment": "1",
+      "Increment": "0.01",
       "Range": {
-        "high": "981",
-        "low": "100"
+        "high": "9.81",
+        "low": "1"
       },
-      "Units": "cm/s/s",
+      "Units": "m/s/s",
       "User": "Advanced"
     },
     "LOIT_ANG_MAX": {
@@ -27053,15 +27083,15 @@
       "Units": "deg",
       "User": "Advanced"
     },
-    "LOIT_BRK_ACCEL": {
-      "Description": "Loiter braking acceleration in cm/s/s. Higher values stop the copter more quickly when the stick is centered.",
+    "LOIT_BRK_ACC_M": {
+      "Description": "Loiter braking acceleration in m/s/s. Higher values stop the copter more quickly when the stick is centered.",
       "DisplayName": "Loiter braking acceleration",
-      "Increment": "1",
+      "Increment": "0.01",
       "Range": {
-        "high": "250",
-        "low": "25"
+        "high": "2.5",
+        "low": "0.25"
       },
-      "Units": "cm/s/s",
+      "Units": "m/s/s",
       "User": "Advanced"
     },
     "LOIT_BRK_DELAY": {
@@ -27075,15 +27105,15 @@
       "Units": "s",
       "User": "Advanced"
     },
-    "LOIT_BRK_JERK": {
-      "Description": "Loiter braking jerk in cm/s/s/s. Higher values will remove braking faster if the pilot moves the sticks during a braking maneuver.",
+    "LOIT_BRK_JRK_M": {
+      "Description": "Loiter braking jerk in m/s/s/s. Higher values will remove braking faster if the pilot moves the sticks during a braking maneuver.",
       "DisplayName": "Loiter braking jerk",
-      "Increment": "1",
+      "Increment": "0.01",
       "Range": {
-        "high": "5000",
-        "low": "500"
+        "high": "50",
+        "low": "5"
       },
-      "Units": "cm/s/s/s",
+      "Units": "m/s/s/s",
       "User": "Advanced"
     },
     "LOIT_OPTIONS": {
@@ -27094,15 +27124,15 @@
       "DisplayName": "Loiter mode options",
       "User": "Standard"
     },
-    "LOIT_SPEED": {
-      "Description": "Defines the maximum speed in cm/s which the aircraft will travel horizontally while in loiter mode",
+    "LOIT_SPEED_MS": {
+      "Description": "Defines the maximum speed in m/s which the aircraft will travel horizontally while in loiter mode",
       "DisplayName": "Loiter Horizontal Maximum Speed",
-      "Increment": "50",
+      "Increment": "0.05",
       "Range": {
-        "high": "3500",
-        "low": "20"
+        "high": "35",
+        "low": "0.20"
       },
-      "Units": "cm/s",
+      "Units": "m/s",
       "User": "Standard"
     }
   },
@@ -34975,6 +35005,17 @@
       "Values": {
         "0": "Disabled"
       }
+    },
+    "MOT_IDLE_SEC": {
+      "Description": "Delay after reaching ground idle when armed to allow ESC startup to complete.",
+      "DisplayName": "Idle time",
+      "Increment": "0.1",
+      "Range": {
+        "high": "5",
+        "low": "0"
+      },
+      "Units": "s",
+      "User": "Advanced"
     },
     "MOT_OPTIONS": {
       "Bitmask": {
@@ -62645,24 +62686,6 @@
       },
       "Description": "4 byte bitmap of log types to enable",
       "DisplayName": "Log bitmask",
-      "User": "Standard"
-    },
-    "ORIGIN_ALT": {
-      "Description": "Backup EKF origin altitude (MSL) used when not using a positioning system.",
-      "DisplayName": "Backup altitude (MSL) for EKF origin",
-      "Units": "m",
-      "User": "Standard"
-    },
-    "ORIGIN_LAT": {
-      "Description": "Backup EKF origin latitude used when not using a positioning system.",
-      "DisplayName": "Backup latitude for EKF origin",
-      "Units": "deg",
-      "User": "Standard"
-    },
-    "ORIGIN_LON": {
-      "Description": "Backup EKF origin longitude used when not using a positioning system.",
-      "DisplayName": "Backup longitude for EKF origin",
-      "Units": "deg",
       "User": "Standard"
     },
     "PILOT_ACCEL_Z": {

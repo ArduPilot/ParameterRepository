@@ -542,24 +542,6 @@ Minimum depth to engage SURFTRAK mode
 
 - Units: cm
 
-## ORIGIN_LAT: Backup latitude for EKF origin
-
-Backup EKF origin latitude used when not using a positioning system.
-
-- Units: deg
-
-## ORIGIN_LON: Backup longitude for EKF origin
-
-Backup EKF origin longitude used when not using a positioning system.
-
-- Units: deg
-
-## ORIGIN_ALT: Backup altitude (MSL) for EKF origin
-
-Backup EKF origin altitude (MSL) used when not using a positioning system.
-
-- Units: m
-
 ## SFC_NOBARO_THST: Surface mode throttle output when no barometer is available
 
 Surface mode throttle output when no borometer is available. 100% is full throttle. -100% is maximum throttle downwards
@@ -3298,9 +3280,35 @@ Autopilot mounting position yaw offset. Positive values = yaw right, negative va
 
 *Note: This parameter is for advanced users*
 
-This controls optional AHRS behaviour. Setting DisableDCMFallbackFW will change the AHRS behaviour for fixed wing aircraft in fly-forward flight to not fall back to DCM when the EKF stops navigating. Setting DisableDCMFallbackVTOL will change the AHRS behaviour for fixed wing aircraft in non fly-forward (VTOL) flight to not fall back to DCM when the EKF stops navigating. Setting DontDisableAirspeedUsingEKF disables the EKF based innovation check for airspeed consistency
+This controls optional AHRS behaviour. Setting DisableDCMFallbackFW will change the AHRS behaviour for fixed wing aircraft in fly-forward flight to not fall back to DCM when the EKF stops navigating. Setting DisableDCMFallbackVTOL will change the AHRS behaviour for fixed wing aircraft in non fly-forward (VTOL) flight to not fall back to DCM when the EKF stops navigating. Setting DontDisableAirspeedUsingEKF disables the EKF based innovation check for airspeed consistency. Setting AutoRecordOrigin will auto-save the EKF origin to parameters when it becomes valid.
 
-- Bitmask: 0:DisableDCMFallbackFW, 1:DisableDCMFallbackVTOL, 2:DontDisableAirspeedUsingEKF
+- Bitmask: 0:DisableDCMFallbackFW, 1:DisableDCMFallbackVTOL, 2:DontDisableAirspeedUsingEKF, 3:RecordOrigin, 4:UseRecordedOriginForNonGPS
+
+## AHRS_ORIGIN_LAT: AHRS last origin latitude
+
+*Note: This parameter is for advanced users*
+
+AHRS last origin latitude in degrees
+
+- Range: -180 180
+
+- Increment: 1
+
+## AHRS_ORIGIN_LON: AHRS last origin longitude
+
+*Note: This parameter is for advanced users*
+
+AHRS last origin longitude in degrees
+
+- Range: -180 180
+
+## AHRS_ORIGIN_ALT: AHRS last origin altitude
+
+*Note: This parameter is for advanced users*
+
+AHRS last origin altitude in meters
+
+- Range: -200 5000
 
 # AIS Parameters
 
@@ -23542,52 +23550,6 @@ Loiter maximum pilot requested lean angle. Set to zero for 2/3 of PSC_ANGLE_MAX/
 
 - Increment: 1
 
-## LOIT_SPEED: Loiter Horizontal Maximum Speed
-
-Defines the maximum speed in cm/s which the aircraft will travel horizontally while in loiter mode
-
-- Units: cm/s
-
-- Range: 20 3500
-
-- Increment: 50
-
-## LOIT_ACC_MAX: Loiter maximum correction acceleration
-
-*Note: This parameter is for advanced users*
-
-Loiter maximum correction acceleration in cm/s/s.  Higher values cause the copter to correct position errors more aggressively.
-
-- Units: cm/s/s
-
-- Range: 100 981
-
-- Increment: 1
-
-## LOIT_BRK_ACCEL: Loiter braking acceleration
-
-*Note: This parameter is for advanced users*
-
-Loiter braking acceleration in cm/s/s. Higher values stop the copter more quickly when the stick is centered.
-
-- Units: cm/s/s
-
-- Range: 25 250
-
-- Increment: 1
-
-## LOIT_BRK_JERK: Loiter braking jerk
-
-*Note: This parameter is for advanced users*
-
-Loiter braking jerk in cm/s/s/s. Higher values will remove braking faster if the pilot moves the sticks during a braking maneuver.
-
-- Units: cm/s/s/s
-
-- Range: 500 5000
-
-- Increment: 1
-
 ## LOIT_BRK_DELAY: Loiter brake start delay (in seconds)
 
 *Note: This parameter is for advanced users*
@@ -23605,6 +23567,52 @@ Loiter brake start delay (in seconds)
 Enables optional Loiter mode behaviors
 
 - Bitmask: 0: Enable Coordinated turns
+
+## LOIT_SPEED_MS: Loiter Horizontal Maximum Speed
+
+Defines the maximum speed in m/s which the aircraft will travel horizontally while in loiter mode
+
+- Units: m/s
+
+- Range: 0.20 35
+
+- Increment: 0.05
+
+## LOIT_ACC_MAX_M: Loiter maximum correction acceleration
+
+*Note: This parameter is for advanced users*
+
+Loiter maximum correction acceleration in m/s/s.  Higher values cause the copter to correct position errors more aggressively.
+
+- Units: m/s/s
+
+- Range: 1 9.81
+
+- Increment: 0.01
+
+## LOIT_BRK_ACC_M: Loiter braking acceleration
+
+*Note: This parameter is for advanced users*
+
+Loiter braking acceleration in m/s/s. Higher values stop the copter more quickly when the stick is centered.
+
+- Units: m/s/s
+
+- Range: 0.25 2.5
+
+- Increment: 0.01
+
+## LOIT_BRK_JRK_M: Loiter braking jerk
+
+*Note: This parameter is for advanced users*
+
+Loiter braking jerk in m/s/s/s. Higher values will remove braking faster if the pilot moves the sticks during a braking maneuver.
+
+- Units: m/s/s/s
+
+- Range: 5 50
+
+- Increment: 0.01
 
 # MAV Parameters
 
@@ -29186,6 +29194,18 @@ Time to ramp the throttle ceiling down toward zero. If 0, SPOOL_TIME is used.
 - Units: s
 
 - Increment: 0.001
+
+## MOT_IDLE_SEC: Idle time
+
+*Note: This parameter is for advanced users*
+
+Delay after reaching ground idle when armed to allow ESC startup to complete.
+
+- Range: 0 5
+
+- Units: s
+
+- Increment: 0.1
 
 # MSP Parameters
 

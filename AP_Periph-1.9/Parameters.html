@@ -3992,9 +3992,34 @@ DO NOT EDIT
 
 <h2>Optional AHRS behaviour (AHRS_OPTIONS)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>This controls optional AHRS behaviour. Setting DisableDCMFallbackFW will change the AHRS behaviour for fixed wing aircraft in fly-forward flight to not fall back to DCM when the EKF stops navigating. Setting DisableDCMFallbackVTOL will change the AHRS behaviour for fixed wing aircraft in non fly-forward (VTOL) flight to not fall back to DCM when the EKF stops navigating. Setting DontDisableAirspeedUsingEKF disables the EKF based innovation check for airspeed consistency</p>
+<p>This controls optional AHRS behaviour. Setting DisableDCMFallbackFW will change the AHRS behaviour for fixed wing aircraft in fly-forward flight to not fall back to DCM when the EKF stops navigating. Setting DisableDCMFallbackVTOL will change the AHRS behaviour for fixed wing aircraft in non fly-forward (VTOL) flight to not fall back to DCM when the EKF stops navigating. Setting DontDisableAirspeedUsingEKF disables the EKF based innovation check for airspeed consistency. Setting AutoRecordOrigin will auto-save the EKF origin to parameters when it becomes valid.</p>
 <ul>
-<li>Bitmask: 0:DisableDCMFallbackFW, 1:DisableDCMFallbackVTOL, 2:DontDisableAirspeedUsingEKF</li>
+<li>Bitmask: 0:DisableDCMFallbackFW, 1:DisableDCMFallbackVTOL, 2:DontDisableAirspeedUsingEKF, 3:RecordOrigin, 4:UseRecordedOriginForNonGPS</li>
+</ul>
+
+
+<h2>AHRS last origin latitude (AHRS_ORIGIN_LAT)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>AHRS last origin latitude in degrees</p>
+<ul>
+<li>Range: -180 180</li>
+<li>Increment: 1</li>
+</ul>
+
+
+<h2>AHRS last origin longitude (AHRS_ORIGIN_LON)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>AHRS last origin longitude in degrees</p>
+<ul>
+<li>Range: -180 180</li>
+</ul>
+
+
+<h2>AHRS last origin altitude (AHRS_ORIGIN_ALT)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>AHRS last origin altitude in meters</p>
+<ul>
+<li>Range: -200 5000</li>
 </ul>
 
 

@@ -10335,7 +10335,7 @@ AHRS\_OPTIONS: Optional AHRS behaviour
 
 | *Note: This parameter is for advanced users*
 
-This controls optional AHRS behaviour\. Setting DisableDCMFallbackFW will change the AHRS behaviour for fixed wing aircraft in fly\-forward flight to not fall back to DCM when the EKF stops navigating\. Setting DisableDCMFallbackVTOL will change the AHRS behaviour for fixed wing aircraft in non fly\-forward \(VTOL\) flight to not fall back to DCM when the EKF stops navigating\. Setting DontDisableAirspeedUsingEKF disables the EKF based innovation check for airspeed consistency
+This controls optional AHRS behaviour\. Setting DisableDCMFallbackFW will change the AHRS behaviour for fixed wing aircraft in fly\-forward flight to not fall back to DCM when the EKF stops navigating\. Setting DisableDCMFallbackVTOL will change the AHRS behaviour for fixed wing aircraft in non fly\-forward \(VTOL\) flight to not fall back to DCM when the EKF stops navigating\. Setting DontDisableAirspeedUsingEKF disables the EKF based innovation check for airspeed consistency\. Setting AutoRecordOrigin will auto\-save the EKF origin to parameters when it becomes valid\.
 
 
 +-----+-----------------------------+
@@ -10347,6 +10347,67 @@ This controls optional AHRS behaviour\. Setting DisableDCMFallbackFW will change
 +-----+-----------------------------+
 | 2   | DontDisableAirspeedUsingEKF |
 +-----+-----------------------------+
+| 3   | RecordOrigin                |
++-----+-----------------------------+
+| 4   | UseRecordedOriginForNonGPS  |
++-----+-----------------------------+
+
+
+
+
+.. _AHRS_ORIGIN_LAT:
+
+AHRS\_ORIGIN\_LAT: AHRS last origin latitude
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+AHRS last origin latitude in degrees
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 1         | -180 to 180 |
++-----------+-------------+
+
+
+
+
+.. _AHRS_ORIGIN_LON:
+
+AHRS\_ORIGIN\_LON: AHRS last origin longitude
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+AHRS last origin longitude in degrees
+
+
++-------------+
+| Range       |
++=============+
+| -180 to 180 |
++-------------+
+
+
+
+
+.. _AHRS_ORIGIN_ALT:
+
+AHRS\_ORIGIN\_ALT: AHRS last origin altitude
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+AHRS last origin altitude in meters
+
+
++--------------+
+| Range        |
++==============+
+| -200 to 5000 |
++--------------+
 
 
 
@@ -89323,81 +89384,6 @@ Loiter maximum pilot requested lean angle\. Set to zero for 2\/3 of Q\_P\_ANGLE\
 
 
 
-.. _Q_LOIT_SPEED:
-
-Q\_LOIT\_SPEED: Loiter Horizontal Maximum Speed
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Defines the maximum speed in cm\/s which the aircraft will travel horizontally while in loiter mode
-
-
-+-----------+------------+------------------------+
-| Increment | Range      | Units                  |
-+===========+============+========================+
-| 50        | 20 to 3500 | centimeters per second |
-+-----------+------------+------------------------+
-
-
-
-
-.. _Q_LOIT_ACC_MAX:
-
-Q\_LOIT\_ACC\_MAX: Loiter maximum correction acceleration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Loiter maximum correction acceleration in cm\/s\/s\.  Higher values cause the copter to correct position errors more aggressively\.
-
-
-+-----------+------------+-------------------------------+
-| Increment | Range      | Units                         |
-+===========+============+===============================+
-| 1         | 100 to 981 | centimeters per square second |
-+-----------+------------+-------------------------------+
-
-
-
-
-.. _Q_LOIT_BRK_ACCEL:
-
-Q\_LOIT\_BRK\_ACCEL: Loiter braking acceleration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Loiter braking acceleration in cm\/s\/s\. Higher values stop the copter more quickly when the stick is centered\.
-
-
-+-----------+-----------+-------------------------------+
-| Increment | Range     | Units                         |
-+===========+===========+===============================+
-| 1         | 25 to 250 | centimeters per square second |
-+-----------+-----------+-------------------------------+
-
-
-
-
-.. _Q_LOIT_BRK_JERK:
-
-Q\_LOIT\_BRK\_JERK: Loiter braking jerk
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Loiter braking jerk in cm\/s\/s\/s\. Higher values will remove braking faster if the pilot moves the sticks during a braking maneuver\.
-
-
-+-----------+-------------+------------------------------+
-| Increment | Range       | Units                        |
-+===========+=============+==============================+
-| 1         | 500 to 5000 | centimeters per cubic second |
-+-----------+-------------+------------------------------+
-
-
-
-
 .. _Q_LOIT_BRK_DELAY:
 
 Q\_LOIT\_BRK\_DELAY: Loiter brake start delay \(in seconds\)
@@ -89431,6 +89417,81 @@ Enables optional Loiter mode behaviors
 +=====+==========================+
 | 0   | Enable Coordinated turns |
 +-----+--------------------------+
+
+
+
+
+.. _Q_LOIT_SPEED_MS:
+
+Q\_LOIT\_SPEED\_MS: Loiter Horizontal Maximum Speed
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Defines the maximum speed in m\/s which the aircraft will travel horizontally while in loiter mode
+
+
++-----------+------------+-------------------+
+| Increment | Range      | Units             |
++===========+============+===================+
+| 0.05      | 0.20 to 35 | meters per second |
++-----------+------------+-------------------+
+
+
+
+
+.. _Q_LOIT_ACC_MAX_M:
+
+Q\_LOIT\_ACC\_MAX\_M: Loiter maximum correction acceleration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Loiter maximum correction acceleration in m\/s\/s\.  Higher values cause the copter to correct position errors more aggressively\.
+
+
++-----------+-----------+--------------------------+
+| Increment | Range     | Units                    |
++===========+===========+==========================+
+| 0.01      | 1 to 9.81 | meters per square second |
++-----------+-----------+--------------------------+
+
+
+
+
+.. _Q_LOIT_BRK_ACC_M:
+
+Q\_LOIT\_BRK\_ACC\_M: Loiter braking acceleration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Loiter braking acceleration in m\/s\/s\. Higher values stop the copter more quickly when the stick is centered\.
+
+
++-----------+-------------+--------------------------+
+| Increment | Range       | Units                    |
++===========+=============+==========================+
+| 0.01      | 0.25 to 2.5 | meters per square second |
++-----------+-------------+--------------------------+
+
+
+
+
+.. _Q_LOIT_BRK_JRK_M:
+
+Q\_LOIT\_BRK\_JRK\_M: Loiter braking jerk
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Loiter braking jerk in m\/s\/s\/s\. Higher values will remove braking faster if the pilot moves the sticks during a braking maneuver\.
+
+
++-----------+---------+-------------------------+
+| Increment | Range   | Units                   |
++===========+=========+=========================+
+| 0.01      | 5 to 50 | meters per cubic second |
++-----------+---------+-------------------------+
 
 
 
@@ -89967,6 +90028,25 @@ Time to ramp the throttle ceiling down toward zero\. If 0\, SPOOL\_TIME is used\
 | Increment | Range  | Units   |
 +===========+========+=========+
 | 0.001     | 0 to 2 | seconds |
++-----------+--------+---------+
+
+
+
+
+.. _Q_M_IDLE_SEC:
+
+Q\_M\_IDLE\_SEC: Idle time
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Delay after reaching ground idle when armed to allow ESC startup to complete\.
+
+
++-----------+--------+---------+
+| Increment | Range  | Units   |
++===========+========+=========+
+| 0.1       | 0 to 5 | seconds |
 +-----------+--------+---------+
 
 

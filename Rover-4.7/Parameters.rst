@@ -2192,7 +2192,7 @@ AHRS\_OPTIONS: Optional AHRS behaviour
 
 | *Note: This parameter is for advanced users*
 
-This controls optional AHRS behaviour\. Setting DisableDCMFallbackFW will change the AHRS behaviour for fixed wing aircraft in fly\-forward flight to not fall back to DCM when the EKF stops navigating\. Setting DisableDCMFallbackVTOL will change the AHRS behaviour for fixed wing aircraft in non fly\-forward \(VTOL\) flight to not fall back to DCM when the EKF stops navigating\. Setting DontDisableAirspeedUsingEKF disables the EKF based innovation check for airspeed consistency
+This controls optional AHRS behaviour\. Setting DisableDCMFallbackFW will change the AHRS behaviour for fixed wing aircraft in fly\-forward flight to not fall back to DCM when the EKF stops navigating\. Setting DisableDCMFallbackVTOL will change the AHRS behaviour for fixed wing aircraft in non fly\-forward \(VTOL\) flight to not fall back to DCM when the EKF stops navigating\. Setting DontDisableAirspeedUsingEKF disables the EKF based innovation check for airspeed consistency\. Setting AutoRecordOrigin will auto\-save the EKF origin to parameters when it becomes valid\.
 
 
 +---------------------------------------+
@@ -2207,8 +2207,69 @@ This controls optional AHRS behaviour\. Setting DisableDCMFallbackFW will change
 | +-----+-----------------------------+ |
 | | 2   | DontDisableAirspeedUsingEKF | |
 | +-----+-----------------------------+ |
+| | 3   | RecordOrigin                | |
+| +-----+-----------------------------+ |
+| | 4   | UseRecordedOriginForNonGPS  | |
+| +-----+-----------------------------+ |
 |                                       |
 +---------------------------------------+
+
+
+
+
+.. _AHRS_ORIGIN_LAT:
+
+AHRS\_ORIGIN\_LAT: AHRS last origin latitude
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+AHRS last origin latitude in degrees
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 1         | -180 to 180 |
++-----------+-------------+
+
+
+
+
+.. _AHRS_ORIGIN_LON:
+
+AHRS\_ORIGIN\_LON: AHRS last origin longitude
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+AHRS last origin longitude in degrees
+
+
++-------------+
+| Range       |
++=============+
+| -180 to 180 |
++-------------+
+
+
+
+
+.. _AHRS_ORIGIN_ALT:
+
+AHRS\_ORIGIN\_ALT: AHRS last origin altitude
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+AHRS last origin altitude in meters
+
+
++--------------+
+| Range        |
++==============+
+| -200 to 5000 |
++--------------+
 
 
 

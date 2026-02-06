@@ -3441,9 +3441,35 @@ Autopilot mounting position yaw offset. Positive values = yaw right, negative va
 
 *Note: This parameter is for advanced users*
 
-This controls optional AHRS behaviour. Setting DisableDCMFallbackFW will change the AHRS behaviour for fixed wing aircraft in fly-forward flight to not fall back to DCM when the EKF stops navigating. Setting DisableDCMFallbackVTOL will change the AHRS behaviour for fixed wing aircraft in non fly-forward (VTOL) flight to not fall back to DCM when the EKF stops navigating. Setting DontDisableAirspeedUsingEKF disables the EKF based innovation check for airspeed consistency
+This controls optional AHRS behaviour. Setting DisableDCMFallbackFW will change the AHRS behaviour for fixed wing aircraft in fly-forward flight to not fall back to DCM when the EKF stops navigating. Setting DisableDCMFallbackVTOL will change the AHRS behaviour for fixed wing aircraft in non fly-forward (VTOL) flight to not fall back to DCM when the EKF stops navigating. Setting DontDisableAirspeedUsingEKF disables the EKF based innovation check for airspeed consistency. Setting AutoRecordOrigin will auto-save the EKF origin to parameters when it becomes valid.
 
-- Bitmask: 0:DisableDCMFallbackFW, 1:DisableDCMFallbackVTOL, 2:DontDisableAirspeedUsingEKF
+- Bitmask: 0:DisableDCMFallbackFW, 1:DisableDCMFallbackVTOL, 2:DontDisableAirspeedUsingEKF, 3:RecordOrigin, 4:UseRecordedOriginForNonGPS
+
+## AHRS_ORIGIN_LAT: AHRS last origin latitude
+
+*Note: This parameter is for advanced users*
+
+AHRS last origin latitude in degrees
+
+- Range: -180 180
+
+- Increment: 1
+
+## AHRS_ORIGIN_LON: AHRS last origin longitude
+
+*Note: This parameter is for advanced users*
+
+AHRS last origin longitude in degrees
+
+- Range: -180 180
+
+## AHRS_ORIGIN_ALT: AHRS last origin altitude
+
+*Note: This parameter is for advanced users*
+
+AHRS last origin altitude in meters
+
+- Range: -200 5000
 
 # ARSPD Parameters
 
