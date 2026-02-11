@@ -19560,8 +19560,9 @@
       <param humanName="External AHRS options" name="EAHRS_OPTIONS" documentation="External AHRS options bitmask" user="Standard">
         <bitmask>
           <bit code="0">Vector Nav use uncompensated values for accel gyro and mag.</bit>
+          <bit code="1">SBG uses EKF as GNSS.</bit>
         </bitmask>
-        <field name="Bitmask">0:Vector Nav use uncompensated values for accel gyro and mag.</field>
+        <field name="Bitmask">0:Vector Nav use uncompensated values for accel gyro and mag., 1:SBG uses EKF as GNSS.</field>
       </param>
       <param humanName="External AHRS sensors" name="EAHRS_SENSORS" documentation="External AHRS sensors bitmask" user="Advanced">
         <bitmask>

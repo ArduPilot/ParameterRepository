@@ -16481,7 +16481,7 @@ Requested rate for AHRS device
 
 External AHRS options bitmask
 
-- Bitmask: 0:Vector Nav use uncompensated values for accel gyro and mag.
+- Bitmask: 0:Vector Nav use uncompensated values for accel gyro and mag., 1:SBG uses EKF as GNSS.
 
 ## EAHRS_SENSORS: External AHRS sensors
 

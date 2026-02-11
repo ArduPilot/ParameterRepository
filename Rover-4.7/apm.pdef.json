@@ -14401,7 +14401,8 @@
     },
     "EAHRS_OPTIONS": {
       "Bitmask": {
-        "0": "Vector Nav use uncompensated values for accel gyro and mag."
+        "0": "Vector Nav use uncompensated values for accel gyro and mag.",
+        "1": "SBG uses EKF as GNSS."
       },
       "Description": "External AHRS options bitmask",
       "DisplayName": "External AHRS options",
