@@ -39535,7 +39535,7 @@
       "User": "Standard"
     },
     "Q_LAND_FINAL_ALT": {
-      "Description": "The altitude at which we should switch to Q_LAND_SPEED descent rate",
+      "Description": "The altitude at which we should switch to Q_LAND_FINAL_SPD descent rate",
       "DisplayName": "Land final altitude",
       "Increment": "0.1",
       "Range": {

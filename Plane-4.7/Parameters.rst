@@ -84465,7 +84465,7 @@ Q\_LAND\_FINAL\_ALT: Land final altitude
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-The altitude at which we should switch to Q\_LAND\_SPEED descent rate
+The altitude at which we should switch to Q\_LAND\_FINAL\_SPD descent rate
 
 
 +-----------+-----------+--------+
