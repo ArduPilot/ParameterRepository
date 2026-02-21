@@ -15672,18 +15672,7 @@
       "DisplayName": "Log bitmask",
       "User": "Standard"
     },
-    "PHLD_BRAKE_ANGLE": {
-      "Description": "PosHold flight mode's max lean angle during braking in centi-degrees",
-      "DisplayName": "PosHold braking angle max",
-      "Increment": "10",
-      "Range": {
-        "high": "4500",
-        "low": "2000"
-      },
-      "Units": "cdeg",
-      "User": "Advanced"
-    },
-    "PHLD_BRAKE_RATE": {
+    "PHLD_BRK_RATE": {
       "Description": "PosHold flight mode's rotation rate during braking in deg/sec",
       "DisplayName": "PosHold braking rate",
       "Range": {
@@ -40369,6 +40358,19 @@
         "low": "0"
       },
       "User": "Standard"
+    }
+  },
+  "PHLD_": {
+    "PHLD_BRK_ANGLE": {
+      "Description": "PosHold flight mode's max lean angle during braking in degrees",
+      "DisplayName": "PosHold braking angle max",
+      "Increment": "1",
+      "Range": {
+        "high": "45",
+        "low": "20"
+      },
+      "Units": "deg",
+      "User": "Advanced"
     }
   },
   "PLND_": {

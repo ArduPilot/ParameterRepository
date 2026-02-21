@@ -1268,10 +1268,10 @@ Delay before automatic disarm in seconds after landing touchdown detection\. A v
 
 
 
-.. _PHLD_BRAKE_RATE:
+.. _PHLD_BRK_RATE:
 
-PHLD\_BRAKE\_RATE: PosHold braking rate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PHLD\_BRK\_RATE: PosHold braking rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
@@ -1283,25 +1283,6 @@ PosHold flight mode\'s rotation rate during braking in deg\/sec
 +=========+====================+
 | 4 to 12 | degrees per second |
 +---------+--------------------+
-
-
-
-
-.. _PHLD_BRAKE_ANGLE:
-
-PHLD\_BRAKE\_ANGLE: PosHold braking angle max
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-PosHold flight mode\'s max lean angle during braking in centi\-degrees
-
-
-+-----------+--------------+--------------+
-| Increment | Range        | Units        |
-+===========+==============+==============+
-| 10        | 2000 to 4500 | centidegrees |
-+-----------+--------------+--------------+
 
 
 
@@ -87380,6 +87361,32 @@ OSD6\_PARAM9\_TYPE: Parameter type
 
 
 Type of the parameter to be displayed and modified
+
+
+
+.. _parameters_PHLD_:
+
+PHLD\_ Parameters
+-----------------
+
+
+.. _PHLD_BRK_ANGLE:
+
+PHLD\_BRK\_ANGLE: PosHold braking angle max
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+PosHold flight mode\'s max lean angle during braking in degrees
+
+
++-----------+----------+---------+
+| Increment | Range    | Units   |
++===========+==========+=========+
+| 1         | 20 to 45 | degrees |
++-----------+----------+---------+
+
+
 
 
 

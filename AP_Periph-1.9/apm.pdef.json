@@ -39,16 +39,6 @@
         "low": "0"
       },
       "User": "Standard"
-    },
-    "ACT_TELEM_RATE": {
-      "Description": "Actuator Telemetry update rate in Hz. Set to 0 to disable.",
-      "DisplayName": "Actuator Telemetry rate",
-      "Range": {
-        "high": "100",
-        "low": "0"
-      },
-      "Units": "Hz",
-      "User": "Standard"
     }
   },
   "AHRS_": {
@@ -960,6 +950,17 @@
       },
       "Units": "ms",
       "User": "Advanced"
+    },
+    "SRV_TLM_MSG_RATE": {
+      "Description": "This is the rate servo telem data is sent in Hz. Zero means no send. Each servo is sent in turn.",
+      "DisplayName": "Servo telemetry message rate",
+      "Increment": "1",
+      "Range": {
+        "high": "200",
+        "low": "0"
+      },
+      "Units": "Hz",
+      "User": "Standard"
     },
     "TEMP_MSG_RATE": {
       "Description": "This is the rate Temperature sensor data is sent in Hz. Zero means no send. Each sensor with source DroneCAN is sent in turn.",

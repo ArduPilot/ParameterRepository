@@ -622,6 +622,44 @@ DO NOT EDIT
 <h1>Lua Script Parameters</h1>
 
 
+<h2>terrain brake enable (TERR_BRK_ENABLE)</h2>
+
+<p>terrain brake enable</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>terrain brake altitude (TERR_BRK_ALT)</h2>
+
+<p>terrain brake altitude. The altitude above the ground below which BRAKE mode will be engaged if in LOITER mode.</p>
+<ul>
+<li>Range: 1 100</li>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>terrain brake home distance (TERR_BRK_HDIST)</h2>
+
+<p>terrain brake home distance. The distance from home where the auto BRAKE will be enabled. When within this distance of home the script will not activate</p>
+<ul>
+<li>Range: 0 1000</li>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>terrain brake speed threshold (TERR_BRK_SPD)</h2>
+
+<p>terrain brake speed threshold. Don&#x27;t trigger BRAKE if both horizontal speed and descent rate are below this threshold. By setting this to a small value this can be used to allow the user to climb up to a safe altitude in LOITER mode. A value of 0.5 is recommended if you want to use LOITER to recover from an emergency terrain BRAKE mode change.</p>
+<ul>
+<li>Range: 0 5</li>
+<li>Units: meters per second</li>
+</ul>
+
+
 <h2>Deadreckoning Enable (DR_ENABLE)</h2>
 
 <p>Deadreckoning Enable</p>
@@ -712,474 +750,11 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Slung Payload enable (SLUP_ENABLE)</h2>
+<h2>Mount POI distance max (POI_DIST_MAX)</h2>
 
-<p>Slung Payload enable</p>
+<p>POI&#x27;s max distance (in meters) from the vehicle</p>
 <ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Slung Payload Velocity P gain (SLUP_VEL_P)</h2>
-
-<p>Slung Payload Velocity P gain, higher values will result in faster movements in sync with payload</p>
-<ul>
-<li>Range: 0 0.8</li>
-</ul>
-
-
-<h2>Slung Payload horizontal distance max (SLUP_DIST_MAX)</h2>
-
-<p>Oscillation is suppressed when vehicle and payload are no more than this distance horizontally.  Set to 0 to always suppress</p>
-<ul>
-<li>Range: 0 30</li>
-</ul>
-
-
-<h2>Slung Payload mavlink system id (SLUP_SYSID)</h2>
-
-<p>Slung Payload mavlink system id.  0 to use any/all system ids</p>
-<ul>
-<li>Range: 0 255</li>
-</ul>
-
-
-<h2>Slung Payload return to WP position P gain (SLUP_WP_POS_P)</h2>
-
-<p>WP position P gain. higher values will result in vehicle moving more quickly back to the original waypoint</p>
-<ul>
-<li>Range: 0 1</li>
-</ul>
-
-
-<h2>Slung Payload resting offset estimate filter time constant (SLUP_RESTOFS_TC)</h2>
-
-<p>payload&#x27;s position estimator&#x27;s time constant used to compensate for GPS errors and wind.  Higher values result in smoother estimate but slower response</p>
-<ul>
-<li>Range: 1 20</li>
-</ul>
-
-
-<h2>Slung Payload debug output (SLUP_DEBUG)</h2>
-
-<p>Slung payload debug output, set to 1 to enable debug</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Auto land enable (ALAND_ENABLE)</h2>
-
-<p>enable Auto land script action</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Final approach waypoint alt (ALAND_WP_ALT)</h2>
-
-<p>Altitude of final approach waypoint created by script</p>
-<ul>
-<li>Range: 1 100</li>
-<li>Units: meters</li>
-</ul>
-
-
-<h2>Final approach waypoint distance (ALAND_WP_DIST)</h2>
-
-<p>Distance from landing point (HOME) to final approach waypoint created by script in the opposite direction of initial takeoff</p>
-<ul>
-<li>Range: 0 1000</li>
-<li>Units: meters</li>
-</ul>
-
-
-<h2>CoG adjustment ratio (CGA_RATIO)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>The ratio between the front and back motor outputs during steady-state hover. Positive when the CoG is in front of the motors midpoint (front motors work harder).</p>
-<ul>
-<li>Range: 0.5 2</li>
-</ul>
-
-
-<h2>Quicktune enable (QUIK_ENABLE)</h2>
-
-<p>Enable quicktune system</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Quicktune axes (QUIK_AXES)</h2>
-
-<p>axes to tune</p>
-<ul>
-<li>Bitmask: 0:Roll,1:Pitch,2:Yaw</li>
-</ul>
-
-
-<h2>Quicktune doubling time (QUIK_DOUBLE_TIME)</h2>
-
-<p>Time to double a tuning parameter. Raise this for a slower tune.</p>
-<ul>
-<li>Range: 5 20</li>
-<li>Units: seconds</li>
-</ul>
-
-
-<h2>Quicktune gain margin (QUIK_GAIN_MARGIN)</h2>
-
-<p>Reduction in gain after oscillation detected. Raise this number to get a more conservative tune</p>
-<ul>
-<li>Range: 20 80</li>
-<li>Units: percent</li>
-</ul>
-
-
-<h2>Quicktune oscillation rate threshold (QUIK_OSC_SMAX)</h2>
-
-<p>Threshold for oscillation detection. A lower value will lead to a more conservative tune.</p>
-<ul>
-<li>Range: 1 10</li>
-</ul>
-
-
-<h2>Quicktune Yaw P max (QUIK_YAW_P_MAX)</h2>
-
-<p>Maximum value for yaw P gain</p>
-<ul>
-<li>Range: 0.1 3</li>
-</ul>
-
-
-<h2>Quicktune Yaw D max (QUIK_YAW_D_MAX)</h2>
-
-<p>Maximum value for yaw D gain</p>
-<ul>
-<li>Range: 0.001 1</li>
-</ul>
-
-
-<h2>Quicktune roll/pitch PI ratio (QUIK_RP_PI_RATIO)</h2>
-
-<p>Ratio between P and I gains for roll and pitch. Raise this to get a lower I gain</p>
-<ul>
-<li>Range: 0.5 1.0</li>
-</ul>
-
-
-<h2>Quicktune Yaw PI ratio (QUIK_Y_PI_RATIO)</h2>
-
-<p>Ratio between P and I gains for yaw. Raise this to get a lower I gain</p>
-<ul>
-<li>Range: 0.5 20</li>
-</ul>
-
-
-<h2>Quicktune auto filter enable (QUIK_AUTO_FILTER)</h2>
-
-<p>When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Quicktune auto save (QUIK_AUTO_SAVE)</h2>
-
-<p>Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune</p>
-<ul>
-<li>Units: seconds</li>
-</ul>
-
-
-<h2>Quicktune RC function (QUIK_RC_FUNC)</h2>
-
-<p>RCn_OPTION number to use to control tuning stop/start/save</p>
-<ul>
-</ul>
-
-
-<h2>Quicktune maximum gain reduction (QUIK_MAX_REDUCE)</h2>
-
-<p>This controls how much quicktune is allowed to lower gains from the original gains. If the vehicle already has a reasonable tune and is not oscillating then you can set this to zero to prevent gain reductions. The default of 20% is reasonable for most vehicles. Using a maximum gain reduction lowers the chance of an angle P oscillation happening if quicktune gets a false positive oscillation at a low gain, which can result in very low rate gains and a dangerous angle P oscillation.</p>
-<ul>
-<li>Units: percent</li>
-<li>Range: 0 100</li>
-</ul>
-
-
-<h2>Quicktune options (QUIK_OPTIONS)</h2>
-
-<p>Additional options. When the Two Position Switch option is enabled then a high switch position will start the tune, low will disable the tune. you should also set a QUIK_AUTO_SAVE time so that you will be able to save the tune.</p>
-<ul>
-<li>Bitmask: 0:UseTwoPositionSwitch</li>
-</ul>
-
-
-<h2>maximum angle error for tune abort (QUIK_ANGLE_MAX)</h2>
-
-<p>If while tuning the angle error goes over this limit then the tune will aborts to prevent a bad oscillation in the case of the tuning algorithm failing. If you get an error &quot;Tuning: attitude error ABORTING&quot; and you think it is a false positive then you can either raise this parameter or you can try increasing the QUIK_DOUBLE_TIME to do the tune more slowly. A value of zero disables this check.</p>
-<ul>
-<li>Units: degrees</li>
-</ul>
-
-
-<h2>EKF Source ExternalNav Innovation Threshold (ESRC_EXTN_THRESH)</h2>
-
-<p>ExternalNav may be used if innovations are below this threshold</p>
-<ul>
-<li>Range: 0 1</li>
-</ul>
-
-
-<h2>EKF Source ExternalNav Quality Threshold (ESRC_EXTN_QUAL)</h2>
-
-<p>ExternalNav may be used if quality is above this threshold</p>
-<ul>
-<li>Range: 0 100</li>
-<li>Units: percent</li>
-</ul>
-
-
-<h2>EKF Source OpticalFlow Innovation Threshold (ESRC_FLOW_THRESH)</h2>
-
-<p>OpticalFlow may be used if innovations are below this threshold</p>
-<ul>
-<li>Range: 0 1</li>
-</ul>
-
-
-<h2>EKF Source OpticalFlow Quality Threshold (ESRC_FLOW_QUAL)</h2>
-
-<p>OpticalFlow may be used if quality is above this threshold</p>
-<ul>
-<li>Range: 0 100</li>
-<li>Units: percent</li>
-</ul>
-
-
-<h2>EKF Source Rangefinder Max (ESRC_RNGFND_MAX)</h2>
-
-<p>OpticalFlow may be used if rangefinder distance is below this threshold</p>
-<ul>
-<li>Range: 0 50</li>
-<li>Units: meters</li>
-</ul>
-
-
-<h2>Param Set enable (PARAM_SET_ENABLE)</h2>
-
-<p>Param Set enable</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Plane Follow lost target mode (FOLLP_FAIL_MODE)</h2>
-
-<p>Mode to switch to if the target is lost (no signal or &gt; FOLL_DIST_MAX).</p>
-<ul>
-</ul>
-
-
-<h2>Plane Follow exit mode (FOLLP_EXIT_MODE)</h2>
-
-<p>Mode to switch to when follow mode is exited normally</p>
-<ul>
-</ul>
-
-
-<h2>Plane Follow Scripting ActivationFunction (FOLLP_ACT_FN)</h2>
-
-<p>Setting an RC channel&#x27;s _OPTION to this value will use it for Plane Follow enable/disable</p>
-<ul>
-<li>Range: 300 307</li>
-</ul>
-
-
-<h2>Plane Follow Telemetry Timeout (FOLLP_TIMEOUT)</h2>
-
-<p>How long to try reaquire a target if telemetry from the lead vehicle is lost.</p>
-<ul>
-<li>Range: 0 30</li>
-<li>Units: seconds</li>
-</ul>
-
-
-<h2>Plane Follow Scripting Overshoot Angle (FOLLP_OVRSHT_DEG)</h2>
-
-<p>If the target is greater than this many degrees left or right, assume an overshoot</p>
-<ul>
-<li>Range: 0 180</li>
-<li>Units: degrees</li>
-</ul>
-
-
-<h2>Plane Follow Scripting Turn Angle (FOLLP_TURN_DEG)</h2>
-
-<p>If the target is greater than this many degrees left or right, assume it&#x27;s turning</p>
-<ul>
-<li>Range: 0 180</li>
-<li>Units: degrees</li>
-</ul>
-
-
-<h2>Plane Follow Scripting Close Distance (FOLLP_DIST_CLOSE)</h2>
-
-<p>When closer than this distance assume we track by heading</p>
-<ul>
-<li>Range: 0 100</li>
-<li>Units: meters</li>
-</ul>
-
-
-<h2>Plane Follow Scripting Wide Turns (FOLLP_WIDE_TURNS)</h2>
-
-<p>Use wide turns when following a turning target. Alternative is &quot;cutting the corner&quot;</p>
-<ul>
-<li>Range: 0 1</li>
-</ul>
-
-
-<h2>Plane Follow Scripting Altitude Override (FOLLP_ALT)</h2>
-
-<p>When non zero, this altitude value (in FOLL_ALT_TYPE frame) overrides the value sent by the target vehicle</p>
-<ul>
-<li>Range: 0 1000</li>
-<li>Units: meters</li>
-</ul>
-
-
-<h2>Plane Follow Scripting distance P gain (FOLLP_D_P)</h2>
-
-<p>P gain for the speed PID controller distance component</p>
-<ul>
-<li>Range: 0 1</li>
-</ul>
-
-
-<h2>Plane Follow Scripting distance I gain (FOLLP_D_I)</h2>
-
-<p>I gain for the speed PID  distance component</p>
-<ul>
-<li>Range: 0 1</li>
-</ul>
-
-
-<h2>Plane Follow Scripting distance D gain (FOLLP_D_D)</h2>
-
-<p>D gain for the speed PID controller distance component</p>
-<ul>
-<li>Range: 0 1</li>
-</ul>
-
-
-<h2>Plane Follow Scripting speed P gain (FOLLP_V_P)</h2>
-
-<p>P gain for the speed PID controller velocity component</p>
-<ul>
-<li>Range: 0 1</li>
-</ul>
-
-
-<h2>Plane Follow Scripting speed I gain (FOLLP_V_I)</h2>
-
-<p>I gain for the speed PID controller velocity component</p>
-<ul>
-<li>Range: 0 1</li>
-</ul>
-
-
-<h2>Plane Follow Scripting speed D gain (FOLLP_V_D)</h2>
-
-<p>D gain for the speed PID controller velocity component</p>
-<ul>
-<li>Range: 0 1</li>
-</ul>
-
-
-<h2>Plane Follow Lookahead seconds (FOLLP_LkAHD)</h2>
-
-<p>Time to &quot;lookahead&quot; when calculating distance errors</p>
-<ul>
-<li>Units: seconds</li>
-</ul>
-
-
-<h2>Plane Follow Simulate Telemetry fail function (FOLLP_SIM_TLF_FN)</h2>
-
-<p>Set this switch to simulate losing telemetry from the other vehicle</p>
-<ul>
-<li>Range: 300 307</li>
-</ul>
-
-
-<h2>Plane Follow crosstrack PID controller P term (FOLLP_XT_P)</h2>
-
-<p>P term for the crosstrack/heading PID controller</p>
-<ul>
-<li>Range: 0 1</li>
-</ul>
-
-
-<h2>Plane Follow crosstrack PID controller I term (FOLLP_XT_I)</h2>
-
-<p>I term for the crosstrack/heading PID controller</p>
-<ul>
-<li>Range: 0 1</li>
-</ul>
-
-
-<h2>Plane Follow crosstrack PID controller D term (FOLLP_XT_D)</h2>
-
-<p>D term for the crosstrack/heading PID controller</p>
-<ul>
-<li>Range: 0 1</li>
-</ul>
-
-
-<h2>Plane Follow crosstrack PID controller maximum correction (FOLLP_XT_MAX)</h2>
-
-<p>maximum correction retured by the crosstrack/heading PID controller</p>
-<ul>
-<li>Range: 0 1</li>
-<li>Units: degrees</li>
-</ul>
-
-
-<h2>Plane Follow crosstrack PID controller maximum integral (FOLLP_XT_I_MAX)</h2>
-
-<p>maximum I applied the crosstrack/heading PID controller</p>
-<ul>
-<li>Range: 0 100</li>
-<li>Units: milliseconds</li>
-</ul>
-
-
-<h2>Plane Follow refresh rate (FOLLP_REFRESH)</h2>
-
-<p>refresh rate for Plane Follow updates</p>
-<ul>
-<li>Range: 0 0.2</li>
-<li>Units: seconds</li>
+<li>Range: 0 10000</li>
 </ul>
 
 
@@ -1380,357 +955,6 @@ DO NOT EDIT
 <p>Battery estimator coefficient4</p>
 <ul>
 <li>Range: 5 100</li>
-</ul>
-
-
-<h2>AUX function to kill engine (THR_KILL_FUNC)</h2>
-
-<p>AUX function to kill engine. This can be activated either with a RCn_OPTION and a R/C switch or with a ground station auxilliary function</p>
-<ul>
-<li>Range: 300 307</li>
-</ul>
-
-
-<h2>PWM on kill active (THR_KILL_PWM)</h2>
-
-<p>PWM on kill active</p>
-<ul>
-<li>Range: 800 2200</li>
-</ul>
-
-
-<h2>output channel to change on throttle kill (THR_KILL_CHAN)</h2>
-
-<p>output channel to change on throttle kill, a value of zero disables the feature</p>
-<ul>
-<li>Range: 0 32</li>
-</ul>
-
-
-<h2>auxilliary value to kill throttle (THR_KILL_VAL)</h2>
-
-<p>auxilliary value to kill throttle. Set to 2 to kill the throttle when the auxilliary is high. Set to 0 to kill when auxilliary is low</p>
-<ul>
-<li>Range: 0 2</li>
-</ul>
-
-
-<h2>throttle kill default value (THR_KILL_DEF)</h2>
-
-<p>throttle kill default value. The default auxilliary function position on boot</p>
-<ul>
-<li>Range: 0 2</li>
-</ul>
-
-
-<h2>terrain brake enable (TERR_BRK_ENABLE)</h2>
-
-<p>terrain brake enable</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>terrain brake altitude (TERR_BRK_ALT)</h2>
-
-<p>terrain brake altitude. The altitude above the ground below which BRAKE mode will be engaged if in LOITER mode.</p>
-<ul>
-<li>Range: 1 100</li>
-<li>Units: meters</li>
-</ul>
-
-
-<h2>terrain brake home distance (TERR_BRK_HDIST)</h2>
-
-<p>terrain brake home distance. The distance from home where the auto BRAKE will be enabled. When within this distance of home the script will not activate</p>
-<ul>
-<li>Range: 0 1000</li>
-<li>Units: meters</li>
-</ul>
-
-
-<h2>terrain brake speed threshold (TERR_BRK_SPD)</h2>
-
-<p>terrain brake speed threshold. Don&#x27;t trigger BRAKE if both horizontal speed and descent rate are below this threshold. By setting this to a small value this can be used to allow the user to climb up to a safe altitude in LOITER mode. A value of 0.5 is recommended if you want to use LOITER to recover from an emergency terrain BRAKE mode change.</p>
-<ul>
-<li>Range: 0 5</li>
-<li>Units: meters per second</li>
-</ul>
-
-
-<h2>enable web server (WEB_ENABLE)</h2>
-
-<p>enable web server</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>web server TCP port (WEB_BIND_PORT)</h2>
-
-<p>web server TCP port</p>
-<ul>
-<li>Range: 1 65535</li>
-</ul>
-
-
-<h2>web server debugging (WEB_DEBUG)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>web server debugging</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>web server block size (WEB_BLOCK_SIZE)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>web server block size for download</p>
-<ul>
-<li>Range: 1 65535</li>
-</ul>
-
-
-<h2>web server timeout (WEB_TIMEOUT)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>timeout for inactive connections</p>
-<ul>
-<li>Units: seconds</li>
-<li>Range: 0.1 60</li>
-</ul>
-
-
-<h2>web server minimum file size for sendfile (WEB_SENDFILE_MIN)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>sendfile is an offloading mechanism for faster file download. If this is non-zero and the file is larger than this size then sendfile will be used for file download</p>
-<ul>
-<li>Range: 0 10000000</li>
-</ul>
-
-
-<h2>Mount POI distance max (POI_DIST_MAX)</h2>
-
-<p>POI&#x27;s max distance (in meters) from the vehicle</p>
-<ul>
-<li>Range: 0 10000</li>
-</ul>
-
-
-<h2>Camera1 Thermal Palette (CAM1_THERM_PAL)</h2>
-
-<p>thermal image colour palette</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>-1</td><td>Leave Unchanged</td></tr>
-<tr><td>0</td><td>WhiteHot</td></tr>
-<tr><td>2</td><td>Sepia</td></tr>
-<tr><td>3</td><td>IronBow</td></tr>
-<tr><td>4</td><td>Rainbow</td></tr>
-<tr><td>5</td><td>Night</td></tr>
-<tr><td>6</td><td>Aurora</td></tr>
-<tr><td>7</td><td>RedHot</td></tr>
-<tr><td>8</td><td>Jungle</td></tr>
-<tr><td>9</td><td>Medical</td></tr>
-<tr><td>10</td><td>BlackHot</td></tr>
-<tr><td>11</td><td>GloryHot</td></tr>
-</table>
-</ul>
-
-
-<h2>Camera1 Thermal Gain (CAM1_THERM_GAIN)</h2>
-
-<p>thermal image temperature range</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>-1</td><td>Leave Unchanged</td></tr>
-<tr><td>0</td><td>LowGain (50C to 550C)</td></tr>
-<tr><td>1</td><td>HighGain (-20C to 150C)</td></tr>
-</table>
-</ul>
-
-
-<h2>Camera1 Thermal Raw Data (CAM1_THERM_RAW)</h2>
-
-<p>save images with raw temperatures</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>-1</td><td>Leave Unchanged</td></tr>
-<tr><td>0</td><td>Disabled (30fps)</td></tr>
-<tr><td>1</td><td>Enabled (25 fps)</td></tr>
-</table>
-<li>Units: meters</li>
-</ul>
-
-
-<h2>Follow Target Send Enable (FOLT_ENABLE)</h2>
-
-<p>Follow Target Send Enable</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Follow Target Send MAVLink Channel (FOLT_MAV_CHAN)</h2>
-
-<p>MAVLink channel to which FOLLOW_TARGET should be sent</p>
-<ul>
-<li>Range: 0 10</li>
-</ul>
-
-
-<h2>WinchControl Rate Up (WINCH_RATE_UP)</h2>
-
-<p>Maximum rate when retracting line</p>
-<ul>
-<li>Range: 0.1 5.0</li>
-</ul>
-
-
-<h2>WinchControl Rate Down (WINCH_RATE_DN)</h2>
-
-<p>Maximum rate when releasing line</p>
-<ul>
-<li>Range: 0.1 5.0</li>
-</ul>
-
-
-<h2>Winch Rate Control RC function (WINCH_RC_FUNC)</h2>
-
-<p>RCn_OPTION number to use to control winch rate</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>300</td><td>Scripting1</td></tr>
-<tr><td>301</td><td>Scripting2</td></tr>
-<tr><td>302</td><td>Scripting3</td></tr>
-<tr><td>303</td><td>Scripting4</td></tr>
-<tr><td>304</td><td>Scripting5</td></tr>
-<tr><td>305</td><td>Scripting6</td></tr>
-<tr><td>306</td><td>Scripting7</td></tr>
-<tr><td>307</td><td>Scripting8</td></tr>
-</table>
-</ul>
-
-
-<h2>Rover Quicktune enable (RTUN_ENABLE)</h2>
-
-<p>Enable quicktune system</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Rover Quicktune axes (RTUN_AXES)</h2>
-
-<p>axes to tune</p>
-<ul>
-<li>Bitmask: 0:Steering,1:Speed</li>
-</ul>
-
-
-<h2>Rover Quicktune Steering Rate FeedForward ratio (RTUN_STR_FFRATIO)</h2>
-
-<p>Ratio between measured response and FF gain. Raise this to get a higher FF gain</p>
-<ul>
-<li>Range: 0 1.0</li>
-</ul>
-
-
-<h2>Rover Quicktune Steering FF to P ratio (RTUN_STR_P_RATIO)</h2>
-
-<p>Ratio between steering FF and P gains. Raise this to get a higher P gain, 0 to leave P unchanged</p>
-<ul>
-<li>Range: 0 2.0</li>
-</ul>
-
-
-<h2>Rover Quicktune Steering FF to I ratio (RTUN_STR_I_RATIO)</h2>
-
-<p>Ratio between steering FF and I gains. Raise this to get a higher I gain, 0 to leave I unchanged</p>
-<ul>
-<li>Range: 0 2.0</li>
-</ul>
-
-
-<h2>Rover Quicktune Speed FeedForward (equivalent) ratio (RTUN_SPD_FFRATIO)</h2>
-
-<p>Ratio between measured response and CRUISE_THROTTLE value. Raise this to get a higher CRUISE_THROTTLE value</p>
-<ul>
-<li>Range: 0 1.0</li>
-</ul>
-
-
-<h2>Rover Quicktune Speed FF to P ratio (RTUN_SPD_P_RATIO)</h2>
-
-<p>Ratio between speed FF and P gain. Raise this to get a higher P gain, 0 to leave P unchanged</p>
-<ul>
-<li>Range: 0 2.0</li>
-</ul>
-
-
-<h2>Rover Quicktune Speed FF to I ratio (RTUN_SPD_I_RATIO)</h2>
-
-<p>Ratio between speed FF and I gain. Raise this to get a higher I gain, 0 to leave I unchanged</p>
-<ul>
-<li>Range: 0 2.0</li>
-</ul>
-
-
-<h2>Rover Quicktune auto filter enable (RTUN_AUTO_FILTER)</h2>
-
-<p>When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Rover Quicktune auto save (RTUN_AUTO_SAVE)</h2>
-
-<p>Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune</p>
-<ul>
-<li>Units: seconds</li>
-</ul>
-
-
-<h2>Rover Quicktune RC function (RTUN_RC_FUNC)</h2>
-
-<p>RCn_OPTION number to use to control tuning stop/start/save</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>300</td><td>Scripting1</td></tr>
-<tr><td>301</td><td>Scripting2</td></tr>
-<tr><td>302</td><td>Scripting3</td></tr>
-<tr><td>303</td><td>Scripting4</td></tr>
-<tr><td>304</td><td>Scripting5</td></tr>
-<tr><td>305</td><td>Scripting6</td></tr>
-<tr><td>306</td><td>Scripting7</td></tr>
-<tr><td>307</td><td>Scripting8</td></tr>
-</table>
-</ul>
-
-
-<h2>Rover Quicktune minimum speed for tuning (RTUN_SPEED_MIN)</h2>
-
-<p>The mimimum speed in m/s required for tuning to start</p>
-<ul>
-<li>Units: meters per second</li>
-<li>Range: 0.1 0.5</li>
 </ul>
 
 
@@ -2048,6 +1272,735 @@ DO NOT EDIT
 </ul>
 
 
+<h2>Auto land enable (ALAND_ENABLE)</h2>
+
+<p>enable Auto land script action</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Final approach waypoint alt (ALAND_WP_ALT)</h2>
+
+<p>Altitude of final approach waypoint created by script</p>
+<ul>
+<li>Range: 1 100</li>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>Final approach waypoint distance (ALAND_WP_DIST)</h2>
+
+<p>Distance from landing point (HOME) to final approach waypoint created by script in the opposite direction of initial takeoff</p>
+<ul>
+<li>Range: 0 1000</li>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>Quicktune enable (QUIK_ENABLE)</h2>
+
+<p>Enable quicktune system</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Quicktune axes (QUIK_AXES)</h2>
+
+<p>axes to tune</p>
+<ul>
+<li>Bitmask: 0:Roll,1:Pitch,2:Yaw</li>
+</ul>
+
+
+<h2>Quicktune doubling time (QUIK_DOUBLE_TIME)</h2>
+
+<p>Time to double a tuning parameter. Raise this for a slower tune.</p>
+<ul>
+<li>Range: 5 20</li>
+<li>Units: seconds</li>
+</ul>
+
+
+<h2>Quicktune gain margin (QUIK_GAIN_MARGIN)</h2>
+
+<p>Reduction in gain after oscillation detected. Raise this number to get a more conservative tune</p>
+<ul>
+<li>Range: 20 80</li>
+<li>Units: percent</li>
+</ul>
+
+
+<h2>Quicktune oscillation rate threshold (QUIK_OSC_SMAX)</h2>
+
+<p>Threshold for oscillation detection. A lower value will lead to a more conservative tune.</p>
+<ul>
+<li>Range: 1 10</li>
+</ul>
+
+
+<h2>Quicktune Yaw P max (QUIK_YAW_P_MAX)</h2>
+
+<p>Maximum value for yaw P gain</p>
+<ul>
+<li>Range: 0.1 3</li>
+</ul>
+
+
+<h2>Quicktune Yaw D max (QUIK_YAW_D_MAX)</h2>
+
+<p>Maximum value for yaw D gain</p>
+<ul>
+<li>Range: 0.001 1</li>
+</ul>
+
+
+<h2>Quicktune roll/pitch PI ratio (QUIK_RP_PI_RATIO)</h2>
+
+<p>Ratio between P and I gains for roll and pitch. Raise this to get a lower I gain</p>
+<ul>
+<li>Range: 0.5 1.0</li>
+</ul>
+
+
+<h2>Quicktune Yaw PI ratio (QUIK_Y_PI_RATIO)</h2>
+
+<p>Ratio between P and I gains for yaw. Raise this to get a lower I gain</p>
+<ul>
+<li>Range: 0.5 20</li>
+</ul>
+
+
+<h2>Quicktune auto filter enable (QUIK_AUTO_FILTER)</h2>
+
+<p>When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Quicktune auto save (QUIK_AUTO_SAVE)</h2>
+
+<p>Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune</p>
+<ul>
+<li>Units: seconds</li>
+</ul>
+
+
+<h2>Quicktune RC function (QUIK_RC_FUNC)</h2>
+
+<p>RCn_OPTION number to use to control tuning stop/start/save</p>
+<ul>
+</ul>
+
+
+<h2>Quicktune maximum gain reduction (QUIK_MAX_REDUCE)</h2>
+
+<p>This controls how much quicktune is allowed to lower gains from the original gains. If the vehicle already has a reasonable tune and is not oscillating then you can set this to zero to prevent gain reductions. The default of 20% is reasonable for most vehicles. Using a maximum gain reduction lowers the chance of an angle P oscillation happening if quicktune gets a false positive oscillation at a low gain, which can result in very low rate gains and a dangerous angle P oscillation.</p>
+<ul>
+<li>Units: percent</li>
+<li>Range: 0 100</li>
+</ul>
+
+
+<h2>Quicktune options (QUIK_OPTIONS)</h2>
+
+<p>Additional options. When the Two Position Switch option is enabled then a high switch position will start the tune, low will disable the tune. you should also set a QUIK_AUTO_SAVE time so that you will be able to save the tune.</p>
+<ul>
+<li>Bitmask: 0:UseTwoPositionSwitch</li>
+</ul>
+
+
+<h2>maximum angle error for tune abort (QUIK_ANGLE_MAX)</h2>
+
+<p>If while tuning the angle error goes over this limit then the tune will aborts to prevent a bad oscillation in the case of the tuning algorithm failing. If you get an error &quot;Tuning: attitude error ABORTING&quot; and you think it is a false positive then you can either raise this parameter or you can try increasing the QUIK_DOUBLE_TIME to do the tune more slowly. A value of zero disables this check.</p>
+<ul>
+<li>Units: degrees</li>
+</ul>
+
+
+<h2>Camera1 Thermal Palette (CAM1_THERM_PAL)</h2>
+
+<p>thermal image colour palette</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>-1</td><td>Leave Unchanged</td></tr>
+<tr><td>0</td><td>WhiteHot</td></tr>
+<tr><td>2</td><td>Sepia</td></tr>
+<tr><td>3</td><td>IronBow</td></tr>
+<tr><td>4</td><td>Rainbow</td></tr>
+<tr><td>5</td><td>Night</td></tr>
+<tr><td>6</td><td>Aurora</td></tr>
+<tr><td>7</td><td>RedHot</td></tr>
+<tr><td>8</td><td>Jungle</td></tr>
+<tr><td>9</td><td>Medical</td></tr>
+<tr><td>10</td><td>BlackHot</td></tr>
+<tr><td>11</td><td>GloryHot</td></tr>
+</table>
+</ul>
+
+
+<h2>Camera1 Thermal Gain (CAM1_THERM_GAIN)</h2>
+
+<p>thermal image temperature range</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>-1</td><td>Leave Unchanged</td></tr>
+<tr><td>0</td><td>LowGain (50C to 550C)</td></tr>
+<tr><td>1</td><td>HighGain (-20C to 150C)</td></tr>
+</table>
+</ul>
+
+
+<h2>Camera1 Thermal Raw Data (CAM1_THERM_RAW)</h2>
+
+<p>save images with raw temperatures</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>-1</td><td>Leave Unchanged</td></tr>
+<tr><td>0</td><td>Disabled (30fps)</td></tr>
+<tr><td>1</td><td>Enabled (25 fps)</td></tr>
+</table>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>Plane Follow lost target mode (FOLLP_FAIL_MODE)</h2>
+
+<p>Mode to switch to if the target is lost (no signal or &gt; FOLL_DIST_MAX).</p>
+<ul>
+</ul>
+
+
+<h2>Plane Follow exit mode (FOLLP_EXIT_MODE)</h2>
+
+<p>Mode to switch to when follow mode is exited normally</p>
+<ul>
+</ul>
+
+
+<h2>Plane Follow Scripting ActivationFunction (FOLLP_ACT_FN)</h2>
+
+<p>Setting an RC channel&#x27;s _OPTION to this value will use it for Plane Follow enable/disable</p>
+<ul>
+<li>Range: 300 307</li>
+</ul>
+
+
+<h2>Plane Follow Telemetry Timeout (FOLLP_TIMEOUT)</h2>
+
+<p>How long to try reaquire a target if telemetry from the lead vehicle is lost.</p>
+<ul>
+<li>Range: 0 30</li>
+<li>Units: seconds</li>
+</ul>
+
+
+<h2>Plane Follow Scripting Overshoot Angle (FOLLP_OVRSHT_DEG)</h2>
+
+<p>If the target is greater than this many degrees left or right, assume an overshoot</p>
+<ul>
+<li>Range: 0 180</li>
+<li>Units: degrees</li>
+</ul>
+
+
+<h2>Plane Follow Scripting Turn Angle (FOLLP_TURN_DEG)</h2>
+
+<p>If the target is greater than this many degrees left or right, assume it&#x27;s turning</p>
+<ul>
+<li>Range: 0 180</li>
+<li>Units: degrees</li>
+</ul>
+
+
+<h2>Plane Follow Scripting Close Distance (FOLLP_DIST_CLOSE)</h2>
+
+<p>When closer than this distance assume we track by heading</p>
+<ul>
+<li>Range: 0 100</li>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>Plane Follow Scripting Wide Turns (FOLLP_WIDE_TURNS)</h2>
+
+<p>Use wide turns when following a turning target. Alternative is &quot;cutting the corner&quot;</p>
+<ul>
+<li>Range: 0 1</li>
+</ul>
+
+
+<h2>Plane Follow Scripting Altitude Override (FOLLP_ALT)</h2>
+
+<p>When non zero, this altitude value (in FOLL_ALT_TYPE frame) overrides the value sent by the target vehicle</p>
+<ul>
+<li>Range: 0 1000</li>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>Plane Follow Scripting distance P gain (FOLLP_D_P)</h2>
+
+<p>P gain for the speed PID controller distance component</p>
+<ul>
+<li>Range: 0 1</li>
+</ul>
+
+
+<h2>Plane Follow Scripting distance I gain (FOLLP_D_I)</h2>
+
+<p>I gain for the speed PID  distance component</p>
+<ul>
+<li>Range: 0 1</li>
+</ul>
+
+
+<h2>Plane Follow Scripting distance D gain (FOLLP_D_D)</h2>
+
+<p>D gain for the speed PID controller distance component</p>
+<ul>
+<li>Range: 0 1</li>
+</ul>
+
+
+<h2>Plane Follow Scripting speed P gain (FOLLP_V_P)</h2>
+
+<p>P gain for the speed PID controller velocity component</p>
+<ul>
+<li>Range: 0 1</li>
+</ul>
+
+
+<h2>Plane Follow Scripting speed I gain (FOLLP_V_I)</h2>
+
+<p>I gain for the speed PID controller velocity component</p>
+<ul>
+<li>Range: 0 1</li>
+</ul>
+
+
+<h2>Plane Follow Scripting speed D gain (FOLLP_V_D)</h2>
+
+<p>D gain for the speed PID controller velocity component</p>
+<ul>
+<li>Range: 0 1</li>
+</ul>
+
+
+<h2>Plane Follow Lookahead seconds (FOLLP_LkAHD)</h2>
+
+<p>Time to &quot;lookahead&quot; when calculating distance errors</p>
+<ul>
+<li>Units: seconds</li>
+</ul>
+
+
+<h2>Plane Follow Simulate Telemetry fail function (FOLLP_SIM_TLF_FN)</h2>
+
+<p>Set this switch to simulate losing telemetry from the other vehicle</p>
+<ul>
+<li>Range: 300 307</li>
+</ul>
+
+
+<h2>Plane Follow crosstrack PID controller P term (FOLLP_XT_P)</h2>
+
+<p>P term for the crosstrack/heading PID controller</p>
+<ul>
+<li>Range: 0 1</li>
+</ul>
+
+
+<h2>Plane Follow crosstrack PID controller I term (FOLLP_XT_I)</h2>
+
+<p>I term for the crosstrack/heading PID controller</p>
+<ul>
+<li>Range: 0 1</li>
+</ul>
+
+
+<h2>Plane Follow crosstrack PID controller D term (FOLLP_XT_D)</h2>
+
+<p>D term for the crosstrack/heading PID controller</p>
+<ul>
+<li>Range: 0 1</li>
+</ul>
+
+
+<h2>Plane Follow crosstrack PID controller maximum correction (FOLLP_XT_MAX)</h2>
+
+<p>maximum correction retured by the crosstrack/heading PID controller</p>
+<ul>
+<li>Range: 0 1</li>
+<li>Units: degrees</li>
+</ul>
+
+
+<h2>Plane Follow crosstrack PID controller maximum integral (FOLLP_XT_I_MAX)</h2>
+
+<p>maximum I applied the crosstrack/heading PID controller</p>
+<ul>
+<li>Range: 0 100</li>
+<li>Units: milliseconds</li>
+</ul>
+
+
+<h2>Plane Follow refresh rate (FOLLP_REFRESH)</h2>
+
+<p>refresh rate for Plane Follow updates</p>
+<ul>
+<li>Range: 0 0.2</li>
+<li>Units: seconds</li>
+</ul>
+
+
+<h2>EKF Source ExternalNav Innovation Threshold (ESRC_EXTN_THRESH)</h2>
+
+<p>ExternalNav may be used if innovations are below this threshold</p>
+<ul>
+<li>Range: 0 1</li>
+</ul>
+
+
+<h2>EKF Source ExternalNav Quality Threshold (ESRC_EXTN_QUAL)</h2>
+
+<p>ExternalNav may be used if quality is above this threshold</p>
+<ul>
+<li>Range: 0 100</li>
+<li>Units: percent</li>
+</ul>
+
+
+<h2>EKF Source OpticalFlow Innovation Threshold (ESRC_FLOW_THRESH)</h2>
+
+<p>OpticalFlow may be used if innovations are below this threshold</p>
+<ul>
+<li>Range: 0 1</li>
+</ul>
+
+
+<h2>EKF Source OpticalFlow Quality Threshold (ESRC_FLOW_QUAL)</h2>
+
+<p>OpticalFlow may be used if quality is above this threshold</p>
+<ul>
+<li>Range: 0 100</li>
+<li>Units: percent</li>
+</ul>
+
+
+<h2>EKF Source Rangefinder Max (ESRC_RNGFND_MAX)</h2>
+
+<p>OpticalFlow may be used if rangefinder distance is below this threshold</p>
+<ul>
+<li>Range: 0 50</li>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>Slung Payload enable (SLUP_ENABLE)</h2>
+
+<p>Slung Payload enable</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Slung Payload Velocity P gain (SLUP_VEL_P)</h2>
+
+<p>Slung Payload Velocity P gain, higher values will result in faster movements in sync with payload</p>
+<ul>
+<li>Range: 0 0.8</li>
+</ul>
+
+
+<h2>Slung Payload horizontal distance max (SLUP_DIST_MAX)</h2>
+
+<p>Oscillation is suppressed when vehicle and payload are no more than this distance horizontally.  Set to 0 to always suppress</p>
+<ul>
+<li>Range: 0 30</li>
+</ul>
+
+
+<h2>Slung Payload mavlink system id (SLUP_SYSID)</h2>
+
+<p>Slung Payload mavlink system id.  0 to use any/all system ids</p>
+<ul>
+<li>Range: 0 255</li>
+</ul>
+
+
+<h2>Slung Payload return to WP position P gain (SLUP_WP_POS_P)</h2>
+
+<p>WP position P gain. higher values will result in vehicle moving more quickly back to the original waypoint</p>
+<ul>
+<li>Range: 0 1</li>
+</ul>
+
+
+<h2>Slung Payload resting offset estimate filter time constant (SLUP_RESTOFS_TC)</h2>
+
+<p>payload&#x27;s position estimator&#x27;s time constant used to compensate for GPS errors and wind.  Higher values result in smoother estimate but slower response</p>
+<ul>
+<li>Range: 1 20</li>
+</ul>
+
+
+<h2>Slung Payload debug output (SLUP_DEBUG)</h2>
+
+<p>Slung payload debug output, set to 1 to enable debug</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Ship landing enable (SHIP_ENABLE)</h2>
+
+<p>Enable ship landing system</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Ship landing angle (SHIP_LAND_ANGLE)</h2>
+
+<p>Angle from the stern of the ship for landing approach. Use this to ensure that on a go-around that ship superstructure and cables are avoided. A value of zero means to approach from the rear of the ship. A value of 90 means the landing will approach from the port (left) side of the ship. A value of -90 will mean approaching from the starboard (right) side of the ship. A value of 180 will approach from the bow of the ship. This parameter is combined with the sign of the RTL_RADIUS parameter to determine the holdoff pattern. If RTL_RADIUS is positive then a clockwise loiter is performed, if RTL_RADIUS is negative then a counter-clockwise loiter is used.</p>
+<ul>
+<li>Range: -180 180</li>
+<li>Units: degrees</li>
+</ul>
+
+
+<h2>Ship automatic offset trigger (SHIP_AUTO_OFS)</h2>
+
+<p>Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target. NOTE: This parameter will auto-reset to zero once the offset has been calculated.</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Trigger</td></tr>
+</table>
+</ul>
+
+
+<h2>Force enable High Latency mode (RK9_FORCEHL)</h2>
+
+<p>Automatically enables High Latency mode if not already enabled</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+<tr><td>2</td><td>Enabled on telemetry loss</td></tr>
+</table>
+</ul>
+
+
+<h2>Update rate (RK9_PERIOD)</h2>
+
+<p>When in High Latency mode, send Rockblock updates every N seconds</p>
+<ul>
+<li>Range: 0 600</li>
+<li>Units: seconds</li>
+</ul>
+
+
+<h2>Display Rockblock debugging text (RK9_DEBUG)</h2>
+
+<p>Sends Rockblock debug text to GCS via statustexts</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Enable Message transmission (RK9_ENABLE)</h2>
+
+<p>Enables the Rockblock sending and recieving</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>GCS timeout to start sendin Rockblock messages (RK9_TIMEOUT)</h2>
+
+<p>If RK9_FORCEHL=2, this is the number of seconds of GCS timeout until High Latency mode is auto-enabled</p>
+<ul>
+<li>Range: 0 600</li>
+<li>Units: seconds</li>
+</ul>
+
+
+<h2>Rockblock Serial Port (RK9_SERPORT)</h2>
+
+<p>Serial port number to which the Rockblock is connected.This is the index of the SERIALn_ ports that are set to 28 for &quot;scripting&quot;</p>
+<ul>
+<li>Range: 0 8</li>
+</ul>
+
+
+<h2>Rockblock Scripting Serial Port (RK9_SCRPORT)</h2>
+
+<p>Scripting Serial port number to which the Rockblock is connected for HL2 messages This is the index of the SCR_SDEV ports that are set to 2 for &quot;MavlinkHL&quot;</p>
+<ul>
+<li>Range: 0 8</li>
+</ul>
+
+
+<h2>Rockblock Power Relay (RK9_RELAY)</h2>
+
+<p>RELAYn output to control Rockblock power. This connects to I_EN on the Rockblock header.</p>
+<ul>
+<li>Range: 1 8</li>
+</ul>
+
+
+<h2>Rockblock booted feedback (RK9_BOOTED)</h2>
+
+<p>SERVOn GPIO channel that reads the Rockblock booted state. This connects to I_BTD on the Rockblock header. Requires SERVON_FUNCTION=-1</p>
+<ul>
+<li>Range: 50 110</li>
+</ul>
+
+
+<h2>Param Set enable (PARAM_SET_ENABLE)</h2>
+
+<p>Param Set enable</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>AHRS/EKF Origin Latitude (AHRS_ORIG_LAT)</h2>
+
+<p>AHRS/EKF origin will be set to this latitude if not already set</p>
+<ul>
+<li>Range: -180 180</li>
+</ul>
+
+
+<h2>AHRS/EKF Origin Longitude (AHRS_ORIG_LON)</h2>
+
+<p>AHRS/EKF origin will be set to this longitude if not already set</p>
+<ul>
+<li>Range: -180 180</li>
+</ul>
+
+
+<h2>AHRS/EKF Origin Altitude (AHRS_ORIG_ALT)</h2>
+
+<p>AHRS/EKF origin will be set to this altitude (in meters above sea level) if not already set</p>
+<ul>
+<li>Range: 0 10000</li>
+</ul>
+
+
+<h2>enable web server (WEB_ENABLE)</h2>
+
+<p>enable web server</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>web server TCP port (WEB_BIND_PORT)</h2>
+
+<p>web server TCP port</p>
+<ul>
+<li>Range: 1 65535</li>
+</ul>
+
+
+<h2>web server debugging (WEB_DEBUG)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>web server debugging</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>web server block size (WEB_BLOCK_SIZE)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>web server block size for download</p>
+<ul>
+<li>Range: 1 65535</li>
+</ul>
+
+
+<h2>web server timeout (WEB_TIMEOUT)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>timeout for inactive connections</p>
+<ul>
+<li>Units: seconds</li>
+<li>Range: 0.1 60</li>
+</ul>
+
+
+<h2>web server minimum file size for sendfile (WEB_SENDFILE_MIN)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>sendfile is an offloading mechanism for faster file download. If this is non-zero and the file is larger than this size then sendfile will be used for file download</p>
+<ul>
+<li>Range: 0 10000000</li>
+</ul>
+
+
+<h2>CoG adjustment ratio (CGA_RATIO)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>The ratio between the front and back motor outputs during steady-state hover. Positive when the CoG is in front of the motors midpoint (front motors work harder).</p>
+<ul>
+<li>Range: 0.5 2</li>
+</ul>
+
+
+<h2>parameter reversion enable (PREV_ENABLE)</h2>
+
+<p>Enable parameter reversion system</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>param reversion RC function (PREV_RC_FUNC)</h2>
+
+<p>RCn_OPTION number to used to trigger parameter reversion</p>
+<ul>
+</ul>
+
+
 <h2>Activation Function for Terrain Avoidance (TA_ACT_FN)</h2>
 
 <p>Setting an RC channel&#x27;s _OPTION to this value will use it for Terrain Avoidance enable/disable</p>
@@ -2168,145 +2121,6 @@ DO NOT EDIT
 <p>Use this radius for the loiter when trying to gain altitude. If not set or &lt;=0 use WP_LOITER_RAD</p>
 <ul>
 <li>Units: meters</li>
-</ul>
-
-
-<h2>Force enable High Latency mode (RCK_FORCEHL)</h2>
-
-<p>Automatically enables High Latency mode if not already enabled</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-<tr><td>2</td><td>Enabled on telemetry loss</td></tr>
-</table>
-</ul>
-
-
-<h2>Update rate (RCK_PERIOD)</h2>
-
-<p>When in High Latency mode, send Rockblock updates every N seconds</p>
-<ul>
-<li>Range: 0 600</li>
-<li>Units: seconds</li>
-</ul>
-
-
-<h2>Display Rockblock debugging text (RCK_DEBUG)</h2>
-
-<p>Sends Rockblock debug text to GCS via statustexts</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Enable Message transmission (RCK_ENABLE)</h2>
-
-<p>Enables the Rockblock sending and recieving</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>GCS timeout to start sendin Rockblock messages (RCK_TIMEOUT)</h2>
-
-<p>If RCK_FORCEHL=2, this is the number of seconds of GCS timeout until High Latency mode is auto-enabled</p>
-<ul>
-<li>Range: 0 600</li>
-<li>Units: seconds</li>
-</ul>
-
-
-<h2>parameter reversion enable (PREV_ENABLE)</h2>
-
-<p>Enable parameter reversion system</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>param reversion RC function (PREV_RC_FUNC)</h2>
-
-<p>RCn_OPTION number to used to trigger parameter reversion</p>
-<ul>
-</ul>
-
-
-<h2>Precland altitude cutoff (PLND_ALT_CUTOFF)</h2>
-
-<p>The altitude (rangefinder distance) below which we stop using the precision landing sensor and continue landing</p>
-<ul>
-<li>Range: 0 20</li>
-<li>Units: meters</li>
-</ul>
-
-
-<h2>Precland distance cutoff (DIST_CUTOFF)</h2>
-
-<p>The distance from target beyond which the target is ignored</p>
-<ul>
-<li>Range: 0 100</li>
-<li>Units: meters</li>
-</ul>
-
-
-<h2>AHRS/EKF Origin Latitude (AHRS_ORIG_LAT)</h2>
-
-<p>AHRS/EKF origin will be set to this latitude if not already set</p>
-<ul>
-<li>Range: -180 180</li>
-</ul>
-
-
-<h2>AHRS/EKF Origin Longitude (AHRS_ORIG_LON)</h2>
-
-<p>AHRS/EKF origin will be set to this longitude if not already set</p>
-<ul>
-<li>Range: -180 180</li>
-</ul>
-
-
-<h2>AHRS/EKF Origin Altitude (AHRS_ORIG_ALT)</h2>
-
-<p>AHRS/EKF origin will be set to this altitude (in meters above sea level) if not already set</p>
-<ul>
-<li>Range: 0 10000</li>
-</ul>
-
-
-<h2>enable battery info support (BTAG_ENABLE)</h2>
-
-<p>enable battery info support</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>max battery cycles (BTAG_MAX_CYCLES)</h2>
-
-<p>max battery cycles for arming</p>
-<ul>
-<li>Range: 0 10000</li>
-</ul>
-
-
-<h2>current battery cycles (BTAG_CUR_CYCLES)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>this is the highest value for battery cycles for all connected batteries</p>
-<ul>
-<li>Range: 0 10000</li>
 </ul>
 
 
@@ -2454,9 +2268,9 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Ship landing enable (SHIP_ENABLE)</h2>
+<h2>enable battery info support (BTAG_ENABLE)</h2>
 
-<p>Enable ship landing system</p>
+<p>enable battery info support</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
@@ -2465,27 +2279,63 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Ship landing angle (SHIP_LAND_ANGLE)</h2>
+<h2>max battery cycles (BTAG_MAX_CYCLES)</h2>
 
-<p>Angle from the stern of the ship for landing approach. Use this to ensure that on a go-around that ship superstructure and cables are avoided. A value of zero means to approach from the rear of the ship. A value of 90 means the landing will approach from the port (left) side of the ship. A value of -90 will mean approaching from the starboard (right) side of the ship. A value of 180 will approach from the bow of the ship. This parameter is combined with the sign of the RTL_RADIUS parameter to determine the holdoff pattern. If RTL_RADIUS is positive then a clockwise loiter is performed, if RTL_RADIUS is negative then a counter-clockwise loiter is used.</p>
+<p>max battery cycles for arming</p>
 <ul>
-<li>Range: -180 180</li>
-<li>Units: degrees</li>
+<li>Range: 0 10000</li>
 </ul>
 
 
-<h2>Ship automatic offset trigger (SHIP_AUTO_OFS)</h2>
+<h2>current battery cycles (BTAG_CUR_CYCLES)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target. NOTE: This parameter will auto-reset to zero once the offset has been calculated.</p>
+<p>this is the highest value for battery cycles for all connected batteries</p>
 <ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Trigger</td></tr>
-</table>
+<li>Range: 0 10000</li>
 </ul>
 
 
-<h2>Force enable High Latency mode (RK9_FORCEHL)</h2>
+<h2>AUX function to kill engine (THR_KILL_FUNC)</h2>
+
+<p>AUX function to kill engine. This can be activated either with a RCn_OPTION and a R/C switch or with a ground station auxilliary function</p>
+<ul>
+<li>Range: 300 307</li>
+</ul>
+
+
+<h2>PWM on kill active (THR_KILL_PWM)</h2>
+
+<p>PWM on kill active</p>
+<ul>
+<li>Range: 800 2200</li>
+</ul>
+
+
+<h2>output channel to change on throttle kill (THR_KILL_CHAN)</h2>
+
+<p>output channel to change on throttle kill, a value of zero disables the feature</p>
+<ul>
+<li>Range: 0 32</li>
+</ul>
+
+
+<h2>auxilliary value to kill throttle (THR_KILL_VAL)</h2>
+
+<p>auxilliary value to kill throttle. Set to 2 to kill the throttle when the auxilliary is high. Set to 0 to kill when auxilliary is low</p>
+<ul>
+<li>Range: 0 2</li>
+</ul>
+
+
+<h2>throttle kill default value (THR_KILL_DEF)</h2>
+
+<p>throttle kill default value. The default auxilliary function position on boot</p>
+<ul>
+<li>Range: 0 2</li>
+</ul>
+
+
+<h2>Force enable High Latency mode (RCK_FORCEHL)</h2>
 
 <p>Automatically enables High Latency mode if not already enabled</p>
 <ul>
@@ -2497,7 +2347,7 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Update rate (RK9_PERIOD)</h2>
+<h2>Update rate (RCK_PERIOD)</h2>
 
 <p>When in High Latency mode, send Rockblock updates every N seconds</p>
 <ul>
@@ -2506,7 +2356,7 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Display Rockblock debugging text (RK9_DEBUG)</h2>
+<h2>Display Rockblock debugging text (RCK_DEBUG)</h2>
 
 <p>Sends Rockblock debug text to GCS via statustexts</p>
 <ul>
@@ -2517,7 +2367,7 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Enable Message transmission (RK9_ENABLE)</h2>
+<h2>Enable Message transmission (RCK_ENABLE)</h2>
 
 <p>Enables the Rockblock sending and recieving</p>
 <ul>
@@ -2528,44 +2378,194 @@ DO NOT EDIT
 </ul>
 
 
-<h2>GCS timeout to start sendin Rockblock messages (RK9_TIMEOUT)</h2>
+<h2>GCS timeout to start sendin Rockblock messages (RCK_TIMEOUT)</h2>
 
-<p>If RK9_FORCEHL=2, this is the number of seconds of GCS timeout until High Latency mode is auto-enabled</p>
+<p>If RCK_FORCEHL=2, this is the number of seconds of GCS timeout until High Latency mode is auto-enabled</p>
 <ul>
 <li>Range: 0 600</li>
 <li>Units: seconds</li>
 </ul>
 
 
-<h2>Rockblock Serial Port (RK9_SERPORT)</h2>
+<h2>Follow Target Send Enable (FOLT_ENABLE)</h2>
 
-<p>Serial port number to which the Rockblock is connected.This is the index of the SERIALn_ ports that are set to 28 for &quot;scripting&quot;</p>
+<p>Follow Target Send Enable</p>
 <ul>
-<li>Range: 0 8</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
 </ul>
 
 
-<h2>Rockblock Scripting Serial Port (RK9_SCRPORT)</h2>
+<h2>Follow Target Send MAVLink Channel (FOLT_MAV_CHAN)</h2>
 
-<p>Scripting Serial port number to which the Rockblock is connected for HL2 messages This is the index of the SCR_SDEV ports that are set to 2 for &quot;MavlinkHL&quot;</p>
+<p>MAVLink channel to which FOLLOW_TARGET should be sent</p>
 <ul>
-<li>Range: 0 8</li>
+<li>Range: 0 10</li>
 </ul>
 
 
-<h2>Rockblock Power Relay (RK9_RELAY)</h2>
+<h2>Precland altitude cutoff (PLND_ALT_CUTOFF)</h2>
 
-<p>RELAYn output to control Rockblock power. This connects to I_EN on the Rockblock header.</p>
+<p>The altitude (rangefinder distance) below which we stop using the precision landing sensor and continue landing</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 20</li>
+<li>Units: meters</li>
 </ul>
 
 
-<h2>Rockblock booted feedback (RK9_BOOTED)</h2>
+<h2>Precland distance cutoff (DIST_CUTOFF)</h2>
 
-<p>SERVOn GPIO channel that reads the Rockblock booted state. This connects to I_BTD on the Rockblock header. Requires SERVON_FUNCTION=-1</p>
+<p>The distance from target beyond which the target is ignored</p>
 <ul>
-<li>Range: 50 110</li>
+<li>Range: 0 100</li>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>Rover Quicktune enable (RTUN_ENABLE)</h2>
+
+<p>Enable quicktune system</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Rover Quicktune axes (RTUN_AXES)</h2>
+
+<p>axes to tune</p>
+<ul>
+<li>Bitmask: 0:Steering,1:Speed</li>
+</ul>
+
+
+<h2>Rover Quicktune Steering Rate FeedForward ratio (RTUN_STR_FFRATIO)</h2>
+
+<p>Ratio between measured response and FF gain. Raise this to get a higher FF gain</p>
+<ul>
+<li>Range: 0 1.0</li>
+</ul>
+
+
+<h2>Rover Quicktune Steering FF to P ratio (RTUN_STR_P_RATIO)</h2>
+
+<p>Ratio between steering FF and P gains. Raise this to get a higher P gain, 0 to leave P unchanged</p>
+<ul>
+<li>Range: 0 2.0</li>
+</ul>
+
+
+<h2>Rover Quicktune Steering FF to I ratio (RTUN_STR_I_RATIO)</h2>
+
+<p>Ratio between steering FF and I gains. Raise this to get a higher I gain, 0 to leave I unchanged</p>
+<ul>
+<li>Range: 0 2.0</li>
+</ul>
+
+
+<h2>Rover Quicktune Speed FeedForward (equivalent) ratio (RTUN_SPD_FFRATIO)</h2>
+
+<p>Ratio between measured response and CRUISE_THROTTLE value. Raise this to get a higher CRUISE_THROTTLE value</p>
+<ul>
+<li>Range: 0 1.0</li>
+</ul>
+
+
+<h2>Rover Quicktune Speed FF to P ratio (RTUN_SPD_P_RATIO)</h2>
+
+<p>Ratio between speed FF and P gain. Raise this to get a higher P gain, 0 to leave P unchanged</p>
+<ul>
+<li>Range: 0 2.0</li>
+</ul>
+
+
+<h2>Rover Quicktune Speed FF to I ratio (RTUN_SPD_I_RATIO)</h2>
+
+<p>Ratio between speed FF and I gain. Raise this to get a higher I gain, 0 to leave I unchanged</p>
+<ul>
+<li>Range: 0 2.0</li>
+</ul>
+
+
+<h2>Rover Quicktune auto filter enable (RTUN_AUTO_FILTER)</h2>
+
+<p>When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Rover Quicktune auto save (RTUN_AUTO_SAVE)</h2>
+
+<p>Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune</p>
+<ul>
+<li>Units: seconds</li>
+</ul>
+
+
+<h2>Rover Quicktune RC function (RTUN_RC_FUNC)</h2>
+
+<p>RCn_OPTION number to use to control tuning stop/start/save</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>300</td><td>Scripting1</td></tr>
+<tr><td>301</td><td>Scripting2</td></tr>
+<tr><td>302</td><td>Scripting3</td></tr>
+<tr><td>303</td><td>Scripting4</td></tr>
+<tr><td>304</td><td>Scripting5</td></tr>
+<tr><td>305</td><td>Scripting6</td></tr>
+<tr><td>306</td><td>Scripting7</td></tr>
+<tr><td>307</td><td>Scripting8</td></tr>
+</table>
+</ul>
+
+
+<h2>Rover Quicktune minimum speed for tuning (RTUN_SPEED_MIN)</h2>
+
+<p>The mimimum speed in m/s required for tuning to start</p>
+<ul>
+<li>Units: meters per second</li>
+<li>Range: 0.1 0.5</li>
+</ul>
+
+
+<h2>WinchControl Rate Up (WINCH_RATE_UP)</h2>
+
+<p>Maximum rate when retracting line</p>
+<ul>
+<li>Range: 0.1 5.0</li>
+</ul>
+
+
+<h2>WinchControl Rate Down (WINCH_RATE_DN)</h2>
+
+<p>Maximum rate when releasing line</p>
+<ul>
+<li>Range: 0.1 5.0</li>
+</ul>
+
+
+<h2>Winch Rate Control RC function (WINCH_RC_FUNC)</h2>
+
+<p>RCn_OPTION number to use to control winch rate</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>300</td><td>Scripting1</td></tr>
+<tr><td>301</td><td>Scripting2</td></tr>
+<tr><td>302</td><td>Scripting3</td></tr>
+<tr><td>303</td><td>Scripting4</td></tr>
+<tr><td>304</td><td>Scripting5</td></tr>
+<tr><td>305</td><td>Scripting6</td></tr>
+<tr><td>306</td><td>Scripting7</td></tr>
+<tr><td>307</td><td>Scripting8</td></tr>
+</table>
 </ul>
 
 
@@ -2828,46 +2828,9 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Mask of UltraMotion servos (UM_SERVO_MASK)</h2>
+<h2>EFI DLA enable (EFI_DLA_ENABLE)</h2>
 
-<p>Mask of UltraMotion servos</p>
-<ul>
-<li>Bitmask: 0:SERVO1,1:SERVO2,2:SERVO3,3:SERVO4,4:SERVO5,5:SERVO6,6:SERVO7,7:SERVO8,8:SERVO9,9:SERVO10,10:SERVO11,11:SERVO12</li>
-</ul>
-
-
-<h2>Set CAN driver (UM_CANDRV)</h2>
-
-<p>Set CAN driver</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
-<tr><td>1</td><td>1stCANDriver</td></tr>
-<tr><td>2</td><td>2ndCanDriver</td></tr>
-</table>
-</ul>
-
-
-<h2>Update rate for UltraMotion servos (UM_RATE_HZ)</h2>
-
-<p>Update rate for UltraMotion servos</p>
-<ul>
-<li>Units: hertz</li>
-<li>Range: 1 400</li>
-</ul>
-
-
-<h2>Optional settings (UM_OPTIONS)</h2>
-
-<p>Optional settings</p>
-<ul>
-<li>Bitmask: 0:LogAllFrames,1:ParseTelemetry,2:SendPosAsNamedValueFloat</li>
-</ul>
-
-
-<h2>Enable Halo6000 EFI driver (EFI_H6K_ENABLE)</h2>
-
-<p>Enable Halo6000 EFI driver</p>
+<p>Enable EFI DLA driver</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
@@ -2876,205 +2839,12 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Halo6000 CAN driver (EFI_H6K_CANDRV)</h2>
+<h2>EFI DLA fuel scale (EFI_DLA_LPS)</h2>
 
-<p>Halo6000 CAN driver. Use 1 for first CAN scripting driver, 2 for 2nd driver</p>
+<p>EFI DLA litres of fuel per second of injection time</p>
 <ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>FirstCAN</td></tr>
-<tr><td>2</td><td>SecondCAN</td></tr>
-</table>
-</ul>
-
-
-<h2>Halo6000 start auxilliary function (EFI_H6K_START_FN)</h2>
-
-<p>The RC auxilliary function number for start/stop of the generator. Zero to disable start function</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>300</td><td>300</td></tr>
-<tr><td>301</td><td>301</td></tr>
-<tr><td>302</td><td>302</td></tr>
-<tr><td>303</td><td>303</td></tr>
-<tr><td>304</td><td>304</td></tr>
-<tr><td>305</td><td>305</td></tr>
-<tr><td>306</td><td>306</td></tr>
-<tr><td>307</td><td>307</td></tr>
-</table>
-</ul>
-
-
-<h2>Halo6000 telemetry rate (EFI_H6K_TELEM_RT)</h2>
-
-<p>The rate that additional generator telemetry is sent</p>
-<ul>
-<li>Units: hertz</li>
-</ul>
-
-
-<h2>Halo6000 total fuel capacity (EFI_H6K_FUELTOT)</h2>
-
-<p>The capacity of the tank in litres</p>
-<ul>
+<li>Range: 0.00001 1</li>
 <li>Units: litres</li>
-</ul>
-
-
-<h2>Halo6000 options (EFI_H6K_OPTIONS)</h2>
-
-<p>Halo6000 options</p>
-<ul>
-<li>Bitmask: 0:LogAllCanPackets</li>
-</ul>
-
-
-<h2>Torqeedo TorqLink Enable (TRQL_ENABLE)</h2>
-
-<p>Torqeedo TorqLink Enable</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Torqeedo TorqLink Debug Level (TRQL_DEBUG)</h2>
-
-<p>Torqeedo TorqLink Debug Level</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
-<tr><td>1</td><td>Low</td></tr>
-<tr><td>2</td><td>Medium</td></tr>
-<tr><td>3</td><td>High</td></tr>
-</table>
-</ul>
-
-
-<h2>Enable HFE EFI driver (EFI_HFE_ENABLE)</h2>
-
-<p>Enable HFE EFI driver</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>HFI EFI Update rate (EFI_HFE_RATE_HZ)</h2>
-
-<p>HFI EFI Update rate</p>
-<ul>
-<li>Range: 0 400</li>
-</ul>
-
-
-<h2>HFI EFI ECU index (EFI_HFE_ECU_IDX)</h2>
-
-<p>HFI EFI ECU index, 0 for automatic</p>
-<ul>
-<li>Range: 0 10</li>
-</ul>
-
-
-<h2>HFI EFI fuel density (EFI_HFE_FUEL_DTY)</h2>
-
-<p>HFI EFI fuel density in gram per litre</p>
-<ul>
-<li>Range: 0 2000</li>
-</ul>
-
-
-<h2>HFI EFI relay index (EFI_HFE_REL_IDX)</h2>
-
-<p>HFI EFI relay index</p>
-<ul>
-<li>Range: 0 10</li>
-</ul>
-
-
-<h2>HFI EFI CAN driver (EFI_HFE_CANDRV)</h2>
-
-<p>HFI EFI CAN driver</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
-<tr><td>1</td><td>1stCANDriver</td></tr>
-<tr><td>2</td><td>2ndCanDriver</td></tr>
-</table>
-</ul>
-
-
-<h2>HFI EFI options (EFI_HFE_OPTIONS)</h2>
-
-<p>HFI EFI options</p>
-<ul>
-<li>Bitmask: 1:EnableCANLogging</li>
-</ul>
-
-
-<h2>Generator SVFFI enable (EFI_SVF_ENABLE)</h2>
-
-<p>Enable SVFFI generator support</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Generator SVFFI arming check (EFI_SVF_ARMCHECK)</h2>
-
-<p>Check for Generator ARM state before arming</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Enable ANX battery support (BATT_ANX_ENABLE)</h2>
-
-<p>Enable ANX battery support</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Set ANX CAN driver (BATT_ANX_CANDRV)</h2>
-
-<p>Set ANX CAN driver</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
-<tr><td>1</td><td>1stCANDriver</td></tr>
-<tr><td>2</td><td>2ndCanDriver</td></tr>
-</table>
-</ul>
-
-
-<h2>ANX CAN battery index (BATT_ANX_INDEX)</h2>
-
-<p>ANX CAN battery index</p>
-<ul>
-<li>Range: 1 10</li>
-</ul>
-
-
-<h2>ANX CAN battery options (BATT_ANX_OPTIONS)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>ANX CAN battery options</p>
-<ul>
-<li>Bitmask: 0:LogAllFrames</li>
 </ul>
 
 
@@ -3263,32 +3033,9 @@ DO NOT EDIT
 </ul>
 
 
-<h2>DJIRS2 debug (DJIR_DEBUG)</h2><em>Note: This parameter is for advanced users</em><br>
+<h2>Enable HFE EFI driver (EFI_HFE_ENABLE)</h2>
 
-<p>Enable DJIRS2 debug</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-<tr><td>2</td><td>Enabled with attitude reporting</td></tr>
-</table>
-</ul>
-
-
-<h2>DJIRS2 upside down (DJIR_UPSIDEDOWN)</h2>
-
-<p>DJIRS2 upside down</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Right side up</td></tr>
-<tr><td>1</td><td>Upside down</td></tr>
-</table>
-</ul>
-
-
-<h2>EFI INF-Inject enable (EFI_INF_ENABLE)</h2>
-
-<p>Enable EFI INF-Inject driver</p>
+<p>Enable HFE EFI driver</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
@@ -3297,95 +3044,157 @@ DO NOT EDIT
 </ul>
 
 
-<h2>EFI INF-Inject options (EFI_INF_OPTIONS)</h2>
+<h2>HFI EFI Update rate (EFI_HFE_RATE_HZ)</h2>
 
-<p>EFI INF driver options</p>
+<p>HFI EFI Update rate</p>
 <ul>
-<li>Bitmask: 0:EnableLogging</li>
+<li>Range: 0 400</li>
 </ul>
 
 
-<h2>EFI INF-Inject throttle rate (EFI_INF_THR_HZ)</h2>
+<h2>HFI EFI ECU index (EFI_HFE_ECU_IDX)</h2>
 
-<p>EFI INF throttle output rate</p>
+<p>HFI EFI ECU index, 0 for automatic</p>
 <ul>
-<li>Range: 0 50</li>
+<li>Range: 0 10</li>
+</ul>
+
+
+<h2>HFI EFI fuel density (EFI_HFE_FUEL_DTY)</h2>
+
+<p>HFI EFI fuel density in gram per litre</p>
+<ul>
+<li>Range: 0 2000</li>
+</ul>
+
+
+<h2>HFI EFI relay index (EFI_HFE_REL_IDX)</h2>
+
+<p>HFI EFI relay index</p>
+<ul>
+<li>Range: 0 10</li>
+</ul>
+
+
+<h2>HFI EFI CAN driver (EFI_HFE_CANDRV)</h2>
+
+<p>HFI EFI CAN driver</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>None</td></tr>
+<tr><td>1</td><td>1stCANDriver</td></tr>
+<tr><td>2</td><td>2ndCanDriver</td></tr>
+</table>
+</ul>
+
+
+<h2>HFI EFI options (EFI_HFE_OPTIONS)</h2>
+
+<p>HFI EFI options</p>
+<ul>
+<li>Bitmask: 1:EnableCANLogging</li>
+</ul>
+
+
+<h2>Enable Halo6000 EFI driver (EFI_H6K_ENABLE)</h2>
+
+<p>Enable Halo6000 EFI driver</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Halo6000 CAN driver (EFI_H6K_CANDRV)</h2>
+
+<p>Halo6000 CAN driver. Use 1 for first CAN scripting driver, 2 for 2nd driver</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>FirstCAN</td></tr>
+<tr><td>2</td><td>SecondCAN</td></tr>
+</table>
+</ul>
+
+
+<h2>Halo6000 start auxilliary function (EFI_H6K_START_FN)</h2>
+
+<p>The RC auxilliary function number for start/stop of the generator. Zero to disable start function</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>300</td><td>300</td></tr>
+<tr><td>301</td><td>301</td></tr>
+<tr><td>302</td><td>302</td></tr>
+<tr><td>303</td><td>303</td></tr>
+<tr><td>304</td><td>304</td></tr>
+<tr><td>305</td><td>305</td></tr>
+<tr><td>306</td><td>306</td></tr>
+<tr><td>307</td><td>307</td></tr>
+</table>
+</ul>
+
+
+<h2>Halo6000 telemetry rate (EFI_H6K_TELEM_RT)</h2>
+
+<p>The rate that additional generator telemetry is sent</p>
+<ul>
 <li>Units: hertz</li>
 </ul>
 
 
-<h2>EFI INF-Inject ignition aux function (EFI_INF_IGN_AUX)</h2>
+<h2>Halo6000 total fuel capacity (EFI_H6K_FUELTOT)</h2>
 
-<p>EFI INF throttle ignition aux function</p>
+<p>The capacity of the tank in litres</p>
 <ul>
-</ul>
-
-
-<h2>EFI DLA enable (EFI_DLA_ENABLE)</h2>
-
-<p>Enable EFI DLA driver</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>EFI DLA fuel scale (EFI_DLA_LPS)</h2>
-
-<p>EFI DLA litres of fuel per second of injection time</p>
-<ul>
-<li>Range: 0.00001 1</li>
 <li>Units: litres</li>
 </ul>
 
 
-<h2>EFI DLA64 enable (EFI_DLA64_ENABLE)</h2>
+<h2>Halo6000 options (EFI_H6K_OPTIONS)</h2>
 
-<p>Enable EFI DLA64 driver</p>
+<p>Halo6000 options</p>
+<ul>
+<li>Bitmask: 0:LogAllCanPackets</li>
+</ul>
+
+
+<h2>Mask of UltraMotion servos (UM_SERVO_MASK)</h2>
+
+<p>Mask of UltraMotion servos</p>
+<ul>
+<li>Bitmask: 0:SERVO1,1:SERVO2,2:SERVO3,3:SERVO4,4:SERVO5,5:SERVO6,6:SERVO7,7:SERVO8,8:SERVO9,9:SERVO10,10:SERVO11,11:SERVO12</li>
+</ul>
+
+
+<h2>Set CAN driver (UM_CANDRV)</h2>
+
+<p>Set CAN driver</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
+<tr><td>0</td><td>None</td></tr>
+<tr><td>1</td><td>1stCANDriver</td></tr>
+<tr><td>2</td><td>2ndCanDriver</td></tr>
 </table>
 </ul>
 
 
-<h2>Enable this script (ENABLE)</h2>
+<h2>Update rate for UltraMotion servos (UM_RATE_HZ)</h2>
 
-<p>When set to 0 this script will not run. When set to 1 this script will run.</p>
+<p>Update rate for UltraMotion servos</p>
 <ul>
-<li>Range: 0 1</li>
+<li>Units: hertz</li>
+<li>Range: 1 400</li>
 </ul>
 
 
-<h2>Index of assigned battery. (BATT_IDX)</h2>
+<h2>Optional settings (UM_OPTIONS)</h2>
 
-<p>Ensure this battery is configured with `BATT*_MONITOR=29`.</p>
+<p>Optional settings</p>
 <ul>
-</ul>
-
-
-<h2>Measurement correction factor (CFACT)</h2>
-
-<p>This is multiplicative factor to correct the measured flow. Set to &lt;1 if your sensor measures too high.</p>
-<ul>
-</ul>
-
-
-<h2>Sensor operating mode (MODE)</h2>
-
-<p>0: The sensor will save the fuel consumption across power resets. 1: The sensor will reset the power consumption.</p>
-<ul>
-</ul>
-
-
-<h2>Scripting serial port number (PORT)</h2>
-
-<p>Which Scripting serial port the sensor is connected at.</p>
-<ul>
-<li>Range: 1 10</li>
+<li>Bitmask: 0:LogAllFrames,1:ParseTelemetry,2:SendPosAsNamedValueFloat</li>
 </ul>
 
 
@@ -3574,6 +3383,197 @@ DO NOT EDIT
 <p>NMEA 2000 driver options</p>
 <ul>
 <li>Bitmask: 0:EnableLogging</li>
+</ul>
+
+
+<h2>EFI DLA64 enable (EFI_DLA64_ENABLE)</h2>
+
+<p>Enable EFI DLA64 driver</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Torqeedo TorqLink Enable (TRQL_ENABLE)</h2>
+
+<p>Torqeedo TorqLink Enable</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Torqeedo TorqLink Debug Level (TRQL_DEBUG)</h2>
+
+<p>Torqeedo TorqLink Debug Level</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>None</td></tr>
+<tr><td>1</td><td>Low</td></tr>
+<tr><td>2</td><td>Medium</td></tr>
+<tr><td>3</td><td>High</td></tr>
+</table>
+</ul>
+
+
+<h2>Generator SVFFI enable (EFI_SVF_ENABLE)</h2>
+
+<p>Enable SVFFI generator support</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Generator SVFFI arming check (EFI_SVF_ARMCHECK)</h2>
+
+<p>Check for Generator ARM state before arming</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Enable ANX battery support (BATT_ANX_ENABLE)</h2>
+
+<p>Enable ANX battery support</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>Set ANX CAN driver (BATT_ANX_CANDRV)</h2>
+
+<p>Set ANX CAN driver</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>None</td></tr>
+<tr><td>1</td><td>1stCANDriver</td></tr>
+<tr><td>2</td><td>2ndCanDriver</td></tr>
+</table>
+</ul>
+
+
+<h2>ANX CAN battery index (BATT_ANX_INDEX)</h2>
+
+<p>ANX CAN battery index</p>
+<ul>
+<li>Range: 1 10</li>
+</ul>
+
+
+<h2>ANX CAN battery options (BATT_ANX_OPTIONS)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ANX CAN battery options</p>
+<ul>
+<li>Bitmask: 0:LogAllFrames</li>
+</ul>
+
+
+<h2>Enable this script (ENABLE)</h2>
+
+<p>When set to 0 this script will not run. When set to 1 this script will run.</p>
+<ul>
+<li>Range: 0 1</li>
+</ul>
+
+
+<h2>Index of assigned battery. (BATT_IDX)</h2>
+
+<p>Ensure this battery is configured with `BATT*_MONITOR=29`.</p>
+<ul>
+</ul>
+
+
+<h2>Measurement correction factor (CFACT)</h2>
+
+<p>This is multiplicative factor to correct the measured flow. Set to &lt;1 if your sensor measures too high.</p>
+<ul>
+</ul>
+
+
+<h2>Sensor operating mode (MODE)</h2>
+
+<p>0: The sensor will save the fuel consumption across power resets. 1: The sensor will reset the power consumption.</p>
+<ul>
+</ul>
+
+
+<h2>Scripting serial port number (PORT)</h2>
+
+<p>Which Scripting serial port the sensor is connected at.</p>
+<ul>
+<li>Range: 1 10</li>
+</ul>
+
+
+<h2>DJIRS2 debug (DJIR_DEBUG)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Enable DJIRS2 debug</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+<tr><td>2</td><td>Enabled with attitude reporting</td></tr>
+</table>
+</ul>
+
+
+<h2>DJIRS2 upside down (DJIR_UPSIDEDOWN)</h2>
+
+<p>DJIRS2 upside down</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Right side up</td></tr>
+<tr><td>1</td><td>Upside down</td></tr>
+</table>
+</ul>
+
+
+<h2>EFI INF-Inject enable (EFI_INF_ENABLE)</h2>
+
+<p>Enable EFI INF-Inject driver</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
+<h2>EFI INF-Inject options (EFI_INF_OPTIONS)</h2>
+
+<p>EFI INF driver options</p>
+<ul>
+<li>Bitmask: 0:EnableLogging</li>
+</ul>
+
+
+<h2>EFI INF-Inject throttle rate (EFI_INF_THR_HZ)</h2>
+
+<p>EFI INF throttle output rate</p>
+<ul>
+<li>Range: 0 50</li>
+<li>Units: hertz</li>
+</ul>
+
+
+<h2>EFI INF-Inject ignition aux function (EFI_INF_IGN_AUX)</h2>
+
+<p>EFI INF throttle ignition aux function</p>
+<ul>
 </ul>
 
 

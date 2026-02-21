@@ -1437,29 +1437,29 @@ This is the duration \(ms\) with which to hold the last driven servo command bef
 
 
 
+.. _SRV_TLM_MSG_RATE:
+
+SRV\_TLM\_MSG\_RATE: Servo telemetry message rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+This is the rate servo telem data is sent in Hz\. Zero means no send\. Each servo is sent in turn\.
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 0 to 200 | hertz |
++-----------+----------+-------+
+
+
+
+
 
 .. _parameters_ACT:
 
 ACT Parameters
 --------------
-
-
-.. _ACT_TELEM_RATE:
-
-ACT\_TELEM\_RATE: Actuator Telemetry rate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Actuator Telemetry update rate in Hz\. Set to 0 to disable\.
-
-
-+----------+-------+
-| Range    | Units |
-+==========+=======+
-| 0 to 100 | hertz |
-+----------+-------+
-
-
 
 
 .. _ACT_NUM_CHANS:
