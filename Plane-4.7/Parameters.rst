@@ -2993,54 +2993,58 @@ FLTMODE\_GCSBLOCK: Flight mode block from GCS
 Bitmask of flight modes to disable for GCS selection\. Mode can still be accessed via RC or failsafe\.
 
 
-+----------------------+
-| Bitmask              |
-+======================+
-| +-----+------------+ |
-| | Bit | Meaning    | |
-| +=====+============+ |
-| | 0   | Manual     | |
-| +-----+------------+ |
-| | 1   | Circle     | |
-| +-----+------------+ |
-| | 2   | Stabilize  | |
-| +-----+------------+ |
-| | 3   | Training   | |
-| +-----+------------+ |
-| | 4   | ACRO       | |
-| +-----+------------+ |
-| | 5   | FBWA       | |
-| +-----+------------+ |
-| | 6   | FBWB       | |
-| +-----+------------+ |
-| | 7   | CRUISE     | |
-| +-----+------------+ |
-| | 8   | AUTOTUNE   | |
-| +-----+------------+ |
-| | 9   | Auto       | |
-| +-----+------------+ |
-| | 10  | Loiter     | |
-| +-----+------------+ |
-| | 11  | Takeoff    | |
-| +-----+------------+ |
-| | 12  | AVOID_ADSB | |
-| +-----+------------+ |
-| | 13  | Guided     | |
-| +-----+------------+ |
-| | 14  | THERMAL    | |
-| +-----+------------+ |
-| | 15  | QSTABILIZE | |
-| +-----+------------+ |
-| | 16  | QHOVER     | |
-| +-----+------------+ |
-| | 17  | QLOITER    | |
-| +-----+------------+ |
-| | 18  | QACRO      | |
-| +-----+------------+ |
-| | 19  | QAUTOTUNE  | |
-| +-----+------------+ |
-|                      |
-+----------------------+
++---------------------------+
+| Bitmask                   |
++===========================+
+| +-----+-----------------+ |
+| | Bit | Meaning         | |
+| +=====+=================+ |
+| | 0   | Manual          | |
+| +-----+-----------------+ |
+| | 1   | Circle          | |
+| +-----+-----------------+ |
+| | 2   | Stabilize       | |
+| +-----+-----------------+ |
+| | 3   | Training        | |
+| +-----+-----------------+ |
+| | 4   | ACRO            | |
+| +-----+-----------------+ |
+| | 5   | FBWA            | |
+| +-----+-----------------+ |
+| | 6   | FBWB            | |
+| +-----+-----------------+ |
+| | 7   | CRUISE          | |
+| +-----+-----------------+ |
+| | 8   | AUTOTUNE        | |
+| +-----+-----------------+ |
+| | 9   | Auto            | |
+| +-----+-----------------+ |
+| | 10  | Loiter          | |
+| +-----+-----------------+ |
+| | 11  | Takeoff         | |
+| +-----+-----------------+ |
+| | 12  | AVOID_ADSB      | |
+| +-----+-----------------+ |
+| | 13  | Guided          | |
+| +-----+-----------------+ |
+| | 14  | THERMAL         | |
+| +-----+-----------------+ |
+| | 15  | QSTABILIZE      | |
+| +-----+-----------------+ |
+| | 16  | QHOVER          | |
+| +-----+-----------------+ |
+| | 17  | QLOITER         | |
+| +-----+-----------------+ |
+| | 18  | QACRO           | |
+| +-----+-----------------+ |
+| | 19  | QAUTOTUNE       | |
+| +-----+-----------------+ |
+| | 20  | Loiter to QLand | |
+| +-----+-----------------+ |
+| | 21  | Autoland        | |
+| +-----+-----------------+ |
+|                           |
++---------------------------+
 
 
 
@@ -88788,114 +88792,6 @@ Q\_WP\_ Parameters
 ------------------
 
 
-.. _Q_WP_SPEED:
-
-Q\_WP\_SPEED: Waypoint Horizontal Speed Target
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Defines the speed in cm\/s which the aircraft will attempt to maintain horizontally during a WP mission
-
-
-+-----------+------------+------------------------+
-| Increment | Range      | Units                  |
-+===========+============+========================+
-| 50        | 10 to 2000 | centimeters per second |
-+-----------+------------+------------------------+
-
-
-
-
-.. _Q_WP_RADIUS:
-
-Q\_WP\_RADIUS: Waypoint Radius
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Defines the distance from a waypoint\, that when crossed indicates the wp has been hit\.
-
-
-+-----------+-----------+-------------+
-| Increment | Range     | Units       |
-+===========+===========+=============+
-| 1         | 5 to 1000 | centimeters |
-+-----------+-----------+-------------+
-
-
-
-
-.. _Q_WP_SPEED_UP:
-
-Q\_WP\_SPEED\_UP: Waypoint Climb Speed Target
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Defines the speed in cm\/s which the aircraft will attempt to maintain while climbing during a WP mission
-
-
-+-----------+------------+------------------------+
-| Increment | Range      | Units                  |
-+===========+============+========================+
-| 50        | 10 to 1000 | centimeters per second |
-+-----------+------------+------------------------+
-
-
-
-
-.. _Q_WP_SPEED_DN:
-
-Q\_WP\_SPEED\_DN: Waypoint Descent Speed Target
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Defines the speed in cm\/s which the aircraft will attempt to maintain while descending during a WP mission
-
-
-+-----------+-----------+------------------------+
-| Increment | Range     | Units                  |
-+===========+===========+========================+
-| 10        | 10 to 500 | centimeters per second |
-+-----------+-----------+------------------------+
-
-
-
-
-.. _Q_WP_ACCEL:
-
-Q\_WP\_ACCEL: Waypoint Acceleration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Defines the horizontal acceleration in cm\/s\/s used during missions
-
-
-+-----------+-----------+-------------------------------+
-| Increment | Range     | Units                         |
-+===========+===========+===============================+
-| 10        | 50 to 500 | centimeters per square second |
-+-----------+-----------+-------------------------------+
-
-
-
-
-.. _Q_WP_ACCEL_Z:
-
-Q\_WP\_ACCEL\_Z: Waypoint Vertical Acceleration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Defines the vertical acceleration in cm\/s\/s used during missions
-
-
-+-----------+-----------+-------------------------------+
-| Increment | Range     | Units                         |
-+===========+===========+===============================+
-| 10        | 50 to 500 | centimeters per square second |
-+-----------+-----------+-------------------------------+
-
-
-
-
 .. _Q_WP_RFND_USE:
 
 Q\_WP\_RFND\_USE: Waypoint missions use rangefinder for terrain following
@@ -88959,20 +88855,128 @@ Waypoint Terrain following altitude margin\.  Vehicle will stop if distance from
 
 
 
-.. _Q_WP_ACCEL_C:
+.. _Q_WP_SPD:
 
-Q\_WP\_ACCEL\_C: Waypoint Cornering Acceleration
+Q\_WP\_SPD: Waypoint Horizontal Speed Target
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Speed in m\/s which the aircraft will attempt to maintain horizontally during a WP mission
+
+
++-----------+---------------+-------------------+
+| Increment | Range         | Units             |
++===========+===============+===================+
+| 0.10      | 0.10 to 20.00 | meters per second |
++-----------+---------------+-------------------+
+
+
+
+
+.. _Q_WP_RADIUS_M:
+
+Q\_WP\_RADIUS\_M: Waypoint Radius
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Distance from a waypoint\, that when crossed indicates the wp has been reached\.
+
+
++-----------+---------------+--------+
+| Increment | Range         | Units  |
++===========+===============+========+
+| 0.01      | 0.05 to 10.00 | meters |
++-----------+---------------+--------+
+
+
+
+
+.. _Q_WP_SPD_UP:
+
+Q\_WP\_SPD\_UP: Waypoint Climb Speed Target
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Speed in m\/s which the aircraft will attempt to maintain while climbing during a WP mission
+
+
++-----------+---------------+-------------------+
+| Increment | Range         | Units             |
++===========+===============+===================+
+| 0.10      | 0.10 to 10.00 | meters per second |
++-----------+---------------+-------------------+
+
+
+
+
+.. _Q_WP_SPD_DN:
+
+Q\_WP\_SPD\_DN: Waypoint Descent Speed Target
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Speed in m\/s which the aircraft will attempt to maintain while descending during a WP mission
+
+
++-----------+---------------+-------------------+
+| Increment | Range         | Units             |
++===========+===============+===================+
+| 0.10      | 0.10 to 10.00 | meters per second |
++-----------+---------------+-------------------+
+
+
+
+
+.. _Q_WP_ACC:
+
+Q\_WP\_ACC: Waypoint Acceleration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Horizontal acceleration in m\/s\/s used during missions
+
+
++-----------+--------------+--------------------------+
+| Increment | Range        | Units                    |
++===========+==============+==========================+
+| 0.10      | 0.50 to 5.00 | meters per square second |
++-----------+--------------+--------------------------+
+
+
+
+
+.. _Q_WP_ACC_Z:
+
+Q\_WP\_ACC\_Z: Waypoint Vertical Acceleration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Vertical acceleration in m\/s\/s used during missions
+
+
++-----------+--------------+--------------------------+
+| Increment | Range        | Units                    |
++===========+==============+==========================+
+| 0.10      | 0.50 to 5.00 | meters per square second |
++-----------+--------------+--------------------------+
+
+
+
+
+.. _Q_WP_ACC_CNR:
+
+Q\_WP\_ACC\_CNR: Waypoint Cornering Acceleration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Defines the maximum cornering acceleration in cm\/s\/s used during missions\.  If zero uses 2x accel value\.
+Maximum cornering acceleration in m\/s\/s used during missions\.  If zero uses 2x accel value\.
 
 
-+-----------+----------+-------------------------------+
-| Increment | Range    | Units                         |
-+===========+==========+===============================+
-| 10        | 0 to 500 | centimeters per square second |
-+-----------+----------+-------------------------------+
++-----------+-----------+--------------------------+
+| Increment | Range     | Units                    |
++===========+===========+==========================+
+| 0.10      | 0 to 5.00 | meters per square second |
++-----------+-----------+--------------------------+
 
 
 
@@ -138757,21 +138761,23 @@ TERRAIN\_OPTIONS: Terrain options
 
 | *Note: This parameter is for advanced users*
 
-Options to change behaviour of terrain system
+Options to change behavior of terrain system\. The Accept Old Terrain Data option can be used to accept terrain data generated from before the terrain database bugs were fixed\. The bugs in the data were all fixed from 24th February 2026\. If you really want to risk using the old terrain data then you can set this option\, otherwise remove the old terrain data by formatting your microSD card or renaming the \/APM\/TERRAIN folder\. Then downloaded updated data from https\:\/\/terrain\.ardupilot\.org\, or let the automatic terrain download repopulate your terrain data\.
 
 
-+----------------------------+
-| Bitmask                    |
-+============================+
-| +-----+------------------+ |
-| | Bit | Meaning          | |
-| +=====+==================+ |
-| | 0   | Disable Download | |
-| +-----+------------------+ |
-| | 1   | Disable Disk     | |
-| +-----+------------------+ |
-|                            |
-+----------------------------+
++-----------------------------------+
+| Bitmask                           |
++===================================+
+| +-----+-------------------------+ |
+| | Bit | Meaning                 | |
+| +=====+=========================+ |
+| | 0   | Disable Download        | |
+| +-----+-------------------------+ |
+| | 1   | Disable Disk            | |
+| +-----+-------------------------+ |
+| | 2   | Accept Old Terrain Data | |
+| +-----+-------------------------+ |
+|                                   |
++-----------------------------------+
 
 
 

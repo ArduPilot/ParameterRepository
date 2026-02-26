@@ -139089,21 +139089,23 @@ TERRAIN\_OPTIONS: Terrain options
 
 | *Note: This parameter is for advanced users*
 
-Options to change behaviour of terrain system
+Options to change behavior of terrain system\. The Accept Old Terrain Data option can be used to accept terrain data generated from before the terrain database bugs were fixed\. The bugs in the data were all fixed from 24th February 2026\. If you really want to risk using the old terrain data then you can set this option\, otherwise remove the old terrain data by formatting your microSD card or renaming the \/APM\/TERRAIN folder\. Then downloaded updated data from https\:\/\/terrain\.ardupilot\.org\, or let the automatic terrain download repopulate your terrain data\.
 
 
-+----------------------------+
-| Bitmask                    |
-+============================+
-| +-----+------------------+ |
-| | Bit | Meaning          | |
-| +=====+==================+ |
-| | 0   | Disable Download | |
-| +-----+------------------+ |
-| | 1   | Disable Disk     | |
-| +-----+------------------+ |
-|                            |
-+----------------------------+
++-----------------------------------+
+| Bitmask                           |
++===================================+
+| +-----+-------------------------+ |
+| | Bit | Meaning                 | |
+| +=====+=========================+ |
+| | 0   | Disable Download        | |
+| +-----+-------------------------+ |
+| | 1   | Disable Disk            | |
+| +-----+-------------------------+ |
+| | 2   | Accept Old Terrain Data | |
+| +-----+-------------------------+ |
+|                                   |
++-----------------------------------+
 
 
 
@@ -139585,124 +139587,16 @@ Video Transmitter Maximum Power Level\. Different VTXs support different power l
 
 
 
-.. _parameters_WPNAV_:
+.. _parameters_WP_:
 
-WPNAV\_ Parameters
-------------------
-
-
-.. _WPNAV_SPEED:
-
-WPNAV\_SPEED: Waypoint Horizontal Speed Target
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+WP\_ Parameters
+---------------
 
 
-Defines the speed in cm\/s which the aircraft will attempt to maintain horizontally during a WP mission
+.. _WP_RFND_USE:
 
-
-+-----------+------------+------------------------+
-| Increment | Range      | Units                  |
-+===========+============+========================+
-| 50        | 10 to 2000 | centimeters per second |
-+-----------+------------+------------------------+
-
-
-
-
-.. _WPNAV_RADIUS:
-
-WPNAV\_RADIUS: Waypoint Radius
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Defines the distance from a waypoint\, that when crossed indicates the wp has been hit\.
-
-
-+-----------+-----------+-------------+
-| Increment | Range     | Units       |
-+===========+===========+=============+
-| 1         | 5 to 1000 | centimeters |
-+-----------+-----------+-------------+
-
-
-
-
-.. _WPNAV_SPEED_UP:
-
-WPNAV\_SPEED\_UP: Waypoint Climb Speed Target
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Defines the speed in cm\/s which the aircraft will attempt to maintain while climbing during a WP mission
-
-
-+-----------+------------+------------------------+
-| Increment | Range      | Units                  |
-+===========+============+========================+
-| 50        | 10 to 1000 | centimeters per second |
-+-----------+------------+------------------------+
-
-
-
-
-.. _WPNAV_SPEED_DN:
-
-WPNAV\_SPEED\_DN: Waypoint Descent Speed Target
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Defines the speed in cm\/s which the aircraft will attempt to maintain while descending during a WP mission
-
-
-+-----------+-----------+------------------------+
-| Increment | Range     | Units                  |
-+===========+===========+========================+
-| 10        | 10 to 500 | centimeters per second |
-+-----------+-----------+------------------------+
-
-
-
-
-.. _WPNAV_ACCEL:
-
-WPNAV\_ACCEL: Waypoint Acceleration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Defines the horizontal acceleration in cm\/s\/s used during missions
-
-
-+-----------+-----------+-------------------------------+
-| Increment | Range     | Units                         |
-+===========+===========+===============================+
-| 10        | 50 to 500 | centimeters per square second |
-+-----------+-----------+-------------------------------+
-
-
-
-
-.. _WPNAV_ACCEL_Z:
-
-WPNAV\_ACCEL\_Z: Waypoint Vertical Acceleration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Defines the vertical acceleration in cm\/s\/s used during missions
-
-
-+-----------+-----------+-------------------------------+
-| Increment | Range     | Units                         |
-+===========+===========+===============================+
-| 10        | 50 to 500 | centimeters per square second |
-+-----------+-----------+-------------------------------+
-
-
-
-
-.. _WPNAV_RFND_USE:
-
-WPNAV\_RFND\_USE: Waypoint missions use rangefinder for terrain following
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+WP\_RFND\_USE: Waypoint missions use rangefinder for terrain following
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
@@ -139725,10 +139619,10 @@ This controls if waypoint missions use rangefinder for terrain following
 
 
 
-.. _WPNAV_JERK:
+.. _WP_JERK:
 
-WPNAV\_JERK: Waypoint Jerk
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+WP\_JERK: Waypoint Jerk
+~~~~~~~~~~~~~~~~~~~~~~~
 
 
 Defines the horizontal jerk in m\/s\/s used during missions
@@ -139743,10 +139637,10 @@ Defines the horizontal jerk in m\/s\/s used during missions
 
 
 
-.. _WPNAV_TER_MARGIN:
+.. _WP_TER_MARGIN:
 
-WPNAV\_TER\_MARGIN: Waypoint Terrain following altitude margin
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+WP\_TER\_MARGIN: Waypoint Terrain following altitude margin
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
@@ -139762,20 +139656,128 @@ Waypoint Terrain following altitude margin\.  Vehicle will stop if distance from
 
 
 
-.. _WPNAV_ACCEL_C:
+.. _WP_SPD:
 
-WPNAV\_ACCEL\_C: Waypoint Cornering Acceleration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Defines the maximum cornering acceleration in cm\/s\/s used during missions\.  If zero uses 2x accel value\.
+WP\_SPD: Waypoint Horizontal Speed Target
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-+-----------+----------+-------------------------------+
-| Increment | Range    | Units                         |
-+===========+==========+===============================+
-| 10        | 0 to 500 | centimeters per square second |
-+-----------+----------+-------------------------------+
+Speed in m\/s which the aircraft will attempt to maintain horizontally during a WP mission
+
+
++-----------+---------------+-------------------+
+| Increment | Range         | Units             |
++===========+===============+===================+
+| 0.10      | 0.10 to 20.00 | meters per second |
++-----------+---------------+-------------------+
+
+
+
+
+.. _WP_RADIUS_M:
+
+WP\_RADIUS\_M: Waypoint Radius
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Distance from a waypoint\, that when crossed indicates the wp has been reached\.
+
+
++-----------+---------------+--------+
+| Increment | Range         | Units  |
++===========+===============+========+
+| 0.01      | 0.05 to 10.00 | meters |
++-----------+---------------+--------+
+
+
+
+
+.. _WP_SPD_UP:
+
+WP\_SPD\_UP: Waypoint Climb Speed Target
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Speed in m\/s which the aircraft will attempt to maintain while climbing during a WP mission
+
+
++-----------+---------------+-------------------+
+| Increment | Range         | Units             |
++===========+===============+===================+
+| 0.10      | 0.10 to 10.00 | meters per second |
++-----------+---------------+-------------------+
+
+
+
+
+.. _WP_SPD_DN:
+
+WP\_SPD\_DN: Waypoint Descent Speed Target
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Speed in m\/s which the aircraft will attempt to maintain while descending during a WP mission
+
+
++-----------+---------------+-------------------+
+| Increment | Range         | Units             |
++===========+===============+===================+
+| 0.10      | 0.10 to 10.00 | meters per second |
++-----------+---------------+-------------------+
+
+
+
+
+.. _WP_ACC:
+
+WP\_ACC: Waypoint Acceleration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Horizontal acceleration in m\/s\/s used during missions
+
+
++-----------+--------------+--------------------------+
+| Increment | Range        | Units                    |
++===========+==============+==========================+
+| 0.10      | 0.50 to 5.00 | meters per square second |
++-----------+--------------+--------------------------+
+
+
+
+
+.. _WP_ACC_Z:
+
+WP\_ACC\_Z: Waypoint Vertical Acceleration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Vertical acceleration in m\/s\/s used during missions
+
+
++-----------+--------------+--------------------------+
+| Increment | Range        | Units                    |
++===========+==============+==========================+
+| 0.10      | 0.50 to 5.00 | meters per square second |
++-----------+--------------+--------------------------+
+
+
+
+
+.. _WP_ACC_CNR:
+
+WP\_ACC\_CNR: Waypoint Cornering Acceleration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Maximum cornering acceleration in m\/s\/s used during missions\.  If zero uses 2x accel value\.
+
+
++-----------+-----------+--------------------------+
+| Increment | Range     | Units                    |
++===========+===========+==========================+
+| 0.10      | 0 to 5.00 | meters per square second |
++-----------+-----------+--------------------------+
 
 
 

@@ -41590,37 +41590,37 @@
     }
   },
   "Q_WP_": {
-    "Q_WP_ACCEL": {
-      "Description": "Defines the horizontal acceleration in cm/s/s used during missions",
+    "Q_WP_ACC": {
+      "Description": "Horizontal acceleration in m/s/s used during missions",
       "DisplayName": "Waypoint Acceleration",
-      "Increment": "10",
+      "Increment": "0.10",
       "Range": {
-        "high": "500",
-        "low": "50"
+        "high": "5.00",
+        "low": "0.50"
       },
-      "Units": "cm/s/s",
+      "Units": "m/s/s",
       "User": "Standard"
     },
-    "Q_WP_ACCEL_C": {
-      "Description": "Defines the maximum cornering acceleration in cm/s/s used during missions.  If zero uses 2x accel value.",
+    "Q_WP_ACC_CNR": {
+      "Description": "Maximum cornering acceleration in m/s/s used during missions.  If zero uses 2x accel value.",
       "DisplayName": "Waypoint Cornering Acceleration",
-      "Increment": "10",
+      "Increment": "0.10",
       "Range": {
-        "high": "500",
+        "high": "5.00",
         "low": "0"
       },
-      "Units": "cm/s/s",
+      "Units": "m/s/s",
       "User": "Standard"
     },
-    "Q_WP_ACCEL_Z": {
-      "Description": "Defines the vertical acceleration in cm/s/s used during missions",
+    "Q_WP_ACC_Z": {
+      "Description": "Vertical acceleration in m/s/s used during missions",
       "DisplayName": "Waypoint Vertical Acceleration",
-      "Increment": "10",
+      "Increment": "0.10",
       "Range": {
-        "high": "500",
-        "low": "50"
+        "high": "5.00",
+        "low": "0.50"
       },
-      "Units": "cm/s/s",
+      "Units": "m/s/s",
       "User": "Standard"
     },
     "Q_WP_JERK": {
@@ -41633,15 +41633,15 @@
       "Units": "m/s/s/s",
       "User": "Standard"
     },
-    "Q_WP_RADIUS": {
-      "Description": "Defines the distance from a waypoint, that when crossed indicates the wp has been hit.",
+    "Q_WP_RADIUS_M": {
+      "Description": "Distance from a waypoint, that when crossed indicates the wp has been reached.",
       "DisplayName": "Waypoint Radius",
-      "Increment": "1",
+      "Increment": "0.01",
       "Range": {
-        "high": "1000",
-        "low": "5"
+        "high": "10.00",
+        "low": "0.05"
       },
-      "Units": "cm",
+      "Units": "m",
       "User": "Standard"
     },
     "Q_WP_RFND_USE": {
@@ -41653,37 +41653,37 @@
         "1": "Enable"
       }
     },
-    "Q_WP_SPEED": {
-      "Description": "Defines the speed in cm/s which the aircraft will attempt to maintain horizontally during a WP mission",
+    "Q_WP_SPD": {
+      "Description": "Speed in m/s which the aircraft will attempt to maintain horizontally during a WP mission",
       "DisplayName": "Waypoint Horizontal Speed Target",
-      "Increment": "50",
+      "Increment": "0.10",
       "Range": {
-        "high": "2000",
-        "low": "10"
+        "high": "20.00",
+        "low": "0.10"
       },
-      "Units": "cm/s",
+      "Units": "m/s",
       "User": "Standard"
     },
-    "Q_WP_SPEED_DN": {
-      "Description": "Defines the speed in cm/s which the aircraft will attempt to maintain while descending during a WP mission",
+    "Q_WP_SPD_DN": {
+      "Description": "Speed in m/s which the aircraft will attempt to maintain while descending during a WP mission",
       "DisplayName": "Waypoint Descent Speed Target",
-      "Increment": "10",
+      "Increment": "0.10",
       "Range": {
-        "high": "500",
-        "low": "10"
+        "high": "10.00",
+        "low": "0.10"
       },
-      "Units": "cm/s",
+      "Units": "m/s",
       "User": "Standard"
     },
-    "Q_WP_SPEED_UP": {
-      "Description": "Defines the speed in cm/s which the aircraft will attempt to maintain while climbing during a WP mission",
+    "Q_WP_SPD_UP": {
+      "Description": "Speed in m/s which the aircraft will attempt to maintain while climbing during a WP mission",
       "DisplayName": "Waypoint Climb Speed Target",
-      "Increment": "50",
+      "Increment": "0.10",
       "Range": {
-        "high": "1000",
-        "low": "10"
+        "high": "10.00",
+        "low": "0.10"
       },
-      "Units": "cm/s",
+      "Units": "m/s",
       "User": "Standard"
     },
     "Q_WP_TER_MARGIN": {
@@ -64697,9 +64697,10 @@
     "TERRAIN_OPTIONS": {
       "Bitmask": {
         "0": "Disable Download",
-        "1": "Disable Disk"
+        "1": "Disable Disk",
+        "2": "Accept Old Terrain Data"
       },
-      "Description": "Options to change behaviour of terrain system",
+      "Description": "Options to change behavior of terrain system. The Accept Old Terrain Data option can be used to accept terrain data generated from before the terrain database bugs were fixed. The bugs in the data were all fixed from 24th February 2026. If you really want to risk using the old terrain data then you can set this option, otherwise remove the old terrain data by formatting your microSD card or renaming the /APM/TERRAIN folder. Then downloaded updated data from https://terrain.ardupilot.org, or let the automatic terrain download repopulate your terrain data.",
       "DisplayName": "Terrain options",
       "User": "Advanced"
     },
@@ -64923,6 +64924,8 @@
         "18": "QACRO",
         "19": "QAUTOTUNE",
         "2": "Stabilize",
+        "20": "Loiter to QLand",
+        "21": "Autoland",
         "3": "Training",
         "4": "ACRO",
         "5": "FBWA",
