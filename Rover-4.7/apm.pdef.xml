@@ -14388,6 +14388,7 @@
           <value code="0">Disables automatic configuration</value>
           <value code="1">Enable automatic configuration for Serial GPSes only</value>
           <value code="2">Enable automatic configuration for DroneCAN as well</value>
+          <value code="3">Clear all configurations not set by ardupilot (UBlox only)</value>
         </values>
       </param>
       <param humanName="Multi GPS Blending Mask" name="GPS_BLEND_MASK" documentation="Determines which of the accuracy measures Horizontal position, Vertical Position and Speed are used to calculate the weighting on each GPS receiver when soft switching has been selected by setting GPS_AUTO_SWITCH to 2(Blend)" user="Advanced">
@@ -14408,8 +14409,9 @@
           <bit code="5">Override GPS satellite health of L5 band from L1 health</bit>
           <bit code="6">Enable RTCM full parse even for a single channel</bit>
           <bit code="7">Disable automatic full RTCM parsing when RTCM seen on more than one channel</bit>
+          <bit code="8">Force UBlox Config Get/Set for configuration then automatic configuration for Serial GPSes only</bit>
         </bitmask>
-        <field name="Bitmask">0:Use UART2 for moving baseline on ublox,1:Use base station for GPS yaw on SBF,2:Use baudrate 115200 on ublox,3:Use dedicated CAN port b/w GPSes for moving baseline,4:Use ellipsoid height instead of AMSL, 5:Override GPS satellite health of L5 band from L1 health, 6:Enable RTCM full parse even for a single channel, 7:Disable automatic full RTCM parsing when RTCM seen on more than one channel</field>
+        <field name="Bitmask">0:Use UART2 for moving baseline on ublox,1:Use base station for GPS yaw on SBF,2:Use baudrate 115200 on ublox,3:Use dedicated CAN port b/w GPSes for moving baseline,4:Use ellipsoid height instead of AMSL, 5:Override GPS satellite health of L5 band from L1 health, 6:Enable RTCM full parse even for a single channel, 7:Disable automatic full RTCM parsing when RTCM seen on more than one channel, 8:Force UBlox Config Get/Set for configuration then automatic configuration for Serial GPSes only</field>
       </param>
       <param humanName="Primary GPS" name="GPS_PRIMARY" documentation="This GPS will be used when GPS_AUTO_SWITCH is 0 and used preferentially with GPS_AUTO_SWITCH = 4." user="Advanced">
         <field name="Increment">1</field>
@@ -27800,6 +27802,7 @@
           <value code="20">BenewakeTFmini-Serial</value>
           <value code="34">Benewake_CAN</value>
           <value code="23">BlueRoboticsPing</value>
+          <value code="47">DTS6012M</value>
           <value code="24">DroneCAN</value>
           <value code="31">GYUS42v2</value>
           <value code="30">HC-SR04</value>
@@ -28012,6 +28015,7 @@
           <value code="20">BenewakeTFmini-Serial</value>
           <value code="34">Benewake_CAN</value>
           <value code="23">BlueRoboticsPing</value>
+          <value code="47">DTS6012M</value>
           <value code="24">DroneCAN</value>
           <value code="31">GYUS42v2</value>
           <value code="30">HC-SR04</value>
@@ -28224,6 +28228,7 @@
           <value code="20">BenewakeTFmini-Serial</value>
           <value code="34">Benewake_CAN</value>
           <value code="23">BlueRoboticsPing</value>
+          <value code="47">DTS6012M</value>
           <value code="24">DroneCAN</value>
           <value code="31">GYUS42v2</value>
           <value code="30">HC-SR04</value>
@@ -28436,6 +28441,7 @@
           <value code="20">BenewakeTFmini-Serial</value>
           <value code="34">Benewake_CAN</value>
           <value code="23">BlueRoboticsPing</value>
+          <value code="47">DTS6012M</value>
           <value code="24">DroneCAN</value>
           <value code="31">GYUS42v2</value>
           <value code="30">HC-SR04</value>
@@ -28648,6 +28654,7 @@
           <value code="20">BenewakeTFmini-Serial</value>
           <value code="34">Benewake_CAN</value>
           <value code="23">BlueRoboticsPing</value>
+          <value code="47">DTS6012M</value>
           <value code="24">DroneCAN</value>
           <value code="31">GYUS42v2</value>
           <value code="30">HC-SR04</value>
@@ -28860,6 +28867,7 @@
           <value code="20">BenewakeTFmini-Serial</value>
           <value code="34">Benewake_CAN</value>
           <value code="23">BlueRoboticsPing</value>
+          <value code="47">DTS6012M</value>
           <value code="24">DroneCAN</value>
           <value code="31">GYUS42v2</value>
           <value code="30">HC-SR04</value>
@@ -29072,6 +29080,7 @@
           <value code="20">BenewakeTFmini-Serial</value>
           <value code="34">Benewake_CAN</value>
           <value code="23">BlueRoboticsPing</value>
+          <value code="47">DTS6012M</value>
           <value code="24">DroneCAN</value>
           <value code="31">GYUS42v2</value>
           <value code="30">HC-SR04</value>
@@ -29284,6 +29293,7 @@
           <value code="20">BenewakeTFmini-Serial</value>
           <value code="34">Benewake_CAN</value>
           <value code="23">BlueRoboticsPing</value>
+          <value code="47">DTS6012M</value>
           <value code="24">DroneCAN</value>
           <value code="31">GYUS42v2</value>
           <value code="30">HC-SR04</value>
@@ -29496,6 +29506,7 @@
           <value code="20">BenewakeTFmini-Serial</value>
           <value code="34">Benewake_CAN</value>
           <value code="23">BlueRoboticsPing</value>
+          <value code="47">DTS6012M</value>
           <value code="24">DroneCAN</value>
           <value code="31">GYUS42v2</value>
           <value code="30">HC-SR04</value>
@@ -29708,6 +29719,7 @@
           <value code="20">BenewakeTFmini-Serial</value>
           <value code="34">Benewake_CAN</value>
           <value code="23">BlueRoboticsPing</value>
+          <value code="47">DTS6012M</value>
           <value code="24">DroneCAN</value>
           <value code="31">GYUS42v2</value>
           <value code="30">HC-SR04</value>

@@ -22972,6 +22972,7 @@ Controls if the autopilot should automatically configure the GPS based on the pa
 |0|Disables automatic configuration|
 |1|Enable automatic configuration for Serial GPSes only|
 |2|Enable automatic configuration for DroneCAN as well|
+|3|Clear all configurations not set by ardupilot (UBlox only)|
 
 ## GPS_BLEND_MASK: Multi GPS Blending Mask
 
@@ -22987,7 +22988,7 @@ Determines which of the accuracy measures Horizontal position, Vertical Position
 
 Additional backend specific options
 
-- Bitmask: 0:Use UART2 for moving baseline on ublox,1:Use base station for GPS yaw on SBF,2:Use baudrate 115200 on ublox,3:Use dedicated CAN port b/w GPSes for moving baseline,4:Use ellipsoid height instead of AMSL, 5:Override GPS satellite health of L5 band from L1 health, 6:Enable RTCM full parse even for a single channel, 7:Disable automatic full RTCM parsing when RTCM seen on more than one channel
+- Bitmask: 0:Use UART2 for moving baseline on ublox,1:Use base station for GPS yaw on SBF,2:Use baudrate 115200 on ublox,3:Use dedicated CAN port b/w GPSes for moving baseline,4:Use ellipsoid height instead of AMSL, 5:Override GPS satellite health of L5 band from L1 health, 6:Enable RTCM full parse even for a single channel, 7:Disable automatic full RTCM parsing when RTCM seen on more than one channel, 8:Force UBlox Config Get/Set for configuration then automatic configuration for Serial GPSes only
 
 ## GPS_PRIMARY: Primary GPS
 
@@ -43719,6 +43720,7 @@ Type of connected rangefinder
 |44|HexsoonRadar|
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
+|47|DTS6012M|
 |100|SITL|
 
 ## RNGFND1_PIN: Rangefinder pin
@@ -44050,6 +44052,7 @@ Type of connected rangefinder
 |44|HexsoonRadar|
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
+|47|DTS6012M|
 |100|SITL|
 
 ## RNGFND2_PIN: Rangefinder pin
@@ -44381,6 +44384,7 @@ Type of connected rangefinder
 |44|HexsoonRadar|
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
+|47|DTS6012M|
 |100|SITL|
 
 ## RNGFND3_PIN: Rangefinder pin
@@ -44712,6 +44716,7 @@ Type of connected rangefinder
 |44|HexsoonRadar|
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
+|47|DTS6012M|
 |100|SITL|
 
 ## RNGFND4_PIN: Rangefinder pin
@@ -45043,6 +45048,7 @@ Type of connected rangefinder
 |44|HexsoonRadar|
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
+|47|DTS6012M|
 |100|SITL|
 
 ## RNGFND5_PIN: Rangefinder pin
@@ -45374,6 +45380,7 @@ Type of connected rangefinder
 |44|HexsoonRadar|
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
+|47|DTS6012M|
 |100|SITL|
 
 ## RNGFND6_PIN: Rangefinder pin
@@ -45705,6 +45712,7 @@ Type of connected rangefinder
 |44|HexsoonRadar|
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
+|47|DTS6012M|
 |100|SITL|
 
 ## RNGFND7_PIN: Rangefinder pin
@@ -46036,6 +46044,7 @@ Type of connected rangefinder
 |44|HexsoonRadar|
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
+|47|DTS6012M|
 |100|SITL|
 
 ## RNGFND8_PIN: Rangefinder pin
@@ -46367,6 +46376,7 @@ Type of connected rangefinder
 |44|HexsoonRadar|
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
+|47|DTS6012M|
 |100|SITL|
 
 ## RNGFND9_PIN: Rangefinder pin
@@ -46698,6 +46708,7 @@ Type of connected rangefinder
 |44|HexsoonRadar|
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
+|47|DTS6012M|
 |100|SITL|
 
 ## RNGFNDA_PIN: Rangefinder pin

@@ -22406,6 +22406,7 @@ DO NOT EDIT
 <tr><td>0</td><td>Disables automatic configuration</td></tr>
 <tr><td>1</td><td>Enable automatic configuration for Serial GPSes only</td></tr>
 <tr><td>2</td><td>Enable automatic configuration for DroneCAN as well</td></tr>
+<tr><td>3</td><td>Clear all configurations not set by ardupilot (UBlox only)</td></tr>
 </table>
 </ul>
 
@@ -22422,7 +22423,7 @@ DO NOT EDIT
 
 <p>Additional backend specific options</p>
 <ul>
-<li>Bitmask: 0:Use UART2 for moving baseline on ublox,1:Use base station for GPS yaw on SBF,2:Use baudrate 115200 on ublox,3:Use dedicated CAN port b/w GPSes for moving baseline,4:Use ellipsoid height instead of AMSL, 5:Override GPS satellite health of L5 band from L1 health, 6:Enable RTCM full parse even for a single channel, 7:Disable automatic full RTCM parsing when RTCM seen on more than one channel</li>
+<li>Bitmask: 0:Use UART2 for moving baseline on ublox,1:Use base station for GPS yaw on SBF,2:Use baudrate 115200 on ublox,3:Use dedicated CAN port b/w GPSes for moving baseline,4:Use ellipsoid height instead of AMSL, 5:Override GPS satellite health of L5 band from L1 health, 6:Enable RTCM full parse even for a single channel, 7:Disable automatic full RTCM parsing when RTCM seen on more than one channel, 8:Force UBlox Config Get/Set for configuration then automatic configuration for Serial GPSes only</li>
 </ul>
 
 
@@ -48130,6 +48131,7 @@ DO NOT EDIT
 <tr><td>44</td><td>HexsoonRadar</td></tr>
 <tr><td>45</td><td>LightWare-GRF</td></tr>
 <tr><td>46</td><td>BenewakeTFS20L</td></tr>
+<tr><td>47</td><td>DTS6012M</td></tr>
 <tr><td>100</td><td>SITL</td></tr>
 </table>
 </ul>
@@ -48469,6 +48471,7 @@ DO NOT EDIT
 <tr><td>44</td><td>HexsoonRadar</td></tr>
 <tr><td>45</td><td>LightWare-GRF</td></tr>
 <tr><td>46</td><td>BenewakeTFS20L</td></tr>
+<tr><td>47</td><td>DTS6012M</td></tr>
 <tr><td>100</td><td>SITL</td></tr>
 </table>
 </ul>
@@ -48808,6 +48811,7 @@ DO NOT EDIT
 <tr><td>44</td><td>HexsoonRadar</td></tr>
 <tr><td>45</td><td>LightWare-GRF</td></tr>
 <tr><td>46</td><td>BenewakeTFS20L</td></tr>
+<tr><td>47</td><td>DTS6012M</td></tr>
 <tr><td>100</td><td>SITL</td></tr>
 </table>
 </ul>
@@ -49147,6 +49151,7 @@ DO NOT EDIT
 <tr><td>44</td><td>HexsoonRadar</td></tr>
 <tr><td>45</td><td>LightWare-GRF</td></tr>
 <tr><td>46</td><td>BenewakeTFS20L</td></tr>
+<tr><td>47</td><td>DTS6012M</td></tr>
 <tr><td>100</td><td>SITL</td></tr>
 </table>
 </ul>
@@ -49486,6 +49491,7 @@ DO NOT EDIT
 <tr><td>44</td><td>HexsoonRadar</td></tr>
 <tr><td>45</td><td>LightWare-GRF</td></tr>
 <tr><td>46</td><td>BenewakeTFS20L</td></tr>
+<tr><td>47</td><td>DTS6012M</td></tr>
 <tr><td>100</td><td>SITL</td></tr>
 </table>
 </ul>
@@ -49825,6 +49831,7 @@ DO NOT EDIT
 <tr><td>44</td><td>HexsoonRadar</td></tr>
 <tr><td>45</td><td>LightWare-GRF</td></tr>
 <tr><td>46</td><td>BenewakeTFS20L</td></tr>
+<tr><td>47</td><td>DTS6012M</td></tr>
 <tr><td>100</td><td>SITL</td></tr>
 </table>
 </ul>
@@ -50164,6 +50171,7 @@ DO NOT EDIT
 <tr><td>44</td><td>HexsoonRadar</td></tr>
 <tr><td>45</td><td>LightWare-GRF</td></tr>
 <tr><td>46</td><td>BenewakeTFS20L</td></tr>
+<tr><td>47</td><td>DTS6012M</td></tr>
 <tr><td>100</td><td>SITL</td></tr>
 </table>
 </ul>
@@ -50503,6 +50511,7 @@ DO NOT EDIT
 <tr><td>44</td><td>HexsoonRadar</td></tr>
 <tr><td>45</td><td>LightWare-GRF</td></tr>
 <tr><td>46</td><td>BenewakeTFS20L</td></tr>
+<tr><td>47</td><td>DTS6012M</td></tr>
 <tr><td>100</td><td>SITL</td></tr>
 </table>
 </ul>
@@ -50842,6 +50851,7 @@ DO NOT EDIT
 <tr><td>44</td><td>HexsoonRadar</td></tr>
 <tr><td>45</td><td>LightWare-GRF</td></tr>
 <tr><td>46</td><td>BenewakeTFS20L</td></tr>
+<tr><td>47</td><td>DTS6012M</td></tr>
 <tr><td>100</td><td>SITL</td></tr>
 </table>
 </ul>
@@ -51181,6 +51191,7 @@ DO NOT EDIT
 <tr><td>44</td><td>HexsoonRadar</td></tr>
 <tr><td>45</td><td>LightWare-GRF</td></tr>
 <tr><td>46</td><td>BenewakeTFS20L</td></tr>
+<tr><td>47</td><td>DTS6012M</td></tr>
 <tr><td>100</td><td>SITL</td></tr>
 </table>
 </ul>
