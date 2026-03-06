@@ -329,7 +329,6 @@ Messages that can be requested/streamed from the autopilot.
   #27, `RAW_IMU <https://mavlink.io/en/messages/common.html#RAW_IMU>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Plane-4.7/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #65, `RC_CHANNELS <https://mavlink.io/en/messages/common.html#RC_CHANNELS>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Plane-4.7/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #35, `RC_CHANNELS_RAW <https://mavlink.io/en/messages/common.html#RC_CHANNELS_RAW>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Plane-4.7/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #34, `RC_CHANNELS_SCALED <https://mavlink.io/en/messages/common.html#RC_CHANNELS_SCALED>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Plane-4.7/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #376, `RELAY_STATUS <https://mavlink.io/en/messages/common.html#RELAY_STATUS>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Plane-4.7/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #226, `RPM <https://mavlink.io/en/messages/ardupilotmega.html#RPM>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Plane-4.7/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
   #26, `SCALED_IMU <https://mavlink.io/en/messages/common.html#SCALED_IMU>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Plane-4.7/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
@@ -595,6 +594,7 @@ Unsupported / unhandled messages.
   #221, `RADIO_CALIBRATION <https://mavlink.io/en/messages/all.html#RADIO_CALIBRATION>`_, UNSUPPORTED, all
   #28, `RAW_PRESSURE <https://mavlink.io/en/messages/common.html#RAW_PRESSURE>`_, UNSUPPORTED, common
   #339, `RAW_RPM <https://mavlink.io/en/messages/common.html#RAW_RPM>`_, UNSUPPORTED, common
+  #34, `RC_CHANNELS_SCALED <https://mavlink.io/en/messages/common.html#RC_CHANNELS_SCALED>`_, UNSUPPORTED, common
   #184, `REMOTE_LOG_DATA_BLOCK <https://mavlink.io/en/messages/ardupilotmega.html#REMOTE_LOG_DATA_BLOCK>`_, UNSUPPORTED, ardupilotmega
   #142, `RESOURCE_REQUEST <https://mavlink.io/en/messages/common.html#RESOURCE_REQUEST>`_, UNSUPPORTED, common
   #55, `SAFETY_ALLOWED_AREA <https://mavlink.io/en/messages/common.html#SAFETY_ALLOWED_AREA>`_, UNSUPPORTED, common

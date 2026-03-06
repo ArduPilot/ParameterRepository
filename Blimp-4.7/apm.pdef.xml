@@ -13923,7 +13923,7 @@
         <field name="Range">0.0 1.0</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Harmonic Notch Filter dynamic frequency tracking mode" name="INS_HNTC2_MODE" documentation="Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuaadPlane(while in VTOL modes), and Rovers." user="Advanced">
+      <param humanName="Harmonic Notch Filter dynamic frequency tracking mode" name="INS_HNTC2_MODE" documentation="Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuadPlane(while in VTOL modes), and Rovers." user="Advanced">
         <field name="Range">0 5</field>
         <values>
           <value code="0">Fixed</value>
@@ -13999,7 +13999,7 @@
         <field name="Range">0.0 1.0</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Harmonic Notch Filter dynamic frequency tracking mode" name="INS_HNTC3_MODE" documentation="Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuaadPlane(while in VTOL modes), and Rovers." user="Advanced">
+      <param humanName="Harmonic Notch Filter dynamic frequency tracking mode" name="INS_HNTC3_MODE" documentation="Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuadPlane(while in VTOL modes), and Rovers." user="Advanced">
         <field name="Range">0 5</field>
         <values>
           <value code="0">Fixed</value>
@@ -14075,7 +14075,7 @@
         <field name="Range">0.0 1.0</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Harmonic Notch Filter dynamic frequency tracking mode" name="INS_HNTC4_MODE" documentation="Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuaadPlane(while in VTOL modes), and Rovers." user="Advanced">
+      <param humanName="Harmonic Notch Filter dynamic frequency tracking mode" name="INS_HNTC4_MODE" documentation="Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuadPlane(while in VTOL modes), and Rovers." user="Advanced">
         <field name="Range">0 5</field>
         <values>
           <value code="0">Fixed</value>
@@ -14151,7 +14151,7 @@
         <field name="Range">0.0 1.0</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Harmonic Notch Filter dynamic frequency tracking mode" name="INS_HNTCH_MODE" documentation="Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuaadPlane(while in VTOL modes), and Rovers." user="Advanced">
+      <param humanName="Harmonic Notch Filter dynamic frequency tracking mode" name="INS_HNTCH_MODE" documentation="Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuadPlane(while in VTOL modes), and Rovers." user="Advanced">
         <field name="Range">0 5</field>
         <values>
           <value code="0">Fixed</value>

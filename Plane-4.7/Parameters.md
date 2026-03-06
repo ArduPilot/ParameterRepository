@@ -24332,7 +24332,7 @@ A reference value of zero disables dynamic updates on the Harmonic Notch Filter 
 
 *Note: This parameter is for advanced users*
 
-Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuaadPlane(while in VTOL modes), and Rovers.
+Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuadPlane(while in VTOL modes), and Rovers.
 
 - Range: 0 5
 
@@ -24430,7 +24430,7 @@ A reference value of zero disables dynamic updates on the Harmonic Notch Filter 
 
 *Note: This parameter is for advanced users*
 
-Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuaadPlane(while in VTOL modes), and Rovers.
+Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuadPlane(while in VTOL modes), and Rovers.
 
 - Range: 0 5
 
@@ -24528,7 +24528,7 @@ A reference value of zero disables dynamic updates on the Harmonic Notch Filter 
 
 *Note: This parameter is for advanced users*
 
-Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuaadPlane(while in VTOL modes), and Rovers.
+Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuadPlane(while in VTOL modes), and Rovers.
 
 - Range: 0 5
 
@@ -24626,7 +24626,7 @@ A reference value of zero disables dynamic updates on the Harmonic Notch Filter 
 
 *Note: This parameter is for advanced users*
 
-Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuaadPlane(while in VTOL modes), and Rovers.
+Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuadPlane(while in VTOL modes), and Rovers.
 
 - Range: 0 5
 
@@ -39978,38 +39978,6 @@ Fraction by which tuned P and D gains are reduced after rate and angle AutoTune 
 
 # QA Parameters
 
-## Q_A_SLEW_YAW: Yaw target slew rate
-
-*Note: This parameter is for advanced users*
-
-Maximum rate the yaw target can be updated in RTL and Auto flight modes
-
-- Units: cdeg/s
-
-- Range: 500 18000
-
-- Increment: 100
-
-## Q_A_ACCEL_Y_MAX: Acceleration Max for Yaw
-
-*Note: This parameter is for advanced users*
-
-Maximum acceleration in yaw axis
-
-- Units: cdeg/s/s
-
-- Range: 0 72000
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|9000|VerySlow|
-|18000|Slow|
-|36000|Medium|
-|54000|Fast|
-
-- Increment: 1000
-
 ## Q_A_RATE_FF_ENAB: Rate Feedforward Enable
 
 *Note: This parameter is for advanced users*
@@ -40020,46 +39988,6 @@ Controls whether body-frame rate feedforward is enabled or disabled
 |:---:|:---:|
 |0|Disabled|
 |1|Enabled|
-
-## Q_A_ACCEL_R_MAX: Acceleration Max for Roll
-
-*Note: This parameter is for advanced users*
-
-Maximum acceleration in roll axis
-
-- Units: cdeg/s/s
-
-- Range: 0 180000
-
-- Increment: 1000
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|30000|VerySlow|
-|72000|Slow|
-|108000|Medium|
-|162000|Fast|
-
-## Q_A_ACCEL_P_MAX: Acceleration Max for Pitch
-
-*Note: This parameter is for advanced users*
-
-Maximum acceleration in pitch axis
-
-- Units: cdeg/s/s
-
-- Range: 0 180000
-
-- Increment: 1000
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|30000|VerySlow|
-|72000|Slow|
-|108000|Medium|
-|162000|Fast|
 
 ## Q_A_ANGLE_BOOST: Angle Boost
 
@@ -40212,6 +40140,78 @@ Maximum lean angle in all flight modes
 - Increment: 0.1
 
 - Range: 10.0 80.0
+
+## Q_A_RATE_WPY_MAX: Yaw target slew rate
+
+*Note: This parameter is for advanced users*
+
+Maximum rate the yaw target can be updated in Auto, Guided, Circle, Follow, RTL, SmartRTL, Throw and ZigZag flight modes
+
+- Units: deg/s
+
+- Range: 5 180
+
+- Increment: 1
+
+## Q_A_ACC_Y_MAX: Acceleration Max for Yaw
+
+*Note: This parameter is for advanced users*
+
+Maximum acceleration in yaw axis
+
+- Units: deg/s/s
+
+- Range: 0 720
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|90|VerySlow|
+|180|Slow|
+|360|Medium|
+|540|Fast|
+
+- Increment: 10
+
+## Q_A_ACC_R_MAX: Acceleration Max for Roll
+
+*Note: This parameter is for advanced users*
+
+Maximum acceleration in roll axis
+
+- Units: deg/s/s
+
+- Range: 0 1800
+
+- Increment: 10
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|300|VerySlow|
+|720|Slow|
+|1080|Medium|
+|1620|Fast|
+
+## Q_A_ACC_P_MAX: Acceleration Max for Pitch
+
+*Note: This parameter is for advanced users*
+
+Maximum acceleration in pitch axis
+
+- Units: deg/s/s
+
+- Range: 0 1800
+
+- Increment: 10
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|300|VerySlow|
+|720|Slow|
+|1080|Medium|
+|1620|Fast|
 
 ## Q_A_RAT_RLL_P: Roll axis rate controller P gain
 

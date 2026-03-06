@@ -11,12 +11,6 @@
         <field name="Range">0 10</field>
         <field name="Increment">0.5</field>
       </param>
-      <param humanName="Pilot takeoff altitude" name="ArduCopter:PILOT_TKOFF_ALT" documentation="Altitude that altitude control modes will climb to when a takeoff is triggered with the throttle stick." user="Standard">
-        <field name="Units">cm</field>
-        <field name="UnitText">centimeters</field>
-        <field name="Range">0.0 1000.0</field>
-        <field name="Increment">10</field>
-      </param>
       <param humanName="Throttle stick behavior" name="ArduCopter:PILOT_THR_BHV" documentation="Bitmask containing various throttle stick options. TX with sprung throttle can set PILOT_THR_BHV to &quot;1&quot; so motor feedback when landed starts from mid-stick instead of bottom of stick." user="Standard">
         <bitmask>
           <bit code="0">Feedback from mid stick</bit>
@@ -88,18 +82,6 @@
           <value code="2">Face next waypoint except RTL</value>
           <value code="3">Face along GPS course</value>
         </values>
-      </param>
-      <param humanName="Pilot maximum vertical speed ascending" name="ArduCopter:PILOT_SPEED_UP" documentation="The maximum vertical ascending velocity the pilot may request in cm/s" user="Standard">
-        <field name="Units">cm/s</field>
-        <field name="UnitText">centimeters per second</field>
-        <field name="Range">50 500</field>
-        <field name="Increment">10</field>
-      </param>
-      <param humanName="Pilot vertical acceleration" name="ArduCopter:PILOT_ACCEL_Z" documentation="The vertical acceleration used when pilot is controlling the altitude" user="Standard">
-        <field name="Units">cm/s/s</field>
-        <field name="UnitText">centimeters per square second</field>
-        <field name="Range">50 500</field>
-        <field name="Increment">10</field>
       </param>
       <param humanName="Throttle Failsafe Enable" name="ArduCopter:FS_THR_ENABLE" documentation="The throttle failsafe allows you to configure a software failsafe activated by a setting on the throttle input channel" user="Standard">
         <values>
@@ -597,12 +579,6 @@
         </values>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Pilot maximum vertical speed descending" name="ArduCopter:PILOT_SPEED_DN" documentation="The maximum vertical descending velocity the pilot may request in cm/s.  If 0 PILOT_SPEED_UP value is used." user="Standard">
-        <field name="Units">cm/s</field>
-        <field name="UnitText">centimeters per second</field>
-        <field name="Range">0 500</field>
-        <field name="Increment">10</field>
-      </param>
       <param humanName="Tuning minimum" name="ArduCopter:TUNE_MIN" documentation="Transmitter Tuning minum value. The parameter being tuned will have its value set to this minimum value when the tuning knob is at its lowest position" user="Standard">
 </param>
       <param humanName="Tuning maximum" name="ArduCopter:TUNE_MAX" documentation="Transmitter Tuning maximum value. The parameter being tuned will have its value set to this maximum value when the tuning knob is at its highest position" user="Standard">
@@ -889,6 +865,30 @@
           <value code="59">PSC Angle Max</value>
           <value code="60">Loiter Speed</value>
         </values>
+      </param>
+      <param humanName="Pilot vertical acceleration" name="ArduCopter:PILOT_ACC_Z" documentation="The vertical acceleration used when pilot is controlling the altitude" user="Standard">
+        <field name="Units">m/s/s</field>
+        <field name="UnitText">meters per square second</field>
+        <field name="Range">0.5 5</field>
+        <field name="Increment">0.1</field>
+      </param>
+      <param humanName="Pilot maximum vertical speed ascending" name="ArduCopter:PILOT_SPD_UP" documentation="The maximum vertical ascending velocity the pilot may request in m/s" user="Standard">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+        <field name="Range">0.5 5</field>
+        <field name="Increment">0.1</field>
+      </param>
+      <param humanName="Pilot maximum vertical speed descending" name="ArduCopter:PILOT_SPD_DN" documentation="The maximum vertical descending velocity the pilot may request in m/s.  If 0 PILOT_SPD_UP value is used." user="Standard">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+        <field name="Range">0 5</field>
+        <field name="Increment">0.1</field>
+      </param>
+      <param humanName="Pilot takeoff altitude" name="ArduCopter:PILOT_TKO_ALT_M" documentation="Altitude that altitude control modes will climb to when a takeoff is triggered with the throttle stick." user="Standard">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+        <field name="Range">0.0 10.0</field>
+        <field name="Increment">0.1</field>
       </param>
     </parameters>
   </vehicles>
@@ -3619,55 +3619,10 @@
       </param>
     </parameters>
     <parameters name="ATC_">
-      <param humanName="Yaw target slew rate" name="ATC_SLEW_YAW" documentation="Maximum rate the yaw target can be updated in RTL and Auto flight modes" user="Advanced">
-        <field name="Units">cdeg/s</field>
-        <field name="UnitText">centidegrees per second</field>
-        <field name="Range">500 18000</field>
-        <field name="Increment">100</field>
-      </param>
-      <param humanName="Acceleration Max for Yaw" name="ATC_ACCEL_Y_MAX" documentation="Maximum acceleration in yaw axis" user="Advanced">
-        <field name="Units">cdeg/s/s</field>
-        <field name="UnitText">centidegrees per square second</field>
-        <field name="Range">0 72000</field>
-        <values>
-          <value code="0">Disabled</value>
-          <value code="9000">VerySlow</value>
-          <value code="18000">Slow</value>
-          <value code="36000">Medium</value>
-          <value code="54000">Fast</value>
-        </values>
-        <field name="Increment">1000</field>
-      </param>
       <param humanName="Rate Feedforward Enable" name="ATC_RATE_FF_ENAB" documentation="Controls whether body-frame rate feedforward is enabled or disabled" user="Advanced">
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Acceleration Max for Roll" name="ATC_ACCEL_R_MAX" documentation="Maximum acceleration in roll axis" user="Advanced">
-        <field name="Units">cdeg/s/s</field>
-        <field name="UnitText">centidegrees per square second</field>
-        <field name="Range">0 180000</field>
-        <field name="Increment">1000</field>
-        <values>
-          <value code="0">Disabled</value>
-          <value code="30000">VerySlow</value>
-          <value code="72000">Slow</value>
-          <value code="108000">Medium</value>
-          <value code="162000">Fast</value>
-        </values>
-      </param>
-      <param humanName="Acceleration Max for Pitch" name="ATC_ACCEL_P_MAX" documentation="Maximum acceleration in pitch axis" user="Advanced">
-        <field name="Units">cdeg/s/s</field>
-        <field name="UnitText">centidegrees per square second</field>
-        <field name="Range">0 180000</field>
-        <field name="Increment">1000</field>
-        <values>
-          <value code="0">Disabled</value>
-          <value code="30000">VerySlow</value>
-          <value code="72000">Slow</value>
-          <value code="108000">Medium</value>
-          <value code="162000">Fast</value>
         </values>
       </param>
       <param humanName="Angle Boost" name="ATC_ANGLE_BOOST" documentation="Angle Boost increases output throttle as the vehicle leans to reduce loss of altitude" user="Advanced">
@@ -3754,6 +3709,51 @@
         <field name="UnitText">degrees</field>
         <field name="Increment">0.1</field>
         <field name="Range">10.0 80.0</field>
+      </param>
+      <param humanName="Yaw target slew rate" name="ATC_RATE_WPY_MAX" documentation="Maximum rate the yaw target can be updated in Auto, Guided, Circle, Follow, RTL, SmartRTL, Throw and ZigZag flight modes" user="Advanced">
+        <field name="Units">deg/s</field>
+        <field name="UnitText">degrees per second</field>
+        <field name="Range">5 180</field>
+        <field name="Increment">1</field>
+      </param>
+      <param humanName="Acceleration Max for Yaw" name="ATC_ACC_Y_MAX" documentation="Maximum acceleration in yaw axis" user="Advanced">
+        <field name="Units">deg/s/s</field>
+        <field name="UnitText">degrees per square second</field>
+        <field name="Range">0 720</field>
+        <values>
+          <value code="0">Disabled</value>
+          <value code="90">VerySlow</value>
+          <value code="180">Slow</value>
+          <value code="360">Medium</value>
+          <value code="540">Fast</value>
+        </values>
+        <field name="Increment">10</field>
+      </param>
+      <param humanName="Acceleration Max for Roll" name="ATC_ACC_R_MAX" documentation="Maximum acceleration in roll axis" user="Advanced">
+        <field name="Units">deg/s/s</field>
+        <field name="UnitText">degrees per square second</field>
+        <field name="Range">0 1800</field>
+        <field name="Increment">10</field>
+        <values>
+          <value code="0">Disabled</value>
+          <value code="300">VerySlow</value>
+          <value code="720">Slow</value>
+          <value code="1080">Medium</value>
+          <value code="1620">Fast</value>
+        </values>
+      </param>
+      <param humanName="Acceleration Max for Pitch" name="ATC_ACC_P_MAX" documentation="Maximum acceleration in pitch axis" user="Advanced">
+        <field name="Units">deg/s/s</field>
+        <field name="UnitText">degrees per square second</field>
+        <field name="Range">0 1800</field>
+        <field name="Increment">10</field>
+        <values>
+          <value code="0">Disabled</value>
+          <value code="300">VerySlow</value>
+          <value code="720">Slow</value>
+          <value code="1080">Medium</value>
+          <value code="1620">Fast</value>
+        </values>
       </param>
       <param humanName="Roll axis rate controller P gain" name="ATC_RAT_RLL_P" documentation="Roll axis rate controller P gain.  Corrects in proportion to the difference between the desired roll rate vs actual roll rate" user="Standard">
         <field name="Range">0.01 0.5</field>
@@ -4249,12 +4249,6 @@
         </bitmask>
         <field name="Bitmask">0:UseFence,1:UseProximitySensor,2:UseBeaconFence</field>
       </param>
-      <param humanName="Avoidance max lean angle in non-GPS flight modes" name="AVOID_ANGLE_MAX" documentation="Max lean angle used to avoid obstacles while in non-GPS modes" user="Standard">
-        <field name="Units">cdeg</field>
-        <field name="UnitText">centidegrees</field>
-        <field name="Increment">10</field>
-        <field name="Range">0 4500</field>
-      </param>
       <param humanName="Avoidance distance maximum in non-GPS flight modes" name="AVOID_DIST_MAX" documentation="Distance from object at which obstacle avoidance will begin in non-GPS modes" user="Standard">
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
@@ -4295,6 +4289,12 @@
         <field name="Units">m/s</field>
         <field name="UnitText">meters per second</field>
         <field name="Range">0 2</field>
+      </param>
+      <param humanName="Avoidance max lean angle in non-GPS flight modes" name="AVOID_ANG_MAX" documentation="Max lean angle used to avoid obstacles while in non-GPS modes.  Set to zero to disable lean-based avoidance" user="Standard">
+        <field name="Units">deg</field>
+        <field name="UnitText">degrees</field>
+        <field name="Increment">0.1</field>
+        <field name="Range">0 45</field>
       </param>
     </parameters>
     <parameters name="BARO">
@@ -17319,7 +17319,7 @@
         <field name="Range">0.0 1.0</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Harmonic Notch Filter dynamic frequency tracking mode" name="INS_HNTC2_MODE" documentation="Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuaadPlane(while in VTOL modes), and Rovers." user="Advanced">
+      <param humanName="Harmonic Notch Filter dynamic frequency tracking mode" name="INS_HNTC2_MODE" documentation="Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuadPlane(while in VTOL modes), and Rovers." user="Advanced">
         <field name="Range">0 5</field>
         <values>
           <value code="0">Fixed</value>
@@ -17395,7 +17395,7 @@
         <field name="Range">0.0 1.0</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Harmonic Notch Filter dynamic frequency tracking mode" name="INS_HNTC3_MODE" documentation="Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuaadPlane(while in VTOL modes), and Rovers." user="Advanced">
+      <param humanName="Harmonic Notch Filter dynamic frequency tracking mode" name="INS_HNTC3_MODE" documentation="Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuadPlane(while in VTOL modes), and Rovers." user="Advanced">
         <field name="Range">0 5</field>
         <values>
           <value code="0">Fixed</value>
@@ -17471,7 +17471,7 @@
         <field name="Range">0.0 1.0</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Harmonic Notch Filter dynamic frequency tracking mode" name="INS_HNTC4_MODE" documentation="Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuaadPlane(while in VTOL modes), and Rovers." user="Advanced">
+      <param humanName="Harmonic Notch Filter dynamic frequency tracking mode" name="INS_HNTC4_MODE" documentation="Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuadPlane(while in VTOL modes), and Rovers." user="Advanced">
         <field name="Range">0 5</field>
         <values>
           <value code="0">Fixed</value>
@@ -17547,7 +17547,7 @@
         <field name="Range">0.0 1.0</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Harmonic Notch Filter dynamic frequency tracking mode" name="INS_HNTCH_MODE" documentation="Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuaadPlane(while in VTOL modes), and Rovers." user="Advanced">
+      <param humanName="Harmonic Notch Filter dynamic frequency tracking mode" name="INS_HNTCH_MODE" documentation="Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuadPlane(while in VTOL modes), and Rovers." user="Advanced">
         <field name="Range">0 5</field>
         <values>
           <value code="0">Fixed</value>

@@ -51,24 +51,6 @@ Throttle filter cutoff \(Hz\) \- active whenever altitude control is inactive \-
 
 
 
-.. _PILOT_TKOFF_ALT:
-
-PILOT\_TKOFF\_ALT: Pilot takeoff altitude
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Altitude that altitude control modes will climb to when a takeoff is triggered with the throttle stick\.
-
-
-+-----------+---------------+-------------+
-| Increment | Range         | Units       |
-+===========+===============+=============+
-| 10        | 0.0 to 1000.0 | centimeters |
-+-----------+---------------+-------------+
-
-
-
-
 .. _PILOT_THR_BHV:
 
 PILOT\_THR\_BHV: Throttle stick behavior
@@ -284,42 +266,6 @@ Determines how the autopilot controls the yaw during missions and RTL
 +-------+-------------------------------+
 | 3     | Face along GPS course         |
 +-------+-------------------------------+
-
-
-
-
-.. _PILOT_SPEED_UP:
-
-PILOT\_SPEED\_UP: Pilot maximum vertical speed ascending
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-The maximum vertical ascending velocity the pilot may request in cm\/s
-
-
-+-----------+-----------+------------------------+
-| Increment | Range     | Units                  |
-+===========+===========+========================+
-| 10        | 50 to 500 | centimeters per second |
-+-----------+-----------+------------------------+
-
-
-
-
-.. _PILOT_ACCEL_Z:
-
-PILOT\_ACCEL\_Z: Pilot vertical acceleration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-The vertical acceleration used when pilot is controlling the altitude
-
-
-+-----------+-----------+-------------------------------+
-| Increment | Range     | Units                         |
-+===========+===========+===============================+
-| 10        | 50 to 500 | centimeters per square second |
-+-----------+-----------+-------------------------------+
 
 
 
@@ -1650,24 +1596,6 @@ Controls major frame class for multicopter component
 
 
 
-.. _PILOT_SPEED_DN:
-
-PILOT\_SPEED\_DN: Pilot maximum vertical speed descending
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-The maximum vertical descending velocity the pilot may request in cm\/s\.  If 0 PILOT\_SPEED\_UP value is used\.
-
-
-+-----------+----------+------------------------+
-| Increment | Range    | Units                  |
-+===========+==========+========================+
-| 10        | 0 to 500 | centimeters per second |
-+-----------+----------+------------------------+
-
-
-
-
 .. _TUNE_MIN:
 
 TUNE\_MIN: Tuning minimum
@@ -2584,6 +2512,78 @@ Selects parameter \(normally a PID gain\) that is being tuned with an RC transmi
 +-------+-----------------------+
 | 60    | Loiter Speed          |
 +-------+-----------------------+
+
+
+
+
+.. _PILOT_ACC_Z:
+
+PILOT\_ACC\_Z: Pilot vertical acceleration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+The vertical acceleration used when pilot is controlling the altitude
+
+
++-----------+----------+--------------------------+
+| Increment | Range    | Units                    |
++===========+==========+==========================+
+| 0.1       | 0.5 to 5 | meters per square second |
++-----------+----------+--------------------------+
+
+
+
+
+.. _PILOT_SPD_UP:
+
+PILOT\_SPD\_UP: Pilot maximum vertical speed ascending
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+The maximum vertical ascending velocity the pilot may request in m\/s
+
+
++-----------+----------+-------------------+
+| Increment | Range    | Units             |
++===========+==========+===================+
+| 0.1       | 0.5 to 5 | meters per second |
++-----------+----------+-------------------+
+
+
+
+
+.. _PILOT_SPD_DN:
+
+PILOT\_SPD\_DN: Pilot maximum vertical speed descending
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+The maximum vertical descending velocity the pilot may request in m\/s\.  If 0 PILOT\_SPD\_UP value is used\.
+
+
++-----------+--------+-------------------+
+| Increment | Range  | Units             |
++===========+========+===================+
+| 0.1       | 0 to 5 | meters per second |
++-----------+--------+-------------------+
+
+
+
+
+.. _PILOT_TKO_ALT_M:
+
+PILOT\_TKO\_ALT\_M: Pilot takeoff altitude
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Altitude that altitude control modes will climb to when a takeoff is triggered with the throttle stick\.
+
+
++-----------+-------------+--------+
+| Increment | Range       | Units  |
++===========+=============+========+
+| 0.1       | 0.0 to 10.0 | meters |
++-----------+-------------+--------+
 
 
 
@@ -12609,61 +12609,6 @@ ATC\_ Parameters
 ----------------
 
 
-.. _ATC_SLEW_YAW:
-
-ATC\_SLEW\_YAW: Yaw target slew rate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Maximum rate the yaw target can be updated in RTL and Auto flight modes
-
-
-+-----------+--------------+-------------------------+
-| Increment | Range        | Units                   |
-+===========+==============+=========================+
-| 100       | 500 to 18000 | centidegrees per second |
-+-----------+--------------+-------------------------+
-
-
-
-
-.. _ATC_ACCEL_Y_MAX:
-
-ATC\_ACCEL\_Y\_MAX: Acceleration Max for Yaw
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Maximum acceleration in yaw axis
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 9000  | VerySlow |
-+-------+----------+
-| 18000 | Slow     |
-+-------+----------+
-| 36000 | Medium   |
-+-------+----------+
-| 54000 | Fast     |
-+-------+----------+
-
-
-
-
-+-----------+------------+--------------------------------+
-| Increment | Range      | Units                          |
-+===========+============+================================+
-| 1000      | 0 to 72000 | centidegrees per square second |
-+-----------+------------+--------------------------------+
-
-
-
-
 .. _ATC_RATE_FF_ENAB:
 
 ATC\_RATE\_FF\_ENAB: Rate Feedforward Enable
@@ -12681,78 +12626,6 @@ Controls whether body\-frame rate feedforward is enabled or disabled
 +-------+----------+
 | 1     | Enabled  |
 +-------+----------+
-
-
-
-
-.. _ATC_ACCEL_R_MAX:
-
-ATC\_ACCEL\_R\_MAX: Acceleration Max for Roll
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Maximum acceleration in roll axis
-
-
-+--------+----------+
-| Value  | Meaning  |
-+========+==========+
-| 0      | Disabled |
-+--------+----------+
-| 30000  | VerySlow |
-+--------+----------+
-| 72000  | Slow     |
-+--------+----------+
-| 108000 | Medium   |
-+--------+----------+
-| 162000 | Fast     |
-+--------+----------+
-
-
-
-
-+-----------+-------------+--------------------------------+
-| Increment | Range       | Units                          |
-+===========+=============+================================+
-| 1000      | 0 to 180000 | centidegrees per square second |
-+-----------+-------------+--------------------------------+
-
-
-
-
-.. _ATC_ACCEL_P_MAX:
-
-ATC\_ACCEL\_P\_MAX: Acceleration Max for Pitch
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Maximum acceleration in pitch axis
-
-
-+--------+----------+
-| Value  | Meaning  |
-+========+==========+
-| 0      | Disabled |
-+--------+----------+
-| 30000  | VerySlow |
-+--------+----------+
-| 72000  | Slow     |
-+--------+----------+
-| 108000 | Medium   |
-+--------+----------+
-| 162000 | Fast     |
-+--------+----------+
-
-
-
-
-+-----------+-------------+--------------------------------+
-| Increment | Range       | Units                          |
-+===========+=============+================================+
-| 1000      | 0 to 180000 | centidegrees per square second |
-+-----------+-------------+--------------------------------+
 
 
 
@@ -13059,6 +12932,133 @@ Maximum lean angle in all flight modes
 +===========+==============+=========+
 | 0.1       | 10.0 to 80.0 | degrees |
 +-----------+--------------+---------+
+
+
+
+
+.. _ATC_RATE_WPY_MAX:
+
+ATC\_RATE\_WPY\_MAX: Yaw target slew rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Maximum rate the yaw target can be updated in Auto\, Guided\, Circle\, Follow\, RTL\, SmartRTL\, Throw and ZigZag flight modes
+
+
++-----------+----------+--------------------+
+| Increment | Range    | Units              |
++===========+==========+====================+
+| 1         | 5 to 180 | degrees per second |
++-----------+----------+--------------------+
+
+
+
+
+.. _ATC_ACC_Y_MAX:
+
+ATC\_ACC\_Y\_MAX: Acceleration Max for Yaw
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Maximum acceleration in yaw axis
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 90    | VerySlow |
++-------+----------+
+| 180   | Slow     |
++-------+----------+
+| 360   | Medium   |
++-------+----------+
+| 540   | Fast     |
++-------+----------+
+
+
+
+
++-----------+----------+---------------------------+
+| Increment | Range    | Units                     |
++===========+==========+===========================+
+| 10        | 0 to 720 | degrees per square second |
++-----------+----------+---------------------------+
+
+
+
+
+.. _ATC_ACC_R_MAX:
+
+ATC\_ACC\_R\_MAX: Acceleration Max for Roll
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Maximum acceleration in roll axis
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 300   | VerySlow |
++-------+----------+
+| 720   | Slow     |
++-------+----------+
+| 1080  | Medium   |
++-------+----------+
+| 1620  | Fast     |
++-------+----------+
+
+
+
+
++-----------+-----------+---------------------------+
+| Increment | Range     | Units                     |
++===========+===========+===========================+
+| 10        | 0 to 1800 | degrees per square second |
++-----------+-----------+---------------------------+
+
+
+
+
+.. _ATC_ACC_P_MAX:
+
+ATC\_ACC\_P\_MAX: Acceleration Max for Pitch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Maximum acceleration in pitch axis
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 300   | VerySlow |
++-------+----------+
+| 720   | Slow     |
++-------+----------+
+| 1080  | Medium   |
++-------+----------+
+| 1620  | Fast     |
++-------+----------+
+
+
+
+
++-----------+-----------+---------------------------+
+| Increment | Range     | Units                     |
++===========+===========+===========================+
+| 10        | 0 to 1800 | degrees per square second |
++-----------+-----------+---------------------------+
 
 
 
@@ -15128,24 +15128,6 @@ Enabled\/disable avoidance input sources
 
 
 
-.. _AVOID_ANGLE_MAX:
-
-AVOID\_ANGLE\_MAX: Avoidance max lean angle in non\-GPS flight modes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Max lean angle used to avoid obstacles while in non\-GPS modes
-
-
-+-----------+-----------+--------------+
-| Increment | Range     | Units        |
-+===========+===========+==============+
-| 10        | 0 to 4500 | centidegrees |
-+-----------+-----------+--------------+
-
-
-
-
 .. _AVOID_DIST_MAX:
 
 AVOID\_DIST\_MAX: Avoidance distance maximum in non\-GPS flight modes
@@ -15288,6 +15270,24 @@ Maximum speed that will be used to back away from obstacles vertically in height
 +========+===================+
 | 0 to 2 | meters per second |
 +--------+-------------------+
+
+
+
+
+.. _AVOID_ANG_MAX:
+
+AVOID\_ANG\_MAX: Avoidance max lean angle in non\-GPS flight modes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Max lean angle used to avoid obstacles while in non\-GPS modes\.  Set to zero to disable lean\-based avoidance
+
+
++-----------+---------+---------+
+| Increment | Range   | Units   |
++===========+=========+=========+
+| 0.1       | 0 to 45 | degrees |
++-----------+---------+---------+
 
 
 
@@ -57730,7 +57730,7 @@ INS\_HNTC2\_MODE: Harmonic Notch Filter dynamic frequency tracking mode
 
 | *Note: This parameter is for advanced users*
 
-Harmonic Notch Filter dynamic frequency tracking mode\. Dynamic updates can be throttle\, RPM sensor\, ESC telemetry or dynamic FFT based\. Throttle\-based harmonic notch cannot be used on fixed wing only planes\. It can for Copters\, QuaadPlane\(while in VTOL modes\)\, and Rovers\.
+Harmonic Notch Filter dynamic frequency tracking mode\. Dynamic updates can be throttle\, RPM sensor\, ESC telemetry or dynamic FFT based\. Throttle\-based harmonic notch cannot be used on fixed wing only planes\. It can for Copters\, QuadPlane\(while in VTOL modes\)\, and Rovers\.
 
 
 +-------+-------------------+
@@ -57974,7 +57974,7 @@ INS\_HNTC3\_MODE: Harmonic Notch Filter dynamic frequency tracking mode
 
 | *Note: This parameter is for advanced users*
 
-Harmonic Notch Filter dynamic frequency tracking mode\. Dynamic updates can be throttle\, RPM sensor\, ESC telemetry or dynamic FFT based\. Throttle\-based harmonic notch cannot be used on fixed wing only planes\. It can for Copters\, QuaadPlane\(while in VTOL modes\)\, and Rovers\.
+Harmonic Notch Filter dynamic frequency tracking mode\. Dynamic updates can be throttle\, RPM sensor\, ESC telemetry or dynamic FFT based\. Throttle\-based harmonic notch cannot be used on fixed wing only planes\. It can for Copters\, QuadPlane\(while in VTOL modes\)\, and Rovers\.
 
 
 +-------+-------------------+
@@ -58218,7 +58218,7 @@ INS\_HNTC4\_MODE: Harmonic Notch Filter dynamic frequency tracking mode
 
 | *Note: This parameter is for advanced users*
 
-Harmonic Notch Filter dynamic frequency tracking mode\. Dynamic updates can be throttle\, RPM sensor\, ESC telemetry or dynamic FFT based\. Throttle\-based harmonic notch cannot be used on fixed wing only planes\. It can for Copters\, QuaadPlane\(while in VTOL modes\)\, and Rovers\.
+Harmonic Notch Filter dynamic frequency tracking mode\. Dynamic updates can be throttle\, RPM sensor\, ESC telemetry or dynamic FFT based\. Throttle\-based harmonic notch cannot be used on fixed wing only planes\. It can for Copters\, QuadPlane\(while in VTOL modes\)\, and Rovers\.
 
 
 +-------+-------------------+
@@ -58462,7 +58462,7 @@ INS\_HNTCH\_MODE: Harmonic Notch Filter dynamic frequency tracking mode
 
 | *Note: This parameter is for advanced users*
 
-Harmonic Notch Filter dynamic frequency tracking mode\. Dynamic updates can be throttle\, RPM sensor\, ESC telemetry or dynamic FFT based\. Throttle\-based harmonic notch cannot be used on fixed wing only planes\. It can for Copters\, QuaadPlane\(while in VTOL modes\)\, and Rovers\.
+Harmonic Notch Filter dynamic frequency tracking mode\. Dynamic updates can be throttle\, RPM sensor\, ESC telemetry or dynamic FFT based\. Throttle\-based harmonic notch cannot be used on fixed wing only planes\. It can for Copters\, QuadPlane\(while in VTOL modes\)\, and Rovers\.
 
 
 +-------+-------------------+

@@ -47523,7 +47523,7 @@ INS\_HNTC2\_MODE: Harmonic Notch Filter dynamic frequency tracking mode
 
 | *Note: This parameter is for advanced users*
 
-Harmonic Notch Filter dynamic frequency tracking mode\. Dynamic updates can be throttle\, RPM sensor\, ESC telemetry or dynamic FFT based\. Throttle\-based harmonic notch cannot be used on fixed wing only planes\. It can for Copters\, QuaadPlane\(while in VTOL modes\)\, and Rovers\.
+Harmonic Notch Filter dynamic frequency tracking mode\. Dynamic updates can be throttle\, RPM sensor\, ESC telemetry or dynamic FFT based\. Throttle\-based harmonic notch cannot be used on fixed wing only planes\. It can for Copters\, QuadPlane\(while in VTOL modes\)\, and Rovers\.
 
 
 +-------+-------------------+
@@ -47767,7 +47767,7 @@ INS\_HNTC3\_MODE: Harmonic Notch Filter dynamic frequency tracking mode
 
 | *Note: This parameter is for advanced users*
 
-Harmonic Notch Filter dynamic frequency tracking mode\. Dynamic updates can be throttle\, RPM sensor\, ESC telemetry or dynamic FFT based\. Throttle\-based harmonic notch cannot be used on fixed wing only planes\. It can for Copters\, QuaadPlane\(while in VTOL modes\)\, and Rovers\.
+Harmonic Notch Filter dynamic frequency tracking mode\. Dynamic updates can be throttle\, RPM sensor\, ESC telemetry or dynamic FFT based\. Throttle\-based harmonic notch cannot be used on fixed wing only planes\. It can for Copters\, QuadPlane\(while in VTOL modes\)\, and Rovers\.
 
 
 +-------+-------------------+
@@ -48011,7 +48011,7 @@ INS\_HNTC4\_MODE: Harmonic Notch Filter dynamic frequency tracking mode
 
 | *Note: This parameter is for advanced users*
 
-Harmonic Notch Filter dynamic frequency tracking mode\. Dynamic updates can be throttle\, RPM sensor\, ESC telemetry or dynamic FFT based\. Throttle\-based harmonic notch cannot be used on fixed wing only planes\. It can for Copters\, QuaadPlane\(while in VTOL modes\)\, and Rovers\.
+Harmonic Notch Filter dynamic frequency tracking mode\. Dynamic updates can be throttle\, RPM sensor\, ESC telemetry or dynamic FFT based\. Throttle\-based harmonic notch cannot be used on fixed wing only planes\. It can for Copters\, QuadPlane\(while in VTOL modes\)\, and Rovers\.
 
 
 +-------+-------------------+
@@ -48255,7 +48255,7 @@ INS\_HNTCH\_MODE: Harmonic Notch Filter dynamic frequency tracking mode
 
 | *Note: This parameter is for advanced users*
 
-Harmonic Notch Filter dynamic frequency tracking mode\. Dynamic updates can be throttle\, RPM sensor\, ESC telemetry or dynamic FFT based\. Throttle\-based harmonic notch cannot be used on fixed wing only planes\. It can for Copters\, QuaadPlane\(while in VTOL modes\)\, and Rovers\.
+Harmonic Notch Filter dynamic frequency tracking mode\. Dynamic updates can be throttle\, RPM sensor\, ESC telemetry or dynamic FFT based\. Throttle\-based harmonic notch cannot be used on fixed wing only planes\. It can for Copters\, QuadPlane\(while in VTOL modes\)\, and Rovers\.
 
 
 +-------+-------------------+

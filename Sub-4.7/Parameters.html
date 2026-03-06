@@ -4964,33 +4964,6 @@ DO NOT EDIT
 <h1>ATC_ Parameters</h1>
 
 
-<h2>Yaw target slew rate (ATC_SLEW_YAW)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>Maximum rate the yaw target can be updated in RTL and Auto flight modes</p>
-<ul>
-<li>Units: centidegrees per second</li>
-<li>Range: 500 18000</li>
-<li>Increment: 100</li>
-</ul>
-
-
-<h2>Acceleration Max for Yaw (ATC_ACCEL_Y_MAX)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>Maximum acceleration in yaw axis</p>
-<ul>
-<li>Units: centidegrees per square second</li>
-<li>Range: 0 72000</li>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>9000</td><td>VerySlow</td></tr>
-<tr><td>18000</td><td>Slow</td></tr>
-<tr><td>36000</td><td>Medium</td></tr>
-<tr><td>54000</td><td>Fast</td></tr>
-</table>
-<li>Increment: 1000</li>
-</ul>
-
-
 <h2>Rate Feedforward Enable (ATC_RATE_FF_ENAB)</h2><em>Note: This parameter is for advanced users</em><br>
 
 <p>Controls whether body-frame rate feedforward is enabled or disabled</p>
@@ -4998,40 +4971,6 @@ DO NOT EDIT
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
 <tr><td>1</td><td>Enabled</td></tr>
-</table>
-</ul>
-
-
-<h2>Acceleration Max for Roll (ATC_ACCEL_R_MAX)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>Maximum acceleration in roll axis</p>
-<ul>
-<li>Units: centidegrees per square second</li>
-<li>Range: 0 180000</li>
-<li>Increment: 1000</li>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>30000</td><td>VerySlow</td></tr>
-<tr><td>72000</td><td>Slow</td></tr>
-<tr><td>108000</td><td>Medium</td></tr>
-<tr><td>162000</td><td>Fast</td></tr>
-</table>
-</ul>
-
-
-<h2>Acceleration Max for Pitch (ATC_ACCEL_P_MAX)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>Maximum acceleration in pitch axis</p>
-<ul>
-<li>Units: centidegrees per square second</li>
-<li>Range: 0 180000</li>
-<li>Increment: 1000</li>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>30000</td><td>VerySlow</td></tr>
-<tr><td>72000</td><td>Slow</td></tr>
-<tr><td>108000</td><td>Medium</td></tr>
-<tr><td>162000</td><td>Fast</td></tr>
 </table>
 </ul>
 
@@ -5178,6 +5117,67 @@ DO NOT EDIT
 <li>Units: degrees</li>
 <li>Increment: 0.1</li>
 <li>Range: 10.0 80.0</li>
+</ul>
+
+
+<h2>Yaw target slew rate (ATC_RATE_WPY_MAX)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Maximum rate the yaw target can be updated in Auto, Guided, Circle, Follow, RTL, SmartRTL, Throw and ZigZag flight modes</p>
+<ul>
+<li>Units: degrees per second</li>
+<li>Range: 5 180</li>
+<li>Increment: 1</li>
+</ul>
+
+
+<h2>Acceleration Max for Yaw (ATC_ACC_Y_MAX)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Maximum acceleration in yaw axis</p>
+<ul>
+<li>Units: degrees per square second</li>
+<li>Range: 0 720</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>90</td><td>VerySlow</td></tr>
+<tr><td>180</td><td>Slow</td></tr>
+<tr><td>360</td><td>Medium</td></tr>
+<tr><td>540</td><td>Fast</td></tr>
+</table>
+<li>Increment: 10</li>
+</ul>
+
+
+<h2>Acceleration Max for Roll (ATC_ACC_R_MAX)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Maximum acceleration in roll axis</p>
+<ul>
+<li>Units: degrees per square second</li>
+<li>Range: 0 1800</li>
+<li>Increment: 10</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>300</td><td>VerySlow</td></tr>
+<tr><td>720</td><td>Slow</td></tr>
+<tr><td>1080</td><td>Medium</td></tr>
+<tr><td>1620</td><td>Fast</td></tr>
+</table>
+</ul>
+
+
+<h2>Acceleration Max for Pitch (ATC_ACC_P_MAX)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Maximum acceleration in pitch axis</p>
+<ul>
+<li>Units: degrees per square second</li>
+<li>Range: 0 1800</li>
+<li>Increment: 10</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>300</td><td>VerySlow</td></tr>
+<tr><td>720</td><td>Slow</td></tr>
+<tr><td>1080</td><td>Medium</td></tr>
+<tr><td>1620</td><td>Fast</td></tr>
+</table>
 </ul>
 
 
@@ -30851,7 +30851,7 @@ DO NOT EDIT
 
 <h2>Harmonic Notch Filter dynamic frequency tracking mode (INS_HNTC2_MODE)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuaadPlane(while in VTOL modes), and Rovers.</p>
+<p>Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuadPlane(while in VTOL modes), and Rovers.</p>
 <ul>
 <li>Range: 0 5</li>
 <table><th>Value</th><th>Meaning</th>
@@ -30943,7 +30943,7 @@ DO NOT EDIT
 
 <h2>Harmonic Notch Filter dynamic frequency tracking mode (INS_HNTC3_MODE)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuaadPlane(while in VTOL modes), and Rovers.</p>
+<p>Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuadPlane(while in VTOL modes), and Rovers.</p>
 <ul>
 <li>Range: 0 5</li>
 <table><th>Value</th><th>Meaning</th>
@@ -31035,7 +31035,7 @@ DO NOT EDIT
 
 <h2>Harmonic Notch Filter dynamic frequency tracking mode (INS_HNTC4_MODE)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuaadPlane(while in VTOL modes), and Rovers.</p>
+<p>Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuadPlane(while in VTOL modes), and Rovers.</p>
 <ul>
 <li>Range: 0 5</li>
 <table><th>Value</th><th>Meaning</th>
@@ -31127,7 +31127,7 @@ DO NOT EDIT
 
 <h2>Harmonic Notch Filter dynamic frequency tracking mode (INS_HNTCH_MODE)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuaadPlane(while in VTOL modes), and Rovers.</p>
+<p>Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuadPlane(while in VTOL modes), and Rovers.</p>
 <ul>
 <li>Range: 0 5</li>
 <table><th>Value</th><th>Meaning</th>

@@ -19194,7 +19194,7 @@
       "User": "Advanced"
     },
     "INS_HNTC2_MODE": {
-      "Description": "Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuaadPlane(while in VTOL modes), and Rovers.",
+      "Description": "Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuadPlane(while in VTOL modes), and Rovers.",
       "DisplayName": "Harmonic Notch Filter dynamic frequency tracking mode",
       "Range": {
         "high": "5",
@@ -19310,7 +19310,7 @@
       "User": "Advanced"
     },
     "INS_HNTC3_MODE": {
-      "Description": "Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuaadPlane(while in VTOL modes), and Rovers.",
+      "Description": "Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuadPlane(while in VTOL modes), and Rovers.",
       "DisplayName": "Harmonic Notch Filter dynamic frequency tracking mode",
       "Range": {
         "high": "5",
@@ -19426,7 +19426,7 @@
       "User": "Advanced"
     },
     "INS_HNTC4_MODE": {
-      "Description": "Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuaadPlane(while in VTOL modes), and Rovers.",
+      "Description": "Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuadPlane(while in VTOL modes), and Rovers.",
       "DisplayName": "Harmonic Notch Filter dynamic frequency tracking mode",
       "Range": {
         "high": "5",
@@ -19542,7 +19542,7 @@
       "User": "Advanced"
     },
     "INS_HNTCH_MODE": {
-      "Description": "Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuaadPlane(while in VTOL modes), and Rovers.",
+      "Description": "Harmonic Notch Filter dynamic frequency tracking mode. Dynamic updates can be throttle, RPM sensor, ESC telemetry or dynamic FFT based. Throttle-based harmonic notch cannot be used on fixed wing only planes. It can for Copters, QuadPlane(while in VTOL modes), and Rovers.",
       "DisplayName": "Harmonic Notch Filter dynamic frequency tracking mode",
       "Range": {
         "high": "5",
@@ -39944,58 +39944,58 @@
     }
   },
   "Q_A_": {
-    "Q_A_ACCEL_P_MAX": {
+    "Q_A_ACC_P_MAX": {
       "Description": "Maximum acceleration in pitch axis",
       "DisplayName": "Acceleration Max for Pitch",
-      "Increment": "1000",
+      "Increment": "10",
       "Range": {
-        "high": "180000",
+        "high": "1800",
         "low": "0"
       },
-      "Units": "cdeg/s/s",
+      "Units": "deg/s/s",
       "User": "Advanced",
       "Values": {
         "0": "Disabled",
-        "108000": "Medium",
-        "162000": "Fast",
-        "30000": "VerySlow",
-        "72000": "Slow"
+        "1080": "Medium",
+        "1620": "Fast",
+        "300": "VerySlow",
+        "720": "Slow"
       }
     },
-    "Q_A_ACCEL_R_MAX": {
+    "Q_A_ACC_R_MAX": {
       "Description": "Maximum acceleration in roll axis",
       "DisplayName": "Acceleration Max for Roll",
-      "Increment": "1000",
+      "Increment": "10",
       "Range": {
-        "high": "180000",
+        "high": "1800",
         "low": "0"
       },
-      "Units": "cdeg/s/s",
+      "Units": "deg/s/s",
       "User": "Advanced",
       "Values": {
         "0": "Disabled",
-        "108000": "Medium",
-        "162000": "Fast",
-        "30000": "VerySlow",
-        "72000": "Slow"
+        "1080": "Medium",
+        "1620": "Fast",
+        "300": "VerySlow",
+        "720": "Slow"
       }
     },
-    "Q_A_ACCEL_Y_MAX": {
+    "Q_A_ACC_Y_MAX": {
       "Description": "Maximum acceleration in yaw axis",
       "DisplayName": "Acceleration Max for Yaw",
-      "Increment": "1000",
+      "Increment": "10",
       "Range": {
-        "high": "72000",
+        "high": "720",
         "low": "0"
       },
-      "Units": "cdeg/s/s",
+      "Units": "deg/s/s",
       "User": "Advanced",
       "Values": {
         "0": "Disabled",
-        "18000": "Slow",
-        "36000": "Medium",
-        "54000": "Fast",
-        "9000": "VerySlow"
+        "180": "Slow",
+        "360": "Medium",
+        "540": "Fast",
+        "90": "VerySlow"
       }
     },
     "Q_A_ANGLE_BOOST": {
@@ -40144,6 +40144,17 @@
         "360": "Fast",
         "60": "Slow"
       }
+    },
+    "Q_A_RATE_WPY_MAX": {
+      "Description": "Maximum rate the yaw target can be updated in Auto, Guided, Circle, Follow, RTL, SmartRTL, Throw and ZigZag flight modes",
+      "DisplayName": "Yaw target slew rate",
+      "Increment": "1",
+      "Range": {
+        "high": "180",
+        "low": "5"
+      },
+      "Units": "deg/s",
+      "User": "Advanced"
     },
     "Q_A_RATE_Y_MAX": {
       "Description": "Maximum angular velocity in yaw axis",
@@ -40551,17 +40562,6 @@
         "high": "200",
         "low": "0"
       },
-      "User": "Advanced"
-    },
-    "Q_A_SLEW_YAW": {
-      "Description": "Maximum rate the yaw target can be updated in RTL and Auto flight modes",
-      "DisplayName": "Yaw target slew rate",
-      "Increment": "100",
-      "Range": {
-        "high": "18000",
-        "low": "500"
-      },
-      "Units": "cdeg/s",
       "User": "Advanced"
     },
     "Q_A_THR_G_BOOST": {
