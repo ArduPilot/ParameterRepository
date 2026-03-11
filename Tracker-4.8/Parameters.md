@@ -1,7 +1,7 @@
 
 This is a complete list of the parameters which can be set via the MAVLink protocol in the EEPROM of your autopilot to control vehicle behaviour. This list is automatically generated from the latest ardupilot source code, and so may contain parameters which are not yet in the stable released versions of the code. Some parameters may only be available for developers, and are enabled at compile-time.
 
-# APPeriph Parameters
+# AntennaTracker Parameters
 
 ## FORMAT_VERSION: Eeprom format version number
 
@@ -9,709 +9,509 @@ This is a complete list of the parameters which can be set via the MAVLink proto
 
 This value is incremented when changes are made to the eeprom format
 
-## CAN_NODE: DroneCAN node ID used by this node on all networks
+## SYSID_TARGET: Target vehicle's MAVLink system ID
 
 *Note: This parameter is for advanced users*
 
-Value of 0 requests any ID from a DNA server, any other value sets that ID ignoring DNA
+The identifier of the vehicle being tracked. This should be zero (to auto detect) or be the same as the MAV_SYSID parameter of the vehicle being tracked.
 
-- Range: 0 127
+- Range: 1 255
 
-- RebootRequired: True
+## YAW_SLEW_TIME: Time for yaw to slew through its full range
 
-## CAN_BAUDRATE: Bitrate of CAN interface
+This controls how rapidly the tracker will change the servo output for yaw. It is set as the number of seconds to do a full rotation. You can use this parameter to slow the trackers movements, which may help with some types of trackers. A value of zero will allow for unlimited servo movement per update.
 
-*Note: This parameter is for advanced users*
+- Units: s
 
-Bit rate can be set up to from 10000 to 1000000
+- Increment: 0.1
 
-- Range: 10000 1000000
+- Range: 0 20
 
-- RebootRequired: True
+## PITCH_SLEW_TIME: Time for pitch to slew through its full range
 
-## CAN_SLCAN_CPORT: SLCAN Route
+This controls how rapidly the tracker will change the servo output for pitch. It is set as the number of seconds to do a full range of pitch movement. You can use this parameter to slow the trackers movements, which may help with some types of trackers. A value of zero will allow for unlimited servo movement per update.
 
-CAN Interface ID to be routed to SLCAN, 0 means no routing
+- Units: s
+
+- Increment: 0.1
+
+- Range: 0 20
+
+## MIN_REVERSE_TIME: Minimum time to apply a yaw reversal
+
+When the tracker detects it has reached the limit of servo movement in yaw it will reverse and try moving to the other extreme of yaw. This parameter controls the minimum time it should reverse for. It is used to cope with trackers that have a significant lag in movement to ensure they do move all the way around.
+
+- Units: s
+
+- Increment: 1
+
+- Range: 0 20
+
+## START_LATITUDE: Initial Latitude before GPS lock
+
+Combined with START_LONGITUDE this parameter allows for an initial position of the tracker to be set. This position will be used until the GPS gets lock. It can also be used to run a stationary tracker with no GPS attached.
+
+- Units: deg
+
+- Increment: 0.000001
+
+- Range: -90 90
+
+## START_LONGITUDE: Initial Longitude before GPS lock
+
+Combined with START_LATITUDE this parameter allows for an initial position of the tracker to be set. This position will be used until the GPS gets lock. It can also be used to run a stationary tracker with no GPS attached.
+
+- Units: deg
+
+- Increment: 0.000001
+
+- Range: -180 180
+
+## STARTUP_DELAY: Delay before first servo movement from trim
+
+This parameter can be used to force the servos to their trim value for a time on startup. This can help with some servo types
+
+- Units: s
+
+- Increment: 0.1
+
+- Range: 0 10
+
+## SERVO_PITCH_TYPE: Type of servo system being used for pitch
+
+This allows selection of position servos or on/off servos for pitch
 
 |Value|Meaning|
 |:---:|:---:|
-|0|Disabled|
-|1|First interface|
-|2|Second interface|
+|0|Position|
+|1|OnOff|
+|2|ContinuousRotation|
 
-- RebootRequired: True
+## SERVO_YAW_TYPE: Type of servo system being used for yaw
 
-## CAN_TERMINATE: Enable CAN software termination in this node
-
-*Note: This parameter is for advanced users*
-
-Enable CAN software termination in this node
+This allows selection of position servos or on/off servos for yaw
 
 |Value|Meaning|
 |:---:|:---:|
-|0|Disabled|
-|1|Enabled|
+|0|Position|
+|1|OnOff|
+|2|ContinuousRotation|
 
-- RebootRequired: True
+## ONOFF_YAW_RATE: Yaw rate for on/off servos
 
-## CAN_PROTOCOL: Enable use of specific protocol to be used on this port
+Rate of change of yaw in degrees/second for on/off servos
 
-*Note: This parameter is for advanced users*
+- Units: deg/s
 
-Enabling this option starts selected protocol that will use this virtual driver. At least one CAN port must be UAVCAN or else CAN1 gets set to UAVCAN
+- Increment: 0.1
 
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|UAVCAN|
-|4|PiccoloCAN|
-|6|EFI_NWPMU|
-|7|USD1|
-|8|KDECAN|
+- Range: 0 50
 
-- RebootRequired: True
+## ONOFF_PITCH_RATE: Pitch rate for on/off servos
 
-## CAN2_BAUDRATE: Bitrate of CAN2 interface
+Rate of change of pitch in degrees/second for on/off servos
 
-*Note: This parameter is for advanced users*
+- Units: deg/s
 
-Bit rate can be set up to from 10000 to 1000000
+- Increment: 0.1
 
-- Range: 10000 1000000
+- Range: 0 50
 
-- RebootRequired: True
+## ONOFF_YAW_MINT: Yaw minimum movement time
 
-## CAN2_PROTOCOL: Enable use of specific protocol to be used on this port
+Minimum amount of time in seconds to move in yaw
 
-*Note: This parameter is for advanced users*
+- Units: s
 
-Enabling this option starts selected protocol that will use this virtual driver. At least one CAN port must be UAVCAN or else CAN1 gets set to UAVCAN
+- Increment: 0.01
 
-- RebootRequired: True
+- Range: 0 2
 
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|UAVCAN|
-|4|PiccoloCAN|
-|6|EFI_NWPMU|
-|7|USD1|
-|8|KDECAN|
+## ONOFF_PITCH_MINT: Pitch minimum movement time
 
-## CAN2_TERMINATE: Enable CAN software termination in this node
+Minimum amount of time in seconds to move in pitch
 
-*Note: This parameter is for advanced users*
+- Units: s
 
-Enable CAN software termination in this node
+- Increment: 0.01
 
-- RebootRequired: True
+- Range: 0 2
 
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
+## YAW_TRIM: Yaw trim
 
-## CAN3_BAUDRATE: Bitrate of CAN3 interface
+Amount of extra yaw to add when tracking. This allows for small adjustments for an out of trim compass.
 
-*Note: This parameter is for advanced users*
+- Units: deg
 
-Bit rate can be set up to from 10000 to 1000000
+- Increment: 0.1
 
-- Range: 10000 1000000
+- Range: -10 10
 
-- RebootRequired: True
+## PITCH_TRIM: Pitch trim
 
-## CAN3_PROTOCOL: Enable use of specific protocol to be used on this port
+Amount of extra pitch to add when tracking. This allows for small adjustments for a badly calibrated barometer.
 
-*Note: This parameter is for advanced users*
+- Units: deg
 
-Enabling this option starts selected protocol that will use this virtual driver. At least one CAN port must be UAVCAN or else CAN1 gets set to UAVCAN
+- Increment: 0.1
 
-- RebootRequired: True
+- Range: -10 10
 
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|UAVCAN|
-|4|PiccoloCAN|
-|6|EFI_NWPMU|
-|7|USD1|
-|8|KDECAN|
+## YAW_RANGE: Yaw Angle Range
 
-## CAN3_TERMINATE: Enable CAN software termination in this node
+Yaw axis total range of motion in degrees
 
-*Note: This parameter is for advanced users*
+- Units: deg
 
-Enable CAN software termination in this node
+- Increment: 0.1
 
-- RebootRequired: True
+- Range: 0 360
 
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
+## DISTANCE_MIN: Distance minimum to target
 
-## CAN_FDMODE: Enable CANFD mode
+Tracker will track targets at least this distance away
 
-*Note: This parameter is for advanced users*
+- Units: m
 
-Enabling this option sets the CAN bus to be in CANFD mode with BRS.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-- RebootRequired: True
-
-## CAN_FDBAUDRATE: Set up bitrate for data section on CAN1
-
-*Note: This parameter is for advanced users*
-
-This sets the bitrate for the data section of CAN1.
-
-|Value|Meaning|
-|:---:|:---:|
-|1|1M|
-|2|2M|
-|4|4M|
-|5|5M|
-|8|8M|
-
-- RebootRequired: True
-
-## CAN2_FDBAUDRATE: Set up bitrate for data section on CAN2
-
-*Note: This parameter is for advanced users*
-
-This sets the bitrate for the data section of CAN2.
-
-- RebootRequired: True
-
-|Value|Meaning|
-|:---:|:---:|
-|1|1M|
-|2|2M|
-|4|4M|
-|5|5M|
-|8|8M|
-
-## FLASH_BOOTLOADER: Trigger bootloader update
-
-*Note: This parameter is for advanced users*
-
-DANGER! When enabled, the App will perform a bootloader update by copying the embedded bootloader over the existing bootloader. This may take a few seconds to perform and should only be done if you know what you're doing.
-
-- Range: 0 1
-
-## DEBUG: Debug
-
-*Note: This parameter is for advanced users*
-
-Debug
-
-- Bitmask: 0:Show free stack space, 1:Auto Reboot after 15sec, 2:Enable sending stats
-
-## BRD_SERIAL_NUM: Serial number of device
-
-*Note: This parameter is for advanced users*
-
-Non-zero positive values will be shown on the CAN App Name string
-
-- Range: 0 2147483648
-
-## BUZZER_VOLUME: Buzzer volume
-
-*Note: This parameter is for advanced users*
-
-Control the volume of the buzzer
+- Increment: 1
 
 - Range: 0 100
 
-- Units: %
+## ALT_SOURCE: Altitude Source
 
-- Increment: 1
-
-## GPS_PORT: GPS Serial Port
-
-*Note: This parameter is for advanced users*
-
-This is the serial port number where SERIALx_PROTOCOL will be set to GPS.
-
-- Range: 0 10
-
-- Increment: 1
-
-- RebootRequired: True
-
-## MB_CAN_PORT: Moving Baseline CAN Port option
-
-*Note: This parameter is for advanced users*
-
-Autoselect dedicated CAN port on which moving baseline data will be transmitted.
+What provides altitude information for vehicle. Vehicle only assumes tracker has same altitude as vehicle's home
 
 |Value|Meaning|
 |:---:|:---:|
-|0|Sends moving baseline data on all ports|
-|1|auto select remaining port for transmitting Moving baseline Data|
+|0|Barometer|
+|1|GPS|
+|2|GPS vehicle only|
 
-- RebootRequired: True
+## MAV_UPDATE_RATE: Mavlink Update Rate
 
-## BATT_HIDE_MASK: Battery hide mask
-
-*Note: This parameter is for advanced users*
-
-Instance mask of local battery index(es) to prevent transmitting their status over CAN. This is useful for hiding a "battery" instance that is used locally in the peripheral but don't want them to be treated as a battery source(s) to the autopilot. For example, an AP_Periph battery monitor with multiple batteries that monitors each locally for diagnostic or other purposes, but only reports as a single SUM battery monitor to the autopilot.
-
-- Bitmask: 0:BATT, 1:BATT2, 2:BATT3, 3:BATT4, 4:BATT5, 5:BATT6, 6:BATT7, 7:BATT8, 8:BATT9, 9:BATTA, 10:BATTB, 11:BATTC, 12:BATTD, 13:BATTE, 14:BATTF, 15:BATTG
-
-## BARO_ENABLE: Barometer Enable
-
-Barometer Enable
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## LED_BRIGHTNESS: LED Brightness
-
-Select the RGB LED brightness level.
-
-- Range: 0 100
-
-- Units: %
-
-- Increment: 1
-
-## RNGFND_BAUDRATE: Rangefinder serial baudrate
-
-Rangefinder serial baudrate.
-
-|Value|Meaning|
-|:---:|:---:|
-|1200|1200|
-|2400|2400|
-|4800|4800|
-|9600|9600|
-|19200|19200|
-|38400|38400|
-|57600|57600|
-|111100|111100|
-|115200|115200|
-|230400|230400|
-|256000|256000|
-|460800|460800|
-|500000|500000|
-|921600|921600|
-|1500000|1500000|
-
-- Range: 1200 20000000
-
-- Increment: 1
-
-- RebootRequired: True
-
-## RNGFND_PORT: Rangefinder Serial Port
-
-*Note: This parameter is for advanced users*
-
-This is the serial port number where SERIALx_PROTOCOL will be set to Rangefinder.
-
-- Range: 0 10
-
-- Increment: 1
-
-- RebootRequired: True
-
-## RNGFND2_BAUDRATE: Rangefinder serial baudrate
-
-Rangefinder serial baudrate.
-
-- Increment: 1
-
-- Range: 1200 20000000
-
-- RebootRequired: True
-
-|Value|Meaning|
-|:---:|:---:|
-|1200|1200|
-|2400|2400|
-|4800|4800|
-|9600|9600|
-|19200|19200|
-|38400|38400|
-|57600|57600|
-|111100|111100|
-|115200|115200|
-|230400|230400|
-|256000|256000|
-|460800|460800|
-|500000|500000|
-|921600|921600|
-|1500000|1500000|
-
-## RNGFND2_PORT: Rangefinder Serial Port
-
-*Note: This parameter is for advanced users*
-
-This is the serial port number where SERIALx_PROTOCOL will be set to Rangefinder.
-
-- Range: 0 10
-
-- Increment: 1
-
-- RebootRequired: True
-
-## RNGFND_MAX_RATE: Rangefinder max rate
-
-*Note: This parameter is for advanced users*
-
-This is the maximum rate we send rangefinder data in Hz. Zero means no limit
-
-- Units: Hz
-
-- Range: 0 200
-
-- Increment: 1
-
-## ADSB_BAUDRATE: ADSB serial baudrate
-
-ADSB serial baudrate.
-
-- Increment: 1
-
-- Range: 1200 20000000
-
-- RebootRequired: True
-
-|Value|Meaning|
-|:---:|:---:|
-|1200|1200|
-|2400|2400|
-|4800|4800|
-|9600|9600|
-|19200|19200|
-|38400|38400|
-|57600|57600|
-|111100|111100|
-|115200|115200|
-|230400|230400|
-|256000|256000|
-|460800|460800|
-|500000|500000|
-|921600|921600|
-|1500000|1500000|
-
-## ADSB_PORT: ADSB Serial Port
-
-*Note: This parameter is for advanced users*
-
-This is the serial port number where SERIALx_PROTOCOL will be set to ADSB.
-
-- Range: 0 10
-
-- Increment: 1
-
-- RebootRequired: True
-
-## HARDPOINT_ID: Hardpoint ID
-
-*Note: This parameter is for advanced users*
-
-Hardpoint ID
-
-## HARDPOINT_RATE: Hardpoint PWM rate
-
-*Note: This parameter is for advanced users*
-
-Hardpoint PWM rate
-
-- Range: 10 100
+The rate at which Mavlink updates position and baro data
 
 - Units: Hz
 
 - Increment: 1
 
-## ESC_NUMBER: ESC number
+- Range: 1 10
 
-*Note: This parameter is for advanced users*
+## PITCH_MIN: Minimum Pitch Angle
 
-This is the ESC number to report as in UAVCAN ESC telemetry feedback packets.
+The lowest angle the pitch can reach
 
-- Increment: 1
-
-## ESC_RATE: ESC Update Rate
-
-*Note: This parameter is for advanced users*
-
-Rate in Hz that ESC PWM outputs (function is MotorN) will update at
-
-- Units: Hz
-
-- Range: 50 400
+- Units: deg
 
 - Increment: 1
 
-## ESC_PWM_TYPE: Output PWM type
+- Range: -90 0
 
-*Note: This parameter is for advanced users*
+## PITCH_MAX: Maximum Pitch Angle
 
-This selects the output PWM type, allowing for normal PWM continuous output, OneShot, brushed or DShot motor output
+The highest angle the pitch can reach
 
-|Value|Meaning|
-|:---:|:---:|
-|1|Normal|
-|2|OneShot|
-|3|OneShot125|
-|4|Brushed|
-|5|DShot150|
-|6|DShot300|
-|7|DShot600|
-|8|DShot1200|
-
-- RebootRequired: True
-
-## ESC_CMD_TIMO: ESC Command Timeout
-
-*Note: This parameter is for advanced users*
-
-This is the duration (ms) with which to hold the last driven ESC command before timing out and zeroing the ESC outputs. To disable zeroing of outputs in event of CAN loss, use 0. Use values greater than the expected duration between two CAN frames to ensure Periph is not starved of ESC Raw Commands.
-
-- Range: 0 10000
-
-- Units: ms
-
-## ESC_TELEM_PORT: ESC Telemetry Serial Port
-
-*Note: This parameter is for advanced users*
-
-This is the serial port number where SERIALx_PROTOCOL will be set to ESC Telemetry
-
-- Range: 0 10
+- Units: deg
 
 - Increment: 1
 
-- RebootRequired: True
-
-## ESC_TELEM_RATE: ESC Telemetry update rate
-
-*Note: This parameter is for advanced users*
-
-This is the rate at which ESC Telemetry will be sent across the CAN bus
-
-- Range: 0 1000
-
-- Increment: 1
-
-- RebootRequired: True
-
-## MSP_PORT: MSP Serial Port
-
-*Note: This parameter is for advanced users*
-
-This is the serial port number where SERIALx_PROTOCOL will be set to MSP
-
-- Range: 0 10
-
-- Increment: 1
-
-- RebootRequired: True
+- Range: 0 90
 
 ## LOG_BITMASK: Log bitmask
 
 4 byte bitmap of log types to enable
 
-- Bitmask: 2:GPS
+- Bitmask: 0:ATTITUDE,1:GPS,2:RCIN,3:IMU,4:RCOUT,5:COMPASS,6:Battery
 
-## EFI_BAUDRATE: EFI serial baudrate
+## PITCH2SRV_P: Pitch axis controller P gain
 
-EFI  serial baudrate.
+Pitch axis controller P gain.  Converts the difference between desired pitch angle and actual pitch angle into a pitch servo pwm change
 
-- Increment: 1
+- Range: 0.0 3.0
 
-- Range: 1200 20000000
+- Increment: 0.01
 
-- RebootRequired: True
+## PITCH2SRV_I: Pitch axis controller I gain
 
-|Value|Meaning|
-|:---:|:---:|
-|1200|1200|
-|2400|2400|
-|4800|4800|
-|9600|9600|
-|19200|19200|
-|38400|38400|
-|57600|57600|
-|111100|111100|
-|115200|115200|
-|230400|230400|
-|256000|256000|
-|460800|460800|
-|500000|500000|
-|921600|921600|
-|1500000|1500000|
+Pitch axis controller I gain.  Corrects long-term difference in desired pitch angle vs actual pitch angle
 
-## EFI_PORT: EFI Serial Port
+- Range: 0.0 3.0
 
-*Note: This parameter is for advanced users*
+- Increment: 0.01
 
-This is the serial port number where SERIALx_PROTOCOL will be set to EFI.
+## PITCH2SRV_IMAX: Pitch axis controller I gain maximum
 
-- Range: 0 10
+Pitch axis controller I gain maximum.  Constrains the maximum pwm change that the I gain will output
 
-- Increment: 1
+- Range: 0 4000
 
-- RebootRequired: True
+- Increment: 10
 
-## PRX_BAUDRATE: Proximity Sensor serial baudrate
+- Units: d%
 
-Proximity Sensor serial baudrate.
+## PITCH2SRV_D: Pitch axis controller D gain
 
-- Increment: 1
+Pitch axis controller D gain.  Compensates for short-term change in desired pitch angle vs actual pitch angle
 
-- Range: 1200 20000000
+- Range: 0.001 0.1
 
-- RebootRequired: True
+- Increment: 0.001
 
-|Value|Meaning|
-|:---:|:---:|
-|1200|1200|
-|2400|2400|
-|4800|4800|
-|9600|9600|
-|19200|19200|
-|38400|38400|
-|57600|57600|
-|111100|111100|
-|115200|115200|
-|230400|230400|
-|256000|256000|
-|460800|460800|
-|500000|500000|
-|921600|921600|
-|1500000|1500000|
+## PITCH2SRV_FF: Pitch axis controller feed forward
 
-## PRX_PORT: Proximity Sensor Serial Port
+Pitch axis controller feed forward
 
-*Note: This parameter is for advanced users*
+- Range: 0 0.5
 
-This is the serial port number where SERIALx_PROTOCOL will be set to Proximity Sensor.
+- Increment: 0.001
 
-- Range: 0 10
+## PITCH2SRV_FLTT: Pitch axis controller target frequency in Hz
+
+Pitch axis controller target frequency in Hz
+
+- Range: 1 50
 
 - Increment: 1
-
-- RebootRequired: True
-
-## PRX_MAX_RATE: Proximity Sensor max rate
-
-*Note: This parameter is for advanced users*
-
-This is the maximum rate we send Proximity Sensor data in Hz. Zero means no limit
 
 - Units: Hz
+
+## PITCH2SRV_FLTE: Pitch axis controller error frequency in Hz
+
+Pitch axis controller error frequency in Hz
+
+- Range: 1 100
+
+- Increment: 1
+
+- Units: Hz
+
+## PITCH2SRV_FLTD: Pitch axis controller derivative frequency in Hz
+
+Pitch axis controller derivative frequency in Hz
+
+- Range: 1 100
+
+- Increment: 1
+
+- Units: Hz
+
+## PITCH2SRV_SMAX: Pitch slew rate limit
+
+*Note: This parameter is for advanced users*
+
+Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature.
 
 - Range: 0 200
 
-- Increment: 1
+- Increment: 0.5
 
-## ESC_APD_SERIAL_1: ESC APD Serial 1
-
-*Note: This parameter is for advanced users*
-
-Which serial port to use for APD ESC data
-
-- Range: 0 6
-
-- Increment: 1
-
-- RebootRequired: True
-
-## ESC_APD_SERIAL_2: ESC APD Serial 2
+## PITCH2SRV_PDMX: Pitch axis controller PD sum maximum
 
 *Note: This parameter is for advanced users*
 
-Which serial port to use for APD ESC data
+Pitch axis controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output
 
-- Range: 0 6
+- Range: 0 4000
 
-- Increment: 1
+- Increment: 10
 
-- RebootRequired: True
+- Units: d%
 
-## CAN_MIRROR_PORTS: CAN ports to mirror traffic between
+## PITCH2SRV_D_FF: Pitch Derivative FeedForward Gain
 
 *Note: This parameter is for advanced users*
 
-Any set ports will participate in blindly mirroring traffic from one port to the other. It is the users responsibility to ensure that no loops exist that cause traffic to be infinitly repeated, and both ports must be running the same baud rates.
+FF D Gain which produces an output that is proportional to the rate of change of the target
 
-- Bitmask: 0:CAN1, 1:CAN2, 2:CAN3
+- Range: 0 0.1
 
-## TEMP_MSG_RATE: Temperature sensor message rate
+- Increment: 0.001
 
-This is the rate Temperature sensor data is sent in Hz. Zero means no send. Each sensor with source DroneCAN is sent in turn.
+## PITCH2SRV_NTF: Pitch Target notch filter index
+
+*Note: This parameter is for advanced users*
+
+Pitch Target notch filter index
+
+- Range: 1 8
+
+## PITCH2SRV_NEF: Pitch Error notch filter index
+
+*Note: This parameter is for advanced users*
+
+Pitch Error notch filter index
+
+- Range: 1 8
+
+## YAW2SRV_P: Yaw axis controller P gain
+
+Yaw axis controller P gain.  Converts the difference between desired yaw angle (heading) and actual yaw angle into a yaw servo pwm change
+
+- Range: 0.0 3.0
+
+- Increment: 0.01
+
+## YAW2SRV_I: Yaw axis controller I gain
+
+Yaw axis controller I gain.  Corrects long-term difference in desired yaw angle (heading) vs actual yaw angle
+
+- Range: 0.0 3.0
+
+- Increment: 0.01
+
+## YAW2SRV_IMAX: Yaw axis controller I gain maximum
+
+Yaw axis controller I gain maximum.  Constrains the maximum pwm change that the I gain will output
+
+- Range: 0 4000
+
+- Increment: 10
+
+- Units: d%
+
+## YAW2SRV_D: Yaw axis controller D gain
+
+Yaw axis controller D gain.  Compensates for short-term change in desired yaw angle (heading) vs actual yaw angle
+
+- Range: 0.001 0.1
+
+- Increment: 0.001
+
+## YAW2SRV_FF: Yaw axis controller feed forward
+
+Yaw axis controller feed forward
+
+- Range: 0 0.5
+
+- Increment: 0.001
+
+## YAW2SRV_FLTT: Yaw axis controller target frequency in Hz
+
+Yaw axis controller target frequency in Hz
+
+- Range: 1 50
+
+- Increment: 1
 
 - Units: Hz
+
+## YAW2SRV_FLTE: Yaw axis controller error frequency in Hz
+
+Yaw axis controller error frequency in Hz
+
+- Range: 1 100
+
+- Increment: 1
+
+- Units: Hz
+
+## YAW2SRV_FLTD: Yaw axis controller derivative frequency in Hz
+
+Yaw axis controller derivative frequency in Hz
+
+- Range: 1 100
+
+- Increment: 1
+
+- Units: Hz
+
+## YAW2SRV_SMAX: Yaw slew rate limit
+
+*Note: This parameter is for advanced users*
+
+Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature.
 
 - Range: 0 200
 
-- Increment: 1
+- Increment: 0.5
 
-## OPTIONS: AP Periph Options
-
-Bitmask of AP Periph Options
-
-- Bitmask: 0: Enable continuous sensor probe
-
-## RPM_MSG_RATE: RPM sensor message rate
-
-This is the rate RPM sensor data is sent in Hz. Zero means no send. Each sensor with a set ID is sent in turn.
-
-- Units: Hz
-
-- Range: 0 200
-
-- Increment: 1
-
-## ESC_EXT_TLM_RATE: ESC Extended telemetry message rate
+## YAW2SRV_PDMX: Yaw axis controller PD sum maximum
 
 *Note: This parameter is for advanced users*
 
-This is the rate at which extended ESC Telemetry will be sent across the CAN bus for each ESC
+Yaw axis controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output
 
-- Units: Hz
+- Range: 0 4000
 
-- Range: 0 50
+- Increment: 10
 
-- Increment: 1
+- Units: d%
 
-## IMU_SAMPLE_RATE: IMU Sample Rate
-
-IMU Sample Rate
-
-- Range: 0 1000
-
-## SRV_CMD_TIME_OUT: Servo Command Timeout
+## YAW2SRV_D_FF: Yaw Derivative FeedForward Gain
 
 *Note: This parameter is for advanced users*
 
-This is the duration (ms) with which to hold the last driven servo command before timing out and zeroing the servo outputs. To disable zeroing of outputs in event of CAN loss, use 0. Use values greater than the expected duration between two CAN frames to ensure Periph is not starved of ESC Raw Commands.
+FF D Gain which produces an output that is proportional to the rate of change of the target
 
-- Range: 0 10000
+- Range: 0 0.1
 
-- Units: ms
+- Increment: 0.001
 
-## SRV_TLM_MSG_RATE: Servo telemetry message rate
+## YAW2SRV_NTF: Yaw Target notch filter index
 
-This is the rate servo telem data is sent in Hz. Zero means no send. Each servo is sent in turn.
+*Note: This parameter is for advanced users*
 
-- Units: Hz
+Yaw Target notch filter index
 
-- Range: 0 200
+- Range: 1 8
+
+## YAW2SRV_NEF: Yaw Error notch filter index
+
+*Note: This parameter is for advanced users*
+
+Yaw Error notch filter index
+
+- Range: 1 8
+
+## CMD_TOTAL: Number of loaded mission items
+
+*Note: This parameter is for advanced users*
+
+Set to 1 if HOME location has been loaded by the ground station. Do not change this manually.
+
+- Range: 1 255
+
+## GCS_PID_MASK: GCS PID tuning mask
+
+*Note: This parameter is for advanced users*
+
+bitmask of PIDs to send MAVLink PID_TUNING messages for
+
+- Bitmask: 0:Pitch,1:Yaw
+
+## SCAN_SPEED_YAW: Speed at which to rotate the yaw axis in scan mode
+
+This controls how rapidly the tracker will move the servos in SCAN mode
+
+- Units: deg/s
 
 - Increment: 1
+
+- Range: 0 100
+
+## SCAN_SPEED_PIT: Speed at which to rotate pitch axis in scan mode
+
+This controls how rapidly the tracker will move the servos in SCAN mode
+
+- Units: deg/s
+
+- Increment: 1
+
+- Range: 0 100
+
+## INITIAL_MODE: Mode tracker will switch into after initialization
+
+0:MANUAL, 1:STOP, 2:SCAN, 10:AUTO
+
+## SAFE_DISARM_PWM: PWM that will be output when disarmed or in stop mode
+
+0:zero pwm, 1:trim pwm
+
+## AUTO_OPTIONS: Auto mode options
+
+1: Scan for unknown target
+
+- Bitmask: 0:Scan for unknown target
 
 # Lua Script Parameters
 
@@ -3188,44 +2988,6 @@ Third TOFSENSE-M sensor ID. This cannot be 0. You can change ID of sensor from N
 
 - Range: 1 255
 
-# ACT Parameters
-
-## ACT_NUM_CHANS: Number of actuator channels
-
-Number of actuator channels to monitor for telemetry.
-
-- Range: 0 4
-
-## ACT_CURR_PIN1: Current sensing pin 1
-
-Analog input pin number for current sensing on channel 1. Set to -1 to disable.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-
-- Range: -1 127
-
-- RebootRequired: True
-
-## ACT_AMP_OFFSET: Current sensor offset
-
-Voltage offset at zero current on the current sensor.
-
-- Units: V
-
-## ACT_AMP_PERVLT: Amps per volt
-
-Current sensor scale factor.
-
-- Units: A/V
-
-## ACT_CURR_MAX: Maximum current
-
-Maximum expected current for this channel.
-
-- Units: A
-
 # AHRS Parameters
 
 ## AHRS_GPS_GAIN: AHRS GPS gain
@@ -3472,6 +3234,45 @@ AHRS last origin longitude in degrees
 AHRS last origin altitude in meters
 
 - Range: -200 5000
+
+# AIS Parameters
+
+## AIS_TYPE: AIS receiver type
+
+AIS receiver type
+
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|1|NMEA AIVDM message|
+
+- RebootRequired: True
+
+## AIS_LIST_MAX: AIS vessel list size
+
+*Note: This parameter is for advanced users*
+
+AIS list size of nearest vessels. Longer lists take longer to refresh with lower SRx_ADSB values.
+
+- Range: 1 100
+
+## AIS_TIME_OUT: AIS vessel time out
+
+*Note: This parameter is for advanced users*
+
+if no updates are received in this time a vessel will be removed from the list
+
+- Units: s
+
+- Range: 1 2000
+
+## AIS_LOGGING: AIS logging options
+
+*Note: This parameter is for advanced users*
+
+Bitmask of AIS logging options
+
+- Bitmask: 0:Log all AIVDM messages,1:Log only unsupported AIVDM messages,2:Log decoded messages
 
 # ARSPD Parameters
 
@@ -4341,32 +4142,6 @@ Airspeed sensor ID, taking into account its type, bus and instance
 
 - ReadOnly: True
 
-# BAL Parameters
-
-## BAL_NUM_CELLS: Number of battery cells
-
-Number of battery cells to monitor
-
-- Range: 0 64
-
-## BAL_ID: Battery ID
-
-Battery ID to match against other batteries
-
-- Range: 0 127
-
-## BAL_RATE: Send Rate
-
-Rate to send cell information
-
-- Range: 0 20
-
-## BAL_CELL1_PIN: First analog pin
-
-Analog pin of the first cell. Later cells must be sequential
-
-- Range: 0 127
-
 # BARO Parameters
 
 ## BARO1_GND_PRESS: Ground Pressure
@@ -4870,6 +4645,22 @@ Battery capacity at which the critical battery failsafe is triggered. Set to 0 t
 
 - Increment: 50
 
+## BATT2_FS_LOW_ACT: Low battery failsafe action
+
+What action the vehicle should perform if it hits a low battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
+
+## BATT2_FS_CRT_ACT: Critical battery failsafe action
+
+What action the vehicle should perform if it hits a critical battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
+
 ## BATT2_ARM_VOLT: Required arming voltage
 
 *Note: This parameter is for advanced users*
@@ -5346,6 +5137,22 @@ Battery capacity at which the critical battery failsafe is triggered. Set to 0 t
 - Units: mAh
 
 - Increment: 50
+
+## BATT3_FS_LOW_ACT: Low battery failsafe action
+
+What action the vehicle should perform if it hits a low battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
+
+## BATT3_FS_CRT_ACT: Critical battery failsafe action
+
+What action the vehicle should perform if it hits a critical battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
 
 ## BATT3_ARM_VOLT: Required arming voltage
 
@@ -5824,6 +5631,22 @@ Battery capacity at which the critical battery failsafe is triggered. Set to 0 t
 
 - Increment: 50
 
+## BATT4_FS_LOW_ACT: Low battery failsafe action
+
+What action the vehicle should perform if it hits a low battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
+
+## BATT4_FS_CRT_ACT: Critical battery failsafe action
+
+What action the vehicle should perform if it hits a critical battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
+
 ## BATT4_ARM_VOLT: Required arming voltage
 
 *Note: This parameter is for advanced users*
@@ -6300,6 +6123,22 @@ Battery capacity at which the critical battery failsafe is triggered. Set to 0 t
 - Units: mAh
 
 - Increment: 50
+
+## BATT5_FS_LOW_ACT: Low battery failsafe action
+
+What action the vehicle should perform if it hits a low battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
+
+## BATT5_FS_CRT_ACT: Critical battery failsafe action
+
+What action the vehicle should perform if it hits a critical battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
 
 ## BATT5_ARM_VOLT: Required arming voltage
 
@@ -6778,6 +6617,22 @@ Battery capacity at which the critical battery failsafe is triggered. Set to 0 t
 
 - Increment: 50
 
+## BATT6_FS_LOW_ACT: Low battery failsafe action
+
+What action the vehicle should perform if it hits a low battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
+
+## BATT6_FS_CRT_ACT: Critical battery failsafe action
+
+What action the vehicle should perform if it hits a critical battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
+
 ## BATT6_ARM_VOLT: Required arming voltage
 
 *Note: This parameter is for advanced users*
@@ -7254,6 +7109,22 @@ Battery capacity at which the critical battery failsafe is triggered. Set to 0 t
 - Units: mAh
 
 - Increment: 50
+
+## BATT7_FS_LOW_ACT: Low battery failsafe action
+
+What action the vehicle should perform if it hits a low battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
+
+## BATT7_FS_CRT_ACT: Critical battery failsafe action
+
+What action the vehicle should perform if it hits a critical battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
 
 ## BATT7_ARM_VOLT: Required arming voltage
 
@@ -7732,6 +7603,22 @@ Battery capacity at which the critical battery failsafe is triggered. Set to 0 t
 
 - Increment: 50
 
+## BATT8_FS_LOW_ACT: Low battery failsafe action
+
+What action the vehicle should perform if it hits a low battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
+
+## BATT8_FS_CRT_ACT: Critical battery failsafe action
+
+What action the vehicle should perform if it hits a critical battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
+
 ## BATT8_ARM_VOLT: Required arming voltage
 
 *Note: This parameter is for advanced users*
@@ -8208,6 +8095,22 @@ Battery capacity at which the critical battery failsafe is triggered. Set to 0 t
 - Units: mAh
 
 - Increment: 50
+
+## BATT9_FS_LOW_ACT: Low battery failsafe action
+
+What action the vehicle should perform if it hits a low battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
+
+## BATT9_FS_CRT_ACT: Critical battery failsafe action
+
+What action the vehicle should perform if it hits a critical battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
 
 ## BATT9_ARM_VOLT: Required arming voltage
 
@@ -8686,6 +8589,22 @@ Battery capacity at which the critical battery failsafe is triggered. Set to 0 t
 
 - Increment: 50
 
+## BATTA_FS_LOW_ACT: Low battery failsafe action
+
+What action the vehicle should perform if it hits a low battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
+
+## BATTA_FS_CRT_ACT: Critical battery failsafe action
+
+What action the vehicle should perform if it hits a critical battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
+
 ## BATTA_ARM_VOLT: Required arming voltage
 
 *Note: This parameter is for advanced users*
@@ -9162,6 +9081,22 @@ Battery capacity at which the critical battery failsafe is triggered. Set to 0 t
 - Units: mAh
 
 - Increment: 50
+
+## BATTB_FS_LOW_ACT: Low battery failsafe action
+
+What action the vehicle should perform if it hits a low battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
+
+## BATTB_FS_CRT_ACT: Critical battery failsafe action
+
+What action the vehicle should perform if it hits a critical battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
 
 ## BATTB_ARM_VOLT: Required arming voltage
 
@@ -9640,6 +9575,22 @@ Battery capacity at which the critical battery failsafe is triggered. Set to 0 t
 
 - Increment: 50
 
+## BATTC_FS_LOW_ACT: Low battery failsafe action
+
+What action the vehicle should perform if it hits a low battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
+
+## BATTC_FS_CRT_ACT: Critical battery failsafe action
+
+What action the vehicle should perform if it hits a critical battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
+
 ## BATTC_ARM_VOLT: Required arming voltage
 
 *Note: This parameter is for advanced users*
@@ -10116,6 +10067,22 @@ Battery capacity at which the critical battery failsafe is triggered. Set to 0 t
 - Units: mAh
 
 - Increment: 50
+
+## BATTD_FS_LOW_ACT: Low battery failsafe action
+
+What action the vehicle should perform if it hits a low battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
+
+## BATTD_FS_CRT_ACT: Critical battery failsafe action
+
+What action the vehicle should perform if it hits a critical battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
 
 ## BATTD_ARM_VOLT: Required arming voltage
 
@@ -10594,6 +10561,22 @@ Battery capacity at which the critical battery failsafe is triggered. Set to 0 t
 
 - Increment: 50
 
+## BATTE_FS_LOW_ACT: Low battery failsafe action
+
+What action the vehicle should perform if it hits a low battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
+
+## BATTE_FS_CRT_ACT: Critical battery failsafe action
+
+What action the vehicle should perform if it hits a critical battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
+
 ## BATTE_ARM_VOLT: Required arming voltage
 
 *Note: This parameter is for advanced users*
@@ -11070,6 +11053,22 @@ Battery capacity at which the critical battery failsafe is triggered. Set to 0 t
 - Units: mAh
 
 - Increment: 50
+
+## BATTF_FS_LOW_ACT: Low battery failsafe action
+
+What action the vehicle should perform if it hits a low battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
+
+## BATTF_FS_CRT_ACT: Critical battery failsafe action
+
+What action the vehicle should perform if it hits a critical battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
 
 ## BATTF_ARM_VOLT: Required arming voltage
 
@@ -11548,6 +11547,22 @@ Battery capacity at which the critical battery failsafe is triggered. Set to 0 t
 
 - Increment: 50
 
+## BATTG_FS_LOW_ACT: Low battery failsafe action
+
+What action the vehicle should perform if it hits a low battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
+
+## BATTG_FS_CRT_ACT: Critical battery failsafe action
+
+What action the vehicle should perform if it hits a critical battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
+
 ## BATTG_ARM_VOLT: Required arming voltage
 
 *Note: This parameter is for advanced users*
@@ -12025,6 +12040,22 @@ Battery capacity at which the critical battery failsafe is triggered. Set to 0 t
 
 - Increment: 50
 
+## BATT_FS_LOW_ACT: Low battery failsafe action
+
+What action the vehicle should perform if it hits a low battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
+
+## BATT_FS_CRT_ACT: Critical battery failsafe action
+
+What action the vehicle should perform if it hits a critical battery failsafe
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Warn only|
+
 ## BATT_ARM_VOLT: Required arming voltage
 
 *Note: This parameter is for advanced users*
@@ -12391,35 +12422,2432 @@ Voltage offset on voltage pin. This allows for an offset due to a diode. This vo
 
 - Units: V
 
-# BTAG Parameters
+# BRD Parameters
 
-## BTAG_NUM_CYCLES: Number of cycles
+## BRD_SER1_RTSCTS: Serial 1 flow control
 
-Number of cycles the battery has been through
+*Note: This parameter is for advanced users*
 
-## BTAG_ARM_HOURS: Number of armed hours
+Enable flow control on serial 1 (telemetry 1). You must have the RTS and CTS pins connected to your radio. The standard DF13 6 pin connector for a 3DR radio does have those pins connected. If this is set to 2 then flow control will be auto-detected by checking for the output buffer filling on startup. Note that the PX4v1 does not have hardware flow control pins on this port, so you should leave this disabled.
 
-Number of hours the battery has been armed
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+|2|Auto|
+|3|RS-485 Driver enable RTS pin|
 
-## BTAG_CAPACITY: Battery capacity
+- RebootRequired: True
 
-Battery capacity in mAh
+## BRD_SER2_RTSCTS: Serial 2 flow control
 
-## BTAG_FIRST_USE: First use time
+*Note: This parameter is for advanced users*
 
-First use time in minutes since 1/1/1970
+Enable flow control on serial 2 (telemetry 2). You must have the RTS and CTS pins connected to your radio. The standard DF13 6 pin connector for a 3DR radio does have those pins connected. If this is set to 2 then flow control will be auto-detected by checking for the output buffer filling on startup.
 
-## BTAG_LAST_USE: Last use time
+- RebootRequired: True
 
-Last use time in minutes since 1/1/1970
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+|2|Auto|
+|3|RS-485 Driver enable RTS pin|
 
-## BTAG_SERIAL: Serial number
+## BRD_SER3_RTSCTS: Serial 3 flow control
 
-Serial number
+*Note: This parameter is for advanced users*
 
-## BTAG_CYCLE_MIN: Cycle minimum time
+Enable flow control on serial 3. You must have the RTS and CTS pins connected to your radio. The standard DF13 6 pin connector for a 3DR radio does have those pins connected. If this is set to 2 then flow control will be auto-detected by checking for the output buffer filling on startup.
 
-Cycle minimum time. Minimum time that vehicle is armed in minutes for counting a battery cycle
+- RebootRequired: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+|2|Auto|
+|3|RS-485 Driver enable RTS pin|
+
+## BRD_SER4_RTSCTS: Serial 4 flow control
+
+*Note: This parameter is for advanced users*
+
+Enable flow control on serial 4. You must have the RTS and CTS pins connected to your radio. The standard DF13 6 pin connector for a 3DR radio does have those pins connected. If this is set to 2 then flow control will be auto-detected by checking for the output buffer filling on startup.
+
+- RebootRequired: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+|2|Auto|
+|3|RS-485 Driver enable RTS pin|
+
+## BRD_SER5_RTSCTS: Serial 5 flow control
+
+*Note: This parameter is for advanced users*
+
+Enable flow control on serial 5. You must have the RTS and CTS pins connected to your radio. The standard DF13 6 pin connector for a 3DR radio does have those pins connected. If this is set to 2 then flow control will be auto-detected by checking for the output buffer filling on startup.
+
+- RebootRequired: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+|2|Auto|
+|3|RS-485 Driver enable RTS pin|
+
+## BRD_SER6_RTSCTS: Serial 6 flow control
+
+*Note: This parameter is for advanced users*
+
+Enable flow control on serial 6. You must have the RTS and CTS pins connected to your radio. The standard DF13 6 pin connector for a 3DR radio does have those pins connected. If this is set to 2 then flow control will be auto-detected by checking for the output buffer filling on startup.
+
+- RebootRequired: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+|2|Auto|
+|3|RS-485 Driver enable RTS pin|
+
+## BRD_SER7_RTSCTS: Serial 7 flow control
+
+*Note: This parameter is for advanced users*
+
+Enable flow control on serial 7. You must have the RTS and CTS pins connected to your radio. The standard DF13 6 pin connector for a 3DR radio does have those pins connected. If this is set to 2 then flow control will be auto-detected by checking for the output buffer filling on startup.
+
+- RebootRequired: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+|2|Auto|
+|3|RS-485 Driver enable RTS pin|
+
+## BRD_SER8_RTSCTS: Serial 8 flow control
+
+Enable flow control on serial 8. You must have the RTS and CTS pins connected to your radio. The standard DF13 6 pin connector for a 3DR radio does have those pins connected. If this is set to 2 then flow control will be auto-detected by checking for the output buffer filling on startup.
+
+## BRD_SAFETY_DEFLT: Sets default state of the safety switch
+
+This controls the default state of the safety switch at startup. When set to 1 the safety switch will start in the safe state (flashing) at boot. When set to zero the safety switch will start in the unsafe state (solid) at startup. Note that if a safety switch is fitted the user can still control the safety state after startup using the switch. The safety state can also be controlled in software using a MAVLink message.
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+- RebootRequired: True
+
+## BRD_SBUS_OUT: SBUS output rate
+
+*Note: This parameter is for advanced users*
+
+This sets the SBUS output frame rate in Hz
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|50Hz|
+|2|75Hz|
+|3|100Hz|
+|4|150Hz|
+|5|200Hz|
+|6|250Hz|
+|7|300Hz|
+
+- RebootRequired: True
+
+## BRD_SERIAL_NUM: User-defined serial number
+
+User-defined serial number of this vehicle, it can be any arbitrary number you want and has no effect on the autopilot
+
+- Range: -8388608 8388607
+
+## BRD_SAFETY_MASK: Outputs which ignore the safety switch state
+
+*Note: This parameter is for advanced users*
+
+A bitmask which controls what outputs can move while the safety switch has not been pressed
+
+- Bitmask: 0:Output1, 1:Output2, 2:Output3, 3:Output4, 4:Output5, 5:Output6, 6:Output7, 7:Output8, 8:Output9, 9:Output10, 10:Output11, 11:Output12, 12:Output13, 13:Output14, 14:Output15, 15:Output16, 16:Output17, 17:Output18, 18:Output19, 19:Output20, 20:Output21, 21:Output22, 22:Output23, 23:Output24, 24:Output25, 25:Output26, 26:Output27, 27:Output28, 28:Output29, 29:Output30, 30:Output31, 31:Output32
+
+- RebootRequired: True
+
+## BRD_HEAT_TARG: Board heater temperature target
+
+*Note: This parameter is for advanced users*
+
+Board heater target temperature for boards with controllable heating units. Set to -1 to disable the heater, please reboot after setting to -1.
+
+- Range: -1 80
+
+- Units: degC
+
+## BRD_TYPE: Board type
+
+*Note: This parameter is for advanced users*
+
+This allows selection of a PX4 or VRBRAIN board type. If set to zero then the board type is auto-detected (PX4)
+
+|Value|Meaning|
+|:---:|:---:|
+|0|AUTO|
+|1|PX4V1|
+|2|Pixhawk|
+|3|Cube/Pixhawk2|
+|5|PixhawkMini|
+|6|Pixhawk2Slim|
+|13|Intel Aero FC|
+|14|Pixhawk Pro|
+|20|AUAV2.1|
+|39|PX4 FMUV6|
+|100|PX4 OLDDRIVERS|
+
+- RebootRequired: True
+
+## BRD_IO_ENABLE: Enable IO co-processor
+
+*Note: This parameter is for advanced users*
+
+This allows for the IO co-processor on boards with an IOMCU to be disabled. Setting to 2 will enable the IOMCU but not attempt to update firmware on startup
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+|2|EnableNoFWUpdate|
+
+- RebootRequired: True
+
+## BRD_SAFETYOPTION: Options for safety button behavior
+
+This controls the activation of the safety button. It allows you to control if the safety button can be used for safety enable and/or disable, and whether the button is only active when disarmed
+
+- Bitmask: 0:ActiveForSafetyDisable,1:ActiveForSafetyEnable,2:ActiveWhenArmed,3:Force safety on when the aircraft disarms
+
+## BRD_VBUS_MIN: Autopilot board voltage requirement
+
+*Note: This parameter is for advanced users*
+
+Minimum voltage on the autopilot power rail to allow the aircraft to arm. 0 to disable the check.
+
+- Units: V
+
+- Range: 4.0 5.5
+
+- Increment: 0.1
+
+## BRD_VSERVO_MIN: Servo voltage requirement
+
+*Note: This parameter is for advanced users*
+
+Minimum voltage on the servo rail to allow the aircraft to arm. 0 to disable the check.
+
+- Units: V
+
+- Range: 3.3 12.0
+
+- Increment: 0.1
+
+## BRD_SD_SLOWDOWN: microSD slowdown
+
+*Note: This parameter is for advanced users*
+
+This is a scaling factor to slow down microSD operation. It can be used on flight board and microSD card combinations where full speed is not reliable. For normal full speed operation a value of 0 should be used.
+
+- Range: 0 32
+
+- Increment: 1
+
+## BRD_PWM_VOLT_SEL: Set PWM Out Voltage
+
+*Note: This parameter is for advanced users*
+
+This sets the voltage max for PWM output pulses. 0 for 3.3V and 1 for 5V output. On boards with an IOMCU that support this parameter this option only affects the 8 main outputs, not the 6 auxiliary outputs. Using 5V output can help to reduce the impact of ESC noise interference corrupting signals to the ESCs.
+
+|Value|Meaning|
+|:---:|:---:|
+|0|3.3V|
+|1|5V|
+
+## BRD_OPTIONS: Board options
+
+*Note: This parameter is for advanced users*
+
+Board specific option flags
+
+- Bitmask: 0:Enable hardware watchdog, 1:Disable MAVftp, 2:Enable set of internal parameters, 3:Enable Debug Pins, 4:Unlock flash on reboot, 5:Write protect firmware flash on reboot, 6:Write protect bootloader flash on reboot, 7:Skip board validation, 8:Disable board arming gpio output change on arm/disarm, 9:Use safety pins as profiled
+
+## BRD_BOOT_DELAY: Boot delay
+
+*Note: This parameter is for advanced users*
+
+This adds a delay in milliseconds to boot to ensure peripherals initialise fully
+
+- Range: 0 10000
+
+- Units: ms
+
+## BRD_HEAT_P: Board Heater P gain
+
+*Note: This parameter is for advanced users*
+
+Board Heater P gain
+
+- Range: 1 500
+
+- Increment: 1
+
+## BRD_HEAT_I: Board Heater I gain
+
+*Note: This parameter is for advanced users*
+
+Board Heater integrator gain
+
+- Range: 0 1
+
+- Increment: 0.1
+
+## BRD_HEAT_IMAX: Board Heater IMAX
+
+*Note: This parameter is for advanced users*
+
+Board Heater integrator maximum
+
+- Range: 0 100
+
+- Increment: 1
+
+## BRD_ALT_CONFIG: Alternative HW config
+
+*Note: This parameter is for advanced users*
+
+Select an alternative hardware configuration. A value of zero selects the default configuration for this board. Other values are board specific. Please see the documentation for your board for details on any alternative configuration values that may be available.
+
+- Range: 0 10
+
+- Increment: 1
+
+- RebootRequired: True
+
+## BRD_HEAT_LOWMGN: Board heater temp lower margin
+
+*Note: This parameter is for advanced users*
+
+Arming check will fail if temp is lower than this margin below BRD_HEAT_TARG. 0 disables the low temperature check
+
+- Range: 0 20
+
+- Units: degC
+
+## BRD_SD_MISSION: SDCard Mission size
+
+*Note: This parameter is for advanced users*
+
+This sets the amount of storage in kilobytes reserved on the microsd card in mission.stg for waypoint storage. Each waypoint uses 15 bytes.
+
+- Range: 0 64
+
+- RebootRequired: True
+
+## BRD_SD_FENCE: SDCard Fence size
+
+*Note: This parameter is for advanced users*
+
+This sets the amount of storage in kilobytes reserved on the microsd card in fence.stg for fence storage.
+
+- Range: 0 64
+
+- RebootRequired: True
+
+## BRD_IO_DSHOT: Load DShot FW on IO
+
+*Note: This parameter is for advanced users*
+
+This loads the DShot firmware on the IO co-processor
+
+|Value|Meaning|
+|:---:|:---:|
+|0|StandardFW|
+|1|DshotFW|
+
+- RebootRequired: True
+
+## BRD_IDLE_STATS: Capture and calculate true CPU load using idle threads
+
+*Note: This parameter is for advanced users*
+
+Capture and calculate true CPU load using idle threads
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disable|
+|1|Enable|
+
+- RebootRequired: True
+
+# BRDRADIO Parameters
+
+## BRD_RADIO_TYPE: Set type of direct attached radio
+
+This enables support for direct attached radio receivers
+
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|1|CYRF6936|
+|2|CC2500|
+|3|BK2425|
+
+## BRD_RADIO_PROT: protocol
+
+*Note: This parameter is for advanced users*
+
+Select air protocol
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Auto|
+|1|DSM2|
+|2|DSMX|
+
+## BRD_RADIO_DEBUG: debug level
+
+*Note: This parameter is for advanced users*
+
+radio debug level
+
+- Range: 0 4
+
+## BRD_RADIO_DISCRC: disable receive CRC
+
+*Note: This parameter is for advanced users*
+
+disable receive CRC (for debug)
+
+|Value|Meaning|
+|:---:|:---:|
+|0|NotDisabled|
+|1|Disabled|
+
+## BRD_RADIO_SIGCH: RSSI signal strength
+
+*Note: This parameter is for advanced users*
+
+Channel to show receive RSSI signal strength, or zero for disabled
+
+- Range: 0 16
+
+## BRD_RADIO_PPSCH: Packet rate channel
+
+*Note: This parameter is for advanced users*
+
+Channel to show received packet-per-second rate, or zero for disabled
+
+- Range: 0 16
+
+## BRD_RADIO_TELEM: Enable telemetry
+
+*Note: This parameter is for advanced users*
+
+If this is non-zero then telemetry packets will be sent over DSM
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## BRD_RADIO_TXPOW: Telemetry Transmit power
+
+*Note: This parameter is for advanced users*
+
+Set telemetry transmit power. This is the power level (from 1 to 8) for telemetry packets sent from the RX to the TX
+
+- Range: 1 8
+
+## BRD_RADIO_FCCTST: Put radio into FCC test mode
+
+*Note: This parameter is for advanced users*
+
+If this is enabled then the radio will continuously transmit as required for FCC testing. The transmit channel is set by the value of the parameter. The radio will not work for RC input while this is enabled
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|MinChannel|
+|2|MidChannel|
+|3|MaxChannel|
+|4|MinChannelCW|
+|5|MidChannelCW|
+|6|MaxChannelCW|
+
+## BRD_RADIO_STKMD: Stick input mode
+
+*Note: This parameter is for advanced users*
+
+This selects between different stick input modes. The default is mode2, which has throttle on the left stick and pitch on the right stick. You can instead set mode1, which has throttle on the right stick and pitch on the left stick.
+
+|Value|Meaning|
+|:---:|:---:|
+|1|Mode1|
+|2|Mode2|
+|3|Mode3|
+|4|Mode4|
+
+## BRD_RADIO_TESTCH: Set radio to factory test channel
+
+*Note: This parameter is for advanced users*
+
+This sets the radio to a fixed test channel for factory testing. Using a fixed channel avoids the need for binding in factory testing.
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|TestChan1|
+|2|TestChan2|
+|3|TestChan3|
+|4|TestChan4|
+|5|TestChan5|
+|6|TestChan6|
+|7|TestChan7|
+|8|TestChan8|
+
+## BRD_RADIO_TSIGCH: RSSI value channel for telemetry data on transmitter
+
+*Note: This parameter is for advanced users*
+
+Channel to show telemetry RSSI value as received by TX
+
+- Range: 0 16
+
+## BRD_RADIO_TPPSCH: Telemetry PPS channel
+
+*Note: This parameter is for advanced users*
+
+Channel to show telemetry packets-per-second value, as received at TX
+
+- Range: 0 16
+
+## BRD_RADIO_TXMAX: Transmitter transmit power
+
+*Note: This parameter is for advanced users*
+
+Set transmitter maximum transmit power (from 1 to 8)
+
+- Range: 1 8
+
+## BRD_RADIO_BZOFS: Transmitter buzzer adjustment
+
+*Note: This parameter is for advanced users*
+
+Set transmitter buzzer note adjustment (adjust frequency up)
+
+- Range: 0 40
+
+## BRD_RADIO_ABTIME: Auto-bind time
+
+*Note: This parameter is for advanced users*
+
+When non-zero this sets the time with no transmitter packets before we start looking for auto-bind packets.
+
+- Range: 0 120
+
+## BRD_RADIO_ABLVL: Auto-bind level
+
+*Note: This parameter is for advanced users*
+
+This sets the minimum RSSI of an auto-bind packet for it to be accepted. This should be set so that auto-bind will only happen at short range to minimise the change of an auto-bind happening accidentially
+
+- Range: 0 31
+
+# BRDRTC Parameters
+
+## BRD_RTC_TYPES: Allowed sources of RTC time
+
+*Note: This parameter is for advanced users*
+
+Specifies which sources of UTC time will be accepted
+
+- Bitmask: 0:GPS,1:MAVLINK_SYSTEM_TIME,2:HW
+
+## BRD_RTC_TZ_MIN: Timezone offset from UTC
+
+*Note: This parameter is for advanced users*
+
+Adds offset in +- minutes from UTC to calculate local time
+
+- Range: -720 +840
+
+# CAN Parameters
+
+## CAN_LOGLEVEL: Loglevel
+
+*Note: This parameter is for advanced users*
+
+Loglevel for recording initialisation and debug information from CAN Interface
+
+- Range: 0 4
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Log None|
+|1|Log Error|
+|2|Log Warning and below|
+|3|Log Info and below|
+|4|Log Everything|
+
+# CAND1 Parameters
+
+## CAN_D1_PROTOCOL: Enable use of specific protocol over virtual driver
+
+*Note: This parameter is for advanced users*
+
+Enabling this option starts selected protocol that will use this virtual driver
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|DroneCAN|
+|4|PiccoloCAN|
+|6|EFI_NWPMU|
+|7|USD1|
+|8|KDECAN|
+|10|Scripting|
+|11|Benewake|
+|12|Scripting2|
+|13|TOFSenseP|
+|14|RadarCAN (NanoRadar/Hexsoon)|
+
+- RebootRequired: True
+
+## CAN_D1_PROTOCOL2: Secondary protocol with 11 bit CAN addressing
+
+*Note: This parameter is for advanced users*
+
+Secondary protocol with 11 bit CAN addressing
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|7|USD1|
+|10|Scripting|
+|11|Benewake|
+|12|Scripting2|
+|13|TOFSenseP|
+|14|RadarCAN (NanoRadar/Hexsoon)|
+
+- RebootRequired: True
+
+# CAND1PC Parameters
+
+## CAN_D1_PC_ESC_BM: ESC channels
+
+*Note: This parameter is for advanced users*
+
+Bitmask defining which ESC (motor) channels are to be transmitted over Piccolo CAN
+
+- Bitmask: 0: ESC 1, 1: ESC 2, 2: ESC 3, 3: ESC 4, 4: ESC 5, 5: ESC 6, 6: ESC 7, 7: ESC 8, 8: ESC 9, 9: ESC 10, 10: ESC 11, 11: ESC 12, 12: ESC 13, 13: ESC 14, 14: ESC 15, 15: ESC 16, 16: ESC 17, 17: ESC 18, 18: ESC 19, 19: ESC 20, 20: ESC 21, 21: ESC 22, 22: ESC 23, 23: ESC 24, 24: ESC 25, 25: ESC 26, 26: ESC 27, 27: ESC 28, 28: ESC 29, 29: ESC 30, 30: ESC 31, 31: ESC 32
+
+## CAN_D1_PC_ESC_RT: ESC output rate
+
+*Note: This parameter is for advanced users*
+
+Output rate of ESC command messages
+
+- Units: Hz
+
+- Range: 1 500
+
+## CAN_D1_PC_SRV_BM: Servo channels
+
+*Note: This parameter is for advanced users*
+
+Bitmask defining which servo channels are to be transmitted over Piccolo CAN
+
+- Bitmask: 0: Servo 1, 1: Servo 2, 2: Servo 3, 3: Servo 4, 4: Servo 5, 5: Servo 6, 6: Servo 7, 7: Servo 8, 8: Servo 9, 9: Servo 10, 10: Servo 11, 11: Servo 12, 12: Servo 13, 13: Servo 14, 14: Servo 15, 15: Servo 16
+
+## CAN_D1_PC_SRV_RT: Servo command output rate
+
+*Note: This parameter is for advanced users*
+
+Output rate of servo command messages
+
+- Units: Hz
+
+- Range: 1 500
+
+## CAN_D1_PC_ECU_ID: ECU Node ID
+
+*Note: This parameter is for advanced users*
+
+Node ID to send ECU throttle messages to. Set to zero to disable ECU throttle messages. Set to 255 to broadcast to all ECUs.
+
+- Range: 0 255
+
+## CAN_D1_PC_ECU_RT: ECU command output rate
+
+*Note: This parameter is for advanced users*
+
+Output rate of ECU command messages
+
+- Units: Hz
+
+- Range: 1 500
+
+# CAND1UC Parameters
+
+## CAN_D1_UC_NODE: Own node ID
+
+*Note: This parameter is for advanced users*
+
+DroneCAN node ID used by the driver itself on this network
+
+- Range: 1 125
+
+## CAN_D1_UC_SRV_BM: Output channels to be transmitted as servo over DroneCAN
+
+Bitmask with one set for channel to be transmitted as a servo command over DroneCAN
+
+- Bitmask: 0: Servo 1, 1: Servo 2, 2: Servo 3, 3: Servo 4, 4: Servo 5, 5: Servo 6, 6: Servo 7, 7: Servo 8, 8: Servo 9, 9: Servo 10, 10: Servo 11, 11: Servo 12, 12: Servo 13, 13: Servo 14, 14: Servo 15, 15: Servo 16, 16: Servo 17, 17: Servo 18, 18: Servo 19, 19: Servo 20, 20: Servo 21, 21: Servo 22, 22: Servo 23, 23: Servo 24, 24: Servo 25, 25: Servo 26, 26: Servo 27, 27: Servo 28, 28: Servo 29, 29: Servo 30, 30: Servo 31, 31: Servo 32
+
+## CAN_D1_UC_ESC_BM: Output channels to be transmitted as ESC over DroneCAN
+
+*Note: This parameter is for advanced users*
+
+Bitmask with one set for channel to be transmitted as a ESC command over DroneCAN
+
+- Bitmask: 0: ESC 1, 1: ESC 2, 2: ESC 3, 3: ESC 4, 4: ESC 5, 5: ESC 6, 6: ESC 7, 7: ESC 8, 8: ESC 9, 9: ESC 10, 10: ESC 11, 11: ESC 12, 12: ESC 13, 13: ESC 14, 14: ESC 15, 15: ESC 16, 16: ESC 17, 17: ESC 18, 18: ESC 19, 19: ESC 20, 20: ESC 21, 21: ESC 22, 22: ESC 23, 23: ESC 24, 24: ESC 25, 25: ESC 26, 26: ESC 27, 27: ESC 28, 28: ESC 29, 29: ESC 30, 30: ESC 31, 31: ESC 32
+
+## CAN_D1_UC_SRV_RT: Servo output rate
+
+*Note: This parameter is for advanced users*
+
+Maximum transmit rate for servo outputs
+
+- Range: 1 200
+
+- Units: Hz
+
+## CAN_D1_UC_OPTION: DroneCAN options
+
+*Note: This parameter is for advanced users*
+
+Option flags
+
+- Bitmask: 0:ClearDNADatabase,1:IgnoreDNANodeConflicts,2:EnableCanfd,3:IgnoreDNANodeUnhealthy,4:SendServoAsPWM,5:SendGNSS,6:UseHimarkServo,7:HobbyWingESC,8:EnableStats,9:EnableFlexDebug,10:SecondaryAllowExtendedFrames
+
+## CAN_D1_UC_NTF_RT: Notify State rate
+
+*Note: This parameter is for advanced users*
+
+Maximum transmit rate for Notify State Message
+
+- Range: 1 200
+
+- Units: Hz
+
+## CAN_D1_UC_ESC_OF: ESC Output channels offset
+
+*Note: This parameter is for advanced users*
+
+Offset for ESC numbering in DroneCAN ESC RawCommand messages. This allows for more efficient packing of ESC command messages. If your ESCs are on servo outputs 5 to 8 and you set this parameter to 4 then the ESC RawCommand will be sent with the first 4 slots filled. This can be used for more efficient usage of CAN bandwidth
+
+- Range: 0 18
+
+## CAN_D1_UC_POOL: CAN pool size
+
+*Note: This parameter is for advanced users*
+
+Amount of memory in bytes to allocate for the DroneCAN memory pool. More memory is needed for higher CAN bus loads
+
+- Range: 1024 16384
+
+## CAN_D1_UC_ESC_RV: Bitmask for output channels for reversible ESCs over DroneCAN.
+
+*Note: This parameter is for advanced users*
+
+Bitmask with one set for each output channel that uses a reversible ESC over DroneCAN. Reversible ESCs use both positive and negative values in RawCommands, with positive commanding the forward direction and negative commanding the reverse direction.
+
+- Bitmask: 0: ESC 1, 1: ESC 2, 2: ESC 3, 3: ESC 4, 4: ESC 5, 5: ESC 6, 6: ESC 7, 7: ESC 8, 8: ESC 9, 9: ESC 10, 10: ESC 11, 11: ESC 12, 12: ESC 13, 13: ESC 14, 14: ESC 15, 15: ESC 16, 16: ESC 17, 17: ESC 18, 18: ESC 19, 19: ESC 20, 20: ESC 21, 21: ESC 22, 22: ESC 23, 23: ESC 24, 24: ESC 25, 25: ESC 26, 26: ESC 27, 27: ESC 28, 28: ESC 29, 29: ESC 30, 30: ESC 31, 31: ESC 32
+
+## CAN_D1_UC_RLY_RT: DroneCAN relay output rate
+
+*Note: This parameter is for advanced users*
+
+Maximum transmit rate for relay outputs, note that this rate is per message each message does 1 relay, so if with more relays will take longer to update at the same rate, a extra message will be sent when a relay changes state
+
+- Range: 0 200
+
+- Units: Hz
+
+## CAN_D1_UC_SER_EN: DroneCAN Serial enable
+
+*Note: This parameter is for advanced users*
+
+Enable DroneCAN virtual serial ports
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+- RebootRequired: True
+
+## CAN_D1_UC_S1_NOD: Serial CAN remote node number
+
+*Note: This parameter is for advanced users*
+
+CAN remote node number for serial port
+
+- Range: 0 127
+
+- RebootRequired: True
+
+## CAN_D1_UC_S1_IDX: DroneCAN Serial1 index
+
+*Note: This parameter is for advanced users*
+
+Serial port number on remote CAN node
+
+- Range: -1 100
+
+|Value|Meaning|
+|:---:|:---:|
+|-1|Disabled|
+|0|Serial0|
+|1|Serial1|
+|2|Serial2|
+|3|Serial3|
+|4|Serial4|
+|5|Serial5|
+|6|Serial6|
+
+- RebootRequired: True
+
+## CAN_D1_UC_S1_BD: DroneCAN Serial default baud rate
+
+*Note: This parameter is for advanced users*
+
+Serial baud rate on remote CAN node
+
+- RebootRequired: True
+
+- Range: 1 20000000
+
+|Value|Meaning|
+|:---:|:---:|
+|1|1200|
+|2|2400|
+|4|4800|
+|9|9600|
+|19|19200|
+|38|38400|
+|57|57600|
+|111|111100|
+|115|115200|
+|230|230400|
+|256|256000|
+|460|460800|
+|500|500000|
+|921|921600|
+|1500|1.5MBaud|
+|2000|2MBaud|
+|12500000|12.5MBaud|
+
+## CAN_D1_UC_S1_PRO: Serial protocol of DroneCAN serial port
+
+*Note: This parameter is for advanced users*
+
+Serial protocol of DroneCAN serial port
+
+- RebootRequired: True
+
+|Value|Meaning|
+|:---:|:---:|
+|-1|None|
+|1|MAVLink1|
+|2|MAVLink2|
+|3|Frsky D|
+|4|Frsky SPort|
+|5|GPS|
+|7|Alexmos Gimbal Serial|
+|8|Gimbal|
+|9|Rangefinder|
+|10|FrSky SPort Passthrough (OpenTX)|
+|11|Lidar360|
+|13|Beacon|
+|14|Volz servo out|
+|15|SBus servo out|
+|16|ESC Telemetry|
+|17|Devo Telemetry|
+|18|OpticalFlow|
+|19|RobotisServo|
+|20|NMEA Output|
+|21|WindVane|
+|22|SLCAN|
+|23|RCIN|
+|24|EFI Serial|
+|25|LTM|
+|26|RunCam|
+|27|HottTelem|
+|28|Scripting|
+|29|Crossfire VTX|
+|30|Generator|
+|31|Winch|
+|32|MSP|
+|33|DJI FPV|
+|34|AirSpeed|
+|35|ADSB|
+|36|AHRS|
+|37|SmartAudio|
+|38|FETtecOneWire|
+|39|Torqeedo|
+|40|AIS|
+|41|CoDevESC|
+|42|DisplayPort|
+|43|MAVLink High Latency|
+|44|IRC Tramp|
+|45|DDS XRCE|
+|46|IMUDATA|
+|48|PPP|
+|49|i-BUS Telemetry|
+|50|IOMCU|
+
+## CAN_D1_UC_S2_NOD: Serial CAN remote node number
+
+*Note: This parameter is for advanced users*
+
+CAN remote node number for serial port
+
+- Range: 0 127
+
+- RebootRequired: True
+
+## CAN_D1_UC_S2_IDX: Serial port number on remote CAN node
+
+*Note: This parameter is for advanced users*
+
+Serial port number on remote CAN node
+
+- Range: -1 100
+
+- RebootRequired: True
+
+|Value|Meaning|
+|:---:|:---:|
+|-1|Disabled|
+|0|Serial0|
+|1|Serial1|
+|2|Serial2|
+|3|Serial3|
+|4|Serial4|
+|5|Serial5|
+|6|Serial6|
+
+## CAN_D1_UC_S2_BD: DroneCAN Serial default baud rate
+
+*Note: This parameter is for advanced users*
+
+Serial baud rate on remote CAN node
+
+- Range: 1 20000000
+
+- RebootRequired: True
+
+|Value|Meaning|
+|:---:|:---:|
+|1|1200|
+|2|2400|
+|4|4800|
+|9|9600|
+|19|19200|
+|38|38400|
+|57|57600|
+|111|111100|
+|115|115200|
+|230|230400|
+|256|256000|
+|460|460800|
+|500|500000|
+|921|921600|
+|1500|1.5MBaud|
+|2000|2MBaud|
+|12500000|12.5MBaud|
+
+## CAN_D1_UC_S2_PRO: Serial protocol of DroneCAN serial port
+
+*Note: This parameter is for advanced users*
+
+Serial protocol of DroneCAN serial port
+
+- RebootRequired: True
+
+|Value|Meaning|
+|:---:|:---:|
+|-1|None|
+|1|MAVLink1|
+|2|MAVLink2|
+|3|Frsky D|
+|4|Frsky SPort|
+|5|GPS|
+|7|Alexmos Gimbal Serial|
+|8|Gimbal|
+|9|Rangefinder|
+|10|FrSky SPort Passthrough (OpenTX)|
+|11|Lidar360|
+|13|Beacon|
+|14|Volz servo out|
+|15|SBus servo out|
+|16|ESC Telemetry|
+|17|Devo Telemetry|
+|18|OpticalFlow|
+|19|RobotisServo|
+|20|NMEA Output|
+|21|WindVane|
+|22|SLCAN|
+|23|RCIN|
+|24|EFI Serial|
+|25|LTM|
+|26|RunCam|
+|27|HottTelem|
+|28|Scripting|
+|29|Crossfire VTX|
+|30|Generator|
+|31|Winch|
+|32|MSP|
+|33|DJI FPV|
+|34|AirSpeed|
+|35|ADSB|
+|36|AHRS|
+|37|SmartAudio|
+|38|FETtecOneWire|
+|39|Torqeedo|
+|40|AIS|
+|41|CoDevESC|
+|42|DisplayPort|
+|43|MAVLink High Latency|
+|44|IRC Tramp|
+|45|DDS XRCE|
+|46|IMUDATA|
+|48|PPP|
+|49|i-BUS Telemetry|
+|50|IOMCU|
+
+## CAN_D1_UC_S3_NOD: Serial CAN remote node number
+
+*Note: This parameter is for advanced users*
+
+CAN node number for serial port
+
+- Range: 0 127
+
+- RebootRequired: True
+
+## CAN_D1_UC_S3_IDX: Serial port number on remote CAN node
+
+*Note: This parameter is for advanced users*
+
+Serial port number on remote CAN node
+
+- Range: -1 100
+
+- RebootRequired: True
+
+|Value|Meaning|
+|:---:|:---:|
+|-1|Disabled|
+|0|Serial0|
+|1|Serial1|
+|2|Serial2|
+|3|Serial3|
+|4|Serial4|
+|5|Serial5|
+|6|Serial6|
+
+## CAN_D1_UC_S3_BD: Serial baud rate on remote CAN node
+
+*Note: This parameter is for advanced users*
+
+Serial baud rate on remote CAN node
+
+- Range: 1 20000000
+
+- RebootRequired: True
+
+|Value|Meaning|
+|:---:|:---:|
+|1|1200|
+|2|2400|
+|4|4800|
+|9|9600|
+|19|19200|
+|38|38400|
+|57|57600|
+|111|111100|
+|115|115200|
+|230|230400|
+|256|256000|
+|460|460800|
+|500|500000|
+|921|921600|
+|1500|1.5MBaud|
+|2000|2MBaud|
+|12500000|12.5MBaud|
+
+## CAN_D1_UC_S3_PRO: Serial protocol of DroneCAN serial port
+
+*Note: This parameter is for advanced users*
+
+Serial protocol of DroneCAN serial port
+
+- RebootRequired: True
+
+|Value|Meaning|
+|:---:|:---:|
+|-1|None|
+|1|MAVLink1|
+|2|MAVLink2|
+|3|Frsky D|
+|4|Frsky SPort|
+|5|GPS|
+|7|Alexmos Gimbal Serial|
+|8|Gimbal|
+|9|Rangefinder|
+|10|FrSky SPort Passthrough (OpenTX)|
+|11|Lidar360|
+|13|Beacon|
+|14|Volz servo out|
+|15|SBus servo out|
+|16|ESC Telemetry|
+|17|Devo Telemetry|
+|18|OpticalFlow|
+|19|RobotisServo|
+|20|NMEA Output|
+|21|WindVane|
+|22|SLCAN|
+|23|RCIN|
+|24|EFI Serial|
+|25|LTM|
+|26|RunCam|
+|27|HottTelem|
+|28|Scripting|
+|29|Crossfire VTX|
+|30|Generator|
+|31|Winch|
+|32|MSP|
+|33|DJI FPV|
+|34|AirSpeed|
+|35|ADSB|
+|36|AHRS|
+|37|SmartAudio|
+|38|FETtecOneWire|
+|39|Torqeedo|
+|40|AIS|
+|41|CoDevESC|
+|42|DisplayPort|
+|43|MAVLink High Latency|
+|44|IRC Tramp|
+|45|DDS XRCE|
+|46|IMUDATA|
+|48|PPP|
+|49|i-BUS Telemetry|
+|50|IOMCU|
+
+# CAND2 Parameters
+
+## CAN_D2_PROTOCOL: Enable use of specific protocol over virtual driver
+
+*Note: This parameter is for advanced users*
+
+Enabling this option starts selected protocol that will use this virtual driver
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|DroneCAN|
+|4|PiccoloCAN|
+|6|EFI_NWPMU|
+|7|USD1|
+|8|KDECAN|
+|10|Scripting|
+|11|Benewake|
+|12|Scripting2|
+|13|TOFSenseP|
+|14|RadarCAN (NanoRadar/Hexsoon)|
+
+- RebootRequired: True
+
+## CAN_D2_PROTOCOL2: Secondary protocol with 11 bit CAN addressing
+
+*Note: This parameter is for advanced users*
+
+Secondary protocol with 11 bit CAN addressing
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|7|USD1|
+|10|Scripting|
+|11|Benewake|
+|12|Scripting2|
+|13|TOFSenseP|
+|14|RadarCAN (NanoRadar/Hexsoon)|
+
+- RebootRequired: True
+
+# CAND2PC Parameters
+
+## CAN_D2_PC_ESC_BM: ESC channels
+
+*Note: This parameter is for advanced users*
+
+Bitmask defining which ESC (motor) channels are to be transmitted over Piccolo CAN
+
+- Bitmask: 0: ESC 1, 1: ESC 2, 2: ESC 3, 3: ESC 4, 4: ESC 5, 5: ESC 6, 6: ESC 7, 7: ESC 8, 8: ESC 9, 9: ESC 10, 10: ESC 11, 11: ESC 12, 12: ESC 13, 13: ESC 14, 14: ESC 15, 15: ESC 16, 16: ESC 17, 17: ESC 18, 18: ESC 19, 19: ESC 20, 20: ESC 21, 21: ESC 22, 22: ESC 23, 23: ESC 24, 24: ESC 25, 25: ESC 26, 26: ESC 27, 27: ESC 28, 28: ESC 29, 29: ESC 30, 30: ESC 31, 31: ESC 32
+
+## CAN_D2_PC_ESC_RT: ESC output rate
+
+*Note: This parameter is for advanced users*
+
+Output rate of ESC command messages
+
+- Units: Hz
+
+- Range: 1 500
+
+## CAN_D2_PC_SRV_BM: Servo channels
+
+*Note: This parameter is for advanced users*
+
+Bitmask defining which servo channels are to be transmitted over Piccolo CAN
+
+- Bitmask: 0: Servo 1, 1: Servo 2, 2: Servo 3, 3: Servo 4, 4: Servo 5, 5: Servo 6, 6: Servo 7, 7: Servo 8, 8: Servo 9, 9: Servo 10, 10: Servo 11, 11: Servo 12, 12: Servo 13, 13: Servo 14, 14: Servo 15, 15: Servo 16
+
+## CAN_D2_PC_SRV_RT: Servo command output rate
+
+*Note: This parameter is for advanced users*
+
+Output rate of servo command messages
+
+- Units: Hz
+
+- Range: 1 500
+
+## CAN_D2_PC_ECU_ID: ECU Node ID
+
+*Note: This parameter is for advanced users*
+
+Node ID to send ECU throttle messages to. Set to zero to disable ECU throttle messages. Set to 255 to broadcast to all ECUs.
+
+- Range: 0 255
+
+## CAN_D2_PC_ECU_RT: ECU command output rate
+
+*Note: This parameter is for advanced users*
+
+Output rate of ECU command messages
+
+- Units: Hz
+
+- Range: 1 500
+
+# CAND2UC Parameters
+
+## CAN_D2_UC_NODE: Own node ID
+
+*Note: This parameter is for advanced users*
+
+DroneCAN node ID used by the driver itself on this network
+
+- Range: 1 125
+
+## CAN_D2_UC_SRV_BM: Output channels to be transmitted as servo over DroneCAN
+
+Bitmask with one set for channel to be transmitted as a servo command over DroneCAN
+
+- Bitmask: 0: Servo 1, 1: Servo 2, 2: Servo 3, 3: Servo 4, 4: Servo 5, 5: Servo 6, 6: Servo 7, 7: Servo 8, 8: Servo 9, 9: Servo 10, 10: Servo 11, 11: Servo 12, 12: Servo 13, 13: Servo 14, 14: Servo 15, 15: Servo 16, 16: Servo 17, 17: Servo 18, 18: Servo 19, 19: Servo 20, 20: Servo 21, 21: Servo 22, 22: Servo 23, 23: Servo 24, 24: Servo 25, 25: Servo 26, 26: Servo 27, 27: Servo 28, 28: Servo 29, 29: Servo 30, 30: Servo 31, 31: Servo 32
+
+## CAN_D2_UC_ESC_BM: Output channels to be transmitted as ESC over DroneCAN
+
+*Note: This parameter is for advanced users*
+
+Bitmask with one set for channel to be transmitted as a ESC command over DroneCAN
+
+- Bitmask: 0: ESC 1, 1: ESC 2, 2: ESC 3, 3: ESC 4, 4: ESC 5, 5: ESC 6, 6: ESC 7, 7: ESC 8, 8: ESC 9, 9: ESC 10, 10: ESC 11, 11: ESC 12, 12: ESC 13, 13: ESC 14, 14: ESC 15, 15: ESC 16, 16: ESC 17, 17: ESC 18, 18: ESC 19, 19: ESC 20, 20: ESC 21, 21: ESC 22, 22: ESC 23, 23: ESC 24, 24: ESC 25, 25: ESC 26, 26: ESC 27, 27: ESC 28, 28: ESC 29, 29: ESC 30, 30: ESC 31, 31: ESC 32
+
+## CAN_D2_UC_SRV_RT: Servo output rate
+
+*Note: This parameter is for advanced users*
+
+Maximum transmit rate for servo outputs
+
+- Range: 1 200
+
+- Units: Hz
+
+## CAN_D2_UC_OPTION: DroneCAN options
+
+*Note: This parameter is for advanced users*
+
+Option flags
+
+- Bitmask: 0:ClearDNADatabase,1:IgnoreDNANodeConflicts,2:EnableCanfd,3:IgnoreDNANodeUnhealthy,4:SendServoAsPWM,5:SendGNSS,6:UseHimarkServo,7:HobbyWingESC,8:EnableStats,9:EnableFlexDebug,10:SecondaryAllowExtendedFrames
+
+## CAN_D2_UC_NTF_RT: Notify State rate
+
+*Note: This parameter is for advanced users*
+
+Maximum transmit rate for Notify State Message
+
+- Range: 1 200
+
+- Units: Hz
+
+## CAN_D2_UC_ESC_OF: ESC Output channels offset
+
+*Note: This parameter is for advanced users*
+
+Offset for ESC numbering in DroneCAN ESC RawCommand messages. This allows for more efficient packing of ESC command messages. If your ESCs are on servo outputs 5 to 8 and you set this parameter to 4 then the ESC RawCommand will be sent with the first 4 slots filled. This can be used for more efficient usage of CAN bandwidth
+
+- Range: 0 18
+
+## CAN_D2_UC_POOL: CAN pool size
+
+*Note: This parameter is for advanced users*
+
+Amount of memory in bytes to allocate for the DroneCAN memory pool. More memory is needed for higher CAN bus loads
+
+- Range: 1024 16384
+
+## CAN_D2_UC_ESC_RV: Bitmask for output channels for reversible ESCs over DroneCAN.
+
+*Note: This parameter is for advanced users*
+
+Bitmask with one set for each output channel that uses a reversible ESC over DroneCAN. Reversible ESCs use both positive and negative values in RawCommands, with positive commanding the forward direction and negative commanding the reverse direction.
+
+- Bitmask: 0: ESC 1, 1: ESC 2, 2: ESC 3, 3: ESC 4, 4: ESC 5, 5: ESC 6, 6: ESC 7, 7: ESC 8, 8: ESC 9, 9: ESC 10, 10: ESC 11, 11: ESC 12, 12: ESC 13, 13: ESC 14, 14: ESC 15, 15: ESC 16, 16: ESC 17, 17: ESC 18, 18: ESC 19, 19: ESC 20, 20: ESC 21, 21: ESC 22, 22: ESC 23, 23: ESC 24, 24: ESC 25, 25: ESC 26, 26: ESC 27, 27: ESC 28, 28: ESC 29, 29: ESC 30, 30: ESC 31, 31: ESC 32
+
+## CAN_D2_UC_RLY_RT: DroneCAN relay output rate
+
+*Note: This parameter is for advanced users*
+
+Maximum transmit rate for relay outputs, note that this rate is per message each message does 1 relay, so if with more relays will take longer to update at the same rate, a extra message will be sent when a relay changes state
+
+- Range: 0 200
+
+- Units: Hz
+
+## CAN_D2_UC_SER_EN: DroneCAN Serial enable
+
+*Note: This parameter is for advanced users*
+
+Enable DroneCAN virtual serial ports
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+- RebootRequired: True
+
+## CAN_D2_UC_S1_NOD: Serial CAN remote node number
+
+*Note: This parameter is for advanced users*
+
+CAN remote node number for serial port
+
+- Range: 0 127
+
+- RebootRequired: True
+
+## CAN_D2_UC_S1_IDX: DroneCAN Serial1 index
+
+*Note: This parameter is for advanced users*
+
+Serial port number on remote CAN node
+
+- Range: -1 100
+
+|Value|Meaning|
+|:---:|:---:|
+|-1|Disabled|
+|0|Serial0|
+|1|Serial1|
+|2|Serial2|
+|3|Serial3|
+|4|Serial4|
+|5|Serial5|
+|6|Serial6|
+
+- RebootRequired: True
+
+## CAN_D2_UC_S1_BD: DroneCAN Serial default baud rate
+
+*Note: This parameter is for advanced users*
+
+Serial baud rate on remote CAN node
+
+- RebootRequired: True
+
+- Range: 1 20000000
+
+|Value|Meaning|
+|:---:|:---:|
+|1|1200|
+|2|2400|
+|4|4800|
+|9|9600|
+|19|19200|
+|38|38400|
+|57|57600|
+|111|111100|
+|115|115200|
+|230|230400|
+|256|256000|
+|460|460800|
+|500|500000|
+|921|921600|
+|1500|1.5MBaud|
+|2000|2MBaud|
+|12500000|12.5MBaud|
+
+## CAN_D2_UC_S1_PRO: Serial protocol of DroneCAN serial port
+
+*Note: This parameter is for advanced users*
+
+Serial protocol of DroneCAN serial port
+
+- RebootRequired: True
+
+|Value|Meaning|
+|:---:|:---:|
+|-1|None|
+|1|MAVLink1|
+|2|MAVLink2|
+|3|Frsky D|
+|4|Frsky SPort|
+|5|GPS|
+|7|Alexmos Gimbal Serial|
+|8|Gimbal|
+|9|Rangefinder|
+|10|FrSky SPort Passthrough (OpenTX)|
+|11|Lidar360|
+|13|Beacon|
+|14|Volz servo out|
+|15|SBus servo out|
+|16|ESC Telemetry|
+|17|Devo Telemetry|
+|18|OpticalFlow|
+|19|RobotisServo|
+|20|NMEA Output|
+|21|WindVane|
+|22|SLCAN|
+|23|RCIN|
+|24|EFI Serial|
+|25|LTM|
+|26|RunCam|
+|27|HottTelem|
+|28|Scripting|
+|29|Crossfire VTX|
+|30|Generator|
+|31|Winch|
+|32|MSP|
+|33|DJI FPV|
+|34|AirSpeed|
+|35|ADSB|
+|36|AHRS|
+|37|SmartAudio|
+|38|FETtecOneWire|
+|39|Torqeedo|
+|40|AIS|
+|41|CoDevESC|
+|42|DisplayPort|
+|43|MAVLink High Latency|
+|44|IRC Tramp|
+|45|DDS XRCE|
+|46|IMUDATA|
+|48|PPP|
+|49|i-BUS Telemetry|
+|50|IOMCU|
+
+## CAN_D2_UC_S2_NOD: Serial CAN remote node number
+
+*Note: This parameter is for advanced users*
+
+CAN remote node number for serial port
+
+- Range: 0 127
+
+- RebootRequired: True
+
+## CAN_D2_UC_S2_IDX: Serial port number on remote CAN node
+
+*Note: This parameter is for advanced users*
+
+Serial port number on remote CAN node
+
+- Range: -1 100
+
+- RebootRequired: True
+
+|Value|Meaning|
+|:---:|:---:|
+|-1|Disabled|
+|0|Serial0|
+|1|Serial1|
+|2|Serial2|
+|3|Serial3|
+|4|Serial4|
+|5|Serial5|
+|6|Serial6|
+
+## CAN_D2_UC_S2_BD: DroneCAN Serial default baud rate
+
+*Note: This parameter is for advanced users*
+
+Serial baud rate on remote CAN node
+
+- Range: 1 20000000
+
+- RebootRequired: True
+
+|Value|Meaning|
+|:---:|:---:|
+|1|1200|
+|2|2400|
+|4|4800|
+|9|9600|
+|19|19200|
+|38|38400|
+|57|57600|
+|111|111100|
+|115|115200|
+|230|230400|
+|256|256000|
+|460|460800|
+|500|500000|
+|921|921600|
+|1500|1.5MBaud|
+|2000|2MBaud|
+|12500000|12.5MBaud|
+
+## CAN_D2_UC_S2_PRO: Serial protocol of DroneCAN serial port
+
+*Note: This parameter is for advanced users*
+
+Serial protocol of DroneCAN serial port
+
+- RebootRequired: True
+
+|Value|Meaning|
+|:---:|:---:|
+|-1|None|
+|1|MAVLink1|
+|2|MAVLink2|
+|3|Frsky D|
+|4|Frsky SPort|
+|5|GPS|
+|7|Alexmos Gimbal Serial|
+|8|Gimbal|
+|9|Rangefinder|
+|10|FrSky SPort Passthrough (OpenTX)|
+|11|Lidar360|
+|13|Beacon|
+|14|Volz servo out|
+|15|SBus servo out|
+|16|ESC Telemetry|
+|17|Devo Telemetry|
+|18|OpticalFlow|
+|19|RobotisServo|
+|20|NMEA Output|
+|21|WindVane|
+|22|SLCAN|
+|23|RCIN|
+|24|EFI Serial|
+|25|LTM|
+|26|RunCam|
+|27|HottTelem|
+|28|Scripting|
+|29|Crossfire VTX|
+|30|Generator|
+|31|Winch|
+|32|MSP|
+|33|DJI FPV|
+|34|AirSpeed|
+|35|ADSB|
+|36|AHRS|
+|37|SmartAudio|
+|38|FETtecOneWire|
+|39|Torqeedo|
+|40|AIS|
+|41|CoDevESC|
+|42|DisplayPort|
+|43|MAVLink High Latency|
+|44|IRC Tramp|
+|45|DDS XRCE|
+|46|IMUDATA|
+|48|PPP|
+|49|i-BUS Telemetry|
+|50|IOMCU|
+
+## CAN_D2_UC_S3_NOD: Serial CAN remote node number
+
+*Note: This parameter is for advanced users*
+
+CAN node number for serial port
+
+- Range: 0 127
+
+- RebootRequired: True
+
+## CAN_D2_UC_S3_IDX: Serial port number on remote CAN node
+
+*Note: This parameter is for advanced users*
+
+Serial port number on remote CAN node
+
+- Range: -1 100
+
+- RebootRequired: True
+
+|Value|Meaning|
+|:---:|:---:|
+|-1|Disabled|
+|0|Serial0|
+|1|Serial1|
+|2|Serial2|
+|3|Serial3|
+|4|Serial4|
+|5|Serial5|
+|6|Serial6|
+
+## CAN_D2_UC_S3_BD: Serial baud rate on remote CAN node
+
+*Note: This parameter is for advanced users*
+
+Serial baud rate on remote CAN node
+
+- Range: 1 20000000
+
+- RebootRequired: True
+
+|Value|Meaning|
+|:---:|:---:|
+|1|1200|
+|2|2400|
+|4|4800|
+|9|9600|
+|19|19200|
+|38|38400|
+|57|57600|
+|111|111100|
+|115|115200|
+|230|230400|
+|256|256000|
+|460|460800|
+|500|500000|
+|921|921600|
+|1500|1.5MBaud|
+|2000|2MBaud|
+|12500000|12.5MBaud|
+
+## CAN_D2_UC_S3_PRO: Serial protocol of DroneCAN serial port
+
+*Note: This parameter is for advanced users*
+
+Serial protocol of DroneCAN serial port
+
+- RebootRequired: True
+
+|Value|Meaning|
+|:---:|:---:|
+|-1|None|
+|1|MAVLink1|
+|2|MAVLink2|
+|3|Frsky D|
+|4|Frsky SPort|
+|5|GPS|
+|7|Alexmos Gimbal Serial|
+|8|Gimbal|
+|9|Rangefinder|
+|10|FrSky SPort Passthrough (OpenTX)|
+|11|Lidar360|
+|13|Beacon|
+|14|Volz servo out|
+|15|SBus servo out|
+|16|ESC Telemetry|
+|17|Devo Telemetry|
+|18|OpticalFlow|
+|19|RobotisServo|
+|20|NMEA Output|
+|21|WindVane|
+|22|SLCAN|
+|23|RCIN|
+|24|EFI Serial|
+|25|LTM|
+|26|RunCam|
+|27|HottTelem|
+|28|Scripting|
+|29|Crossfire VTX|
+|30|Generator|
+|31|Winch|
+|32|MSP|
+|33|DJI FPV|
+|34|AirSpeed|
+|35|ADSB|
+|36|AHRS|
+|37|SmartAudio|
+|38|FETtecOneWire|
+|39|Torqeedo|
+|40|AIS|
+|41|CoDevESC|
+|42|DisplayPort|
+|43|MAVLink High Latency|
+|44|IRC Tramp|
+|45|DDS XRCE|
+|46|IMUDATA|
+|48|PPP|
+|49|i-BUS Telemetry|
+|50|IOMCU|
+
+# CAND3 Parameters
+
+## CAN_D3_PROTOCOL: Enable use of specific protocol over virtual driver
+
+*Note: This parameter is for advanced users*
+
+Enabling this option starts selected protocol that will use this virtual driver
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|DroneCAN|
+|4|PiccoloCAN|
+|6|EFI_NWPMU|
+|7|USD1|
+|8|KDECAN|
+|10|Scripting|
+|11|Benewake|
+|12|Scripting2|
+|13|TOFSenseP|
+|14|RadarCAN (NanoRadar/Hexsoon)|
+
+- RebootRequired: True
+
+## CAN_D3_PROTOCOL2: Secondary protocol with 11 bit CAN addressing
+
+*Note: This parameter is for advanced users*
+
+Secondary protocol with 11 bit CAN addressing
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|7|USD1|
+|10|Scripting|
+|11|Benewake|
+|12|Scripting2|
+|13|TOFSenseP|
+|14|RadarCAN (NanoRadar/Hexsoon)|
+
+- RebootRequired: True
+
+# CAND3PC Parameters
+
+## CAN_D3_PC_ESC_BM: ESC channels
+
+*Note: This parameter is for advanced users*
+
+Bitmask defining which ESC (motor) channels are to be transmitted over Piccolo CAN
+
+- Bitmask: 0: ESC 1, 1: ESC 2, 2: ESC 3, 3: ESC 4, 4: ESC 5, 5: ESC 6, 6: ESC 7, 7: ESC 8, 8: ESC 9, 9: ESC 10, 10: ESC 11, 11: ESC 12, 12: ESC 13, 13: ESC 14, 14: ESC 15, 15: ESC 16, 16: ESC 17, 17: ESC 18, 18: ESC 19, 19: ESC 20, 20: ESC 21, 21: ESC 22, 22: ESC 23, 23: ESC 24, 24: ESC 25, 25: ESC 26, 26: ESC 27, 27: ESC 28, 28: ESC 29, 29: ESC 30, 30: ESC 31, 31: ESC 32
+
+## CAN_D3_PC_ESC_RT: ESC output rate
+
+*Note: This parameter is for advanced users*
+
+Output rate of ESC command messages
+
+- Units: Hz
+
+- Range: 1 500
+
+## CAN_D3_PC_SRV_BM: Servo channels
+
+*Note: This parameter is for advanced users*
+
+Bitmask defining which servo channels are to be transmitted over Piccolo CAN
+
+- Bitmask: 0: Servo 1, 1: Servo 2, 2: Servo 3, 3: Servo 4, 4: Servo 5, 5: Servo 6, 6: Servo 7, 7: Servo 8, 8: Servo 9, 9: Servo 10, 10: Servo 11, 11: Servo 12, 12: Servo 13, 13: Servo 14, 14: Servo 15, 15: Servo 16
+
+## CAN_D3_PC_SRV_RT: Servo command output rate
+
+*Note: This parameter is for advanced users*
+
+Output rate of servo command messages
+
+- Units: Hz
+
+- Range: 1 500
+
+## CAN_D3_PC_ECU_ID: ECU Node ID
+
+*Note: This parameter is for advanced users*
+
+Node ID to send ECU throttle messages to. Set to zero to disable ECU throttle messages. Set to 255 to broadcast to all ECUs.
+
+- Range: 0 255
+
+## CAN_D3_PC_ECU_RT: ECU command output rate
+
+*Note: This parameter is for advanced users*
+
+Output rate of ECU command messages
+
+- Units: Hz
+
+- Range: 1 500
+
+# CAND3UC Parameters
+
+## CAN_D3_UC_NODE: Own node ID
+
+*Note: This parameter is for advanced users*
+
+DroneCAN node ID used by the driver itself on this network
+
+- Range: 1 125
+
+## CAN_D3_UC_SRV_BM: Output channels to be transmitted as servo over DroneCAN
+
+Bitmask with one set for channel to be transmitted as a servo command over DroneCAN
+
+- Bitmask: 0: Servo 1, 1: Servo 2, 2: Servo 3, 3: Servo 4, 4: Servo 5, 5: Servo 6, 6: Servo 7, 7: Servo 8, 8: Servo 9, 9: Servo 10, 10: Servo 11, 11: Servo 12, 12: Servo 13, 13: Servo 14, 14: Servo 15, 15: Servo 16, 16: Servo 17, 17: Servo 18, 18: Servo 19, 19: Servo 20, 20: Servo 21, 21: Servo 22, 22: Servo 23, 23: Servo 24, 24: Servo 25, 25: Servo 26, 26: Servo 27, 27: Servo 28, 28: Servo 29, 29: Servo 30, 30: Servo 31, 31: Servo 32
+
+## CAN_D3_UC_ESC_BM: Output channels to be transmitted as ESC over DroneCAN
+
+*Note: This parameter is for advanced users*
+
+Bitmask with one set for channel to be transmitted as a ESC command over DroneCAN
+
+- Bitmask: 0: ESC 1, 1: ESC 2, 2: ESC 3, 3: ESC 4, 4: ESC 5, 5: ESC 6, 6: ESC 7, 7: ESC 8, 8: ESC 9, 9: ESC 10, 10: ESC 11, 11: ESC 12, 12: ESC 13, 13: ESC 14, 14: ESC 15, 15: ESC 16, 16: ESC 17, 17: ESC 18, 18: ESC 19, 19: ESC 20, 20: ESC 21, 21: ESC 22, 22: ESC 23, 23: ESC 24, 24: ESC 25, 25: ESC 26, 26: ESC 27, 27: ESC 28, 28: ESC 29, 29: ESC 30, 30: ESC 31, 31: ESC 32
+
+## CAN_D3_UC_SRV_RT: Servo output rate
+
+*Note: This parameter is for advanced users*
+
+Maximum transmit rate for servo outputs
+
+- Range: 1 200
+
+- Units: Hz
+
+## CAN_D3_UC_OPTION: DroneCAN options
+
+*Note: This parameter is for advanced users*
+
+Option flags
+
+- Bitmask: 0:ClearDNADatabase,1:IgnoreDNANodeConflicts,2:EnableCanfd,3:IgnoreDNANodeUnhealthy,4:SendServoAsPWM,5:SendGNSS,6:UseHimarkServo,7:HobbyWingESC,8:EnableStats,9:EnableFlexDebug,10:SecondaryAllowExtendedFrames
+
+## CAN_D3_UC_NTF_RT: Notify State rate
+
+*Note: This parameter is for advanced users*
+
+Maximum transmit rate for Notify State Message
+
+- Range: 1 200
+
+- Units: Hz
+
+## CAN_D3_UC_ESC_OF: ESC Output channels offset
+
+*Note: This parameter is for advanced users*
+
+Offset for ESC numbering in DroneCAN ESC RawCommand messages. This allows for more efficient packing of ESC command messages. If your ESCs are on servo outputs 5 to 8 and you set this parameter to 4 then the ESC RawCommand will be sent with the first 4 slots filled. This can be used for more efficient usage of CAN bandwidth
+
+- Range: 0 18
+
+## CAN_D3_UC_POOL: CAN pool size
+
+*Note: This parameter is for advanced users*
+
+Amount of memory in bytes to allocate for the DroneCAN memory pool. More memory is needed for higher CAN bus loads
+
+- Range: 1024 16384
+
+## CAN_D3_UC_ESC_RV: Bitmask for output channels for reversible ESCs over DroneCAN.
+
+*Note: This parameter is for advanced users*
+
+Bitmask with one set for each output channel that uses a reversible ESC over DroneCAN. Reversible ESCs use both positive and negative values in RawCommands, with positive commanding the forward direction and negative commanding the reverse direction.
+
+- Bitmask: 0: ESC 1, 1: ESC 2, 2: ESC 3, 3: ESC 4, 4: ESC 5, 5: ESC 6, 6: ESC 7, 7: ESC 8, 8: ESC 9, 9: ESC 10, 10: ESC 11, 11: ESC 12, 12: ESC 13, 13: ESC 14, 14: ESC 15, 15: ESC 16, 16: ESC 17, 17: ESC 18, 18: ESC 19, 19: ESC 20, 20: ESC 21, 21: ESC 22, 22: ESC 23, 23: ESC 24, 24: ESC 25, 25: ESC 26, 26: ESC 27, 27: ESC 28, 28: ESC 29, 29: ESC 30, 30: ESC 31, 31: ESC 32
+
+## CAN_D3_UC_RLY_RT: DroneCAN relay output rate
+
+*Note: This parameter is for advanced users*
+
+Maximum transmit rate for relay outputs, note that this rate is per message each message does 1 relay, so if with more relays will take longer to update at the same rate, a extra message will be sent when a relay changes state
+
+- Range: 0 200
+
+- Units: Hz
+
+## CAN_D3_UC_SER_EN: DroneCAN Serial enable
+
+*Note: This parameter is for advanced users*
+
+Enable DroneCAN virtual serial ports
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+- RebootRequired: True
+
+## CAN_D3_UC_S1_NOD: Serial CAN remote node number
+
+*Note: This parameter is for advanced users*
+
+CAN remote node number for serial port
+
+- Range: 0 127
+
+- RebootRequired: True
+
+## CAN_D3_UC_S1_IDX: DroneCAN Serial1 index
+
+*Note: This parameter is for advanced users*
+
+Serial port number on remote CAN node
+
+- Range: -1 100
+
+|Value|Meaning|
+|:---:|:---:|
+|-1|Disabled|
+|0|Serial0|
+|1|Serial1|
+|2|Serial2|
+|3|Serial3|
+|4|Serial4|
+|5|Serial5|
+|6|Serial6|
+
+- RebootRequired: True
+
+## CAN_D3_UC_S1_BD: DroneCAN Serial default baud rate
+
+*Note: This parameter is for advanced users*
+
+Serial baud rate on remote CAN node
+
+- RebootRequired: True
+
+- Range: 1 20000000
+
+|Value|Meaning|
+|:---:|:---:|
+|1|1200|
+|2|2400|
+|4|4800|
+|9|9600|
+|19|19200|
+|38|38400|
+|57|57600|
+|111|111100|
+|115|115200|
+|230|230400|
+|256|256000|
+|460|460800|
+|500|500000|
+|921|921600|
+|1500|1.5MBaud|
+|2000|2MBaud|
+|12500000|12.5MBaud|
+
+## CAN_D3_UC_S1_PRO: Serial protocol of DroneCAN serial port
+
+*Note: This parameter is for advanced users*
+
+Serial protocol of DroneCAN serial port
+
+- RebootRequired: True
+
+|Value|Meaning|
+|:---:|:---:|
+|-1|None|
+|1|MAVLink1|
+|2|MAVLink2|
+|3|Frsky D|
+|4|Frsky SPort|
+|5|GPS|
+|7|Alexmos Gimbal Serial|
+|8|Gimbal|
+|9|Rangefinder|
+|10|FrSky SPort Passthrough (OpenTX)|
+|11|Lidar360|
+|13|Beacon|
+|14|Volz servo out|
+|15|SBus servo out|
+|16|ESC Telemetry|
+|17|Devo Telemetry|
+|18|OpticalFlow|
+|19|RobotisServo|
+|20|NMEA Output|
+|21|WindVane|
+|22|SLCAN|
+|23|RCIN|
+|24|EFI Serial|
+|25|LTM|
+|26|RunCam|
+|27|HottTelem|
+|28|Scripting|
+|29|Crossfire VTX|
+|30|Generator|
+|31|Winch|
+|32|MSP|
+|33|DJI FPV|
+|34|AirSpeed|
+|35|ADSB|
+|36|AHRS|
+|37|SmartAudio|
+|38|FETtecOneWire|
+|39|Torqeedo|
+|40|AIS|
+|41|CoDevESC|
+|42|DisplayPort|
+|43|MAVLink High Latency|
+|44|IRC Tramp|
+|45|DDS XRCE|
+|46|IMUDATA|
+|48|PPP|
+|49|i-BUS Telemetry|
+|50|IOMCU|
+
+## CAN_D3_UC_S2_NOD: Serial CAN remote node number
+
+*Note: This parameter is for advanced users*
+
+CAN remote node number for serial port
+
+- Range: 0 127
+
+- RebootRequired: True
+
+## CAN_D3_UC_S2_IDX: Serial port number on remote CAN node
+
+*Note: This parameter is for advanced users*
+
+Serial port number on remote CAN node
+
+- Range: -1 100
+
+- RebootRequired: True
+
+|Value|Meaning|
+|:---:|:---:|
+|-1|Disabled|
+|0|Serial0|
+|1|Serial1|
+|2|Serial2|
+|3|Serial3|
+|4|Serial4|
+|5|Serial5|
+|6|Serial6|
+
+## CAN_D3_UC_S2_BD: DroneCAN Serial default baud rate
+
+*Note: This parameter is for advanced users*
+
+Serial baud rate on remote CAN node
+
+- Range: 1 20000000
+
+- RebootRequired: True
+
+|Value|Meaning|
+|:---:|:---:|
+|1|1200|
+|2|2400|
+|4|4800|
+|9|9600|
+|19|19200|
+|38|38400|
+|57|57600|
+|111|111100|
+|115|115200|
+|230|230400|
+|256|256000|
+|460|460800|
+|500|500000|
+|921|921600|
+|1500|1.5MBaud|
+|2000|2MBaud|
+|12500000|12.5MBaud|
+
+## CAN_D3_UC_S2_PRO: Serial protocol of DroneCAN serial port
+
+*Note: This parameter is for advanced users*
+
+Serial protocol of DroneCAN serial port
+
+- RebootRequired: True
+
+|Value|Meaning|
+|:---:|:---:|
+|-1|None|
+|1|MAVLink1|
+|2|MAVLink2|
+|3|Frsky D|
+|4|Frsky SPort|
+|5|GPS|
+|7|Alexmos Gimbal Serial|
+|8|Gimbal|
+|9|Rangefinder|
+|10|FrSky SPort Passthrough (OpenTX)|
+|11|Lidar360|
+|13|Beacon|
+|14|Volz servo out|
+|15|SBus servo out|
+|16|ESC Telemetry|
+|17|Devo Telemetry|
+|18|OpticalFlow|
+|19|RobotisServo|
+|20|NMEA Output|
+|21|WindVane|
+|22|SLCAN|
+|23|RCIN|
+|24|EFI Serial|
+|25|LTM|
+|26|RunCam|
+|27|HottTelem|
+|28|Scripting|
+|29|Crossfire VTX|
+|30|Generator|
+|31|Winch|
+|32|MSP|
+|33|DJI FPV|
+|34|AirSpeed|
+|35|ADSB|
+|36|AHRS|
+|37|SmartAudio|
+|38|FETtecOneWire|
+|39|Torqeedo|
+|40|AIS|
+|41|CoDevESC|
+|42|DisplayPort|
+|43|MAVLink High Latency|
+|44|IRC Tramp|
+|45|DDS XRCE|
+|46|IMUDATA|
+|48|PPP|
+|49|i-BUS Telemetry|
+|50|IOMCU|
+
+## CAN_D3_UC_S3_NOD: Serial CAN remote node number
+
+*Note: This parameter is for advanced users*
+
+CAN node number for serial port
+
+- Range: 0 127
+
+- RebootRequired: True
+
+## CAN_D3_UC_S3_IDX: Serial port number on remote CAN node
+
+*Note: This parameter is for advanced users*
+
+Serial port number on remote CAN node
+
+- Range: -1 100
+
+- RebootRequired: True
+
+|Value|Meaning|
+|:---:|:---:|
+|-1|Disabled|
+|0|Serial0|
+|1|Serial1|
+|2|Serial2|
+|3|Serial3|
+|4|Serial4|
+|5|Serial5|
+|6|Serial6|
+
+## CAN_D3_UC_S3_BD: Serial baud rate on remote CAN node
+
+*Note: This parameter is for advanced users*
+
+Serial baud rate on remote CAN node
+
+- Range: 1 20000000
+
+- RebootRequired: True
+
+|Value|Meaning|
+|:---:|:---:|
+|1|1200|
+|2|2400|
+|4|4800|
+|9|9600|
+|19|19200|
+|38|38400|
+|57|57600|
+|111|111100|
+|115|115200|
+|230|230400|
+|256|256000|
+|460|460800|
+|500|500000|
+|921|921600|
+|1500|1.5MBaud|
+|2000|2MBaud|
+|12500000|12.5MBaud|
+
+## CAN_D3_UC_S3_PRO: Serial protocol of DroneCAN serial port
+
+*Note: This parameter is for advanced users*
+
+Serial protocol of DroneCAN serial port
+
+- RebootRequired: True
+
+|Value|Meaning|
+|:---:|:---:|
+|-1|None|
+|1|MAVLink1|
+|2|MAVLink2|
+|3|Frsky D|
+|4|Frsky SPort|
+|5|GPS|
+|7|Alexmos Gimbal Serial|
+|8|Gimbal|
+|9|Rangefinder|
+|10|FrSky SPort Passthrough (OpenTX)|
+|11|Lidar360|
+|13|Beacon|
+|14|Volz servo out|
+|15|SBus servo out|
+|16|ESC Telemetry|
+|17|Devo Telemetry|
+|18|OpticalFlow|
+|19|RobotisServo|
+|20|NMEA Output|
+|21|WindVane|
+|22|SLCAN|
+|23|RCIN|
+|24|EFI Serial|
+|25|LTM|
+|26|RunCam|
+|27|HottTelem|
+|28|Scripting|
+|29|Crossfire VTX|
+|30|Generator|
+|31|Winch|
+|32|MSP|
+|33|DJI FPV|
+|34|AirSpeed|
+|35|ADSB|
+|36|AHRS|
+|37|SmartAudio|
+|38|FETtecOneWire|
+|39|Torqeedo|
+|40|AIS|
+|41|CoDevESC|
+|42|DisplayPort|
+|43|MAVLink High Latency|
+|44|IRC Tramp|
+|45|DDS XRCE|
+|46|IMUDATA|
+|48|PPP|
+|49|i-BUS Telemetry|
+|50|IOMCU|
+
+# CANP1 Parameters
+
+## CAN_P1_DRIVER: Index of virtual driver to be used with physical CAN interface
+
+Enabling this option enables use of CAN buses.
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|First driver|
+|2|Second driver|
+|3|Third driver|
+
+- RebootRequired: True
+
+## CAN_P1_BITRATE: Bitrate of CAN interface
+
+*Note: This parameter is for advanced users*
+
+Bit rate can be set up to from 10000 to 1000000
+
+- Range: 10000 1000000
+
+## CAN_P1_FDBITRATE: Bitrate of CANFD interface
+
+*Note: This parameter is for advanced users*
+
+Bit rate can be set up to from 1000000 to 8000000
+
+|Value|Meaning|
+|:---:|:---:|
+|1|1M|
+|2|2M|
+|4|4M|
+|5|5M|
+|8|8M|
+
+## CAN_P1_OPTIONS: CAN per-interface options
+
+*Note: This parameter is for advanced users*
+
+CAN per-interface options
+
+- Bitmask: 0:LogAllFrames
+
+# CANP2 Parameters
+
+## CAN_P2_DRIVER: Index of virtual driver to be used with physical CAN interface
+
+Enabling this option enables use of CAN buses.
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|First driver|
+|2|Second driver|
+|3|Third driver|
+
+- RebootRequired: True
+
+## CAN_P2_BITRATE: Bitrate of CAN interface
+
+*Note: This parameter is for advanced users*
+
+Bit rate can be set up to from 10000 to 1000000
+
+- Range: 10000 1000000
+
+## CAN_P2_FDBITRATE: Bitrate of CANFD interface
+
+*Note: This parameter is for advanced users*
+
+Bit rate can be set up to from 1000000 to 8000000
+
+|Value|Meaning|
+|:---:|:---:|
+|1|1M|
+|2|2M|
+|4|4M|
+|5|5M|
+|8|8M|
+
+## CAN_P2_OPTIONS: CAN per-interface options
+
+*Note: This parameter is for advanced users*
+
+CAN per-interface options
+
+- Bitmask: 0:LogAllFrames
+
+# CANP3 Parameters
+
+## CAN_P3_DRIVER: Index of virtual driver to be used with physical CAN interface
+
+Enabling this option enables use of CAN buses.
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|First driver|
+|2|Second driver|
+|3|Third driver|
+
+- RebootRequired: True
+
+## CAN_P3_BITRATE: Bitrate of CAN interface
+
+*Note: This parameter is for advanced users*
+
+Bit rate can be set up to from 10000 to 1000000
+
+- Range: 10000 1000000
+
+## CAN_P3_FDBITRATE: Bitrate of CANFD interface
+
+*Note: This parameter is for advanced users*
+
+Bit rate can be set up to from 1000000 to 8000000
+
+|Value|Meaning|
+|:---:|:---:|
+|1|1M|
+|2|2M|
+|4|4M|
+|5|5M|
+|8|8M|
+
+## CAN_P3_OPTIONS: CAN per-interface options
+
+*Note: This parameter is for advanced users*
+
+CAN per-interface options
+
+- Bitmask: 0:LogAllFrames
+
+# CANSLCAN Parameters
+
+## CAN_SLCAN_CPORT: SLCAN Route
+
+CAN Interface ID to be routed to SLCAN, 0 means no routing
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|First interface|
+|2|Second interface|
+
+- RebootRequired: True
+
+## CAN_SLCAN_SERNUM: SLCAN Serial Port
+
+Serial Port ID to be used for temporary SLCAN iface, -1 means no temporary serial. This parameter is automatically reset on reboot or on timeout. See CAN_SLCAN_TIMOUT for timeout details
+
+|Value|Meaning|
+|:---:|:---:|
+|-1|Disabled|
+|0|Serial0|
+|1|Serial1|
+|2|Serial2|
+|3|Serial3|
+|4|Serial4|
+|5|Serial5|
+|6|Serial6|
+
+## CAN_SLCAN_TIMOUT: SLCAN Timeout
+
+Duration of inactivity after which SLCAN is switched back to original driver in seconds.
+
+- Range: 0 127
+
+## CAN_SLCAN_SDELAY: SLCAN Start Delay
+
+Duration after which slcan starts after setting SERNUM in seconds.
+
+- Range: 0 127
 
 # COMPASS Parameters
 
@@ -13418,47 +15846,248 @@ Compensation for Y axis of motor4
 
 Compensation for Z axis of motor4
 
-# DAC1 Parameters
+# CUSTROT Parameters
 
-## DAC1_TYPE: DAC Type
+## CUST_ROT_ENABLE: Enable Custom rotations
 
-DAC Type
+This enables custom rotations
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disable|
+|1|Enable|
+
+- RebootRequired: True
+
+# CUSTROT1 Parameters
+
+## CUST_ROT1_ROLL: Custom roll
+
+Custom euler roll, euler 321 (yaw, pitch, roll) ordering
+
+- Units: deg
+
+- RebootRequired: True
+
+## CUST_ROT1_PITCH: Custom pitch
+
+Custom euler pitch, euler 321 (yaw, pitch, roll) ordering
+
+- Units: deg
+
+- RebootRequired: True
+
+## CUST_ROT1_YAW: Custom yaw
+
+Custom euler yaw, euler 321 (yaw, pitch, roll) ordering
+
+- Units: deg
+
+- RebootRequired: True
+
+# CUSTROT2 Parameters
+
+## CUST_ROT2_ROLL: Custom roll
+
+Custom euler roll, euler 321 (yaw, pitch, roll) ordering
+
+- Units: deg
+
+- RebootRequired: True
+
+## CUST_ROT2_PITCH: Custom pitch
+
+Custom euler pitch, euler 321 (yaw, pitch, roll) ordering
+
+- Units: deg
+
+- RebootRequired: True
+
+## CUST_ROT2_YAW: Custom yaw
+
+Custom euler yaw, euler 321 (yaw, pitch, roll) ordering
+
+- Units: deg
+
+- RebootRequired: True
+
+# DDS Parameters
+
+## DDS_ENABLE: DDS enable
+
+*Note: This parameter is for advanced users*
+
+Enable DDS subsystem
 
 |Value|Meaning|
 |:---:|:---:|
 |0|Disabled|
-|1|TIx3204|
-|2|MCP401x|
+|1|Enabled|
 
 - RebootRequired: True
 
-## DAC1_BUS: I2C bus
+## DDS_UDP_PORT: DDS UDP port
 
-I2C bus number
+UDP port number for DDS
 
-- Range: 0 3
-
-- RebootRequired: True
-
-## DAC1_ADDR: I2C address
-
-I2C address
-
-- Range: 0 127
+- Range: 1 65535
 
 - RebootRequired: True
 
-## DAC1_VREF: Voltage reference
+## DDS_DOMAIN_ID: DDS DOMAIN ID
 
-Voltage reference
+Set the ROS_DOMAIN_ID
 
-- Range: 0 1000
+- Range: 0 232
 
-## DAC1_VOLTS: Voltage
+- RebootRequired: True
 
-Voltage
+## DDS_TIMEOUT_MS: DDS ping timeout
 
-- Range: 0 1000
+The time in milliseconds the DDS client will wait for a response from the XRCE agent before reattempting.
+
+- Units: ms
+
+- Range: 1 10000
+
+- RebootRequired: True
+
+- Increment: 1
+
+## DDS_MAX_RETRY: DDS ping max attempts
+
+The maximum number of times the DDS client will attempt to ping the XRCE agent before exiting. Set to 0 to allow unlimited retries.
+
+- Range: 0 100
+
+- RebootRequired: True
+
+- Increment: 1
+
+# DDSIP Parameters
+
+## DDS_IP0: IPv4 Address 1st byte
+
+IPv4 address. Example: 192.xxx.xxx.xxx
+
+- Range: 0 255
+
+- RebootRequired: True
+
+## DDS_IP1: IPv4 Address 2nd byte
+
+IPv4 address. Example: xxx.168.xxx.xxx
+
+- Range: 0 255
+
+- RebootRequired: True
+
+## DDS_IP2: IPv4 Address 3rd byte
+
+IPv4 address. Example: xxx.xxx.144.xxx
+
+- Range: 0 255
+
+- RebootRequired: True
+
+## DDS_IP3: IPv4 Address 4th byte
+
+IPv4 address. Example: xxx.xxx.xxx.14
+
+- Range: 0 255
+
+- RebootRequired: True
+
+# DID Parameters
+
+## DID_ENABLE: Enable ODID subsystem
+
+Enable ODID subsystem
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## DID_MAVPORT: MAVLink serial port
+
+Serial port number to send OpenDroneID MAVLink messages to. Can be -1 if using DroneCAN.
+
+|Value|Meaning|
+|:---:|:---:|
+|-1|Disabled|
+|0|Serial0|
+|1|Serial1|
+|2|Serial2|
+|3|Serial3|
+|4|Serial4|
+|5|Serial5|
+|6|Serial6|
+
+## DID_CANDRIVER: DroneCAN driver number
+
+DroneCAN driver index, 0 to disable DroneCAN
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Driver1|
+|2|Driver2|
+
+## DID_OPTIONS: OpenDroneID options
+
+Options for OpenDroneID subsystem
+
+- Bitmask: 0:EnforcePreArmChecks, 1:AllowNonGPSPosition, 2:LockUASIDOnFirstBasicIDRx
+
+## DID_BARO_ACC: Barometer vertical accuraacy
+
+*Note: This parameter is for advanced users*
+
+Barometer Vertical Accuracy when installed in the vehicle. Note this is dependent upon installation conditions and thus disabled by default
+
+- Units: m
+
+# EAHRS Parameters
+
+## EAHRS_TYPE: AHRS type
+
+Type of AHRS device
+
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|1|VectorNav|
+|2|MicroStrain5|
+|5|InertialLabs|
+|7|MicroStrain7|
+|8|SBG|
+
+## EAHRS_RATE: AHRS data rate
+
+Requested rate for AHRS device
+
+- Units: Hz
+
+## EAHRS_OPTIONS: External AHRS options
+
+External AHRS options bitmask
+
+- Bitmask: 0:Vector Nav use uncompensated values for accel gyro and mag., 1:SBG uses EKF as GNSS.
+
+## EAHRS_SENSORS: External AHRS sensors
+
+*Note: This parameter is for advanced users*
+
+External AHRS sensors bitmask
+
+- Bitmask: 0:GPS,1:IMU,2:Baro,3:Compass
+
+## EAHRS_LOG_RATE: AHRS logging rate
+
+Logging rate for EAHRS devices
+
+- Units: Hz
 
 # EFI Parameters
 
@@ -13561,6 +16190,2331 @@ Offset for throttle linearization
 - Range: 0 100
 
 - RebootRequired: True
+
+# EK2 Parameters
+
+## EK2_ENABLE: Enable EKF2
+
+*Note: This parameter is for advanced users*
+
+This enables EKF2. Enabling EKF2 only makes the maths run, it does not mean it will be used for flight control. To use it for flight control set AHRS_EKF_TYPE=2. A reboot or restart will need to be performed after changing the value of EK2_ENABLE for it to take effect.
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+- RebootRequired: True
+
+## EK2_GPS_TYPE: GPS mode control
+
+*Note: This parameter is for advanced users*
+
+This controls use of GPS measurements : 0 = use 3D velocity & 2D position, 1 = use 2D velocity and 2D position, 2 = use 2D position, 3 = Inhibit GPS use - this can be useful when flying with an optical flow sensor in an environment where GPS quality is poor and subject to large multipath errors.
+
+|Value|Meaning|
+|:---:|:---:|
+|0|GPS 3D Vel and 2D Pos|
+|1|GPS 2D vel and 2D pos|
+|2|GPS 2D pos|
+|3|No GPS|
+
+## EK2_VELNE_M_NSE: GPS horizontal velocity measurement noise (m/s)
+
+*Note: This parameter is for advanced users*
+
+This sets a lower limit on the speed accuracy reported by the GPS receiver that is used to set horizontal velocity observation noise. If the model of receiver used does not provide a speed accurcy estimate, then the parameter value will be used. Increasing it reduces the weighting of the GPS horizontal velocity measurements.
+
+- Range: 0.05 5.0
+
+- Increment: 0.05
+
+- Units: m/s
+
+## EK2_VELD_M_NSE: GPS vertical velocity measurement noise (m/s)
+
+*Note: This parameter is for advanced users*
+
+This sets a lower limit on the speed accuracy reported by the GPS receiver that is used to set vertical velocity observation noise. If the model of receiver used does not provide a speed accurcy estimate, then the parameter value will be used. Increasing it reduces the weighting of the GPS vertical velocity measurements.
+
+- Range: 0.05 5.0
+
+- Increment: 0.05
+
+- Units: m/s
+
+## EK2_VEL_I_GATE: GPS velocity innovation gate size
+
+*Note: This parameter is for advanced users*
+
+This sets the percentage number of standard deviations applied to the GPS velocity measurement innovation consistency check. Decreasing it makes it more likely that good measurements will be rejected. Increasing it makes it more likely that bad measurements will be accepted.
+
+- Range: 100 1000
+
+- Increment: 25
+
+## EK2_POSNE_M_NSE: GPS horizontal position measurement noise (m)
+
+*Note: This parameter is for advanced users*
+
+This sets the GPS horizontal position observation noise. Increasing it reduces the weighting of GPS horizontal position measurements.
+
+- Range: 0.1 10.0
+
+- Increment: 0.1
+
+- Units: m
+
+## EK2_POS_I_GATE: GPS position measurement gate size
+
+*Note: This parameter is for advanced users*
+
+This sets the percentage number of standard deviations applied to the GPS position measurement innovation consistency check. Decreasing it makes it more likely that good measurements will be rejected. Increasing it makes it more likely that bad measurements will be accepted.
+
+- Range: 100 1000
+
+- Increment: 25
+
+## EK2_GLITCH_RAD: GPS glitch radius gate size (m)
+
+*Note: This parameter is for advanced users*
+
+This controls the maximum radial uncertainty in position between the value predicted by the filter and the value measured by the GPS before the filter position and velocity states are reset to the GPS. Making this value larger allows the filter to ignore larger GPS glitches but also means that non-GPS errors such as IMU and compass can create a larger error in position before the filter is forced back to the GPS position.
+
+- Range: 10 100
+
+- Increment: 5
+
+- Units: m
+
+## EK2_ALT_SOURCE: Primary altitude sensor source
+
+*Note: This parameter is for advanced users*
+
+Primary height sensor used by the EKF. If a sensor other than Baro is selected and becomes unavailable, then the Baro sensor will be used as a fallback. NOTE: The EK2_RNG_USE_HGT parameter can be used to switch to range-finder when close to the ground in conjunction with EK2_ALT_SOURCE = 0 or 2 (Baro or GPS).
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Use Baro|
+|1|Use Range Finder|
+|2|Use GPS|
+|3|Use Range Beacon|
+
+- RebootRequired: True
+
+## EK2_ALT_M_NSE: Altitude measurement noise (m)
+
+*Note: This parameter is for advanced users*
+
+This is the RMS value of noise in the altitude measurement. Increasing it reduces the weighting of the baro measurement and will make the filter respond more slowly to baro measurement errors, but will make it more sensitive to GPS and accelerometer errors.
+
+- Range: 0.1 10.0
+
+- Increment: 0.1
+
+- Units: m
+
+## EK2_HGT_I_GATE: Height measurement gate size
+
+*Note: This parameter is for advanced users*
+
+This sets the percentage number of standard deviations applied to the height measurement innovation consistency check. Decreasing it makes it more likely that good measurements will be rejected. Increasing it makes it more likely that bad measurements will be accepted.
+
+- Range: 100 1000
+
+- Increment: 25
+
+## EK2_HGT_DELAY: Height measurement delay (msec)
+
+*Note: This parameter is for advanced users*
+
+This is the number of msec that the Height measurements lag behind the inertial measurements.
+
+- Range: 0 250
+
+- Increment: 10
+
+- Units: ms
+
+- RebootRequired: True
+
+## EK2_MAG_M_NSE: Magnetometer measurement noise (Gauss)
+
+*Note: This parameter is for advanced users*
+
+This is the RMS value of noise in magnetometer measurements. Increasing it reduces the weighting on these measurements.
+
+- Range: 0.01 0.5
+
+- Increment: 0.01
+
+- Units: Gauss
+
+## EK2_MAG_CAL: Magnetometer default fusion mode
+
+*Note: This parameter is for advanced users*
+
+This determines when the filter will use the 3-axis magnetometer fusion model that estimates both earth and body fixed magnetic field states, when it will use a simpler magnetic heading fusion model that does not use magnetic field states and when it will use an alternative method of yaw determination to the magnetometer. The 3-axis magnetometer fusion is only suitable for use when the external magnetic field environment is stable. EK2_MAG_CAL = 0 uses heading fusion on ground, 3-axis fusion in-flight, and is the default setting for Plane users. EK2_MAG_CAL = 1 uses 3-axis fusion only when manoeuvring. EK2_MAG_CAL = 2 uses heading fusion at all times, is recommended if the external magnetic field is varying and is the default for rovers. EK2_MAG_CAL = 3 uses heading fusion on the ground and 3-axis fusion after the first in-air field and yaw reset has completed, and is the default for copters. EK2_MAG_CAL = 4 uses 3-axis fusion at all times. NOTE: The fusion mode can be forced to 2 for specific EKF cores using the EK2_MAG_MASK parameter. NOTE: limited operation without a magnetometer or any other yaw sensor is possible by setting all COMPASS_USE, COMPASS_USE2, COMPASS_USE3, etc parameters to 0 with COMPASS_ENABLE set to 1. If this is done, the EK2_GSF_RUN and EK2_GSF_USE masks must be set to the same as EK2_IMU_MASK.
+
+|Value|Meaning|
+|:---:|:---:|
+|0|When flying|
+|1|When manoeuvring|
+|2|Never|
+|3|After first climb yaw reset|
+|4|Always|
+
+## EK2_MAG_I_GATE: Magnetometer measurement gate size
+
+*Note: This parameter is for advanced users*
+
+This sets the percentage number of standard deviations applied to the magnetometer measurement innovation consistency check. Decreasing it makes it more likely that good measurements will be rejected. Increasing it makes it more likely that bad measurements will be accepted.
+
+- Range: 100 1000
+
+- Increment: 25
+
+## EK2_EAS_M_NSE: Equivalent airspeed measurement noise (m/s)
+
+*Note: This parameter is for advanced users*
+
+This is the RMS value of noise in equivalent airspeed measurements used by planes. Increasing it reduces the weighting of airspeed measurements and will make wind speed estimates less noisy and slower to converge. Increasing also increases navigation errors when dead-reckoning without GPS measurements.
+
+- Range: 0.5 5.0
+
+- Increment: 0.1
+
+- Units: m/s
+
+## EK2_EAS_I_GATE: Airspeed measurement gate size
+
+*Note: This parameter is for advanced users*
+
+This sets the percentage number of standard deviations applied to the airspeed measurement innovation consistency check. Decreasing it makes it more likely that good measurements will be rejected. Increasing it makes it more likely that bad measurements will be accepted.
+
+- Range: 100 1000
+
+- Increment: 25
+
+## EK2_RNG_M_NSE: Range finder measurement noise (m)
+
+*Note: This parameter is for advanced users*
+
+This is the RMS value of noise in the range finder measurement. Increasing it reduces the weighting on this measurement.
+
+- Range: 0.1 10.0
+
+- Increment: 0.1
+
+- Units: m
+
+## EK2_RNG_I_GATE: Range finder measurement gate size
+
+*Note: This parameter is for advanced users*
+
+This sets the percentage number of standard deviations applied to the range finder innovation consistency check. Decreasing it makes it more likely that good measurements will be rejected. Increasing it makes it more likely that bad measurements will be accepted.
+
+- Range: 100 1000
+
+- Increment: 25
+
+## EK2_MAX_FLOW: Maximum valid optical flow rate
+
+*Note: This parameter is for advanced users*
+
+This sets the magnitude maximum optical flow rate in rad/sec that will be accepted by the filter
+
+- Range: 1.0 4.0
+
+- Increment: 0.1
+
+- Units: rad/s
+
+## EK2_FLOW_M_NSE: Optical flow measurement noise (rad/s)
+
+*Note: This parameter is for advanced users*
+
+This is the RMS value of noise and errors in optical flow measurements. Increasing it reduces the weighting on these measurements.
+
+- Range: 0.05 1.0
+
+- Increment: 0.05
+
+- Units: rad/s
+
+## EK2_FLOW_I_GATE: Optical Flow measurement gate size
+
+*Note: This parameter is for advanced users*
+
+This sets the percentage number of standard deviations applied to the optical flow innovation consistency check. Decreasing it makes it more likely that good measurements will be rejected. Increasing it makes it more likely that bad measurements will be accepted.
+
+- Range: 100 1000
+
+- Increment: 25
+
+## EK2_FLOW_DELAY: Optical Flow measurement delay (msec)
+
+*Note: This parameter is for advanced users*
+
+This is the number of msec that the optical flow measurements lag behind the inertial measurements. It is the time from the end of the optical flow averaging period and does not include the time delay due to the 100msec of averaging within the flow sensor.
+
+- Range: 0 127
+
+- Increment: 10
+
+- Units: ms
+
+- RebootRequired: True
+
+## EK2_GYRO_P_NSE: Rate gyro noise (rad/s)
+
+*Note: This parameter is for advanced users*
+
+This control disturbance noise controls the growth of estimated error due to gyro measurement errors excluding bias. Increasing it makes the flter trust the gyro measurements less and other measurements more.
+
+- Range: 0.0001 0.1
+
+- Increment: 0.0001
+
+- Units: rad/s
+
+## EK2_ACC_P_NSE: Accelerometer noise (m/s^2)
+
+*Note: This parameter is for advanced users*
+
+This control disturbance noise controls the growth of estimated error due to accelerometer measurement errors excluding bias. Increasing it makes the flter trust the accelerometer measurements less and other measurements more.
+
+- Range: 0.01 1.0
+
+- Increment: 0.01
+
+- Units: m/s/s
+
+## EK2_GBIAS_P_NSE: Rate gyro bias stability (rad/s/s)
+
+*Note: This parameter is for advanced users*
+
+This state  process noise controls growth of the gyro delta angle bias state error estimate. Increasing it makes rate gyro bias estimation faster and noisier.
+
+- Range: 0.00001 0.001
+
+- Units: rad/s/s
+
+## EK2_GSCL_P_NSE: Rate gyro scale factor stability (1/s)
+
+*Note: This parameter is for advanced users*
+
+This noise controls the rate of gyro scale factor learning. Increasing it makes rate gyro scale factor estimation faster and noisier.
+
+- Range: 0.000001 0.001
+
+- Units: Hz
+
+## EK2_ABIAS_P_NSE: Accelerometer bias stability (m/s^3)
+
+*Note: This parameter is for advanced users*
+
+This noise controls the growth of the vertical accelerometer delta velocity bias state error estimate. Increasing it makes accelerometer bias estimation faster and noisier.
+
+- Range: 0.00001 0.005
+
+- Units: m/s/s/s
+
+## EK2_WIND_P_NSE: Wind velocity process noise (m/s^2)
+
+*Note: This parameter is for advanced users*
+
+This state process noise controls the growth of wind state error estimates. Increasing it makes wind estimation faster and noisier.
+
+- Range: 0.01 1.0
+
+- Increment: 0.1
+
+- Units: m/s/s
+
+## EK2_WIND_PSCALE: Height rate to wind process noise scaler
+
+*Note: This parameter is for advanced users*
+
+This controls how much the process noise on the wind states is increased when gaining or losing altitude to take into account changes in wind speed and direction with altitude. Increasing this parameter increases how rapidly the wind states adapt when changing altitude, but does make wind velocity estimation noiser.
+
+- Range: 0.0 1.0
+
+- Increment: 0.1
+
+## EK2_GPS_CHECK: GPS preflight check
+
+*Note: This parameter is for advanced users*
+
+This is a 1 byte bitmap controlling which GPS preflight checks are performed. Set to 0 to bypass all checks. Set to 255 perform all checks. Set to 3 to check just the number of satellites and HDoP. Set to 31 for the most rigorous checks that will still allow checks to pass when the copter is moving, eg launch from a boat.
+
+- Bitmask: 0:NSats,1:HDoP,2:speed error,3:position error,4:yaw error,5:pos drift,6:vert speed,7:horiz speed
+
+## EK2_IMU_MASK: Bitmask of active IMUs
+
+*Note: This parameter is for advanced users*
+
+1 byte bitmap of IMUs to use in EKF2. A separate instance of EKF2 will be started for each IMU selected. Set to 1 to use the first IMU only (default), set to 2 to use the second IMU only, set to 3 to use the first and second IMU. Additional IMU's can be used up to a maximum of 6 if memory and processing resources permit. There may be insufficient memory and processing resources to run multiple instances. If this occurs EKF2 will fail to start.
+
+- Bitmask: 0:FirstIMU,1:SecondIMU,2:ThirdIMU,3:FourthIMU,4:FifthIMU,5:SixthIMU
+
+- RebootRequired: True
+
+## EK2_CHECK_SCALE: GPS accuracy check scaler (%)
+
+*Note: This parameter is for advanced users*
+
+This scales the thresholds that are used to check GPS accuracy before it is used by the EKF. A value of 100 is the default. Values greater than 100 increase and values less than 100 reduce the maximum GPS error the EKF will accept. A value of 200 will double the allowable GPS error.
+
+- Range: 50 200
+
+- Units: %
+
+## EK2_NOAID_M_NSE: Non-GPS operation position uncertainty (m)
+
+*Note: This parameter is for advanced users*
+
+This sets the amount of position variation that the EKF allows for when operating without external measurements (eg GPS or optical flow). Increasing this parameter makes the EKF attitude estimate less sensitive to vehicle manoeuvres but more sensitive to IMU errors.
+
+- Range: 0.5 50.0
+
+- Units: m
+
+## EK2_YAW_M_NSE: Yaw measurement noise (rad)
+
+*Note: This parameter is for advanced users*
+
+This is the RMS value of noise in yaw measurements from the magnetometer. Increasing it reduces the weighting on these measurements.
+
+- Range: 0.05 1.0
+
+- Increment: 0.05
+
+- Units: rad
+
+## EK2_YAW_I_GATE: Yaw measurement gate size
+
+*Note: This parameter is for advanced users*
+
+This sets the percentage number of standard deviations applied to the magnetometer yaw measurement innovation consistency check. Decreasing it makes it more likely that good measurements will be rejected. Increasing it makes it more likely that bad measurements will be accepted.
+
+- Range: 100 1000
+
+- Increment: 25
+
+## EK2_TAU_OUTPUT: Output complementary filter time constant (centi-sec)
+
+*Note: This parameter is for advanced users*
+
+Sets the time constant of the output complementary filter/predictor in centi-seconds.
+
+- Range: 10 50
+
+- Increment: 5
+
+- Units: cs
+
+## EK2_MAGE_P_NSE: Earth magnetic field process noise (gauss/s)
+
+*Note: This parameter is for advanced users*
+
+This state process noise controls the growth of earth magnetic field state error estimates. Increasing it makes earth magnetic field estimation faster and noisier.
+
+- Range: 0.00001 0.01
+
+- Units: Gauss/s
+
+## EK2_MAGB_P_NSE: Body magnetic field process noise (gauss/s)
+
+*Note: This parameter is for advanced users*
+
+This state process noise controls the growth of body magnetic field state error estimates. Increasing it makes magnetometer bias error estimation faster and noisier.
+
+- Range: 0.00001 0.01
+
+- Units: Gauss/s
+
+## EK2_RNG_USE_HGT: Range finder switch height percentage
+
+*Note: This parameter is for advanced users*
+
+Range finder can be used as the primary height source when below this percentage of its maximum range (see RNGFND*_MAX). This will not work unless Baro or GPS height is selected as the primary height source vis EK2_ALT_SOURCE = 0 or 2 respectively.  This feature should not be used for terrain following as it is designed  for vertical takeoff and landing with climb above  the range finder use height before commencing the mission, and with horizontal position changes below that height being limited to a flat region around the takeoff and landing point.
+
+- Range: -1 70
+
+- Increment: 1
+
+- Units: %
+
+## EK2_TERR_GRAD: Maximum terrain gradient
+
+*Note: This parameter is for advanced users*
+
+Specifies the maximum gradient of the terrain below the vehicle assumed when it is fusing range finder or optical flow to estimate terrain height.
+
+- Range: 0 0.2
+
+- Increment: 0.01
+
+## EK2_BCN_M_NSE: Range beacon measurement noise (m)
+
+*Note: This parameter is for advanced users*
+
+This is the RMS value of noise in the range beacon measurement. Increasing it reduces the weighting on this measurement.
+
+- Range: 0.1 10.0
+
+- Increment: 0.1
+
+- Units: m
+
+## EK2_BCN_I_GTE: Range beacon measurement gate size
+
+*Note: This parameter is for advanced users*
+
+This sets the percentage number of standard deviations applied to the range beacon measurement innovation consistency check. Decreasing it makes it more likely that good measurements will be rejected. Increasing it makes it more likely that bad measurements will be accepted.
+
+- Range: 100 1000
+
+- Increment: 25
+
+## EK2_BCN_DELAY: Range beacon measurement delay (msec)
+
+*Note: This parameter is for advanced users*
+
+This is the number of msec that the range beacon measurements lag behind the inertial measurements. It is the time from the end of the optical flow averaging period and does not include the time delay due to the 100msec of averaging within the flow sensor.
+
+- Range: 0 127
+
+- Increment: 10
+
+- Units: ms
+
+- RebootRequired: True
+
+## EK2_RNG_USE_SPD: Range finder max ground speed
+
+*Note: This parameter is for advanced users*
+
+The range finder will not be used as the primary height source when the horizontal ground speed is greater than this value.
+
+- Range: 2.0 6.0
+
+- Increment: 0.5
+
+- Units: m/s
+
+## EK2_MAG_MASK: Bitmask of active EKF cores that will always use heading fusion
+
+*Note: This parameter is for advanced users*
+
+1 byte bitmap of EKF cores that will disable magnetic field states and use simple magnetic heading fusion at all times. This parameter enables specified cores to be used as a backup for flight into an environment with high levels of external magnetic interference which may degrade the EKF attitude estimate when using 3-axis magnetometer fusion. NOTE : Use of a different magnetometer fusion algorithm on different cores makes unwanted EKF core switches due to magnetometer errors more likely.
+
+- Bitmask: 0:FirstEKF,1:SecondEKF,2:ThirdEKF,3:FourthEKF,4:FifthEKF,5:SixthEKF
+
+- RebootRequired: True
+
+## EK2_OGN_HGT_MASK: Bitmask control of EKF reference height correction
+
+*Note: This parameter is for advanced users*
+
+When a height sensor other than GPS is used as the primary height source by the EKF, the position of the zero height datum is defined by that sensor and its frame of reference. If a GPS height measurement is also available, then the height of the WGS-84 height datum used by the EKF can be corrected so that the height returned by the getLLH() function is compensated for primary height sensor drift and change in datum over time. The first two bit positions control when the height datum will be corrected. Correction is performed using a Bayes filter and only operates when GPS quality permits. The third bit position controls where the corrections to the GPS reference datum are applied. Corrections can be applied to the local vertical position or to the reported EKF origin height (default).
+
+- Bitmask: 0:Correct when using Baro height,1:Correct when using range finder height,2:Apply corrections to local position
+
+- RebootRequired: True
+
+## EK2_FLOW_USE: Optical flow use bitmask
+
+*Note: This parameter is for advanced users*
+
+Controls if the optical flow data is fused into the 24-state navigation estimator OR the 1-state terrain height estimator.
+
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|1|Navigation|
+|2|Terrain|
+
+- RebootRequired: True
+
+## EK2_MAG_EF_LIM: EarthField error limit
+
+*Note: This parameter is for advanced users*
+
+This limits the difference between the learned earth magnetic field and the earth field from the world magnetic model tables. A value of zero means to disable the use of the WMM tables.
+
+- Range: 0 500
+
+- Units: mGauss
+
+## EK2_HRT_FILT: Height rate filter crossover frequency
+
+Specifies the crossover frequency of the complementary filter used to calculate the output predictor height rate derivative.
+
+- Range: 0.1 30.0
+
+- Units: Hz
+
+## EK2_GSF_RUN_MASK: Bitmask of which EKF-GSF yaw estimators run
+
+*Note: This parameter is for advanced users*
+
+A bitmask of which EKF2 instances run an independant EKF-GSF yaw estimator to provide a backup yaw estimate that doesn't rely on magnetometer data. This estimator uses IMU, GPS and, if available, airspeed data. EKF-GSF yaw estimator data for the primary EKF2 instance will be logged as GSF0 and GSF1 messages. Use of the yaw estimate generated by this algorithm is controlled by the EK2_GSF_USE_MASK and EK2_GSF_RST_MAX parameters. To run the EKF-GSF yaw estimator in ride-along and logging only, set EK2_GSF_USE_MASK to 0.
+
+- Bitmask: 0:FirstEKF,1:SecondEKF,2:ThirdEKF,3:FourthEKF,4:FifthEKF,5:SixthEKF
+
+- RebootRequired: True
+
+## EK2_GSF_USE_MASK: Bitmask of which EKF-GSF yaw estimators are used
+
+*Note: This parameter is for advanced users*
+
+1 byte bitmap of which EKF2 instances will use the output from the EKF-GSF yaw estimator that has been turned on by the EK2_GSF_RUN_MASK parameter. If the inertial navigation calculation stops following the GPS, then the vehicle code can request EKF2 to attempt to resolve the issue, either by performing a yaw reset if enabled by this parameter by switching to another EKF2 instance.
+
+- Bitmask: 0:FirstEKF,1:SecondEKF,2:ThirdEKF,3:FourthEKF,4:FifthEKF,5:SixthEKF
+
+- RebootRequired: True
+
+## EK2_GSF_RST_MAX: Maximum number of resets to the EKF-GSF yaw estimate allowed
+
+*Note: This parameter is for advanced users*
+
+Sets the maximum number of times the EKF2 will be allowed to reset its yaw to the estimate from the EKF-GSF yaw estimator. No resets will be allowed unless the use of the EKF-GSF yaw estimate is enabled via the EK2_GSF_USE_MASK parameter.
+
+- Range: 1 10
+
+- Increment: 1
+
+- RebootRequired: True
+
+## EK2_OPTIONS: Optional EKF behaviour
+
+*Note: This parameter is for advanced users*
+
+optional EKF2 behaviour. Disabling external navigation prevents use of external vision data in the EKF2 solution
+
+- Bitmask: 0:DisableExternalNavigation
+
+# EK3 Parameters
+
+## EK3_ENABLE: Enable EKF3
+
+*Note: This parameter is for advanced users*
+
+This enables EKF3. Enabling EKF3 only makes the maths run, it does not mean it will be used for flight control. To use it for flight control set AHRS_EKF_TYPE=3. A reboot or restart will need to be performed after changing the value of EK3_ENABLE for it to take effect.
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+- RebootRequired: True
+
+## EK3_VELNE_M_NSE: GPS horizontal velocity measurement noise (m/s)
+
+*Note: This parameter is for advanced users*
+
+This sets a lower limit on the speed accuracy reported by the GPS receiver that is used to set horizontal velocity observation noise. If the model of receiver used does not provide a speed accurcy estimate, then the parameter value will be used. Increasing it reduces the weighting of the GPS horizontal velocity measurements.
+
+- Range: 0.05 5.0
+
+- Increment: 0.05
+
+- Units: m/s
+
+## EK3_VELD_M_NSE: GPS vertical velocity measurement noise (m/s)
+
+*Note: This parameter is for advanced users*
+
+This sets a lower limit on the speed accuracy reported by the GPS receiver that is used to set vertical velocity observation noise. If the model of receiver used does not provide a speed accurcy estimate, then the parameter value will be used. Increasing it reduces the weighting of the GPS vertical velocity measurements.
+
+- Range: 0.05 5.0
+
+- Increment: 0.05
+
+- Units: m/s
+
+## EK3_VEL_I_GATE: GPS velocity innovation gate size
+
+*Note: This parameter is for advanced users*
+
+This sets the percentage number of standard deviations applied to the GPS velocity measurement innovation consistency check. Decreasing it makes it more likely that good measurements will be rejected. Increasing it makes it more likely that bad measurements will be accepted. If EK3_GLITCH_RAD set to 0 the velocity innovations will be clipped instead of rejected if they exceed the gate size and a smaller value of EK3_VEL_I_GATE not exceeding 300 is recommended to limit the effect of GPS transient errors.
+
+- Range: 100 1000
+
+- Increment: 25
+
+## EK3_POSNE_M_NSE: GPS horizontal position measurement noise (m)
+
+*Note: This parameter is for advanced users*
+
+This sets the GPS horizontal position observation noise. Increasing it reduces the weighting of GPS horizontal position measurements.
+
+- Range: 0.1 10.0
+
+- Increment: 0.1
+
+- Units: m
+
+## EK3_POS_I_GATE: GPS position measurement gate size
+
+*Note: This parameter is for advanced users*
+
+This sets the percentage number of standard deviations applied to the GPS position measurement innovation consistency check. Decreasing it makes it more likely that good measurements will be rejected. Increasing it makes it more likely that bad measurements will be accepted. If EK3_GLITCH_RAD has been set to 0 the horizontal position innovations will be clipped instead of rejected if they exceed the gate size so a smaller value of EK3_POS_I_GATE not exceeding 300 is recommended to limit the effect of GPS transient errors.
+
+- Range: 100 1000
+
+- Increment: 25
+
+## EK3_GLITCH_RAD: GPS glitch radius gate size (m)
+
+*Note: This parameter is for advanced users*
+
+This controls the maximum radial uncertainty in position between the value predicted by the filter and the value measured by the GPS before the filter position and velocity states are reset to the GPS. Making this value larger allows the filter to ignore larger GPS glitches but also means that non-GPS errors such as IMU and compass can create a larger error in position before the filter is forced back to the GPS position. If EK3_GLITCH_RAD set to 0 the GPS innovations will be clipped instead of rejected if they exceed the gate size set by EK3_VEL_I_GATE and EK3_POS_I_GATE which can be useful if poor quality sensor data is causing GPS rejection and loss of navigation but does make the EKF more susceptible to GPS glitches. If setting EK3_GLITCH_RAD to 0 it is recommended to reduce EK3_VEL_I_GATE and EK3_POS_I_GATE to 300.
+
+- Range: 10 100
+
+- Increment: 5
+
+- Units: m
+
+## EK3_ALT_M_NSE: Altitude measurement noise (m)
+
+*Note: This parameter is for advanced users*
+
+This is the RMS value of noise in the altitude measurement. Increasing it reduces the weighting of the baro measurement and will make the filter respond more slowly to baro measurement errors, but will make it more sensitive to GPS and accelerometer errors. A larger value for EK3_ALT_M_NSE may be required when operating with EK3_SRCx_POSZ = 0. This parameter also sets the noise for the 'synthetic' zero height measurement that is used when EK3_SRCx_POSZ = 0.
+
+- Range: 0.1 100.0
+
+- Increment: 0.1
+
+- Units: m
+
+## EK3_HGT_I_GATE: Height measurement gate size
+
+*Note: This parameter is for advanced users*
+
+This sets the percentage number of standard deviations applied to the height measurement innovation consistency check. Decreasing it makes it more likely that good measurements will be rejected. Increasing it makes it more likely that bad measurements will be accepted.  If EK3_GLITCH_RAD set to 0 the vertical position innovations will be clipped instead of rejected if they exceed the gate size and a smaller value of EK3_HGT_I_GATE not exceeding 300 is recommended to limit the effect of height sensor transient errors.
+
+- Range: 100 1000
+
+- Increment: 25
+
+## EK3_HGT_DELAY: Height measurement delay (msec)
+
+*Note: This parameter is for advanced users*
+
+This is the number of msec that the Height measurements lag behind the inertial measurements.
+
+- Range: 0 250
+
+- Increment: 10
+
+- Units: ms
+
+- RebootRequired: True
+
+## EK3_MAG_M_NSE: Magnetometer measurement noise (Gauss)
+
+*Note: This parameter is for advanced users*
+
+This is the RMS value of noise in magnetometer measurements. Increasing it reduces the weighting on these measurements.
+
+- Range: 0.01 0.5
+
+- Increment: 0.01
+
+- Units: Gauss
+
+## EK3_MAG_CAL: Magnetometer default fusion mode
+
+*Note: This parameter is for advanced users*
+
+This determines when the filter will use the 3-axis magnetometer fusion model that estimates both earth and body fixed magnetic field states and when it will use a simpler magnetic heading fusion model that does not use magnetic field states. The 3-axis magnetometer fusion is only suitable for use when the external magnetic field environment is stable. EK3_MAG_CAL = 0 uses heading fusion on ground, 3-axis fusion in-flight, and is the default setting for Plane users. EK3_MAG_CAL = 1 uses 3-axis fusion only when manoeuvring. EK3_MAG_CAL = 2 uses heading fusion at all times, is recommended if the external magnetic field is varying and is the default for rovers. EK3_MAG_CAL = 3 uses heading fusion on the ground and 3-axis fusion after the first in-air field and yaw reset has completed, and is the default for copters. EK3_MAG_CAL = 4 uses 3-axis fusion at all times. EK3_MAG_CAL = 5 uses an external yaw sensor with simple heading fusion. NOTE : Use of simple heading magnetometer fusion makes vehicle compass calibration and alignment errors harder for the EKF to detect which reduces the sensitivity of the Copter EKF failsafe algorithm. NOTE: The fusion mode can be forced to 2 for specific EKF cores using the EK3_MAG_MASK parameter. EK3_MAG_CAL = 6 uses an external yaw sensor with fallback to compass when the external sensor is not available if we are flying. NOTE: The fusion mode can be forced to 2 for specific EKF cores using the EK3_MAG_MASK parameter. NOTE: limited operation without a magnetometer or any other yaw sensor is possible by setting all COMPASS_USE, COMPASS_USE2, COMPASS_USE3, etc parameters to 0 and setting COMPASS_ENABLE to 0. If this is done, the EK3_GSF_RUN and EK3_GSF_USE masks must be set to the same as EK3_IMU_MASK. A yaw angle derived from IMU and GPS velocity data using a Gaussian Sum Filter (GSF) will then be used to align the yaw when flight commences and there is sufficient movement.
+
+|Value|Meaning|
+|:---:|:---:|
+|0|When flying|
+|1|When manoeuvring|
+|2|Never|
+|3|After first climb yaw reset|
+|4|Always|
+|5|Use external yaw sensor (Deprecated in 4.1+ see EK3_SRCn_YAW)|
+|6|External yaw sensor with compass fallback (Deprecated in 4.1+ see EK3_SRCn_YAW)|
+
+- RebootRequired: True
+
+## EK3_MAG_I_GATE: Magnetometer measurement gate size
+
+*Note: This parameter is for advanced users*
+
+This sets the percentage number of standard deviations applied to the magnetometer measurement innovation consistency check. Decreasing it makes it more likely that good measurements will be rejected. Increasing it makes it more likely that bad measurements will be accepted.
+
+- Range: 100 1000
+
+- Increment: 25
+
+## EK3_EAS_M_NSE: Equivalent airspeed measurement noise (m/s)
+
+*Note: This parameter is for advanced users*
+
+This is the RMS value of noise in equivalent airspeed measurements used by planes. Increasing it reduces the weighting of airspeed measurements and will make wind speed estimates less noisy and slower to converge. Increasing also increases navigation errors when dead-reckoning without GPS measurements.
+
+- Range: 0.5 5.0
+
+- Increment: 0.1
+
+- Units: m/s
+
+## EK3_EAS_I_GATE: Airspeed measurement gate size
+
+*Note: This parameter is for advanced users*
+
+This sets the percentage number of standard deviations applied to the airspeed measurement innovation consistency check. Decreasing it makes it more likely that good measurements will be rejected. Increasing it makes it more likely that bad measurements will be accepted.
+
+- Range: 100 1000
+
+- Increment: 25
+
+## EK3_RNG_M_NSE: Range finder measurement noise (m)
+
+*Note: This parameter is for advanced users*
+
+This is the RMS value of noise in the range finder measurement. Increasing it reduces the weighting on this measurement.
+
+- Range: 0.1 10.0
+
+- Increment: 0.1
+
+- Units: m
+
+## EK3_RNG_I_GATE: Range finder measurement gate size
+
+*Note: This parameter is for advanced users*
+
+This sets the percentage number of standard deviations applied to the range finder innovation consistency check. Decreasing it makes it more likely that good measurements will be rejected. Increasing it makes it more likely that bad measurements will be accepted.
+
+- Range: 100 1000
+
+- Increment: 25
+
+## EK3_FLOW_MAX: Optical flow rate maximum
+
+*Note: This parameter is for advanced users*
+
+The maximum optical flow rate in rad/sec that will be accepted by the filter.  Flow rates above this value will not be fused.
+
+- Range: 1.0 4.0
+
+- Increment: 0.1
+
+- Units: rad/s
+
+## EK3_FLOW_M_NSE: Optical flow measurement noise (rad/s)
+
+*Note: This parameter is for advanced users*
+
+This is the RMS value of noise and errors in optical flow measurements. Increasing it reduces the weighting on these measurements.
+
+- Range: 0.05 1.0
+
+- Increment: 0.05
+
+- Units: rad/s
+
+## EK3_FLOW_I_GATE: Optical Flow measurement gate size
+
+*Note: This parameter is for advanced users*
+
+This sets the percentage number of standard deviations applied to the optical flow innovation consistency check. Decreasing it makes it more likely that good measurements will be rejected. Increasing it makes it more likely that bad measurements will be accepted.
+
+- Range: 100 1000
+
+- Increment: 25
+
+## EK3_FLOW_DELAY: Optical Flow measurement delay (msec)
+
+*Note: This parameter is for advanced users*
+
+This is the number of msec that the optical flow measurements lag behind the inertial measurements. It is the time from the end of the optical flow averaging period and does not include the time delay due to the 100msec of averaging within the flow sensor.
+
+- Range: 0 250
+
+- Increment: 10
+
+- Units: ms
+
+- RebootRequired: True
+
+## EK3_GYRO_P_NSE: Rate gyro noise (rad/s)
+
+*Note: This parameter is for advanced users*
+
+This control disturbance noise controls the growth of estimated error due to gyro measurement errors excluding bias. Increasing it makes the flter trust the gyro measurements less and other measurements more.
+
+- Range: 0.0001 0.1
+
+- Increment: 0.0001
+
+- Units: rad/s
+
+## EK3_ACC_P_NSE: Accelerometer noise (m/s^2)
+
+*Note: This parameter is for advanced users*
+
+This control disturbance noise controls the growth of estimated error due to accelerometer measurement errors excluding bias. Increasing it makes the flter trust the accelerometer measurements less and other measurements more.
+
+- Range: 0.01 1.0
+
+- Increment: 0.01
+
+- Units: m/s/s
+
+## EK3_GBIAS_P_NSE: Rate gyro bias stability (rad/s/s)
+
+*Note: This parameter is for advanced users*
+
+This state  process noise controls growth of the gyro delta angle bias state error estimate. Increasing it makes rate gyro bias estimation faster and noisier.
+
+- Range: 0.00001 0.001
+
+- Units: rad/s/s
+
+## EK3_ABIAS_P_NSE: Accelerometer bias stability (m/s^3)
+
+*Note: This parameter is for advanced users*
+
+This noise controls the growth of the vertical accelerometer delta velocity bias state error estimate. Increasing it makes accelerometer bias estimation faster and noisier.
+
+- Range: 0.00001 0.02
+
+- Units: m/s/s/s
+
+## EK3_WIND_P_NSE: Wind velocity process noise (m/s^2)
+
+*Note: This parameter is for advanced users*
+
+This state process noise controls the growth of wind state error estimates. Increasing it makes wind estimation faster and noisier.
+
+- Range: 0.01 2.0
+
+- Increment: 0.1
+
+- Units: m/s/s
+
+## EK3_WIND_PSCALE: Height rate to wind process noise scaler
+
+*Note: This parameter is for advanced users*
+
+This controls how much the process noise on the wind states is increased when gaining or losing altitude to take into account changes in wind speed and direction with altitude. Increasing this parameter increases how rapidly the wind states adapt when changing altitude, but does make wind velocity estimation noiser.
+
+- Range: 0.0 2.0
+
+- Increment: 0.1
+
+## EK3_GPS_CHECK: GPS preflight check
+
+*Note: This parameter is for advanced users*
+
+This is a 1 byte bitmap controlling which GPS preflight checks are performed. Set to 0 to bypass all checks. Set to 255 perform all checks. Set to 3 to check just the number of satellites and HDoP. Set to 31 for the most rigorous checks that will still allow checks to pass when the copter is moving, eg launch from a boat.
+
+- Bitmask: 0:NSats,1:HDoP,2:speed error,3:position error,4:yaw error,5:pos drift,6:vert speed,7:horiz speed
+
+## EK3_IMU_MASK: Bitmask of active IMUs
+
+*Note: This parameter is for advanced users*
+
+1 byte bitmap of IMUs to use in EKF3. A separate instance of EKF3 will be started for each IMU selected. Set to 1 to use the first IMU only (default), set to 2 to use the second IMU only, set to 3 to use the first and second IMU. Additional IMU's can be used up to a maximum of 6 if memory and processing resources permit. There may be insufficient memory and processing resources to run multiple instances. If this occurs EKF3 will fail to start.
+
+- Bitmask: 0:FirstIMU,1:SecondIMU,2:ThirdIMU,3:FourthIMU,4:FifthIMU,5:SixthIMU
+
+- RebootRequired: True
+
+## EK3_CHECK_SCALE: GPS accuracy check scaler (%)
+
+*Note: This parameter is for advanced users*
+
+This scales the thresholds that are used to check GPS accuracy before it is used by the EKF. A value of 100 is the default. Values greater than 100 increase and values less than 100 reduce the maximum GPS error the EKF will accept. A value of 200 will double the allowable GPS error.
+
+- Range: 50 200
+
+- Units: %
+
+## EK3_NOAID_M_NSE: Non-GPS operation position uncertainty (m)
+
+*Note: This parameter is for advanced users*
+
+This sets the amount of position variation that the EKF allows for when operating without external measurements (eg GPS or optical flow). Increasing this parameter makes the EKF attitude estimate less sensitive to vehicle manoeuvres but more sensitive to IMU errors.
+
+- Range: 0.5 50.0
+
+- Units: m
+
+## EK3_BETA_MASK: Bitmask controlling sidelip angle fusion
+
+*Note: This parameter is for advanced users*
+
+1 byte bitmap controlling use of sideslip angle fusion for estimation of non wind states during operation of 'fly forward' vehicle types such as fixed wing planes. By assuming that the angle of sideslip is small, the wind velocity state estimates are corrected  whenever the EKF is not dead reckoning (e.g. has an independent velocity or position sensor such as GPS). This behaviour is on by default and cannot be disabled. When the EKF is dead reckoning, the wind states are used as a reference, enabling use of the small angle of sideslip assumption to correct non wind velocity states (eg attitude, velocity, position, etc) and improve navigation accuracy. This behaviour is on by default and cannot be disabled. The behaviour controlled by this parameter is the use of the small angle of sideslip assumption to correct non wind velocity states when the EKF is NOT dead reckoning. This is primarily of benefit to reduce the buildup of yaw angle errors during straight and level flight without a yaw sensor (e.g. magnetometer or dual antenna GPS yaw) provided aerobatic flight maneuvers with large sideslip angles are not performed. The 'always' option might be used where the yaw sensor is intentionally not fitted or disabled. The 'WhenNoYawSensor' option might be used if a yaw sensor is fitted, but protection against in-flight failure and continual rejection by the EKF is desired. For vehicles operated within visual range of the operator performing frequent turning maneuvers, setting this parameter is unnecessary.
+
+- Bitmask: 0:Always,1:WhenNoYawSensor
+
+- RebootRequired: True
+
+## EK3_YAW_M_NSE: Yaw measurement noise (rad)
+
+*Note: This parameter is for advanced users*
+
+This is the RMS value of noise in yaw measurements from the magnetometer. Increasing it reduces the weighting on these measurements.
+
+- Range: 0.05 1.0
+
+- Increment: 0.05
+
+- Units: rad
+
+## EK3_YAW_I_GATE: Yaw measurement gate size
+
+*Note: This parameter is for advanced users*
+
+This sets the percentage number of standard deviations applied to the magnetometer yaw measurement innovation consistency check. Decreasing it makes it more likely that good measurements will be rejected. Increasing it makes it more likely that bad measurements will be accepted.
+
+- Range: 100 1000
+
+- Increment: 25
+
+## EK3_TAU_OUTPUT: Output complementary filter time constant (centi-sec)
+
+*Note: This parameter is for advanced users*
+
+Sets the time constant of the output complementary filter/predictor in centi-seconds.
+
+- Range: 10 50
+
+- Increment: 5
+
+- Units: cs
+
+## EK3_MAGE_P_NSE: Earth magnetic field process noise (gauss/s)
+
+*Note: This parameter is for advanced users*
+
+This state process noise controls the growth of earth magnetic field state error estimates. Increasing it makes earth magnetic field estimation faster and noisier.
+
+- Range: 0.00001 0.01
+
+- Units: Gauss/s
+
+## EK3_MAGB_P_NSE: Body magnetic field process noise (gauss/s)
+
+*Note: This parameter is for advanced users*
+
+This state process noise controls the growth of body magnetic field state error estimates. Increasing it makes magnetometer bias error estimation faster and noisier.
+
+- Range: 0.00001 0.01
+
+- Units: Gauss/s
+
+## EK3_RNG_USE_HGT: Range finder switch height percentage
+
+*Note: This parameter is for advanced users*
+
+Range finder can be used as the primary height source when below this percentage of its maximum range (see RNGFNDx_MAX) and the primary height source is Baro or GPS (see EK3_SRCx_POSZ).  This feature should not be used for terrain following as it is designed for vertical takeoff and landing with climb above the range finder use height before commencing the mission, and with horizontal position changes below that height being limited to a flat region around the takeoff and landing point.
+
+- Range: -1 70
+
+- Increment: 1
+
+- Units: %
+
+## EK3_TERR_GRAD: Maximum terrain gradient
+
+*Note: This parameter is for advanced users*
+
+Specifies the maximum gradient of the terrain below the vehicle when it is using range finder as a height reference
+
+- Range: 0 0.2
+
+- Increment: 0.01
+
+## EK3_BCN_M_NSE: Range beacon measurement noise (m)
+
+*Note: This parameter is for advanced users*
+
+This is the RMS value of noise in the range beacon measurement. Increasing it reduces the weighting on this measurement.
+
+- Range: 0.1 10.0
+
+- Increment: 0.1
+
+- Units: m
+
+## EK3_BCN_I_GTE: Range beacon measurement gate size
+
+*Note: This parameter is for advanced users*
+
+This sets the percentage number of standard deviations applied to the range beacon measurement innovation consistency check. Decreasing it makes it more likely that good measurements will be rejected. Increasing it makes it more likely that bad measurements will be accepted.
+
+- Range: 100 1000
+
+- Increment: 25
+
+## EK3_BCN_DELAY: Range beacon measurement delay (msec)
+
+*Note: This parameter is for advanced users*
+
+This is the number of msec that the range beacon measurements lag behind the inertial measurements.
+
+- Range: 0 250
+
+- Increment: 10
+
+- Units: ms
+
+- RebootRequired: True
+
+## EK3_RNG_USE_SPD: Range finder max ground speed
+
+*Note: This parameter is for advanced users*
+
+The range finder will not be used as the primary height source when the horizontal ground speed is greater than this value.
+
+- Range: 2.0 6.0
+
+- Increment: 0.5
+
+- Units: m/s
+
+## EK3_ACC_BIAS_LIM: Accelerometer bias limit
+
+*Note: This parameter is for advanced users*
+
+The accelerometer bias state will be limited to +- this value
+
+- Range: 0.5 2.5
+
+- Increment: 0.1
+
+- Units: m/s/s
+
+## EK3_MAG_MASK: Bitmask of active EKF cores that will always use heading fusion
+
+*Note: This parameter is for advanced users*
+
+1 byte bitmap of EKF cores that will disable magnetic field states and use simple magnetic heading fusion at all times. This parameter enables specified cores to be used as a backup for flight into an environment with high levels of external magnetic interference which may degrade the EKF attitude estimate when using 3-axis magnetometer fusion. NOTE : Use of a different magnetometer fusion algorithm on different cores makes unwanted EKF core switches due to magnetometer errors more likely.
+
+- Bitmask: 0:FirstEKF,1:SecondEKF,2:ThirdEKF,3:FourthEKF,4:FifthEKF,5:SixthEKF
+
+- RebootRequired: True
+
+## EK3_OGN_HGT_MASK: Bitmask control of EKF reference height correction
+
+*Note: This parameter is for advanced users*
+
+When a height sensor other than GPS is used as the primary height source by the EKF, the position of the zero height datum is defined by that sensor and its frame of reference. If a GPS height measurement is also available, then the height of the WGS-84 height datum used by the EKF can be corrected so that the height returned by the getLLH() function is compensated for primary height sensor drift and change in datum over time. The first two bit positions control when the height datum will be corrected. Correction is performed using a Bayes filter and only operates when GPS quality permits. The third bit position controls where the corrections to the GPS reference datum are applied. Corrections can be applied to the local vertical position or to the reported EKF origin height (default).
+
+- Bitmask: 0:Correct when using Baro height,1:Correct when using range finder height,2:Apply corrections to local position
+
+- RebootRequired: True
+
+## EK3_VIS_VERR_MIN: Visual odometry minimum velocity error
+
+*Note: This parameter is for advanced users*
+
+This is the 1-STD odometry velocity observation error that will be assumed when maximum quality is reported by the sensor. When quality is between max and min, the error will be calculated using linear interpolation between VIS_VERR_MIN and VIS_VERR_MAX.
+
+- Range: 0.05 0.5
+
+- Increment: 0.05
+
+- Units: m/s
+
+## EK3_VIS_VERR_MAX: Visual odometry maximum velocity error
+
+*Note: This parameter is for advanced users*
+
+This is the 1-STD odometry velocity observation error that will be assumed when minimum quality is reported by the sensor. When quality is between max and min, the error will be calculated using linear interpolation between VIS_VERR_MIN and VIS_VERR_MAX.
+
+- Range: 0.5 5.0
+
+- Increment: 0.1
+
+- Units: m/s
+
+## EK3_WENC_VERR: Wheel odometry velocity error
+
+*Note: This parameter is for advanced users*
+
+This is the 1-STD odometry velocity observation error that will be assumed when wheel encoder data is being fused.
+
+- Range: 0.01 1.0
+
+- Increment: 0.1
+
+- Units: m/s
+
+## EK3_FLOW_USE: Optical flow use bitmask
+
+*Note: This parameter is for advanced users*
+
+Controls if the optical flow data is fused into the 24-state navigation estimator OR the 1-state terrain height estimator.
+
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|1|Navigation|
+|2|Terrain|
+
+- RebootRequired: True
+
+## EK3_HRT_FILT: Height rate filter crossover frequency
+
+Specifies the crossover frequency of the complementary filter used to calculate the output predictor height rate derivative.
+
+- Range: 0.1 30.0
+
+- Units: Hz
+
+## EK3_MAG_EF_LIM: EarthField error limit
+
+*Note: This parameter is for advanced users*
+
+This limits the difference between the learned earth magnetic field and the earth field from the world magnetic model tables. A value of zero means to disable the use of the WMM tables.
+
+- Range: 0 500
+
+- Units: mGauss
+
+## EK3_GSF_RUN_MASK: Bitmask of which EKF-GSF yaw estimators run
+
+*Note: This parameter is for advanced users*
+
+1 byte bitmap of which EKF3 instances run an independent EKF-GSF yaw estimator to provide a backup yaw estimate that doesn't rely on magnetometer data. This estimator uses IMU, GPS and, if available, airspeed data. EKF-GSF yaw estimator data for the primary EKF3 instance will be logged as GSF0 and GSF1 messages. Use of the yaw estimate generated by this algorithm is controlled by the EK3_GSF_USE_MASK and EK3_GSF_RST_MAX parameters. To run the EKF-GSF yaw estimator in ride-along and logging only, set EK3_GSF_USE to 0.
+
+- Bitmask: 0:FirstEKF,1:SecondEKF,2:ThirdEKF,3:FourthEKF,4:FifthEKF,5:SixthEKF
+
+- RebootRequired: True
+
+## EK3_GSF_USE_MASK: Bitmask of which EKF-GSF yaw estimators are used
+
+*Note: This parameter is for advanced users*
+
+A bitmask of which EKF3 instances will use the output from the EKF-GSF yaw estimator that has been turned on by the EK3_GSF_RUN_MASK parameter. If the inertial navigation calculation stops following the GPS, then the vehicle code can request EKF3 to attempt to resolve the issue, either by performing a yaw reset if enabled by this parameter by switching to another EKF3 instance.
+
+- Bitmask: 0:FirstEKF,1:SecondEKF,2:ThirdEKF,3:FourthEKF,4:FifthEKF,5:SixthEKF
+
+- RebootRequired: True
+
+## EK3_GSF_RST_MAX: Maximum number of resets to the EKF-GSF yaw estimate allowed
+
+*Note: This parameter is for advanced users*
+
+Sets the maximum number of times the EKF3 will be allowed to reset its yaw to the estimate from the EKF-GSF yaw estimator. No resets will be allowed unless the use of the EKF-GSF yaw estimate is enabled via the EK3_GSF_USE_MASK parameter.
+
+- Range: 1 10
+
+- Increment: 1
+
+- RebootRequired: True
+
+## EK3_ERR_THRESH: EKF3 Lane Relative Error Sensitivity Threshold
+
+*Note: This parameter is for advanced users*
+
+lanes have to be consistently better than the primary by at least this threshold to reduce their overall relativeCoreError, lowering this makes lane switching more sensitive to smaller error differences
+
+- Range: 0.05 1
+
+- Increment: 0.05
+
+## EK3_AFFINITY: EKF3 Sensor Affinity Options
+
+*Note: This parameter is for advanced users*
+
+These options control the affinity between sensor instances and EKF cores
+
+- Bitmask: 0:EnableGPSAffinity,1:EnableBaroAffinity,2:EnableCompassAffinity,3:EnableAirspeedAffinity
+
+- RebootRequired: True
+
+## EK3_DRAG_BCOEF_X: Ballistic coefficient for X axis drag
+
+*Note: This parameter is for advanced users*
+
+Ratio of mass to drag coefficient measured along the X body axis. This parameter enables estimation of wind drift for vehicles with bluff bodies and without propulsion forces in the X and Y direction (eg multicopters). The drag produced by this effect scales with speed squared. Set to a positive value > 1.0 to enable. A starting value is the mass in Kg divided by the frontal area. The predicted drag from the rotors is specified separately by the EK3_DRAG_MCOEF parameter.
+
+- Range: 0.0 1000.0
+
+- Units: kg/m/m
+
+## EK3_DRAG_BCOEF_Y: Ballistic coefficient for Y axis drag
+
+*Note: This parameter is for advanced users*
+
+Ratio of mass to drag coefficient measured along the Y body axis. This parameter enables estimation of wind drift for vehicles with bluff bodies and without propulsion forces in the X and Y direction (eg multicopters). The drag produced by this effect scales with speed squared. Set to a positive value > 1.0 to enable. A starting value is the mass in Kg divided by the side area. The predicted drag from the rotors is specified separately by the EK3_DRAG_MCOEF parameter.
+
+- Range: 50.0 1000.0
+
+- Units: kg/m/m
+
+## EK3_DRAG_M_NSE: Observation noise for drag acceleration
+
+*Note: This parameter is for advanced users*
+
+This sets the amount of noise used when fusing X and Y acceleration as an observation that enables estimation of wind velocity for multi-rotor vehicles. This feature is enabled by the EK3_DRAG_BCOEF_X and EK3_DRAG_BCOEF_Y parameters
+
+- Range: 0.1 2.0
+
+- Increment: 0.1
+
+- Units: m/s/s
+
+## EK3_DRAG_MCOEF: Momentum coefficient for propeller drag
+
+*Note: This parameter is for advanced users*
+
+This parameter is used to predict the drag produced by the rotors when flying a multi-copter, enabling estimation of wind drift. The drag produced by this effect scales with speed not speed squared and is produced because some of the air velocity normal to the rotors axis of rotation is lost when passing through the rotor disc which changes the momentum of the airflow causing drag. For unducted rotors the effect is roughly proportional to the area of the propeller blades when viewed side on and changes with different propellers. It is higher for ducted rotors. For example if flying at 15 m/s at sea level conditions produces a rotor induced drag acceleration of 1.5 m/s/s, then EK3_DRAG_MCOEF would be set to 0.1 = (1.5/15.0). Set EK3_MCOEF to a positive value to enable wind estimation using this drag effect. To account for the drag produced by the body which scales with speed squared, see documentation for the EK3_DRAG_BCOEF_X and EK3_DRAG_BCOEF_Y parameters.
+
+- Range: 0.0 1.0
+
+- Increment: 0.01
+
+- Units: 1/s
+
+## EK3_OGNM_TEST_SF: On ground not moving test scale factor
+
+*Note: This parameter is for advanced users*
+
+This parameter is adjust the sensitivity of the on ground not moving test which is used to assist with learning the yaw gyro bias and stopping yaw drift before flight when operating without a yaw sensor. Bigger values allow the detection of a not moving condition with noiser IMU data. Check the XKFM data logged when the vehicle is on ground not moving and adjust the value of OGNM_TEST_SF to be slightly higher than the maximum value of the XKFM.ADR, XKFM.ALR, XKFM.GDR and XKFM.GLR test levels.
+
+- Range: 1.0 10.0
+
+- Increment: 0.5
+
+## EK3_GND_EFF_DZ: Baro height ground effect dead zone
+
+*Note: This parameter is for advanced users*
+
+This parameter sets the size of the dead zone that is applied to negative baro height spikes that can occur when taking off or landing when a vehicle with lift rotors is operating in ground effect ground effect. Set to about 0.5m less than the amount of negative offset in baro height that occurs just prior to takeoff when lift motors are spooling up. Set to 0 if no ground effect is present.
+
+- Range: 0.0 10.0
+
+- Increment: 0.5
+
+## EK3_PRIMARY: Primary core number
+
+*Note: This parameter is for advanced users*
+
+The core number (index in IMU mask) that will be used as the primary EKF core on startup. While disarmed the EKF will force the use of this core. A value of 0 corresponds to the first IMU in EK3_IMU_MASK.
+
+- Range: 0 2
+
+- Increment: 1
+
+## EK3_LOG_LEVEL: Logging Level
+
+*Note: This parameter is for advanced users*
+
+Determines how verbose the EKF3 streaming logging is. A value of 0 provides full logging(default), a value of 1 only XKF4 scaled innovations are logged, a value of 2 both XKF4 and GSF are logged, and a value of 3 disables all streaming logging of EKF3.
+
+- Range: 0 3
+
+- Increment: 1
+
+## EK3_GPS_VACC_MAX: GPS vertical accuracy threshold
+
+*Note: This parameter is for advanced users*
+
+Vertical accuracy threshold for GPS as the altitude source. The GPS will not be used as an altitude source if the reported vertical accuracy of the GPS is larger than this threshold, falling back to baro instead. Set to zero to deactivate the threshold check.
+
+- Range: 0.0 10.0
+
+- Increment: 0.1
+
+- Units: m
+
+## EK3_OPTIONS: Optional EKF behaviour
+
+*Note: This parameter is for advanced users*
+
+EKF optional behaviour. Bit 0 (JammingExpected): Setting JammingExpected will change the EKF behaviour such that if dead reckoning navigation is possible it will require the preflight alignment GPS quality checks controlled by EK3_GPS_CHECK and EK3_CHECK_SCALE to pass before resuming GPS use if GPS lock is lost for more than 2 seconds to prevent bad position estimate. Bit 1 (Manual lane switching): DANGEROUS – If enabled, this disables automatic lane switching. If the active lane becomes unhealthy, no automatic switching will occur. Users must manually set EK3_PRIMARY to change lanes. No health checks will be performed on the selected lane. Use with extreme caution.  Bit 2 (Optflow may use terrain alt): Terrain SRTM data will be used if the vehicle climbs above the rangefinder's range allowing optical flow to be used at higher altitudes.
+
+- Bitmask: 0:JammingExpected, 1:ManualLaneSwitching, 2:Optflow may use terrain alt
+
+# EK3SRC Parameters
+
+## EK3_SRC1_POSXY: Position Horizontal Source (Primary)
+
+*Note: This parameter is for advanced users*
+
+Position Horizontal Source (Primary)
+
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|3|GPS|
+|4|Beacon|
+|6|ExternalNav|
+
+## EK3_SRC1_VELXY: Velocity Horizontal Source
+
+*Note: This parameter is for advanced users*
+
+Velocity Horizontal Source
+
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|3|GPS|
+|4|Beacon|
+|5|OpticalFlow|
+|6|ExternalNav|
+|7|WheelEncoder|
+
+## EK3_SRC1_POSZ: Position Vertical Source
+
+*Note: This parameter is for advanced users*
+
+Position Vertical Source
+
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|1|Baro|
+|2|RangeFinder|
+|3|GPS|
+|4|Beacon|
+|6|ExternalNav|
+
+## EK3_SRC1_VELZ: Velocity Vertical Source
+
+*Note: This parameter is for advanced users*
+
+Velocity Vertical Source
+
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|3|GPS|
+|4|Beacon|
+|6|ExternalNav|
+
+## EK3_SRC1_YAW: Yaw Source
+
+*Note: This parameter is for advanced users*
+
+Yaw Source
+
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|1|Compass|
+|2|GPS|
+|3|GPS with Compass Fallback|
+|6|ExternalNav|
+|8|GSF|
+
+## EK3_SRC2_POSXY: Position Horizontal Source (Secondary)
+
+*Note: This parameter is for advanced users*
+
+Position Horizontal Source (Secondary)
+
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|3|GPS|
+|4|Beacon|
+|6|ExternalNav|
+
+## EK3_SRC2_VELXY: Velocity Horizontal Source (Secondary)
+
+*Note: This parameter is for advanced users*
+
+Velocity Horizontal Source (Secondary)
+
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|3|GPS|
+|4|Beacon|
+|5|OpticalFlow|
+|6|ExternalNav|
+|7|WheelEncoder|
+
+## EK3_SRC2_POSZ: Position Vertical Source (Secondary)
+
+*Note: This parameter is for advanced users*
+
+Position Vertical Source (Secondary)
+
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|1|Baro|
+|2|RangeFinder|
+|3|GPS|
+|4|Beacon|
+|6|ExternalNav|
+
+## EK3_SRC2_VELZ: Velocity Vertical Source (Secondary)
+
+*Note: This parameter is for advanced users*
+
+Velocity Vertical Source (Secondary)
+
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|3|GPS|
+|4|Beacon|
+|6|ExternalNav|
+
+## EK3_SRC2_YAW: Yaw Source (Secondary)
+
+*Note: This parameter is for advanced users*
+
+Yaw Source (Secondary)
+
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|1|Compass|
+|2|GPS|
+|3|GPS with Compass Fallback|
+|6|ExternalNav|
+|8|GSF|
+
+## EK3_SRC3_POSXY: Position Horizontal Source (Tertiary)
+
+*Note: This parameter is for advanced users*
+
+Position Horizontal Source (Tertiary)
+
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|3|GPS|
+|4|Beacon|
+|6|ExternalNav|
+
+## EK3_SRC3_VELXY: Velocity Horizontal Source (Tertiary)
+
+*Note: This parameter is for advanced users*
+
+Velocity Horizontal Source (Tertiary)
+
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|3|GPS|
+|4|Beacon|
+|5|OpticalFlow|
+|6|ExternalNav|
+|7|WheelEncoder|
+
+## EK3_SRC3_POSZ: Position Vertical Source (Tertiary)
+
+*Note: This parameter is for advanced users*
+
+Position Vertical Source (Tertiary)
+
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|1|Baro|
+|2|RangeFinder|
+|3|GPS|
+|4|Beacon|
+|6|ExternalNav|
+
+## EK3_SRC3_VELZ: Velocity Vertical Source (Tertiary)
+
+*Note: This parameter is for advanced users*
+
+Velocity Vertical Source (Tertiary)
+
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|3|GPS|
+|4|Beacon|
+|6|ExternalNav|
+
+## EK3_SRC3_YAW: Yaw Source (Tertiary)
+
+*Note: This parameter is for advanced users*
+
+Yaw Source (Tertiary)
+
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|1|Compass|
+|2|GPS|
+|3|GPS with Compass Fallback|
+|6|ExternalNav|
+|8|GSF|
+
+## EK3_SRC_OPTIONS: EKF Source Options
+
+*Note: This parameter is for advanced users*
+
+EKF Source Options. Bit 0: Fuse all velocity sources present in EK3_SRCx_VEL_. Bit 1: Align external navigation position when using optical flow. Bit 3: Use SRC per core. By default, EKF source selection is controlled via the EK3_SRC parameters, allowing only one source to be active at a time across all cores (switchable via MAVLink, Lua, or RC). Enabling this bit maps EKF core 1 to SRC1, core 2 to SRC2, etc., allowing each core to run independently with a dedicated source.
+
+- Bitmask: 0:FuseAllVelocities, 1:AlignExtNavPosWhenUsingOptFlow, 3: UsePerCoreEKFSources
+
+# ESCTLM Parameters
+
+## ESC_TLM_MAV_OFS: ESC Telemetry mavlink offset
+
+Offset to apply to ESC numbers when reporting as ESC_TELEMETRY packets over MAVLink. This allows high numbered motors to be displayed as low numbered ESCs for convenience on GCS displays. A value of 4 would send ESC on output 5 as ESC number 1 in ESC_TELEMETRY packets
+
+- Increment: 1
+
+- Range: 0 31
+
+# FENCE Parameters
+
+## FENCE_ENABLE: Fence enable/disable
+
+Allows you to enable (1) or disable (0) the fence functionality. Fences can still be enabled and disabled via mavlink or an RC option, but these changes are not persisted.
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## FENCE_ACTION: Fence Action
+
+What action should be taken when fence is breached
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Report Only|
+|1|RTL or Land|
+
+## FENCE_RADIUS: Circular Fence Radius
+
+Circle fence radius which when breached will cause an RTL
+
+- Units: m
+
+- Range: 30 10000
+
+## FENCE_MARGIN: Fence Margin
+
+Distance that autopilot's should maintain from the fence to avoid a breach
+
+- Units: m
+
+- Range: 1 10
+
+## FENCE_TOTAL: Fence polygon point total
+
+Number of polygon points saved in eeprom (do not update manually)
+
+- Range: 1 20
+
+## FENCE_OPTIONS: Fence options
+
+When bit 0 is set disable mode change following fence action until fence breach is cleared. When bit 1 is set the allowable flight areas is the union of all polygon and circle fence areas instead of the intersection, which means a fence breach occurs only if you are outside all of the fence areas.
+
+- Bitmask: 0:Disable mode change following fence action until fence breach is cleared, 1:Allow union of inclusion areas, 2:Notify on margin breaches
+
+## FENCE_NTF_FREQ: Fence margin notification frequency in hz
+
+*Note: This parameter is for advanced users*
+
+When bit 2 of FENCE_OPTIONS is set this parameter controls the frequency of margin breach notifications. If set to 0 only new margin breaches are notified.
+
+- Range: 0 10
+
+- Units: Hz
+
+## FENCE_MARGIN_XY: Fence Horizontal Margin
+
+Distance that autopilot's should maintain from the fence in the horizontal plane to avoid a breach. If set to 0 then FENCE_MARGIN is used.
+
+- Units: m
+
+- Range: 0 50
+
+# FFT Parameters
+
+## FFT_ENABLE: Enable
+
+*Note: This parameter is for advanced users*
+
+Enable Gyro FFT analyser
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+- RebootRequired: True
+
+## FFT_MINHZ: Minimum Frequency
+
+*Note: This parameter is for advanced users*
+
+Lower bound of FFT frequency detection in Hz. On larger vehicles the minimum motor frequency is likely to be significantly lower than for smaller vehicles.
+
+- Range: 20 400
+
+- Units: Hz
+
+## FFT_MAXHZ: Maximum Frequency
+
+*Note: This parameter is for advanced users*
+
+Upper bound of FFT frequency detection in Hz. On smaller vehicles the maximum motor frequency is likely to be significantly higher than for larger vehicles.
+
+- Range: 20 495
+
+- Units: Hz
+
+## FFT_SAMPLE_MODE: Sample Mode
+
+*Note: This parameter is for advanced users*
+
+Sampling mode (and therefore rate). 0: Gyro rate sampling, 1: Fast loop rate sampling, 2: Fast loop rate / 2 sampling, 3: Fast loop rate / 3 sampling. Takes effect on reboot.
+
+- Range: 0 4
+
+- RebootRequired: True
+
+## FFT_WINDOW_SIZE: FFT window size
+
+*Note: This parameter is for advanced users*
+
+Size of window to be used in FFT calculations. Takes effect on reboot. Must be a power of 2 and between 32 and 512. Larger windows give greater frequency resolution but poorer time resolution, consume more CPU time and may not be appropriate for all vehicles. Time and frequency resolution are given by the sample-rate / window-size. Windows of 256 are only really recommended for F7 class boards, windows of 512 or more H7 class.
+
+- Range: 32 1024
+
+- RebootRequired: True
+
+## FFT_WINDOW_OLAP: FFT window overlap
+
+*Note: This parameter is for advanced users*
+
+Percentage of window to be overlapped before another frame is process. Takes effect on reboot. A good default is 50% overlap. Higher overlap results in more processed frames but not necessarily more temporal resolution. Lower overlap results in lost information at the frame edges.
+
+- Range: 0 0.9
+
+- RebootRequired: True
+
+## FFT_FREQ_HOVER: FFT learned hover frequency
+
+*Note: This parameter is for advanced users*
+
+The learned hover noise frequency
+
+- Range: 0 250
+
+## FFT_THR_REF: FFT learned thrust reference
+
+*Note: This parameter is for advanced users*
+
+FFT learned thrust reference for the hover frequency and FFT minimum frequency.
+
+- Range: 0.01 0.9
+
+## FFT_SNR_REF: FFT SNR reference threshold
+
+*Note: This parameter is for advanced users*
+
+FFT SNR reference threshold in dB at which a signal is determined to be present.
+
+- Range: 0.0 100.0
+
+## FFT_ATT_REF: FFT attenuation for bandwidth calculation
+
+*Note: This parameter is for advanced users*
+
+FFT attenuation level in dB for bandwidth calculation and peak detection. The bandwidth is calculated by comparing peak power output with the attenuated version. The default of 15 has shown to be a good compromise in both simulations and real flight.
+
+- Range: 0 100
+
+## FFT_BW_HOVER: FFT learned bandwidth at hover
+
+*Note: This parameter is for advanced users*
+
+FFT learned bandwidth at hover for the attenuation frequencies.
+
+- Range: 0 200
+
+## FFT_HMNC_FIT: FFT harmonic fit frequency threshold
+
+*Note: This parameter is for advanced users*
+
+FFT harmonic fit frequency threshold percentage at which a signal of the appropriate frequency is determined to be the harmonic of another. Signals that have a harmonic relationship that varies at most by this percentage are considered harmonics of each other for the purpose of selecting the harmonic notch frequency. If a match is found then the lower frequency harmonic is always used as the basis for the dynamic harmonic notch. A value of zero completely disables harmonic matching.
+
+- Range: 0 100
+
+- RebootRequired: True
+
+## FFT_HMNC_PEAK: FFT harmonic peak target
+
+*Note: This parameter is for advanced users*
+
+The FFT harmonic peak target that should be returned by FTN1.PkAvg. The resulting value will be used by the harmonic notch if configured to track the FFT frequency. By default the appropriate peak is auto-detected based on the harmonic fit between peaks and the energy-weighted average frequency on roll on pitch is used. Setting this to 1 will always target the highest energy peak. Setting this to 2 will target the highest energy peak that is lower in frequency than the highest energy peak. Setting this to 3 will target the highest energy peak that is higher in frequency than the highest energy peak. Setting this to 4 will target the highest energy peak on the roll axis only and only the roll frequency will be used (some vehicles have a much more pronounced peak on roll). Setting this to 5 will target the highest energy peak on the pitch axis only and only the pitch frequency will be used (some vehicles have a much more pronounced peak on roll).
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Auto|
+|1|Center Frequency|
+|2|Lower-Shoulder Frequency|
+|3|Upper-Shoulder Frequency|
+|4|Roll-Axis|
+|5|Pitch-Axis|
+
+## FFT_NUM_FRAMES: FFT output frames to retain and average
+
+*Note: This parameter is for advanced users*
+
+Number of output frequency frames to retain and average in order to calculate final frequencies. Averaging output frames can drastically reduce noise and jitter at the cost of latency as long as the input is stable. The default is to perform no averaging. For rapidly changing frequencies (e.g. smaller aircraft) fewer frames should be averaged.
+
+- Range: 0 8
+
+- RebootRequired: True
+
+## FFT_OPTIONS: FFT options
+
+*Note: This parameter is for advanced users*
+
+FFT configuration options. Values: 1:Apply the FFT *after* the filter bank,2:Check noise at the motor frequencies using ESC data as a reference
+
+- Bitmask: 0:Enable post-filter FFT,1:Check motor noise
+
+- RebootRequired: True
+
+# FILT1 Parameters
+
+## FILT1_TYPE: Filter Type
+
+Filter Type
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disable|
+|1|Notch Filter|
+
+- RebootRequired: True
+
+## FILT1_NOTCH_FREQ: Notch Filter center frequency
+
+*Note: This parameter is for advanced users*
+
+Notch Filter center frequency in Hz.
+
+- Range: 10 495
+
+- Units: Hz
+
+## FILT1_NOTCH_Q: Notch Filter quality factor
+
+*Note: This parameter is for advanced users*
+
+Notch Filter quality factor given by the notch centre frequency divided by its bandwidth.
+
+- Range: 1 10
+
+## FILT1_NOTCH_ATT: Notch Filter attenuation
+
+*Note: This parameter is for advanced users*
+
+Notch Filter attenuation in dB.
+
+- Range: 5 50
+
+- Units: dB
+
+# FILT2 Parameters
+
+## FILT2_TYPE: Filter Type
+
+Filter Type
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disable|
+|1|Notch Filter|
+
+- RebootRequired: True
+
+## FILT2_NOTCH_FREQ: Notch Filter center frequency
+
+*Note: This parameter is for advanced users*
+
+Notch Filter center frequency in Hz.
+
+- Range: 10 495
+
+- Units: Hz
+
+## FILT2_NOTCH_Q: Notch Filter quality factor
+
+*Note: This parameter is for advanced users*
+
+Notch Filter quality factor given by the notch centre frequency divided by its bandwidth.
+
+- Range: 1 10
+
+## FILT2_NOTCH_ATT: Notch Filter attenuation
+
+*Note: This parameter is for advanced users*
+
+Notch Filter attenuation in dB.
+
+- Range: 5 50
+
+- Units: dB
+
+# FILT3 Parameters
+
+## FILT3_TYPE: Filter Type
+
+Filter Type
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disable|
+|1|Notch Filter|
+
+- RebootRequired: True
+
+## FILT3_NOTCH_FREQ: Notch Filter center frequency
+
+*Note: This parameter is for advanced users*
+
+Notch Filter center frequency in Hz.
+
+- Range: 10 495
+
+- Units: Hz
+
+## FILT3_NOTCH_Q: Notch Filter quality factor
+
+*Note: This parameter is for advanced users*
+
+Notch Filter quality factor given by the notch centre frequency divided by its bandwidth.
+
+- Range: 1 10
+
+## FILT3_NOTCH_ATT: Notch Filter attenuation
+
+*Note: This parameter is for advanced users*
+
+Notch Filter attenuation in dB.
+
+- Range: 5 50
+
+- Units: dB
+
+# FILT4 Parameters
+
+## FILT4_TYPE: Filter Type
+
+Filter Type
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disable|
+|1|Notch Filter|
+
+- RebootRequired: True
+
+## FILT4_NOTCH_FREQ: Notch Filter center frequency
+
+*Note: This parameter is for advanced users*
+
+Notch Filter center frequency in Hz.
+
+- Range: 10 495
+
+- Units: Hz
+
+## FILT4_NOTCH_Q: Notch Filter quality factor
+
+*Note: This parameter is for advanced users*
+
+Notch Filter quality factor given by the notch centre frequency divided by its bandwidth.
+
+- Range: 1 10
+
+## FILT4_NOTCH_ATT: Notch Filter attenuation
+
+*Note: This parameter is for advanced users*
+
+Notch Filter attenuation in dB.
+
+- Range: 5 50
+
+- Units: dB
+
+# FILT5 Parameters
+
+## FILT5_TYPE: Filter Type
+
+Filter Type
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disable|
+|1|Notch Filter|
+
+- RebootRequired: True
+
+## FILT5_NOTCH_FREQ: Notch Filter center frequency
+
+*Note: This parameter is for advanced users*
+
+Notch Filter center frequency in Hz.
+
+- Range: 10 495
+
+- Units: Hz
+
+## FILT5_NOTCH_Q: Notch Filter quality factor
+
+*Note: This parameter is for advanced users*
+
+Notch Filter quality factor given by the notch centre frequency divided by its bandwidth.
+
+- Range: 1 10
+
+## FILT5_NOTCH_ATT: Notch Filter attenuation
+
+*Note: This parameter is for advanced users*
+
+Notch Filter attenuation in dB.
+
+- Range: 5 50
+
+- Units: dB
+
+# FILT6 Parameters
+
+## FILT6_TYPE: Filter Type
+
+Filter Type
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disable|
+|1|Notch Filter|
+
+- RebootRequired: True
+
+## FILT6_NOTCH_FREQ: Notch Filter center frequency
+
+*Note: This parameter is for advanced users*
+
+Notch Filter center frequency in Hz.
+
+- Range: 10 495
+
+- Units: Hz
+
+## FILT6_NOTCH_Q: Notch Filter quality factor
+
+*Note: This parameter is for advanced users*
+
+Notch Filter quality factor given by the notch centre frequency divided by its bandwidth.
+
+- Range: 1 10
+
+## FILT6_NOTCH_ATT: Notch Filter attenuation
+
+*Note: This parameter is for advanced users*
+
+Notch Filter attenuation in dB.
+
+- Range: 5 50
+
+- Units: dB
+
+# FILT7 Parameters
+
+## FILT7_TYPE: Filter Type
+
+Filter Type
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disable|
+|1|Notch Filter|
+
+- RebootRequired: True
+
+## FILT7_NOTCH_FREQ: Notch Filter center frequency
+
+*Note: This parameter is for advanced users*
+
+Notch Filter center frequency in Hz.
+
+- Range: 10 495
+
+- Units: Hz
+
+## FILT7_NOTCH_Q: Notch Filter quality factor
+
+*Note: This parameter is for advanced users*
+
+Notch Filter quality factor given by the notch centre frequency divided by its bandwidth.
+
+- Range: 1 10
+
+## FILT7_NOTCH_ATT: Notch Filter attenuation
+
+*Note: This parameter is for advanced users*
+
+Notch Filter attenuation in dB.
+
+- Range: 5 50
+
+- Units: dB
+
+# FILT8 Parameters
+
+## FILT8_TYPE: Filter Type
+
+Filter Type
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disable|
+|1|Notch Filter|
+
+- RebootRequired: True
+
+## FILT8_NOTCH_FREQ: Notch Filter center frequency
+
+*Note: This parameter is for advanced users*
+
+Notch Filter center frequency in Hz.
+
+- Range: 10 495
+
+- Units: Hz
+
+## FILT8_NOTCH_Q: Notch Filter quality factor
+
+*Note: This parameter is for advanced users*
+
+Notch Filter quality factor given by the notch centre frequency divided by its bandwidth.
+
+- Range: 1 10
+
+## FILT8_NOTCH_ATT: Notch Filter attenuation
+
+*Note: This parameter is for advanced users*
+
+Notch Filter attenuation in dB.
+
+- Range: 5 50
+
+- Units: dB
+
+# FRSKY Parameters
+
+## FRSKY_UPLINK_ID: Uplink sensor id
+
+*Note: This parameter is for advanced users*
+
+Change the uplink sensor id (SPort only)
+
+|Value|Meaning|
+|:---:|:---:|
+|-1|Disable|
+|7|7|
+|8|8|
+|9|9|
+|10|10|
+|11|11|
+|12|12|
+|13|13|
+|14|14|
+|15|15|
+|16|16|
+|17|17|
+|18|18|
+|19|19|
+|20|20|
+|21|21|
+|22|22|
+|23|23|
+|24|24|
+|25|25|
+|26|26|
+
+## FRSKY_DNLINK1_ID: First downlink sensor id
+
+*Note: This parameter is for advanced users*
+
+Change the first extra downlink sensor id (SPort only)
+
+|Value|Meaning|
+|:---:|:---:|
+|-1|Disable|
+|7|7|
+|8|8|
+|9|9|
+|10|10|
+|11|11|
+|12|12|
+|13|13|
+|14|14|
+|15|15|
+|16|16|
+|17|17|
+|18|18|
+|19|19|
+|20|20|
+|21|21|
+|22|22|
+|23|23|
+|24|24|
+|25|25|
+|26|26|
+
+## FRSKY_DNLINK2_ID: Second downlink sensor id
+
+*Note: This parameter is for advanced users*
+
+Change the second extra downlink sensor id (SPort only)
+
+|Value|Meaning|
+|:---:|:---:|
+|-1|Disable|
+|7|7|
+|8|8|
+|9|9|
+|10|10|
+|11|11|
+|12|12|
+|13|13|
+|14|14|
+|15|15|
+|16|16|
+|17|17|
+|18|18|
+|19|19|
+|20|20|
+|21|21|
+|22|22|
+|23|23|
+|24|24|
+|25|25|
+|26|26|
+
+## FRSKY_DNLINK_ID: Default downlink sensor id
+
+*Note: This parameter is for advanced users*
+
+Change the default downlink sensor id (SPort only)
+
+|Value|Meaning|
+|:---:|:---:|
+|-1|Disable|
+|7|7|
+|8|8|
+|9|9|
+|10|10|
+|11|11|
+|12|12|
+|13|13|
+|14|14|
+|15|15|
+|16|16|
+|17|17|
+|18|18|
+|19|19|
+|20|20|
+|21|21|
+|22|22|
+|23|23|
+|24|24|
+|25|25|
+|26|26|
+|27|27|
+
+## FRSKY_OPTIONS: FRSky Telemetry Options
+
+A bitmask to set some FRSky Telemetry specific options
+
+- Bitmask: 0:EnableAirspeedAndGroundspeed
+
+# GEN Parameters
+
+## GEN_TYPE: Generator type
+
+Generator type
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|IE 650w 800w Fuel Cell|
+|2|IE 2.4kW Fuel Cell|
+|3|Richenpower|
+|4|Loweheiser|
+|5|CORTEX|
+
+- RebootRequired: True
+
+## GEN_OPTIONS: Generator Options
+
+Bitmask of options for generators
+
+- Bitmask: 0:Suppress Maintenance-Required Warnings
+
+# GENL Parameters
+
+## GEN_L_MNT_TIME: Seconds until maintenance required
+
+*Note: This parameter is for advanced users*
+
+Seconds until maintenance required
+
+## GEN_L_RUNTIME: Total runtime
+
+*Note: This parameter is for advanced users*
+
+Total time this generator has run in seconds
+
+## GEN_L_IDLE_TH_H: High Idle throttle
+
+*Note: This parameter is for advanced users*
+
+throttle value to use when warming up or cooling down
+
+## GEN_L_IDLE_TH: Idle throttle
+
+*Note: This parameter is for advanced users*
+
+throttle value to use when idling
+
+## GEN_L_RUN_TEMP: Run Temperature
+
+*Note: This parameter is for advanced users*
+
+temperature required for generator to start producing power in deg celsius
+
+## GEN_L_IDLE_TEMP: Idle Temperature
+
+*Note: This parameter is for advanced users*
+
+temperature required for generator to return to idle after having run
+
+## GEN_L_OVER_TEMP: Cylinder Head Over Temperature Warning Level
+
+*Note: This parameter is for advanced users*
+
+threshold temperature for the cylinder head above which the mavlink over temperature message gets sent
+
+- Units: degC
 
 # GPS Parameters
 
@@ -14451,6 +19405,83 @@ Z position of the base (primary) GPS antenna in body frame from the position of 
 - Range: -5 5
 
 - Increment: 0.01
+
+# GRIP Parameters
+
+## GRIP_ENABLE: Gripper Enable/Disable
+
+Gripper enable/disable
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## GRIP_TYPE: Gripper Type
+
+Gripper enable/disable
+
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|1|Servo|
+|2|EPM|
+
+## GRIP_GRAB: Gripper Grab PWM
+
+*Note: This parameter is for advanced users*
+
+PWM value in microseconds sent to Gripper to initiate grabbing the cargo
+
+- Range: 1000 2000
+
+- Units: PWM
+
+## GRIP_RELEASE: Gripper Release PWM
+
+*Note: This parameter is for advanced users*
+
+PWM value in microseconds sent to Gripper to release the cargo
+
+- Range: 1000 2000
+
+- Units: PWM
+
+## GRIP_NEUTRAL: Neutral PWM
+
+*Note: This parameter is for advanced users*
+
+PWM value in microseconds sent to grabber when not grabbing or releasing
+
+- Range: 1000 2000
+
+- Units: PWM
+
+## GRIP_REGRAB: EPM Gripper Regrab interval
+
+*Note: This parameter is for advanced users*
+
+Time in seconds that EPM gripper will regrab the cargo to ensure grip has not weakened; 0 to disable
+
+- Range: 0 255
+
+- Units: s
+
+## GRIP_CAN_ID: EPM UAVCAN Hardpoint ID
+
+Refer to https://docs.zubax.com/opengrab_epm_v3#UAVCAN_interface
+
+- Range: 0 255
+
+## GRIP_AUTOCLOSE: Gripper Autoclose time
+
+*Note: This parameter is for advanced users*
+
+Time in seconds that gripper close the gripper after opening; 0 to disable
+
+- Range: 0.25 255
+
+- Units: s
 
 # INS Parameters
 
@@ -21728,39 +26759,35 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
 
-# NET Parameters
+# MSP Parameters
 
-## NET_PPP_PORT: PPP serial port
+## MSP_OSD_NCELLS: Cell count override
 
-PPP serial port
-
-- Range: -1 10
-
-## NET_PPP_BAUD: PPP serial baudrate
-
-PPP serial baudrate
-
-- Range: 1 20000000
+Used for average cell voltage calculation
 
 |Value|Meaning|
 |:---:|:---:|
-|1|1200|
-|2|2400|
-|4|4800|
-|9|9600|
-|19|19200|
-|38|38400|
-|57|57600|
-|111|111100|
-|115|115200|
-|230|230400|
-|256|256000|
-|460|460800|
-|500|500000|
-|921|921600|
-|1500|1.5MBaud|
-|2000|2MBaud|
-|12500000|12.5MBaud|
+|0|Auto|
+|1|1|
+|2|2|
+|3|3|
+|4|4|
+|5|5|
+|6|6|
+|7|7|
+|8|8|
+|9|9|
+|10|10|
+|11|11|
+|12|12|
+|13|13|
+|14|14|
+
+## MSP_OPTIONS: MSP OSD Options
+
+A bitmask to set some MSP specific options: EnableTelemetryMode-allows "push" mode telemetry when only rx line of OSD ic connected to autopilot,  EnableBTFLFonts-uses indexes corresponding to Betaflight fonts if OSD uses those instead of ArduPilot fonts. EnableINAVFonts uses INAV fonts and overrides EnableBTFLFonts if that option is enabled.
+
+- Bitmask: 0:EnableTelemetryMode, 1: unused, 2:EnableBTFLFonts, 3:EnableINAVFonts
 
 # NET Parameters
 
@@ -22434,2276 +27461,6 @@ IPv4 address. Example: xxx.xxx.xxx.14
 
 - RebootRequired: True
 
-# NETP5 Parameters
-
-## NET_P5_TYPE: Port type
-
-*Note: This parameter is for advanced users*
-
-Port type for network serial port. For the two client types a valid destination IP address must be set. For the two server types either 0.0.0.0 or a local address can be used. The UDP client type will use broadcast if the IP is set to 255.255.255.255 and will use UDP multicast if the IP is in the multicast address range.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|UDP client|
-|2|UDP server|
-|3|TCP client|
-|4|TCP server|
-
-- RebootRequired: True
-
-## NET_P5_PROTOCOL: Protocol
-
-*Note: This parameter is for advanced users*
-
-Networked serial port protocol
-
-- RebootRequired: True
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|None|
-|1|MAVLink1|
-|2|MAVLink2|
-|3|Frsky D|
-|4|Frsky SPort|
-|5|GPS|
-|7|Alexmos Gimbal Serial|
-|8|Gimbal|
-|9|Rangefinder|
-|10|FrSky SPort Passthrough (OpenTX)|
-|11|Lidar360|
-|13|Beacon|
-|14|Volz servo out|
-|15|SBus servo out|
-|16|ESC Telemetry|
-|17|Devo Telemetry|
-|18|OpticalFlow|
-|19|RobotisServo|
-|20|NMEA Output|
-|21|WindVane|
-|22|SLCAN|
-|23|RCIN|
-|24|EFI Serial|
-|25|LTM|
-|26|RunCam|
-|27|HottTelem|
-|28|Scripting|
-|29|Crossfire VTX|
-|30|Generator|
-|31|Winch|
-|32|MSP|
-|33|DJI FPV|
-|34|AirSpeed|
-|35|ADSB|
-|36|AHRS|
-|37|SmartAudio|
-|38|FETtecOneWire|
-|39|Torqeedo|
-|40|AIS|
-|41|CoDevESC|
-|42|DisplayPort|
-|43|MAVLink High Latency|
-|44|IRC Tramp|
-|45|DDS XRCE|
-|46|IMUDATA|
-|48|PPP|
-|49|i-BUS Telemetry|
-|50|IOMCU|
-
-## NET_P5_PORT: Port number
-
-*Note: This parameter is for advanced users*
-
-Port number
-
-- Range: 0 65535
-
-- RebootRequired: True
-
-# NETP5IP Parameters
-
-## NET_P5_IP0: IPv4 Address 1st byte
-
-IPv4 address. Example: 192.xxx.xxx.xxx
-
-- Range: 0 255
-
-- RebootRequired: True
-
-## NET_P5_IP1: IPv4 Address 2nd byte
-
-IPv4 address. Example: xxx.168.xxx.xxx
-
-- Range: 0 255
-
-- RebootRequired: True
-
-## NET_P5_IP2: IPv4 Address 3rd byte
-
-IPv4 address. Example: xxx.xxx.144.xxx
-
-- Range: 0 255
-
-- RebootRequired: True
-
-## NET_P5_IP3: IPv4 Address 4th byte
-
-IPv4 address. Example: xxx.xxx.xxx.14
-
-- Range: 0 255
-
-- RebootRequired: True
-
-# NETP6 Parameters
-
-## NET_P6_TYPE: Port type
-
-*Note: This parameter is for advanced users*
-
-Port type for network serial port. For the two client types a valid destination IP address must be set. For the two server types either 0.0.0.0 or a local address can be used. The UDP client type will use broadcast if the IP is set to 255.255.255.255 and will use UDP multicast if the IP is in the multicast address range.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|UDP client|
-|2|UDP server|
-|3|TCP client|
-|4|TCP server|
-
-- RebootRequired: True
-
-## NET_P6_PROTOCOL: Protocol
-
-*Note: This parameter is for advanced users*
-
-Networked serial port protocol
-
-- RebootRequired: True
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|None|
-|1|MAVLink1|
-|2|MAVLink2|
-|3|Frsky D|
-|4|Frsky SPort|
-|5|GPS|
-|7|Alexmos Gimbal Serial|
-|8|Gimbal|
-|9|Rangefinder|
-|10|FrSky SPort Passthrough (OpenTX)|
-|11|Lidar360|
-|13|Beacon|
-|14|Volz servo out|
-|15|SBus servo out|
-|16|ESC Telemetry|
-|17|Devo Telemetry|
-|18|OpticalFlow|
-|19|RobotisServo|
-|20|NMEA Output|
-|21|WindVane|
-|22|SLCAN|
-|23|RCIN|
-|24|EFI Serial|
-|25|LTM|
-|26|RunCam|
-|27|HottTelem|
-|28|Scripting|
-|29|Crossfire VTX|
-|30|Generator|
-|31|Winch|
-|32|MSP|
-|33|DJI FPV|
-|34|AirSpeed|
-|35|ADSB|
-|36|AHRS|
-|37|SmartAudio|
-|38|FETtecOneWire|
-|39|Torqeedo|
-|40|AIS|
-|41|CoDevESC|
-|42|DisplayPort|
-|43|MAVLink High Latency|
-|44|IRC Tramp|
-|45|DDS XRCE|
-|46|IMUDATA|
-|48|PPP|
-|49|i-BUS Telemetry|
-|50|IOMCU|
-
-## NET_P6_PORT: Port number
-
-*Note: This parameter is for advanced users*
-
-Port number
-
-- Range: 0 65535
-
-- RebootRequired: True
-
-# NETP6IP Parameters
-
-## NET_P6_IP0: IPv4 Address 1st byte
-
-IPv4 address. Example: 192.xxx.xxx.xxx
-
-- Range: 0 255
-
-- RebootRequired: True
-
-## NET_P6_IP1: IPv4 Address 2nd byte
-
-IPv4 address. Example: xxx.168.xxx.xxx
-
-- Range: 0 255
-
-- RebootRequired: True
-
-## NET_P6_IP2: IPv4 Address 3rd byte
-
-IPv4 address. Example: xxx.xxx.144.xxx
-
-- Range: 0 255
-
-- RebootRequired: True
-
-## NET_P6_IP3: IPv4 Address 4th byte
-
-IPv4 address. Example: xxx.xxx.xxx.14
-
-- Range: 0 255
-
-- RebootRequired: True
-
-# NETP7 Parameters
-
-## NET_P7_TYPE: Port type
-
-*Note: This parameter is for advanced users*
-
-Port type for network serial port. For the two client types a valid destination IP address must be set. For the two server types either 0.0.0.0 or a local address can be used. The UDP client type will use broadcast if the IP is set to 255.255.255.255 and will use UDP multicast if the IP is in the multicast address range.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|UDP client|
-|2|UDP server|
-|3|TCP client|
-|4|TCP server|
-
-- RebootRequired: True
-
-## NET_P7_PROTOCOL: Protocol
-
-*Note: This parameter is for advanced users*
-
-Networked serial port protocol
-
-- RebootRequired: True
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|None|
-|1|MAVLink1|
-|2|MAVLink2|
-|3|Frsky D|
-|4|Frsky SPort|
-|5|GPS|
-|7|Alexmos Gimbal Serial|
-|8|Gimbal|
-|9|Rangefinder|
-|10|FrSky SPort Passthrough (OpenTX)|
-|11|Lidar360|
-|13|Beacon|
-|14|Volz servo out|
-|15|SBus servo out|
-|16|ESC Telemetry|
-|17|Devo Telemetry|
-|18|OpticalFlow|
-|19|RobotisServo|
-|20|NMEA Output|
-|21|WindVane|
-|22|SLCAN|
-|23|RCIN|
-|24|EFI Serial|
-|25|LTM|
-|26|RunCam|
-|27|HottTelem|
-|28|Scripting|
-|29|Crossfire VTX|
-|30|Generator|
-|31|Winch|
-|32|MSP|
-|33|DJI FPV|
-|34|AirSpeed|
-|35|ADSB|
-|36|AHRS|
-|37|SmartAudio|
-|38|FETtecOneWire|
-|39|Torqeedo|
-|40|AIS|
-|41|CoDevESC|
-|42|DisplayPort|
-|43|MAVLink High Latency|
-|44|IRC Tramp|
-|45|DDS XRCE|
-|46|IMUDATA|
-|48|PPP|
-|49|i-BUS Telemetry|
-|50|IOMCU|
-
-## NET_P7_PORT: Port number
-
-*Note: This parameter is for advanced users*
-
-Port number
-
-- Range: 0 65535
-
-- RebootRequired: True
-
-# NETP7IP Parameters
-
-## NET_P7_IP0: IPv4 Address 1st byte
-
-IPv4 address. Example: 192.xxx.xxx.xxx
-
-- Range: 0 255
-
-- RebootRequired: True
-
-## NET_P7_IP1: IPv4 Address 2nd byte
-
-IPv4 address. Example: xxx.168.xxx.xxx
-
-- Range: 0 255
-
-- RebootRequired: True
-
-## NET_P7_IP2: IPv4 Address 3rd byte
-
-IPv4 address. Example: xxx.xxx.144.xxx
-
-- Range: 0 255
-
-- RebootRequired: True
-
-## NET_P7_IP3: IPv4 Address 4th byte
-
-IPv4 address. Example: xxx.xxx.xxx.14
-
-- Range: 0 255
-
-- RebootRequired: True
-
-# NETP8 Parameters
-
-## NET_P8_TYPE: Port type
-
-*Note: This parameter is for advanced users*
-
-Port type for network serial port. For the two client types a valid destination IP address must be set. For the two server types either 0.0.0.0 or a local address can be used. The UDP client type will use broadcast if the IP is set to 255.255.255.255 and will use UDP multicast if the IP is in the multicast address range.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|UDP client|
-|2|UDP server|
-|3|TCP client|
-|4|TCP server|
-
-- RebootRequired: True
-
-## NET_P8_PROTOCOL: Protocol
-
-*Note: This parameter is for advanced users*
-
-Networked serial port protocol
-
-- RebootRequired: True
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|None|
-|1|MAVLink1|
-|2|MAVLink2|
-|3|Frsky D|
-|4|Frsky SPort|
-|5|GPS|
-|7|Alexmos Gimbal Serial|
-|8|Gimbal|
-|9|Rangefinder|
-|10|FrSky SPort Passthrough (OpenTX)|
-|11|Lidar360|
-|13|Beacon|
-|14|Volz servo out|
-|15|SBus servo out|
-|16|ESC Telemetry|
-|17|Devo Telemetry|
-|18|OpticalFlow|
-|19|RobotisServo|
-|20|NMEA Output|
-|21|WindVane|
-|22|SLCAN|
-|23|RCIN|
-|24|EFI Serial|
-|25|LTM|
-|26|RunCam|
-|27|HottTelem|
-|28|Scripting|
-|29|Crossfire VTX|
-|30|Generator|
-|31|Winch|
-|32|MSP|
-|33|DJI FPV|
-|34|AirSpeed|
-|35|ADSB|
-|36|AHRS|
-|37|SmartAudio|
-|38|FETtecOneWire|
-|39|Torqeedo|
-|40|AIS|
-|41|CoDevESC|
-|42|DisplayPort|
-|43|MAVLink High Latency|
-|44|IRC Tramp|
-|45|DDS XRCE|
-|46|IMUDATA|
-|48|PPP|
-|49|i-BUS Telemetry|
-|50|IOMCU|
-
-## NET_P8_PORT: Port number
-
-*Note: This parameter is for advanced users*
-
-Port number
-
-- Range: 0 65535
-
-- RebootRequired: True
-
-# NETP8IP Parameters
-
-## NET_P8_IP0: IPv4 Address 1st byte
-
-IPv4 address. Example: 192.xxx.xxx.xxx
-
-- Range: 0 255
-
-- RebootRequired: True
-
-## NET_P8_IP1: IPv4 Address 2nd byte
-
-IPv4 address. Example: xxx.168.xxx.xxx
-
-- Range: 0 255
-
-- RebootRequired: True
-
-## NET_P8_IP2: IPv4 Address 3rd byte
-
-IPv4 address. Example: xxx.xxx.144.xxx
-
-- Range: 0 255
-
-- RebootRequired: True
-
-## NET_P8_IP3: IPv4 Address 4th byte
-
-IPv4 address. Example: xxx.xxx.xxx.14
-
-- Range: 0 255
-
-- RebootRequired: True
-
-# NETP9 Parameters
-
-## NET_P9_TYPE: Port type
-
-*Note: This parameter is for advanced users*
-
-Port type for network serial port. For the two client types a valid destination IP address must be set. For the two server types either 0.0.0.0 or a local address can be used. The UDP client type will use broadcast if the IP is set to 255.255.255.255 and will use UDP multicast if the IP is in the multicast address range.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|UDP client|
-|2|UDP server|
-|3|TCP client|
-|4|TCP server|
-
-- RebootRequired: True
-
-## NET_P9_PROTOCOL: Protocol
-
-*Note: This parameter is for advanced users*
-
-Networked serial port protocol
-
-- RebootRequired: True
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|None|
-|1|MAVLink1|
-|2|MAVLink2|
-|3|Frsky D|
-|4|Frsky SPort|
-|5|GPS|
-|7|Alexmos Gimbal Serial|
-|8|Gimbal|
-|9|Rangefinder|
-|10|FrSky SPort Passthrough (OpenTX)|
-|11|Lidar360|
-|13|Beacon|
-|14|Volz servo out|
-|15|SBus servo out|
-|16|ESC Telemetry|
-|17|Devo Telemetry|
-|18|OpticalFlow|
-|19|RobotisServo|
-|20|NMEA Output|
-|21|WindVane|
-|22|SLCAN|
-|23|RCIN|
-|24|EFI Serial|
-|25|LTM|
-|26|RunCam|
-|27|HottTelem|
-|28|Scripting|
-|29|Crossfire VTX|
-|30|Generator|
-|31|Winch|
-|32|MSP|
-|33|DJI FPV|
-|34|AirSpeed|
-|35|ADSB|
-|36|AHRS|
-|37|SmartAudio|
-|38|FETtecOneWire|
-|39|Torqeedo|
-|40|AIS|
-|41|CoDevESC|
-|42|DisplayPort|
-|43|MAVLink High Latency|
-|44|IRC Tramp|
-|45|DDS XRCE|
-|46|IMUDATA|
-|48|PPP|
-|49|i-BUS Telemetry|
-|50|IOMCU|
-
-## NET_P9_PORT: Port number
-
-*Note: This parameter is for advanced users*
-
-Port number
-
-- Range: 0 65535
-
-- RebootRequired: True
-
-# NETP9IP Parameters
-
-## NET_P9_IP0: IPv4 Address 1st byte
-
-IPv4 address. Example: 192.xxx.xxx.xxx
-
-- Range: 0 255
-
-- RebootRequired: True
-
-## NET_P9_IP1: IPv4 Address 2nd byte
-
-IPv4 address. Example: xxx.168.xxx.xxx
-
-- Range: 0 255
-
-- RebootRequired: True
-
-## NET_P9_IP2: IPv4 Address 3rd byte
-
-IPv4 address. Example: xxx.xxx.144.xxx
-
-- Range: 0 255
-
-- RebootRequired: True
-
-## NET_P9_IP3: IPv4 Address 4th byte
-
-IPv4 address. Example: xxx.xxx.xxx.14
-
-- Range: 0 255
-
-- RebootRequired: True
-
-# NETPASS1 Parameters
-
-## NET_PASS1_ENABLE: Enable Passthrough
-
-*Note: This parameter is for advanced users*
-
-Enable Passthrough of any UART, Network, or CAN ports to any UART, Network, or CAN ports.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-- RebootRequired: True
-
-## NET_PASS1_EP1: Endpoint 1
-
-*Note: This parameter is for advanced users*
-
-Passthrough Endpoint 1. This can be a serial port UART, a Network port, or a CAN port. The selected port will route to Endport 2.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|0|Serial0(usually USB)|
-|1|Serial1|
-|2|Serial2|
-|3|Serial3|
-|4|Serial4|
-|5|Serial5|
-|6|Serial6|
-|7|Serial7|
-|8|Serial8|
-|9|Serial9|
-|21|Network Port1|
-|22|Network Port2|
-|23|Network Port3|
-|24|Network Port4|
-|25|Network Port5|
-|26|Network Port6|
-|27|Network Port7|
-|28|Network Port8|
-|29|Network Port9|
-|41|CAN1 Port1|
-|42|CAN1 Port2|
-|43|CAN1 Port3|
-|44|CAN1 Port4|
-|45|CAN1 Port5|
-|46|CAN1 Port6|
-|47|CAN1 Port7|
-|48|CAN1 Port8|
-|49|CAN1 Port9|
-|51|CAN2 Port1|
-|52|CAN2 Port2|
-|53|CAN2 Port3|
-|54|CAN2 Port4|
-|55|CAN2 Port5|
-|56|CAN2 Port6|
-|57|CAN2 Port7|
-|58|CAN2 Port8|
-|59|CAN2 Port9|
-
-- RebootRequired: True
-
-## NET_PASS1_EP2: Endpoint 2
-
-*Note: This parameter is for advanced users*
-
-Passthrough Endpoint 2. This can be a serial port UART, a Network port, or a CAN port. The selected port will route to Endport 1.
-
-- RebootRequired: True
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|0|Serial0(usually USB)|
-|1|Serial1|
-|2|Serial2|
-|3|Serial3|
-|4|Serial4|
-|5|Serial5|
-|6|Serial6|
-|7|Serial7|
-|8|Serial8|
-|9|Serial9|
-|21|Network Port1|
-|22|Network Port2|
-|23|Network Port3|
-|24|Network Port4|
-|25|Network Port5|
-|26|Network Port6|
-|27|Network Port7|
-|28|Network Port8|
-|29|Network Port9|
-|41|CAN1 Port1|
-|42|CAN1 Port2|
-|43|CAN1 Port3|
-|44|CAN1 Port4|
-|45|CAN1 Port5|
-|46|CAN1 Port6|
-|47|CAN1 Port7|
-|48|CAN1 Port8|
-|49|CAN1 Port9|
-|51|CAN2 Port1|
-|52|CAN2 Port2|
-|53|CAN2 Port3|
-|54|CAN2 Port4|
-|55|CAN2 Port5|
-|56|CAN2 Port6|
-|57|CAN2 Port7|
-|58|CAN2 Port8|
-|59|CAN2 Port9|
-
-## NET_PASS1_BAUD1: Endpoint 1 Baud Rate
-
-The baud rate used for Endpoint 1. Only applies to serial ports.
-
-- Range: 1 20000000
-
-|Value|Meaning|
-|:---:|:---:|
-|1|1200|
-|2|2400|
-|4|4800|
-|9|9600|
-|19|19200|
-|38|38400|
-|57|57600|
-|111|111100|
-|115|115200|
-|230|230400|
-|256|256000|
-|460|460800|
-|500|500000|
-|921|921600|
-|1500|1.5MBaud|
-|2000|2MBaud|
-|12500000|12.5MBaud|
-
-## NET_PASS1_BAUD2: Endpoint 2 Baud Rate
-
-The baud rate used for Endpoint 2. Only applies to serial ports.
-
-- Range: 1 20000000
-
-|Value|Meaning|
-|:---:|:---:|
-|1|1200|
-|2|2400|
-|4|4800|
-|9|9600|
-|19|19200|
-|38|38400|
-|57|57600|
-|111|111100|
-|115|115200|
-|230|230400|
-|256|256000|
-|460|460800|
-|500|500000|
-|921|921600|
-|1500|1.5MBaud|
-|2000|2MBaud|
-|12500000|12.5MBaud|
-
-## NET_PASS1_OPT1: Serial Port Options EP1
-
-*Note: This parameter is for advanced users*
-
-Control over UART options for Endpoint 1. Only applies to serial ports.
-
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from (moved to MAVn_OPTIONS >4.7), 11: DisableFIFO, 12: Ignore Streamrate (moved to MAVn_OPTIONS >4.7)
-
-- RebootRequired: True
-
-## NET_PASS1_OPT2: Serial Port Options EP2
-
-*Note: This parameter is for advanced users*
-
-Control over UART options for Endpoint 2. Only applies to serial ports.
-
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from (moved to MAVn_OPTIONS >4.7), 11: DisableFIFO, 12: Ignore Streamrate (moved to MAVn_OPTIONS >4.7)
-
-- RebootRequired: True
-
-# NETPASS2 Parameters
-
-## NET_PASS2_ENABLE: Enable Passthrough
-
-*Note: This parameter is for advanced users*
-
-Enable Passthrough of any UART, Network, or CAN ports to any UART, Network, or CAN ports.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-- RebootRequired: True
-
-## NET_PASS2_EP1: Endpoint 1
-
-*Note: This parameter is for advanced users*
-
-Passthrough Endpoint 1. This can be a serial port UART, a Network port, or a CAN port. The selected port will route to Endport 2.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|0|Serial0(usually USB)|
-|1|Serial1|
-|2|Serial2|
-|3|Serial3|
-|4|Serial4|
-|5|Serial5|
-|6|Serial6|
-|7|Serial7|
-|8|Serial8|
-|9|Serial9|
-|21|Network Port1|
-|22|Network Port2|
-|23|Network Port3|
-|24|Network Port4|
-|25|Network Port5|
-|26|Network Port6|
-|27|Network Port7|
-|28|Network Port8|
-|29|Network Port9|
-|41|CAN1 Port1|
-|42|CAN1 Port2|
-|43|CAN1 Port3|
-|44|CAN1 Port4|
-|45|CAN1 Port5|
-|46|CAN1 Port6|
-|47|CAN1 Port7|
-|48|CAN1 Port8|
-|49|CAN1 Port9|
-|51|CAN2 Port1|
-|52|CAN2 Port2|
-|53|CAN2 Port3|
-|54|CAN2 Port4|
-|55|CAN2 Port5|
-|56|CAN2 Port6|
-|57|CAN2 Port7|
-|58|CAN2 Port8|
-|59|CAN2 Port9|
-
-- RebootRequired: True
-
-## NET_PASS2_EP2: Endpoint 2
-
-*Note: This parameter is for advanced users*
-
-Passthrough Endpoint 2. This can be a serial port UART, a Network port, or a CAN port. The selected port will route to Endport 1.
-
-- RebootRequired: True
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|0|Serial0(usually USB)|
-|1|Serial1|
-|2|Serial2|
-|3|Serial3|
-|4|Serial4|
-|5|Serial5|
-|6|Serial6|
-|7|Serial7|
-|8|Serial8|
-|9|Serial9|
-|21|Network Port1|
-|22|Network Port2|
-|23|Network Port3|
-|24|Network Port4|
-|25|Network Port5|
-|26|Network Port6|
-|27|Network Port7|
-|28|Network Port8|
-|29|Network Port9|
-|41|CAN1 Port1|
-|42|CAN1 Port2|
-|43|CAN1 Port3|
-|44|CAN1 Port4|
-|45|CAN1 Port5|
-|46|CAN1 Port6|
-|47|CAN1 Port7|
-|48|CAN1 Port8|
-|49|CAN1 Port9|
-|51|CAN2 Port1|
-|52|CAN2 Port2|
-|53|CAN2 Port3|
-|54|CAN2 Port4|
-|55|CAN2 Port5|
-|56|CAN2 Port6|
-|57|CAN2 Port7|
-|58|CAN2 Port8|
-|59|CAN2 Port9|
-
-## NET_PASS2_BAUD1: Endpoint 1 Baud Rate
-
-The baud rate used for Endpoint 1. Only applies to serial ports.
-
-- Range: 1 20000000
-
-|Value|Meaning|
-|:---:|:---:|
-|1|1200|
-|2|2400|
-|4|4800|
-|9|9600|
-|19|19200|
-|38|38400|
-|57|57600|
-|111|111100|
-|115|115200|
-|230|230400|
-|256|256000|
-|460|460800|
-|500|500000|
-|921|921600|
-|1500|1.5MBaud|
-|2000|2MBaud|
-|12500000|12.5MBaud|
-
-## NET_PASS2_BAUD2: Endpoint 2 Baud Rate
-
-The baud rate used for Endpoint 2. Only applies to serial ports.
-
-- Range: 1 20000000
-
-|Value|Meaning|
-|:---:|:---:|
-|1|1200|
-|2|2400|
-|4|4800|
-|9|9600|
-|19|19200|
-|38|38400|
-|57|57600|
-|111|111100|
-|115|115200|
-|230|230400|
-|256|256000|
-|460|460800|
-|500|500000|
-|921|921600|
-|1500|1.5MBaud|
-|2000|2MBaud|
-|12500000|12.5MBaud|
-
-## NET_PASS2_OPT1: Serial Port Options EP1
-
-*Note: This parameter is for advanced users*
-
-Control over UART options for Endpoint 1. Only applies to serial ports.
-
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from (moved to MAVn_OPTIONS >4.7), 11: DisableFIFO, 12: Ignore Streamrate (moved to MAVn_OPTIONS >4.7)
-
-- RebootRequired: True
-
-## NET_PASS2_OPT2: Serial Port Options EP2
-
-*Note: This parameter is for advanced users*
-
-Control over UART options for Endpoint 2. Only applies to serial ports.
-
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from (moved to MAVn_OPTIONS >4.7), 11: DisableFIFO, 12: Ignore Streamrate (moved to MAVn_OPTIONS >4.7)
-
-- RebootRequired: True
-
-# NETPASS3 Parameters
-
-## NET_PASS3_ENABLE: Enable Passthrough
-
-*Note: This parameter is for advanced users*
-
-Enable Passthrough of any UART, Network, or CAN ports to any UART, Network, or CAN ports.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-- RebootRequired: True
-
-## NET_PASS3_EP1: Endpoint 1
-
-*Note: This parameter is for advanced users*
-
-Passthrough Endpoint 1. This can be a serial port UART, a Network port, or a CAN port. The selected port will route to Endport 2.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|0|Serial0(usually USB)|
-|1|Serial1|
-|2|Serial2|
-|3|Serial3|
-|4|Serial4|
-|5|Serial5|
-|6|Serial6|
-|7|Serial7|
-|8|Serial8|
-|9|Serial9|
-|21|Network Port1|
-|22|Network Port2|
-|23|Network Port3|
-|24|Network Port4|
-|25|Network Port5|
-|26|Network Port6|
-|27|Network Port7|
-|28|Network Port8|
-|29|Network Port9|
-|41|CAN1 Port1|
-|42|CAN1 Port2|
-|43|CAN1 Port3|
-|44|CAN1 Port4|
-|45|CAN1 Port5|
-|46|CAN1 Port6|
-|47|CAN1 Port7|
-|48|CAN1 Port8|
-|49|CAN1 Port9|
-|51|CAN2 Port1|
-|52|CAN2 Port2|
-|53|CAN2 Port3|
-|54|CAN2 Port4|
-|55|CAN2 Port5|
-|56|CAN2 Port6|
-|57|CAN2 Port7|
-|58|CAN2 Port8|
-|59|CAN2 Port9|
-
-- RebootRequired: True
-
-## NET_PASS3_EP2: Endpoint 2
-
-*Note: This parameter is for advanced users*
-
-Passthrough Endpoint 2. This can be a serial port UART, a Network port, or a CAN port. The selected port will route to Endport 1.
-
-- RebootRequired: True
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|0|Serial0(usually USB)|
-|1|Serial1|
-|2|Serial2|
-|3|Serial3|
-|4|Serial4|
-|5|Serial5|
-|6|Serial6|
-|7|Serial7|
-|8|Serial8|
-|9|Serial9|
-|21|Network Port1|
-|22|Network Port2|
-|23|Network Port3|
-|24|Network Port4|
-|25|Network Port5|
-|26|Network Port6|
-|27|Network Port7|
-|28|Network Port8|
-|29|Network Port9|
-|41|CAN1 Port1|
-|42|CAN1 Port2|
-|43|CAN1 Port3|
-|44|CAN1 Port4|
-|45|CAN1 Port5|
-|46|CAN1 Port6|
-|47|CAN1 Port7|
-|48|CAN1 Port8|
-|49|CAN1 Port9|
-|51|CAN2 Port1|
-|52|CAN2 Port2|
-|53|CAN2 Port3|
-|54|CAN2 Port4|
-|55|CAN2 Port5|
-|56|CAN2 Port6|
-|57|CAN2 Port7|
-|58|CAN2 Port8|
-|59|CAN2 Port9|
-
-## NET_PASS3_BAUD1: Endpoint 1 Baud Rate
-
-The baud rate used for Endpoint 1. Only applies to serial ports.
-
-- Range: 1 20000000
-
-|Value|Meaning|
-|:---:|:---:|
-|1|1200|
-|2|2400|
-|4|4800|
-|9|9600|
-|19|19200|
-|38|38400|
-|57|57600|
-|111|111100|
-|115|115200|
-|230|230400|
-|256|256000|
-|460|460800|
-|500|500000|
-|921|921600|
-|1500|1.5MBaud|
-|2000|2MBaud|
-|12500000|12.5MBaud|
-
-## NET_PASS3_BAUD2: Endpoint 2 Baud Rate
-
-The baud rate used for Endpoint 2. Only applies to serial ports.
-
-- Range: 1 20000000
-
-|Value|Meaning|
-|:---:|:---:|
-|1|1200|
-|2|2400|
-|4|4800|
-|9|9600|
-|19|19200|
-|38|38400|
-|57|57600|
-|111|111100|
-|115|115200|
-|230|230400|
-|256|256000|
-|460|460800|
-|500|500000|
-|921|921600|
-|1500|1.5MBaud|
-|2000|2MBaud|
-|12500000|12.5MBaud|
-
-## NET_PASS3_OPT1: Serial Port Options EP1
-
-*Note: This parameter is for advanced users*
-
-Control over UART options for Endpoint 1. Only applies to serial ports.
-
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from (moved to MAVn_OPTIONS >4.7), 11: DisableFIFO, 12: Ignore Streamrate (moved to MAVn_OPTIONS >4.7)
-
-- RebootRequired: True
-
-## NET_PASS3_OPT2: Serial Port Options EP2
-
-*Note: This parameter is for advanced users*
-
-Control over UART options for Endpoint 2. Only applies to serial ports.
-
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from (moved to MAVn_OPTIONS >4.7), 11: DisableFIFO, 12: Ignore Streamrate (moved to MAVn_OPTIONS >4.7)
-
-- RebootRequired: True
-
-# NETPASS4 Parameters
-
-## NET_PASS4_ENABLE: Enable Passthrough
-
-*Note: This parameter is for advanced users*
-
-Enable Passthrough of any UART, Network, or CAN ports to any UART, Network, or CAN ports.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-- RebootRequired: True
-
-## NET_PASS4_EP1: Endpoint 1
-
-*Note: This parameter is for advanced users*
-
-Passthrough Endpoint 1. This can be a serial port UART, a Network port, or a CAN port. The selected port will route to Endport 2.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|0|Serial0(usually USB)|
-|1|Serial1|
-|2|Serial2|
-|3|Serial3|
-|4|Serial4|
-|5|Serial5|
-|6|Serial6|
-|7|Serial7|
-|8|Serial8|
-|9|Serial9|
-|21|Network Port1|
-|22|Network Port2|
-|23|Network Port3|
-|24|Network Port4|
-|25|Network Port5|
-|26|Network Port6|
-|27|Network Port7|
-|28|Network Port8|
-|29|Network Port9|
-|41|CAN1 Port1|
-|42|CAN1 Port2|
-|43|CAN1 Port3|
-|44|CAN1 Port4|
-|45|CAN1 Port5|
-|46|CAN1 Port6|
-|47|CAN1 Port7|
-|48|CAN1 Port8|
-|49|CAN1 Port9|
-|51|CAN2 Port1|
-|52|CAN2 Port2|
-|53|CAN2 Port3|
-|54|CAN2 Port4|
-|55|CAN2 Port5|
-|56|CAN2 Port6|
-|57|CAN2 Port7|
-|58|CAN2 Port8|
-|59|CAN2 Port9|
-
-- RebootRequired: True
-
-## NET_PASS4_EP2: Endpoint 2
-
-*Note: This parameter is for advanced users*
-
-Passthrough Endpoint 2. This can be a serial port UART, a Network port, or a CAN port. The selected port will route to Endport 1.
-
-- RebootRequired: True
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|0|Serial0(usually USB)|
-|1|Serial1|
-|2|Serial2|
-|3|Serial3|
-|4|Serial4|
-|5|Serial5|
-|6|Serial6|
-|7|Serial7|
-|8|Serial8|
-|9|Serial9|
-|21|Network Port1|
-|22|Network Port2|
-|23|Network Port3|
-|24|Network Port4|
-|25|Network Port5|
-|26|Network Port6|
-|27|Network Port7|
-|28|Network Port8|
-|29|Network Port9|
-|41|CAN1 Port1|
-|42|CAN1 Port2|
-|43|CAN1 Port3|
-|44|CAN1 Port4|
-|45|CAN1 Port5|
-|46|CAN1 Port6|
-|47|CAN1 Port7|
-|48|CAN1 Port8|
-|49|CAN1 Port9|
-|51|CAN2 Port1|
-|52|CAN2 Port2|
-|53|CAN2 Port3|
-|54|CAN2 Port4|
-|55|CAN2 Port5|
-|56|CAN2 Port6|
-|57|CAN2 Port7|
-|58|CAN2 Port8|
-|59|CAN2 Port9|
-
-## NET_PASS4_BAUD1: Endpoint 1 Baud Rate
-
-The baud rate used for Endpoint 1. Only applies to serial ports.
-
-- Range: 1 20000000
-
-|Value|Meaning|
-|:---:|:---:|
-|1|1200|
-|2|2400|
-|4|4800|
-|9|9600|
-|19|19200|
-|38|38400|
-|57|57600|
-|111|111100|
-|115|115200|
-|230|230400|
-|256|256000|
-|460|460800|
-|500|500000|
-|921|921600|
-|1500|1.5MBaud|
-|2000|2MBaud|
-|12500000|12.5MBaud|
-
-## NET_PASS4_BAUD2: Endpoint 2 Baud Rate
-
-The baud rate used for Endpoint 2. Only applies to serial ports.
-
-- Range: 1 20000000
-
-|Value|Meaning|
-|:---:|:---:|
-|1|1200|
-|2|2400|
-|4|4800|
-|9|9600|
-|19|19200|
-|38|38400|
-|57|57600|
-|111|111100|
-|115|115200|
-|230|230400|
-|256|256000|
-|460|460800|
-|500|500000|
-|921|921600|
-|1500|1.5MBaud|
-|2000|2MBaud|
-|12500000|12.5MBaud|
-
-## NET_PASS4_OPT1: Serial Port Options EP1
-
-*Note: This parameter is for advanced users*
-
-Control over UART options for Endpoint 1. Only applies to serial ports.
-
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from (moved to MAVn_OPTIONS >4.7), 11: DisableFIFO, 12: Ignore Streamrate (moved to MAVn_OPTIONS >4.7)
-
-- RebootRequired: True
-
-## NET_PASS4_OPT2: Serial Port Options EP2
-
-*Note: This parameter is for advanced users*
-
-Control over UART options for Endpoint 2. Only applies to serial ports.
-
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from (moved to MAVn_OPTIONS >4.7), 11: DisableFIFO, 12: Ignore Streamrate (moved to MAVn_OPTIONS >4.7)
-
-- RebootRequired: True
-
-# NETPASS5 Parameters
-
-## NET_PASS5_ENABLE: Enable Passthrough
-
-*Note: This parameter is for advanced users*
-
-Enable Passthrough of any UART, Network, or CAN ports to any UART, Network, or CAN ports.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-- RebootRequired: True
-
-## NET_PASS5_EP1: Endpoint 1
-
-*Note: This parameter is for advanced users*
-
-Passthrough Endpoint 1. This can be a serial port UART, a Network port, or a CAN port. The selected port will route to Endport 2.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|0|Serial0(usually USB)|
-|1|Serial1|
-|2|Serial2|
-|3|Serial3|
-|4|Serial4|
-|5|Serial5|
-|6|Serial6|
-|7|Serial7|
-|8|Serial8|
-|9|Serial9|
-|21|Network Port1|
-|22|Network Port2|
-|23|Network Port3|
-|24|Network Port4|
-|25|Network Port5|
-|26|Network Port6|
-|27|Network Port7|
-|28|Network Port8|
-|29|Network Port9|
-|41|CAN1 Port1|
-|42|CAN1 Port2|
-|43|CAN1 Port3|
-|44|CAN1 Port4|
-|45|CAN1 Port5|
-|46|CAN1 Port6|
-|47|CAN1 Port7|
-|48|CAN1 Port8|
-|49|CAN1 Port9|
-|51|CAN2 Port1|
-|52|CAN2 Port2|
-|53|CAN2 Port3|
-|54|CAN2 Port4|
-|55|CAN2 Port5|
-|56|CAN2 Port6|
-|57|CAN2 Port7|
-|58|CAN2 Port8|
-|59|CAN2 Port9|
-
-- RebootRequired: True
-
-## NET_PASS5_EP2: Endpoint 2
-
-*Note: This parameter is for advanced users*
-
-Passthrough Endpoint 2. This can be a serial port UART, a Network port, or a CAN port. The selected port will route to Endport 1.
-
-- RebootRequired: True
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|0|Serial0(usually USB)|
-|1|Serial1|
-|2|Serial2|
-|3|Serial3|
-|4|Serial4|
-|5|Serial5|
-|6|Serial6|
-|7|Serial7|
-|8|Serial8|
-|9|Serial9|
-|21|Network Port1|
-|22|Network Port2|
-|23|Network Port3|
-|24|Network Port4|
-|25|Network Port5|
-|26|Network Port6|
-|27|Network Port7|
-|28|Network Port8|
-|29|Network Port9|
-|41|CAN1 Port1|
-|42|CAN1 Port2|
-|43|CAN1 Port3|
-|44|CAN1 Port4|
-|45|CAN1 Port5|
-|46|CAN1 Port6|
-|47|CAN1 Port7|
-|48|CAN1 Port8|
-|49|CAN1 Port9|
-|51|CAN2 Port1|
-|52|CAN2 Port2|
-|53|CAN2 Port3|
-|54|CAN2 Port4|
-|55|CAN2 Port5|
-|56|CAN2 Port6|
-|57|CAN2 Port7|
-|58|CAN2 Port8|
-|59|CAN2 Port9|
-
-## NET_PASS5_BAUD1: Endpoint 1 Baud Rate
-
-The baud rate used for Endpoint 1. Only applies to serial ports.
-
-- Range: 1 20000000
-
-|Value|Meaning|
-|:---:|:---:|
-|1|1200|
-|2|2400|
-|4|4800|
-|9|9600|
-|19|19200|
-|38|38400|
-|57|57600|
-|111|111100|
-|115|115200|
-|230|230400|
-|256|256000|
-|460|460800|
-|500|500000|
-|921|921600|
-|1500|1.5MBaud|
-|2000|2MBaud|
-|12500000|12.5MBaud|
-
-## NET_PASS5_BAUD2: Endpoint 2 Baud Rate
-
-The baud rate used for Endpoint 2. Only applies to serial ports.
-
-- Range: 1 20000000
-
-|Value|Meaning|
-|:---:|:---:|
-|1|1200|
-|2|2400|
-|4|4800|
-|9|9600|
-|19|19200|
-|38|38400|
-|57|57600|
-|111|111100|
-|115|115200|
-|230|230400|
-|256|256000|
-|460|460800|
-|500|500000|
-|921|921600|
-|1500|1.5MBaud|
-|2000|2MBaud|
-|12500000|12.5MBaud|
-
-## NET_PASS5_OPT1: Serial Port Options EP1
-
-*Note: This parameter is for advanced users*
-
-Control over UART options for Endpoint 1. Only applies to serial ports.
-
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from (moved to MAVn_OPTIONS >4.7), 11: DisableFIFO, 12: Ignore Streamrate (moved to MAVn_OPTIONS >4.7)
-
-- RebootRequired: True
-
-## NET_PASS5_OPT2: Serial Port Options EP2
-
-*Note: This parameter is for advanced users*
-
-Control over UART options for Endpoint 2. Only applies to serial ports.
-
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from (moved to MAVn_OPTIONS >4.7), 11: DisableFIFO, 12: Ignore Streamrate (moved to MAVn_OPTIONS >4.7)
-
-- RebootRequired: True
-
-# NETPASS6 Parameters
-
-## NET_PASS6_ENABLE: Enable Passthrough
-
-*Note: This parameter is for advanced users*
-
-Enable Passthrough of any UART, Network, or CAN ports to any UART, Network, or CAN ports.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-- RebootRequired: True
-
-## NET_PASS6_EP1: Endpoint 1
-
-*Note: This parameter is for advanced users*
-
-Passthrough Endpoint 1. This can be a serial port UART, a Network port, or a CAN port. The selected port will route to Endport 2.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|0|Serial0(usually USB)|
-|1|Serial1|
-|2|Serial2|
-|3|Serial3|
-|4|Serial4|
-|5|Serial5|
-|6|Serial6|
-|7|Serial7|
-|8|Serial8|
-|9|Serial9|
-|21|Network Port1|
-|22|Network Port2|
-|23|Network Port3|
-|24|Network Port4|
-|25|Network Port5|
-|26|Network Port6|
-|27|Network Port7|
-|28|Network Port8|
-|29|Network Port9|
-|41|CAN1 Port1|
-|42|CAN1 Port2|
-|43|CAN1 Port3|
-|44|CAN1 Port4|
-|45|CAN1 Port5|
-|46|CAN1 Port6|
-|47|CAN1 Port7|
-|48|CAN1 Port8|
-|49|CAN1 Port9|
-|51|CAN2 Port1|
-|52|CAN2 Port2|
-|53|CAN2 Port3|
-|54|CAN2 Port4|
-|55|CAN2 Port5|
-|56|CAN2 Port6|
-|57|CAN2 Port7|
-|58|CAN2 Port8|
-|59|CAN2 Port9|
-
-- RebootRequired: True
-
-## NET_PASS6_EP2: Endpoint 2
-
-*Note: This parameter is for advanced users*
-
-Passthrough Endpoint 2. This can be a serial port UART, a Network port, or a CAN port. The selected port will route to Endport 1.
-
-- RebootRequired: True
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|0|Serial0(usually USB)|
-|1|Serial1|
-|2|Serial2|
-|3|Serial3|
-|4|Serial4|
-|5|Serial5|
-|6|Serial6|
-|7|Serial7|
-|8|Serial8|
-|9|Serial9|
-|21|Network Port1|
-|22|Network Port2|
-|23|Network Port3|
-|24|Network Port4|
-|25|Network Port5|
-|26|Network Port6|
-|27|Network Port7|
-|28|Network Port8|
-|29|Network Port9|
-|41|CAN1 Port1|
-|42|CAN1 Port2|
-|43|CAN1 Port3|
-|44|CAN1 Port4|
-|45|CAN1 Port5|
-|46|CAN1 Port6|
-|47|CAN1 Port7|
-|48|CAN1 Port8|
-|49|CAN1 Port9|
-|51|CAN2 Port1|
-|52|CAN2 Port2|
-|53|CAN2 Port3|
-|54|CAN2 Port4|
-|55|CAN2 Port5|
-|56|CAN2 Port6|
-|57|CAN2 Port7|
-|58|CAN2 Port8|
-|59|CAN2 Port9|
-
-## NET_PASS6_BAUD1: Endpoint 1 Baud Rate
-
-The baud rate used for Endpoint 1. Only applies to serial ports.
-
-- Range: 1 20000000
-
-|Value|Meaning|
-|:---:|:---:|
-|1|1200|
-|2|2400|
-|4|4800|
-|9|9600|
-|19|19200|
-|38|38400|
-|57|57600|
-|111|111100|
-|115|115200|
-|230|230400|
-|256|256000|
-|460|460800|
-|500|500000|
-|921|921600|
-|1500|1.5MBaud|
-|2000|2MBaud|
-|12500000|12.5MBaud|
-
-## NET_PASS6_BAUD2: Endpoint 2 Baud Rate
-
-The baud rate used for Endpoint 2. Only applies to serial ports.
-
-- Range: 1 20000000
-
-|Value|Meaning|
-|:---:|:---:|
-|1|1200|
-|2|2400|
-|4|4800|
-|9|9600|
-|19|19200|
-|38|38400|
-|57|57600|
-|111|111100|
-|115|115200|
-|230|230400|
-|256|256000|
-|460|460800|
-|500|500000|
-|921|921600|
-|1500|1.5MBaud|
-|2000|2MBaud|
-|12500000|12.5MBaud|
-
-## NET_PASS6_OPT1: Serial Port Options EP1
-
-*Note: This parameter is for advanced users*
-
-Control over UART options for Endpoint 1. Only applies to serial ports.
-
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from (moved to MAVn_OPTIONS >4.7), 11: DisableFIFO, 12: Ignore Streamrate (moved to MAVn_OPTIONS >4.7)
-
-- RebootRequired: True
-
-## NET_PASS6_OPT2: Serial Port Options EP2
-
-*Note: This parameter is for advanced users*
-
-Control over UART options for Endpoint 2. Only applies to serial ports.
-
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from (moved to MAVn_OPTIONS >4.7), 11: DisableFIFO, 12: Ignore Streamrate (moved to MAVn_OPTIONS >4.7)
-
-- RebootRequired: True
-
-# NETPASS7 Parameters
-
-## NET_PASS7_ENABLE: Enable Passthrough
-
-*Note: This parameter is for advanced users*
-
-Enable Passthrough of any UART, Network, or CAN ports to any UART, Network, or CAN ports.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-- RebootRequired: True
-
-## NET_PASS7_EP1: Endpoint 1
-
-*Note: This parameter is for advanced users*
-
-Passthrough Endpoint 1. This can be a serial port UART, a Network port, or a CAN port. The selected port will route to Endport 2.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|0|Serial0(usually USB)|
-|1|Serial1|
-|2|Serial2|
-|3|Serial3|
-|4|Serial4|
-|5|Serial5|
-|6|Serial6|
-|7|Serial7|
-|8|Serial8|
-|9|Serial9|
-|21|Network Port1|
-|22|Network Port2|
-|23|Network Port3|
-|24|Network Port4|
-|25|Network Port5|
-|26|Network Port6|
-|27|Network Port7|
-|28|Network Port8|
-|29|Network Port9|
-|41|CAN1 Port1|
-|42|CAN1 Port2|
-|43|CAN1 Port3|
-|44|CAN1 Port4|
-|45|CAN1 Port5|
-|46|CAN1 Port6|
-|47|CAN1 Port7|
-|48|CAN1 Port8|
-|49|CAN1 Port9|
-|51|CAN2 Port1|
-|52|CAN2 Port2|
-|53|CAN2 Port3|
-|54|CAN2 Port4|
-|55|CAN2 Port5|
-|56|CAN2 Port6|
-|57|CAN2 Port7|
-|58|CAN2 Port8|
-|59|CAN2 Port9|
-
-- RebootRequired: True
-
-## NET_PASS7_EP2: Endpoint 2
-
-*Note: This parameter is for advanced users*
-
-Passthrough Endpoint 2. This can be a serial port UART, a Network port, or a CAN port. The selected port will route to Endport 1.
-
-- RebootRequired: True
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|0|Serial0(usually USB)|
-|1|Serial1|
-|2|Serial2|
-|3|Serial3|
-|4|Serial4|
-|5|Serial5|
-|6|Serial6|
-|7|Serial7|
-|8|Serial8|
-|9|Serial9|
-|21|Network Port1|
-|22|Network Port2|
-|23|Network Port3|
-|24|Network Port4|
-|25|Network Port5|
-|26|Network Port6|
-|27|Network Port7|
-|28|Network Port8|
-|29|Network Port9|
-|41|CAN1 Port1|
-|42|CAN1 Port2|
-|43|CAN1 Port3|
-|44|CAN1 Port4|
-|45|CAN1 Port5|
-|46|CAN1 Port6|
-|47|CAN1 Port7|
-|48|CAN1 Port8|
-|49|CAN1 Port9|
-|51|CAN2 Port1|
-|52|CAN2 Port2|
-|53|CAN2 Port3|
-|54|CAN2 Port4|
-|55|CAN2 Port5|
-|56|CAN2 Port6|
-|57|CAN2 Port7|
-|58|CAN2 Port8|
-|59|CAN2 Port9|
-
-## NET_PASS7_BAUD1: Endpoint 1 Baud Rate
-
-The baud rate used for Endpoint 1. Only applies to serial ports.
-
-- Range: 1 20000000
-
-|Value|Meaning|
-|:---:|:---:|
-|1|1200|
-|2|2400|
-|4|4800|
-|9|9600|
-|19|19200|
-|38|38400|
-|57|57600|
-|111|111100|
-|115|115200|
-|230|230400|
-|256|256000|
-|460|460800|
-|500|500000|
-|921|921600|
-|1500|1.5MBaud|
-|2000|2MBaud|
-|12500000|12.5MBaud|
-
-## NET_PASS7_BAUD2: Endpoint 2 Baud Rate
-
-The baud rate used for Endpoint 2. Only applies to serial ports.
-
-- Range: 1 20000000
-
-|Value|Meaning|
-|:---:|:---:|
-|1|1200|
-|2|2400|
-|4|4800|
-|9|9600|
-|19|19200|
-|38|38400|
-|57|57600|
-|111|111100|
-|115|115200|
-|230|230400|
-|256|256000|
-|460|460800|
-|500|500000|
-|921|921600|
-|1500|1.5MBaud|
-|2000|2MBaud|
-|12500000|12.5MBaud|
-
-## NET_PASS7_OPT1: Serial Port Options EP1
-
-*Note: This parameter is for advanced users*
-
-Control over UART options for Endpoint 1. Only applies to serial ports.
-
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from (moved to MAVn_OPTIONS >4.7), 11: DisableFIFO, 12: Ignore Streamrate (moved to MAVn_OPTIONS >4.7)
-
-- RebootRequired: True
-
-## NET_PASS7_OPT2: Serial Port Options EP2
-
-*Note: This parameter is for advanced users*
-
-Control over UART options for Endpoint 2. Only applies to serial ports.
-
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from (moved to MAVn_OPTIONS >4.7), 11: DisableFIFO, 12: Ignore Streamrate (moved to MAVn_OPTIONS >4.7)
-
-- RebootRequired: True
-
-# NETPASS8 Parameters
-
-## NET_PASS8_ENABLE: Enable Passthrough
-
-*Note: This parameter is for advanced users*
-
-Enable Passthrough of any UART, Network, or CAN ports to any UART, Network, or CAN ports.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-- RebootRequired: True
-
-## NET_PASS8_EP1: Endpoint 1
-
-*Note: This parameter is for advanced users*
-
-Passthrough Endpoint 1. This can be a serial port UART, a Network port, or a CAN port. The selected port will route to Endport 2.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|0|Serial0(usually USB)|
-|1|Serial1|
-|2|Serial2|
-|3|Serial3|
-|4|Serial4|
-|5|Serial5|
-|6|Serial6|
-|7|Serial7|
-|8|Serial8|
-|9|Serial9|
-|21|Network Port1|
-|22|Network Port2|
-|23|Network Port3|
-|24|Network Port4|
-|25|Network Port5|
-|26|Network Port6|
-|27|Network Port7|
-|28|Network Port8|
-|29|Network Port9|
-|41|CAN1 Port1|
-|42|CAN1 Port2|
-|43|CAN1 Port3|
-|44|CAN1 Port4|
-|45|CAN1 Port5|
-|46|CAN1 Port6|
-|47|CAN1 Port7|
-|48|CAN1 Port8|
-|49|CAN1 Port9|
-|51|CAN2 Port1|
-|52|CAN2 Port2|
-|53|CAN2 Port3|
-|54|CAN2 Port4|
-|55|CAN2 Port5|
-|56|CAN2 Port6|
-|57|CAN2 Port7|
-|58|CAN2 Port8|
-|59|CAN2 Port9|
-
-- RebootRequired: True
-
-## NET_PASS8_EP2: Endpoint 2
-
-*Note: This parameter is for advanced users*
-
-Passthrough Endpoint 2. This can be a serial port UART, a Network port, or a CAN port. The selected port will route to Endport 1.
-
-- RebootRequired: True
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|0|Serial0(usually USB)|
-|1|Serial1|
-|2|Serial2|
-|3|Serial3|
-|4|Serial4|
-|5|Serial5|
-|6|Serial6|
-|7|Serial7|
-|8|Serial8|
-|9|Serial9|
-|21|Network Port1|
-|22|Network Port2|
-|23|Network Port3|
-|24|Network Port4|
-|25|Network Port5|
-|26|Network Port6|
-|27|Network Port7|
-|28|Network Port8|
-|29|Network Port9|
-|41|CAN1 Port1|
-|42|CAN1 Port2|
-|43|CAN1 Port3|
-|44|CAN1 Port4|
-|45|CAN1 Port5|
-|46|CAN1 Port6|
-|47|CAN1 Port7|
-|48|CAN1 Port8|
-|49|CAN1 Port9|
-|51|CAN2 Port1|
-|52|CAN2 Port2|
-|53|CAN2 Port3|
-|54|CAN2 Port4|
-|55|CAN2 Port5|
-|56|CAN2 Port6|
-|57|CAN2 Port7|
-|58|CAN2 Port8|
-|59|CAN2 Port9|
-
-## NET_PASS8_BAUD1: Endpoint 1 Baud Rate
-
-The baud rate used for Endpoint 1. Only applies to serial ports.
-
-- Range: 1 20000000
-
-|Value|Meaning|
-|:---:|:---:|
-|1|1200|
-|2|2400|
-|4|4800|
-|9|9600|
-|19|19200|
-|38|38400|
-|57|57600|
-|111|111100|
-|115|115200|
-|230|230400|
-|256|256000|
-|460|460800|
-|500|500000|
-|921|921600|
-|1500|1.5MBaud|
-|2000|2MBaud|
-|12500000|12.5MBaud|
-
-## NET_PASS8_BAUD2: Endpoint 2 Baud Rate
-
-The baud rate used for Endpoint 2. Only applies to serial ports.
-
-- Range: 1 20000000
-
-|Value|Meaning|
-|:---:|:---:|
-|1|1200|
-|2|2400|
-|4|4800|
-|9|9600|
-|19|19200|
-|38|38400|
-|57|57600|
-|111|111100|
-|115|115200|
-|230|230400|
-|256|256000|
-|460|460800|
-|500|500000|
-|921|921600|
-|1500|1.5MBaud|
-|2000|2MBaud|
-|12500000|12.5MBaud|
-
-## NET_PASS8_OPT1: Serial Port Options EP1
-
-*Note: This parameter is for advanced users*
-
-Control over UART options for Endpoint 1. Only applies to serial ports.
-
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from (moved to MAVn_OPTIONS >4.7), 11: DisableFIFO, 12: Ignore Streamrate (moved to MAVn_OPTIONS >4.7)
-
-- RebootRequired: True
-
-## NET_PASS8_OPT2: Serial Port Options EP2
-
-*Note: This parameter is for advanced users*
-
-Control over UART options for Endpoint 2. Only applies to serial ports.
-
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from (moved to MAVn_OPTIONS >4.7), 11: DisableFIFO, 12: Ignore Streamrate (moved to MAVn_OPTIONS >4.7)
-
-- RebootRequired: True
-
-# NETPASS9 Parameters
-
-## NET_PASS9_ENABLE: Enable Passthrough
-
-*Note: This parameter is for advanced users*
-
-Enable Passthrough of any UART, Network, or CAN ports to any UART, Network, or CAN ports.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-- RebootRequired: True
-
-## NET_PASS9_EP1: Endpoint 1
-
-*Note: This parameter is for advanced users*
-
-Passthrough Endpoint 1. This can be a serial port UART, a Network port, or a CAN port. The selected port will route to Endport 2.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|0|Serial0(usually USB)|
-|1|Serial1|
-|2|Serial2|
-|3|Serial3|
-|4|Serial4|
-|5|Serial5|
-|6|Serial6|
-|7|Serial7|
-|8|Serial8|
-|9|Serial9|
-|21|Network Port1|
-|22|Network Port2|
-|23|Network Port3|
-|24|Network Port4|
-|25|Network Port5|
-|26|Network Port6|
-|27|Network Port7|
-|28|Network Port8|
-|29|Network Port9|
-|41|CAN1 Port1|
-|42|CAN1 Port2|
-|43|CAN1 Port3|
-|44|CAN1 Port4|
-|45|CAN1 Port5|
-|46|CAN1 Port6|
-|47|CAN1 Port7|
-|48|CAN1 Port8|
-|49|CAN1 Port9|
-|51|CAN2 Port1|
-|52|CAN2 Port2|
-|53|CAN2 Port3|
-|54|CAN2 Port4|
-|55|CAN2 Port5|
-|56|CAN2 Port6|
-|57|CAN2 Port7|
-|58|CAN2 Port8|
-|59|CAN2 Port9|
-
-- RebootRequired: True
-
-## NET_PASS9_EP2: Endpoint 2
-
-*Note: This parameter is for advanced users*
-
-Passthrough Endpoint 2. This can be a serial port UART, a Network port, or a CAN port. The selected port will route to Endport 1.
-
-- RebootRequired: True
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|0|Serial0(usually USB)|
-|1|Serial1|
-|2|Serial2|
-|3|Serial3|
-|4|Serial4|
-|5|Serial5|
-|6|Serial6|
-|7|Serial7|
-|8|Serial8|
-|9|Serial9|
-|21|Network Port1|
-|22|Network Port2|
-|23|Network Port3|
-|24|Network Port4|
-|25|Network Port5|
-|26|Network Port6|
-|27|Network Port7|
-|28|Network Port8|
-|29|Network Port9|
-|41|CAN1 Port1|
-|42|CAN1 Port2|
-|43|CAN1 Port3|
-|44|CAN1 Port4|
-|45|CAN1 Port5|
-|46|CAN1 Port6|
-|47|CAN1 Port7|
-|48|CAN1 Port8|
-|49|CAN1 Port9|
-|51|CAN2 Port1|
-|52|CAN2 Port2|
-|53|CAN2 Port3|
-|54|CAN2 Port4|
-|55|CAN2 Port5|
-|56|CAN2 Port6|
-|57|CAN2 Port7|
-|58|CAN2 Port8|
-|59|CAN2 Port9|
-
-## NET_PASS9_BAUD1: Endpoint 1 Baud Rate
-
-The baud rate used for Endpoint 1. Only applies to serial ports.
-
-- Range: 1 20000000
-
-|Value|Meaning|
-|:---:|:---:|
-|1|1200|
-|2|2400|
-|4|4800|
-|9|9600|
-|19|19200|
-|38|38400|
-|57|57600|
-|111|111100|
-|115|115200|
-|230|230400|
-|256|256000|
-|460|460800|
-|500|500000|
-|921|921600|
-|1500|1.5MBaud|
-|2000|2MBaud|
-|12500000|12.5MBaud|
-
-## NET_PASS9_BAUD2: Endpoint 2 Baud Rate
-
-The baud rate used for Endpoint 2. Only applies to serial ports.
-
-- Range: 1 20000000
-
-|Value|Meaning|
-|:---:|:---:|
-|1|1200|
-|2|2400|
-|4|4800|
-|9|9600|
-|19|19200|
-|38|38400|
-|57|57600|
-|111|111100|
-|115|115200|
-|230|230400|
-|256|256000|
-|460|460800|
-|500|500000|
-|921|921600|
-|1500|1.5MBaud|
-|2000|2MBaud|
-|12500000|12.5MBaud|
-
-## NET_PASS9_OPT1: Serial Port Options EP1
-
-*Note: This parameter is for advanced users*
-
-Control over UART options for Endpoint 1. Only applies to serial ports.
-
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from (moved to MAVn_OPTIONS >4.7), 11: DisableFIFO, 12: Ignore Streamrate (moved to MAVn_OPTIONS >4.7)
-
-- RebootRequired: True
-
-## NET_PASS9_OPT2: Serial Port Options EP2
-
-*Note: This parameter is for advanced users*
-
-Control over UART options for Endpoint 2. Only applies to serial ports.
-
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from (moved to MAVn_OPTIONS >4.7), 11: DisableFIFO, 12: Ignore Streamrate (moved to MAVn_OPTIONS >4.7)
-
-- RebootRequired: True
-
 # NETREMPPPIP Parameters
 
 ## NET_REMPPP_IP0: IPv4 Address 1st byte
@@ -24898,7061 +27655,25 @@ The number of Serial LED's to use for notifications (NeoPixel's and ProfiLED)
 
 - RebootRequired: True
 
-# Node Parameters
-
-## Node_BOOTCNT: Boot Count
-
-Number of times board has been booted
-
-- ReadOnly: True
-
-## Node_FLTTIME: Total FlightTime
-
-Total FlightTime (seconds)
-
-- Units: s
-
-- ReadOnly: True
-
-## Node_RUNTIME: Total RunTime
-
-Total time autopilot has run
-
-- Units: s
-
-- ReadOnly: True
-
-## Node_RESET: Statistics Reset Time
-
-Seconds since January 1st 2016 (Unix epoch+1451606400) since statistics reset (set to 0 to reset statistics, other set values will be ignored)
-
-- Units: s
-
-- ReadOnly: True
-
-## Node_FLTCNT: Total Flight Count
-
-Total number of flights
-
-- ReadOnly: True
-
-## Node_DISTFLWN: Total Distance Flown
-
-Estimate of total distance flown since statistics reset
-
-- Units: m
-
-- ReadOnly: True
-
-# OUT Parameters
-
-## OUT_RATE: Servo default output rate
-
-*Note: This parameter is for advanced users*
-
-Default output rate in Hz for all PWM outputs.
-
-- Range: 25 400
-
-- Units: Hz
-
-## OUT_DSHOT_RATE: Servo DShot output rate
-
-*Note: This parameter is for advanced users*
-
-DShot output rate for all outputs as a multiple of the loop rate. 0 sets the output rate to be fixed at 1Khz for low loop rates. This value should never be set below 500Hz.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|1Khz|
-|1|loop-rate|
-|2|double loop-rate|
-|3|triple loop-rate|
-|4|quadruple loop rate|
-
-## OUT_DSHOT_ESC: Servo DShot ESC type
-
-*Note: This parameter is for advanced users*
-
-DShot ESC type for all outputs. The ESC type affects the range of DShot commands available and the bit widths used. None means that no dshot commands will be executed. Some ESC types support Extended DShot Telemetry (EDT) which allows telemetry other than RPM data to be returned when using bi-directional dshot. If you enable EDT you must install EDT capable firmware for correct operation.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|None|
-|1|BLHeli32/Kiss/AM32|
-|2|BLHeli_S/BlueJay|
-|3|BLHeli32/AM32/Kiss+EDT|
-|4|BLHeli_S/BlueJay+EDT|
-
-## OUT_GPIO_MASK: Servo GPIO mask
-
-*Note: This parameter is for advanced users*
-
-Bitmask of outputs which will be available as GPIOs. Any output with either the function set to -1 or with the corresponding bit set in this mask will be available for use as a GPIO pin
-
-- Bitmask: 0:Servo 1, 1:Servo 2, 2:Servo 3, 3:Servo 4, 4:Servo 5, 5:Servo 6, 6:Servo 7, 7:Servo 8, 8:Servo 9, 9:Servo 10, 10:Servo 11, 11:Servo 12, 12:Servo 13, 13:Servo 14, 14:Servo 15, 15:Servo 16, 16:Servo 17, 17:Servo 18, 18:Servo 19, 19:Servo 20, 20:Servo 21, 21:Servo 22, 22:Servo 23, 23:Servo 24, 24:Servo 25, 25:Servo 26, 26:Servo 27, 27:Servo 28, 28:Servo 29, 29:Servo 30, 30:Servo 31, 31:Servo 32
-
-- RebootRequired: True
-
-## OUT_RC_FS_MSK: Servo RC Failsafe Mask
-
-*Note: This parameter is for advanced users*
-
-Bitmask of scaled passthru output channels which will be set to their trim value during rc failsafe instead of holding their last position before failsafe.
-
-- Bitmask: 0:RCIN1Scaled, 1:RCIN2Scaled, 2:RCIN3Scaled, 3:RCIN4Scaled, 4:RCIN5Scaled, 5:RCIN6Scaled, 6:RCIN7Scaled, 7:RCIN8Scaled, 8:RCIN9Scaled, 9:RCIN10Scaled, 10:RCIN11Scaled, 11:SRCIN12Scaled, 12:RCIN13Scaled, 13:RCIN14Scaled, 14:RCIN15Scaled, 15:RCIN16Scaled
-
-## OUT_32_ENABLE: Enable outputs 17 to 31
-
-*Note: This parameter is for advanced users*
-
-This allows for up to 32 outputs, enabling parameters for outputs above 16
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-# OUT1 Parameters
-
-## OUT1_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT1_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT1_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT1_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT1_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT2 Parameters
-
-## OUT2_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT2_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT2_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT2_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT2_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT3 Parameters
-
-## OUT3_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT3_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT3_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT3_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT3_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT4 Parameters
-
-## OUT4_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT4_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT4_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT4_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT4_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT5 Parameters
-
-## OUT5_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT5_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT5_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT5_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT5_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT6 Parameters
-
-## OUT6_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT6_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT6_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT6_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT6_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT7 Parameters
-
-## OUT7_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT7_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT7_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT7_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT7_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT8 Parameters
-
-## OUT8_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT8_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT8_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT8_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT8_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT9 Parameters
-
-## OUT9_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT9_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT9_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT9_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT9_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT10 Parameters
-
-## OUT10_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT10_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT10_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT10_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT10_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT11 Parameters
-
-## OUT11_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT11_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT11_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT11_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT11_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT12 Parameters
-
-## OUT12_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT12_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT12_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT12_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT12_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT13 Parameters
-
-## OUT13_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT13_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT13_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT13_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT13_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT14 Parameters
-
-## OUT14_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT14_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT14_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT14_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT14_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT15 Parameters
-
-## OUT15_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT15_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT15_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT15_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT15_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT16 Parameters
-
-## OUT16_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT16_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT16_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT16_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT16_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT17 Parameters
-
-## OUT17_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT17_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT17_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT17_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT17_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT18 Parameters
-
-## OUT18_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT18_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT18_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT18_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT18_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT19 Parameters
-
-## OUT19_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT19_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT19_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT19_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT19_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT20 Parameters
-
-## OUT20_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT20_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT20_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT20_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT20_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT21 Parameters
-
-## OUT21_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT21_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT21_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT21_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT21_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT22 Parameters
-
-## OUT22_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT22_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT22_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT22_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT22_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT23 Parameters
-
-## OUT23_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT23_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT23_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT23_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT23_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT24 Parameters
-
-## OUT24_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT24_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT24_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT24_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT24_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT25 Parameters
-
-## OUT25_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT25_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT25_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT25_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT25_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT26 Parameters
-
-## OUT26_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT26_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT26_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT26_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT26_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT27 Parameters
-
-## OUT27_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT27_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT27_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT27_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT27_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT28 Parameters
-
-## OUT28_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT28_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT28_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT28_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT28_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT29 Parameters
-
-## OUT29_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT29_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT29_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT29_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT29_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT30 Parameters
-
-## OUT30_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT30_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT30_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT30_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT30_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT31 Parameters
-
-## OUT31_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT31_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT31_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT31_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT31_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUT32 Parameters
-
-## OUT32_MIN: Minimum PWM
-
-minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT32_MAX: Maximum PWM
-
-maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT32_TRIM: Trim PWM
-
-Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
-
-- Units: PWM
-
-- Range: 800 2200
-
-- Increment: 1
-
-## OUT32_REVERSED: Servo reverse
-
-Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Reversed|
-
-## OUT32_FUNCTION: Servo output function
-
-Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|GPIO|
-|0|Disabled|
-|1|RCPassThru|
-|2|Flap|
-|3|FlapAuto|
-|4|Aileron|
-|6|Mount1Yaw|
-|7|Mount1Pitch|
-|8|Mount1Roll|
-|9|Mount1Retract|
-|10|CameraTrigger|
-|12|Mount2Yaw|
-|13|Mount2Pitch|
-|14|Mount2Roll|
-|15|Mount2Retract|
-|16|DifferentialSpoilerLeft1|
-|17|DifferentialSpoilerRight1|
-|19|Elevator|
-|21|Rudder|
-|22|SprayerPump|
-|23|SprayerSpinner|
-|24|FlaperonLeft|
-|25|FlaperonRight|
-|26|GroundSteering|
-|27|Parachute|
-|28|Gripper|
-|29|LandingGear|
-|30|EngineRunEnable|
-|31|HeliRSC|
-|32|HeliTailRSC|
-|33|Motor1|
-|34|Motor2|
-|35|Motor3|
-|36|Motor4|
-|37|Motor5|
-|38|Motor6|
-|39|Motor7|
-|40|Motor8|
-|41|TiltMotorsFront|
-|45|TiltMotorsRear|
-|46|TiltMotorRearLeft|
-|47|TiltMotorRearRight|
-|51|RCIN1|
-|52|RCIN2|
-|53|RCIN3|
-|54|RCIN4|
-|55|RCIN5|
-|56|RCIN6|
-|57|RCIN7|
-|58|RCIN8|
-|59|RCIN9|
-|60|RCIN10|
-|61|RCIN11|
-|62|RCIN12|
-|63|RCIN13|
-|64|RCIN14|
-|65|RCIN15|
-|66|RCIN16|
-|67|Ignition|
-|69|Starter|
-|70|Throttle|
-|71|TrackerYaw|
-|72|TrackerPitch|
-|73|ThrottleLeft|
-|74|ThrottleRight|
-|75|TiltMotorFrontLeft|
-|76|TiltMotorFrontRight|
-|77|ElevonLeft|
-|78|ElevonRight|
-|79|VTailLeft|
-|80|VTailRight|
-|81|BoostThrottle|
-|82|Motor9|
-|83|Motor10|
-|84|Motor11|
-|85|Motor12|
-|86|DifferentialSpoilerLeft2|
-|87|DifferentialSpoilerRight2|
-|88|Winch|
-|89|Main Sail|
-|90|CameraISO|
-|91|CameraAperture|
-|92|CameraFocus|
-|93|CameraShutterSpeed|
-|94|Script1|
-|95|Script2|
-|96|Script3|
-|97|Script4|
-|98|Script5|
-|99|Script6|
-|100|Script7|
-|101|Script8|
-|102|Script9|
-|103|Script10|
-|104|Script11|
-|105|Script12|
-|106|Script13|
-|107|Script14|
-|108|Script15|
-|109|Script16|
-|120|NeoPixel1|
-|121|NeoPixel2|
-|122|NeoPixel3|
-|123|NeoPixel4|
-|124|RateRoll|
-|125|RatePitch|
-|126|RateThrust|
-|127|RateYaw|
-|128|WingSailElevator|
-|129|ProfiLED1|
-|130|ProfiLED2|
-|131|ProfiLED3|
-|132|ProfiLEDClock|
-|133|Winch Clutch|
-|134|SERVOn_MIN|
-|135|SERVOn_TRIM|
-|136|SERVOn_MAX|
-|137|SailMastRotation|
-|138|Alarm|
-|139|Alarm Inverted|
-|140|RCIN1Scaled|
-|141|RCIN2Scaled|
-|142|RCIN3Scaled|
-|143|RCIN4Scaled|
-|144|RCIN5Scaled|
-|145|RCIN6Scaled|
-|146|RCIN7Scaled|
-|147|RCIN8Scaled|
-|148|RCIN9Scaled|
-|149|RCIN10Scaled|
-|150|RCIN11Scaled|
-|151|RCIN12Scaled|
-|152|RCIN13Scaled|
-|153|RCIN14Scaled|
-|154|RCIN15Scaled|
-|155|RCIN16Scaled|
-|180|CameraZoom|
-
-- RebootRequired: True
-
-# OUTBLH Parameters
-
-## OUT_BLH_MASK: BLHeli Channel Bitmask
-
-*Note: This parameter is for advanced users*
-
-Enable of BLHeli pass-thru servo protocol support to specific channels. This mask is in addition to motors enabled using SERVO_BLH_AUTO (if any)
-
-- Bitmask: 0:Channel1,1:Channel2,2:Channel3,3:Channel4,4:Channel5,5:Channel6,6:Channel7,7:Channel8,8:Channel9,9:Channel10,10:Channel11,11:Channel12,12:Channel13,13:Channel14,14:Channel15,15:Channel16, 16:Channel 17, 17: Channel 18, 18: Channel 19, 19: Channel 20, 20: Channel 21, 21: Channel 22, 22: Channel 23, 23: Channel 24, 24: Channel 25, 25: Channel 26, 26: Channel 27, 27: Channel 28, 28: Channel 29, 29: Channel 30, 30: Channel 31, 31: Channel 32
-
-- RebootRequired: True
-
-## OUT_BLH_AUTO: BLHeli pass-thru auto-enable for multicopter motors
-
-If set to 1 this auto-enables BLHeli pass-thru support for all multicopter motors
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-- RebootRequired: True
-
-## OUT_BLH_TEST: BLHeli internal interface test
-
-*Note: This parameter is for advanced users*
-
-Setting SERVO_BLH_TEST to a motor number enables an internal test of the BLHeli ESC protocol to the corresponding ESC. The debug output is displayed on the USB console.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|TestMotor1|
-|2|TestMotor2|
-|3|TestMotor3|
-|4|TestMotor4|
-|5|TestMotor5|
-|6|TestMotor6|
-|7|TestMotor7|
-|8|TestMotor8|
-
-## OUT_BLH_TMOUT: BLHeli protocol timeout
-
-This sets the inactivity timeout for the BLHeli protocol in seconds. If no packets are received in this time normal MAVLink operations are resumed. A value of 0 means no timeout
-
-- Units: s
-
-- Range: 0 300
-
-## OUT_BLH_TRATE: BLHeli telemetry rate
-
-This sets the rate in Hz for requesting telemetry from ESCs. It is the rate per ESC. Setting to zero disables telemetry requests
-
-- Units: Hz
-
-- Range: 0 500
-
-## OUT_BLH_DEBUG: BLHeli debug level
-
-When set to 1 this enabled verbose debugging output over MAVLink when the blheli protocol is active. This can be used to diagnose failures.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-
-## OUT_BLH_OTYPE: BLHeli output type override
-
-*Note: This parameter is for advanced users*
-
-When set to a non-zero value this overrides the output type for the output channels given by SERVO_BLH_MASK. This can be used to enable DShot on outputs that are not part of the multicopter motors group.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|None|
-|1|OneShot|
-|2|OneShot125|
-|3|Brushed|
-|4|DShot150|
-|5|DShot300|
-|6|DShot600|
-|7|DShot1200|
-
-- RebootRequired: True
-
-## OUT_BLH_PORT: Control port
-
-*Note: This parameter is for advanced users*
-
-This sets the mavlink channel to use for blheli pass-thru. The channel number is determined by the number of serial ports configured to use mavlink. So 0 is always the console, 1 is the next serial port using mavlink, 2 the next after that and so on.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Console|
-|1|Mavlink Serial Channel1|
-|2|Mavlink Serial Channel2|
-|3|Mavlink Serial Channel3|
-|4|Mavlink Serial Channel4|
-|5|Mavlink Serial Channel5|
-
-## OUT_BLH_POLES: BLHeli Motor Poles
-
-*Note: This parameter is for advanced users*
-
-This allows calculation of true RPM from ESC's eRPM. The default is 14.
-
-- Range: 1 127
-
-- RebootRequired: True
-
-## OUT_BLH_3DMASK: BLHeli bitmask of 3D channels
-
-*Note: This parameter is for advanced users*
-
-Mask of channels which are dynamically reversible. This is used to configure ESCs in '3D' mode, allowing for the motor to spin in either direction. Note that setting an ESC as reversible with this option on AM32 will result in the forward direction of the ESC changing. You can combine with parameter with the SERVO_BLH_RVMASK parameter to maintain the same direction when the ESC is in 3D mode as it has in unidirectional (non-3D) mode.
-
-- Bitmask: 0:Channel1,1:Channel2,2:Channel3,3:Channel4,4:Channel5,5:Channel6,6:Channel7,7:Channel8,8:Channel9,9:Channel10,10:Channel11,11:Channel12,12:Channel13,13:Channel14,14:Channel15,15:Channel16, 16:Channel 17, 17: Channel 18, 18: Channel 19, 19: Channel 20, 20: Channel 21, 21: Channel 22, 22: Channel 23, 23: Channel 24, 24: Channel 25, 25: Channel 26, 26: Channel 27, 27: Channel 28, 28: Channel 29, 29: Channel 30, 30: Channel 31, 31: Channel 32
-
-- RebootRequired: True
-
-## OUT_BLH_BDMASK: BLHeli bitmask of bi-directional dshot channels
-
-*Note: This parameter is for advanced users*
-
-Mask of channels which support bi-directional dshot telemetry. This is used for ESCs which have firmware that supports bi-directional dshot allowing fast rpm telemetry values to be returned for the harmonic notch.
-
-- Bitmask: 0:Channel1,1:Channel2,2:Channel3,3:Channel4,4:Channel5,5:Channel6,6:Channel7,7:Channel8,8:Channel9,9:Channel10,10:Channel11,11:Channel12,12:Channel13,13:Channel14,14:Channel15,15:Channel16, 16:Channel 17, 17: Channel 18, 18: Channel 19, 19: Channel 20, 20: Channel 21, 21: Channel 22, 22: Channel 23, 23: Channel 24, 24: Channel 25, 25: Channel 26, 26: Channel 27, 27: Channel 28, 28: Channel 29, 29: Channel 30, 30: Channel 31, 31: Channel 32
-
-- RebootRequired: True
-
-## OUT_BLH_RVMASK: BLHeli bitmask of reversed channels
-
-*Note: This parameter is for advanced users*
-
-Mask of channels which are reversed. This is used to configure ESCs to reverse motor direction. Note that when combined with SERVO_BLH_3DMASK this will change what direction is considered to be forward.
-
-- Bitmask: 0:Channel1,1:Channel2,2:Channel3,3:Channel4,4:Channel5,5:Channel6,6:Channel7,7:Channel8,8:Channel9,9:Channel10,10:Channel11,11:Channel12,12:Channel13,13:Channel14,14:Channel15,15:Channel16, 16:Channel 17, 17: Channel 18, 18: Channel 19, 19: Channel 20, 20: Channel 21, 21: Channel 22, 22: Channel 23, 23: Channel 24, 24: Channel 25, 25: Channel 26, 26: Channel 27, 27: Channel 28, 28: Channel 29, 29: Channel 30, 30: Channel 31, 31: Channel 32
-
-- RebootRequired: True
-
-# OUTFTW Parameters
-
-## OUT_FTW_MASK: Servo channel output bitmask
-
-Servo channel mask specifying FETtec ESC output.
-
-- Bitmask: 0:SERVO1,1:SERVO2,2:SERVO3,3:SERVO4,4:SERVO5,5:SERVO6,6:SERVO7,7:SERVO8,8:SERVO9,9:SERVO10,10:SERVO11,11:SERVO12
-
-- RebootRequired: True
-
-## OUT_FTW_RVMASK: Servo channel reverse rotation bitmask
-
-Servo channel mask to reverse rotation of FETtec ESC outputs.
-
-- Bitmask: 0:SERVO1,1:SERVO2,2:SERVO3,3:SERVO4,4:SERVO5,5:SERVO6,6:SERVO7,7:SERVO8,8:SERVO9,9:SERVO10,10:SERVO11,11:SERVO12
-
-## OUT_FTW_POLES: Nr. electrical poles
-
-Number of motor electrical poles
-
-- Range: 2 50
-
-# OUTROB Parameters
-
-## OUT_ROB_POSMIN: Robotis servo position min
-
-Position minimum at servo min value. This should be within the position control range of the servos, normally 0 to 4095
-
-- Range: 0 4095
-
-## OUT_ROB_POSMAX: Robotis servo position max
-
-Position maximum at servo max value. This should be within the position control range of the servos, normally 0 to 4095
-
-- Range: 0 4095
-
-# OUTSBUS Parameters
-
-## OUT_SBUS_RATE: SBUS default output rate
-
-*Note: This parameter is for advanced users*
-
-This sets the SBUS output frame rate in Hz.
-
-- Range: 25 250
-
-- Units: Hz
-
-# OUTVOLZ Parameters
-
-## OUT_VOLZ_MASK: Channel Bitmask
-
-Enable of volz servo protocol to specific channels
-
-- Bitmask: 0:Channel1,1:Channel2,2:Channel3,3:Channel4,4:Channel5,5:Channel6,6:Channel7,7:Channel8,8:Channel9,9:Channel10,10:Channel11,11:Channel12,12:Channel13,13:Channel14,14:Channel15,15:Channel16,16:Channel17,17:Channel18,18:Channel19,19:Channel20,20:Channel21,21:Channel22,22:Channel23,23:Channel24,24:Channel25,25:Channel26,26:Channel27,28:Channel29,29:Channel30,30:Channel31,31:Channel32
-
-## OUT_VOLZ_RANGE: Range of travel
-
-Range to map between 1000 and 2000 PWM. Default value of 200 gives full +-100 deg range of extended position command. This results in 0.2 deg movement per US change in PWM. If the full range is not needed it can be reduced to increase resolution. 40 deg range gives 0.04 deg movement per US change in PWM, this is higher resolution than possible with the VOLZ protocol so further reduction in range will not improve resolution. Reduced range does allow PWMs outside the 1000 to 2000 range, with 40 deg range 750 PWM results in a angle of -30 deg, 2250 would be +30 deg. This is still limited by the 200 deg maximum range of the actuator.
-
-- Units: deg
-
-# PRX Parameters
-
-## PRX_LOG_RAW: Proximity raw distances log
-
-*Note: This parameter is for advanced users*
-
-Set this parameter to one if logging unfiltered(raw) distances from sensor should be enabled
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Off|
-|1|On|
-
-## PRX_FILT: Proximity filter cutoff frequency
-
-*Note: This parameter is for advanced users*
-
-Cutoff frequency for low pass filter applied to each face in the proximity boundary
-
-- Units: Hz
-
-- Range: 0 20
-
-# PRX1 Parameters
-
-## PRX1_TYPE: Proximity type
-
-What type of proximity sensor is connected
-
-|Value|Meaning|
-|:---:|:---:|
-|0|None|
-|7|LightwareSF40c|
-|2|MAVLink|
-|3|TeraRangerTower|
-|4|RangeFinder|
-|5|RPLidarA2|
-|6|TeraRangerTowerEvo|
-|8|LightwareSF45B|
-|10|SITL|
-|12|AirSimSITL|
-|13|CygbotD1|
-|14|DroneCAN|
-|15|Scripting|
-|16|LD06|
-|17|MR72_CAN|
-|18|HexsoonRadar|
-
-- RebootRequired: True
-
-## PRX1_ORIENT: Proximity sensor orientation
-
-Proximity sensor orientation
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Default|
-|1|Upside Down|
-
-## PRX1_YAW_CORR: Proximity sensor yaw correction
-
-Proximity sensor yaw correction
-
-- Units: deg
-
-- Range: -180 180
-
-## PRX1_IGN_ANG1: Proximity sensor ignore angle 1
-
-Proximity sensor ignore angle 1
-
-- Units: deg
-
-- Range: 0 360
-
-## PRX1_IGN_WID1: Proximity sensor ignore width 1
-
-Proximity sensor ignore width 1
-
-- Units: deg
-
-- Range: 0 127
-
-## PRX1_IGN_ANG2: Proximity sensor ignore angle 2
-
-Proximity sensor ignore angle 2
-
-- Units: deg
-
-- Range: 0 360
-
-## PRX1_IGN_WID2: Proximity sensor ignore width 2
-
-Proximity sensor ignore width 2
-
-- Units: deg
-
-- Range: 0 127
-
-## PRX1_IGN_ANG3: Proximity sensor ignore angle 3
-
-Proximity sensor ignore angle 3
-
-- Units: deg
-
-- Range: 0 360
-
-## PRX1_IGN_WID3: Proximity sensor ignore width 3
-
-Proximity sensor ignore width 3
-
-- Units: deg
-
-- Range: 0 127
-
-## PRX1_IGN_ANG4: Proximity sensor ignore angle 4
-
-Proximity sensor ignore angle 4
-
-- Units: deg
-
-- Range: 0 360
-
-## PRX1_IGN_WID4: Proximity sensor ignore width 4
-
-Proximity sensor ignore width 4
-
-- Units: deg
-
-- Range: 0 127
-
-## PRX1_MIN: Proximity minimum range
-
-*Note: This parameter is for advanced users*
-
-Minimum expected range for Proximity Sensor. Setting this to 0 will set value to manufacturer reported range.
-
-- Units: m
-
-- Range: 0 500
-
-## PRX1_MAX: Proximity maximum range
-
-*Note: This parameter is for advanced users*
-
-Maximum expected range for Proximity Sensor. Setting this to 0 will set value to manufacturer reported range.
-
-- Units: m
-
-- Range: 0 500
-
-## PRX1_ADDR: Bus address of sensor
-
-The bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.
-
-- Range: 0 127
-
-- Increment: 1
-
-# PRX1 Parameters
-
-## PRX1_RECV_ID: CAN receive ID
-
-*Note: This parameter is for advanced users*
-
-The receive ID of the CAN frames. A value of zero means all IDs are accepted.
-
-- Range: 0 65535
-
-# PRX2 Parameters
-
-## PRX2_TYPE: Proximity type
-
-What type of proximity sensor is connected
-
-|Value|Meaning|
-|:---:|:---:|
-|0|None|
-|7|LightwareSF40c|
-|2|MAVLink|
-|3|TeraRangerTower|
-|4|RangeFinder|
-|5|RPLidarA2|
-|6|TeraRangerTowerEvo|
-|8|LightwareSF45B|
-|10|SITL|
-|12|AirSimSITL|
-|13|CygbotD1|
-|14|DroneCAN|
-|15|Scripting|
-|16|LD06|
-|17|MR72_CAN|
-|18|HexsoonRadar|
-
-- RebootRequired: True
-
-## PRX2_ORIENT: Proximity sensor orientation
-
-Proximity sensor orientation
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Default|
-|1|Upside Down|
-
-## PRX2_YAW_CORR: Proximity sensor yaw correction
-
-Proximity sensor yaw correction
-
-- Units: deg
-
-- Range: -180 180
-
-## PRX2_IGN_ANG1: Proximity sensor ignore angle 1
-
-Proximity sensor ignore angle 1
-
-- Units: deg
-
-- Range: 0 360
-
-## PRX2_IGN_WID1: Proximity sensor ignore width 1
-
-Proximity sensor ignore width 1
-
-- Units: deg
-
-- Range: 0 127
-
-## PRX2_IGN_ANG2: Proximity sensor ignore angle 2
-
-Proximity sensor ignore angle 2
-
-- Units: deg
-
-- Range: 0 360
-
-## PRX2_IGN_WID2: Proximity sensor ignore width 2
-
-Proximity sensor ignore width 2
-
-- Units: deg
-
-- Range: 0 127
-
-## PRX2_IGN_ANG3: Proximity sensor ignore angle 3
-
-Proximity sensor ignore angle 3
-
-- Units: deg
-
-- Range: 0 360
-
-## PRX2_IGN_WID3: Proximity sensor ignore width 3
-
-Proximity sensor ignore width 3
-
-- Units: deg
-
-- Range: 0 127
-
-## PRX2_IGN_ANG4: Proximity sensor ignore angle 4
-
-Proximity sensor ignore angle 4
-
-- Units: deg
-
-- Range: 0 360
-
-## PRX2_IGN_WID4: Proximity sensor ignore width 4
-
-Proximity sensor ignore width 4
-
-- Units: deg
-
-- Range: 0 127
-
-## PRX2_MIN: Proximity minimum range
-
-*Note: This parameter is for advanced users*
-
-Minimum expected range for Proximity Sensor. Setting this to 0 will set value to manufacturer reported range.
-
-- Units: m
-
-- Range: 0 500
-
-## PRX2_MAX: Proximity maximum range
-
-*Note: This parameter is for advanced users*
-
-Maximum expected range for Proximity Sensor. Setting this to 0 will set value to manufacturer reported range.
-
-- Units: m
-
-- Range: 0 500
-
-## PRX2_ADDR: Bus address of sensor
-
-The bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.
-
-- Range: 0 127
-
-- Increment: 1
-
-# PRX2 Parameters
-
-## PRX2_RECV_ID: CAN receive ID
-
-*Note: This parameter is for advanced users*
-
-The receive ID of the CAN frames. A value of zero means all IDs are accepted.
-
-- Range: 0 65535
-
-# PRX3 Parameters
-
-## PRX3_TYPE: Proximity type
-
-What type of proximity sensor is connected
-
-|Value|Meaning|
-|:---:|:---:|
-|0|None|
-|7|LightwareSF40c|
-|2|MAVLink|
-|3|TeraRangerTower|
-|4|RangeFinder|
-|5|RPLidarA2|
-|6|TeraRangerTowerEvo|
-|8|LightwareSF45B|
-|10|SITL|
-|12|AirSimSITL|
-|13|CygbotD1|
-|14|DroneCAN|
-|15|Scripting|
-|16|LD06|
-|17|MR72_CAN|
-|18|HexsoonRadar|
-
-- RebootRequired: True
-
-## PRX3_ORIENT: Proximity sensor orientation
-
-Proximity sensor orientation
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Default|
-|1|Upside Down|
-
-## PRX3_YAW_CORR: Proximity sensor yaw correction
-
-Proximity sensor yaw correction
-
-- Units: deg
-
-- Range: -180 180
-
-## PRX3_IGN_ANG1: Proximity sensor ignore angle 1
-
-Proximity sensor ignore angle 1
-
-- Units: deg
-
-- Range: 0 360
-
-## PRX3_IGN_WID1: Proximity sensor ignore width 1
-
-Proximity sensor ignore width 1
-
-- Units: deg
-
-- Range: 0 127
-
-## PRX3_IGN_ANG2: Proximity sensor ignore angle 2
-
-Proximity sensor ignore angle 2
-
-- Units: deg
-
-- Range: 0 360
-
-## PRX3_IGN_WID2: Proximity sensor ignore width 2
-
-Proximity sensor ignore width 2
-
-- Units: deg
-
-- Range: 0 127
-
-## PRX3_IGN_ANG3: Proximity sensor ignore angle 3
-
-Proximity sensor ignore angle 3
-
-- Units: deg
-
-- Range: 0 360
-
-## PRX3_IGN_WID3: Proximity sensor ignore width 3
-
-Proximity sensor ignore width 3
-
-- Units: deg
-
-- Range: 0 127
-
-## PRX3_IGN_ANG4: Proximity sensor ignore angle 4
-
-Proximity sensor ignore angle 4
-
-- Units: deg
-
-- Range: 0 360
-
-## PRX3_IGN_WID4: Proximity sensor ignore width 4
-
-Proximity sensor ignore width 4
-
-- Units: deg
-
-- Range: 0 127
-
-## PRX3_MIN: Proximity minimum range
-
-*Note: This parameter is for advanced users*
-
-Minimum expected range for Proximity Sensor. Setting this to 0 will set value to manufacturer reported range.
-
-- Units: m
-
-- Range: 0 500
-
-## PRX3_MAX: Proximity maximum range
-
-*Note: This parameter is for advanced users*
-
-Maximum expected range for Proximity Sensor. Setting this to 0 will set value to manufacturer reported range.
-
-- Units: m
-
-- Range: 0 500
-
-## PRX3_ADDR: Bus address of sensor
-
-The bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.
-
-- Range: 0 127
-
-- Increment: 1
-
-# PRX3 Parameters
-
-## PRX3_RECV_ID: CAN receive ID
-
-*Note: This parameter is for advanced users*
-
-The receive ID of the CAN frames. A value of zero means all IDs are accepted.
-
-- Range: 0 65535
-
-# PRX4 Parameters
-
-## PRX4_TYPE: Proximity type
-
-What type of proximity sensor is connected
-
-|Value|Meaning|
-|:---:|:---:|
-|0|None|
-|7|LightwareSF40c|
-|2|MAVLink|
-|3|TeraRangerTower|
-|4|RangeFinder|
-|5|RPLidarA2|
-|6|TeraRangerTowerEvo|
-|8|LightwareSF45B|
-|10|SITL|
-|12|AirSimSITL|
-|13|CygbotD1|
-|14|DroneCAN|
-|15|Scripting|
-|16|LD06|
-|17|MR72_CAN|
-|18|HexsoonRadar|
-
-- RebootRequired: True
-
-## PRX4_ORIENT: Proximity sensor orientation
-
-Proximity sensor orientation
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Default|
-|1|Upside Down|
-
-## PRX4_YAW_CORR: Proximity sensor yaw correction
-
-Proximity sensor yaw correction
-
-- Units: deg
-
-- Range: -180 180
-
-## PRX4_IGN_ANG1: Proximity sensor ignore angle 1
-
-Proximity sensor ignore angle 1
-
-- Units: deg
-
-- Range: 0 360
-
-## PRX4_IGN_WID1: Proximity sensor ignore width 1
-
-Proximity sensor ignore width 1
-
-- Units: deg
-
-- Range: 0 127
-
-## PRX4_IGN_ANG2: Proximity sensor ignore angle 2
-
-Proximity sensor ignore angle 2
-
-- Units: deg
-
-- Range: 0 360
-
-## PRX4_IGN_WID2: Proximity sensor ignore width 2
-
-Proximity sensor ignore width 2
-
-- Units: deg
-
-- Range: 0 127
-
-## PRX4_IGN_ANG3: Proximity sensor ignore angle 3
-
-Proximity sensor ignore angle 3
-
-- Units: deg
-
-- Range: 0 360
-
-## PRX4_IGN_WID3: Proximity sensor ignore width 3
-
-Proximity sensor ignore width 3
-
-- Units: deg
-
-- Range: 0 127
-
-## PRX4_IGN_ANG4: Proximity sensor ignore angle 4
-
-Proximity sensor ignore angle 4
-
-- Units: deg
-
-- Range: 0 360
-
-## PRX4_IGN_WID4: Proximity sensor ignore width 4
-
-Proximity sensor ignore width 4
-
-- Units: deg
-
-- Range: 0 127
-
-## PRX4_MIN: Proximity minimum range
-
-*Note: This parameter is for advanced users*
-
-Minimum expected range for Proximity Sensor. Setting this to 0 will set value to manufacturer reported range.
-
-- Units: m
-
-- Range: 0 500
-
-## PRX4_MAX: Proximity maximum range
-
-*Note: This parameter is for advanced users*
-
-Maximum expected range for Proximity Sensor. Setting this to 0 will set value to manufacturer reported range.
-
-- Units: m
-
-- Range: 0 500
-
-## PRX4_ADDR: Bus address of sensor
-
-The bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.
-
-- Range: 0 127
-
-- Increment: 1
-
-# PRX4 Parameters
-
-## PRX4_RECV_ID: CAN receive ID
-
-*Note: This parameter is for advanced users*
-
-The receive ID of the CAN frames. A value of zero means all IDs are accepted.
-
-- Range: 0 65535
-
-# PRX5 Parameters
-
-## PRX5_TYPE: Proximity type
-
-What type of proximity sensor is connected
-
-|Value|Meaning|
-|:---:|:---:|
-|0|None|
-|7|LightwareSF40c|
-|2|MAVLink|
-|3|TeraRangerTower|
-|4|RangeFinder|
-|5|RPLidarA2|
-|6|TeraRangerTowerEvo|
-|8|LightwareSF45B|
-|10|SITL|
-|12|AirSimSITL|
-|13|CygbotD1|
-|14|DroneCAN|
-|15|Scripting|
-|16|LD06|
-|17|MR72_CAN|
-|18|HexsoonRadar|
-
-- RebootRequired: True
-
-## PRX5_ORIENT: Proximity sensor orientation
-
-Proximity sensor orientation
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Default|
-|1|Upside Down|
-
-## PRX5_YAW_CORR: Proximity sensor yaw correction
-
-Proximity sensor yaw correction
-
-- Units: deg
-
-- Range: -180 180
-
-## PRX5_IGN_ANG1: Proximity sensor ignore angle 1
-
-Proximity sensor ignore angle 1
-
-- Units: deg
-
-- Range: 0 360
-
-## PRX5_IGN_WID1: Proximity sensor ignore width 1
-
-Proximity sensor ignore width 1
-
-- Units: deg
-
-- Range: 0 127
-
-## PRX5_IGN_ANG2: Proximity sensor ignore angle 2
-
-Proximity sensor ignore angle 2
-
-- Units: deg
-
-- Range: 0 360
-
-## PRX5_IGN_WID2: Proximity sensor ignore width 2
-
-Proximity sensor ignore width 2
-
-- Units: deg
-
-- Range: 0 127
-
-## PRX5_IGN_ANG3: Proximity sensor ignore angle 3
-
-Proximity sensor ignore angle 3
-
-- Units: deg
-
-- Range: 0 360
-
-## PRX5_IGN_WID3: Proximity sensor ignore width 3
-
-Proximity sensor ignore width 3
-
-- Units: deg
-
-- Range: 0 127
-
-## PRX5_IGN_ANG4: Proximity sensor ignore angle 4
-
-Proximity sensor ignore angle 4
-
-- Units: deg
-
-- Range: 0 360
-
-## PRX5_IGN_WID4: Proximity sensor ignore width 4
-
-Proximity sensor ignore width 4
-
-- Units: deg
-
-- Range: 0 127
-
-## PRX5_MIN: Proximity minimum range
-
-*Note: This parameter is for advanced users*
-
-Minimum expected range for Proximity Sensor. Setting this to 0 will set value to manufacturer reported range.
-
-- Units: m
-
-- Range: 0 500
-
-## PRX5_MAX: Proximity maximum range
-
-*Note: This parameter is for advanced users*
-
-Maximum expected range for Proximity Sensor. Setting this to 0 will set value to manufacturer reported range.
-
-- Units: m
-
-- Range: 0 500
-
-## PRX5_ADDR: Bus address of sensor
-
-The bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.
-
-- Range: 0 127
-
-- Increment: 1
-
-# PRX5 Parameters
-
-## PRX5_RECV_ID: CAN receive ID
-
-*Note: This parameter is for advanced users*
-
-The receive ID of the CAN frames. A value of zero means all IDs are accepted.
-
-- Range: 0 65535
-
 # RC Parameters
+
+## RC_OVERRIDE_TIME: RC override timeout
+
+*Note: This parameter is for advanced users*
+
+Timeout after which RC overrides will no longer be used, and RC input will resume, 0 will disable RC overrides, -1 will never timeout, and continue using overrides until they are disabled
+
+- Range: 0.0 120.0
+
+- Units: s
+
+## RC_OPTIONS: RC options
+
+*Note: This parameter is for advanced users*
+
+RC input options
+
+- Bitmask: 0:Ignore RC Receiver, 1:Ignore MAVLink Overrides, 2:Ignore Receiver Failsafe bit but allow other RC failsafes if setup, 3:FPort Pad, 4:Log RC input bytes, 5:Arming check throttle for 0 input, 6:Skip the arming check for neutral Roll/Pitch/Yaw sticks, 7:Allow Switch reverse, 8:Use passthrough for CRSF telemetry, 9:Suppress CRSF mode/rate message for ELRS systems,10:Enable multiple receiver support, 11:Use Link Quality for RSSI with CRSF, 12:Annotate CRSF flight mode with * on disarm, 13: Use 420kbaud for ELRS protocol
 
 ## RC_PROTOCOLS: RC protocols enabled
 
@@ -31960,4781 +27681,101 @@ The receive ID of the CAN frames. A value of zero means all IDs are accepted.
 
 Bitmask of enabled RC protocols. Allows narrowing the protocol detection to only specific types of RC receivers which can avoid issues with incorrect detection. Set to 1 to enable all protocols.
 
-- Bitmask: 0:All,1:PPM,2:IBUS,3:SBUS,4:SBUS_NI,5:DSM,6:SUMD,7:SRXL,8:SRXL2,9:CRSF,10:ST24,11:FPORT,12:FPORT2,13:FastSBUS
+- Bitmask: 0:All,1:PPM,2:IBUS,3:SBUS,4:SBUS_NI,5:DSM,6:SUMD,7:SRXL,8:SRXL2,9:CRSF,10:ST24,11:FPORT,12:FPORT2,13:FastSBUS,14:DroneCAN,15:Ghost,16:MAVRadio
 
-## RC_MSGRATE: DroneCAN RC Message rate
+## RC_FS_TIMEOUT: RC Failsafe timeout
+
+RC failsafe will trigger this many seconds after loss of RC
+
+- Range: 0.1 10.0
+
+- Units: s
+
+# RCn Parameters
+
+## RCn_MIN: RC min PWM
 
 *Note: This parameter is for advanced users*
 
-Rate at which RC input is sent via DroneCAN
+RC minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
+
+- Units: PWM
+
+- Range: 800 2200
 
 - Increment: 1
 
-- Range: 0 255
-
-- Units: Hz
-
-## RC1_PORT: RC input port
+## RCn_TRIM: RC trim PWM
 
 *Note: This parameter is for advanced users*
 
-This is the serial port number where SERIALx_PROTOCOL will be set to RC input.
+RC trim (neutral) PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
 
-- Range: 0 10
+- Units: PWM
+
+- Range: 800 2200
 
 - Increment: 1
 
-- RebootRequired: True
+## RCn_MAX: RC max PWM
 
-## RC1_PORT_OPTIONS: RC input port serial options
+*Note: This parameter is for advanced users*
 
-Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire. The Swap option allows the RX and TX pins to be swapped on STM32F7 based boards.
+RC maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
 
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO, 12: Ignore Streamrate
+- Units: PWM
 
-# RELAY1 Parameters
-
-## RELAY1_FUNCTION: Relay function
-
-The function the relay channel is mapped to.
-
-|Value|Meaning|
-|:---:|:---:|
-|10|DroneCAN Hardpoint ID 0|
-|11|DroneCAN Hardpoint ID 1|
-|12|DroneCAN Hardpoint ID 2|
-|13|DroneCAN Hardpoint ID 3|
-|14|DroneCAN Hardpoint ID 4|
-|15|DroneCAN Hardpoint ID 5|
-|16|DroneCAN Hardpoint ID 6|
-|17|DroneCAN Hardpoint ID 7|
-|18|DroneCAN Hardpoint ID 8|
-|19|DroneCAN Hardpoint ID 9|
-|20|DroneCAN Hardpoint ID 10|
-|21|DroneCAN Hardpoint ID 11|
-|22|DroneCAN Hardpoint ID 12|
-|23|DroneCAN Hardpoint ID 13|
-|24|DroneCAN Hardpoint ID 14|
-|25|DroneCAN Hardpoint ID 15|
-
-## RELAY1_PIN: Relay pin
-
-Digital pin number for relay control. Some common values are given, but see the Wiki's "GPIOs" page for how to determine the pin number for a given autopilot.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|49|BB Blue GP0 pin 4|
-|50|AUXOUT1|
-|51|AUXOUT2|
-|52|AUXOUT3|
-|53|AUXOUT4|
-|54|AUXOUT5|
-|55|AUXOUT6|
-|57|BB Blue GP0 pin 3|
-|113|BB Blue GP0 pin 6|
-|116|BB Blue GP0 pin 5|
-|62|BBBMini Pin P8.13|
-|101|MainOut1|
-|102|MainOut2|
-|103|MainOut3|
-|104|MainOut4|
-|105|MainOut5|
-|106|MainOut6|
-|107|MainOut7|
-|108|MainOut8|
-|1000|DroneCAN Hardpoint ID 0|
-|1001|DroneCAN Hardpoint ID 1|
-|1002|DroneCAN Hardpoint ID 2|
-|1003|DroneCAN Hardpoint ID 3|
-|1004|DroneCAN Hardpoint ID 4|
-|1005|DroneCAN Hardpoint ID 5|
-|1006|DroneCAN Hardpoint ID 6|
-|1007|DroneCAN Hardpoint ID 7|
-|1008|DroneCAN Hardpoint ID 8|
-|1009|DroneCAN Hardpoint ID 9|
-|1010|DroneCAN Hardpoint ID 10|
-|1011|DroneCAN Hardpoint ID 11|
-|1012|DroneCAN Hardpoint ID 12|
-|1013|DroneCAN Hardpoint ID 13|
-|1014|DroneCAN Hardpoint ID 14|
-|1015|DroneCAN Hardpoint ID 15|
-
-- Range: -1 1015
-
-## RELAY1_DEFAULT: Relay default state
-
-Should the relay default to on or off, this only applies to RELAYx_FUNC "Relay" (1). All other uses will pick the appropriate default output state from within the controlling function's parameters. Note that if INVERTED is set then the default is inverted.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Off|
-|1|On|
-|2|NoChange|
-
-## RELAY1_INVERTED: Relay invert output signal
-
-Should the relay output signal be inverted. If enabled, relay on would be pin low and relay off would be pin high. NOTE: this impact's DEFAULT.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Inverted|
-
-# RELAY2 Parameters
-
-## RELAY2_FUNCTION: Relay function
-
-The function the relay channel is mapped to.
-
-|Value|Meaning|
-|:---:|:---:|
-|10|DroneCAN Hardpoint ID 0|
-|11|DroneCAN Hardpoint ID 1|
-|12|DroneCAN Hardpoint ID 2|
-|13|DroneCAN Hardpoint ID 3|
-|14|DroneCAN Hardpoint ID 4|
-|15|DroneCAN Hardpoint ID 5|
-|16|DroneCAN Hardpoint ID 6|
-|17|DroneCAN Hardpoint ID 7|
-|18|DroneCAN Hardpoint ID 8|
-|19|DroneCAN Hardpoint ID 9|
-|20|DroneCAN Hardpoint ID 10|
-|21|DroneCAN Hardpoint ID 11|
-|22|DroneCAN Hardpoint ID 12|
-|23|DroneCAN Hardpoint ID 13|
-|24|DroneCAN Hardpoint ID 14|
-|25|DroneCAN Hardpoint ID 15|
-
-## RELAY2_PIN: Relay pin
-
-Digital pin number for relay control. Some common values are given, but see the Wiki's "GPIOs" page for how to determine the pin number for a given autopilot.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|49|BB Blue GP0 pin 4|
-|50|AUXOUT1|
-|51|AUXOUT2|
-|52|AUXOUT3|
-|53|AUXOUT4|
-|54|AUXOUT5|
-|55|AUXOUT6|
-|57|BB Blue GP0 pin 3|
-|113|BB Blue GP0 pin 6|
-|116|BB Blue GP0 pin 5|
-|62|BBBMini Pin P8.13|
-|101|MainOut1|
-|102|MainOut2|
-|103|MainOut3|
-|104|MainOut4|
-|105|MainOut5|
-|106|MainOut6|
-|107|MainOut7|
-|108|MainOut8|
-|1000|DroneCAN Hardpoint ID 0|
-|1001|DroneCAN Hardpoint ID 1|
-|1002|DroneCAN Hardpoint ID 2|
-|1003|DroneCAN Hardpoint ID 3|
-|1004|DroneCAN Hardpoint ID 4|
-|1005|DroneCAN Hardpoint ID 5|
-|1006|DroneCAN Hardpoint ID 6|
-|1007|DroneCAN Hardpoint ID 7|
-|1008|DroneCAN Hardpoint ID 8|
-|1009|DroneCAN Hardpoint ID 9|
-|1010|DroneCAN Hardpoint ID 10|
-|1011|DroneCAN Hardpoint ID 11|
-|1012|DroneCAN Hardpoint ID 12|
-|1013|DroneCAN Hardpoint ID 13|
-|1014|DroneCAN Hardpoint ID 14|
-|1015|DroneCAN Hardpoint ID 15|
-
-- Range: -1 1015
-
-## RELAY2_DEFAULT: Relay default state
-
-Should the relay default to on or off, this only applies to RELAYx_FUNC "Relay" (1). All other uses will pick the appropriate default output state from within the controlling function's parameters. Note that if INVERTED is set then the default is inverted.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Off|
-|1|On|
-|2|NoChange|
-
-## RELAY2_INVERTED: Relay invert output signal
-
-Should the relay output signal be inverted. If enabled, relay on would be pin low and relay off would be pin high. NOTE: this impact's DEFAULT.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Inverted|
-
-# RELAY3 Parameters
-
-## RELAY3_FUNCTION: Relay function
-
-The function the relay channel is mapped to.
-
-|Value|Meaning|
-|:---:|:---:|
-|10|DroneCAN Hardpoint ID 0|
-|11|DroneCAN Hardpoint ID 1|
-|12|DroneCAN Hardpoint ID 2|
-|13|DroneCAN Hardpoint ID 3|
-|14|DroneCAN Hardpoint ID 4|
-|15|DroneCAN Hardpoint ID 5|
-|16|DroneCAN Hardpoint ID 6|
-|17|DroneCAN Hardpoint ID 7|
-|18|DroneCAN Hardpoint ID 8|
-|19|DroneCAN Hardpoint ID 9|
-|20|DroneCAN Hardpoint ID 10|
-|21|DroneCAN Hardpoint ID 11|
-|22|DroneCAN Hardpoint ID 12|
-|23|DroneCAN Hardpoint ID 13|
-|24|DroneCAN Hardpoint ID 14|
-|25|DroneCAN Hardpoint ID 15|
-
-## RELAY3_PIN: Relay pin
-
-Digital pin number for relay control. Some common values are given, but see the Wiki's "GPIOs" page for how to determine the pin number for a given autopilot.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|49|BB Blue GP0 pin 4|
-|50|AUXOUT1|
-|51|AUXOUT2|
-|52|AUXOUT3|
-|53|AUXOUT4|
-|54|AUXOUT5|
-|55|AUXOUT6|
-|57|BB Blue GP0 pin 3|
-|113|BB Blue GP0 pin 6|
-|116|BB Blue GP0 pin 5|
-|62|BBBMini Pin P8.13|
-|101|MainOut1|
-|102|MainOut2|
-|103|MainOut3|
-|104|MainOut4|
-|105|MainOut5|
-|106|MainOut6|
-|107|MainOut7|
-|108|MainOut8|
-|1000|DroneCAN Hardpoint ID 0|
-|1001|DroneCAN Hardpoint ID 1|
-|1002|DroneCAN Hardpoint ID 2|
-|1003|DroneCAN Hardpoint ID 3|
-|1004|DroneCAN Hardpoint ID 4|
-|1005|DroneCAN Hardpoint ID 5|
-|1006|DroneCAN Hardpoint ID 6|
-|1007|DroneCAN Hardpoint ID 7|
-|1008|DroneCAN Hardpoint ID 8|
-|1009|DroneCAN Hardpoint ID 9|
-|1010|DroneCAN Hardpoint ID 10|
-|1011|DroneCAN Hardpoint ID 11|
-|1012|DroneCAN Hardpoint ID 12|
-|1013|DroneCAN Hardpoint ID 13|
-|1014|DroneCAN Hardpoint ID 14|
-|1015|DroneCAN Hardpoint ID 15|
-
-- Range: -1 1015
-
-## RELAY3_DEFAULT: Relay default state
-
-Should the relay default to on or off, this only applies to RELAYx_FUNC "Relay" (1). All other uses will pick the appropriate default output state from within the controlling function's parameters. Note that if INVERTED is set then the default is inverted.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Off|
-|1|On|
-|2|NoChange|
-
-## RELAY3_INVERTED: Relay invert output signal
-
-Should the relay output signal be inverted. If enabled, relay on would be pin low and relay off would be pin high. NOTE: this impact's DEFAULT.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Inverted|
-
-# RELAY4 Parameters
-
-## RELAY4_FUNCTION: Relay function
-
-The function the relay channel is mapped to.
-
-|Value|Meaning|
-|:---:|:---:|
-|10|DroneCAN Hardpoint ID 0|
-|11|DroneCAN Hardpoint ID 1|
-|12|DroneCAN Hardpoint ID 2|
-|13|DroneCAN Hardpoint ID 3|
-|14|DroneCAN Hardpoint ID 4|
-|15|DroneCAN Hardpoint ID 5|
-|16|DroneCAN Hardpoint ID 6|
-|17|DroneCAN Hardpoint ID 7|
-|18|DroneCAN Hardpoint ID 8|
-|19|DroneCAN Hardpoint ID 9|
-|20|DroneCAN Hardpoint ID 10|
-|21|DroneCAN Hardpoint ID 11|
-|22|DroneCAN Hardpoint ID 12|
-|23|DroneCAN Hardpoint ID 13|
-|24|DroneCAN Hardpoint ID 14|
-|25|DroneCAN Hardpoint ID 15|
-
-## RELAY4_PIN: Relay pin
-
-Digital pin number for relay control. Some common values are given, but see the Wiki's "GPIOs" page for how to determine the pin number for a given autopilot.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|49|BB Blue GP0 pin 4|
-|50|AUXOUT1|
-|51|AUXOUT2|
-|52|AUXOUT3|
-|53|AUXOUT4|
-|54|AUXOUT5|
-|55|AUXOUT6|
-|57|BB Blue GP0 pin 3|
-|113|BB Blue GP0 pin 6|
-|116|BB Blue GP0 pin 5|
-|62|BBBMini Pin P8.13|
-|101|MainOut1|
-|102|MainOut2|
-|103|MainOut3|
-|104|MainOut4|
-|105|MainOut5|
-|106|MainOut6|
-|107|MainOut7|
-|108|MainOut8|
-|1000|DroneCAN Hardpoint ID 0|
-|1001|DroneCAN Hardpoint ID 1|
-|1002|DroneCAN Hardpoint ID 2|
-|1003|DroneCAN Hardpoint ID 3|
-|1004|DroneCAN Hardpoint ID 4|
-|1005|DroneCAN Hardpoint ID 5|
-|1006|DroneCAN Hardpoint ID 6|
-|1007|DroneCAN Hardpoint ID 7|
-|1008|DroneCAN Hardpoint ID 8|
-|1009|DroneCAN Hardpoint ID 9|
-|1010|DroneCAN Hardpoint ID 10|
-|1011|DroneCAN Hardpoint ID 11|
-|1012|DroneCAN Hardpoint ID 12|
-|1013|DroneCAN Hardpoint ID 13|
-|1014|DroneCAN Hardpoint ID 14|
-|1015|DroneCAN Hardpoint ID 15|
-
-- Range: -1 1015
-
-## RELAY4_DEFAULT: Relay default state
-
-Should the relay default to on or off, this only applies to RELAYx_FUNC "Relay" (1). All other uses will pick the appropriate default output state from within the controlling function's parameters. Note that if INVERTED is set then the default is inverted.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Off|
-|1|On|
-|2|NoChange|
-
-## RELAY4_INVERTED: Relay invert output signal
-
-Should the relay output signal be inverted. If enabled, relay on would be pin low and relay off would be pin high. NOTE: this impact's DEFAULT.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Inverted|
-
-# RELAY5 Parameters
-
-## RELAY5_FUNCTION: Relay function
-
-The function the relay channel is mapped to.
-
-|Value|Meaning|
-|:---:|:---:|
-|10|DroneCAN Hardpoint ID 0|
-|11|DroneCAN Hardpoint ID 1|
-|12|DroneCAN Hardpoint ID 2|
-|13|DroneCAN Hardpoint ID 3|
-|14|DroneCAN Hardpoint ID 4|
-|15|DroneCAN Hardpoint ID 5|
-|16|DroneCAN Hardpoint ID 6|
-|17|DroneCAN Hardpoint ID 7|
-|18|DroneCAN Hardpoint ID 8|
-|19|DroneCAN Hardpoint ID 9|
-|20|DroneCAN Hardpoint ID 10|
-|21|DroneCAN Hardpoint ID 11|
-|22|DroneCAN Hardpoint ID 12|
-|23|DroneCAN Hardpoint ID 13|
-|24|DroneCAN Hardpoint ID 14|
-|25|DroneCAN Hardpoint ID 15|
-
-## RELAY5_PIN: Relay pin
-
-Digital pin number for relay control. Some common values are given, but see the Wiki's "GPIOs" page for how to determine the pin number for a given autopilot.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|49|BB Blue GP0 pin 4|
-|50|AUXOUT1|
-|51|AUXOUT2|
-|52|AUXOUT3|
-|53|AUXOUT4|
-|54|AUXOUT5|
-|55|AUXOUT6|
-|57|BB Blue GP0 pin 3|
-|113|BB Blue GP0 pin 6|
-|116|BB Blue GP0 pin 5|
-|62|BBBMini Pin P8.13|
-|101|MainOut1|
-|102|MainOut2|
-|103|MainOut3|
-|104|MainOut4|
-|105|MainOut5|
-|106|MainOut6|
-|107|MainOut7|
-|108|MainOut8|
-|1000|DroneCAN Hardpoint ID 0|
-|1001|DroneCAN Hardpoint ID 1|
-|1002|DroneCAN Hardpoint ID 2|
-|1003|DroneCAN Hardpoint ID 3|
-|1004|DroneCAN Hardpoint ID 4|
-|1005|DroneCAN Hardpoint ID 5|
-|1006|DroneCAN Hardpoint ID 6|
-|1007|DroneCAN Hardpoint ID 7|
-|1008|DroneCAN Hardpoint ID 8|
-|1009|DroneCAN Hardpoint ID 9|
-|1010|DroneCAN Hardpoint ID 10|
-|1011|DroneCAN Hardpoint ID 11|
-|1012|DroneCAN Hardpoint ID 12|
-|1013|DroneCAN Hardpoint ID 13|
-|1014|DroneCAN Hardpoint ID 14|
-|1015|DroneCAN Hardpoint ID 15|
-
-- Range: -1 1015
-
-## RELAY5_DEFAULT: Relay default state
-
-Should the relay default to on or off, this only applies to RELAYx_FUNC "Relay" (1). All other uses will pick the appropriate default output state from within the controlling function's parameters. Note that if INVERTED is set then the default is inverted.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Off|
-|1|On|
-|2|NoChange|
-
-## RELAY5_INVERTED: Relay invert output signal
-
-Should the relay output signal be inverted. If enabled, relay on would be pin low and relay off would be pin high. NOTE: this impact's DEFAULT.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Inverted|
-
-# RELAY6 Parameters
-
-## RELAY6_FUNCTION: Relay function
-
-The function the relay channel is mapped to.
-
-|Value|Meaning|
-|:---:|:---:|
-|10|DroneCAN Hardpoint ID 0|
-|11|DroneCAN Hardpoint ID 1|
-|12|DroneCAN Hardpoint ID 2|
-|13|DroneCAN Hardpoint ID 3|
-|14|DroneCAN Hardpoint ID 4|
-|15|DroneCAN Hardpoint ID 5|
-|16|DroneCAN Hardpoint ID 6|
-|17|DroneCAN Hardpoint ID 7|
-|18|DroneCAN Hardpoint ID 8|
-|19|DroneCAN Hardpoint ID 9|
-|20|DroneCAN Hardpoint ID 10|
-|21|DroneCAN Hardpoint ID 11|
-|22|DroneCAN Hardpoint ID 12|
-|23|DroneCAN Hardpoint ID 13|
-|24|DroneCAN Hardpoint ID 14|
-|25|DroneCAN Hardpoint ID 15|
-
-## RELAY6_PIN: Relay pin
-
-Digital pin number for relay control. Some common values are given, but see the Wiki's "GPIOs" page for how to determine the pin number for a given autopilot.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|49|BB Blue GP0 pin 4|
-|50|AUXOUT1|
-|51|AUXOUT2|
-|52|AUXOUT3|
-|53|AUXOUT4|
-|54|AUXOUT5|
-|55|AUXOUT6|
-|57|BB Blue GP0 pin 3|
-|113|BB Blue GP0 pin 6|
-|116|BB Blue GP0 pin 5|
-|62|BBBMini Pin P8.13|
-|101|MainOut1|
-|102|MainOut2|
-|103|MainOut3|
-|104|MainOut4|
-|105|MainOut5|
-|106|MainOut6|
-|107|MainOut7|
-|108|MainOut8|
-|1000|DroneCAN Hardpoint ID 0|
-|1001|DroneCAN Hardpoint ID 1|
-|1002|DroneCAN Hardpoint ID 2|
-|1003|DroneCAN Hardpoint ID 3|
-|1004|DroneCAN Hardpoint ID 4|
-|1005|DroneCAN Hardpoint ID 5|
-|1006|DroneCAN Hardpoint ID 6|
-|1007|DroneCAN Hardpoint ID 7|
-|1008|DroneCAN Hardpoint ID 8|
-|1009|DroneCAN Hardpoint ID 9|
-|1010|DroneCAN Hardpoint ID 10|
-|1011|DroneCAN Hardpoint ID 11|
-|1012|DroneCAN Hardpoint ID 12|
-|1013|DroneCAN Hardpoint ID 13|
-|1014|DroneCAN Hardpoint ID 14|
-|1015|DroneCAN Hardpoint ID 15|
-
-- Range: -1 1015
-
-## RELAY6_DEFAULT: Relay default state
-
-Should the relay default to on or off, this only applies to RELAYx_FUNC "Relay" (1). All other uses will pick the appropriate default output state from within the controlling function's parameters. Note that if INVERTED is set then the default is inverted.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Off|
-|1|On|
-|2|NoChange|
-
-## RELAY6_INVERTED: Relay invert output signal
-
-Should the relay output signal be inverted. If enabled, relay on would be pin low and relay off would be pin high. NOTE: this impact's DEFAULT.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Inverted|
-
-# RELAY7 Parameters
-
-## RELAY7_FUNCTION: Relay function
-
-The function the relay channel is mapped to.
-
-|Value|Meaning|
-|:---:|:---:|
-|10|DroneCAN Hardpoint ID 0|
-|11|DroneCAN Hardpoint ID 1|
-|12|DroneCAN Hardpoint ID 2|
-|13|DroneCAN Hardpoint ID 3|
-|14|DroneCAN Hardpoint ID 4|
-|15|DroneCAN Hardpoint ID 5|
-|16|DroneCAN Hardpoint ID 6|
-|17|DroneCAN Hardpoint ID 7|
-|18|DroneCAN Hardpoint ID 8|
-|19|DroneCAN Hardpoint ID 9|
-|20|DroneCAN Hardpoint ID 10|
-|21|DroneCAN Hardpoint ID 11|
-|22|DroneCAN Hardpoint ID 12|
-|23|DroneCAN Hardpoint ID 13|
-|24|DroneCAN Hardpoint ID 14|
-|25|DroneCAN Hardpoint ID 15|
-
-## RELAY7_PIN: Relay pin
-
-Digital pin number for relay control. Some common values are given, but see the Wiki's "GPIOs" page for how to determine the pin number for a given autopilot.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|49|BB Blue GP0 pin 4|
-|50|AUXOUT1|
-|51|AUXOUT2|
-|52|AUXOUT3|
-|53|AUXOUT4|
-|54|AUXOUT5|
-|55|AUXOUT6|
-|57|BB Blue GP0 pin 3|
-|113|BB Blue GP0 pin 6|
-|116|BB Blue GP0 pin 5|
-|62|BBBMini Pin P8.13|
-|101|MainOut1|
-|102|MainOut2|
-|103|MainOut3|
-|104|MainOut4|
-|105|MainOut5|
-|106|MainOut6|
-|107|MainOut7|
-|108|MainOut8|
-|1000|DroneCAN Hardpoint ID 0|
-|1001|DroneCAN Hardpoint ID 1|
-|1002|DroneCAN Hardpoint ID 2|
-|1003|DroneCAN Hardpoint ID 3|
-|1004|DroneCAN Hardpoint ID 4|
-|1005|DroneCAN Hardpoint ID 5|
-|1006|DroneCAN Hardpoint ID 6|
-|1007|DroneCAN Hardpoint ID 7|
-|1008|DroneCAN Hardpoint ID 8|
-|1009|DroneCAN Hardpoint ID 9|
-|1010|DroneCAN Hardpoint ID 10|
-|1011|DroneCAN Hardpoint ID 11|
-|1012|DroneCAN Hardpoint ID 12|
-|1013|DroneCAN Hardpoint ID 13|
-|1014|DroneCAN Hardpoint ID 14|
-|1015|DroneCAN Hardpoint ID 15|
-
-- Range: -1 1015
-
-## RELAY7_DEFAULT: Relay default state
-
-Should the relay default to on or off, this only applies to RELAYx_FUNC "Relay" (1). All other uses will pick the appropriate default output state from within the controlling function's parameters. Note that if INVERTED is set then the default is inverted.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Off|
-|1|On|
-|2|NoChange|
-
-## RELAY7_INVERTED: Relay invert output signal
-
-Should the relay output signal be inverted. If enabled, relay on would be pin low and relay off would be pin high. NOTE: this impact's DEFAULT.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Inverted|
-
-# RELAY8 Parameters
-
-## RELAY8_FUNCTION: Relay function
-
-The function the relay channel is mapped to.
-
-|Value|Meaning|
-|:---:|:---:|
-|10|DroneCAN Hardpoint ID 0|
-|11|DroneCAN Hardpoint ID 1|
-|12|DroneCAN Hardpoint ID 2|
-|13|DroneCAN Hardpoint ID 3|
-|14|DroneCAN Hardpoint ID 4|
-|15|DroneCAN Hardpoint ID 5|
-|16|DroneCAN Hardpoint ID 6|
-|17|DroneCAN Hardpoint ID 7|
-|18|DroneCAN Hardpoint ID 8|
-|19|DroneCAN Hardpoint ID 9|
-|20|DroneCAN Hardpoint ID 10|
-|21|DroneCAN Hardpoint ID 11|
-|22|DroneCAN Hardpoint ID 12|
-|23|DroneCAN Hardpoint ID 13|
-|24|DroneCAN Hardpoint ID 14|
-|25|DroneCAN Hardpoint ID 15|
-
-## RELAY8_PIN: Relay pin
-
-Digital pin number for relay control. Some common values are given, but see the Wiki's "GPIOs" page for how to determine the pin number for a given autopilot.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|49|BB Blue GP0 pin 4|
-|50|AUXOUT1|
-|51|AUXOUT2|
-|52|AUXOUT3|
-|53|AUXOUT4|
-|54|AUXOUT5|
-|55|AUXOUT6|
-|57|BB Blue GP0 pin 3|
-|113|BB Blue GP0 pin 6|
-|116|BB Blue GP0 pin 5|
-|62|BBBMini Pin P8.13|
-|101|MainOut1|
-|102|MainOut2|
-|103|MainOut3|
-|104|MainOut4|
-|105|MainOut5|
-|106|MainOut6|
-|107|MainOut7|
-|108|MainOut8|
-|1000|DroneCAN Hardpoint ID 0|
-|1001|DroneCAN Hardpoint ID 1|
-|1002|DroneCAN Hardpoint ID 2|
-|1003|DroneCAN Hardpoint ID 3|
-|1004|DroneCAN Hardpoint ID 4|
-|1005|DroneCAN Hardpoint ID 5|
-|1006|DroneCAN Hardpoint ID 6|
-|1007|DroneCAN Hardpoint ID 7|
-|1008|DroneCAN Hardpoint ID 8|
-|1009|DroneCAN Hardpoint ID 9|
-|1010|DroneCAN Hardpoint ID 10|
-|1011|DroneCAN Hardpoint ID 11|
-|1012|DroneCAN Hardpoint ID 12|
-|1013|DroneCAN Hardpoint ID 13|
-|1014|DroneCAN Hardpoint ID 14|
-|1015|DroneCAN Hardpoint ID 15|
-
-- Range: -1 1015
-
-## RELAY8_DEFAULT: Relay default state
-
-Should the relay default to on or off, this only applies to RELAYx_FUNC "Relay" (1). All other uses will pick the appropriate default output state from within the controlling function's parameters. Note that if INVERTED is set then the default is inverted.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Off|
-|1|On|
-|2|NoChange|
-
-## RELAY8_INVERTED: Relay invert output signal
-
-Should the relay output signal be inverted. If enabled, relay on would be pin low and relay off would be pin high. NOTE: this impact's DEFAULT.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Inverted|
-
-# RELAY9 Parameters
-
-## RELAY9_FUNCTION: Relay function
-
-The function the relay channel is mapped to.
-
-|Value|Meaning|
-|:---:|:---:|
-|10|DroneCAN Hardpoint ID 0|
-|11|DroneCAN Hardpoint ID 1|
-|12|DroneCAN Hardpoint ID 2|
-|13|DroneCAN Hardpoint ID 3|
-|14|DroneCAN Hardpoint ID 4|
-|15|DroneCAN Hardpoint ID 5|
-|16|DroneCAN Hardpoint ID 6|
-|17|DroneCAN Hardpoint ID 7|
-|18|DroneCAN Hardpoint ID 8|
-|19|DroneCAN Hardpoint ID 9|
-|20|DroneCAN Hardpoint ID 10|
-|21|DroneCAN Hardpoint ID 11|
-|22|DroneCAN Hardpoint ID 12|
-|23|DroneCAN Hardpoint ID 13|
-|24|DroneCAN Hardpoint ID 14|
-|25|DroneCAN Hardpoint ID 15|
-
-## RELAY9_PIN: Relay pin
-
-Digital pin number for relay control. Some common values are given, but see the Wiki's "GPIOs" page for how to determine the pin number for a given autopilot.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|49|BB Blue GP0 pin 4|
-|50|AUXOUT1|
-|51|AUXOUT2|
-|52|AUXOUT3|
-|53|AUXOUT4|
-|54|AUXOUT5|
-|55|AUXOUT6|
-|57|BB Blue GP0 pin 3|
-|113|BB Blue GP0 pin 6|
-|116|BB Blue GP0 pin 5|
-|62|BBBMini Pin P8.13|
-|101|MainOut1|
-|102|MainOut2|
-|103|MainOut3|
-|104|MainOut4|
-|105|MainOut5|
-|106|MainOut6|
-|107|MainOut7|
-|108|MainOut8|
-|1000|DroneCAN Hardpoint ID 0|
-|1001|DroneCAN Hardpoint ID 1|
-|1002|DroneCAN Hardpoint ID 2|
-|1003|DroneCAN Hardpoint ID 3|
-|1004|DroneCAN Hardpoint ID 4|
-|1005|DroneCAN Hardpoint ID 5|
-|1006|DroneCAN Hardpoint ID 6|
-|1007|DroneCAN Hardpoint ID 7|
-|1008|DroneCAN Hardpoint ID 8|
-|1009|DroneCAN Hardpoint ID 9|
-|1010|DroneCAN Hardpoint ID 10|
-|1011|DroneCAN Hardpoint ID 11|
-|1012|DroneCAN Hardpoint ID 12|
-|1013|DroneCAN Hardpoint ID 13|
-|1014|DroneCAN Hardpoint ID 14|
-|1015|DroneCAN Hardpoint ID 15|
-
-- Range: -1 1015
-
-## RELAY9_DEFAULT: Relay default state
-
-Should the relay default to on or off, this only applies to RELAYx_FUNC "Relay" (1). All other uses will pick the appropriate default output state from within the controlling function's parameters. Note that if INVERTED is set then the default is inverted.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Off|
-|1|On|
-|2|NoChange|
-
-## RELAY9_INVERTED: Relay invert output signal
-
-Should the relay output signal be inverted. If enabled, relay on would be pin low and relay off would be pin high. NOTE: this impact's DEFAULT.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Inverted|
-
-# RELAY10 Parameters
-
-## RELAY10_FUNCTION: Relay function
-
-The function the relay channel is mapped to.
-
-|Value|Meaning|
-|:---:|:---:|
-|10|DroneCAN Hardpoint ID 0|
-|11|DroneCAN Hardpoint ID 1|
-|12|DroneCAN Hardpoint ID 2|
-|13|DroneCAN Hardpoint ID 3|
-|14|DroneCAN Hardpoint ID 4|
-|15|DroneCAN Hardpoint ID 5|
-|16|DroneCAN Hardpoint ID 6|
-|17|DroneCAN Hardpoint ID 7|
-|18|DroneCAN Hardpoint ID 8|
-|19|DroneCAN Hardpoint ID 9|
-|20|DroneCAN Hardpoint ID 10|
-|21|DroneCAN Hardpoint ID 11|
-|22|DroneCAN Hardpoint ID 12|
-|23|DroneCAN Hardpoint ID 13|
-|24|DroneCAN Hardpoint ID 14|
-|25|DroneCAN Hardpoint ID 15|
-
-## RELAY10_PIN: Relay pin
-
-Digital pin number for relay control. Some common values are given, but see the Wiki's "GPIOs" page for how to determine the pin number for a given autopilot.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|49|BB Blue GP0 pin 4|
-|50|AUXOUT1|
-|51|AUXOUT2|
-|52|AUXOUT3|
-|53|AUXOUT4|
-|54|AUXOUT5|
-|55|AUXOUT6|
-|57|BB Blue GP0 pin 3|
-|113|BB Blue GP0 pin 6|
-|116|BB Blue GP0 pin 5|
-|62|BBBMini Pin P8.13|
-|101|MainOut1|
-|102|MainOut2|
-|103|MainOut3|
-|104|MainOut4|
-|105|MainOut5|
-|106|MainOut6|
-|107|MainOut7|
-|108|MainOut8|
-|1000|DroneCAN Hardpoint ID 0|
-|1001|DroneCAN Hardpoint ID 1|
-|1002|DroneCAN Hardpoint ID 2|
-|1003|DroneCAN Hardpoint ID 3|
-|1004|DroneCAN Hardpoint ID 4|
-|1005|DroneCAN Hardpoint ID 5|
-|1006|DroneCAN Hardpoint ID 6|
-|1007|DroneCAN Hardpoint ID 7|
-|1008|DroneCAN Hardpoint ID 8|
-|1009|DroneCAN Hardpoint ID 9|
-|1010|DroneCAN Hardpoint ID 10|
-|1011|DroneCAN Hardpoint ID 11|
-|1012|DroneCAN Hardpoint ID 12|
-|1013|DroneCAN Hardpoint ID 13|
-|1014|DroneCAN Hardpoint ID 14|
-|1015|DroneCAN Hardpoint ID 15|
-
-- Range: -1 1015
-
-## RELAY10_DEFAULT: Relay default state
-
-Should the relay default to on or off, this only applies to RELAYx_FUNC "Relay" (1). All other uses will pick the appropriate default output state from within the controlling function's parameters. Note that if INVERTED is set then the default is inverted.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Off|
-|1|On|
-|2|NoChange|
-
-## RELAY10_INVERTED: Relay invert output signal
-
-Should the relay output signal be inverted. If enabled, relay on would be pin low and relay off would be pin high. NOTE: this impact's DEFAULT.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Inverted|
-
-# RELAY11 Parameters
-
-## RELAY11_FUNCTION: Relay function
-
-The function the relay channel is mapped to.
-
-|Value|Meaning|
-|:---:|:---:|
-|10|DroneCAN Hardpoint ID 0|
-|11|DroneCAN Hardpoint ID 1|
-|12|DroneCAN Hardpoint ID 2|
-|13|DroneCAN Hardpoint ID 3|
-|14|DroneCAN Hardpoint ID 4|
-|15|DroneCAN Hardpoint ID 5|
-|16|DroneCAN Hardpoint ID 6|
-|17|DroneCAN Hardpoint ID 7|
-|18|DroneCAN Hardpoint ID 8|
-|19|DroneCAN Hardpoint ID 9|
-|20|DroneCAN Hardpoint ID 10|
-|21|DroneCAN Hardpoint ID 11|
-|22|DroneCAN Hardpoint ID 12|
-|23|DroneCAN Hardpoint ID 13|
-|24|DroneCAN Hardpoint ID 14|
-|25|DroneCAN Hardpoint ID 15|
-
-## RELAY11_PIN: Relay pin
-
-Digital pin number for relay control. Some common values are given, but see the Wiki's "GPIOs" page for how to determine the pin number for a given autopilot.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|49|BB Blue GP0 pin 4|
-|50|AUXOUT1|
-|51|AUXOUT2|
-|52|AUXOUT3|
-|53|AUXOUT4|
-|54|AUXOUT5|
-|55|AUXOUT6|
-|57|BB Blue GP0 pin 3|
-|113|BB Blue GP0 pin 6|
-|116|BB Blue GP0 pin 5|
-|62|BBBMini Pin P8.13|
-|101|MainOut1|
-|102|MainOut2|
-|103|MainOut3|
-|104|MainOut4|
-|105|MainOut5|
-|106|MainOut6|
-|107|MainOut7|
-|108|MainOut8|
-|1000|DroneCAN Hardpoint ID 0|
-|1001|DroneCAN Hardpoint ID 1|
-|1002|DroneCAN Hardpoint ID 2|
-|1003|DroneCAN Hardpoint ID 3|
-|1004|DroneCAN Hardpoint ID 4|
-|1005|DroneCAN Hardpoint ID 5|
-|1006|DroneCAN Hardpoint ID 6|
-|1007|DroneCAN Hardpoint ID 7|
-|1008|DroneCAN Hardpoint ID 8|
-|1009|DroneCAN Hardpoint ID 9|
-|1010|DroneCAN Hardpoint ID 10|
-|1011|DroneCAN Hardpoint ID 11|
-|1012|DroneCAN Hardpoint ID 12|
-|1013|DroneCAN Hardpoint ID 13|
-|1014|DroneCAN Hardpoint ID 14|
-|1015|DroneCAN Hardpoint ID 15|
-
-- Range: -1 1015
-
-## RELAY11_DEFAULT: Relay default state
-
-Should the relay default to on or off, this only applies to RELAYx_FUNC "Relay" (1). All other uses will pick the appropriate default output state from within the controlling function's parameters. Note that if INVERTED is set then the default is inverted.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Off|
-|1|On|
-|2|NoChange|
-
-## RELAY11_INVERTED: Relay invert output signal
-
-Should the relay output signal be inverted. If enabled, relay on would be pin low and relay off would be pin high. NOTE: this impact's DEFAULT.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Inverted|
-
-# RELAY12 Parameters
-
-## RELAY12_FUNCTION: Relay function
-
-The function the relay channel is mapped to.
-
-|Value|Meaning|
-|:---:|:---:|
-|10|DroneCAN Hardpoint ID 0|
-|11|DroneCAN Hardpoint ID 1|
-|12|DroneCAN Hardpoint ID 2|
-|13|DroneCAN Hardpoint ID 3|
-|14|DroneCAN Hardpoint ID 4|
-|15|DroneCAN Hardpoint ID 5|
-|16|DroneCAN Hardpoint ID 6|
-|17|DroneCAN Hardpoint ID 7|
-|18|DroneCAN Hardpoint ID 8|
-|19|DroneCAN Hardpoint ID 9|
-|20|DroneCAN Hardpoint ID 10|
-|21|DroneCAN Hardpoint ID 11|
-|22|DroneCAN Hardpoint ID 12|
-|23|DroneCAN Hardpoint ID 13|
-|24|DroneCAN Hardpoint ID 14|
-|25|DroneCAN Hardpoint ID 15|
-
-## RELAY12_PIN: Relay pin
-
-Digital pin number for relay control. Some common values are given, but see the Wiki's "GPIOs" page for how to determine the pin number for a given autopilot.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|49|BB Blue GP0 pin 4|
-|50|AUXOUT1|
-|51|AUXOUT2|
-|52|AUXOUT3|
-|53|AUXOUT4|
-|54|AUXOUT5|
-|55|AUXOUT6|
-|57|BB Blue GP0 pin 3|
-|113|BB Blue GP0 pin 6|
-|116|BB Blue GP0 pin 5|
-|62|BBBMini Pin P8.13|
-|101|MainOut1|
-|102|MainOut2|
-|103|MainOut3|
-|104|MainOut4|
-|105|MainOut5|
-|106|MainOut6|
-|107|MainOut7|
-|108|MainOut8|
-|1000|DroneCAN Hardpoint ID 0|
-|1001|DroneCAN Hardpoint ID 1|
-|1002|DroneCAN Hardpoint ID 2|
-|1003|DroneCAN Hardpoint ID 3|
-|1004|DroneCAN Hardpoint ID 4|
-|1005|DroneCAN Hardpoint ID 5|
-|1006|DroneCAN Hardpoint ID 6|
-|1007|DroneCAN Hardpoint ID 7|
-|1008|DroneCAN Hardpoint ID 8|
-|1009|DroneCAN Hardpoint ID 9|
-|1010|DroneCAN Hardpoint ID 10|
-|1011|DroneCAN Hardpoint ID 11|
-|1012|DroneCAN Hardpoint ID 12|
-|1013|DroneCAN Hardpoint ID 13|
-|1014|DroneCAN Hardpoint ID 14|
-|1015|DroneCAN Hardpoint ID 15|
-
-- Range: -1 1015
-
-## RELAY12_DEFAULT: Relay default state
-
-Should the relay default to on or off, this only applies to RELAYx_FUNC "Relay" (1). All other uses will pick the appropriate default output state from within the controlling function's parameters. Note that if INVERTED is set then the default is inverted.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Off|
-|1|On|
-|2|NoChange|
-
-## RELAY12_INVERTED: Relay invert output signal
-
-Should the relay output signal be inverted. If enabled, relay on would be pin low and relay off would be pin high. NOTE: this impact's DEFAULT.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Inverted|
-
-# RELAY13 Parameters
-
-## RELAY13_FUNCTION: Relay function
-
-The function the relay channel is mapped to.
-
-|Value|Meaning|
-|:---:|:---:|
-|10|DroneCAN Hardpoint ID 0|
-|11|DroneCAN Hardpoint ID 1|
-|12|DroneCAN Hardpoint ID 2|
-|13|DroneCAN Hardpoint ID 3|
-|14|DroneCAN Hardpoint ID 4|
-|15|DroneCAN Hardpoint ID 5|
-|16|DroneCAN Hardpoint ID 6|
-|17|DroneCAN Hardpoint ID 7|
-|18|DroneCAN Hardpoint ID 8|
-|19|DroneCAN Hardpoint ID 9|
-|20|DroneCAN Hardpoint ID 10|
-|21|DroneCAN Hardpoint ID 11|
-|22|DroneCAN Hardpoint ID 12|
-|23|DroneCAN Hardpoint ID 13|
-|24|DroneCAN Hardpoint ID 14|
-|25|DroneCAN Hardpoint ID 15|
-
-## RELAY13_PIN: Relay pin
-
-Digital pin number for relay control. Some common values are given, but see the Wiki's "GPIOs" page for how to determine the pin number for a given autopilot.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|49|BB Blue GP0 pin 4|
-|50|AUXOUT1|
-|51|AUXOUT2|
-|52|AUXOUT3|
-|53|AUXOUT4|
-|54|AUXOUT5|
-|55|AUXOUT6|
-|57|BB Blue GP0 pin 3|
-|113|BB Blue GP0 pin 6|
-|116|BB Blue GP0 pin 5|
-|62|BBBMini Pin P8.13|
-|101|MainOut1|
-|102|MainOut2|
-|103|MainOut3|
-|104|MainOut4|
-|105|MainOut5|
-|106|MainOut6|
-|107|MainOut7|
-|108|MainOut8|
-|1000|DroneCAN Hardpoint ID 0|
-|1001|DroneCAN Hardpoint ID 1|
-|1002|DroneCAN Hardpoint ID 2|
-|1003|DroneCAN Hardpoint ID 3|
-|1004|DroneCAN Hardpoint ID 4|
-|1005|DroneCAN Hardpoint ID 5|
-|1006|DroneCAN Hardpoint ID 6|
-|1007|DroneCAN Hardpoint ID 7|
-|1008|DroneCAN Hardpoint ID 8|
-|1009|DroneCAN Hardpoint ID 9|
-|1010|DroneCAN Hardpoint ID 10|
-|1011|DroneCAN Hardpoint ID 11|
-|1012|DroneCAN Hardpoint ID 12|
-|1013|DroneCAN Hardpoint ID 13|
-|1014|DroneCAN Hardpoint ID 14|
-|1015|DroneCAN Hardpoint ID 15|
-
-- Range: -1 1015
-
-## RELAY13_DEFAULT: Relay default state
-
-Should the relay default to on or off, this only applies to RELAYx_FUNC "Relay" (1). All other uses will pick the appropriate default output state from within the controlling function's parameters. Note that if INVERTED is set then the default is inverted.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Off|
-|1|On|
-|2|NoChange|
-
-## RELAY13_INVERTED: Relay invert output signal
-
-Should the relay output signal be inverted. If enabled, relay on would be pin low and relay off would be pin high. NOTE: this impact's DEFAULT.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Inverted|
-
-# RELAY14 Parameters
-
-## RELAY14_FUNCTION: Relay function
-
-The function the relay channel is mapped to.
-
-|Value|Meaning|
-|:---:|:---:|
-|10|DroneCAN Hardpoint ID 0|
-|11|DroneCAN Hardpoint ID 1|
-|12|DroneCAN Hardpoint ID 2|
-|13|DroneCAN Hardpoint ID 3|
-|14|DroneCAN Hardpoint ID 4|
-|15|DroneCAN Hardpoint ID 5|
-|16|DroneCAN Hardpoint ID 6|
-|17|DroneCAN Hardpoint ID 7|
-|18|DroneCAN Hardpoint ID 8|
-|19|DroneCAN Hardpoint ID 9|
-|20|DroneCAN Hardpoint ID 10|
-|21|DroneCAN Hardpoint ID 11|
-|22|DroneCAN Hardpoint ID 12|
-|23|DroneCAN Hardpoint ID 13|
-|24|DroneCAN Hardpoint ID 14|
-|25|DroneCAN Hardpoint ID 15|
-
-## RELAY14_PIN: Relay pin
-
-Digital pin number for relay control. Some common values are given, but see the Wiki's "GPIOs" page for how to determine the pin number for a given autopilot.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|49|BB Blue GP0 pin 4|
-|50|AUXOUT1|
-|51|AUXOUT2|
-|52|AUXOUT3|
-|53|AUXOUT4|
-|54|AUXOUT5|
-|55|AUXOUT6|
-|57|BB Blue GP0 pin 3|
-|113|BB Blue GP0 pin 6|
-|116|BB Blue GP0 pin 5|
-|62|BBBMini Pin P8.13|
-|101|MainOut1|
-|102|MainOut2|
-|103|MainOut3|
-|104|MainOut4|
-|105|MainOut5|
-|106|MainOut6|
-|107|MainOut7|
-|108|MainOut8|
-|1000|DroneCAN Hardpoint ID 0|
-|1001|DroneCAN Hardpoint ID 1|
-|1002|DroneCAN Hardpoint ID 2|
-|1003|DroneCAN Hardpoint ID 3|
-|1004|DroneCAN Hardpoint ID 4|
-|1005|DroneCAN Hardpoint ID 5|
-|1006|DroneCAN Hardpoint ID 6|
-|1007|DroneCAN Hardpoint ID 7|
-|1008|DroneCAN Hardpoint ID 8|
-|1009|DroneCAN Hardpoint ID 9|
-|1010|DroneCAN Hardpoint ID 10|
-|1011|DroneCAN Hardpoint ID 11|
-|1012|DroneCAN Hardpoint ID 12|
-|1013|DroneCAN Hardpoint ID 13|
-|1014|DroneCAN Hardpoint ID 14|
-|1015|DroneCAN Hardpoint ID 15|
-
-- Range: -1 1015
-
-## RELAY14_DEFAULT: Relay default state
-
-Should the relay default to on or off, this only applies to RELAYx_FUNC "Relay" (1). All other uses will pick the appropriate default output state from within the controlling function's parameters. Note that if INVERTED is set then the default is inverted.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Off|
-|1|On|
-|2|NoChange|
-
-## RELAY14_INVERTED: Relay invert output signal
-
-Should the relay output signal be inverted. If enabled, relay on would be pin low and relay off would be pin high. NOTE: this impact's DEFAULT.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Inverted|
-
-# RELAY15 Parameters
-
-## RELAY15_FUNCTION: Relay function
-
-The function the relay channel is mapped to.
-
-|Value|Meaning|
-|:---:|:---:|
-|10|DroneCAN Hardpoint ID 0|
-|11|DroneCAN Hardpoint ID 1|
-|12|DroneCAN Hardpoint ID 2|
-|13|DroneCAN Hardpoint ID 3|
-|14|DroneCAN Hardpoint ID 4|
-|15|DroneCAN Hardpoint ID 5|
-|16|DroneCAN Hardpoint ID 6|
-|17|DroneCAN Hardpoint ID 7|
-|18|DroneCAN Hardpoint ID 8|
-|19|DroneCAN Hardpoint ID 9|
-|20|DroneCAN Hardpoint ID 10|
-|21|DroneCAN Hardpoint ID 11|
-|22|DroneCAN Hardpoint ID 12|
-|23|DroneCAN Hardpoint ID 13|
-|24|DroneCAN Hardpoint ID 14|
-|25|DroneCAN Hardpoint ID 15|
-
-## RELAY15_PIN: Relay pin
-
-Digital pin number for relay control. Some common values are given, but see the Wiki's "GPIOs" page for how to determine the pin number for a given autopilot.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|49|BB Blue GP0 pin 4|
-|50|AUXOUT1|
-|51|AUXOUT2|
-|52|AUXOUT3|
-|53|AUXOUT4|
-|54|AUXOUT5|
-|55|AUXOUT6|
-|57|BB Blue GP0 pin 3|
-|113|BB Blue GP0 pin 6|
-|116|BB Blue GP0 pin 5|
-|62|BBBMini Pin P8.13|
-|101|MainOut1|
-|102|MainOut2|
-|103|MainOut3|
-|104|MainOut4|
-|105|MainOut5|
-|106|MainOut6|
-|107|MainOut7|
-|108|MainOut8|
-|1000|DroneCAN Hardpoint ID 0|
-|1001|DroneCAN Hardpoint ID 1|
-|1002|DroneCAN Hardpoint ID 2|
-|1003|DroneCAN Hardpoint ID 3|
-|1004|DroneCAN Hardpoint ID 4|
-|1005|DroneCAN Hardpoint ID 5|
-|1006|DroneCAN Hardpoint ID 6|
-|1007|DroneCAN Hardpoint ID 7|
-|1008|DroneCAN Hardpoint ID 8|
-|1009|DroneCAN Hardpoint ID 9|
-|1010|DroneCAN Hardpoint ID 10|
-|1011|DroneCAN Hardpoint ID 11|
-|1012|DroneCAN Hardpoint ID 12|
-|1013|DroneCAN Hardpoint ID 13|
-|1014|DroneCAN Hardpoint ID 14|
-|1015|DroneCAN Hardpoint ID 15|
-
-- Range: -1 1015
-
-## RELAY15_DEFAULT: Relay default state
-
-Should the relay default to on or off, this only applies to RELAYx_FUNC "Relay" (1). All other uses will pick the appropriate default output state from within the controlling function's parameters. Note that if INVERTED is set then the default is inverted.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Off|
-|1|On|
-|2|NoChange|
-
-## RELAY15_INVERTED: Relay invert output signal
-
-Should the relay output signal be inverted. If enabled, relay on would be pin low and relay off would be pin high. NOTE: this impact's DEFAULT.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Inverted|
-
-# RELAY16 Parameters
-
-## RELAY16_FUNCTION: Relay function
-
-The function the relay channel is mapped to.
-
-|Value|Meaning|
-|:---:|:---:|
-|10|DroneCAN Hardpoint ID 0|
-|11|DroneCAN Hardpoint ID 1|
-|12|DroneCAN Hardpoint ID 2|
-|13|DroneCAN Hardpoint ID 3|
-|14|DroneCAN Hardpoint ID 4|
-|15|DroneCAN Hardpoint ID 5|
-|16|DroneCAN Hardpoint ID 6|
-|17|DroneCAN Hardpoint ID 7|
-|18|DroneCAN Hardpoint ID 8|
-|19|DroneCAN Hardpoint ID 9|
-|20|DroneCAN Hardpoint ID 10|
-|21|DroneCAN Hardpoint ID 11|
-|22|DroneCAN Hardpoint ID 12|
-|23|DroneCAN Hardpoint ID 13|
-|24|DroneCAN Hardpoint ID 14|
-|25|DroneCAN Hardpoint ID 15|
-
-## RELAY16_PIN: Relay pin
-
-Digital pin number for relay control. Some common values are given, but see the Wiki's "GPIOs" page for how to determine the pin number for a given autopilot.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Disabled|
-|49|BB Blue GP0 pin 4|
-|50|AUXOUT1|
-|51|AUXOUT2|
-|52|AUXOUT3|
-|53|AUXOUT4|
-|54|AUXOUT5|
-|55|AUXOUT6|
-|57|BB Blue GP0 pin 3|
-|113|BB Blue GP0 pin 6|
-|116|BB Blue GP0 pin 5|
-|62|BBBMini Pin P8.13|
-|101|MainOut1|
-|102|MainOut2|
-|103|MainOut3|
-|104|MainOut4|
-|105|MainOut5|
-|106|MainOut6|
-|107|MainOut7|
-|108|MainOut8|
-|1000|DroneCAN Hardpoint ID 0|
-|1001|DroneCAN Hardpoint ID 1|
-|1002|DroneCAN Hardpoint ID 2|
-|1003|DroneCAN Hardpoint ID 3|
-|1004|DroneCAN Hardpoint ID 4|
-|1005|DroneCAN Hardpoint ID 5|
-|1006|DroneCAN Hardpoint ID 6|
-|1007|DroneCAN Hardpoint ID 7|
-|1008|DroneCAN Hardpoint ID 8|
-|1009|DroneCAN Hardpoint ID 9|
-|1010|DroneCAN Hardpoint ID 10|
-|1011|DroneCAN Hardpoint ID 11|
-|1012|DroneCAN Hardpoint ID 12|
-|1013|DroneCAN Hardpoint ID 13|
-|1014|DroneCAN Hardpoint ID 14|
-|1015|DroneCAN Hardpoint ID 15|
-
-- Range: -1 1015
-
-## RELAY16_DEFAULT: Relay default state
-
-Should the relay default to on or off, this only applies to RELAYx_FUNC "Relay" (1). All other uses will pick the appropriate default output state from within the controlling function's parameters. Note that if INVERTED is set then the default is inverted.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Off|
-|1|On|
-|2|NoChange|
-
-## RELAY16_INVERTED: Relay invert output signal
-
-Should the relay output signal be inverted. If enabled, relay on would be pin low and relay off would be pin high. NOTE: this impact's DEFAULT.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Normal|
-|1|Inverted|
-
-# RNGFND1 Parameters
-
-## RNGFND1_TYPE: Rangefinder type
-
-Type of connected rangefinder
-
-|Value|Meaning|
-|:---:|:---:|
-|0|None|
-|1|Analog|
-|2|MaxbotixI2C|
-|3|LidarLite-I2C|
-|5|PWM|
-|6|BBB-PRU|
-|7|LightWareI2C|
-|8|LightWareSerial|
-|9|Bebop|
-|10|MAVLink|
-|11|USD1_Serial|
-|12|LeddarOne|
-|13|MaxbotixSerial|
-|14|TeraRangerI2C|
-|15|LidarLiteV3-I2C|
-|16|VL53L0X or VL53L1X|
-|17|NMEA|
-|18|WASP-LRF|
-|19|BenewakeTF02|
-|20|BenewakeTFmini-Serial|
-|21|LidarLightV3HP|
-|22|PWM|
-|23|BlueRoboticsPing|
-|24|DroneCAN|
-|25|BenewakeTFmini-I2C|
-|26|LanbaoPSK-CM8JL65-CC5|
-|27|BenewakeTF03|
-|28|VL53L1X-ShortRange|
-|29|LeddarVu8-Serial|
-|30|HC-SR04|
-|31|GYUS42v2|
-|32|MSP|
-|33|USD1_CAN|
-|34|Benewake_CAN|
-|35|TeraRangerSerial|
-|36|Lua_Scripting|
-|37|NoopLoop_TOFSense|
-|38|NoopLoop_TOFSense_CAN|
-|39|NRA24_CAN|
-|40|NoopLoop_TOFSenseF_I2C|
-|41|JRE_Serial|
-|42|Ainstein_LR_D1|
-|43|RDS02UF|
-|44|HexsoonRadar|
-|45|LightWare-GRF|
-|46|BenewakeTFS20L|
-|47|DTS6012M-Serial|
-|100|SITL|
-
-## RNGFND1_PIN: Rangefinder pin
-
-Analog or PWM input pin that rangefinder is connected to. Analog RSSI or Airspeed ports can be used for Analog inputs (some autopilots provide others also), Non-IOMCU Servo/MotorOutputs can be used for PWM input when configured as "GPIOs". Values for some autopilots are given as examples. Search wiki for "Analog pins" for analog pin or "GPIOs", if PWM input type, to determine pin number.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Not Used|
-|11|Pixracer|
-|13|Pixhawk ADC4|
-|14|Pixhawk ADC3|
-|15|Pixhawk ADC6/Pixhawk2 ADC|
-|50|AUX1|
-|51|AUX2|
-|52|AUX3|
-|53|AUX4|
-|54|AUX5|
-|55|AUX6|
-|103|Pixhawk SBUS|
-
-- Range: -1 127
-
-## RNGFND1_SCALING: Rangefinder scaling
-
-Scaling factor between rangefinder reading and distance. For the linear and inverted functions this is in meters per volt. For the hyperbolic function the units are meterVolts. For Maxbotix serial sonar this is unit conversion to meters.
-
-- Units: m/V
-
-- Increment: 0.001
-
-## RNGFND1_OFFSET: rangefinder offset
-
-Offset in volts for zero distance for analog rangefinders. Offset added to distance in centimeters for PWM lidars
-
-- Units: V
-
-- Increment: 0.001
-
-## RNGFND1_FUNCTION: Rangefinder function
-
-Control over what function is used to calculate distance. For a linear function, the distance is (voltage-offset)*scaling. For a inverted function the distance is (offset-voltage)*scaling. For a hyperbolic function the distance is scaling/(voltage-offset). The functions return the distance in meters.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Linear|
-|1|Inverted|
-|2|Hyperbolic|
-
-## RNGFND1_MIN: Rangefinder minimum distance
-
-Minimum distance in metres that rangefinder can reliably read
-
-- Units: m
-
-- Increment: 0.01
-
-## RNGFND1_MAX: Rangefinder maximum distance
-
-Maximum distance in metres that rangefinder can reliably read
-
-- Units: m
-
-- Increment: 0.01
-
-## RNGFND1_STOP_PIN: Rangefinder stop pin
-
-Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range. Some common values are given, but see the Wiki's "GPIOs" page for how to determine the pin number for a given autopilot.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Not Used|
-|50|AUX1|
-|51|AUX2|
-|52|AUX3|
-|53|AUX4|
-|54|AUX5|
-|55|AUX6|
-|111|PX4 FMU Relay1|
-|112|PX4 FMU Relay2|
-|113|PX4IO Relay1|
-|114|PX4IO Relay2|
-|115|PX4IO ACC1|
-|116|PX4IO ACC2|
-
-- Range: -1 127
-
-## RNGFND1_RMETRIC: Ratiometric
-
-This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|No|
-|1|Yes|
-
-## RNGFND1_PWRRNG: Powersave range
-
-This parameter sets the estimated terrain distance in meters above which the sensor will be put into a power saving mode (if available). A value of zero means power saving is not enabled
-
-- Units: m
-
-- Range: 0 32767
-
-## RNGFND1_GNDCLR: Distance from the range finder to the ground
-
-This parameter sets the expected range measurement that the range finder should return when the vehicle is on the ground.
-
-- Units: m
-
-- Range: 0.05 1.5
-
-- Increment: 0.01
-
-## RNGFND1_ADDR: Bus address of sensor
-
-This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.
-
-- Range: 0 127
+- Range: 800 2200
 
 - Increment: 1
 
-## RNGFND1_POS_X: X position offset
+## RCn_REVERSED: RC reversed
 
 *Note: This parameter is for advanced users*
 
-X position of the rangefinder in body frame. Positive X is forward of the origin. Use the zero range datum point if supplied.
+Reverse channel input. Set to 0 for normal operation. Set to 1 to reverse this input channel.
 
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND1_POS_Y: Y position offset
-
-*Note: This parameter is for advanced users*
-
-Y position of the rangefinder in body frame. Positive Y is to the right of the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND1_POS_Z: Z position offset
-
-*Note: This parameter is for advanced users*
-
-Z position of the rangefinder in body frame. Positive Z is down from the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND1_ORIENT: Rangefinder orientation
-
-*Note: This parameter is for advanced users*
-
-Orientation of rangefinder
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Forward|
-|1|Forward-Right|
-|2|Right|
-|3|Back-Right|
-|4|Back|
-|5|Back-Left|
-|6|Left|
-|7|Forward-Left|
-|24|Up|
-|25|Down|
-
-## RNGFND1_WSP_MAVG: Moving Average Range
-
-*Note: This parameter is for advanced users*
-
-Sets the number of historic range results to use for calculating the current range result. When MAVG is greater than 1, the current range result will be the current measured value averaged with the N-1 previous results
-
-- Range: 0 255
-
-## RNGFND1_WSP_MEDF: Moving Median Filter
-
-*Note: This parameter is for advanced users*
-
-Sets the window size for the real-time median filter. When MEDF is greater than 0 the median filter is active
-
-- Range: 0 255
-
-## RNGFND1_WSP_FRQ: Frequency
-
-*Note: This parameter is for advanced users*
-
-Sets the repetition frequency of the ranging operation in Hertz. Upon entering the desired frequency the system will calculate the nearest frequency that it can handle according to the resolution of internal timers.
-
-- Range: 0 10000
-
-## RNGFND1_WSP_AVG: Multi-pulse averages
-
-*Note: This parameter is for advanced users*
-
-Sets the number of pulses to be used in multi-pulse averaging mode. In this mode, a sequence of rapid fire ranges are taken and then averaged to improve the accuracy of the measurement
-
-- Range: 0 255
-
-## RNGFND1_WSP_THR: Sensitivity threshold
-
-*Note: This parameter is for advanced users*
-
-Sets the system sensitivity. Larger values of THR represent higher sensitivity. The system may limit the maximum value of THR to prevent excessive false alarm rates based on settings made at the factory. Set to -1 for automatic threshold adjustments
-
-- Range: -1 255
-
-## RNGFND1_WSP_BAUD: Baud rate
-
-*Note: This parameter is for advanced users*
-
-Desired baud rate
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Low Speed|
-|1|High Speed|
-
-## RNGFND1_RECV_ID: RangeFinder CAN receive ID
-
-*Note: This parameter is for advanced users*
-
-The receive ID of the CAN frames. A value of zero means all IDs are accepted.
-
-- Range: 0 65535
-
-## RNGFND1_SNR_MIN: RangeFinder Minimum signal strength
-
-*Note: This parameter is for advanced users*
-
-RangeFinder Minimum signal strength (SNR) to accept distance
-
-- Range: 0 65535
-
-## RNGFND1_GRF_RET: LightWare GRF Distance Return Type
-
-Selects which single return to use.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|FirstRaw|
-|1|FirstFiltered|
-|2|LastRaw|
-|3|LastFiltered|
-
-- RebootRequired: True
-
-## RNGFND1_GRF_ST: LightWare GRF Minimum Return Strength
-
-*Note: This parameter is for advanced users*
-
-Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.
-
-- Range: 0 255
-
-- RebootRequired: True
-
-## RNGFND1_GRF_RATE: LightWare GRF Update Rate
-
-*Note: This parameter is for advanced users*
-
-The update rate of the sensor in Hz. Must match the
-
-- Range: 1 50
-
-- RebootRequired: True
-
-# RNGFND2 Parameters
-
-## RNGFND2_TYPE: Rangefinder type
-
-Type of connected rangefinder
-
-|Value|Meaning|
-|:---:|:---:|
-|0|None|
-|1|Analog|
-|2|MaxbotixI2C|
-|3|LidarLite-I2C|
-|5|PWM|
-|6|BBB-PRU|
-|7|LightWareI2C|
-|8|LightWareSerial|
-|9|Bebop|
-|10|MAVLink|
-|11|USD1_Serial|
-|12|LeddarOne|
-|13|MaxbotixSerial|
-|14|TeraRangerI2C|
-|15|LidarLiteV3-I2C|
-|16|VL53L0X or VL53L1X|
-|17|NMEA|
-|18|WASP-LRF|
-|19|BenewakeTF02|
-|20|BenewakeTFmini-Serial|
-|21|LidarLightV3HP|
-|22|PWM|
-|23|BlueRoboticsPing|
-|24|DroneCAN|
-|25|BenewakeTFmini-I2C|
-|26|LanbaoPSK-CM8JL65-CC5|
-|27|BenewakeTF03|
-|28|VL53L1X-ShortRange|
-|29|LeddarVu8-Serial|
-|30|HC-SR04|
-|31|GYUS42v2|
-|32|MSP|
-|33|USD1_CAN|
-|34|Benewake_CAN|
-|35|TeraRangerSerial|
-|36|Lua_Scripting|
-|37|NoopLoop_TOFSense|
-|38|NoopLoop_TOFSense_CAN|
-|39|NRA24_CAN|
-|40|NoopLoop_TOFSenseF_I2C|
-|41|JRE_Serial|
-|42|Ainstein_LR_D1|
-|43|RDS02UF|
-|44|HexsoonRadar|
-|45|LightWare-GRF|
-|46|BenewakeTFS20L|
-|47|DTS6012M-Serial|
-|100|SITL|
-
-## RNGFND2_PIN: Rangefinder pin
-
-Analog or PWM input pin that rangefinder is connected to. Analog RSSI or Airspeed ports can be used for Analog inputs (some autopilots provide others also), Non-IOMCU Servo/MotorOutputs can be used for PWM input when configured as "GPIOs". Values for some autopilots are given as examples. Search wiki for "Analog pins" for analog pin or "GPIOs", if PWM input type, to determine pin number.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Not Used|
-|11|Pixracer|
-|13|Pixhawk ADC4|
-|14|Pixhawk ADC3|
-|15|Pixhawk ADC6/Pixhawk2 ADC|
-|50|AUX1|
-|51|AUX2|
-|52|AUX3|
-|53|AUX4|
-|54|AUX5|
-|55|AUX6|
-|103|Pixhawk SBUS|
-
-- Range: -1 127
-
-## RNGFND2_SCALING: Rangefinder scaling
-
-Scaling factor between rangefinder reading and distance. For the linear and inverted functions this is in meters per volt. For the hyperbolic function the units are meterVolts. For Maxbotix serial sonar this is unit conversion to meters.
-
-- Units: m/V
-
-- Increment: 0.001
-
-## RNGFND2_OFFSET: rangefinder offset
-
-Offset in volts for zero distance for analog rangefinders. Offset added to distance in centimeters for PWM lidars
-
-- Units: V
-
-- Increment: 0.001
-
-## RNGFND2_FUNCTION: Rangefinder function
-
-Control over what function is used to calculate distance. For a linear function, the distance is (voltage-offset)*scaling. For a inverted function the distance is (offset-voltage)*scaling. For a hyperbolic function the distance is scaling/(voltage-offset). The functions return the distance in meters.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Linear|
-|1|Inverted|
-|2|Hyperbolic|
-
-## RNGFND2_MIN: Rangefinder minimum distance
-
-Minimum distance in metres that rangefinder can reliably read
-
-- Units: m
-
-- Increment: 0.01
-
-## RNGFND2_MAX: Rangefinder maximum distance
-
-Maximum distance in metres that rangefinder can reliably read
-
-- Units: m
-
-- Increment: 0.01
-
-## RNGFND2_STOP_PIN: Rangefinder stop pin
-
-Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range. Some common values are given, but see the Wiki's "GPIOs" page for how to determine the pin number for a given autopilot.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Not Used|
-|50|AUX1|
-|51|AUX2|
-|52|AUX3|
-|53|AUX4|
-|54|AUX5|
-|55|AUX6|
-|111|PX4 FMU Relay1|
-|112|PX4 FMU Relay2|
-|113|PX4IO Relay1|
-|114|PX4IO Relay2|
-|115|PX4IO ACC1|
-|116|PX4IO ACC2|
-
-- Range: -1 127
-
-## RNGFND2_RMETRIC: Ratiometric
-
-This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|No|
-|1|Yes|
-
-## RNGFND2_PWRRNG: Powersave range
-
-This parameter sets the estimated terrain distance in meters above which the sensor will be put into a power saving mode (if available). A value of zero means power saving is not enabled
-
-- Units: m
-
-- Range: 0 32767
-
-## RNGFND2_GNDCLR: Distance from the range finder to the ground
-
-This parameter sets the expected range measurement that the range finder should return when the vehicle is on the ground.
-
-- Units: m
-
-- Range: 0.05 1.5
-
-- Increment: 0.01
-
-## RNGFND2_ADDR: Bus address of sensor
-
-This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.
-
-- Range: 0 127
-
-- Increment: 1
-
-## RNGFND2_POS_X: X position offset
-
-*Note: This parameter is for advanced users*
-
-X position of the rangefinder in body frame. Positive X is forward of the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND2_POS_Y: Y position offset
-
-*Note: This parameter is for advanced users*
-
-Y position of the rangefinder in body frame. Positive Y is to the right of the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND2_POS_Z: Z position offset
-
-*Note: This parameter is for advanced users*
-
-Z position of the rangefinder in body frame. Positive Z is down from the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND2_ORIENT: Rangefinder orientation
-
-*Note: This parameter is for advanced users*
-
-Orientation of rangefinder
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Forward|
-|1|Forward-Right|
-|2|Right|
-|3|Back-Right|
-|4|Back|
-|5|Back-Left|
-|6|Left|
-|7|Forward-Left|
-|24|Up|
-|25|Down|
-
-## RNGFND2_WSP_MAVG: Moving Average Range
-
-*Note: This parameter is for advanced users*
-
-Sets the number of historic range results to use for calculating the current range result. When MAVG is greater than 1, the current range result will be the current measured value averaged with the N-1 previous results
-
-- Range: 0 255
-
-## RNGFND2_WSP_MEDF: Moving Median Filter
-
-*Note: This parameter is for advanced users*
-
-Sets the window size for the real-time median filter. When MEDF is greater than 0 the median filter is active
-
-- Range: 0 255
-
-## RNGFND2_WSP_FRQ: Frequency
-
-*Note: This parameter is for advanced users*
-
-Sets the repetition frequency of the ranging operation in Hertz. Upon entering the desired frequency the system will calculate the nearest frequency that it can handle according to the resolution of internal timers.
-
-- Range: 0 10000
-
-## RNGFND2_WSP_AVG: Multi-pulse averages
-
-*Note: This parameter is for advanced users*
-
-Sets the number of pulses to be used in multi-pulse averaging mode. In this mode, a sequence of rapid fire ranges are taken and then averaged to improve the accuracy of the measurement
-
-- Range: 0 255
-
-## RNGFND2_WSP_THR: Sensitivity threshold
-
-*Note: This parameter is for advanced users*
-
-Sets the system sensitivity. Larger values of THR represent higher sensitivity. The system may limit the maximum value of THR to prevent excessive false alarm rates based on settings made at the factory. Set to -1 for automatic threshold adjustments
-
-- Range: -1 255
-
-## RNGFND2_WSP_BAUD: Baud rate
-
-*Note: This parameter is for advanced users*
-
-Desired baud rate
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Low Speed|
-|1|High Speed|
-
-## RNGFND2_RECV_ID: RangeFinder CAN receive ID
-
-*Note: This parameter is for advanced users*
-
-The receive ID of the CAN frames. A value of zero means all IDs are accepted.
-
-- Range: 0 65535
-
-## RNGFND2_SNR_MIN: RangeFinder Minimum signal strength
-
-*Note: This parameter is for advanced users*
-
-RangeFinder Minimum signal strength (SNR) to accept distance
-
-- Range: 0 65535
-
-## RNGFND2_GRF_RET: LightWare GRF Distance Return Type
-
-Selects which single return to use.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|FirstRaw|
-|1|FirstFiltered|
-|2|LastRaw|
-|3|LastFiltered|
-
-- RebootRequired: True
-
-## RNGFND2_GRF_ST: LightWare GRF Minimum Return Strength
-
-*Note: This parameter is for advanced users*
-
-Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.
-
-- Range: 0 255
-
-- RebootRequired: True
-
-## RNGFND2_GRF_RATE: LightWare GRF Update Rate
-
-*Note: This parameter is for advanced users*
-
-The update rate of the sensor in Hz. Must match the
-
-- Range: 1 50
-
-- RebootRequired: True
-
-# RNGFND3 Parameters
-
-## RNGFND3_TYPE: Rangefinder type
-
-Type of connected rangefinder
-
-|Value|Meaning|
-|:---:|:---:|
-|0|None|
-|1|Analog|
-|2|MaxbotixI2C|
-|3|LidarLite-I2C|
-|5|PWM|
-|6|BBB-PRU|
-|7|LightWareI2C|
-|8|LightWareSerial|
-|9|Bebop|
-|10|MAVLink|
-|11|USD1_Serial|
-|12|LeddarOne|
-|13|MaxbotixSerial|
-|14|TeraRangerI2C|
-|15|LidarLiteV3-I2C|
-|16|VL53L0X or VL53L1X|
-|17|NMEA|
-|18|WASP-LRF|
-|19|BenewakeTF02|
-|20|BenewakeTFmini-Serial|
-|21|LidarLightV3HP|
-|22|PWM|
-|23|BlueRoboticsPing|
-|24|DroneCAN|
-|25|BenewakeTFmini-I2C|
-|26|LanbaoPSK-CM8JL65-CC5|
-|27|BenewakeTF03|
-|28|VL53L1X-ShortRange|
-|29|LeddarVu8-Serial|
-|30|HC-SR04|
-|31|GYUS42v2|
-|32|MSP|
-|33|USD1_CAN|
-|34|Benewake_CAN|
-|35|TeraRangerSerial|
-|36|Lua_Scripting|
-|37|NoopLoop_TOFSense|
-|38|NoopLoop_TOFSense_CAN|
-|39|NRA24_CAN|
-|40|NoopLoop_TOFSenseF_I2C|
-|41|JRE_Serial|
-|42|Ainstein_LR_D1|
-|43|RDS02UF|
-|44|HexsoonRadar|
-|45|LightWare-GRF|
-|46|BenewakeTFS20L|
-|47|DTS6012M-Serial|
-|100|SITL|
-
-## RNGFND3_PIN: Rangefinder pin
-
-Analog or PWM input pin that rangefinder is connected to. Analog RSSI or Airspeed ports can be used for Analog inputs (some autopilots provide others also), Non-IOMCU Servo/MotorOutputs can be used for PWM input when configured as "GPIOs". Values for some autopilots are given as examples. Search wiki for "Analog pins" for analog pin or "GPIOs", if PWM input type, to determine pin number.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Not Used|
-|11|Pixracer|
-|13|Pixhawk ADC4|
-|14|Pixhawk ADC3|
-|15|Pixhawk ADC6/Pixhawk2 ADC|
-|50|AUX1|
-|51|AUX2|
-|52|AUX3|
-|53|AUX4|
-|54|AUX5|
-|55|AUX6|
-|103|Pixhawk SBUS|
-
-- Range: -1 127
-
-## RNGFND3_SCALING: Rangefinder scaling
-
-Scaling factor between rangefinder reading and distance. For the linear and inverted functions this is in meters per volt. For the hyperbolic function the units are meterVolts. For Maxbotix serial sonar this is unit conversion to meters.
-
-- Units: m/V
-
-- Increment: 0.001
-
-## RNGFND3_OFFSET: rangefinder offset
-
-Offset in volts for zero distance for analog rangefinders. Offset added to distance in centimeters for PWM lidars
-
-- Units: V
-
-- Increment: 0.001
-
-## RNGFND3_FUNCTION: Rangefinder function
-
-Control over what function is used to calculate distance. For a linear function, the distance is (voltage-offset)*scaling. For a inverted function the distance is (offset-voltage)*scaling. For a hyperbolic function the distance is scaling/(voltage-offset). The functions return the distance in meters.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Linear|
-|1|Inverted|
-|2|Hyperbolic|
-
-## RNGFND3_MIN: Rangefinder minimum distance
-
-Minimum distance in metres that rangefinder can reliably read
-
-- Units: m
-
-- Increment: 0.01
-
-## RNGFND3_MAX: Rangefinder maximum distance
-
-Maximum distance in metres that rangefinder can reliably read
-
-- Units: m
-
-- Increment: 0.01
-
-## RNGFND3_STOP_PIN: Rangefinder stop pin
-
-Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range. Some common values are given, but see the Wiki's "GPIOs" page for how to determine the pin number for a given autopilot.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Not Used|
-|50|AUX1|
-|51|AUX2|
-|52|AUX3|
-|53|AUX4|
-|54|AUX5|
-|55|AUX6|
-|111|PX4 FMU Relay1|
-|112|PX4 FMU Relay2|
-|113|PX4IO Relay1|
-|114|PX4IO Relay2|
-|115|PX4IO ACC1|
-|116|PX4IO ACC2|
-
-- Range: -1 127
-
-## RNGFND3_RMETRIC: Ratiometric
-
-This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|No|
-|1|Yes|
-
-## RNGFND3_PWRRNG: Powersave range
-
-This parameter sets the estimated terrain distance in meters above which the sensor will be put into a power saving mode (if available). A value of zero means power saving is not enabled
-
-- Units: m
-
-- Range: 0 32767
-
-## RNGFND3_GNDCLR: Distance from the range finder to the ground
-
-This parameter sets the expected range measurement that the range finder should return when the vehicle is on the ground.
-
-- Units: m
-
-- Range: 0.05 1.5
-
-- Increment: 0.01
-
-## RNGFND3_ADDR: Bus address of sensor
-
-This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.
-
-- Range: 0 127
-
-- Increment: 1
-
-## RNGFND3_POS_X: X position offset
-
-*Note: This parameter is for advanced users*
-
-X position of the rangefinder in body frame. Positive X is forward of the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND3_POS_Y: Y position offset
-
-*Note: This parameter is for advanced users*
-
-Y position of the rangefinder in body frame. Positive Y is to the right of the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND3_POS_Z: Z position offset
-
-*Note: This parameter is for advanced users*
-
-Z position of the rangefinder in body frame. Positive Z is down from the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND3_ORIENT: Rangefinder orientation
-
-*Note: This parameter is for advanced users*
-
-Orientation of rangefinder
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Forward|
-|1|Forward-Right|
-|2|Right|
-|3|Back-Right|
-|4|Back|
-|5|Back-Left|
-|6|Left|
-|7|Forward-Left|
-|24|Up|
-|25|Down|
-
-## RNGFND3_WSP_MAVG: Moving Average Range
-
-*Note: This parameter is for advanced users*
-
-Sets the number of historic range results to use for calculating the current range result. When MAVG is greater than 1, the current range result will be the current measured value averaged with the N-1 previous results
-
-- Range: 0 255
-
-## RNGFND3_WSP_MEDF: Moving Median Filter
-
-*Note: This parameter is for advanced users*
-
-Sets the window size for the real-time median filter. When MEDF is greater than 0 the median filter is active
-
-- Range: 0 255
-
-## RNGFND3_WSP_FRQ: Frequency
-
-*Note: This parameter is for advanced users*
-
-Sets the repetition frequency of the ranging operation in Hertz. Upon entering the desired frequency the system will calculate the nearest frequency that it can handle according to the resolution of internal timers.
-
-- Range: 0 10000
-
-## RNGFND3_WSP_AVG: Multi-pulse averages
-
-*Note: This parameter is for advanced users*
-
-Sets the number of pulses to be used in multi-pulse averaging mode. In this mode, a sequence of rapid fire ranges are taken and then averaged to improve the accuracy of the measurement
-
-- Range: 0 255
-
-## RNGFND3_WSP_THR: Sensitivity threshold
-
-*Note: This parameter is for advanced users*
-
-Sets the system sensitivity. Larger values of THR represent higher sensitivity. The system may limit the maximum value of THR to prevent excessive false alarm rates based on settings made at the factory. Set to -1 for automatic threshold adjustments
-
-- Range: -1 255
-
-## RNGFND3_WSP_BAUD: Baud rate
-
-*Note: This parameter is for advanced users*
-
-Desired baud rate
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Low Speed|
-|1|High Speed|
-
-## RNGFND3_RECV_ID: RangeFinder CAN receive ID
-
-*Note: This parameter is for advanced users*
-
-The receive ID of the CAN frames. A value of zero means all IDs are accepted.
-
-- Range: 0 65535
-
-## RNGFND3_SNR_MIN: RangeFinder Minimum signal strength
-
-*Note: This parameter is for advanced users*
-
-RangeFinder Minimum signal strength (SNR) to accept distance
-
-- Range: 0 65535
-
-## RNGFND3_GRF_RET: LightWare GRF Distance Return Type
-
-Selects which single return to use.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|FirstRaw|
-|1|FirstFiltered|
-|2|LastRaw|
-|3|LastFiltered|
-
-- RebootRequired: True
-
-## RNGFND3_GRF_ST: LightWare GRF Minimum Return Strength
-
-*Note: This parameter is for advanced users*
-
-Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.
-
-- Range: 0 255
-
-- RebootRequired: True
-
-## RNGFND3_GRF_RATE: LightWare GRF Update Rate
-
-*Note: This parameter is for advanced users*
-
-The update rate of the sensor in Hz. Must match the
-
-- Range: 1 50
-
-- RebootRequired: True
-
-# RNGFND4 Parameters
-
-## RNGFND4_TYPE: Rangefinder type
-
-Type of connected rangefinder
-
-|Value|Meaning|
-|:---:|:---:|
-|0|None|
-|1|Analog|
-|2|MaxbotixI2C|
-|3|LidarLite-I2C|
-|5|PWM|
-|6|BBB-PRU|
-|7|LightWareI2C|
-|8|LightWareSerial|
-|9|Bebop|
-|10|MAVLink|
-|11|USD1_Serial|
-|12|LeddarOne|
-|13|MaxbotixSerial|
-|14|TeraRangerI2C|
-|15|LidarLiteV3-I2C|
-|16|VL53L0X or VL53L1X|
-|17|NMEA|
-|18|WASP-LRF|
-|19|BenewakeTF02|
-|20|BenewakeTFmini-Serial|
-|21|LidarLightV3HP|
-|22|PWM|
-|23|BlueRoboticsPing|
-|24|DroneCAN|
-|25|BenewakeTFmini-I2C|
-|26|LanbaoPSK-CM8JL65-CC5|
-|27|BenewakeTF03|
-|28|VL53L1X-ShortRange|
-|29|LeddarVu8-Serial|
-|30|HC-SR04|
-|31|GYUS42v2|
-|32|MSP|
-|33|USD1_CAN|
-|34|Benewake_CAN|
-|35|TeraRangerSerial|
-|36|Lua_Scripting|
-|37|NoopLoop_TOFSense|
-|38|NoopLoop_TOFSense_CAN|
-|39|NRA24_CAN|
-|40|NoopLoop_TOFSenseF_I2C|
-|41|JRE_Serial|
-|42|Ainstein_LR_D1|
-|43|RDS02UF|
-|44|HexsoonRadar|
-|45|LightWare-GRF|
-|46|BenewakeTFS20L|
-|47|DTS6012M-Serial|
-|100|SITL|
-
-## RNGFND4_PIN: Rangefinder pin
-
-Analog or PWM input pin that rangefinder is connected to. Analog RSSI or Airspeed ports can be used for Analog inputs (some autopilots provide others also), Non-IOMCU Servo/MotorOutputs can be used for PWM input when configured as "GPIOs". Values for some autopilots are given as examples. Search wiki for "Analog pins" for analog pin or "GPIOs", if PWM input type, to determine pin number.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Not Used|
-|11|Pixracer|
-|13|Pixhawk ADC4|
-|14|Pixhawk ADC3|
-|15|Pixhawk ADC6/Pixhawk2 ADC|
-|50|AUX1|
-|51|AUX2|
-|52|AUX3|
-|53|AUX4|
-|54|AUX5|
-|55|AUX6|
-|103|Pixhawk SBUS|
-
-- Range: -1 127
-
-## RNGFND4_SCALING: Rangefinder scaling
-
-Scaling factor between rangefinder reading and distance. For the linear and inverted functions this is in meters per volt. For the hyperbolic function the units are meterVolts. For Maxbotix serial sonar this is unit conversion to meters.
-
-- Units: m/V
-
-- Increment: 0.001
-
-## RNGFND4_OFFSET: rangefinder offset
-
-Offset in volts for zero distance for analog rangefinders. Offset added to distance in centimeters for PWM lidars
-
-- Units: V
-
-- Increment: 0.001
-
-## RNGFND4_FUNCTION: Rangefinder function
-
-Control over what function is used to calculate distance. For a linear function, the distance is (voltage-offset)*scaling. For a inverted function the distance is (offset-voltage)*scaling. For a hyperbolic function the distance is scaling/(voltage-offset). The functions return the distance in meters.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Linear|
-|1|Inverted|
-|2|Hyperbolic|
-
-## RNGFND4_MIN: Rangefinder minimum distance
-
-Minimum distance in metres that rangefinder can reliably read
-
-- Units: m
-
-- Increment: 0.01
-
-## RNGFND4_MAX: Rangefinder maximum distance
-
-Maximum distance in metres that rangefinder can reliably read
-
-- Units: m
-
-- Increment: 0.01
-
-## RNGFND4_STOP_PIN: Rangefinder stop pin
-
-Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range. Some common values are given, but see the Wiki's "GPIOs" page for how to determine the pin number for a given autopilot.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Not Used|
-|50|AUX1|
-|51|AUX2|
-|52|AUX3|
-|53|AUX4|
-|54|AUX5|
-|55|AUX6|
-|111|PX4 FMU Relay1|
-|112|PX4 FMU Relay2|
-|113|PX4IO Relay1|
-|114|PX4IO Relay2|
-|115|PX4IO ACC1|
-|116|PX4IO ACC2|
-
-- Range: -1 127
-
-## RNGFND4_RMETRIC: Ratiometric
-
-This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|No|
-|1|Yes|
-
-## RNGFND4_PWRRNG: Powersave range
-
-This parameter sets the estimated terrain distance in meters above which the sensor will be put into a power saving mode (if available). A value of zero means power saving is not enabled
-
-- Units: m
-
-- Range: 0 32767
-
-## RNGFND4_GNDCLR: Distance from the range finder to the ground
-
-This parameter sets the expected range measurement that the range finder should return when the vehicle is on the ground.
-
-- Units: m
-
-- Range: 0.05 1.5
-
-- Increment: 0.01
-
-## RNGFND4_ADDR: Bus address of sensor
-
-This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.
-
-- Range: 0 127
-
-- Increment: 1
-
-## RNGFND4_POS_X: X position offset
-
-*Note: This parameter is for advanced users*
-
-X position of the rangefinder in body frame. Positive X is forward of the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND4_POS_Y: Y position offset
-
-*Note: This parameter is for advanced users*
-
-Y position of the rangefinder in body frame. Positive Y is to the right of the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND4_POS_Z: Z position offset
-
-*Note: This parameter is for advanced users*
-
-Z position of the rangefinder in body frame. Positive Z is down from the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND4_ORIENT: Rangefinder orientation
-
-*Note: This parameter is for advanced users*
-
-Orientation of rangefinder
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Forward|
-|1|Forward-Right|
-|2|Right|
-|3|Back-Right|
-|4|Back|
-|5|Back-Left|
-|6|Left|
-|7|Forward-Left|
-|24|Up|
-|25|Down|
-
-## RNGFND4_WSP_MAVG: Moving Average Range
-
-*Note: This parameter is for advanced users*
-
-Sets the number of historic range results to use for calculating the current range result. When MAVG is greater than 1, the current range result will be the current measured value averaged with the N-1 previous results
-
-- Range: 0 255
-
-## RNGFND4_WSP_MEDF: Moving Median Filter
-
-*Note: This parameter is for advanced users*
-
-Sets the window size for the real-time median filter. When MEDF is greater than 0 the median filter is active
-
-- Range: 0 255
-
-## RNGFND4_WSP_FRQ: Frequency
-
-*Note: This parameter is for advanced users*
-
-Sets the repetition frequency of the ranging operation in Hertz. Upon entering the desired frequency the system will calculate the nearest frequency that it can handle according to the resolution of internal timers.
-
-- Range: 0 10000
-
-## RNGFND4_WSP_AVG: Multi-pulse averages
-
-*Note: This parameter is for advanced users*
-
-Sets the number of pulses to be used in multi-pulse averaging mode. In this mode, a sequence of rapid fire ranges are taken and then averaged to improve the accuracy of the measurement
-
-- Range: 0 255
-
-## RNGFND4_WSP_THR: Sensitivity threshold
-
-*Note: This parameter is for advanced users*
-
-Sets the system sensitivity. Larger values of THR represent higher sensitivity. The system may limit the maximum value of THR to prevent excessive false alarm rates based on settings made at the factory. Set to -1 for automatic threshold adjustments
-
-- Range: -1 255
-
-## RNGFND4_WSP_BAUD: Baud rate
-
-*Note: This parameter is for advanced users*
-
-Desired baud rate
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Low Speed|
-|1|High Speed|
-
-## RNGFND4_RECV_ID: RangeFinder CAN receive ID
-
-*Note: This parameter is for advanced users*
-
-The receive ID of the CAN frames. A value of zero means all IDs are accepted.
-
-- Range: 0 65535
-
-## RNGFND4_SNR_MIN: RangeFinder Minimum signal strength
-
-*Note: This parameter is for advanced users*
-
-RangeFinder Minimum signal strength (SNR) to accept distance
-
-- Range: 0 65535
-
-## RNGFND4_GRF_RET: LightWare GRF Distance Return Type
-
-Selects which single return to use.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|FirstRaw|
-|1|FirstFiltered|
-|2|LastRaw|
-|3|LastFiltered|
-
-- RebootRequired: True
-
-## RNGFND4_GRF_ST: LightWare GRF Minimum Return Strength
-
-*Note: This parameter is for advanced users*
-
-Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.
-
-- Range: 0 255
-
-- RebootRequired: True
-
-## RNGFND4_GRF_RATE: LightWare GRF Update Rate
-
-*Note: This parameter is for advanced users*
-
-The update rate of the sensor in Hz. Must match the
-
-- Range: 1 50
-
-- RebootRequired: True
-
-# RNGFND5 Parameters
-
-## RNGFND5_TYPE: Rangefinder type
-
-Type of connected rangefinder
-
-|Value|Meaning|
-|:---:|:---:|
-|0|None|
-|1|Analog|
-|2|MaxbotixI2C|
-|3|LidarLite-I2C|
-|5|PWM|
-|6|BBB-PRU|
-|7|LightWareI2C|
-|8|LightWareSerial|
-|9|Bebop|
-|10|MAVLink|
-|11|USD1_Serial|
-|12|LeddarOne|
-|13|MaxbotixSerial|
-|14|TeraRangerI2C|
-|15|LidarLiteV3-I2C|
-|16|VL53L0X or VL53L1X|
-|17|NMEA|
-|18|WASP-LRF|
-|19|BenewakeTF02|
-|20|BenewakeTFmini-Serial|
-|21|LidarLightV3HP|
-|22|PWM|
-|23|BlueRoboticsPing|
-|24|DroneCAN|
-|25|BenewakeTFmini-I2C|
-|26|LanbaoPSK-CM8JL65-CC5|
-|27|BenewakeTF03|
-|28|VL53L1X-ShortRange|
-|29|LeddarVu8-Serial|
-|30|HC-SR04|
-|31|GYUS42v2|
-|32|MSP|
-|33|USD1_CAN|
-|34|Benewake_CAN|
-|35|TeraRangerSerial|
-|36|Lua_Scripting|
-|37|NoopLoop_TOFSense|
-|38|NoopLoop_TOFSense_CAN|
-|39|NRA24_CAN|
-|40|NoopLoop_TOFSenseF_I2C|
-|41|JRE_Serial|
-|42|Ainstein_LR_D1|
-|43|RDS02UF|
-|44|HexsoonRadar|
-|45|LightWare-GRF|
-|46|BenewakeTFS20L|
-|47|DTS6012M-Serial|
-|100|SITL|
-
-## RNGFND5_PIN: Rangefinder pin
-
-Analog or PWM input pin that rangefinder is connected to. Analog RSSI or Airspeed ports can be used for Analog inputs (some autopilots provide others also), Non-IOMCU Servo/MotorOutputs can be used for PWM input when configured as "GPIOs". Values for some autopilots are given as examples. Search wiki for "Analog pins" for analog pin or "GPIOs", if PWM input type, to determine pin number.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Not Used|
-|11|Pixracer|
-|13|Pixhawk ADC4|
-|14|Pixhawk ADC3|
-|15|Pixhawk ADC6/Pixhawk2 ADC|
-|50|AUX1|
-|51|AUX2|
-|52|AUX3|
-|53|AUX4|
-|54|AUX5|
-|55|AUX6|
-|103|Pixhawk SBUS|
-
-- Range: -1 127
-
-## RNGFND5_SCALING: Rangefinder scaling
-
-Scaling factor between rangefinder reading and distance. For the linear and inverted functions this is in meters per volt. For the hyperbolic function the units are meterVolts. For Maxbotix serial sonar this is unit conversion to meters.
-
-- Units: m/V
-
-- Increment: 0.001
-
-## RNGFND5_OFFSET: rangefinder offset
-
-Offset in volts for zero distance for analog rangefinders. Offset added to distance in centimeters for PWM lidars
-
-- Units: V
-
-- Increment: 0.001
-
-## RNGFND5_FUNCTION: Rangefinder function
-
-Control over what function is used to calculate distance. For a linear function, the distance is (voltage-offset)*scaling. For a inverted function the distance is (offset-voltage)*scaling. For a hyperbolic function the distance is scaling/(voltage-offset). The functions return the distance in meters.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Linear|
-|1|Inverted|
-|2|Hyperbolic|
-
-## RNGFND5_MIN: Rangefinder minimum distance
-
-Minimum distance in metres that rangefinder can reliably read
-
-- Units: m
-
-- Increment: 0.01
-
-## RNGFND5_MAX: Rangefinder maximum distance
-
-Maximum distance in metres that rangefinder can reliably read
-
-- Units: m
-
-- Increment: 0.01
-
-## RNGFND5_STOP_PIN: Rangefinder stop pin
-
-Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range. Some common values are given, but see the Wiki's "GPIOs" page for how to determine the pin number for a given autopilot.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Not Used|
-|50|AUX1|
-|51|AUX2|
-|52|AUX3|
-|53|AUX4|
-|54|AUX5|
-|55|AUX6|
-|111|PX4 FMU Relay1|
-|112|PX4 FMU Relay2|
-|113|PX4IO Relay1|
-|114|PX4IO Relay2|
-|115|PX4IO ACC1|
-|116|PX4IO ACC2|
-
-- Range: -1 127
-
-## RNGFND5_RMETRIC: Ratiometric
-
-This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|No|
-|1|Yes|
-
-## RNGFND5_PWRRNG: Powersave range
-
-This parameter sets the estimated terrain distance in meters above which the sensor will be put into a power saving mode (if available). A value of zero means power saving is not enabled
-
-- Units: m
-
-- Range: 0 32767
-
-## RNGFND5_GNDCLR: Distance from the range finder to the ground
-
-This parameter sets the expected range measurement that the range finder should return when the vehicle is on the ground.
-
-- Units: m
-
-- Range: 0.05 1.5
-
-- Increment: 0.01
-
-## RNGFND5_ADDR: Bus address of sensor
-
-This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.
-
-- Range: 0 127
-
-- Increment: 1
-
-## RNGFND5_POS_X: X position offset
-
-*Note: This parameter is for advanced users*
-
-X position of the rangefinder in body frame. Positive X is forward of the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND5_POS_Y: Y position offset
-
-*Note: This parameter is for advanced users*
-
-Y position of the rangefinder in body frame. Positive Y is to the right of the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND5_POS_Z: Z position offset
-
-*Note: This parameter is for advanced users*
-
-Z position of the rangefinder in body frame. Positive Z is down from the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND5_ORIENT: Rangefinder orientation
-
-*Note: This parameter is for advanced users*
-
-Orientation of rangefinder
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Forward|
-|1|Forward-Right|
-|2|Right|
-|3|Back-Right|
-|4|Back|
-|5|Back-Left|
-|6|Left|
-|7|Forward-Left|
-|24|Up|
-|25|Down|
-
-## RNGFND5_WSP_MAVG: Moving Average Range
-
-*Note: This parameter is for advanced users*
-
-Sets the number of historic range results to use for calculating the current range result. When MAVG is greater than 1, the current range result will be the current measured value averaged with the N-1 previous results
-
-- Range: 0 255
-
-## RNGFND5_WSP_MEDF: Moving Median Filter
-
-*Note: This parameter is for advanced users*
-
-Sets the window size for the real-time median filter. When MEDF is greater than 0 the median filter is active
-
-- Range: 0 255
-
-## RNGFND5_WSP_FRQ: Frequency
-
-*Note: This parameter is for advanced users*
-
-Sets the repetition frequency of the ranging operation in Hertz. Upon entering the desired frequency the system will calculate the nearest frequency that it can handle according to the resolution of internal timers.
-
-- Range: 0 10000
-
-## RNGFND5_WSP_AVG: Multi-pulse averages
-
-*Note: This parameter is for advanced users*
-
-Sets the number of pulses to be used in multi-pulse averaging mode. In this mode, a sequence of rapid fire ranges are taken and then averaged to improve the accuracy of the measurement
-
-- Range: 0 255
-
-## RNGFND5_WSP_THR: Sensitivity threshold
-
-*Note: This parameter is for advanced users*
-
-Sets the system sensitivity. Larger values of THR represent higher sensitivity. The system may limit the maximum value of THR to prevent excessive false alarm rates based on settings made at the factory. Set to -1 for automatic threshold adjustments
-
-- Range: -1 255
-
-## RNGFND5_WSP_BAUD: Baud rate
-
-*Note: This parameter is for advanced users*
-
-Desired baud rate
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Low Speed|
-|1|High Speed|
-
-## RNGFND5_RECV_ID: RangeFinder CAN receive ID
-
-*Note: This parameter is for advanced users*
-
-The receive ID of the CAN frames. A value of zero means all IDs are accepted.
-
-- Range: 0 65535
-
-## RNGFND5_SNR_MIN: RangeFinder Minimum signal strength
-
-*Note: This parameter is for advanced users*
-
-RangeFinder Minimum signal strength (SNR) to accept distance
-
-- Range: 0 65535
-
-## RNGFND5_GRF_RET: LightWare GRF Distance Return Type
-
-Selects which single return to use.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|FirstRaw|
-|1|FirstFiltered|
-|2|LastRaw|
-|3|LastFiltered|
-
-- RebootRequired: True
-
-## RNGFND5_GRF_ST: LightWare GRF Minimum Return Strength
-
-*Note: This parameter is for advanced users*
-
-Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.
-
-- Range: 0 255
-
-- RebootRequired: True
-
-## RNGFND5_GRF_RATE: LightWare GRF Update Rate
-
-*Note: This parameter is for advanced users*
-
-The update rate of the sensor in Hz. Must match the
-
-- Range: 1 50
-
-- RebootRequired: True
-
-# RNGFND6 Parameters
-
-## RNGFND6_TYPE: Rangefinder type
-
-Type of connected rangefinder
-
-|Value|Meaning|
-|:---:|:---:|
-|0|None|
-|1|Analog|
-|2|MaxbotixI2C|
-|3|LidarLite-I2C|
-|5|PWM|
-|6|BBB-PRU|
-|7|LightWareI2C|
-|8|LightWareSerial|
-|9|Bebop|
-|10|MAVLink|
-|11|USD1_Serial|
-|12|LeddarOne|
-|13|MaxbotixSerial|
-|14|TeraRangerI2C|
-|15|LidarLiteV3-I2C|
-|16|VL53L0X or VL53L1X|
-|17|NMEA|
-|18|WASP-LRF|
-|19|BenewakeTF02|
-|20|BenewakeTFmini-Serial|
-|21|LidarLightV3HP|
-|22|PWM|
-|23|BlueRoboticsPing|
-|24|DroneCAN|
-|25|BenewakeTFmini-I2C|
-|26|LanbaoPSK-CM8JL65-CC5|
-|27|BenewakeTF03|
-|28|VL53L1X-ShortRange|
-|29|LeddarVu8-Serial|
-|30|HC-SR04|
-|31|GYUS42v2|
-|32|MSP|
-|33|USD1_CAN|
-|34|Benewake_CAN|
-|35|TeraRangerSerial|
-|36|Lua_Scripting|
-|37|NoopLoop_TOFSense|
-|38|NoopLoop_TOFSense_CAN|
-|39|NRA24_CAN|
-|40|NoopLoop_TOFSenseF_I2C|
-|41|JRE_Serial|
-|42|Ainstein_LR_D1|
-|43|RDS02UF|
-|44|HexsoonRadar|
-|45|LightWare-GRF|
-|46|BenewakeTFS20L|
-|47|DTS6012M-Serial|
-|100|SITL|
-
-## RNGFND6_PIN: Rangefinder pin
-
-Analog or PWM input pin that rangefinder is connected to. Analog RSSI or Airspeed ports can be used for Analog inputs (some autopilots provide others also), Non-IOMCU Servo/MotorOutputs can be used for PWM input when configured as "GPIOs". Values for some autopilots are given as examples. Search wiki for "Analog pins" for analog pin or "GPIOs", if PWM input type, to determine pin number.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Not Used|
-|11|Pixracer|
-|13|Pixhawk ADC4|
-|14|Pixhawk ADC3|
-|15|Pixhawk ADC6/Pixhawk2 ADC|
-|50|AUX1|
-|51|AUX2|
-|52|AUX3|
-|53|AUX4|
-|54|AUX5|
-|55|AUX6|
-|103|Pixhawk SBUS|
-
-- Range: -1 127
-
-## RNGFND6_SCALING: Rangefinder scaling
-
-Scaling factor between rangefinder reading and distance. For the linear and inverted functions this is in meters per volt. For the hyperbolic function the units are meterVolts. For Maxbotix serial sonar this is unit conversion to meters.
-
-- Units: m/V
-
-- Increment: 0.001
-
-## RNGFND6_OFFSET: rangefinder offset
-
-Offset in volts for zero distance for analog rangefinders. Offset added to distance in centimeters for PWM lidars
-
-- Units: V
-
-- Increment: 0.001
-
-## RNGFND6_FUNCTION: Rangefinder function
-
-Control over what function is used to calculate distance. For a linear function, the distance is (voltage-offset)*scaling. For a inverted function the distance is (offset-voltage)*scaling. For a hyperbolic function the distance is scaling/(voltage-offset). The functions return the distance in meters.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Linear|
-|1|Inverted|
-|2|Hyperbolic|
-
-## RNGFND6_MIN: Rangefinder minimum distance
-
-Minimum distance in metres that rangefinder can reliably read
-
-- Units: m
-
-- Increment: 0.01
-
-## RNGFND6_MAX: Rangefinder maximum distance
-
-Maximum distance in metres that rangefinder can reliably read
-
-- Units: m
-
-- Increment: 0.01
-
-## RNGFND6_STOP_PIN: Rangefinder stop pin
-
-Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range. Some common values are given, but see the Wiki's "GPIOs" page for how to determine the pin number for a given autopilot.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Not Used|
-|50|AUX1|
-|51|AUX2|
-|52|AUX3|
-|53|AUX4|
-|54|AUX5|
-|55|AUX6|
-|111|PX4 FMU Relay1|
-|112|PX4 FMU Relay2|
-|113|PX4IO Relay1|
-|114|PX4IO Relay2|
-|115|PX4IO ACC1|
-|116|PX4IO ACC2|
-
-- Range: -1 127
-
-## RNGFND6_RMETRIC: Ratiometric
-
-This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|No|
-|1|Yes|
-
-## RNGFND6_PWRRNG: Powersave range
-
-This parameter sets the estimated terrain distance in meters above which the sensor will be put into a power saving mode (if available). A value of zero means power saving is not enabled
-
-- Units: m
-
-- Range: 0 32767
-
-## RNGFND6_GNDCLR: Distance from the range finder to the ground
-
-This parameter sets the expected range measurement that the range finder should return when the vehicle is on the ground.
-
-- Units: m
-
-- Range: 0.05 1.5
-
-- Increment: 0.01
-
-## RNGFND6_ADDR: Bus address of sensor
-
-This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.
-
-- Range: 0 127
-
-- Increment: 1
-
-## RNGFND6_POS_X: X position offset
-
-*Note: This parameter is for advanced users*
-
-X position of the rangefinder in body frame. Positive X is forward of the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND6_POS_Y: Y position offset
-
-*Note: This parameter is for advanced users*
-
-Y position of the rangefinder in body frame. Positive Y is to the right of the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND6_POS_Z: Z position offset
-
-*Note: This parameter is for advanced users*
-
-Z position of the rangefinder in body frame. Positive Z is down from the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND6_ORIENT: Rangefinder orientation
-
-*Note: This parameter is for advanced users*
-
-Orientation of rangefinder
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Forward|
-|1|Forward-Right|
-|2|Right|
-|3|Back-Right|
-|4|Back|
-|5|Back-Left|
-|6|Left|
-|7|Forward-Left|
-|24|Up|
-|25|Down|
-
-## RNGFND6_WSP_MAVG: Moving Average Range
-
-*Note: This parameter is for advanced users*
-
-Sets the number of historic range results to use for calculating the current range result. When MAVG is greater than 1, the current range result will be the current measured value averaged with the N-1 previous results
-
-- Range: 0 255
-
-## RNGFND6_WSP_MEDF: Moving Median Filter
-
-*Note: This parameter is for advanced users*
-
-Sets the window size for the real-time median filter. When MEDF is greater than 0 the median filter is active
-
-- Range: 0 255
-
-## RNGFND6_WSP_FRQ: Frequency
-
-*Note: This parameter is for advanced users*
-
-Sets the repetition frequency of the ranging operation in Hertz. Upon entering the desired frequency the system will calculate the nearest frequency that it can handle according to the resolution of internal timers.
-
-- Range: 0 10000
-
-## RNGFND6_WSP_AVG: Multi-pulse averages
-
-*Note: This parameter is for advanced users*
-
-Sets the number of pulses to be used in multi-pulse averaging mode. In this mode, a sequence of rapid fire ranges are taken and then averaged to improve the accuracy of the measurement
-
-- Range: 0 255
-
-## RNGFND6_WSP_THR: Sensitivity threshold
-
-*Note: This parameter is for advanced users*
-
-Sets the system sensitivity. Larger values of THR represent higher sensitivity. The system may limit the maximum value of THR to prevent excessive false alarm rates based on settings made at the factory. Set to -1 for automatic threshold adjustments
-
-- Range: -1 255
-
-## RNGFND6_WSP_BAUD: Baud rate
-
-*Note: This parameter is for advanced users*
-
-Desired baud rate
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Low Speed|
-|1|High Speed|
-
-## RNGFND6_RECV_ID: RangeFinder CAN receive ID
-
-*Note: This parameter is for advanced users*
-
-The receive ID of the CAN frames. A value of zero means all IDs are accepted.
-
-- Range: 0 65535
-
-## RNGFND6_SNR_MIN: RangeFinder Minimum signal strength
-
-*Note: This parameter is for advanced users*
-
-RangeFinder Minimum signal strength (SNR) to accept distance
-
-- Range: 0 65535
-
-## RNGFND6_GRF_RET: LightWare GRF Distance Return Type
-
-Selects which single return to use.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|FirstRaw|
-|1|FirstFiltered|
-|2|LastRaw|
-|3|LastFiltered|
-
-- RebootRequired: True
-
-## RNGFND6_GRF_ST: LightWare GRF Minimum Return Strength
-
-*Note: This parameter is for advanced users*
-
-Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.
-
-- Range: 0 255
-
-- RebootRequired: True
-
-## RNGFND6_GRF_RATE: LightWare GRF Update Rate
-
-*Note: This parameter is for advanced users*
-
-The update rate of the sensor in Hz. Must match the
-
-- Range: 1 50
-
-- RebootRequired: True
-
-# RNGFND7 Parameters
-
-## RNGFND7_TYPE: Rangefinder type
-
-Type of connected rangefinder
-
-|Value|Meaning|
-|:---:|:---:|
-|0|None|
-|1|Analog|
-|2|MaxbotixI2C|
-|3|LidarLite-I2C|
-|5|PWM|
-|6|BBB-PRU|
-|7|LightWareI2C|
-|8|LightWareSerial|
-|9|Bebop|
-|10|MAVLink|
-|11|USD1_Serial|
-|12|LeddarOne|
-|13|MaxbotixSerial|
-|14|TeraRangerI2C|
-|15|LidarLiteV3-I2C|
-|16|VL53L0X or VL53L1X|
-|17|NMEA|
-|18|WASP-LRF|
-|19|BenewakeTF02|
-|20|BenewakeTFmini-Serial|
-|21|LidarLightV3HP|
-|22|PWM|
-|23|BlueRoboticsPing|
-|24|DroneCAN|
-|25|BenewakeTFmini-I2C|
-|26|LanbaoPSK-CM8JL65-CC5|
-|27|BenewakeTF03|
-|28|VL53L1X-ShortRange|
-|29|LeddarVu8-Serial|
-|30|HC-SR04|
-|31|GYUS42v2|
-|32|MSP|
-|33|USD1_CAN|
-|34|Benewake_CAN|
-|35|TeraRangerSerial|
-|36|Lua_Scripting|
-|37|NoopLoop_TOFSense|
-|38|NoopLoop_TOFSense_CAN|
-|39|NRA24_CAN|
-|40|NoopLoop_TOFSenseF_I2C|
-|41|JRE_Serial|
-|42|Ainstein_LR_D1|
-|43|RDS02UF|
-|44|HexsoonRadar|
-|45|LightWare-GRF|
-|46|BenewakeTFS20L|
-|47|DTS6012M-Serial|
-|100|SITL|
-
-## RNGFND7_PIN: Rangefinder pin
-
-Analog or PWM input pin that rangefinder is connected to. Analog RSSI or Airspeed ports can be used for Analog inputs (some autopilots provide others also), Non-IOMCU Servo/MotorOutputs can be used for PWM input when configured as "GPIOs". Values for some autopilots are given as examples. Search wiki for "Analog pins" for analog pin or "GPIOs", if PWM input type, to determine pin number.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Not Used|
-|11|Pixracer|
-|13|Pixhawk ADC4|
-|14|Pixhawk ADC3|
-|15|Pixhawk ADC6/Pixhawk2 ADC|
-|50|AUX1|
-|51|AUX2|
-|52|AUX3|
-|53|AUX4|
-|54|AUX5|
-|55|AUX6|
-|103|Pixhawk SBUS|
-
-- Range: -1 127
-
-## RNGFND7_SCALING: Rangefinder scaling
-
-Scaling factor between rangefinder reading and distance. For the linear and inverted functions this is in meters per volt. For the hyperbolic function the units are meterVolts. For Maxbotix serial sonar this is unit conversion to meters.
-
-- Units: m/V
-
-- Increment: 0.001
-
-## RNGFND7_OFFSET: rangefinder offset
-
-Offset in volts for zero distance for analog rangefinders. Offset added to distance in centimeters for PWM lidars
-
-- Units: V
-
-- Increment: 0.001
-
-## RNGFND7_FUNCTION: Rangefinder function
-
-Control over what function is used to calculate distance. For a linear function, the distance is (voltage-offset)*scaling. For a inverted function the distance is (offset-voltage)*scaling. For a hyperbolic function the distance is scaling/(voltage-offset). The functions return the distance in meters.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Linear|
-|1|Inverted|
-|2|Hyperbolic|
-
-## RNGFND7_MIN: Rangefinder minimum distance
-
-Minimum distance in metres that rangefinder can reliably read
-
-- Units: m
-
-- Increment: 0.01
-
-## RNGFND7_MAX: Rangefinder maximum distance
-
-Maximum distance in metres that rangefinder can reliably read
-
-- Units: m
-
-- Increment: 0.01
-
-## RNGFND7_STOP_PIN: Rangefinder stop pin
-
-Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range. Some common values are given, but see the Wiki's "GPIOs" page for how to determine the pin number for a given autopilot.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Not Used|
-|50|AUX1|
-|51|AUX2|
-|52|AUX3|
-|53|AUX4|
-|54|AUX5|
-|55|AUX6|
-|111|PX4 FMU Relay1|
-|112|PX4 FMU Relay2|
-|113|PX4IO Relay1|
-|114|PX4IO Relay2|
-|115|PX4IO ACC1|
-|116|PX4IO ACC2|
-
-- Range: -1 127
-
-## RNGFND7_RMETRIC: Ratiometric
-
-This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|No|
-|1|Yes|
-
-## RNGFND7_PWRRNG: Powersave range
-
-This parameter sets the estimated terrain distance in meters above which the sensor will be put into a power saving mode (if available). A value of zero means power saving is not enabled
-
-- Units: m
-
-- Range: 0 32767
-
-## RNGFND7_GNDCLR: Distance from the range finder to the ground
-
-This parameter sets the expected range measurement that the range finder should return when the vehicle is on the ground.
-
-- Units: m
-
-- Range: 0.05 1.5
-
-- Increment: 0.01
-
-## RNGFND7_ADDR: Bus address of sensor
-
-This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.
-
-- Range: 0 127
-
-- Increment: 1
-
-## RNGFND7_POS_X: X position offset
-
-*Note: This parameter is for advanced users*
-
-X position of the rangefinder in body frame. Positive X is forward of the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND7_POS_Y: Y position offset
-
-*Note: This parameter is for advanced users*
-
-Y position of the rangefinder in body frame. Positive Y is to the right of the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND7_POS_Z: Z position offset
-
-*Note: This parameter is for advanced users*
-
-Z position of the rangefinder in body frame. Positive Z is down from the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND7_ORIENT: Rangefinder orientation
-
-*Note: This parameter is for advanced users*
-
-Orientation of rangefinder
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Forward|
-|1|Forward-Right|
-|2|Right|
-|3|Back-Right|
-|4|Back|
-|5|Back-Left|
-|6|Left|
-|7|Forward-Left|
-|24|Up|
-|25|Down|
-
-## RNGFND7_WSP_MAVG: Moving Average Range
-
-*Note: This parameter is for advanced users*
-
-Sets the number of historic range results to use for calculating the current range result. When MAVG is greater than 1, the current range result will be the current measured value averaged with the N-1 previous results
-
-- Range: 0 255
-
-## RNGFND7_WSP_MEDF: Moving Median Filter
-
-*Note: This parameter is for advanced users*
-
-Sets the window size for the real-time median filter. When MEDF is greater than 0 the median filter is active
-
-- Range: 0 255
-
-## RNGFND7_WSP_FRQ: Frequency
-
-*Note: This parameter is for advanced users*
-
-Sets the repetition frequency of the ranging operation in Hertz. Upon entering the desired frequency the system will calculate the nearest frequency that it can handle according to the resolution of internal timers.
-
-- Range: 0 10000
-
-## RNGFND7_WSP_AVG: Multi-pulse averages
-
-*Note: This parameter is for advanced users*
-
-Sets the number of pulses to be used in multi-pulse averaging mode. In this mode, a sequence of rapid fire ranges are taken and then averaged to improve the accuracy of the measurement
-
-- Range: 0 255
-
-## RNGFND7_WSP_THR: Sensitivity threshold
-
-*Note: This parameter is for advanced users*
-
-Sets the system sensitivity. Larger values of THR represent higher sensitivity. The system may limit the maximum value of THR to prevent excessive false alarm rates based on settings made at the factory. Set to -1 for automatic threshold adjustments
-
-- Range: -1 255
-
-## RNGFND7_WSP_BAUD: Baud rate
-
-*Note: This parameter is for advanced users*
-
-Desired baud rate
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Low Speed|
-|1|High Speed|
-
-## RNGFND7_RECV_ID: RangeFinder CAN receive ID
-
-*Note: This parameter is for advanced users*
-
-The receive ID of the CAN frames. A value of zero means all IDs are accepted.
-
-- Range: 0 65535
-
-## RNGFND7_SNR_MIN: RangeFinder Minimum signal strength
-
-*Note: This parameter is for advanced users*
-
-RangeFinder Minimum signal strength (SNR) to accept distance
-
-- Range: 0 65535
-
-## RNGFND7_GRF_RET: LightWare GRF Distance Return Type
-
-Selects which single return to use.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|FirstRaw|
-|1|FirstFiltered|
-|2|LastRaw|
-|3|LastFiltered|
-
-- RebootRequired: True
-
-## RNGFND7_GRF_ST: LightWare GRF Minimum Return Strength
-
-*Note: This parameter is for advanced users*
-
-Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.
-
-- Range: 0 255
-
-- RebootRequired: True
-
-## RNGFND7_GRF_RATE: LightWare GRF Update Rate
-
-*Note: This parameter is for advanced users*
-
-The update rate of the sensor in Hz. Must match the
-
-- Range: 1 50
-
-- RebootRequired: True
-
-# RNGFND8 Parameters
-
-## RNGFND8_TYPE: Rangefinder type
-
-Type of connected rangefinder
-
-|Value|Meaning|
-|:---:|:---:|
-|0|None|
-|1|Analog|
-|2|MaxbotixI2C|
-|3|LidarLite-I2C|
-|5|PWM|
-|6|BBB-PRU|
-|7|LightWareI2C|
-|8|LightWareSerial|
-|9|Bebop|
-|10|MAVLink|
-|11|USD1_Serial|
-|12|LeddarOne|
-|13|MaxbotixSerial|
-|14|TeraRangerI2C|
-|15|LidarLiteV3-I2C|
-|16|VL53L0X or VL53L1X|
-|17|NMEA|
-|18|WASP-LRF|
-|19|BenewakeTF02|
-|20|BenewakeTFmini-Serial|
-|21|LidarLightV3HP|
-|22|PWM|
-|23|BlueRoboticsPing|
-|24|DroneCAN|
-|25|BenewakeTFmini-I2C|
-|26|LanbaoPSK-CM8JL65-CC5|
-|27|BenewakeTF03|
-|28|VL53L1X-ShortRange|
-|29|LeddarVu8-Serial|
-|30|HC-SR04|
-|31|GYUS42v2|
-|32|MSP|
-|33|USD1_CAN|
-|34|Benewake_CAN|
-|35|TeraRangerSerial|
-|36|Lua_Scripting|
-|37|NoopLoop_TOFSense|
-|38|NoopLoop_TOFSense_CAN|
-|39|NRA24_CAN|
-|40|NoopLoop_TOFSenseF_I2C|
-|41|JRE_Serial|
-|42|Ainstein_LR_D1|
-|43|RDS02UF|
-|44|HexsoonRadar|
-|45|LightWare-GRF|
-|46|BenewakeTFS20L|
-|47|DTS6012M-Serial|
-|100|SITL|
-
-## RNGFND8_PIN: Rangefinder pin
-
-Analog or PWM input pin that rangefinder is connected to. Analog RSSI or Airspeed ports can be used for Analog inputs (some autopilots provide others also), Non-IOMCU Servo/MotorOutputs can be used for PWM input when configured as "GPIOs". Values for some autopilots are given as examples. Search wiki for "Analog pins" for analog pin or "GPIOs", if PWM input type, to determine pin number.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Not Used|
-|11|Pixracer|
-|13|Pixhawk ADC4|
-|14|Pixhawk ADC3|
-|15|Pixhawk ADC6/Pixhawk2 ADC|
-|50|AUX1|
-|51|AUX2|
-|52|AUX3|
-|53|AUX4|
-|54|AUX5|
-|55|AUX6|
-|103|Pixhawk SBUS|
-
-- Range: -1 127
-
-## RNGFND8_SCALING: Rangefinder scaling
-
-Scaling factor between rangefinder reading and distance. For the linear and inverted functions this is in meters per volt. For the hyperbolic function the units are meterVolts. For Maxbotix serial sonar this is unit conversion to meters.
-
-- Units: m/V
-
-- Increment: 0.001
-
-## RNGFND8_OFFSET: rangefinder offset
-
-Offset in volts for zero distance for analog rangefinders. Offset added to distance in centimeters for PWM lidars
-
-- Units: V
-
-- Increment: 0.001
-
-## RNGFND8_FUNCTION: Rangefinder function
-
-Control over what function is used to calculate distance. For a linear function, the distance is (voltage-offset)*scaling. For a inverted function the distance is (offset-voltage)*scaling. For a hyperbolic function the distance is scaling/(voltage-offset). The functions return the distance in meters.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Linear|
-|1|Inverted|
-|2|Hyperbolic|
-
-## RNGFND8_MIN: Rangefinder minimum distance
-
-Minimum distance in metres that rangefinder can reliably read
-
-- Units: m
-
-- Increment: 0.01
-
-## RNGFND8_MAX: Rangefinder maximum distance
-
-Maximum distance in metres that rangefinder can reliably read
-
-- Units: m
-
-- Increment: 0.01
-
-## RNGFND8_STOP_PIN: Rangefinder stop pin
-
-Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range. Some common values are given, but see the Wiki's "GPIOs" page for how to determine the pin number for a given autopilot.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Not Used|
-|50|AUX1|
-|51|AUX2|
-|52|AUX3|
-|53|AUX4|
-|54|AUX5|
-|55|AUX6|
-|111|PX4 FMU Relay1|
-|112|PX4 FMU Relay2|
-|113|PX4IO Relay1|
-|114|PX4IO Relay2|
-|115|PX4IO ACC1|
-|116|PX4IO ACC2|
-
-- Range: -1 127
-
-## RNGFND8_RMETRIC: Ratiometric
-
-This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|No|
-|1|Yes|
-
-## RNGFND8_PWRRNG: Powersave range
-
-This parameter sets the estimated terrain distance in meters above which the sensor will be put into a power saving mode (if available). A value of zero means power saving is not enabled
-
-- Units: m
-
-- Range: 0 32767
-
-## RNGFND8_GNDCLR: Distance from the range finder to the ground
-
-This parameter sets the expected range measurement that the range finder should return when the vehicle is on the ground.
-
-- Units: m
-
-- Range: 0.05 1.5
-
-- Increment: 0.01
-
-## RNGFND8_ADDR: Bus address of sensor
-
-This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.
-
-- Range: 0 127
-
-- Increment: 1
-
-## RNGFND8_POS_X: X position offset
-
-*Note: This parameter is for advanced users*
-
-X position of the rangefinder in body frame. Positive X is forward of the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND8_POS_Y: Y position offset
-
-*Note: This parameter is for advanced users*
-
-Y position of the rangefinder in body frame. Positive Y is to the right of the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND8_POS_Z: Z position offset
-
-*Note: This parameter is for advanced users*
-
-Z position of the rangefinder in body frame. Positive Z is down from the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND8_ORIENT: Rangefinder orientation
-
-*Note: This parameter is for advanced users*
-
-Orientation of rangefinder
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Forward|
-|1|Forward-Right|
-|2|Right|
-|3|Back-Right|
-|4|Back|
-|5|Back-Left|
-|6|Left|
-|7|Forward-Left|
-|24|Up|
-|25|Down|
-
-## RNGFND8_WSP_MAVG: Moving Average Range
-
-*Note: This parameter is for advanced users*
-
-Sets the number of historic range results to use for calculating the current range result. When MAVG is greater than 1, the current range result will be the current measured value averaged with the N-1 previous results
-
-- Range: 0 255
-
-## RNGFND8_WSP_MEDF: Moving Median Filter
-
-*Note: This parameter is for advanced users*
-
-Sets the window size for the real-time median filter. When MEDF is greater than 0 the median filter is active
-
-- Range: 0 255
-
-## RNGFND8_WSP_FRQ: Frequency
-
-*Note: This parameter is for advanced users*
-
-Sets the repetition frequency of the ranging operation in Hertz. Upon entering the desired frequency the system will calculate the nearest frequency that it can handle according to the resolution of internal timers.
-
-- Range: 0 10000
-
-## RNGFND8_WSP_AVG: Multi-pulse averages
-
-*Note: This parameter is for advanced users*
-
-Sets the number of pulses to be used in multi-pulse averaging mode. In this mode, a sequence of rapid fire ranges are taken and then averaged to improve the accuracy of the measurement
-
-- Range: 0 255
-
-## RNGFND8_WSP_THR: Sensitivity threshold
-
-*Note: This parameter is for advanced users*
-
-Sets the system sensitivity. Larger values of THR represent higher sensitivity. The system may limit the maximum value of THR to prevent excessive false alarm rates based on settings made at the factory. Set to -1 for automatic threshold adjustments
-
-- Range: -1 255
-
-## RNGFND8_WSP_BAUD: Baud rate
-
-*Note: This parameter is for advanced users*
-
-Desired baud rate
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Low Speed|
-|1|High Speed|
-
-## RNGFND8_RECV_ID: RangeFinder CAN receive ID
-
-*Note: This parameter is for advanced users*
-
-The receive ID of the CAN frames. A value of zero means all IDs are accepted.
-
-- Range: 0 65535
-
-## RNGFND8_SNR_MIN: RangeFinder Minimum signal strength
-
-*Note: This parameter is for advanced users*
-
-RangeFinder Minimum signal strength (SNR) to accept distance
-
-- Range: 0 65535
-
-## RNGFND8_GRF_RET: LightWare GRF Distance Return Type
-
-Selects which single return to use.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|FirstRaw|
-|1|FirstFiltered|
-|2|LastRaw|
-|3|LastFiltered|
-
-- RebootRequired: True
-
-## RNGFND8_GRF_ST: LightWare GRF Minimum Return Strength
-
-*Note: This parameter is for advanced users*
-
-Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.
-
-- Range: 0 255
-
-- RebootRequired: True
-
-## RNGFND8_GRF_RATE: LightWare GRF Update Rate
-
-*Note: This parameter is for advanced users*
-
-The update rate of the sensor in Hz. Must match the
-
-- Range: 1 50
-
-- RebootRequired: True
-
-# RNGFND9 Parameters
-
-## RNGFND9_TYPE: Rangefinder type
-
-Type of connected rangefinder
-
-|Value|Meaning|
-|:---:|:---:|
-|0|None|
-|1|Analog|
-|2|MaxbotixI2C|
-|3|LidarLite-I2C|
-|5|PWM|
-|6|BBB-PRU|
-|7|LightWareI2C|
-|8|LightWareSerial|
-|9|Bebop|
-|10|MAVLink|
-|11|USD1_Serial|
-|12|LeddarOne|
-|13|MaxbotixSerial|
-|14|TeraRangerI2C|
-|15|LidarLiteV3-I2C|
-|16|VL53L0X or VL53L1X|
-|17|NMEA|
-|18|WASP-LRF|
-|19|BenewakeTF02|
-|20|BenewakeTFmini-Serial|
-|21|LidarLightV3HP|
-|22|PWM|
-|23|BlueRoboticsPing|
-|24|DroneCAN|
-|25|BenewakeTFmini-I2C|
-|26|LanbaoPSK-CM8JL65-CC5|
-|27|BenewakeTF03|
-|28|VL53L1X-ShortRange|
-|29|LeddarVu8-Serial|
-|30|HC-SR04|
-|31|GYUS42v2|
-|32|MSP|
-|33|USD1_CAN|
-|34|Benewake_CAN|
-|35|TeraRangerSerial|
-|36|Lua_Scripting|
-|37|NoopLoop_TOFSense|
-|38|NoopLoop_TOFSense_CAN|
-|39|NRA24_CAN|
-|40|NoopLoop_TOFSenseF_I2C|
-|41|JRE_Serial|
-|42|Ainstein_LR_D1|
-|43|RDS02UF|
-|44|HexsoonRadar|
-|45|LightWare-GRF|
-|46|BenewakeTFS20L|
-|47|DTS6012M-Serial|
-|100|SITL|
-
-## RNGFND9_PIN: Rangefinder pin
-
-Analog or PWM input pin that rangefinder is connected to. Analog RSSI or Airspeed ports can be used for Analog inputs (some autopilots provide others also), Non-IOMCU Servo/MotorOutputs can be used for PWM input when configured as "GPIOs". Values for some autopilots are given as examples. Search wiki for "Analog pins" for analog pin or "GPIOs", if PWM input type, to determine pin number.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Not Used|
-|11|Pixracer|
-|13|Pixhawk ADC4|
-|14|Pixhawk ADC3|
-|15|Pixhawk ADC6/Pixhawk2 ADC|
-|50|AUX1|
-|51|AUX2|
-|52|AUX3|
-|53|AUX4|
-|54|AUX5|
-|55|AUX6|
-|103|Pixhawk SBUS|
-
-- Range: -1 127
-
-## RNGFND9_SCALING: Rangefinder scaling
-
-Scaling factor between rangefinder reading and distance. For the linear and inverted functions this is in meters per volt. For the hyperbolic function the units are meterVolts. For Maxbotix serial sonar this is unit conversion to meters.
-
-- Units: m/V
-
-- Increment: 0.001
-
-## RNGFND9_OFFSET: rangefinder offset
-
-Offset in volts for zero distance for analog rangefinders. Offset added to distance in centimeters for PWM lidars
-
-- Units: V
-
-- Increment: 0.001
-
-## RNGFND9_FUNCTION: Rangefinder function
-
-Control over what function is used to calculate distance. For a linear function, the distance is (voltage-offset)*scaling. For a inverted function the distance is (offset-voltage)*scaling. For a hyperbolic function the distance is scaling/(voltage-offset). The functions return the distance in meters.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Linear|
-|1|Inverted|
-|2|Hyperbolic|
-
-## RNGFND9_MIN: Rangefinder minimum distance
-
-Minimum distance in metres that rangefinder can reliably read
-
-- Units: m
-
-- Increment: 0.01
-
-## RNGFND9_MAX: Rangefinder maximum distance
-
-Maximum distance in metres that rangefinder can reliably read
-
-- Units: m
-
-- Increment: 0.01
-
-## RNGFND9_STOP_PIN: Rangefinder stop pin
-
-Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range. Some common values are given, but see the Wiki's "GPIOs" page for how to determine the pin number for a given autopilot.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Not Used|
-|50|AUX1|
-|51|AUX2|
-|52|AUX3|
-|53|AUX4|
-|54|AUX5|
-|55|AUX6|
-|111|PX4 FMU Relay1|
-|112|PX4 FMU Relay2|
-|113|PX4IO Relay1|
-|114|PX4IO Relay2|
-|115|PX4IO ACC1|
-|116|PX4IO ACC2|
-
-- Range: -1 127
-
-## RNGFND9_RMETRIC: Ratiometric
-
-This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|No|
-|1|Yes|
-
-## RNGFND9_PWRRNG: Powersave range
-
-This parameter sets the estimated terrain distance in meters above which the sensor will be put into a power saving mode (if available). A value of zero means power saving is not enabled
-
-- Units: m
-
-- Range: 0 32767
-
-## RNGFND9_GNDCLR: Distance from the range finder to the ground
-
-This parameter sets the expected range measurement that the range finder should return when the vehicle is on the ground.
-
-- Units: m
-
-- Range: 0.05 1.5
-
-- Increment: 0.01
-
-## RNGFND9_ADDR: Bus address of sensor
-
-This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.
-
-- Range: 0 127
-
-- Increment: 1
-
-## RNGFND9_POS_X: X position offset
-
-*Note: This parameter is for advanced users*
-
-X position of the rangefinder in body frame. Positive X is forward of the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND9_POS_Y: Y position offset
-
-*Note: This parameter is for advanced users*
-
-Y position of the rangefinder in body frame. Positive Y is to the right of the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND9_POS_Z: Z position offset
-
-*Note: This parameter is for advanced users*
-
-Z position of the rangefinder in body frame. Positive Z is down from the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFND9_ORIENT: Rangefinder orientation
-
-*Note: This parameter is for advanced users*
-
-Orientation of rangefinder
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Forward|
-|1|Forward-Right|
-|2|Right|
-|3|Back-Right|
-|4|Back|
-|5|Back-Left|
-|6|Left|
-|7|Forward-Left|
-|24|Up|
-|25|Down|
-
-## RNGFND9_WSP_MAVG: Moving Average Range
-
-*Note: This parameter is for advanced users*
-
-Sets the number of historic range results to use for calculating the current range result. When MAVG is greater than 1, the current range result will be the current measured value averaged with the N-1 previous results
-
-- Range: 0 255
-
-## RNGFND9_WSP_MEDF: Moving Median Filter
-
-*Note: This parameter is for advanced users*
-
-Sets the window size for the real-time median filter. When MEDF is greater than 0 the median filter is active
-
-- Range: 0 255
-
-## RNGFND9_WSP_FRQ: Frequency
-
-*Note: This parameter is for advanced users*
-
-Sets the repetition frequency of the ranging operation in Hertz. Upon entering the desired frequency the system will calculate the nearest frequency that it can handle according to the resolution of internal timers.
-
-- Range: 0 10000
-
-## RNGFND9_WSP_AVG: Multi-pulse averages
-
-*Note: This parameter is for advanced users*
-
-Sets the number of pulses to be used in multi-pulse averaging mode. In this mode, a sequence of rapid fire ranges are taken and then averaged to improve the accuracy of the measurement
-
-- Range: 0 255
-
-## RNGFND9_WSP_THR: Sensitivity threshold
-
-*Note: This parameter is for advanced users*
-
-Sets the system sensitivity. Larger values of THR represent higher sensitivity. The system may limit the maximum value of THR to prevent excessive false alarm rates based on settings made at the factory. Set to -1 for automatic threshold adjustments
-
-- Range: -1 255
-
-## RNGFND9_WSP_BAUD: Baud rate
-
-*Note: This parameter is for advanced users*
-
-Desired baud rate
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Low Speed|
-|1|High Speed|
-
-## RNGFND9_RECV_ID: RangeFinder CAN receive ID
-
-*Note: This parameter is for advanced users*
-
-The receive ID of the CAN frames. A value of zero means all IDs are accepted.
-
-- Range: 0 65535
-
-## RNGFND9_SNR_MIN: RangeFinder Minimum signal strength
-
-*Note: This parameter is for advanced users*
-
-RangeFinder Minimum signal strength (SNR) to accept distance
-
-- Range: 0 65535
-
-## RNGFND9_GRF_RET: LightWare GRF Distance Return Type
-
-Selects which single return to use.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|FirstRaw|
-|1|FirstFiltered|
-|2|LastRaw|
-|3|LastFiltered|
-
-- RebootRequired: True
-
-## RNGFND9_GRF_ST: LightWare GRF Minimum Return Strength
-
-*Note: This parameter is for advanced users*
-
-Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.
-
-- Range: 0 255
-
-- RebootRequired: True
-
-## RNGFND9_GRF_RATE: LightWare GRF Update Rate
-
-*Note: This parameter is for advanced users*
-
-The update rate of the sensor in Hz. Must match the
-
-- Range: 1 50
-
-- RebootRequired: True
-
-# RNGFNDA Parameters
-
-## RNGFNDA_TYPE: Rangefinder type
-
-Type of connected rangefinder
-
-|Value|Meaning|
-|:---:|:---:|
-|0|None|
-|1|Analog|
-|2|MaxbotixI2C|
-|3|LidarLite-I2C|
-|5|PWM|
-|6|BBB-PRU|
-|7|LightWareI2C|
-|8|LightWareSerial|
-|9|Bebop|
-|10|MAVLink|
-|11|USD1_Serial|
-|12|LeddarOne|
-|13|MaxbotixSerial|
-|14|TeraRangerI2C|
-|15|LidarLiteV3-I2C|
-|16|VL53L0X or VL53L1X|
-|17|NMEA|
-|18|WASP-LRF|
-|19|BenewakeTF02|
-|20|BenewakeTFmini-Serial|
-|21|LidarLightV3HP|
-|22|PWM|
-|23|BlueRoboticsPing|
-|24|DroneCAN|
-|25|BenewakeTFmini-I2C|
-|26|LanbaoPSK-CM8JL65-CC5|
-|27|BenewakeTF03|
-|28|VL53L1X-ShortRange|
-|29|LeddarVu8-Serial|
-|30|HC-SR04|
-|31|GYUS42v2|
-|32|MSP|
-|33|USD1_CAN|
-|34|Benewake_CAN|
-|35|TeraRangerSerial|
-|36|Lua_Scripting|
-|37|NoopLoop_TOFSense|
-|38|NoopLoop_TOFSense_CAN|
-|39|NRA24_CAN|
-|40|NoopLoop_TOFSenseF_I2C|
-|41|JRE_Serial|
-|42|Ainstein_LR_D1|
-|43|RDS02UF|
-|44|HexsoonRadar|
-|45|LightWare-GRF|
-|46|BenewakeTFS20L|
-|47|DTS6012M-Serial|
-|100|SITL|
-
-## RNGFNDA_PIN: Rangefinder pin
-
-Analog or PWM input pin that rangefinder is connected to. Analog RSSI or Airspeed ports can be used for Analog inputs (some autopilots provide others also), Non-IOMCU Servo/MotorOutputs can be used for PWM input when configured as "GPIOs". Values for some autopilots are given as examples. Search wiki for "Analog pins" for analog pin or "GPIOs", if PWM input type, to determine pin number.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Not Used|
-|11|Pixracer|
-|13|Pixhawk ADC4|
-|14|Pixhawk ADC3|
-|15|Pixhawk ADC6/Pixhawk2 ADC|
-|50|AUX1|
-|51|AUX2|
-|52|AUX3|
-|53|AUX4|
-|54|AUX5|
-|55|AUX6|
-|103|Pixhawk SBUS|
-
-- Range: -1 127
-
-## RNGFNDA_SCALING: Rangefinder scaling
-
-Scaling factor between rangefinder reading and distance. For the linear and inverted functions this is in meters per volt. For the hyperbolic function the units are meterVolts. For Maxbotix serial sonar this is unit conversion to meters.
-
-- Units: m/V
-
-- Increment: 0.001
-
-## RNGFNDA_OFFSET: rangefinder offset
-
-Offset in volts for zero distance for analog rangefinders. Offset added to distance in centimeters for PWM lidars
-
-- Units: V
-
-- Increment: 0.001
-
-## RNGFNDA_FUNCTION: Rangefinder function
-
-Control over what function is used to calculate distance. For a linear function, the distance is (voltage-offset)*scaling. For a inverted function the distance is (offset-voltage)*scaling. For a hyperbolic function the distance is scaling/(voltage-offset). The functions return the distance in meters.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Linear|
-|1|Inverted|
-|2|Hyperbolic|
-
-## RNGFNDA_MIN: Rangefinder minimum distance
-
-Minimum distance in metres that rangefinder can reliably read
-
-- Units: m
-
-- Increment: 0.01
-
-## RNGFNDA_MAX: Rangefinder maximum distance
-
-Maximum distance in metres that rangefinder can reliably read
-
-- Units: m
-
-- Increment: 0.01
-
-## RNGFNDA_STOP_PIN: Rangefinder stop pin
-
-Digital pin that enables/disables rangefinder measurement for the pwm rangefinder. A value of -1 means no pin. If this is set, then the pin is set to 1 to enable the rangefinder and set to 0 to disable it. This is used to enable powersaving when out of range. Some common values are given, but see the Wiki's "GPIOs" page for how to determine the pin number for a given autopilot.
-
-|Value|Meaning|
-|:---:|:---:|
-|-1|Not Used|
-|50|AUX1|
-|51|AUX2|
-|52|AUX3|
-|53|AUX4|
-|54|AUX5|
-|55|AUX6|
-|111|PX4 FMU Relay1|
-|112|PX4 FMU Relay2|
-|113|PX4IO Relay1|
-|114|PX4IO Relay2|
-|115|PX4IO ACC1|
-|116|PX4IO ACC2|
-
-- Range: -1 127
-
-## RNGFNDA_RMETRIC: Ratiometric
-
-This parameter sets whether an analog rangefinder is ratiometric. Most analog rangefinders are ratiometric, meaning that their output voltage is influenced by the supply voltage. Some analog rangefinders (such as the SF/02) have their own internal voltage regulators so they are not ratiometric.
-
-|Value|Meaning|
-|:---:|:---:|
-|0|No|
-|1|Yes|
-
-## RNGFNDA_PWRRNG: Powersave range
-
-This parameter sets the estimated terrain distance in meters above which the sensor will be put into a power saving mode (if available). A value of zero means power saving is not enabled
-
-- Units: m
-
-- Range: 0 32767
-
-## RNGFNDA_GNDCLR: Distance from the range finder to the ground
-
-This parameter sets the expected range measurement that the range finder should return when the vehicle is on the ground.
-
-- Units: m
-
-- Range: 0.05 1.5
-
-- Increment: 0.01
-
-## RNGFNDA_ADDR: Bus address of sensor
-
-This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.
-
-- Range: 0 127
-
-- Increment: 1
-
-## RNGFNDA_POS_X: X position offset
-
-*Note: This parameter is for advanced users*
-
-X position of the rangefinder in body frame. Positive X is forward of the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFNDA_POS_Y: Y position offset
-
-*Note: This parameter is for advanced users*
-
-Y position of the rangefinder in body frame. Positive Y is to the right of the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFNDA_POS_Z: Z position offset
-
-*Note: This parameter is for advanced users*
-
-Z position of the rangefinder in body frame. Positive Z is down from the origin. Use the zero range datum point if supplied.
-
-- Units: m
-
-- Range: -5 5
-
-- Increment: 0.01
-
-## RNGFNDA_ORIENT: Rangefinder orientation
-
-*Note: This parameter is for advanced users*
-
-Orientation of rangefinder
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Forward|
-|1|Forward-Right|
-|2|Right|
-|3|Back-Right|
-|4|Back|
-|5|Back-Left|
-|6|Left|
-|7|Forward-Left|
-|24|Up|
-|25|Down|
-
-## RNGFNDA_WSP_MAVG: Moving Average Range
-
-*Note: This parameter is for advanced users*
-
-Sets the number of historic range results to use for calculating the current range result. When MAVG is greater than 1, the current range result will be the current measured value averaged with the N-1 previous results
-
-- Range: 0 255
-
-## RNGFNDA_WSP_MEDF: Moving Median Filter
-
-*Note: This parameter is for advanced users*
-
-Sets the window size for the real-time median filter. When MEDF is greater than 0 the median filter is active
-
-- Range: 0 255
-
-## RNGFNDA_WSP_FRQ: Frequency
-
-*Note: This parameter is for advanced users*
-
-Sets the repetition frequency of the ranging operation in Hertz. Upon entering the desired frequency the system will calculate the nearest frequency that it can handle according to the resolution of internal timers.
-
-- Range: 0 10000
-
-## RNGFNDA_WSP_AVG: Multi-pulse averages
-
-*Note: This parameter is for advanced users*
-
-Sets the number of pulses to be used in multi-pulse averaging mode. In this mode, a sequence of rapid fire ranges are taken and then averaged to improve the accuracy of the measurement
-
-- Range: 0 255
-
-## RNGFNDA_WSP_THR: Sensitivity threshold
-
-*Note: This parameter is for advanced users*
-
-Sets the system sensitivity. Larger values of THR represent higher sensitivity. The system may limit the maximum value of THR to prevent excessive false alarm rates based on settings made at the factory. Set to -1 for automatic threshold adjustments
-
-- Range: -1 255
-
-## RNGFNDA_WSP_BAUD: Baud rate
-
-*Note: This parameter is for advanced users*
-
-Desired baud rate
-
 |Value|Meaning|
 |:---:|:---:|
-|0|Low Speed|
-|1|High Speed|
+|0|Normal|
+|1|Reversed|
 
-## RNGFNDA_RECV_ID: RangeFinder CAN receive ID
+## RCn_DZ: RC dead-zone
 
 *Note: This parameter is for advanced users*
 
-The receive ID of the CAN frames. A value of zero means all IDs are accepted.
+PWM dead zone in microseconds around trim or bottom
 
-- Range: 0 65535
+- Units: PWM
 
-## RNGFNDA_SNR_MIN: RangeFinder Minimum signal strength
+- Range: 0 200
 
-*Note: This parameter is for advanced users*
-
-RangeFinder Minimum signal strength (SNR) to accept distance
-
-- Range: 0 65535
-
-## RNGFNDA_GRF_RET: LightWare GRF Distance Return Type
+## RCn_OPTION: RC input option
 
-Selects which single return to use.
+Function assigned to this RC channel
 
 |Value|Meaning|
 |:---:|:---:|
-|0|FirstRaw|
-|1|FirstFiltered|
-|2|LastRaw|
-|3|LastFiltered|
-
-- RebootRequired: True
-
-## RNGFNDA_GRF_ST: LightWare GRF Minimum Return Strength
-
-*Note: This parameter is for advanced users*
-
-Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.
-
-- Range: 0 255
-
-- RebootRequired: True
-
-## RNGFNDA_GRF_RATE: LightWare GRF Update Rate
-
-*Note: This parameter is for advanced users*
-
-The update rate of the sensor in Hz. Must match the
-
-- Range: 1 50
-
-- RebootRequired: True
+|103|EKF lane switch attempt|
+|104|EKF yaw reset|
+|112|SwitchExternalAHRS|
+|300|Scripting1|
+|301|Scripting2|
+|302|Scripting3|
+|303|Scripting4|
+|304|Scripting5|
+|305|Scripting6|
+|306|Scripting7|
+|307|Scripting8|
+|308|Scripting9|
+|309|Scripting10|
+|310|Scripting11|
+|311|Scripting12|
+|312|Scripting13|
+|313|Scripting14|
+|314|Scripting15|
+|315|Scripting16|
+|316|Stop-Restart Scripting|
 
 # RPM1 Parameters
 
@@ -36817,7 +27858,7 @@ ESC Telemetry Index to write RPM to. Use 0 to disable.
 
 *Note: This parameter is for advanced users*
 
-DroneCAN sensor ID to send as on AP-Periph -1 disables
+DroneCAN sensor ID to assign to this backend
 
 - Range: -1 10
 
@@ -36904,7 +27945,7 @@ ESC Telemetry Index to write RPM to. Use 0 to disable.
 
 *Note: This parameter is for advanced users*
 
-DroneCAN sensor ID to send as on AP-Periph -1 disables
+DroneCAN sensor ID to assign to this backend
 
 - Range: -1 10
 
@@ -36991,7 +28032,7 @@ ESC Telemetry Index to write RPM to. Use 0 to disable.
 
 *Note: This parameter is for advanced users*
 
-DroneCAN sensor ID to send as on AP-Periph -1 disables
+DroneCAN sensor ID to assign to this backend
 
 - Range: -1 10
 
@@ -37078,29 +28119,45 @@ ESC Telemetry Index to write RPM to. Use 0 to disable.
 
 *Note: This parameter is for advanced users*
 
-DroneCAN sensor ID to send as on AP-Periph -1 disables
+DroneCAN sensor ID to assign to this backend
 
 - Range: -1 10
 
 - Increment: 1
 
-# RTC Parameters
+# SCHED Parameters
 
-## RTC_TYPES: Allowed sources of RTC time
-
-*Note: This parameter is for advanced users*
-
-Specifies which sources of UTC time will be accepted
-
-- Bitmask: 0:GPS,1:MAVLINK_SYSTEM_TIME,2:HW
-
-## RTC_TZ_MIN: Timezone offset from UTC
+## SCHED_DEBUG: Scheduler debug level
 
 *Note: This parameter is for advanced users*
 
-Adds offset in +- minutes from UTC to calculate local time
+Set to non-zero to enable scheduler debug messages. When set to show "Slips" the scheduler will display a message whenever a scheduled task is delayed due to too much CPU load. When set to ShowOverruns the scheduled will display a message whenever a task takes longer than the limit promised in the task table.
 
-- Range: -720 +840
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|2|ShowSlips|
+|3|ShowOverruns|
+
+## SCHED_LOOP_RATE: Scheduling main loop rate
+
+*Note: This parameter is for advanced users*
+
+This controls the rate of the main control loop in Hz. This should only be changed by developers. This only takes effect on restart. Values over 400 are considered highly experimental.
+
+- Range: 50 400
+
+- RebootRequired: True
+
+- Units: Hz
+
+## SCHED_OPTIONS: Scheduling options
+
+*Note: This parameter is for advanced users*
+
+This controls optional aspects of the scheduler.
+
+- Bitmask: 0:Enable per-task perf info
 
 # SCR Parameters
 
@@ -38322,6 +29379,464 @@ Control over UART options. The InvertRX option controls invert of the receive pi
 - Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from (moved to MAVn_OPTIONS >4.7), 11: DisableFIFO, 12: Ignore Streamrate (moved to MAVn_OPTIONS >4.7)
 
 - RebootRequired: True
+
+# SERVO Parameters
+
+## SERVO_RATE: Servo default output rate
+
+*Note: This parameter is for advanced users*
+
+Default output rate in Hz for all PWM outputs.
+
+- Range: 25 400
+
+- Units: Hz
+
+## SERVO_DSHOT_RATE: Servo DShot output rate
+
+*Note: This parameter is for advanced users*
+
+DShot output rate for all outputs as a multiple of the loop rate. 0 sets the output rate to be fixed at 1Khz for low loop rates. This value should never be set below 500Hz.
+
+|Value|Meaning|
+|:---:|:---:|
+|0|1Khz|
+|1|loop-rate|
+|2|double loop-rate|
+|3|triple loop-rate|
+|4|quadruple loop rate|
+
+## SERVO_DSHOT_ESC: Servo DShot ESC type
+
+*Note: This parameter is for advanced users*
+
+DShot ESC type for all outputs. The ESC type affects the range of DShot commands available and the bit widths used. None means that no dshot commands will be executed. Some ESC types support Extended DShot Telemetry (EDT) which allows telemetry other than RPM data to be returned when using bi-directional dshot. If you enable EDT you must install EDT capable firmware for correct operation.
+
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|1|BLHeli32/Kiss/AM32|
+|2|BLHeli_S/BlueJay|
+|3|BLHeli32/AM32/Kiss+EDT|
+|4|BLHeli_S/BlueJay+EDT|
+
+## SERVO_GPIO_MASK: Servo GPIO mask
+
+*Note: This parameter is for advanced users*
+
+Bitmask of outputs which will be available as GPIOs. Any output with either the function set to -1 or with the corresponding bit set in this mask will be available for use as a GPIO pin
+
+- Bitmask: 0:Servo 1, 1:Servo 2, 2:Servo 3, 3:Servo 4, 4:Servo 5, 5:Servo 6, 6:Servo 7, 7:Servo 8, 8:Servo 9, 9:Servo 10, 10:Servo 11, 11:Servo 12, 12:Servo 13, 13:Servo 14, 14:Servo 15, 15:Servo 16, 16:Servo 17, 17:Servo 18, 18:Servo 19, 19:Servo 20, 20:Servo 21, 21:Servo 22, 22:Servo 23, 23:Servo 24, 24:Servo 25, 25:Servo 26, 26:Servo 27, 27:Servo 28, 28:Servo 29, 29:Servo 30, 30:Servo 31, 31:Servo 32
+
+- RebootRequired: True
+
+## SERVO_RC_FS_MSK: Servo RC Failsafe Mask
+
+*Note: This parameter is for advanced users*
+
+Bitmask of scaled passthru output channels which will be set to their trim value during rc failsafe instead of holding their last position before failsafe.
+
+- Bitmask: 0:RCIN1Scaled, 1:RCIN2Scaled, 2:RCIN3Scaled, 3:RCIN4Scaled, 4:RCIN5Scaled, 5:RCIN6Scaled, 6:RCIN7Scaled, 7:RCIN8Scaled, 8:RCIN9Scaled, 9:RCIN10Scaled, 10:RCIN11Scaled, 11:SRCIN12Scaled, 12:RCIN13Scaled, 13:RCIN14Scaled, 14:RCIN15Scaled, 15:RCIN16Scaled
+
+## SERVO_32_ENABLE: Enable outputs 17 to 31
+
+*Note: This parameter is for advanced users*
+
+This allows for up to 32 outputs, enabling parameters for outputs above 16
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+# SERVOn Parameters
+
+## SERVOn_MIN: Minimum PWM
+
+minimum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
+
+- Units: PWM
+
+- Range: 800 2200
+
+- Increment: 1
+
+## SERVOn_MAX: Maximum PWM
+
+maximum PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
+
+- Units: PWM
+
+- Range: 800 2200
+
+- Increment: 1
+
+## SERVOn_TRIM: Trim PWM
+
+Trim PWM pulse width in microseconds. Typically 1000 is lower limit, 1500 is neutral and 2000 is upper limit.
+
+- Units: PWM
+
+- Range: 800 2200
+
+- Increment: 1
+
+## SERVOn_REVERSED: Servo reverse
+
+Reverse servo operation. Set to 0 for normal operation. Set to 1 to reverse this output channel.
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Normal|
+|1|Reversed|
+
+## SERVOn_FUNCTION: Servo output function
+
+Function assigned to this servo. Setting this to Disabled(0) will setup this output for control by auto missions or MAVLink servo set commands. any other value will enable the corresponding function
+
+|Value|Meaning|
+|:---:|:---:|
+|-1|GPIO|
+|0|Disabled|
+|1|RCPassThru|
+|2|Flap|
+|3|FlapAuto|
+|4|Aileron|
+|6|Mount1Yaw|
+|7|Mount1Pitch|
+|8|Mount1Roll|
+|9|Mount1Retract|
+|10|CameraTrigger|
+|12|Mount2Yaw|
+|13|Mount2Pitch|
+|14|Mount2Roll|
+|15|Mount2Retract|
+|16|DifferentialSpoilerLeft1|
+|17|DifferentialSpoilerRight1|
+|19|Elevator|
+|21|Rudder|
+|22|SprayerPump|
+|23|SprayerSpinner|
+|24|FlaperonLeft|
+|25|FlaperonRight|
+|26|GroundSteering|
+|27|Parachute|
+|28|Gripper|
+|29|LandingGear|
+|30|EngineRunEnable|
+|31|HeliRSC|
+|32|HeliTailRSC|
+|33|Motor1|
+|34|Motor2|
+|35|Motor3|
+|36|Motor4|
+|37|Motor5|
+|38|Motor6|
+|39|Motor7|
+|40|Motor8|
+|41|TiltMotorsFront|
+|45|TiltMotorsRear|
+|46|TiltMotorRearLeft|
+|47|TiltMotorRearRight|
+|51|RCIN1|
+|52|RCIN2|
+|53|RCIN3|
+|54|RCIN4|
+|55|RCIN5|
+|56|RCIN6|
+|57|RCIN7|
+|58|RCIN8|
+|59|RCIN9|
+|60|RCIN10|
+|61|RCIN11|
+|62|RCIN12|
+|63|RCIN13|
+|64|RCIN14|
+|65|RCIN15|
+|66|RCIN16|
+|67|Ignition|
+|69|Starter|
+|70|Throttle|
+|71|TrackerYaw|
+|72|TrackerPitch|
+|73|ThrottleLeft|
+|74|ThrottleRight|
+|75|TiltMotorFrontLeft|
+|76|TiltMotorFrontRight|
+|77|ElevonLeft|
+|78|ElevonRight|
+|79|VTailLeft|
+|80|VTailRight|
+|81|BoostThrottle|
+|82|Motor9|
+|83|Motor10|
+|84|Motor11|
+|85|Motor12|
+|86|DifferentialSpoilerLeft2|
+|87|DifferentialSpoilerRight2|
+|88|Winch|
+|89|Main Sail|
+|90|CameraISO|
+|91|CameraAperture|
+|92|CameraFocus|
+|93|CameraShutterSpeed|
+|94|Script1|
+|95|Script2|
+|96|Script3|
+|97|Script4|
+|98|Script5|
+|99|Script6|
+|100|Script7|
+|101|Script8|
+|102|Script9|
+|103|Script10|
+|104|Script11|
+|105|Script12|
+|106|Script13|
+|107|Script14|
+|108|Script15|
+|109|Script16|
+|120|NeoPixel1|
+|121|NeoPixel2|
+|122|NeoPixel3|
+|123|NeoPixel4|
+|124|RateRoll|
+|125|RatePitch|
+|126|RateThrust|
+|127|RateYaw|
+|128|WingSailElevator|
+|129|ProfiLED1|
+|130|ProfiLED2|
+|131|ProfiLED3|
+|132|ProfiLEDClock|
+|133|Winch Clutch|
+|134|SERVOn_MIN|
+|135|SERVOn_TRIM|
+|136|SERVOn_MAX|
+|137|SailMastRotation|
+|138|Alarm|
+|139|Alarm Inverted|
+|140|RCIN1Scaled|
+|141|RCIN2Scaled|
+|142|RCIN3Scaled|
+|143|RCIN4Scaled|
+|144|RCIN5Scaled|
+|145|RCIN6Scaled|
+|146|RCIN7Scaled|
+|147|RCIN8Scaled|
+|148|RCIN9Scaled|
+|149|RCIN10Scaled|
+|150|RCIN11Scaled|
+|151|RCIN12Scaled|
+|152|RCIN13Scaled|
+|153|RCIN14Scaled|
+|154|RCIN15Scaled|
+|155|RCIN16Scaled|
+|180|CameraZoom|
+
+- RebootRequired: True
+
+# SERVOBLH Parameters
+
+## SERVO_BLH_MASK: BLHeli Channel Bitmask
+
+*Note: This parameter is for advanced users*
+
+Enable of BLHeli pass-thru servo protocol support to specific channels. This mask is in addition to motors enabled using SERVO_BLH_AUTO (if any)
+
+- Bitmask: 0:Channel1,1:Channel2,2:Channel3,3:Channel4,4:Channel5,5:Channel6,6:Channel7,7:Channel8,8:Channel9,9:Channel10,10:Channel11,11:Channel12,12:Channel13,13:Channel14,14:Channel15,15:Channel16, 16:Channel 17, 17: Channel 18, 18: Channel 19, 19: Channel 20, 20: Channel 21, 21: Channel 22, 22: Channel 23, 23: Channel 24, 24: Channel 25, 25: Channel 26, 26: Channel 27, 27: Channel 28, 28: Channel 29, 29: Channel 30, 30: Channel 31, 31: Channel 32
+
+- RebootRequired: True
+
+## SERVO_BLH_AUTO: BLHeli pass-thru auto-enable for multicopter motors
+
+If set to 1 this auto-enables BLHeli pass-thru support for all multicopter motors
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+- RebootRequired: True
+
+## SERVO_BLH_TEST: BLHeli internal interface test
+
+*Note: This parameter is for advanced users*
+
+Setting SERVO_BLH_TEST to a motor number enables an internal test of the BLHeli ESC protocol to the corresponding ESC. The debug output is displayed on the USB console.
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|TestMotor1|
+|2|TestMotor2|
+|3|TestMotor3|
+|4|TestMotor4|
+|5|TestMotor5|
+|6|TestMotor6|
+|7|TestMotor7|
+|8|TestMotor8|
+
+## SERVO_BLH_TMOUT: BLHeli protocol timeout
+
+This sets the inactivity timeout for the BLHeli protocol in seconds. If no packets are received in this time normal MAVLink operations are resumed. A value of 0 means no timeout
+
+- Units: s
+
+- Range: 0 300
+
+## SERVO_BLH_TRATE: BLHeli telemetry rate
+
+This sets the rate in Hz for requesting telemetry from ESCs. It is the rate per ESC. Setting to zero disables telemetry requests
+
+- Units: Hz
+
+- Range: 0 500
+
+## SERVO_BLH_DEBUG: BLHeli debug level
+
+When set to 1 this enabled verbose debugging output over MAVLink when the blheli protocol is active. This can be used to diagnose failures.
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
+## SERVO_BLH_OTYPE: BLHeli output type override
+
+*Note: This parameter is for advanced users*
+
+When set to a non-zero value this overrides the output type for the output channels given by SERVO_BLH_MASK. This can be used to enable DShot on outputs that are not part of the multicopter motors group.
+
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|1|OneShot|
+|2|OneShot125|
+|3|Brushed|
+|4|DShot150|
+|5|DShot300|
+|6|DShot600|
+|7|DShot1200|
+
+- RebootRequired: True
+
+## SERVO_BLH_PORT: Control port
+
+*Note: This parameter is for advanced users*
+
+This sets the mavlink channel to use for blheli pass-thru. The channel number is determined by the number of serial ports configured to use mavlink. So 0 is always the console, 1 is the next serial port using mavlink, 2 the next after that and so on.
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Console|
+|1|Mavlink Serial Channel1|
+|2|Mavlink Serial Channel2|
+|3|Mavlink Serial Channel3|
+|4|Mavlink Serial Channel4|
+|5|Mavlink Serial Channel5|
+
+## SERVO_BLH_POLES: BLHeli Motor Poles
+
+*Note: This parameter is for advanced users*
+
+This allows calculation of true RPM from ESC's eRPM. The default is 14.
+
+- Range: 1 127
+
+- RebootRequired: True
+
+## SERVO_BLH_3DMASK: BLHeli bitmask of 3D channels
+
+*Note: This parameter is for advanced users*
+
+Mask of channels which are dynamically reversible. This is used to configure ESCs in '3D' mode, allowing for the motor to spin in either direction. Note that setting an ESC as reversible with this option on AM32 will result in the forward direction of the ESC changing. You can combine with parameter with the SERVO_BLH_RVMASK parameter to maintain the same direction when the ESC is in 3D mode as it has in unidirectional (non-3D) mode.
+
+- Bitmask: 0:Channel1,1:Channel2,2:Channel3,3:Channel4,4:Channel5,5:Channel6,6:Channel7,7:Channel8,8:Channel9,9:Channel10,10:Channel11,11:Channel12,12:Channel13,13:Channel14,14:Channel15,15:Channel16, 16:Channel 17, 17: Channel 18, 18: Channel 19, 19: Channel 20, 20: Channel 21, 21: Channel 22, 22: Channel 23, 23: Channel 24, 24: Channel 25, 25: Channel 26, 26: Channel 27, 27: Channel 28, 28: Channel 29, 29: Channel 30, 30: Channel 31, 31: Channel 32
+
+- RebootRequired: True
+
+## SERVO_BLH_BDMASK: BLHeli bitmask of bi-directional dshot channels
+
+*Note: This parameter is for advanced users*
+
+Mask of channels which support bi-directional dshot telemetry. This is used for ESCs which have firmware that supports bi-directional dshot allowing fast rpm telemetry values to be returned for the harmonic notch.
+
+- Bitmask: 0:Channel1,1:Channel2,2:Channel3,3:Channel4,4:Channel5,5:Channel6,6:Channel7,7:Channel8,8:Channel9,9:Channel10,10:Channel11,11:Channel12,12:Channel13,13:Channel14,14:Channel15,15:Channel16, 16:Channel 17, 17: Channel 18, 18: Channel 19, 19: Channel 20, 20: Channel 21, 21: Channel 22, 22: Channel 23, 23: Channel 24, 24: Channel 25, 25: Channel 26, 26: Channel 27, 27: Channel 28, 28: Channel 29, 29: Channel 30, 30: Channel 31, 31: Channel 32
+
+- RebootRequired: True
+
+## SERVO_BLH_RVMASK: BLHeli bitmask of reversed channels
+
+*Note: This parameter is for advanced users*
+
+Mask of channels which are reversed. This is used to configure ESCs to reverse motor direction. Note that when combined with SERVO_BLH_3DMASK this will change what direction is considered to be forward.
+
+- Bitmask: 0:Channel1,1:Channel2,2:Channel3,3:Channel4,4:Channel5,5:Channel6,6:Channel7,7:Channel8,8:Channel9,9:Channel10,10:Channel11,11:Channel12,12:Channel13,13:Channel14,14:Channel15,15:Channel16, 16:Channel 17, 17: Channel 18, 18: Channel 19, 19: Channel 20, 20: Channel 21, 21: Channel 22, 22: Channel 23, 23: Channel 24, 24: Channel 25, 25: Channel 26, 26: Channel 27, 27: Channel 28, 28: Channel 29, 29: Channel 30, 30: Channel 31, 31: Channel 32
+
+- RebootRequired: True
+
+# SERVOFTW Parameters
+
+## SERVO_FTW_MASK: Servo channel output bitmask
+
+Servo channel mask specifying FETtec ESC output.
+
+- Bitmask: 0:SERVO1,1:SERVO2,2:SERVO3,3:SERVO4,4:SERVO5,5:SERVO6,6:SERVO7,7:SERVO8,8:SERVO9,9:SERVO10,10:SERVO11,11:SERVO12
+
+- RebootRequired: True
+
+## SERVO_FTW_RVMASK: Servo channel reverse rotation bitmask
+
+Servo channel mask to reverse rotation of FETtec ESC outputs.
+
+- Bitmask: 0:SERVO1,1:SERVO2,2:SERVO3,3:SERVO4,4:SERVO5,5:SERVO6,6:SERVO7,7:SERVO8,8:SERVO9,9:SERVO10,10:SERVO11,11:SERVO12
+
+## SERVO_FTW_POLES: Nr. electrical poles
+
+Number of motor electrical poles
+
+- Range: 2 50
+
+# SERVOROB Parameters
+
+## SERVO_ROB_POSMIN: Robotis servo position min
+
+Position minimum at servo min value. This should be within the position control range of the servos, normally 0 to 4095
+
+- Range: 0 4095
+
+## SERVO_ROB_POSMAX: Robotis servo position max
+
+Position maximum at servo max value. This should be within the position control range of the servos, normally 0 to 4095
+
+- Range: 0 4095
+
+# SERVOSBUS Parameters
+
+## SERVO_SBUS_RATE: SBUS default output rate
+
+*Note: This parameter is for advanced users*
+
+This sets the SBUS output frame rate in Hz.
+
+- Range: 25 250
+
+- Units: Hz
+
+# SERVOVOLZ Parameters
+
+## SERVO_VOLZ_MASK: Channel Bitmask
+
+Enable of volz servo protocol to specific channels
+
+- Bitmask: 0:Channel1,1:Channel2,2:Channel3,3:Channel4,4:Channel5,5:Channel6,6:Channel7,7:Channel8,8:Channel9,9:Channel10,10:Channel11,11:Channel12,12:Channel13,13:Channel14,14:Channel15,15:Channel16,16:Channel17,17:Channel18,18:Channel19,19:Channel20,20:Channel21,21:Channel22,22:Channel23,23:Channel24,24:Channel25,25:Channel26,26:Channel27,28:Channel29,29:Channel30,30:Channel31,31:Channel32
+
+## SERVO_VOLZ_RANGE: Range of travel
+
+Range to map between 1000 and 2000 PWM. Default value of 200 gives full +-100 deg range of extended position command. This results in 0.2 deg movement per US change in PWM. If the full range is not needed it can be reduced to increase resolution. 40 deg range gives 0.04 deg movement per US change in PWM, this is higher resolution than possible with the VOLZ protocol so further reduction in range will not improve resolution. Reduced range does allow PWMs outside the 1000 to 2000 range, with 40 deg range 750 PWM results in a angle of -30 deg, 2250 would be +30 deg. This is still limited by the 200 deg maximum range of the actuator.
+
+- Units: deg
 
 # SIM Parameters
 
@@ -42648,6 +34163,52 @@ mask of servo output channels to override with values from Volz protocol.  Note 
 
 fail servo at current position.  Channel 1 is bit 0.
 
+# STAT Parameters
+
+## STAT_BOOTCNT: Boot Count
+
+Number of times board has been booted
+
+- ReadOnly: True
+
+## STAT_FLTTIME: Total FlightTime
+
+Total FlightTime (seconds)
+
+- Units: s
+
+- ReadOnly: True
+
+## STAT_RUNTIME: Total RunTime
+
+Total time autopilot has run
+
+- Units: s
+
+- ReadOnly: True
+
+## STAT_RESET: Statistics Reset Time
+
+Seconds since January 1st 2016 (Unix epoch+1451606400) since statistics reset (set to 0 to reset statistics, other set values will be ignored)
+
+- Units: s
+
+- ReadOnly: True
+
+## STAT_FLTCNT: Total Flight Count
+
+Total number of flights
+
+- ReadOnly: True
+
+## STAT_DISTFLWN: Total Distance Flown
+
+Estimate of total distance flown since statistics reset
+
+- Units: m
+
+- ReadOnly: True
+
 # TEMP Parameters
 
 ## TEMP_LOG: Logging
@@ -44385,182 +35946,189 @@ Nominal RTD resistance used to calculate temperature, typically 100 or 1000 ohms
 
 Reference resistance used to calculate temperature, in ohms
 
-# UART0 Parameters
+# VISO Parameters
 
-## UART0_OPTIONS: Serial options
+## VISO_TYPE: Visual odometry camera connection type
 
-Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire. The Swap option allows the RX and TX pins to be swapped on STM32F7 based boards.
+*Note: This parameter is for advanced users*
 
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO, 12: Ignore Streamrate
-
-## UART0_RTSCTS: Serial1 flow control
-
-Enable flow control. You must have the RTS and CTS pins available on the port. If this is set to 2 then flow control will be auto-detected by checking for the output buffer filling on startup.
+Visual odometry camera connection type
 
 |Value|Meaning|
 |:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-|2|Auto|
+|0|None|
+|1|MAVLink|
+|2|IntelT265|
+|3|VOXL(ModalAI)|
 
-# UART1 Parameters
+- RebootRequired: True
 
-## UART1_OPTIONS: Serial options
+## VISO_POS_X: Visual odometry camera X position offset
 
-Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire. The Swap option allows the RX and TX pins to be swapped on STM32F7 based boards.
+*Note: This parameter is for advanced users*
 
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO, 12: Ignore Streamrate
+X position of the camera in body frame. Positive X is forward of the origin.
 
-## UART1_RTSCTS: Serial1 flow control
+- Units: m
 
-Enable flow control. You must have the RTS and CTS pins available on the port. If this is set to 2 then flow control will be auto-detected by checking for the output buffer filling on startup.
+- Range: -5 5
 
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-|2|Auto|
+- Increment: 0.01
 
-# UART2 Parameters
+## VISO_POS_Y: Visual odometry camera Y position offset
 
-## UART2_OPTIONS: Serial options
+*Note: This parameter is for advanced users*
 
-Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire. The Swap option allows the RX and TX pins to be swapped on STM32F7 based boards.
+Y position of the camera in body frame. Positive Y is to the right of the origin.
 
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO, 12: Ignore Streamrate
+- Units: m
 
-## UART2_RTSCTS: Serial1 flow control
+- Range: -5 5
 
-Enable flow control. You must have the RTS and CTS pins available on the port. If this is set to 2 then flow control will be auto-detected by checking for the output buffer filling on startup.
+- Increment: 0.01
 
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-|2|Auto|
+## VISO_POS_Z: Visual odometry camera Z position offset
 
-# UART3 Parameters
+*Note: This parameter is for advanced users*
 
-## UART3_OPTIONS: Serial options
+Z position of the camera in body frame. Positive Z is down from the origin.
 
-Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire. The Swap option allows the RX and TX pins to be swapped on STM32F7 based boards.
+- Units: m
 
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO, 12: Ignore Streamrate
+- Range: -5 5
 
-## UART3_RTSCTS: Serial1 flow control
+- Increment: 0.01
 
-Enable flow control. You must have the RTS and CTS pins available on the port. If this is set to 2 then flow control will be auto-detected by checking for the output buffer filling on startup.
+## VISO_ORIENT: Visual odometery camera orientation
+
+*Note: This parameter is for advanced users*
+
+Visual odometery camera orientation
 
 |Value|Meaning|
 |:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-|2|Auto|
+|0|Forward|
+|2|Right|
+|4|Back|
+|6|Left|
+|24|Up|
+|25|Down|
 
-# UART4 Parameters
+## VISO_SCALE: Visual odometry scaling factor
 
-## UART4_OPTIONS: Serial options
+*Note: This parameter is for advanced users*
 
-Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire. The Swap option allows the RX and TX pins to be swapped on STM32F7 based boards.
+Visual odometry scaling factor applied to position estimates from sensor
 
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO, 12: Ignore Streamrate
+## VISO_DELAY_MS: Visual odometry sensor delay
 
-## UART4_RTSCTS: Serial1 flow control
+*Note: This parameter is for advanced users*
 
-Enable flow control. You must have the RTS and CTS pins available on the port. If this is set to 2 then flow control will be auto-detected by checking for the output buffer filling on startup.
+Visual odometry sensor delay relative to inertial measurements
 
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-|2|Auto|
+- Units: ms
 
-# UART5 Parameters
+- Range: 0 250
 
-## UART5_OPTIONS: Serial options
+## VISO_VEL_M_NSE: Visual odometry velocity measurement noise
 
-Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire. The Swap option allows the RX and TX pins to be swapped on STM32F7 based boards.
+*Note: This parameter is for advanced users*
 
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO, 12: Ignore Streamrate
+Visual odometry velocity measurement noise in m/s
 
-## UART5_RTSCTS: Serial1 flow control
+- Units: m/s
 
-Enable flow control. You must have the RTS and CTS pins available on the port. If this is set to 2 then flow control will be auto-detected by checking for the output buffer filling on startup.
+- Range: 0.05 5.0
 
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-|2|Auto|
+## VISO_POS_M_NSE: Visual odometry position measurement noise
 
-# UART6 Parameters
+*Note: This parameter is for advanced users*
 
-## UART6_OPTIONS: Serial options
+Visual odometry position measurement noise minimum (meters). This value will be used if the sensor provides a lower noise value (or no noise value)
 
-Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire. The Swap option allows the RX and TX pins to be swapped on STM32F7 based boards.
+- Units: m
 
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO, 12: Ignore Streamrate
+- Range: 0.1 10.0
 
-## UART6_RTSCTS: Serial1 flow control
+## VISO_YAW_M_NSE: Visual odometry yaw measurement noise
 
-Enable flow control. You must have the RTS and CTS pins available on the port. If this is set to 2 then flow control will be auto-detected by checking for the output buffer filling on startup.
+*Note: This parameter is for advanced users*
 
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-|2|Auto|
+Visual odometry yaw measurement noise minimum (radians), This value will be used if the sensor provides a lower noise value (or no noise value)
 
-# UART7 Parameters
+- Units: rad
 
-## UART7_OPTIONS: Serial options
+- Range: 0.05 1.0
 
-Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire. The Swap option allows the RX and TX pins to be swapped on STM32F7 based boards.
+## VISO_QUAL_MIN: Visual odometry minimum quality
 
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO, 12: Ignore Streamrate
+*Note: This parameter is for advanced users*
 
-## UART7_RTSCTS: Serial1 flow control
+Visual odometry will only be sent to EKF if over this value. -1 to always send (even bad values), 0 to send if good or unknown
 
-Enable flow control. You must have the RTS and CTS pins available on the port. If this is set to 2 then flow control will be auto-detected by checking for the output buffer filling on startup.
+- Units: %
 
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-|2|Auto|
+- Range: -1 100
 
-# UART8 Parameters
+# VTX Parameters
 
-## UART8_OPTIONS: Serial options
+## VTX_ENABLE: Is the Video Transmitter enabled or not
 
-Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire. The Swap option allows the RX and TX pins to be swapped on STM32F7 based boards.
-
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO, 12: Ignore Streamrate
-
-## UART8_RTSCTS: Serial1 flow control
-
-Enable flow control. You must have the RTS and CTS pins available on the port. If this is set to 2 then flow control will be auto-detected by checking for the output buffer filling on startup.
+Toggles the Video Transmitter on and off
 
 |Value|Meaning|
 |:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-|2|Auto|
+|0|Disable|
+|1|Enable|
 
-# UART9 Parameters
+## VTX_POWER: Video Transmitter Power Level
 
-## UART9_OPTIONS: Serial options
+Video Transmitter Power Level. Different VTXs support different power levels, the power level chosen will be rounded down to the nearest supported power level
 
-Control over UART options. The InvertRX option controls invert of the receive pin. The InvertTX option controls invert of the transmit pin. The HalfDuplex option controls half-duplex (onewire) mode, where both transmit and receive is done on the transmit wire. The Swap option allows the RX and TX pins to be swapped on STM32F7 based boards.
+- Range: 1 1000
 
-- Bitmask: 0:InvertRX, 1:InvertTX, 2:HalfDuplex, 3:SwapTXRX, 4: RX_PullDown, 5: RX_PullUp, 6: TX_PullDown, 7: TX_PullUp, 8: RX_NoDMA, 9: TX_NoDMA, 10: Don't forward mavlink to/from, 11: DisableFIFO, 12: Ignore Streamrate
+## VTX_CHANNEL: Video Transmitter Channel
 
-## UART9_RTSCTS: Serial1 flow control
+Video Transmitter Channel
 
-Enable flow control. You must have the RTS and CTS pins available on the port. If this is set to 2 then flow control will be auto-detected by checking for the output buffer filling on startup.
+- Range: 0 7
+
+## VTX_BAND: Video Transmitter Band
+
+Video Transmitter Band
 
 |Value|Meaning|
 |:---:|:---:|
-|0|Disabled|
-|1|Enabled|
-|2|Auto|
+|0|Band A|
+|1|Band B|
+|2|Band E|
+|3|Airwave|
+|4|RaceBand|
+|5|Low RaceBand|
+|6|1G3 Band A|
+|7|1G3 Band B|
+|8|Band X|
+|9|3G3 Band A|
+|10|3G3 Band B|
+
+## VTX_FREQ: Video Transmitter Frequency
+
+Video Transmitter Frequency. The frequency is derived from the setting of BAND and CHANNEL
+
+- ReadOnly: True
+
+- Range: 1000 6000
+
+## VTX_OPTIONS: Video Transmitter Options
+
+*Note: This parameter is for advanced users*
+
+Video Transmitter Options. Pitmode puts the VTX in a low power state. Unlocked enables certain restricted frequencies and power levels. Do not enable the Unlocked option unless you have appropriate permissions in your jurisdiction to transmit at high power levels. One stop-bit may be required for VTXs that erroneously mimic iNav behaviour.
+
+- Bitmask: 0:Pitmode,1:Pitmode until armed,2:Pitmode when disarmed,3:Unlocked,4:Add leading zero byte to requests,5:Use 1 stop-bit in SmartAudio,6:Ignore CRC in SmartAudio,7:Ignore status updates in CRSF and blindly set VTX options
+
+## VTX_MAX_POWER: Video Transmitter Max Power Level
+
+Video Transmitter Maximum Power Level. Different VTXs support different power levels, this prevents the power aux switch from requesting too high a power level. The switch supports 6 power levels and the selected power will be a subdivision between 0 and this setting.
+
+- Range: 25 1000
