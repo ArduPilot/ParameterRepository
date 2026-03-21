@@ -1301,6 +1301,16 @@ If external guided command was not received by this timeout, the vehicle will re
 
 - Increment: 0.5
 
+## RNGFND_LND_DIST: Rangefinder landing engagement distance
+
+The horizontal distance to the landing point at which the rangefinder engages when RNGFND_LANDING is enabled. This is useful for landing on platforms or small plateaus, and to avoid interference from uneven terrain or obstacles on approach. A value of 0 engages the rangefinder as soon as it reports valid readings within its range limits. Very small values are not recommended unless required by the landing scenario, as they can force large slope corrections near the ground, increase auto-abort frequency if LAND_ABORT_DEG is set, and provide no slope-correction benefit if the rangefinder is engaged after flare.
+
+- Range: 0 500
+
+- Units: m
+
+- Increment: 1
+
 # VEHICLE Parameters
 
 ## FLTMODE_GCSBLOCK: Flight mode block from GCS
@@ -1310,6 +1320,15 @@ Bitmask of flight modes to disable for GCS selection. Mode can still be accessed
 - Bitmask: 0:Manual,1:Circle,2:Stabilize,3:Training,4:ACRO,5:FBWA,6:FBWB,7:CRUISE,8:AUTOTUNE,9:Auto,10:Loiter,11:Takeoff,12:AVOID_ADSB,13:Guided,14:THERMAL,15:QSTABILIZE,16:QHOVER,17:QLOITER,18:QACRO,19:QAUTOTUNE,20:Loiter to QLand,21:Autoland
 
 # Lua Script Parameters
+
+## PARAM_LOCK_ENAB: Param Lockdown enable
+
+Param Lockdown enable
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
 
 ## DR_ENABLE: Deadreckoning Enable
 
@@ -1601,15 +1620,6 @@ OpticalFlow may be used if rangefinder distance is below this threshold
 - Range: 0 50
 
 - Units: m
-
-## PARAM_SET_ENABLE: Param Set enable
-
-Param Set enable
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
 
 ## FOLLP_FAIL_MODE: Plane Follow lost target mode
 
@@ -18904,8 +18914,10 @@ Type of AHRS device
 |1|VectorNav|
 |2|MicroStrain5|
 |5|InertialLabs|
+|6|Trimble GSOF|
 |7|MicroStrain7|
 |8|SBG|
+|11|SensAItion|
 
 ## EAHRS_RATE: AHRS data rate
 
@@ -18917,7 +18929,7 @@ Requested rate for AHRS device
 
 External AHRS options bitmask
 
-- Bitmask: 0:Vector Nav use uncompensated values for accel gyro and mag., 1:SBG uses EKF as GNSS.
+- Bitmask: 0:Vector Nav use uncompensated values for accel gyro and mag, 1:SBG uses EKF as GNSS, 2:SensAItion used as AHRS
 
 ## EAHRS_SENSORS: External AHRS sensors
 
@@ -40217,6 +40229,8 @@ Maximum acceleration in pitch axis
 
 Roll axis rate controller P gain.  Corrects in proportion to the difference between the desired roll rate vs actual roll rate
 
+- Units: s/rad
+
 - Range: 0.01 0.5
 
 - Increment: 0.005
@@ -40224,6 +40238,8 @@ Roll axis rate controller P gain.  Corrects in proportion to the difference betw
 ## Q_A_RAT_RLL_I: Roll axis rate controller I gain
 
 Roll axis rate controller I gain.  Corrects long-term difference in desired roll rate vs actual roll rate
+
+- Units: 1/rad
 
 - Range: 0.01 2.0
 
@@ -40241,6 +40257,8 @@ Roll axis rate controller I gain maximum.  Constrains the maximum that the I ter
 
 Roll axis rate controller D gain.  Compensates for short-term change in desired roll rate vs actual roll rate
 
+- Units: s^2/rad
+
 - Range: 0.0 0.05
 
 - Increment: 0.001
@@ -40248,6 +40266,8 @@ Roll axis rate controller D gain.  Compensates for short-term change in desired 
 ## Q_A_RAT_RLL_FF: Roll axis rate controller feed forward
 
 Roll axis rate controller feed forward
+
+- Units: s/rad
 
 - Range: 0 0.5
 
@@ -40307,6 +40327,8 @@ Roll axis rate controller PD sum maximum.  The maximum/minimum value that the su
 
 FF D Gain which produces an output that is proportional to the rate of change of the target
 
+- Units: s^2/rad
+
 - Range: 0 0.02
 
 - Increment: 0.0001
@@ -40331,6 +40353,8 @@ Roll Error notch filter index
 
 Pitch axis rate controller P gain.  Corrects in proportion to the difference between the desired pitch rate vs actual pitch rate output
 
+- Units: s/rad
+
 - Range: 0.01 0.50
 
 - Increment: 0.005
@@ -40338,6 +40362,8 @@ Pitch axis rate controller P gain.  Corrects in proportion to the difference bet
 ## Q_A_RAT_PIT_I: Pitch axis rate controller I gain
 
 Pitch axis rate controller I gain.  Corrects long-term difference in desired pitch rate vs actual pitch rate
+
+- Units: 1/rad
 
 - Range: 0.01 2.0
 
@@ -40355,6 +40381,8 @@ Pitch axis rate controller I gain maximum.  Constrains the maximum that the I te
 
 Pitch axis rate controller D gain.  Compensates for short-term change in desired pitch rate vs actual pitch rate
 
+- Units: s^2/rad
+
 - Range: 0.0 0.05
 
 - Increment: 0.001
@@ -40362,6 +40390,8 @@ Pitch axis rate controller D gain.  Compensates for short-term change in desired
 ## Q_A_RAT_PIT_FF: Pitch axis rate controller feed forward
 
 Pitch axis rate controller feed forward
+
+- Units: s/rad
 
 - Range: 0 0.5
 
@@ -40421,6 +40451,8 @@ Pitch axis rate controller PD sum maximum.  The maximum/minimum value that the s
 
 FF D Gain which produces an output that is proportional to the rate of change of the target
 
+- Units: s^2/rad
+
 - Range: 0 0.02
 
 - Increment: 0.0001
@@ -40445,6 +40477,8 @@ Pitch Error notch filter index
 
 Yaw axis rate controller P gain.  Corrects in proportion to the difference between the desired yaw rate vs actual yaw rate
 
+- Units: s/rad
+
 - Range: 0.10 2.50
 
 - Increment: 0.005
@@ -40452,6 +40486,8 @@ Yaw axis rate controller P gain.  Corrects in proportion to the difference betwe
 ## Q_A_RAT_YAW_I: Yaw axis rate controller I gain
 
 Yaw axis rate controller I gain.  Corrects long-term difference in desired yaw rate vs actual yaw rate
+
+- Units: 1/rad
 
 - Range: 0.010 1.0
 
@@ -40469,6 +40505,8 @@ Yaw axis rate controller I gain maximum.  Constrains the maximum that the I term
 
 Yaw axis rate controller D gain.  Compensates for short-term change in desired yaw rate vs actual yaw rate
 
+- Units: s^2/rad
+
 - Range: 0.000 0.02
 
 - Increment: 0.001
@@ -40476,6 +40514,8 @@ Yaw axis rate controller D gain.  Compensates for short-term change in desired y
 ## Q_A_RAT_YAW_FF: Yaw axis rate controller feed forward
 
 Yaw axis rate controller feed forward
+
+- Units: s/rad
 
 - Range: 0 0.5
 
@@ -40534,6 +40574,8 @@ Yaw axis rate controller PD sum maximum.  The maximum/minimum value that the sum
 *Note: This parameter is for advanced users*
 
 FF D Gain which produces an output that is proportional to the rate of change of the target
+
+- Units: s^2/rad
 
 - Range: 0 0.02
 

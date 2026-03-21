@@ -396,7 +396,7 @@
           <value code="12">Loiter Pos kP</value>
           <value code="22">Velocity XY kP</value>
           <value code="28">Velocity XY kI</value>
-          <value code="10">WP Speed</value>
+          <value code="10">WP Speed (4.6 and earlier)</value>
           <value code="25">Acro Roll/Pitch deg/s</value>
           <value code="40">Acro Yaw deg/s</value>
           <value code="45">RC Feel</value>
@@ -415,6 +415,7 @@
           <value code="58">SysID Magnitude</value>
           <value code="59">PSC Angle Max</value>
           <value code="60">Loiter Speed</value>
+          <value code="61">WP Speed (m/s)</value>
         </values>
       </param>
       <param humanName="Frame Type (+, X, V, etc)" name="ArduCopter:FRAME_TYPE" documentation="Controls motor mixing for multicopters.  Not used for Tri or Traditional Helicopters." user="Standard">
@@ -845,7 +846,7 @@
           <value code="12">Loiter Pos kP</value>
           <value code="22">Velocity XY kP</value>
           <value code="28">Velocity XY kI</value>
-          <value code="10">WP Speed</value>
+          <value code="10">WP Speed (4.6 and earlier)</value>
           <value code="25">Acro Roll/Pitch deg/s</value>
           <value code="40">Acro Yaw deg/s</value>
           <value code="45">RC Feel</value>
@@ -864,6 +865,7 @@
           <value code="58">SysID Magnitude</value>
           <value code="59">PSC Angle Max</value>
           <value code="60">Loiter Speed</value>
+          <value code="61">WP Speed (m/s)</value>
         </values>
       </param>
       <param humanName="Pilot vertical acceleration" name="ArduCopter:PILOT_ACC_Z" documentation="The vertical acceleration used when pilot is controlling the altitude" user="Standard">
@@ -925,6 +927,12 @@
       </param>
     </parameters>
     <parameters name="Lua Script">
+      <param humanName="Param Lockdown enable" name="PARAM_LOCK_ENAB" documentation="Param Lockdown enable" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
       <param humanName="Deadreckoning Enable" name="DR_ENABLE" documentation="Deadreckoning Enable" user="Standard">
         <values>
           <value code="0">Disabled</value>
@@ -1107,12 +1115,6 @@
         <field name="Range">0 50</field>
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
-      </param>
-      <param humanName="Param Set enable" name="PARAM_SET_ENABLE" documentation="Param Set enable" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
       </param>
       <param humanName="Plane Follow lost target mode" name="FOLLP_FAIL_MODE" documentation="Mode to switch to if the target is lost (no signal or &gt; FOLL_DIST_MAX)." user="Standard">
 </param>
@@ -3756,10 +3758,14 @@
         </values>
       </param>
       <param humanName="Roll axis rate controller P gain" name="ATC_RAT_RLL_P" documentation="Roll axis rate controller P gain.  Corrects in proportion to the difference between the desired roll rate vs actual roll rate" user="Standard">
+        <field name="Units">s/rad</field>
+        <field name="UnitText">seconds per radian</field>
         <field name="Range">0.01 0.5</field>
         <field name="Increment">0.005</field>
       </param>
       <param humanName="Roll axis rate controller I gain" name="ATC_RAT_RLL_I" documentation="Roll axis rate controller I gain.  Corrects long-term difference in desired roll rate vs actual roll rate" user="Standard">
+        <field name="Units">1/rad</field>
+        <field name="UnitText">per radian</field>
         <field name="Range">0.01 2.0</field>
         <field name="Increment">0.01</field>
       </param>
@@ -3768,10 +3774,14 @@
         <field name="Increment">0.01</field>
       </param>
       <param humanName="Roll axis rate controller D gain" name="ATC_RAT_RLL_D" documentation="Roll axis rate controller D gain.  Compensates for short-term change in desired roll rate vs actual roll rate" user="Standard">
+        <field name="Units">s^2/rad</field>
+        <field name="UnitText">seconds squared per radian</field>
         <field name="Range">0.0 0.05</field>
         <field name="Increment">0.001</field>
       </param>
       <param humanName="Roll axis rate controller feed forward" name="ATC_RAT_RLL_FF" documentation="Roll axis rate controller feed forward" user="Standard">
+        <field name="Units">s/rad</field>
+        <field name="UnitText">seconds per radian</field>
         <field name="Range">0 0.5</field>
         <field name="Increment">0.001</field>
       </param>
@@ -3802,6 +3812,8 @@
         <field name="Increment">0.01</field>
       </param>
       <param humanName="Roll Derivative FeedForward Gain" name="ATC_RAT_RLL_D_FF" documentation="FF D Gain which produces an output that is proportional to the rate of change of the target" user="Advanced">
+        <field name="Units">s^2/rad</field>
+        <field name="UnitText">seconds squared per radian</field>
         <field name="Range">0 0.02</field>
         <field name="Increment">0.0001</field>
       </param>
@@ -3812,10 +3824,14 @@
         <field name="Range">1 8</field>
       </param>
       <param humanName="Pitch axis rate controller P gain" name="ATC_RAT_PIT_P" documentation="Pitch axis rate controller P gain.  Corrects in proportion to the difference between the desired pitch rate vs actual pitch rate output" user="Standard">
+        <field name="Units">s/rad</field>
+        <field name="UnitText">seconds per radian</field>
         <field name="Range">0.01 0.50</field>
         <field name="Increment">0.005</field>
       </param>
       <param humanName="Pitch axis rate controller I gain" name="ATC_RAT_PIT_I" documentation="Pitch axis rate controller I gain.  Corrects long-term difference in desired pitch rate vs actual pitch rate" user="Standard">
+        <field name="Units">1/rad</field>
+        <field name="UnitText">per radian</field>
         <field name="Range">0.01 2.0</field>
         <field name="Increment">0.01</field>
       </param>
@@ -3824,10 +3840,14 @@
         <field name="Increment">0.01</field>
       </param>
       <param humanName="Pitch axis rate controller D gain" name="ATC_RAT_PIT_D" documentation="Pitch axis rate controller D gain.  Compensates for short-term change in desired pitch rate vs actual pitch rate" user="Standard">
+        <field name="Units">s^2/rad</field>
+        <field name="UnitText">seconds squared per radian</field>
         <field name="Range">0.0 0.05</field>
         <field name="Increment">0.001</field>
       </param>
       <param humanName="Pitch axis rate controller feed forward" name="ATC_RAT_PIT_FF" documentation="Pitch axis rate controller feed forward" user="Standard">
+        <field name="Units">s/rad</field>
+        <field name="UnitText">seconds per radian</field>
         <field name="Range">0 0.5</field>
         <field name="Increment">0.001</field>
       </param>
@@ -3858,6 +3878,8 @@
         <field name="Increment">0.01</field>
       </param>
       <param humanName="Pitch Derivative FeedForward Gain" name="ATC_RAT_PIT_D_FF" documentation="FF D Gain which produces an output that is proportional to the rate of change of the target" user="Advanced">
+        <field name="Units">s^2/rad</field>
+        <field name="UnitText">seconds squared per radian</field>
         <field name="Range">0 0.02</field>
         <field name="Increment">0.0001</field>
       </param>
@@ -3868,10 +3890,14 @@
         <field name="Range">1 8</field>
       </param>
       <param humanName="Yaw axis rate controller P gain" name="ATC_RAT_YAW_P" documentation="Yaw axis rate controller P gain.  Corrects in proportion to the difference between the desired yaw rate vs actual yaw rate" user="Standard">
+        <field name="Units">s/rad</field>
+        <field name="UnitText">seconds per radian</field>
         <field name="Range">0.10 2.50</field>
         <field name="Increment">0.005</field>
       </param>
       <param humanName="Yaw axis rate controller I gain" name="ATC_RAT_YAW_I" documentation="Yaw axis rate controller I gain.  Corrects long-term difference in desired yaw rate vs actual yaw rate" user="Standard">
+        <field name="Units">1/rad</field>
+        <field name="UnitText">per radian</field>
         <field name="Range">0.010 1.0</field>
         <field name="Increment">0.01</field>
       </param>
@@ -3880,10 +3906,14 @@
         <field name="Increment">0.01</field>
       </param>
       <param humanName="Yaw axis rate controller D gain" name="ATC_RAT_YAW_D" documentation="Yaw axis rate controller D gain.  Compensates for short-term change in desired yaw rate vs actual yaw rate" user="Standard">
+        <field name="Units">s^2/rad</field>
+        <field name="UnitText">seconds squared per radian</field>
         <field name="Range">0.000 0.02</field>
         <field name="Increment">0.001</field>
       </param>
       <param humanName="Yaw axis rate controller feed forward" name="ATC_RAT_YAW_FF" documentation="Yaw axis rate controller feed forward" user="Standard">
+        <field name="Units">s/rad</field>
+        <field name="UnitText">seconds per radian</field>
         <field name="Range">0 0.5</field>
         <field name="Increment">0.001</field>
       </param>
@@ -3914,6 +3944,8 @@
         <field name="Increment">0.01</field>
       </param>
       <param humanName="Yaw Derivative FeedForward Gain" name="ATC_RAT_YAW_D_FF" documentation="FF D Gain which produces an output that is proportional to the rate of change of the target" user="Advanced">
+        <field name="Units">s^2/rad</field>
+        <field name="UnitText">seconds squared per radian</field>
         <field name="Range">0 0.02</field>
         <field name="Increment">0.0001</field>
       </param>
@@ -3944,10 +3976,14 @@
         <field name="Range">0 1000</field>
       </param>
       <param humanName="Roll axis rate controller P gain" name="ATC_RAT_RLL_P" documentation="Roll axis rate controller P gain.  Corrects in proportion to the difference between the desired roll rate vs actual roll rate" user="Standard">
+        <field name="Units">s/rad</field>
+        <field name="UnitText">seconds per radian</field>
         <field name="Range">0.0 0.35</field>
         <field name="Increment">0.005</field>
       </param>
       <param humanName="Roll axis rate controller I gain" name="ATC_RAT_RLL_I" documentation="Roll axis rate controller I gain.  Corrects long-term difference in desired roll rate vs actual roll rate" user="Standard">
+        <field name="Units">1/rad</field>
+        <field name="UnitText">per radian</field>
         <field name="Range">0.0 0.6</field>
         <field name="Increment">0.01</field>
       </param>
@@ -3959,10 +3995,14 @@
         <field name="Range">0 1</field>
       </param>
       <param humanName="Roll axis rate controller D gain" name="ATC_RAT_RLL_D" documentation="Roll axis rate controller D gain.  Compensates for short-term change in desired roll rate vs actual roll rate" user="Standard">
+        <field name="Units">s^2/rad</field>
+        <field name="UnitText">seconds squared per radian</field>
         <field name="Range">0.0 0.03</field>
         <field name="Increment">0.001</field>
       </param>
       <param humanName="Roll axis rate controller feed forward" name="ATC_RAT_RLL_FF" documentation="Roll axis rate controller feed forward" user="Standard">
+        <field name="Units">s/rad</field>
+        <field name="UnitText">seconds per radian</field>
         <field name="Range">0.05 0.5</field>
         <field name="Increment">0.001</field>
       </param>
@@ -3989,6 +4029,8 @@
         <field name="Increment">0.5</field>
       </param>
       <param humanName="Roll Derivative FeedForward Gain" name="ATC_RAT_RLL_D_FF" documentation="FF D Gain which produces an output that is proportional to the rate of change of the target" user="Advanced">
+        <field name="Units">s^2/rad</field>
+        <field name="UnitText">seconds squared per radian</field>
         <field name="Range">0 0.02</field>
         <field name="Increment">0.0001</field>
       </param>
@@ -3999,10 +4041,14 @@
         <field name="Range">1 8</field>
       </param>
       <param humanName="Pitch axis rate controller P gain" name="ATC_RAT_PIT_P" documentation="Pitch axis rate controller P gain.  Corrects in proportion to the difference between the desired pitch rate vs actual pitch rate" user="Standard">
+        <field name="Units">s/rad</field>
+        <field name="UnitText">seconds per radian</field>
         <field name="Range">0.0 0.35</field>
         <field name="Increment">0.005</field>
       </param>
       <param humanName="Pitch axis rate controller I gain" name="ATC_RAT_PIT_I" documentation="Pitch axis rate controller I gain.  Corrects long-term difference in desired pitch rate vs actual pitch rate" user="Standard">
+        <field name="Units">1/rad</field>
+        <field name="UnitText">per radian</field>
         <field name="Range">0.0 0.6</field>
         <field name="Increment">0.01</field>
       </param>
@@ -4014,10 +4060,14 @@
         <field name="Range">0 1</field>
       </param>
       <param humanName="Pitch axis rate controller D gain" name="ATC_RAT_PIT_D" documentation="Pitch axis rate controller D gain.  Compensates for short-term change in desired pitch rate vs actual pitch rate" user="Standard">
+        <field name="Units">s^2/rad</field>
+        <field name="UnitText">seconds squared per radian</field>
         <field name="Range">0.0 0.03</field>
         <field name="Increment">0.001</field>
       </param>
       <param humanName="Pitch axis rate controller feed forward" name="ATC_RAT_PIT_FF" documentation="Pitch axis rate controller feed forward" user="Standard">
+        <field name="Units">s/rad</field>
+        <field name="UnitText">seconds per radian</field>
         <field name="Range">0.05 0.5</field>
         <field name="Increment">0.001</field>
       </param>
@@ -4044,6 +4094,8 @@
         <field name="Increment">0.5</field>
       </param>
       <param humanName="Pitch Derivative FeedForward Gain" name="ATC_RAT_PIT_D_FF" documentation="FF D Gain which produces an output that is proportional to the rate of change of the target" user="Advanced">
+        <field name="Units">s^2/rad</field>
+        <field name="UnitText">seconds squared per radian</field>
         <field name="Range">0 0.02</field>
         <field name="Increment">0.0001</field>
       </param>
@@ -4054,10 +4106,14 @@
         <field name="Range">1 8</field>
       </param>
       <param humanName="Yaw axis rate controller P gain" name="ATC_RAT_YAW_P" documentation="Yaw axis rate controller P gain.  Corrects in proportion to the difference between the desired yaw rate vs actual yaw rate" user="Standard">
+        <field name="Units">s/rad</field>
+        <field name="UnitText">seconds per radian</field>
         <field name="Range">0.180 0.60</field>
         <field name="Increment">0.005</field>
       </param>
       <param humanName="Yaw axis rate controller I gain" name="ATC_RAT_YAW_I" documentation="Yaw axis rate controller I gain.  Corrects long-term difference in desired yaw rate vs actual yaw rate" user="Standard">
+        <field name="Units">1/rad</field>
+        <field name="UnitText">per radian</field>
         <field name="Range">0.01 0.2</field>
         <field name="Increment">0.01</field>
       </param>
@@ -4069,10 +4125,14 @@
         <field name="Range">0 1</field>
       </param>
       <param humanName="Yaw axis rate controller D gain" name="ATC_RAT_YAW_D" documentation="Yaw axis rate controller D gain.  Compensates for short-term change in desired yaw rate vs actual yaw rate" user="Standard">
+        <field name="Units">s^2/rad</field>
+        <field name="UnitText">seconds squared per radian</field>
         <field name="Range">0.000 0.02</field>
         <field name="Increment">0.001</field>
       </param>
       <param humanName="Yaw axis rate controller feed forward" name="ATC_RAT_YAW_FF" documentation="Yaw axis rate controller feed forward" user="Standard">
+        <field name="Units">s/rad</field>
+        <field name="UnitText">seconds per radian</field>
         <field name="Range">0 0.5</field>
         <field name="Increment">0.001</field>
       </param>
@@ -4099,6 +4159,8 @@
         <field name="Increment">0.5</field>
       </param>
       <param humanName="Yaw Derivative FeedForward Gain" name="ATC_RAT_YAW_D_FF" documentation="FF D Gain which produces an output that is proportional to the rate of change of the target" user="Advanced">
+        <field name="Units">s^2/rad</field>
+        <field name="UnitText">seconds squared per radian</field>
         <field name="Range">0 0.02</field>
         <field name="Increment">0.0001</field>
       </param>
@@ -13836,8 +13898,10 @@
           <value code="1">VectorNav</value>
           <value code="2">MicroStrain5</value>
           <value code="5">InertialLabs</value>
+          <value code="6">Trimble GSOF</value>
           <value code="7">MicroStrain7</value>
           <value code="8">SBG</value>
+          <value code="11">SensAItion</value>
         </values>
       </param>
       <param humanName="AHRS data rate" name="EAHRS_RATE" documentation="Requested rate for AHRS device" user="Standard">
@@ -13846,10 +13910,11 @@
       </param>
       <param humanName="External AHRS options" name="EAHRS_OPTIONS" documentation="External AHRS options bitmask" user="Standard">
         <bitmask>
-          <bit code="0">Vector Nav use uncompensated values for accel gyro and mag.</bit>
-          <bit code="1">SBG uses EKF as GNSS.</bit>
+          <bit code="0">Vector Nav use uncompensated values for accel gyro and mag</bit>
+          <bit code="1">SBG uses EKF as GNSS</bit>
+          <bit code="2">SensAItion used as AHRS</bit>
         </bitmask>
-        <field name="Bitmask">0:Vector Nav use uncompensated values for accel gyro and mag., 1:SBG uses EKF as GNSS.</field>
+        <field name="Bitmask">0:Vector Nav use uncompensated values for accel gyro and mag, 1:SBG uses EKF as GNSS, 2:SensAItion used as AHRS</field>
       </param>
       <param humanName="External AHRS sensors" name="EAHRS_SENSORS" documentation="External AHRS sensors bitmask" user="Advanced">
         <bitmask>

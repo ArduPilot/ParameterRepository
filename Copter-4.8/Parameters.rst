@@ -1059,88 +1059,90 @@ TUNE: Tuning Parameter
 Selects parameter \(normally a PID gain\) that is being tuned with an RC transmitter\'s knob\. The RC input channel used is assigned by setting RCx\_OPTION to 219\.
 
 
-+-----------------------------------+
-| Values                            |
-+===================================+
-| +-------+-----------------------+ |
-| | Value | Meaning               | |
-| +=======+=======================+ |
-| | 0     | None                  | |
-| +-------+-----------------------+ |
-| | 1     | Stab Roll/Pitch kP    | |
-| +-------+-----------------------+ |
-| | 4     | Rate Roll/Pitch kP    | |
-| +-------+-----------------------+ |
-| | 5     | Rate Roll/Pitch kI    | |
-| +-------+-----------------------+ |
-| | 21    | Rate Roll/Pitch kD    | |
-| +-------+-----------------------+ |
-| | 3     | Stab Yaw kP           | |
-| +-------+-----------------------+ |
-| | 6     | Rate Yaw kP           | |
-| +-------+-----------------------+ |
-| | 26    | Rate Yaw kD           | |
-| +-------+-----------------------+ |
-| | 56    | Rate Yaw Filter       | |
-| +-------+-----------------------+ |
-| | 55    | Motor Yaw Headroom    | |
-| +-------+-----------------------+ |
-| | 14    | AltHold kP            | |
-| +-------+-----------------------+ |
-| | 7     | Throttle Rate kP      | |
-| +-------+-----------------------+ |
-| | 34    | Throttle Accel kP     | |
-| +-------+-----------------------+ |
-| | 35    | Throttle Accel kI     | |
-| +-------+-----------------------+ |
-| | 36    | Throttle Accel kD     | |
-| +-------+-----------------------+ |
-| | 12    | Loiter Pos kP         | |
-| +-------+-----------------------+ |
-| | 22    | Velocity XY kP        | |
-| +-------+-----------------------+ |
-| | 28    | Velocity XY kI        | |
-| +-------+-----------------------+ |
-| | 10    | WP Speed              | |
-| +-------+-----------------------+ |
-| | 25    | Acro Roll/Pitch deg/s | |
-| +-------+-----------------------+ |
-| | 40    | Acro Yaw deg/s        | |
-| +-------+-----------------------+ |
-| | 45    | RC Feel               | |
-| +-------+-----------------------+ |
-| | 13    | Heli Ext Gyro         | |
-| +-------+-----------------------+ |
-| | 38    | Declination           | |
-| +-------+-----------------------+ |
-| | 39    | Circle Rate           | |
-| +-------+-----------------------+ |
-| | 46    | Rate Pitch kP         | |
-| +-------+-----------------------+ |
-| | 47    | Rate Pitch kI         | |
-| +-------+-----------------------+ |
-| | 48    | Rate Pitch kD         | |
-| +-------+-----------------------+ |
-| | 49    | Rate Roll kP          | |
-| +-------+-----------------------+ |
-| | 50    | Rate Roll kI          | |
-| +-------+-----------------------+ |
-| | 51    | Rate Roll kD          | |
-| +-------+-----------------------+ |
-| | 52    | Rate Pitch FF         | |
-| +-------+-----------------------+ |
-| | 53    | Rate Roll FF          | |
-| +-------+-----------------------+ |
-| | 54    | Rate Yaw FF           | |
-| +-------+-----------------------+ |
-| | 58    | SysID Magnitude       | |
-| +-------+-----------------------+ |
-| | 59    | PSC Angle Max         | |
-| +-------+-----------------------+ |
-| | 60    | Loiter Speed          | |
-| +-------+-----------------------+ |
-|                                   |
-+-----------------------------------+
++----------------------------------------+
+| Values                                 |
++========================================+
+| +-------+----------------------------+ |
+| | Value | Meaning                    | |
+| +=======+============================+ |
+| | 0     | None                       | |
+| +-------+----------------------------+ |
+| | 1     | Stab Roll/Pitch kP         | |
+| +-------+----------------------------+ |
+| | 4     | Rate Roll/Pitch kP         | |
+| +-------+----------------------------+ |
+| | 5     | Rate Roll/Pitch kI         | |
+| +-------+----------------------------+ |
+| | 21    | Rate Roll/Pitch kD         | |
+| +-------+----------------------------+ |
+| | 3     | Stab Yaw kP                | |
+| +-------+----------------------------+ |
+| | 6     | Rate Yaw kP                | |
+| +-------+----------------------------+ |
+| | 26    | Rate Yaw kD                | |
+| +-------+----------------------------+ |
+| | 56    | Rate Yaw Filter            | |
+| +-------+----------------------------+ |
+| | 55    | Motor Yaw Headroom         | |
+| +-------+----------------------------+ |
+| | 14    | AltHold kP                 | |
+| +-------+----------------------------+ |
+| | 7     | Throttle Rate kP           | |
+| +-------+----------------------------+ |
+| | 34    | Throttle Accel kP          | |
+| +-------+----------------------------+ |
+| | 35    | Throttle Accel kI          | |
+| +-------+----------------------------+ |
+| | 36    | Throttle Accel kD          | |
+| +-------+----------------------------+ |
+| | 12    | Loiter Pos kP              | |
+| +-------+----------------------------+ |
+| | 22    | Velocity XY kP             | |
+| +-------+----------------------------+ |
+| | 28    | Velocity XY kI             | |
+| +-------+----------------------------+ |
+| | 10    | WP Speed (4.6 and earlier) | |
+| +-------+----------------------------+ |
+| | 25    | Acro Roll/Pitch deg/s      | |
+| +-------+----------------------------+ |
+| | 40    | Acro Yaw deg/s             | |
+| +-------+----------------------------+ |
+| | 45    | RC Feel                    | |
+| +-------+----------------------------+ |
+| | 13    | Heli Ext Gyro              | |
+| +-------+----------------------------+ |
+| | 38    | Declination                | |
+| +-------+----------------------------+ |
+| | 39    | Circle Rate                | |
+| +-------+----------------------------+ |
+| | 46    | Rate Pitch kP              | |
+| +-------+----------------------------+ |
+| | 47    | Rate Pitch kI              | |
+| +-------+----------------------------+ |
+| | 48    | Rate Pitch kD              | |
+| +-------+----------------------------+ |
+| | 49    | Rate Roll kP               | |
+| +-------+----------------------------+ |
+| | 50    | Rate Roll kI               | |
+| +-------+----------------------------+ |
+| | 51    | Rate Roll kD               | |
+| +-------+----------------------------+ |
+| | 52    | Rate Pitch FF              | |
+| +-------+----------------------------+ |
+| | 53    | Rate Roll FF               | |
+| +-------+----------------------------+ |
+| | 54    | Rate Yaw FF                | |
+| +-------+----------------------------+ |
+| | 58    | SysID Magnitude            | |
+| +-------+----------------------------+ |
+| | 59    | PSC Angle Max              | |
+| +-------+----------------------------+ |
+| | 60    | Loiter Speed               | |
+| +-------+----------------------------+ |
+| | 61    | WP Speed (m/s)             | |
+| +-------+----------------------------+ |
+|                                        |
++----------------------------------------+
 
 
 
@@ -2603,88 +2605,90 @@ TUNE2: Tuning Parameter for TRANSMITTER\_TUNE2
 Selects parameter \(normally a PID gain\) that is being tuned with an RC transmitter\'s knob\. The RC input channel used is assigned by setting RCx\_OPTION to 220\.
 
 
-+-----------------------------------+
-| Values                            |
-+===================================+
-| +-------+-----------------------+ |
-| | Value | Meaning               | |
-| +=======+=======================+ |
-| | 0     | None                  | |
-| +-------+-----------------------+ |
-| | 1     | Stab Roll/Pitch kP    | |
-| +-------+-----------------------+ |
-| | 4     | Rate Roll/Pitch kP    | |
-| +-------+-----------------------+ |
-| | 5     | Rate Roll/Pitch kI    | |
-| +-------+-----------------------+ |
-| | 21    | Rate Roll/Pitch kD    | |
-| +-------+-----------------------+ |
-| | 3     | Stab Yaw kP           | |
-| +-------+-----------------------+ |
-| | 6     | Rate Yaw kP           | |
-| +-------+-----------------------+ |
-| | 26    | Rate Yaw kD           | |
-| +-------+-----------------------+ |
-| | 56    | Rate Yaw Filter       | |
-| +-------+-----------------------+ |
-| | 55    | Motor Yaw Headroom    | |
-| +-------+-----------------------+ |
-| | 14    | AltHold kP            | |
-| +-------+-----------------------+ |
-| | 7     | Throttle Rate kP      | |
-| +-------+-----------------------+ |
-| | 34    | Throttle Accel kP     | |
-| +-------+-----------------------+ |
-| | 35    | Throttle Accel kI     | |
-| +-------+-----------------------+ |
-| | 36    | Throttle Accel kD     | |
-| +-------+-----------------------+ |
-| | 12    | Loiter Pos kP         | |
-| +-------+-----------------------+ |
-| | 22    | Velocity XY kP        | |
-| +-------+-----------------------+ |
-| | 28    | Velocity XY kI        | |
-| +-------+-----------------------+ |
-| | 10    | WP Speed              | |
-| +-------+-----------------------+ |
-| | 25    | Acro Roll/Pitch deg/s | |
-| +-------+-----------------------+ |
-| | 40    | Acro Yaw deg/s        | |
-| +-------+-----------------------+ |
-| | 45    | RC Feel               | |
-| +-------+-----------------------+ |
-| | 13    | Heli Ext Gyro         | |
-| +-------+-----------------------+ |
-| | 38    | Declination           | |
-| +-------+-----------------------+ |
-| | 39    | Circle Rate           | |
-| +-------+-----------------------+ |
-| | 46    | Rate Pitch kP         | |
-| +-------+-----------------------+ |
-| | 47    | Rate Pitch kI         | |
-| +-------+-----------------------+ |
-| | 48    | Rate Pitch kD         | |
-| +-------+-----------------------+ |
-| | 49    | Rate Roll kP          | |
-| +-------+-----------------------+ |
-| | 50    | Rate Roll kI          | |
-| +-------+-----------------------+ |
-| | 51    | Rate Roll kD          | |
-| +-------+-----------------------+ |
-| | 52    | Rate Pitch FF         | |
-| +-------+-----------------------+ |
-| | 53    | Rate Roll FF          | |
-| +-------+-----------------------+ |
-| | 54    | Rate Yaw FF           | |
-| +-------+-----------------------+ |
-| | 58    | SysID Magnitude       | |
-| +-------+-----------------------+ |
-| | 59    | PSC Angle Max         | |
-| +-------+-----------------------+ |
-| | 60    | Loiter Speed          | |
-| +-------+-----------------------+ |
-|                                   |
-+-----------------------------------+
++----------------------------------------+
+| Values                                 |
++========================================+
+| +-------+----------------------------+ |
+| | Value | Meaning                    | |
+| +=======+============================+ |
+| | 0     | None                       | |
+| +-------+----------------------------+ |
+| | 1     | Stab Roll/Pitch kP         | |
+| +-------+----------------------------+ |
+| | 4     | Rate Roll/Pitch kP         | |
+| +-------+----------------------------+ |
+| | 5     | Rate Roll/Pitch kI         | |
+| +-------+----------------------------+ |
+| | 21    | Rate Roll/Pitch kD         | |
+| +-------+----------------------------+ |
+| | 3     | Stab Yaw kP                | |
+| +-------+----------------------------+ |
+| | 6     | Rate Yaw kP                | |
+| +-------+----------------------------+ |
+| | 26    | Rate Yaw kD                | |
+| +-------+----------------------------+ |
+| | 56    | Rate Yaw Filter            | |
+| +-------+----------------------------+ |
+| | 55    | Motor Yaw Headroom         | |
+| +-------+----------------------------+ |
+| | 14    | AltHold kP                 | |
+| +-------+----------------------------+ |
+| | 7     | Throttle Rate kP           | |
+| +-------+----------------------------+ |
+| | 34    | Throttle Accel kP          | |
+| +-------+----------------------------+ |
+| | 35    | Throttle Accel kI          | |
+| +-------+----------------------------+ |
+| | 36    | Throttle Accel kD          | |
+| +-------+----------------------------+ |
+| | 12    | Loiter Pos kP              | |
+| +-------+----------------------------+ |
+| | 22    | Velocity XY kP             | |
+| +-------+----------------------------+ |
+| | 28    | Velocity XY kI             | |
+| +-------+----------------------------+ |
+| | 10    | WP Speed (4.6 and earlier) | |
+| +-------+----------------------------+ |
+| | 25    | Acro Roll/Pitch deg/s      | |
+| +-------+----------------------------+ |
+| | 40    | Acro Yaw deg/s             | |
+| +-------+----------------------------+ |
+| | 45    | RC Feel                    | |
+| +-------+----------------------------+ |
+| | 13    | Heli Ext Gyro              | |
+| +-------+----------------------------+ |
+| | 38    | Declination                | |
+| +-------+----------------------------+ |
+| | 39    | Circle Rate                | |
+| +-------+----------------------------+ |
+| | 46    | Rate Pitch kP              | |
+| +-------+----------------------------+ |
+| | 47    | Rate Pitch kI              | |
+| +-------+----------------------------+ |
+| | 48    | Rate Pitch kD              | |
+| +-------+----------------------------+ |
+| | 49    | Rate Roll kP               | |
+| +-------+----------------------------+ |
+| | 50    | Rate Roll kI               | |
+| +-------+----------------------------+ |
+| | 51    | Rate Roll kD               | |
+| +-------+----------------------------+ |
+| | 52    | Rate Pitch FF              | |
+| +-------+----------------------------+ |
+| | 53    | Rate Roll FF               | |
+| +-------+----------------------------+ |
+| | 54    | Rate Yaw FF                | |
+| +-------+----------------------------+ |
+| | 58    | SysID Magnitude            | |
+| +-------+----------------------------+ |
+| | 59    | PSC Angle Max              | |
+| +-------+----------------------------+ |
+| | 60    | Loiter Speed               | |
+| +-------+----------------------------+ |
+| | 61    | WP Speed (m/s)             | |
+| +-------+----------------------------+ |
+|                                        |
++----------------------------------------+
 
 
 
@@ -7181,11 +7185,11 @@ ATC\_RAT\_RLL\_P \(AC\_AttitudeControl\_Multi\): Roll axis rate controller P gai
 Roll axis rate controller P gain\.  Corrects in proportion to the difference between the desired roll rate vs actual roll rate
 
 
-+-----------+-------------+
-| Increment | Range       |
-+===========+=============+
-| 0.005     | 0.01 to 0.5 |
-+-----------+-------------+
++-----------+-------------+--------------------+
+| Increment | Range       | Units              |
++===========+=============+====================+
+| 0.005     | 0.01 to 0.5 | seconds per radian |
++-----------+-------------+--------------------+
 
 
 
@@ -7199,11 +7203,11 @@ ATC\_RAT\_RLL\_I \(AC\_AttitudeControl\_Multi\): Roll axis rate controller I gai
 Roll axis rate controller I gain\.  Corrects long\-term difference in desired roll rate vs actual roll rate
 
 
-+-----------+-------------+
-| Increment | Range       |
-+===========+=============+
-| 0.01      | 0.01 to 2.0 |
-+-----------+-------------+
++-----------+-------------+------------+
+| Increment | Range       | Units      |
++===========+=============+============+
+| 0.01      | 0.01 to 2.0 | per radian |
++-----------+-------------+------------+
 
 
 
@@ -7235,11 +7239,11 @@ ATC\_RAT\_RLL\_D \(AC\_AttitudeControl\_Multi\): Roll axis rate controller D gai
 Roll axis rate controller D gain\.  Compensates for short\-term change in desired roll rate vs actual roll rate
 
 
-+-----------+-------------+
-| Increment | Range       |
-+===========+=============+
-| 0.001     | 0.0 to 0.05 |
-+-----------+-------------+
++-----------+-------------+----------------------------+
+| Increment | Range       | Units                      |
++===========+=============+============================+
+| 0.001     | 0.0 to 0.05 | seconds squared per radian |
++-----------+-------------+----------------------------+
 
 
 
@@ -7253,11 +7257,11 @@ ATC\_RAT\_RLL\_FF \(AC\_AttitudeControl\_Multi\): Roll axis rate controller feed
 Roll axis rate controller feed forward
 
 
-+-----------+----------+
-| Increment | Range    |
-+===========+==========+
-| 0.001     | 0 to 0.5 |
-+-----------+----------+
++-----------+----------+--------------------+
+| Increment | Range    | Units              |
++===========+==========+====================+
+| 0.001     | 0 to 0.5 | seconds per radian |
++-----------+----------+--------------------+
 
 
 
@@ -7363,11 +7367,11 @@ ATC\_RAT\_RLL\_D\_FF \(AC\_AttitudeControl\_Multi\): Roll Derivative FeedForward
 FF D Gain which produces an output that is proportional to the rate of change of the target
 
 
-+-----------+-----------+
-| Increment | Range     |
-+===========+===========+
-| 0.0001    | 0 to 0.02 |
-+-----------+-----------+
++-----------+-----------+----------------------------+
+| Increment | Range     | Units                      |
++===========+===========+============================+
+| 0.0001    | 0 to 0.02 | seconds squared per radian |
++-----------+-----------+----------------------------+
 
 
 
@@ -7419,11 +7423,11 @@ ATC\_RAT\_PIT\_P \(AC\_AttitudeControl\_Multi\): Pitch axis rate controller P ga
 Pitch axis rate controller P gain\.  Corrects in proportion to the difference between the desired pitch rate vs actual pitch rate output
 
 
-+-----------+--------------+
-| Increment | Range        |
-+===========+==============+
-| 0.005     | 0.01 to 0.50 |
-+-----------+--------------+
++-----------+--------------+--------------------+
+| Increment | Range        | Units              |
++===========+==============+====================+
+| 0.005     | 0.01 to 0.50 | seconds per radian |
++-----------+--------------+--------------------+
 
 
 
@@ -7437,11 +7441,11 @@ ATC\_RAT\_PIT\_I \(AC\_AttitudeControl\_Multi\): Pitch axis rate controller I ga
 Pitch axis rate controller I gain\.  Corrects long\-term difference in desired pitch rate vs actual pitch rate
 
 
-+-----------+-------------+
-| Increment | Range       |
-+===========+=============+
-| 0.01      | 0.01 to 2.0 |
-+-----------+-------------+
++-----------+-------------+------------+
+| Increment | Range       | Units      |
++===========+=============+============+
+| 0.01      | 0.01 to 2.0 | per radian |
++-----------+-------------+------------+
 
 
 
@@ -7473,11 +7477,11 @@ ATC\_RAT\_PIT\_D \(AC\_AttitudeControl\_Multi\): Pitch axis rate controller D ga
 Pitch axis rate controller D gain\.  Compensates for short\-term change in desired pitch rate vs actual pitch rate
 
 
-+-----------+-------------+
-| Increment | Range       |
-+===========+=============+
-| 0.001     | 0.0 to 0.05 |
-+-----------+-------------+
++-----------+-------------+----------------------------+
+| Increment | Range       | Units                      |
++===========+=============+============================+
+| 0.001     | 0.0 to 0.05 | seconds squared per radian |
++-----------+-------------+----------------------------+
 
 
 
@@ -7491,11 +7495,11 @@ ATC\_RAT\_PIT\_FF \(AC\_AttitudeControl\_Multi\): Pitch axis rate controller fee
 Pitch axis rate controller feed forward
 
 
-+-----------+----------+
-| Increment | Range    |
-+===========+==========+
-| 0.001     | 0 to 0.5 |
-+-----------+----------+
++-----------+----------+--------------------+
+| Increment | Range    | Units              |
++===========+==========+====================+
+| 0.001     | 0 to 0.5 | seconds per radian |
++-----------+----------+--------------------+
 
 
 
@@ -7601,11 +7605,11 @@ ATC\_RAT\_PIT\_D\_FF \(AC\_AttitudeControl\_Multi\): Pitch Derivative FeedForwar
 FF D Gain which produces an output that is proportional to the rate of change of the target
 
 
-+-----------+-----------+
-| Increment | Range     |
-+===========+===========+
-| 0.0001    | 0 to 0.02 |
-+-----------+-----------+
++-----------+-----------+----------------------------+
+| Increment | Range     | Units                      |
++===========+===========+============================+
+| 0.0001    | 0 to 0.02 | seconds squared per radian |
++-----------+-----------+----------------------------+
 
 
 
@@ -7657,11 +7661,11 @@ ATC\_RAT\_YAW\_P \(AC\_AttitudeControl\_Multi\): Yaw axis rate controller P gain
 Yaw axis rate controller P gain\.  Corrects in proportion to the difference between the desired yaw rate vs actual yaw rate
 
 
-+-----------+--------------+
-| Increment | Range        |
-+===========+==============+
-| 0.005     | 0.10 to 2.50 |
-+-----------+--------------+
++-----------+--------------+--------------------+
+| Increment | Range        | Units              |
++===========+==============+====================+
+| 0.005     | 0.10 to 2.50 | seconds per radian |
++-----------+--------------+--------------------+
 
 
 
@@ -7675,11 +7679,11 @@ ATC\_RAT\_YAW\_I \(AC\_AttitudeControl\_Multi\): Yaw axis rate controller I gain
 Yaw axis rate controller I gain\.  Corrects long\-term difference in desired yaw rate vs actual yaw rate
 
 
-+-----------+--------------+
-| Increment | Range        |
-+===========+==============+
-| 0.01      | 0.010 to 1.0 |
-+-----------+--------------+
++-----------+--------------+------------+
+| Increment | Range        | Units      |
++===========+==============+============+
+| 0.01      | 0.010 to 1.0 | per radian |
++-----------+--------------+------------+
 
 
 
@@ -7711,11 +7715,11 @@ ATC\_RAT\_YAW\_D \(AC\_AttitudeControl\_Multi\): Yaw axis rate controller D gain
 Yaw axis rate controller D gain\.  Compensates for short\-term change in desired yaw rate vs actual yaw rate
 
 
-+-----------+---------------+
-| Increment | Range         |
-+===========+===============+
-| 0.001     | 0.000 to 0.02 |
-+-----------+---------------+
++-----------+---------------+----------------------------+
+| Increment | Range         | Units                      |
++===========+===============+============================+
+| 0.001     | 0.000 to 0.02 | seconds squared per radian |
++-----------+---------------+----------------------------+
 
 
 
@@ -7729,11 +7733,11 @@ ATC\_RAT\_YAW\_FF \(AC\_AttitudeControl\_Multi\): Yaw axis rate controller feed 
 Yaw axis rate controller feed forward
 
 
-+-----------+----------+
-| Increment | Range    |
-+===========+==========+
-| 0.001     | 0 to 0.5 |
-+-----------+----------+
++-----------+----------+--------------------+
+| Increment | Range    | Units              |
++===========+==========+====================+
+| 0.001     | 0 to 0.5 | seconds per radian |
++-----------+----------+--------------------+
 
 
 
@@ -7839,11 +7843,11 @@ ATC\_RAT\_YAW\_D\_FF \(AC\_AttitudeControl\_Multi\): Yaw Derivative FeedForward 
 FF D Gain which produces an output that is proportional to the rate of change of the target
 
 
-+-----------+-----------+
-| Increment | Range     |
-+===========+===========+
-| 0.0001    | 0 to 0.02 |
-+-----------+-----------+
++-----------+-----------+----------------------------+
+| Increment | Range     | Units                      |
++===========+===========+============================+
+| 0.0001    | 0 to 0.02 | seconds squared per radian |
++-----------+-----------+----------------------------+
 
 
 
@@ -7990,11 +7994,11 @@ ATC\_RAT\_RLL\_P \(AC\_AttitudeControl\_Heli\): Roll axis rate controller P gain
 Roll axis rate controller P gain\.  Corrects in proportion to the difference between the desired roll rate vs actual roll rate
 
 
-+-----------+-------------+
-| Increment | Range       |
-+===========+=============+
-| 0.005     | 0.0 to 0.35 |
-+-----------+-------------+
++-----------+-------------+--------------------+
+| Increment | Range       | Units              |
++===========+=============+====================+
+| 0.005     | 0.0 to 0.35 | seconds per radian |
++-----------+-------------+--------------------+
 
 
 
@@ -8008,11 +8012,11 @@ ATC\_RAT\_RLL\_I \(AC\_AttitudeControl\_Heli\): Roll axis rate controller I gain
 Roll axis rate controller I gain\.  Corrects long\-term difference in desired roll rate vs actual roll rate
 
 
-+-----------+------------+
-| Increment | Range      |
-+===========+============+
-| 0.01      | 0.0 to 0.6 |
-+-----------+------------+
++-----------+------------+------------+
+| Increment | Range      | Units      |
++===========+============+============+
+| 0.01      | 0.0 to 0.6 | per radian |
++-----------+------------+------------+
 
 
 
@@ -8063,11 +8067,11 @@ ATC\_RAT\_RLL\_D \(AC\_AttitudeControl\_Heli\): Roll axis rate controller D gain
 Roll axis rate controller D gain\.  Compensates for short\-term change in desired roll rate vs actual roll rate
 
 
-+-----------+-------------+
-| Increment | Range       |
-+===========+=============+
-| 0.001     | 0.0 to 0.03 |
-+-----------+-------------+
++-----------+-------------+----------------------------+
+| Increment | Range       | Units                      |
++===========+=============+============================+
+| 0.001     | 0.0 to 0.03 | seconds squared per radian |
++-----------+-------------+----------------------------+
 
 
 
@@ -8081,11 +8085,11 @@ ATC\_RAT\_RLL\_FF \(AC\_AttitudeControl\_Heli\): Roll axis rate controller feed 
 Roll axis rate controller feed forward
 
 
-+-----------+-------------+
-| Increment | Range       |
-+===========+=============+
-| 0.001     | 0.05 to 0.5 |
-+-----------+-------------+
++-----------+-------------+--------------------+
+| Increment | Range       | Units              |
++===========+=============+====================+
+| 0.001     | 0.05 to 0.5 | seconds per radian |
++-----------+-------------+--------------------+
 
 
 
@@ -8173,11 +8177,11 @@ ATC\_RAT\_RLL\_D\_FF \(AC\_AttitudeControl\_Heli\): Roll Derivative FeedForward 
 FF D Gain which produces an output that is proportional to the rate of change of the target
 
 
-+-----------+-----------+
-| Increment | Range     |
-+===========+===========+
-| 0.0001    | 0 to 0.02 |
-+-----------+-----------+
++-----------+-----------+----------------------------+
+| Increment | Range     | Units                      |
++===========+===========+============================+
+| 0.0001    | 0 to 0.02 | seconds squared per radian |
++-----------+-----------+----------------------------+
 
 
 
@@ -8229,11 +8233,11 @@ ATC\_RAT\_PIT\_P \(AC\_AttitudeControl\_Heli\): Pitch axis rate controller P gai
 Pitch axis rate controller P gain\.  Corrects in proportion to the difference between the desired pitch rate vs actual pitch rate
 
 
-+-----------+-------------+
-| Increment | Range       |
-+===========+=============+
-| 0.005     | 0.0 to 0.35 |
-+-----------+-------------+
++-----------+-------------+--------------------+
+| Increment | Range       | Units              |
++===========+=============+====================+
+| 0.005     | 0.0 to 0.35 | seconds per radian |
++-----------+-------------+--------------------+
 
 
 
@@ -8247,11 +8251,11 @@ ATC\_RAT\_PIT\_I \(AC\_AttitudeControl\_Heli\): Pitch axis rate controller I gai
 Pitch axis rate controller I gain\.  Corrects long\-term difference in desired pitch rate vs actual pitch rate
 
 
-+-----------+------------+
-| Increment | Range      |
-+===========+============+
-| 0.01      | 0.0 to 0.6 |
-+-----------+------------+
++-----------+------------+------------+
+| Increment | Range      | Units      |
++===========+============+============+
+| 0.01      | 0.0 to 0.6 | per radian |
++-----------+------------+------------+
 
 
 
@@ -8302,11 +8306,11 @@ ATC\_RAT\_PIT\_D \(AC\_AttitudeControl\_Heli\): Pitch axis rate controller D gai
 Pitch axis rate controller D gain\.  Compensates for short\-term change in desired pitch rate vs actual pitch rate
 
 
-+-----------+-------------+
-| Increment | Range       |
-+===========+=============+
-| 0.001     | 0.0 to 0.03 |
-+-----------+-------------+
++-----------+-------------+----------------------------+
+| Increment | Range       | Units                      |
++===========+=============+============================+
+| 0.001     | 0.0 to 0.03 | seconds squared per radian |
++-----------+-------------+----------------------------+
 
 
 
@@ -8320,11 +8324,11 @@ ATC\_RAT\_PIT\_FF \(AC\_AttitudeControl\_Heli\): Pitch axis rate controller feed
 Pitch axis rate controller feed forward
 
 
-+-----------+-------------+
-| Increment | Range       |
-+===========+=============+
-| 0.001     | 0.05 to 0.5 |
-+-----------+-------------+
++-----------+-------------+--------------------+
+| Increment | Range       | Units              |
++===========+=============+====================+
+| 0.001     | 0.05 to 0.5 | seconds per radian |
++-----------+-------------+--------------------+
 
 
 
@@ -8412,11 +8416,11 @@ ATC\_RAT\_PIT\_D\_FF \(AC\_AttitudeControl\_Heli\): Pitch Derivative FeedForward
 FF D Gain which produces an output that is proportional to the rate of change of the target
 
 
-+-----------+-----------+
-| Increment | Range     |
-+===========+===========+
-| 0.0001    | 0 to 0.02 |
-+-----------+-----------+
++-----------+-----------+----------------------------+
+| Increment | Range     | Units                      |
++===========+===========+============================+
+| 0.0001    | 0 to 0.02 | seconds squared per radian |
++-----------+-----------+----------------------------+
 
 
 
@@ -8468,11 +8472,11 @@ ATC\_RAT\_YAW\_P \(AC\_AttitudeControl\_Heli\): Yaw axis rate controller P gain
 Yaw axis rate controller P gain\.  Corrects in proportion to the difference between the desired yaw rate vs actual yaw rate
 
 
-+-----------+---------------+
-| Increment | Range         |
-+===========+===============+
-| 0.005     | 0.180 to 0.60 |
-+-----------+---------------+
++-----------+---------------+--------------------+
+| Increment | Range         | Units              |
++===========+===============+====================+
+| 0.005     | 0.180 to 0.60 | seconds per radian |
++-----------+---------------+--------------------+
 
 
 
@@ -8486,11 +8490,11 @@ ATC\_RAT\_YAW\_I \(AC\_AttitudeControl\_Heli\): Yaw axis rate controller I gain
 Yaw axis rate controller I gain\.  Corrects long\-term difference in desired yaw rate vs actual yaw rate
 
 
-+-----------+-------------+
-| Increment | Range       |
-+===========+=============+
-| 0.01      | 0.01 to 0.2 |
-+-----------+-------------+
++-----------+-------------+------------+
+| Increment | Range       | Units      |
++===========+=============+============+
+| 0.01      | 0.01 to 0.2 | per radian |
++-----------+-------------+------------+
 
 
 
@@ -8541,11 +8545,11 @@ ATC\_RAT\_YAW\_D \(AC\_AttitudeControl\_Heli\): Yaw axis rate controller D gain
 Yaw axis rate controller D gain\.  Compensates for short\-term change in desired yaw rate vs actual yaw rate
 
 
-+-----------+---------------+
-| Increment | Range         |
-+===========+===============+
-| 0.001     | 0.000 to 0.02 |
-+-----------+---------------+
++-----------+---------------+----------------------------+
+| Increment | Range         | Units                      |
++===========+===============+============================+
+| 0.001     | 0.000 to 0.02 | seconds squared per radian |
++-----------+---------------+----------------------------+
 
 
 
@@ -8559,11 +8563,11 @@ ATC\_RAT\_YAW\_FF \(AC\_AttitudeControl\_Heli\): Yaw axis rate controller feed f
 Yaw axis rate controller feed forward
 
 
-+-----------+----------+
-| Increment | Range    |
-+===========+==========+
-| 0.001     | 0 to 0.5 |
-+-----------+----------+
++-----------+----------+--------------------+
+| Increment | Range    | Units              |
++===========+==========+====================+
+| 0.001     | 0 to 0.5 | seconds per radian |
++-----------+----------+--------------------+
 
 
 
@@ -8651,11 +8655,11 @@ ATC\_RAT\_YAW\_D\_FF \(AC\_AttitudeControl\_Heli\): Yaw Derivative FeedForward G
 FF D Gain which produces an output that is proportional to the rate of change of the target
 
 
-+-----------+-----------+
-| Increment | Range     |
-+===========+===========+
-| 0.0001    | 0 to 0.02 |
-+-----------+-----------+
++-----------+-----------+----------------------------+
+| Increment | Range     | Units                      |
++===========+===========+============================+
+| 0.0001    | 0 to 0.02 | seconds squared per radian |
++-----------+-----------+----------------------------+
 
 
 
@@ -41088,9 +41092,13 @@ Type of AHRS device
 | +-------+--------------+ |
 | | 5     | InertialLabs | |
 | +-------+--------------+ |
+| | 6     | Trimble GSOF | |
+| +-------+--------------+ |
 | | 7     | MicroStrain7 | |
 | +-------+--------------+ |
 | | 8     | SBG          | |
+| +-------+--------------+ |
+| | 11    | SensAItion   | |
 | +-------+--------------+ |
 |                          |
 +--------------------------+
@@ -41125,18 +41133,20 @@ EAHRS\_OPTIONS: External AHRS options
 External AHRS options bitmask
 
 
-+-----------------------------------------------------------------------+
-| Bitmask                                                               |
-+=======================================================================+
-| +-----+-------------------------------------------------------------+ |
-| | Bit | Meaning                                                     | |
-| +=====+=============================================================+ |
-| | 0   | Vector Nav use uncompensated values for accel gyro and mag. | |
-| +-----+-------------------------------------------------------------+ |
-| | 1   | SBG uses EKF as GNSS.                                       | |
-| +-----+-------------------------------------------------------------+ |
-|                                                                       |
-+-----------------------------------------------------------------------+
++----------------------------------------------------------------------+
+| Bitmask                                                              |
++======================================================================+
+| +-----+------------------------------------------------------------+ |
+| | Bit | Meaning                                                    | |
+| +=====+============================================================+ |
+| | 0   | Vector Nav use uncompensated values for accel gyro and mag | |
+| +-----+------------------------------------------------------------+ |
+| | 1   | SBG uses EKF as GNSS                                       | |
+| +-----+------------------------------------------------------------+ |
+| | 2   | SensAItion used as AHRS                                    | |
+| +-----+------------------------------------------------------------+ |
+|                                                                      |
++----------------------------------------------------------------------+
 
 
 

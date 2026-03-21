@@ -552,6 +552,15 @@ Surface mode throttle output when no borometer is available. 100% is full thrott
 
 # Lua Script Parameters
 
+## PARAM_LOCK_ENAB: Param Lockdown enable
+
+Param Lockdown enable
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
+
 ## DR_ENABLE: Deadreckoning Enable
 
 Deadreckoning Enable
@@ -842,15 +851,6 @@ OpticalFlow may be used if rangefinder distance is below this threshold
 - Range: 0 50
 
 - Units: m
-
-## PARAM_SET_ENABLE: Param Set enable
-
-Param Set enable
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
 
 ## FOLLP_FAIL_MODE: Plane Follow lost target mode
 
@@ -17503,8 +17503,10 @@ Type of AHRS device
 |1|VectorNav|
 |2|MicroStrain5|
 |5|InertialLabs|
+|6|Trimble GSOF|
 |7|MicroStrain7|
 |8|SBG|
+|11|SensAItion|
 
 ## EAHRS_RATE: AHRS data rate
 
@@ -17516,7 +17518,7 @@ Requested rate for AHRS device
 
 External AHRS options bitmask
 
-- Bitmask: 0:Vector Nav use uncompensated values for accel gyro and mag., 1:SBG uses EKF as GNSS.
+- Bitmask: 0:Vector Nav use uncompensated values for accel gyro and mag, 1:SBG uses EKF as GNSS, 2:SensAItion used as AHRS
 
 ## EAHRS_SENSORS: External AHRS sensors
 

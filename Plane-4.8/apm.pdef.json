@@ -14015,8 +14015,9 @@
     },
     "EAHRS_OPTIONS": {
       "Bitmask": {
-        "0": "Vector Nav use uncompensated values for accel gyro and mag.",
-        "1": "SBG uses EKF as GNSS."
+        "0": "Vector Nav use uncompensated values for accel gyro and mag",
+        "1": "SBG uses EKF as GNSS",
+        "2": "SensAItion used as AHRS"
       },
       "Description": "External AHRS options bitmask",
       "DisplayName": "External AHRS options",
@@ -14046,8 +14047,10 @@
       "Values": {
         "0": "None",
         "1": "VectorNav",
+        "11": "SensAItion",
         "2": "MicroStrain5",
         "5": "InertialLabs",
+        "6": "Trimble GSOF",
         "7": "MicroStrain7",
         "8": "SBG"
       }
@@ -22400,9 +22403,9 @@
       "DisplayName": "Sensor operating mode",
       "User": "Standard"
     },
-    "PARAM_SET_ENABLE": {
-      "Description": "Param Set enable",
-      "DisplayName": "Param Set enable",
+    "PARAM_LOCK_ENAB": {
+      "Description": "Param Lockdown enable",
+      "DisplayName": "Param Lockdown enable",
       "User": "Standard",
       "Values": {
         "0": "Disabled",
@@ -38687,6 +38690,17 @@
       "DisplayName": "Enable use of rangefinder",
       "User": "Standard"
     },
+    "RNGFND_LND_DIST": {
+      "Description": "The horizontal distance to the landing point at which the rangefinder engages when RNGFND_LANDING is enabled. This is useful for landing on platforms or small plateaus, and to avoid interference from uneven terrain or obstacles on approach. A value of 0 engages the rangefinder as soon as it reports valid readings within its range limits. Very small values are not recommended unless required by the landing scenario, as they can force large slope corrections near the ground, increase auto-abort frequency if LAND_ABORT_DEG is set, and provide no slope-correction benefit if the rangefinder is engaged after flare.",
+      "DisplayName": "Rangefinder landing engagement distance",
+      "Increment": "1",
+      "Range": {
+        "high": "500",
+        "low": "0"
+      },
+      "Units": "m",
+      "User": "Standard"
+    },
     "RNGFND_LND_ORNT": {
       "Description": "The orientation of rangefinder to use for landing detection. Should be set to Down for normal downward facing rangefinder and Back for rearward facing rangefinder for quadplane tailsitters. Custom orientation can be used with Custom1 or Custom2. The orientation must match at least one of the available rangefinders.",
       "DisplayName": "rangefinder landing orientation",
@@ -40181,6 +40195,7 @@
         "high": "0.05",
         "low": "0.0"
       },
+      "Units": "s^2/rad",
       "User": "Standard"
     },
     "Q_A_RAT_PIT_D_FF": {
@@ -40191,6 +40206,7 @@
         "high": "0.02",
         "low": "0"
       },
+      "Units": "s^2/rad",
       "User": "Advanced"
     },
     "Q_A_RAT_PIT_FF": {
@@ -40201,6 +40217,7 @@
         "high": "0.5",
         "low": "0"
       },
+      "Units": "s/rad",
       "User": "Standard"
     },
     "Q_A_RAT_PIT_FLTD": {
@@ -40244,6 +40261,7 @@
         "high": "2.0",
         "low": "0.01"
       },
+      "Units": "1/rad",
       "User": "Standard"
     },
     "Q_A_RAT_PIT_IMAX": {
@@ -40282,6 +40300,7 @@
         "high": "0.50",
         "low": "0.01"
       },
+      "Units": "s/rad",
       "User": "Standard"
     },
     "Q_A_RAT_PIT_PDMX": {
@@ -40311,6 +40330,7 @@
         "high": "0.05",
         "low": "0.0"
       },
+      "Units": "s^2/rad",
       "User": "Standard"
     },
     "Q_A_RAT_RLL_D_FF": {
@@ -40321,6 +40341,7 @@
         "high": "0.02",
         "low": "0"
       },
+      "Units": "s^2/rad",
       "User": "Advanced"
     },
     "Q_A_RAT_RLL_FF": {
@@ -40331,6 +40352,7 @@
         "high": "0.5",
         "low": "0"
       },
+      "Units": "s/rad",
       "User": "Standard"
     },
     "Q_A_RAT_RLL_FLTD": {
@@ -40374,6 +40396,7 @@
         "high": "2.0",
         "low": "0.01"
       },
+      "Units": "1/rad",
       "User": "Standard"
     },
     "Q_A_RAT_RLL_IMAX": {
@@ -40412,6 +40435,7 @@
         "high": "0.5",
         "low": "0.01"
       },
+      "Units": "s/rad",
       "User": "Standard"
     },
     "Q_A_RAT_RLL_PDMX": {
@@ -40441,6 +40465,7 @@
         "high": "0.02",
         "low": "0.000"
       },
+      "Units": "s^2/rad",
       "User": "Standard"
     },
     "Q_A_RAT_YAW_D_FF": {
@@ -40451,6 +40476,7 @@
         "high": "0.02",
         "low": "0"
       },
+      "Units": "s^2/rad",
       "User": "Advanced"
     },
     "Q_A_RAT_YAW_FF": {
@@ -40461,6 +40487,7 @@
         "high": "0.5",
         "low": "0"
       },
+      "Units": "s/rad",
       "User": "Standard"
     },
     "Q_A_RAT_YAW_FLTD": {
@@ -40504,6 +40531,7 @@
         "high": "1.0",
         "low": "0.010"
       },
+      "Units": "1/rad",
       "User": "Standard"
     },
     "Q_A_RAT_YAW_IMAX": {
@@ -40543,6 +40571,7 @@
         "high": "2.50",
         "low": "0.10"
       },
+      "Units": "s/rad",
       "User": "Standard"
     },
     "Q_A_RAT_YAW_PDMX": {

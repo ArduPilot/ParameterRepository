@@ -1050,6 +1050,26 @@ Lua Script Parameters
 ---------------------
 
 
+.. _PARAM_LOCK_ENAB:
+
+PARAM\_LOCK\_ENAB: Param Lockdown enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Param Lockdown enable
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
 .. _DR_ENABLE:
 
 DR\_ENABLE: Deadreckoning Enable
@@ -1796,26 +1816,6 @@ OpticalFlow may be used if rangefinder distance is below this threshold
 +=========+========+
 | 0 to 50 | meters |
 +---------+--------+
-
-
-
-
-.. _PARAM_SET_ENABLE:
-
-PARAM\_SET\_ENABLE: Param Set enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Param Set enable
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
 
 
 
@@ -37468,9 +37468,13 @@ Type of AHRS device
 +-------+--------------+
 | 5     | InertialLabs |
 +-------+--------------+
+| 6     | Trimble GSOF |
++-------+--------------+
 | 7     | MicroStrain7 |
 +-------+--------------+
 | 8     | SBG          |
++-------+--------------+
+| 11    | SensAItion   |
 +-------+--------------+
 
 
@@ -37503,13 +37507,15 @@ EAHRS\_OPTIONS: External AHRS options
 External AHRS options bitmask
 
 
-+-----+-------------------------------------------------------------+
-| Bit | Meaning                                                     |
-+=====+=============================================================+
-| 0   | Vector Nav use uncompensated values for accel gyro and mag. |
-+-----+-------------------------------------------------------------+
-| 1   | SBG uses EKF as GNSS.                                       |
-+-----+-------------------------------------------------------------+
++-----+------------------------------------------------------------+
+| Bit | Meaning                                                    |
++=====+============================================================+
+| 0   | Vector Nav use uncompensated values for accel gyro and mag |
++-----+------------------------------------------------------------+
+| 1   | SBG uses EKF as GNSS                                       |
++-----+------------------------------------------------------------+
+| 2   | SensAItion used as AHRS                                    |
++-----+------------------------------------------------------------+
 
 
 

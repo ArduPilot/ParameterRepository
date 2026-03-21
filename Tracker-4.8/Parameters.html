@@ -548,6 +548,17 @@ DO NOT EDIT
 <h1>Lua Script Parameters</h1>
 
 
+<h2>Param Lockdown enable (PARAM_LOCK_ENAB)</h2>
+
+<p>Param Lockdown enable</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
+
+
 <h2>Deadreckoning Enable (DR_ENABLE)</h2>
 
 <p>Deadreckoning Enable</p>
@@ -905,17 +916,6 @@ DO NOT EDIT
 <ul>
 <li>Range: 0 50</li>
 <li>Units: meters</li>
-</ul>
-
-
-<h2>Param Set enable (PARAM_SET_ENABLE)</h2>
-
-<p>Param Set enable</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
 </ul>
 
 
@@ -16709,8 +16709,10 @@ DO NOT EDIT
 <tr><td>1</td><td>VectorNav</td></tr>
 <tr><td>2</td><td>MicroStrain5</td></tr>
 <tr><td>5</td><td>InertialLabs</td></tr>
+<tr><td>6</td><td>Trimble GSOF</td></tr>
 <tr><td>7</td><td>MicroStrain7</td></tr>
 <tr><td>8</td><td>SBG</td></tr>
+<tr><td>11</td><td>SensAItion</td></tr>
 </table>
 </ul>
 
@@ -16727,7 +16729,7 @@ DO NOT EDIT
 
 <p>External AHRS options bitmask</p>
 <ul>
-<li>Bitmask: 0:Vector Nav use uncompensated values for accel gyro and mag., 1:SBG uses EKF as GNSS.</li>
+<li>Bitmask: 0:Vector Nav use uncompensated values for accel gyro and mag, 1:SBG uses EKF as GNSS, 2:SensAItion used as AHRS</li>
 </ul>
 
 

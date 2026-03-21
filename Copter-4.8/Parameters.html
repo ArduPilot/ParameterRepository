@@ -486,7 +486,7 @@ DO NOT EDIT
 <tr><td>12</td><td>Loiter Pos kP</td></tr>
 <tr><td>22</td><td>Velocity XY kP</td></tr>
 <tr><td>28</td><td>Velocity XY kI</td></tr>
-<tr><td>10</td><td>WP Speed</td></tr>
+<tr><td>10</td><td>WP Speed (4.6 and earlier)</td></tr>
 <tr><td>25</td><td>Acro Roll/Pitch deg/s</td></tr>
 <tr><td>40</td><td>Acro Yaw deg/s</td></tr>
 <tr><td>45</td><td>RC Feel</td></tr>
@@ -505,6 +505,7 @@ DO NOT EDIT
 <tr><td>58</td><td>SysID Magnitude</td></tr>
 <tr><td>59</td><td>PSC Angle Max</td></tr>
 <tr><td>60</td><td>Loiter Speed</td></tr>
+<tr><td>61</td><td>WP Speed (m/s)</td></tr>
 </table>
 </ul>
 
@@ -1183,7 +1184,7 @@ DO NOT EDIT
 <tr><td>12</td><td>Loiter Pos kP</td></tr>
 <tr><td>22</td><td>Velocity XY kP</td></tr>
 <tr><td>28</td><td>Velocity XY kI</td></tr>
-<tr><td>10</td><td>WP Speed</td></tr>
+<tr><td>10</td><td>WP Speed (4.6 and earlier)</td></tr>
 <tr><td>25</td><td>Acro Roll/Pitch deg/s</td></tr>
 <tr><td>40</td><td>Acro Yaw deg/s</td></tr>
 <tr><td>45</td><td>RC Feel</td></tr>
@@ -1202,6 +1203,7 @@ DO NOT EDIT
 <tr><td>58</td><td>SysID Magnitude</td></tr>
 <tr><td>59</td><td>PSC Angle Max</td></tr>
 <tr><td>60</td><td>Loiter Speed</td></tr>
+<tr><td>61</td><td>WP Speed (m/s)</td></tr>
 </table>
 </ul>
 
@@ -1258,6 +1260,17 @@ DO NOT EDIT
 
 
 <h1>Lua Script Parameters</h1>
+
+
+<h2>Param Lockdown enable (PARAM_LOCK_ENAB)</h2>
+
+<p>Param Lockdown enable</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
 
 
 <h2>Deadreckoning Enable (DR_ENABLE)</h2>
@@ -1617,17 +1630,6 @@ DO NOT EDIT
 <ul>
 <li>Range: 0 50</li>
 <li>Units: meters</li>
-</ul>
-
-
-<h2>Param Set enable (PARAM_SET_ENABLE)</h2>
-
-<p>Param Set enable</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
 </ul>
 
 
@@ -6311,6 +6313,7 @@ DO NOT EDIT
 
 <p>Roll axis rate controller P gain.  Corrects in proportion to the difference between the desired roll rate vs actual roll rate</p>
 <ul>
+<li>Units: seconds per radian</li>
 <li>Range: 0.01 0.5</li>
 <li>Increment: 0.005</li>
 </ul>
@@ -6320,6 +6323,7 @@ DO NOT EDIT
 
 <p>Roll axis rate controller I gain.  Corrects long-term difference in desired roll rate vs actual roll rate</p>
 <ul>
+<li>Units: per radian</li>
 <li>Range: 0.01 2.0</li>
 <li>Increment: 0.01</li>
 </ul>
@@ -6338,6 +6342,7 @@ DO NOT EDIT
 
 <p>Roll axis rate controller D gain.  Compensates for short-term change in desired roll rate vs actual roll rate</p>
 <ul>
+<li>Units: seconds squared per radian</li>
 <li>Range: 0.0 0.05</li>
 <li>Increment: 0.001</li>
 </ul>
@@ -6347,6 +6352,7 @@ DO NOT EDIT
 
 <p>Roll axis rate controller feed forward</p>
 <ul>
+<li>Units: seconds per radian</li>
 <li>Range: 0 0.5</li>
 <li>Increment: 0.001</li>
 </ul>
@@ -6404,6 +6410,7 @@ DO NOT EDIT
 
 <p>FF D Gain which produces an output that is proportional to the rate of change of the target</p>
 <ul>
+<li>Units: seconds squared per radian</li>
 <li>Range: 0 0.02</li>
 <li>Increment: 0.0001</li>
 </ul>
@@ -6429,6 +6436,7 @@ DO NOT EDIT
 
 <p>Pitch axis rate controller P gain.  Corrects in proportion to the difference between the desired pitch rate vs actual pitch rate output</p>
 <ul>
+<li>Units: seconds per radian</li>
 <li>Range: 0.01 0.50</li>
 <li>Increment: 0.005</li>
 </ul>
@@ -6438,6 +6446,7 @@ DO NOT EDIT
 
 <p>Pitch axis rate controller I gain.  Corrects long-term difference in desired pitch rate vs actual pitch rate</p>
 <ul>
+<li>Units: per radian</li>
 <li>Range: 0.01 2.0</li>
 <li>Increment: 0.01</li>
 </ul>
@@ -6456,6 +6465,7 @@ DO NOT EDIT
 
 <p>Pitch axis rate controller D gain.  Compensates for short-term change in desired pitch rate vs actual pitch rate</p>
 <ul>
+<li>Units: seconds squared per radian</li>
 <li>Range: 0.0 0.05</li>
 <li>Increment: 0.001</li>
 </ul>
@@ -6465,6 +6475,7 @@ DO NOT EDIT
 
 <p>Pitch axis rate controller feed forward</p>
 <ul>
+<li>Units: seconds per radian</li>
 <li>Range: 0 0.5</li>
 <li>Increment: 0.001</li>
 </ul>
@@ -6522,6 +6533,7 @@ DO NOT EDIT
 
 <p>FF D Gain which produces an output that is proportional to the rate of change of the target</p>
 <ul>
+<li>Units: seconds squared per radian</li>
 <li>Range: 0 0.02</li>
 <li>Increment: 0.0001</li>
 </ul>
@@ -6547,6 +6559,7 @@ DO NOT EDIT
 
 <p>Yaw axis rate controller P gain.  Corrects in proportion to the difference between the desired yaw rate vs actual yaw rate</p>
 <ul>
+<li>Units: seconds per radian</li>
 <li>Range: 0.10 2.50</li>
 <li>Increment: 0.005</li>
 </ul>
@@ -6556,6 +6569,7 @@ DO NOT EDIT
 
 <p>Yaw axis rate controller I gain.  Corrects long-term difference in desired yaw rate vs actual yaw rate</p>
 <ul>
+<li>Units: per radian</li>
 <li>Range: 0.010 1.0</li>
 <li>Increment: 0.01</li>
 </ul>
@@ -6574,6 +6588,7 @@ DO NOT EDIT
 
 <p>Yaw axis rate controller D gain.  Compensates for short-term change in desired yaw rate vs actual yaw rate</p>
 <ul>
+<li>Units: seconds squared per radian</li>
 <li>Range: 0.000 0.02</li>
 <li>Increment: 0.001</li>
 </ul>
@@ -6583,6 +6598,7 @@ DO NOT EDIT
 
 <p>Yaw axis rate controller feed forward</p>
 <ul>
+<li>Units: seconds per radian</li>
 <li>Range: 0 0.5</li>
 <li>Increment: 0.001</li>
 </ul>
@@ -6640,6 +6656,7 @@ DO NOT EDIT
 
 <p>FF D Gain which produces an output that is proportional to the rate of change of the target</p>
 <ul>
+<li>Units: seconds squared per radian</li>
 <li>Range: 0 0.02</li>
 <li>Increment: 0.0001</li>
 </ul>
@@ -6708,6 +6725,7 @@ DO NOT EDIT
 
 <p>Roll axis rate controller P gain.  Corrects in proportion to the difference between the desired roll rate vs actual roll rate</p>
 <ul>
+<li>Units: seconds per radian</li>
 <li>Range: 0.0 0.35</li>
 <li>Increment: 0.005</li>
 </ul>
@@ -6717,6 +6735,7 @@ DO NOT EDIT
 
 <p>Roll axis rate controller I gain.  Corrects long-term difference in desired roll rate vs actual roll rate</p>
 <ul>
+<li>Units: per radian</li>
 <li>Range: 0.0 0.6</li>
 <li>Increment: 0.01</li>
 </ul>
@@ -6743,6 +6762,7 @@ DO NOT EDIT
 
 <p>Roll axis rate controller D gain.  Compensates for short-term change in desired roll rate vs actual roll rate</p>
 <ul>
+<li>Units: seconds squared per radian</li>
 <li>Range: 0.0 0.03</li>
 <li>Increment: 0.001</li>
 </ul>
@@ -6752,6 +6772,7 @@ DO NOT EDIT
 
 <p>Roll axis rate controller feed forward</p>
 <ul>
+<li>Units: seconds per radian</li>
 <li>Range: 0.05 0.5</li>
 <li>Increment: 0.001</li>
 </ul>
@@ -6800,6 +6821,7 @@ DO NOT EDIT
 
 <p>FF D Gain which produces an output that is proportional to the rate of change of the target</p>
 <ul>
+<li>Units: seconds squared per radian</li>
 <li>Range: 0 0.02</li>
 <li>Increment: 0.0001</li>
 </ul>
@@ -6825,6 +6847,7 @@ DO NOT EDIT
 
 <p>Pitch axis rate controller P gain.  Corrects in proportion to the difference between the desired pitch rate vs actual pitch rate</p>
 <ul>
+<li>Units: seconds per radian</li>
 <li>Range: 0.0 0.35</li>
 <li>Increment: 0.005</li>
 </ul>
@@ -6834,6 +6857,7 @@ DO NOT EDIT
 
 <p>Pitch axis rate controller I gain.  Corrects long-term difference in desired pitch rate vs actual pitch rate</p>
 <ul>
+<li>Units: per radian</li>
 <li>Range: 0.0 0.6</li>
 <li>Increment: 0.01</li>
 </ul>
@@ -6860,6 +6884,7 @@ DO NOT EDIT
 
 <p>Pitch axis rate controller D gain.  Compensates for short-term change in desired pitch rate vs actual pitch rate</p>
 <ul>
+<li>Units: seconds squared per radian</li>
 <li>Range: 0.0 0.03</li>
 <li>Increment: 0.001</li>
 </ul>
@@ -6869,6 +6894,7 @@ DO NOT EDIT
 
 <p>Pitch axis rate controller feed forward</p>
 <ul>
+<li>Units: seconds per radian</li>
 <li>Range: 0.05 0.5</li>
 <li>Increment: 0.001</li>
 </ul>
@@ -6917,6 +6943,7 @@ DO NOT EDIT
 
 <p>FF D Gain which produces an output that is proportional to the rate of change of the target</p>
 <ul>
+<li>Units: seconds squared per radian</li>
 <li>Range: 0 0.02</li>
 <li>Increment: 0.0001</li>
 </ul>
@@ -6942,6 +6969,7 @@ DO NOT EDIT
 
 <p>Yaw axis rate controller P gain.  Corrects in proportion to the difference between the desired yaw rate vs actual yaw rate</p>
 <ul>
+<li>Units: seconds per radian</li>
 <li>Range: 0.180 0.60</li>
 <li>Increment: 0.005</li>
 </ul>
@@ -6951,6 +6979,7 @@ DO NOT EDIT
 
 <p>Yaw axis rate controller I gain.  Corrects long-term difference in desired yaw rate vs actual yaw rate</p>
 <ul>
+<li>Units: per radian</li>
 <li>Range: 0.01 0.2</li>
 <li>Increment: 0.01</li>
 </ul>
@@ -6977,6 +7006,7 @@ DO NOT EDIT
 
 <p>Yaw axis rate controller D gain.  Compensates for short-term change in desired yaw rate vs actual yaw rate</p>
 <ul>
+<li>Units: seconds squared per radian</li>
 <li>Range: 0.000 0.02</li>
 <li>Increment: 0.001</li>
 </ul>
@@ -6986,6 +7016,7 @@ DO NOT EDIT
 
 <p>Yaw axis rate controller feed forward</p>
 <ul>
+<li>Units: seconds per radian</li>
 <li>Range: 0 0.5</li>
 <li>Increment: 0.001</li>
 </ul>
@@ -7034,6 +7065,7 @@ DO NOT EDIT
 
 <p>FF D Gain which produces an output that is proportional to the rate of change of the target</p>
 <ul>
+<li>Units: seconds squared per radian</li>
 <li>Range: 0 0.02</li>
 <li>Increment: 0.0001</li>
 </ul>
@@ -20837,8 +20869,10 @@ DO NOT EDIT
 <tr><td>1</td><td>VectorNav</td></tr>
 <tr><td>2</td><td>MicroStrain5</td></tr>
 <tr><td>5</td><td>InertialLabs</td></tr>
+<tr><td>6</td><td>Trimble GSOF</td></tr>
 <tr><td>7</td><td>MicroStrain7</td></tr>
 <tr><td>8</td><td>SBG</td></tr>
+<tr><td>11</td><td>SensAItion</td></tr>
 </table>
 </ul>
 
@@ -20855,7 +20889,7 @@ DO NOT EDIT
 
 <p>External AHRS options bitmask</p>
 <ul>
-<li>Bitmask: 0:Vector Nav use uncompensated values for accel gyro and mag., 1:SBG uses EKF as GNSS.</li>
+<li>Bitmask: 0:Vector Nav use uncompensated values for accel gyro and mag, 1:SBG uses EKF as GNSS, 2:SensAItion used as AHRS</li>
 </ul>
 
 

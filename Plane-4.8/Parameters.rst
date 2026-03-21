@@ -2977,6 +2977,24 @@ If external guided command was not received by this timeout\, the vehicle will r
 
 
 
+.. _RNGFND_LND_DIST:
+
+RNGFND\_LND\_DIST: Rangefinder landing engagement distance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+The horizontal distance to the landing point at which the rangefinder engages when RNGFND\_LANDING is enabled\. This is useful for landing on platforms or small plateaus\, and to avoid interference from uneven terrain or obstacles on approach\. A value of 0 engages the rangefinder as soon as it reports valid readings within its range limits\. Very small values are not recommended unless required by the landing scenario\, as they can force large slope corrections near the ground\, increase auto\-abort frequency if LAND\_ABORT\_DEG is set\, and provide no slope\-correction benefit if the rangefinder is engaged after flare\.
+
+
++-----------+----------+--------+
+| Increment | Range    | Units  |
++===========+==========+========+
+| 1         | 0 to 500 | meters |
++-----------+----------+--------+
+
+
+
+
 
 .. _parameters_VEHICLE:
 
@@ -38616,9 +38634,13 @@ Type of AHRS device
 | +-------+--------------+ |
 | | 5     | InertialLabs | |
 | +-------+--------------+ |
+| | 6     | Trimble GSOF | |
+| +-------+--------------+ |
 | | 7     | MicroStrain7 | |
 | +-------+--------------+ |
 | | 8     | SBG          | |
+| +-------+--------------+ |
+| | 11    | SensAItion   | |
 | +-------+--------------+ |
 |                          |
 +--------------------------+
@@ -38653,18 +38675,20 @@ EAHRS\_OPTIONS: External AHRS options
 External AHRS options bitmask
 
 
-+-----------------------------------------------------------------------+
-| Bitmask                                                               |
-+=======================================================================+
-| +-----+-------------------------------------------------------------+ |
-| | Bit | Meaning                                                     | |
-| +=====+=============================================================+ |
-| | 0   | Vector Nav use uncompensated values for accel gyro and mag. | |
-| +-----+-------------------------------------------------------------+ |
-| | 1   | SBG uses EKF as GNSS.                                       | |
-| +-----+-------------------------------------------------------------+ |
-|                                                                       |
-+-----------------------------------------------------------------------+
++----------------------------------------------------------------------+
+| Bitmask                                                              |
++======================================================================+
+| +-----+------------------------------------------------------------+ |
+| | Bit | Meaning                                                    | |
+| +=====+============================================================+ |
+| | 0   | Vector Nav use uncompensated values for accel gyro and mag | |
+| +-----+------------------------------------------------------------+ |
+| | 1   | SBG uses EKF as GNSS                                       | |
+| +-----+------------------------------------------------------------+ |
+| | 2   | SensAItion used as AHRS                                    | |
+| +-----+------------------------------------------------------------+ |
+|                                                                      |
++----------------------------------------------------------------------+
 
 
 
@@ -86048,11 +86072,11 @@ Q\_A\_RAT\_RLL\_P: Roll axis rate controller P gain
 Roll axis rate controller P gain\.  Corrects in proportion to the difference between the desired roll rate vs actual roll rate
 
 
-+-----------+-------------+
-| Increment | Range       |
-+===========+=============+
-| 0.005     | 0.01 to 0.5 |
-+-----------+-------------+
++-----------+-------------+--------------------+
+| Increment | Range       | Units              |
++===========+=============+====================+
+| 0.005     | 0.01 to 0.5 | seconds per radian |
++-----------+-------------+--------------------+
 
 
 
@@ -86066,11 +86090,11 @@ Q\_A\_RAT\_RLL\_I: Roll axis rate controller I gain
 Roll axis rate controller I gain\.  Corrects long\-term difference in desired roll rate vs actual roll rate
 
 
-+-----------+-------------+
-| Increment | Range       |
-+===========+=============+
-| 0.01      | 0.01 to 2.0 |
-+-----------+-------------+
++-----------+-------------+------------+
+| Increment | Range       | Units      |
++===========+=============+============+
+| 0.01      | 0.01 to 2.0 | per radian |
++-----------+-------------+------------+
 
 
 
@@ -86102,11 +86126,11 @@ Q\_A\_RAT\_RLL\_D: Roll axis rate controller D gain
 Roll axis rate controller D gain\.  Compensates for short\-term change in desired roll rate vs actual roll rate
 
 
-+-----------+-------------+
-| Increment | Range       |
-+===========+=============+
-| 0.001     | 0.0 to 0.05 |
-+-----------+-------------+
++-----------+-------------+----------------------------+
+| Increment | Range       | Units                      |
++===========+=============+============================+
+| 0.001     | 0.0 to 0.05 | seconds squared per radian |
++-----------+-------------+----------------------------+
 
 
 
@@ -86120,11 +86144,11 @@ Q\_A\_RAT\_RLL\_FF: Roll axis rate controller feed forward
 Roll axis rate controller feed forward
 
 
-+-----------+----------+
-| Increment | Range    |
-+===========+==========+
-| 0.001     | 0 to 0.5 |
-+-----------+----------+
++-----------+----------+--------------------+
+| Increment | Range    | Units              |
++===========+==========+====================+
+| 0.001     | 0 to 0.5 | seconds per radian |
++-----------+----------+--------------------+
 
 
 
@@ -86230,11 +86254,11 @@ Q\_A\_RAT\_RLL\_D\_FF: Roll Derivative FeedForward Gain
 FF D Gain which produces an output that is proportional to the rate of change of the target
 
 
-+-----------+-----------+
-| Increment | Range     |
-+===========+===========+
-| 0.0001    | 0 to 0.02 |
-+-----------+-----------+
++-----------+-----------+----------------------------+
+| Increment | Range     | Units                      |
++===========+===========+============================+
+| 0.0001    | 0 to 0.02 | seconds squared per radian |
++-----------+-----------+----------------------------+
 
 
 
@@ -86286,11 +86310,11 @@ Q\_A\_RAT\_PIT\_P: Pitch axis rate controller P gain
 Pitch axis rate controller P gain\.  Corrects in proportion to the difference between the desired pitch rate vs actual pitch rate output
 
 
-+-----------+--------------+
-| Increment | Range        |
-+===========+==============+
-| 0.005     | 0.01 to 0.50 |
-+-----------+--------------+
++-----------+--------------+--------------------+
+| Increment | Range        | Units              |
++===========+==============+====================+
+| 0.005     | 0.01 to 0.50 | seconds per radian |
++-----------+--------------+--------------------+
 
 
 
@@ -86304,11 +86328,11 @@ Q\_A\_RAT\_PIT\_I: Pitch axis rate controller I gain
 Pitch axis rate controller I gain\.  Corrects long\-term difference in desired pitch rate vs actual pitch rate
 
 
-+-----------+-------------+
-| Increment | Range       |
-+===========+=============+
-| 0.01      | 0.01 to 2.0 |
-+-----------+-------------+
++-----------+-------------+------------+
+| Increment | Range       | Units      |
++===========+=============+============+
+| 0.01      | 0.01 to 2.0 | per radian |
++-----------+-------------+------------+
 
 
 
@@ -86340,11 +86364,11 @@ Q\_A\_RAT\_PIT\_D: Pitch axis rate controller D gain
 Pitch axis rate controller D gain\.  Compensates for short\-term change in desired pitch rate vs actual pitch rate
 
 
-+-----------+-------------+
-| Increment | Range       |
-+===========+=============+
-| 0.001     | 0.0 to 0.05 |
-+-----------+-------------+
++-----------+-------------+----------------------------+
+| Increment | Range       | Units                      |
++===========+=============+============================+
+| 0.001     | 0.0 to 0.05 | seconds squared per radian |
++-----------+-------------+----------------------------+
 
 
 
@@ -86358,11 +86382,11 @@ Q\_A\_RAT\_PIT\_FF: Pitch axis rate controller feed forward
 Pitch axis rate controller feed forward
 
 
-+-----------+----------+
-| Increment | Range    |
-+===========+==========+
-| 0.001     | 0 to 0.5 |
-+-----------+----------+
++-----------+----------+--------------------+
+| Increment | Range    | Units              |
++===========+==========+====================+
+| 0.001     | 0 to 0.5 | seconds per radian |
++-----------+----------+--------------------+
 
 
 
@@ -86468,11 +86492,11 @@ Q\_A\_RAT\_PIT\_D\_FF: Pitch Derivative FeedForward Gain
 FF D Gain which produces an output that is proportional to the rate of change of the target
 
 
-+-----------+-----------+
-| Increment | Range     |
-+===========+===========+
-| 0.0001    | 0 to 0.02 |
-+-----------+-----------+
++-----------+-----------+----------------------------+
+| Increment | Range     | Units                      |
++===========+===========+============================+
+| 0.0001    | 0 to 0.02 | seconds squared per radian |
++-----------+-----------+----------------------------+
 
 
 
@@ -86524,11 +86548,11 @@ Q\_A\_RAT\_YAW\_P: Yaw axis rate controller P gain
 Yaw axis rate controller P gain\.  Corrects in proportion to the difference between the desired yaw rate vs actual yaw rate
 
 
-+-----------+--------------+
-| Increment | Range        |
-+===========+==============+
-| 0.005     | 0.10 to 2.50 |
-+-----------+--------------+
++-----------+--------------+--------------------+
+| Increment | Range        | Units              |
++===========+==============+====================+
+| 0.005     | 0.10 to 2.50 | seconds per radian |
++-----------+--------------+--------------------+
 
 
 
@@ -86542,11 +86566,11 @@ Q\_A\_RAT\_YAW\_I: Yaw axis rate controller I gain
 Yaw axis rate controller I gain\.  Corrects long\-term difference in desired yaw rate vs actual yaw rate
 
 
-+-----------+--------------+
-| Increment | Range        |
-+===========+==============+
-| 0.01      | 0.010 to 1.0 |
-+-----------+--------------+
++-----------+--------------+------------+
+| Increment | Range        | Units      |
++===========+==============+============+
+| 0.01      | 0.010 to 1.0 | per radian |
++-----------+--------------+------------+
 
 
 
@@ -86578,11 +86602,11 @@ Q\_A\_RAT\_YAW\_D: Yaw axis rate controller D gain
 Yaw axis rate controller D gain\.  Compensates for short\-term change in desired yaw rate vs actual yaw rate
 
 
-+-----------+---------------+
-| Increment | Range         |
-+===========+===============+
-| 0.001     | 0.000 to 0.02 |
-+-----------+---------------+
++-----------+---------------+----------------------------+
+| Increment | Range         | Units                      |
++===========+===============+============================+
+| 0.001     | 0.000 to 0.02 | seconds squared per radian |
++-----------+---------------+----------------------------+
 
 
 
@@ -86596,11 +86620,11 @@ Q\_A\_RAT\_YAW\_FF: Yaw axis rate controller feed forward
 Yaw axis rate controller feed forward
 
 
-+-----------+----------+
-| Increment | Range    |
-+===========+==========+
-| 0.001     | 0 to 0.5 |
-+-----------+----------+
++-----------+----------+--------------------+
+| Increment | Range    | Units              |
++===========+==========+====================+
+| 0.001     | 0 to 0.5 | seconds per radian |
++-----------+----------+--------------------+
 
 
 
@@ -86706,11 +86730,11 @@ Q\_A\_RAT\_YAW\_D\_FF: Yaw Derivative FeedForward Gain
 FF D Gain which produces an output that is proportional to the rate of change of the target
 
 
-+-----------+-----------+
-| Increment | Range     |
-+===========+===========+
-| 0.0001    | 0 to 0.02 |
-+-----------+-----------+
++-----------+-----------+----------------------------+
+| Increment | Range     | Units                      |
++===========+===========+============================+
+| 0.0001    | 0 to 0.02 | seconds squared per radian |
++-----------+-----------+----------------------------+
 
 
 

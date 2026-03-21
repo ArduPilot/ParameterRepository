@@ -1907,6 +1907,7 @@
         "high": "0.03",
         "low": "0.0"
       },
+      "Units": "s^2/rad",
       "User": "Standard"
     },
     "ATC_RAT_PIT_D_FF": {
@@ -1917,6 +1918,7 @@
         "high": "0.02",
         "low": "0"
       },
+      "Units": "s^2/rad",
       "User": "Advanced"
     },
     "ATC_RAT_PIT_FF": {
@@ -1927,6 +1929,7 @@
         "high": "0.5",
         "low": "0.05"
       },
+      "Units": "s/rad",
       "User": "Standard"
     },
     "ATC_RAT_PIT_FLTD": {
@@ -1970,6 +1973,7 @@
         "high": "0.6",
         "low": "0.0"
       },
+      "Units": "1/rad",
       "User": "Standard"
     },
     "ATC_RAT_PIT_ILMI": {
@@ -2017,6 +2021,7 @@
         "high": "0.35",
         "low": "0.0"
       },
+      "Units": "s/rad",
       "User": "Standard"
     },
     "ATC_RAT_PIT_PDMX": {
@@ -2046,6 +2051,7 @@
         "high": "0.03",
         "low": "0.0"
       },
+      "Units": "s^2/rad",
       "User": "Standard"
     },
     "ATC_RAT_RLL_D_FF": {
@@ -2056,6 +2062,7 @@
         "high": "0.02",
         "low": "0"
       },
+      "Units": "s^2/rad",
       "User": "Advanced"
     },
     "ATC_RAT_RLL_FF": {
@@ -2066,6 +2073,7 @@
         "high": "0.5",
         "low": "0.05"
       },
+      "Units": "s/rad",
       "User": "Standard"
     },
     "ATC_RAT_RLL_FLTD": {
@@ -2109,6 +2117,7 @@
         "high": "0.6",
         "low": "0.0"
       },
+      "Units": "1/rad",
       "User": "Standard"
     },
     "ATC_RAT_RLL_ILMI": {
@@ -2156,6 +2165,7 @@
         "high": "0.35",
         "low": "0.0"
       },
+      "Units": "s/rad",
       "User": "Standard"
     },
     "ATC_RAT_RLL_PDMX": {
@@ -2185,6 +2195,7 @@
         "high": "0.02",
         "low": "0.000"
       },
+      "Units": "s^2/rad",
       "User": "Standard"
     },
     "ATC_RAT_YAW_D_FF": {
@@ -2195,6 +2206,7 @@
         "high": "0.02",
         "low": "0"
       },
+      "Units": "s^2/rad",
       "User": "Advanced"
     },
     "ATC_RAT_YAW_FF": {
@@ -2205,6 +2217,7 @@
         "high": "0.5",
         "low": "0"
       },
+      "Units": "s/rad",
       "User": "Standard"
     },
     "ATC_RAT_YAW_FLTD": {
@@ -2248,6 +2261,7 @@
         "high": "0.2",
         "low": "0.01"
       },
+      "Units": "1/rad",
       "User": "Standard"
     },
     "ATC_RAT_YAW_ILMI": {
@@ -2296,6 +2310,7 @@
         "high": "0.60",
         "low": "0.180"
       },
+      "Units": "s/rad",
       "User": "Standard"
     },
     "ATC_RAT_YAW_PDMX": {
@@ -16055,7 +16070,7 @@
       "Values": {
         "0": "None",
         "1": "Stab Roll/Pitch kP",
-        "10": "WP Speed",
+        "10": "WP Speed (4.6 and earlier)",
         "12": "Loiter Pos kP",
         "13": "Heli Ext Gyro",
         "14": "AltHold kP",
@@ -16089,6 +16104,7 @@
         "59": "PSC Angle Max",
         "6": "Rate Yaw kP",
         "60": "Loiter Speed",
+        "61": "WP Speed (m/s)",
         "7": "Throttle Rate kP"
       }
     },
@@ -16099,7 +16115,7 @@
       "Values": {
         "0": "None",
         "1": "Stab Roll/Pitch kP",
-        "10": "WP Speed",
+        "10": "WP Speed (4.6 and earlier)",
         "12": "Loiter Pos kP",
         "13": "Heli Ext Gyro",
         "14": "AltHold kP",
@@ -16133,6 +16149,7 @@
         "59": "PSC Angle Max",
         "6": "Rate Yaw kP",
         "60": "Loiter Speed",
+        "61": "WP Speed (m/s)",
         "7": "Throttle Rate kP"
       }
     },
@@ -16328,8 +16345,9 @@
     },
     "EAHRS_OPTIONS": {
       "Bitmask": {
-        "0": "Vector Nav use uncompensated values for accel gyro and mag.",
-        "1": "SBG uses EKF as GNSS."
+        "0": "Vector Nav use uncompensated values for accel gyro and mag",
+        "1": "SBG uses EKF as GNSS",
+        "2": "SensAItion used as AHRS"
       },
       "Description": "External AHRS options bitmask",
       "DisplayName": "External AHRS options",
@@ -16359,8 +16377,10 @@
       "Values": {
         "0": "None",
         "1": "VectorNav",
+        "11": "SensAItion",
         "2": "MicroStrain5",
         "5": "InertialLabs",
+        "6": "Trimble GSOF",
         "7": "MicroStrain7",
         "8": "SBG"
       }
@@ -25107,9 +25127,9 @@
       "DisplayName": "Sensor operating mode",
       "User": "Standard"
     },
-    "PARAM_SET_ENABLE": {
-      "Description": "Param Set enable",
-      "DisplayName": "Param Set enable",
+    "PARAM_LOCK_ENAB": {
+      "Description": "Param Lockdown enable",
+      "DisplayName": "Param Lockdown enable",
       "User": "Standard",
       "Values": {
         "0": "Disabled",

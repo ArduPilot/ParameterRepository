@@ -447,7 +447,7 @@ Selects parameter (normally a PID gain) that is being tuned with an RC transmitt
 |12|Loiter Pos kP|
 |22|Velocity XY kP|
 |28|Velocity XY kI|
-|10|WP Speed|
+|10|WP Speed (4.6 and earlier)|
 |25|Acro Roll/Pitch deg/s|
 |40|Acro Yaw deg/s|
 |45|RC Feel|
@@ -466,6 +466,7 @@ Selects parameter (normally a PID gain) that is being tuned with an RC transmitt
 |58|SysID Magnitude|
 |59|PSC Angle Max|
 |60|Loiter Speed|
+|61|WP Speed (m/s)|
 
 ## FRAME_TYPE: Frame Type (+, X, V, etc)
 
@@ -1120,7 +1121,7 @@ Selects parameter (normally a PID gain) that is being tuned with an RC transmitt
 |12|Loiter Pos kP|
 |22|Velocity XY kP|
 |28|Velocity XY kI|
-|10|WP Speed|
+|10|WP Speed (4.6 and earlier)|
 |25|Acro Roll/Pitch deg/s|
 |40|Acro Yaw deg/s|
 |45|RC Feel|
@@ -1139,6 +1140,7 @@ Selects parameter (normally a PID gain) that is being tuned with an RC transmitt
 |58|SysID Magnitude|
 |59|PSC Angle Max|
 |60|Loiter Speed|
+|61|WP Speed (m/s)|
 
 ## PILOT_ACC_Z: Pilot vertical acceleration
 
@@ -1189,6 +1191,15 @@ Bitmask of flight modes to disable for GCS selection. Mode can still be accessed
 - Bitmask: 0:Stabilize,1:Acro,2:AltHold,3:Auto,4:Guided,5:Loiter,6:Circle,7:Drift,8:Sport,9:Flip,10:AutoTune,11:PosHold,12:Brake,13:Throw,14:Avoid_ADSB,15:Guided_NoGPS,16:Smart_RTL,17:FlowHold,18:Follow,19:ZigZag,20:SystemID,21:Heli_Autorotate,22:Auto RTL,23:Turtle
 
 # Lua Script Parameters
+
+## PARAM_LOCK_ENAB: Param Lockdown enable
+
+Param Lockdown enable
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Disabled|
+|1|Enabled|
 
 ## DR_ENABLE: Deadreckoning Enable
 
@@ -1480,15 +1491,6 @@ OpticalFlow may be used if rangefinder distance is below this threshold
 - Range: 0 50
 
 - Units: m
-
-## PARAM_SET_ENABLE: Param Set enable
-
-Param Set enable
-
-|Value|Meaning|
-|:---:|:---:|
-|0|Disabled|
-|1|Enabled|
 
 ## FOLLP_FAIL_MODE: Plane Follow lost target mode
 
@@ -5637,6 +5639,8 @@ Maximum acceleration in pitch axis
 
 Roll axis rate controller P gain.  Corrects in proportion to the difference between the desired roll rate vs actual roll rate
 
+- Units: s/rad
+
 - Range: 0.01 0.5
 
 - Increment: 0.005
@@ -5644,6 +5648,8 @@ Roll axis rate controller P gain.  Corrects in proportion to the difference betw
 ## ATC_RAT_RLL_I: Roll axis rate controller I gain
 
 Roll axis rate controller I gain.  Corrects long-term difference in desired roll rate vs actual roll rate
+
+- Units: 1/rad
 
 - Range: 0.01 2.0
 
@@ -5661,6 +5667,8 @@ Roll axis rate controller I gain maximum.  Constrains the maximum that the I ter
 
 Roll axis rate controller D gain.  Compensates for short-term change in desired roll rate vs actual roll rate
 
+- Units: s^2/rad
+
 - Range: 0.0 0.05
 
 - Increment: 0.001
@@ -5668,6 +5676,8 @@ Roll axis rate controller D gain.  Compensates for short-term change in desired 
 ## ATC_RAT_RLL_FF: Roll axis rate controller feed forward
 
 Roll axis rate controller feed forward
+
+- Units: s/rad
 
 - Range: 0 0.5
 
@@ -5727,6 +5737,8 @@ Roll axis rate controller PD sum maximum.  The maximum/minimum value that the su
 
 FF D Gain which produces an output that is proportional to the rate of change of the target
 
+- Units: s^2/rad
+
 - Range: 0 0.02
 
 - Increment: 0.0001
@@ -5751,6 +5763,8 @@ Roll Error notch filter index
 
 Pitch axis rate controller P gain.  Corrects in proportion to the difference between the desired pitch rate vs actual pitch rate output
 
+- Units: s/rad
+
 - Range: 0.01 0.50
 
 - Increment: 0.005
@@ -5758,6 +5772,8 @@ Pitch axis rate controller P gain.  Corrects in proportion to the difference bet
 ## ATC_RAT_PIT_I: Pitch axis rate controller I gain
 
 Pitch axis rate controller I gain.  Corrects long-term difference in desired pitch rate vs actual pitch rate
+
+- Units: 1/rad
 
 - Range: 0.01 2.0
 
@@ -5775,6 +5791,8 @@ Pitch axis rate controller I gain maximum.  Constrains the maximum that the I te
 
 Pitch axis rate controller D gain.  Compensates for short-term change in desired pitch rate vs actual pitch rate
 
+- Units: s^2/rad
+
 - Range: 0.0 0.05
 
 - Increment: 0.001
@@ -5782,6 +5800,8 @@ Pitch axis rate controller D gain.  Compensates for short-term change in desired
 ## ATC_RAT_PIT_FF: Pitch axis rate controller feed forward
 
 Pitch axis rate controller feed forward
+
+- Units: s/rad
 
 - Range: 0 0.5
 
@@ -5841,6 +5861,8 @@ Pitch axis rate controller PD sum maximum.  The maximum/minimum value that the s
 
 FF D Gain which produces an output that is proportional to the rate of change of the target
 
+- Units: s^2/rad
+
 - Range: 0 0.02
 
 - Increment: 0.0001
@@ -5865,6 +5887,8 @@ Pitch Error notch filter index
 
 Yaw axis rate controller P gain.  Corrects in proportion to the difference between the desired yaw rate vs actual yaw rate
 
+- Units: s/rad
+
 - Range: 0.10 2.50
 
 - Increment: 0.005
@@ -5872,6 +5896,8 @@ Yaw axis rate controller P gain.  Corrects in proportion to the difference betwe
 ## ATC_RAT_YAW_I: Yaw axis rate controller I gain
 
 Yaw axis rate controller I gain.  Corrects long-term difference in desired yaw rate vs actual yaw rate
+
+- Units: 1/rad
 
 - Range: 0.010 1.0
 
@@ -5889,6 +5915,8 @@ Yaw axis rate controller I gain maximum.  Constrains the maximum that the I term
 
 Yaw axis rate controller D gain.  Compensates for short-term change in desired yaw rate vs actual yaw rate
 
+- Units: s^2/rad
+
 - Range: 0.000 0.02
 
 - Increment: 0.001
@@ -5896,6 +5924,8 @@ Yaw axis rate controller D gain.  Compensates for short-term change in desired y
 ## ATC_RAT_YAW_FF: Yaw axis rate controller feed forward
 
 Yaw axis rate controller feed forward
+
+- Units: s/rad
 
 - Range: 0 0.5
 
@@ -5954,6 +5984,8 @@ Yaw axis rate controller PD sum maximum.  The maximum/minimum value that the sum
 *Note: This parameter is for advanced users*
 
 FF D Gain which produces an output that is proportional to the rate of change of the target
+
+- Units: s^2/rad
 
 - Range: 0 0.02
 
@@ -6025,6 +6057,8 @@ Trim the hover roll angle to counter tail rotor thrust in a hover
 
 Roll axis rate controller P gain.  Corrects in proportion to the difference between the desired roll rate vs actual roll rate
 
+- Units: s/rad
+
 - Range: 0.0 0.35
 
 - Increment: 0.005
@@ -6032,6 +6066,8 @@ Roll axis rate controller P gain.  Corrects in proportion to the difference betw
 ## ATC_RAT_RLL_I: Roll axis rate controller I gain
 
 Roll axis rate controller I gain.  Corrects long-term difference in desired roll rate vs actual roll rate
+
+- Units: 1/rad
 
 - Range: 0.0 0.6
 
@@ -6057,6 +6093,8 @@ Point below which I-term will not leak down
 
 Roll axis rate controller D gain.  Compensates for short-term change in desired roll rate vs actual roll rate
 
+- Units: s^2/rad
+
 - Range: 0.0 0.03
 
 - Increment: 0.001
@@ -6064,6 +6102,8 @@ Roll axis rate controller D gain.  Compensates for short-term change in desired 
 ## ATC_RAT_RLL_FF: Roll axis rate controller feed forward
 
 Roll axis rate controller feed forward
+
+- Units: s/rad
 
 - Range: 0.05 0.5
 
@@ -6115,6 +6155,8 @@ Sets an upper limit on the slew rate produced by the combined P and D gains. If 
 
 FF D Gain which produces an output that is proportional to the rate of change of the target
 
+- Units: s^2/rad
+
 - Range: 0 0.02
 
 - Increment: 0.0001
@@ -6139,6 +6181,8 @@ Roll Error notch filter index
 
 Pitch axis rate controller P gain.  Corrects in proportion to the difference between the desired pitch rate vs actual pitch rate
 
+- Units: s/rad
+
 - Range: 0.0 0.35
 
 - Increment: 0.005
@@ -6146,6 +6190,8 @@ Pitch axis rate controller P gain.  Corrects in proportion to the difference bet
 ## ATC_RAT_PIT_I: Pitch axis rate controller I gain
 
 Pitch axis rate controller I gain.  Corrects long-term difference in desired pitch rate vs actual pitch rate
+
+- Units: 1/rad
 
 - Range: 0.0 0.6
 
@@ -6171,6 +6217,8 @@ Point below which I-term will not leak down
 
 Pitch axis rate controller D gain.  Compensates for short-term change in desired pitch rate vs actual pitch rate
 
+- Units: s^2/rad
+
 - Range: 0.0 0.03
 
 - Increment: 0.001
@@ -6178,6 +6226,8 @@ Pitch axis rate controller D gain.  Compensates for short-term change in desired
 ## ATC_RAT_PIT_FF: Pitch axis rate controller feed forward
 
 Pitch axis rate controller feed forward
+
+- Units: s/rad
 
 - Range: 0.05 0.5
 
@@ -6229,6 +6279,8 @@ Sets an upper limit on the slew rate produced by the combined P and D gains. If 
 
 FF D Gain which produces an output that is proportional to the rate of change of the target
 
+- Units: s^2/rad
+
 - Range: 0 0.02
 
 - Increment: 0.0001
@@ -6253,6 +6305,8 @@ Pitch Error notch filter index
 
 Yaw axis rate controller P gain.  Corrects in proportion to the difference between the desired yaw rate vs actual yaw rate
 
+- Units: s/rad
+
 - Range: 0.180 0.60
 
 - Increment: 0.005
@@ -6260,6 +6314,8 @@ Yaw axis rate controller P gain.  Corrects in proportion to the difference betwe
 ## ATC_RAT_YAW_I: Yaw axis rate controller I gain
 
 Yaw axis rate controller I gain.  Corrects long-term difference in desired yaw rate vs actual yaw rate
+
+- Units: 1/rad
 
 - Range: 0.01 0.2
 
@@ -6285,6 +6341,8 @@ Point below which I-term will not leak down
 
 Yaw axis rate controller D gain.  Compensates for short-term change in desired yaw rate vs actual yaw rate
 
+- Units: s^2/rad
+
 - Range: 0.000 0.02
 
 - Increment: 0.001
@@ -6292,6 +6350,8 @@ Yaw axis rate controller D gain.  Compensates for short-term change in desired y
 ## ATC_RAT_YAW_FF: Yaw axis rate controller feed forward
 
 Yaw axis rate controller feed forward
+
+- Units: s/rad
 
 - Range: 0 0.5
 
@@ -6342,6 +6402,8 @@ Sets an upper limit on the slew rate produced by the combined P and D gains. If 
 *Note: This parameter is for advanced users*
 
 FF D Gain which produces an output that is proportional to the rate of change of the target
+
+- Units: s^2/rad
 
 - Range: 0 0.02
 
@@ -20018,8 +20080,10 @@ Type of AHRS device
 |1|VectorNav|
 |2|MicroStrain5|
 |5|InertialLabs|
+|6|Trimble GSOF|
 |7|MicroStrain7|
 |8|SBG|
+|11|SensAItion|
 
 ## EAHRS_RATE: AHRS data rate
 
@@ -20031,7 +20095,7 @@ Requested rate for AHRS device
 
 External AHRS options bitmask
 
-- Bitmask: 0:Vector Nav use uncompensated values for accel gyro and mag., 1:SBG uses EKF as GNSS.
+- Bitmask: 0:Vector Nav use uncompensated values for accel gyro and mag, 1:SBG uses EKF as GNSS, 2:SensAItion used as AHRS
 
 ## EAHRS_SENSORS: External AHRS sensors
 

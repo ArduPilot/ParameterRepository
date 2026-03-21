@@ -299,6 +299,12 @@
   </vehicles>
   <libraries>
     <parameters name="Lua Script">
+      <param humanName="Param Lockdown enable" name="PARAM_LOCK_ENAB" documentation="Param Lockdown enable" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
       <param humanName="Deadreckoning Enable" name="DR_ENABLE" documentation="Deadreckoning Enable" user="Standard">
         <values>
           <value code="0">Disabled</value>
@@ -481,12 +487,6 @@
         <field name="Range">0 50</field>
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
-      </param>
-      <param humanName="Param Set enable" name="PARAM_SET_ENABLE" documentation="Param Set enable" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
       </param>
       <param humanName="Plane Follow lost target mode" name="FOLLP_FAIL_MODE" documentation="Mode to switch to if the target is lost (no signal or &gt; FOLL_DIST_MAX)." user="Standard">
 </param>
@@ -10905,8 +10905,10 @@
           <value code="1">VectorNav</value>
           <value code="2">MicroStrain5</value>
           <value code="5">InertialLabs</value>
+          <value code="6">Trimble GSOF</value>
           <value code="7">MicroStrain7</value>
           <value code="8">SBG</value>
+          <value code="11">SensAItion</value>
         </values>
       </param>
       <param humanName="AHRS data rate" name="EAHRS_RATE" documentation="Requested rate for AHRS device" user="Standard">
@@ -10915,10 +10917,11 @@
       </param>
       <param humanName="External AHRS options" name="EAHRS_OPTIONS" documentation="External AHRS options bitmask" user="Standard">
         <bitmask>
-          <bit code="0">Vector Nav use uncompensated values for accel gyro and mag.</bit>
-          <bit code="1">SBG uses EKF as GNSS.</bit>
+          <bit code="0">Vector Nav use uncompensated values for accel gyro and mag</bit>
+          <bit code="1">SBG uses EKF as GNSS</bit>
+          <bit code="2">SensAItion used as AHRS</bit>
         </bitmask>
-        <field name="Bitmask">0:Vector Nav use uncompensated values for accel gyro and mag., 1:SBG uses EKF as GNSS.</field>
+        <field name="Bitmask">0:Vector Nav use uncompensated values for accel gyro and mag, 1:SBG uses EKF as GNSS, 2:SensAItion used as AHRS</field>
       </param>
       <param humanName="External AHRS sensors" name="EAHRS_SENSORS" documentation="External AHRS sensors bitmask" user="Advanced">
         <bitmask>

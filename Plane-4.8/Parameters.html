@@ -1328,6 +1328,16 @@ DO NOT EDIT
 </ul>
 
 
+<h2>Rangefinder landing engagement distance (ArduPlane:RNGFND_LND_DIST)</h2>
+
+<p>The horizontal distance to the landing point at which the rangefinder engages when RNGFND_LANDING is enabled. This is useful for landing on platforms or small plateaus, and to avoid interference from uneven terrain or obstacles on approach. A value of 0 engages the rangefinder as soon as it reports valid readings within its range limits. Very small values are not recommended unless required by the landing scenario, as they can force large slope corrections near the ground, increase auto-abort frequency if LAND_ABORT_DEG is set, and provide no slope-correction benefit if the rangefinder is engaged after flare.</p>
+<ul>
+<li>Range: 0 500</li>
+<li>Units: meters</li>
+<li>Increment: 1</li>
+</ul>
+
+
 <h1>VEHICLE Parameters</h1>
 
 
@@ -1340,6 +1350,17 @@ DO NOT EDIT
 
 
 <h1>Lua Script Parameters</h1>
+
+
+<h2>Param Lockdown enable (PARAM_LOCK_ENAB)</h2>
+
+<p>Param Lockdown enable</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Disabled</td></tr>
+<tr><td>1</td><td>Enabled</td></tr>
+</table>
+</ul>
 
 
 <h2>Deadreckoning Enable (DR_ENABLE)</h2>
@@ -1699,17 +1720,6 @@ DO NOT EDIT
 <ul>
 <li>Range: 0 50</li>
 <li>Units: meters</li>
-</ul>
-
-
-<h2>Param Set enable (PARAM_SET_ENABLE)</h2>
-
-<p>Param Set enable</p>
-<ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Disabled</td></tr>
-<tr><td>1</td><td>Enabled</td></tr>
-</table>
 </ul>
 
 
@@ -19634,8 +19644,10 @@ DO NOT EDIT
 <tr><td>1</td><td>VectorNav</td></tr>
 <tr><td>2</td><td>MicroStrain5</td></tr>
 <tr><td>5</td><td>InertialLabs</td></tr>
+<tr><td>6</td><td>Trimble GSOF</td></tr>
 <tr><td>7</td><td>MicroStrain7</td></tr>
 <tr><td>8</td><td>SBG</td></tr>
+<tr><td>11</td><td>SensAItion</td></tr>
 </table>
 </ul>
 
@@ -19652,7 +19664,7 @@ DO NOT EDIT
 
 <p>External AHRS options bitmask</p>
 <ul>
-<li>Bitmask: 0:Vector Nav use uncompensated values for accel gyro and mag., 1:SBG uses EKF as GNSS.</li>
+<li>Bitmask: 0:Vector Nav use uncompensated values for accel gyro and mag, 1:SBG uses EKF as GNSS, 2:SensAItion used as AHRS</li>
 </ul>
 
 
@@ -42049,6 +42061,7 @@ DO NOT EDIT
 
 <p>Roll axis rate controller P gain.  Corrects in proportion to the difference between the desired roll rate vs actual roll rate</p>
 <ul>
+<li>Units: seconds per radian</li>
 <li>Range: 0.01 0.5</li>
 <li>Increment: 0.005</li>
 </ul>
@@ -42058,6 +42071,7 @@ DO NOT EDIT
 
 <p>Roll axis rate controller I gain.  Corrects long-term difference in desired roll rate vs actual roll rate</p>
 <ul>
+<li>Units: per radian</li>
 <li>Range: 0.01 2.0</li>
 <li>Increment: 0.01</li>
 </ul>
@@ -42076,6 +42090,7 @@ DO NOT EDIT
 
 <p>Roll axis rate controller D gain.  Compensates for short-term change in desired roll rate vs actual roll rate</p>
 <ul>
+<li>Units: seconds squared per radian</li>
 <li>Range: 0.0 0.05</li>
 <li>Increment: 0.001</li>
 </ul>
@@ -42085,6 +42100,7 @@ DO NOT EDIT
 
 <p>Roll axis rate controller feed forward</p>
 <ul>
+<li>Units: seconds per radian</li>
 <li>Range: 0 0.5</li>
 <li>Increment: 0.001</li>
 </ul>
@@ -42142,6 +42158,7 @@ DO NOT EDIT
 
 <p>FF D Gain which produces an output that is proportional to the rate of change of the target</p>
 <ul>
+<li>Units: seconds squared per radian</li>
 <li>Range: 0 0.02</li>
 <li>Increment: 0.0001</li>
 </ul>
@@ -42167,6 +42184,7 @@ DO NOT EDIT
 
 <p>Pitch axis rate controller P gain.  Corrects in proportion to the difference between the desired pitch rate vs actual pitch rate output</p>
 <ul>
+<li>Units: seconds per radian</li>
 <li>Range: 0.01 0.50</li>
 <li>Increment: 0.005</li>
 </ul>
@@ -42176,6 +42194,7 @@ DO NOT EDIT
 
 <p>Pitch axis rate controller I gain.  Corrects long-term difference in desired pitch rate vs actual pitch rate</p>
 <ul>
+<li>Units: per radian</li>
 <li>Range: 0.01 2.0</li>
 <li>Increment: 0.01</li>
 </ul>
@@ -42194,6 +42213,7 @@ DO NOT EDIT
 
 <p>Pitch axis rate controller D gain.  Compensates for short-term change in desired pitch rate vs actual pitch rate</p>
 <ul>
+<li>Units: seconds squared per radian</li>
 <li>Range: 0.0 0.05</li>
 <li>Increment: 0.001</li>
 </ul>
@@ -42203,6 +42223,7 @@ DO NOT EDIT
 
 <p>Pitch axis rate controller feed forward</p>
 <ul>
+<li>Units: seconds per radian</li>
 <li>Range: 0 0.5</li>
 <li>Increment: 0.001</li>
 </ul>
@@ -42260,6 +42281,7 @@ DO NOT EDIT
 
 <p>FF D Gain which produces an output that is proportional to the rate of change of the target</p>
 <ul>
+<li>Units: seconds squared per radian</li>
 <li>Range: 0 0.02</li>
 <li>Increment: 0.0001</li>
 </ul>
@@ -42285,6 +42307,7 @@ DO NOT EDIT
 
 <p>Yaw axis rate controller P gain.  Corrects in proportion to the difference between the desired yaw rate vs actual yaw rate</p>
 <ul>
+<li>Units: seconds per radian</li>
 <li>Range: 0.10 2.50</li>
 <li>Increment: 0.005</li>
 </ul>
@@ -42294,6 +42317,7 @@ DO NOT EDIT
 
 <p>Yaw axis rate controller I gain.  Corrects long-term difference in desired yaw rate vs actual yaw rate</p>
 <ul>
+<li>Units: per radian</li>
 <li>Range: 0.010 1.0</li>
 <li>Increment: 0.01</li>
 </ul>
@@ -42312,6 +42336,7 @@ DO NOT EDIT
 
 <p>Yaw axis rate controller D gain.  Compensates for short-term change in desired yaw rate vs actual yaw rate</p>
 <ul>
+<li>Units: seconds squared per radian</li>
 <li>Range: 0.000 0.02</li>
 <li>Increment: 0.001</li>
 </ul>
@@ -42321,6 +42346,7 @@ DO NOT EDIT
 
 <p>Yaw axis rate controller feed forward</p>
 <ul>
+<li>Units: seconds per radian</li>
 <li>Range: 0 0.5</li>
 <li>Increment: 0.001</li>
 </ul>
@@ -42378,6 +42404,7 @@ DO NOT EDIT
 
 <p>FF D Gain which produces an output that is proportional to the rate of change of the target</p>
 <ul>
+<li>Units: seconds squared per radian</li>
 <li>Range: 0 0.02</li>
 <li>Increment: 0.0001</li>
 </ul>

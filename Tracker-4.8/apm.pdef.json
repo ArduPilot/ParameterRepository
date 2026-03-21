@@ -11957,8 +11957,9 @@
     },
     "EAHRS_OPTIONS": {
       "Bitmask": {
-        "0": "Vector Nav use uncompensated values for accel gyro and mag.",
-        "1": "SBG uses EKF as GNSS."
+        "0": "Vector Nav use uncompensated values for accel gyro and mag",
+        "1": "SBG uses EKF as GNSS",
+        "2": "SensAItion used as AHRS"
       },
       "Description": "External AHRS options bitmask",
       "DisplayName": "External AHRS options",
@@ -11988,8 +11989,10 @@
       "Values": {
         "0": "None",
         "1": "VectorNav",
+        "11": "SensAItion",
         "2": "MicroStrain5",
         "5": "InertialLabs",
+        "6": "Trimble GSOF",
         "7": "MicroStrain7",
         "8": "SBG"
       }
@@ -19276,9 +19279,9 @@
       "DisplayName": "Sensor operating mode",
       "User": "Standard"
     },
-    "PARAM_SET_ENABLE": {
-      "Description": "Param Set enable",
-      "DisplayName": "Param Set enable",
+    "PARAM_LOCK_ENAB": {
+      "Description": "Param Lockdown enable",
+      "DisplayName": "Param Lockdown enable",
       "User": "Standard",
       "Values": {
         "0": "Disabled",
