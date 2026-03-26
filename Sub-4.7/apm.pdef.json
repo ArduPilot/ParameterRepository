@@ -21307,6 +21307,7 @@
         "1": "VectorNav",
         "2": "MicroStrain5",
         "5": "InertialLabs",
+        "6": "Trimble GSOF",
         "7": "MicroStrain7",
         "8": "SBG"
       }
@@ -28901,9 +28902,9 @@
       "DisplayName": "Sensor operating mode",
       "User": "Standard"
     },
-    "PARAM_SET_ENABLE": {
-      "Description": "Param Set enable",
-      "DisplayName": "Param Set enable",
+    "PARAM_LOCK_ENAB": {
+      "Description": "Param Lockdown enable",
+      "DisplayName": "Param Lockdown enable",
       "User": "Standard",
       "Values": {
         "0": "Disabled",

@@ -14250,6 +14250,16 @@
       },
       "RebootRequired": "True",
       "User": "Standard"
+    },
+    "DDS_USE_NS": {
+      "Description": "When enabled, ROS 2 topic and service names include a v<MAV_SYSID> segment",
+      "DisplayName": "DDS namespace",
+      "RebootRequired": "True",
+      "User": "Standard",
+      "Values": {
+        "0": "Disabled",
+        "1": "Enabled"
+      }
     }
   },
   "DDS_IP": {
@@ -16086,6 +16096,28 @@
         "4": "SmartRTL or Hold",
         "5": "Terminate",
         "6": "Loiter or Hold"
+      }
+    },
+    "FENCE_ALT_MAX_TP": {
+      "Description": "The altitude reference frame for the maximum altitude fence. Can be AMSL, home-relative, origin relative or AGL.",
+      "DisplayName": "Altitude max frame type",
+      "User": "Advanced",
+      "Values": {
+        "0": "Above sea level",
+        "1": "Above Home",
+        "2": "Above Origin",
+        "3": "Above Terrain"
+      }
+    },
+    "FENCE_ALT_MIN_TP": {
+      "Description": "The altitude reference frame for the minimum altitude fence. Can be AMSL, home-relative, origin relative or AGL.",
+      "DisplayName": "Altitude min frame type",
+      "User": "Advanced",
+      "Values": {
+        "0": "Above sea level",
+        "1": "Above Home",
+        "2": "Above Origin",
+        "3": "Above Terrain"
       }
     },
     "FENCE_ENABLE": {

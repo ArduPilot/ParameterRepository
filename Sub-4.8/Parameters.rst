@@ -51317,6 +51317,32 @@ The maximum number of times the DDS client will attempt to ping the XRCE agent b
 
 
 
+.. _DDS_USE_NS:
+
+DDS\_USE\_NS: DDS namespace
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: Reboot required after change*
+
+When enabled\, ROS 2 topic and service names include a v\<MAV\_SYSID\> segment
+
+
++----------------------+
+| Values               |
++======================+
+| +-------+----------+ |
+| | Value | Meaning  | |
+| +=======+==========+ |
+| | 0     | Disabled | |
+| +-------+----------+ |
+| | 1     | Enabled  | |
+| +-------+----------+ |
+|                      |
++----------------------+
+
+
+
+
 
 .. _parameters_DDS_IP:
 
@@ -55166,7 +55192,7 @@ FENCE\_ALT\_MAX: Fence Maximum Altitude
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Maximum altitude allowed before geofence triggers
+Maximum altitude allowed before geofence triggers\. See FENCE\_ALT\_MAX\_TP for reference frame\.
 
 
 +-----------+------------+--------+
@@ -55238,7 +55264,7 @@ FENCE\_ALT\_MIN: Fence Minimum Altitude
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Minimum altitude allowed before geofence triggers
+Minimum altitude allowed before geofence triggers\. See FENCE\_ALT\_MIN\_TP for reference frame\.
 
 
 +-----------+-------------+--------+
@@ -55310,6 +55336,66 @@ Distance that autopilot\'s should maintain from the fence in the horizontal plan
 +=========+========+
 | 0 to 50 | meters |
 +---------+--------+
+
+
+
+
+.. _FENCE_ALT_MAX_TP:
+
+FENCE\_ALT\_MAX\_TP: Altitude max frame type
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+The altitude reference frame for the maximum altitude fence\. Can be AMSL\, home\-relative\, origin relative or AGL\.
+
+
++-----------------------------+
+| Values                      |
++=============================+
+| +-------+-----------------+ |
+| | Value | Meaning         | |
+| +=======+=================+ |
+| | 0     | Above sea level | |
+| +-------+-----------------+ |
+| | 1     | Above Home      | |
+| +-------+-----------------+ |
+| | 2     | Above Origin    | |
+| +-------+-----------------+ |
+| | 3     | Above Terrain   | |
+| +-------+-----------------+ |
+|                             |
++-----------------------------+
+
+
+
+
+.. _FENCE_ALT_MIN_TP:
+
+FENCE\_ALT\_MIN\_TP: Altitude min frame type
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+The altitude reference frame for the minimum altitude fence\. Can be AMSL\, home\-relative\, origin relative or AGL\.
+
+
++-----------------------------+
+| Values                      |
++=============================+
+| +-------+-----------------+ |
+| | Value | Meaning         | |
+| +=======+=================+ |
+| | 0     | Above sea level | |
+| +-------+-----------------+ |
+| | 1     | Above Home      | |
+| +-------+-----------------+ |
+| | 2     | Above Origin    | |
+| +-------+-----------------+ |
+| | 3     | Above Terrain   | |
+| +-------+-----------------+ |
+|                             |
++-----------------------------+
 
 
 

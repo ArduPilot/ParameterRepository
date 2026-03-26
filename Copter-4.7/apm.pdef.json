@@ -16361,6 +16361,7 @@
         "1": "VectorNav",
         "2": "MicroStrain5",
         "5": "InertialLabs",
+        "6": "Trimble GSOF",
         "7": "MicroStrain7",
         "8": "SBG"
       }
@@ -25107,9 +25108,9 @@
       "DisplayName": "Sensor operating mode",
       "User": "Standard"
     },
-    "PARAM_SET_ENABLE": {
-      "Description": "Param Set enable",
-      "DisplayName": "Param Set enable",
+    "PARAM_LOCK_ENAB": {
+      "Description": "Param Lockdown enable",
+      "DisplayName": "Param Lockdown enable",
       "User": "Standard",
       "Values": {
         "0": "Disabled",
@@ -40507,17 +40508,6 @@
       "Description": "Precision Landing Extra Options",
       "DisplayName": "Precision Landing Extra Options",
       "User": "Advanced"
-    },
-    "PLND_ORIENT": {
-      "Description": "Orientation of camera/sensor on body",
-      "DisplayName": "Camera Orientation",
-      "RebootRequired": "True",
-      "User": "Advanced",
-      "Values": {
-        "0": "Forward",
-        "25": "Down",
-        "4": "Back"
-      }
     },
     "PLND_RET_BEHAVE": {
       "Description": "Prec Land will do the action selected by this parameter if a retry to a landing is needed",

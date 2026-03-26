@@ -33470,7 +33470,7 @@ Type of connected rangefinder
 |44|HexsoonRadar|
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
-|47|DTS6012M-Serial|
+|47|DTS6012M|
 |100|SITL|
 
 ## RNGFND1_PIN: Rangefinder pin
@@ -33802,7 +33802,7 @@ Type of connected rangefinder
 |44|HexsoonRadar|
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
-|47|DTS6012M-Serial|
+|47|DTS6012M|
 |100|SITL|
 
 ## RNGFND2_PIN: Rangefinder pin
@@ -34134,7 +34134,7 @@ Type of connected rangefinder
 |44|HexsoonRadar|
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
-|47|DTS6012M-Serial|
+|47|DTS6012M|
 |100|SITL|
 
 ## RNGFND3_PIN: Rangefinder pin
@@ -34466,7 +34466,7 @@ Type of connected rangefinder
 |44|HexsoonRadar|
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
-|47|DTS6012M-Serial|
+|47|DTS6012M|
 |100|SITL|
 
 ## RNGFND4_PIN: Rangefinder pin
@@ -34798,7 +34798,7 @@ Type of connected rangefinder
 |44|HexsoonRadar|
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
-|47|DTS6012M-Serial|
+|47|DTS6012M|
 |100|SITL|
 
 ## RNGFND5_PIN: Rangefinder pin
@@ -35130,7 +35130,7 @@ Type of connected rangefinder
 |44|HexsoonRadar|
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
-|47|DTS6012M-Serial|
+|47|DTS6012M|
 |100|SITL|
 
 ## RNGFND6_PIN: Rangefinder pin
@@ -35462,7 +35462,7 @@ Type of connected rangefinder
 |44|HexsoonRadar|
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
-|47|DTS6012M-Serial|
+|47|DTS6012M|
 |100|SITL|
 
 ## RNGFND7_PIN: Rangefinder pin
@@ -35794,7 +35794,7 @@ Type of connected rangefinder
 |44|HexsoonRadar|
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
-|47|DTS6012M-Serial|
+|47|DTS6012M|
 |100|SITL|
 
 ## RNGFND8_PIN: Rangefinder pin
@@ -36126,7 +36126,7 @@ Type of connected rangefinder
 |44|HexsoonRadar|
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
-|47|DTS6012M-Serial|
+|47|DTS6012M|
 |100|SITL|
 
 ## RNGFND9_PIN: Rangefinder pin
@@ -36458,7 +36458,7 @@ Type of connected rangefinder
 |44|HexsoonRadar|
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
-|47|DTS6012M-Serial|
+|47|DTS6012M|
 |100|SITL|
 
 ## RNGFNDA_PIN: Rangefinder pin

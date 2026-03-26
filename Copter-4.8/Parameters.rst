@@ -1109,8 +1109,6 @@ Selects parameter \(normally a PID gain\) that is being tuned with an RC transmi
 | +-------+----------------------------+ |
 | | 45    | RC Feel                    | |
 | +-------+----------------------------+ |
-| | 13    | Heli Ext Gyro              | |
-| +-------+----------------------------+ |
 | | 38    | Declination                | |
 | +-------+----------------------------+ |
 | | 39    | Circle Rate                | |
@@ -2654,8 +2652,6 @@ Selects parameter \(normally a PID gain\) that is being tuned with an RC transmi
 | | 40    | Acro Yaw deg/s             | |
 | +-------+----------------------------+ |
 | | 45    | RC Feel                    | |
-| +-------+----------------------------+ |
-| | 13    | Heli Ext Gyro              | |
 | +-------+----------------------------+ |
 | | 38    | Declination                | |
 | +-------+----------------------------+ |
@@ -40837,6 +40833,32 @@ The maximum number of times the DDS client will attempt to ping the XRCE agent b
 
 
 
+.. _DDS_USE_NS:
+
+DDS\_USE\_NS: DDS namespace
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: Reboot required after change*
+
+When enabled\, ROS 2 topic and service names include a v\<MAV\_SYSID\> segment
+
+
++----------------------+
+| Values               |
++======================+
+| +-------+----------+ |
+| | Value | Meaning  | |
+| +=======+==========+ |
+| | 0     | Disabled | |
+| +-------+----------+ |
+| | 1     | Enabled  | |
+| +-------+----------+ |
+|                      |
++----------------------+
+
+
+
+
 
 .. _parameters_DDS_IP:
 
@@ -44694,7 +44716,7 @@ FENCE\_ALT\_MAX: Fence Maximum Altitude
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Maximum altitude allowed before geofence triggers
+Maximum altitude allowed before geofence triggers\. See FENCE\_ALT\_MAX\_TP for reference frame\.
 
 
 +-----------+------------+--------+
@@ -44766,7 +44788,7 @@ FENCE\_ALT\_MIN: Fence Minimum Altitude
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Minimum altitude allowed before geofence triggers
+Minimum altitude allowed before geofence triggers\. See FENCE\_ALT\_MIN\_TP for reference frame\.
 
 
 +-----------+-------------+--------+
@@ -44867,6 +44889,66 @@ Distance that autopilot\'s should maintain from the fence in the horizontal plan
 +=========+========+
 | 0 to 50 | meters |
 +---------+--------+
+
+
+
+
+.. _FENCE_ALT_MAX_TP:
+
+FENCE\_ALT\_MAX\_TP: Altitude max frame type
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+The altitude reference frame for the maximum altitude fence\. Can be AMSL\, home\-relative\, origin relative or AGL\.
+
+
++-----------------------------+
+| Values                      |
++=============================+
+| +-------+-----------------+ |
+| | Value | Meaning         | |
+| +=======+=================+ |
+| | 0     | Above sea level | |
+| +-------+-----------------+ |
+| | 1     | Above Home      | |
+| +-------+-----------------+ |
+| | 2     | Above Origin    | |
+| +-------+-----------------+ |
+| | 3     | Above Terrain   | |
+| +-------+-----------------+ |
+|                             |
++-----------------------------+
+
+
+
+
+.. _FENCE_ALT_MIN_TP:
+
+FENCE\_ALT\_MIN\_TP: Altitude min frame type
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+The altitude reference frame for the minimum altitude fence\. Can be AMSL\, home\-relative\, origin relative or AGL\.
+
+
++-----------------------------+
+| Values                      |
++=============================+
+| +-------+-----------------+ |
+| | Value | Meaning         | |
+| +=======+=================+ |
+| | 0     | Above sea level | |
+| +-------+-----------------+ |
+| | 1     | Above Home      | |
+| +-------+-----------------+ |
+| | 2     | Above Origin    | |
+| +-------+-----------------+ |
+| | 3     | Above Terrain   | |
+| +-------+-----------------+ |
+|                             |
++-----------------------------+
 
 
 
@@ -48567,8 +48649,6 @@ Tail type selection\. Servo Only uses tail rotor pitch to provide yaw control \(
 | +=======+============================+ |
 | | 0     | Servo only                 | |
 | +-------+----------------------------+ |
-| | 1     | Servo with ExtGyro         | |
-| +-------+----------------------------+ |
 | | 2     | DirectDrive VarPitch       | |
 | +-------+----------------------------+ |
 | | 3     | DirectDrive FixedPitch CW  | |
@@ -48577,49 +48657,6 @@ Tail type selection\. Servo Only uses tail rotor pitch to provide yaw control \(
 | +-------+----------------------------+ |
 |                                        |
 +----------------------------------------+
-
-
-
-
-.. _H_GYR_GAIN:
-
-H\_GYR\_GAIN: External Gyro Gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-PWM in microseconds sent to external gyro on an servo\/output whose function is Motor7 when tail type is Servo w\/ ExtGyro
-
-
-+-----------+-----------+---------------------+
-| Increment | Range     | Units               |
-+===========+===========+=====================+
-| 1         | 0 to 1000 | PWM in microseconds |
-+-----------+-----------+---------------------+
-
-
-
-
-.. _H_FLYBAR_MODE:
-
-H\_FLYBAR\_MODE: Flybar Mode Selector
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Flybar present or not\.  Affects attitude controller used during ACRO flight mode
-
-
-+----------------------+
-| Values               |
-+======================+
-| +-------+----------+ |
-| | Value | Meaning  | |
-| +=======+==========+ |
-| | 0     | NoFlybar | |
-| +-------+----------+ |
-| | 1     | Flybar   | |
-| +-------+----------+ |
-|                      |
-+----------------------+
 
 
 
@@ -48638,24 +48675,6 @@ Direct drive\, variable pitch tail ESC speed in percent output to the tail motor
 +===========+==========+=========+
 | 1         | 0 to 100 | percent |
 +-----------+----------+---------+
-
-
-
-
-.. _H_GYR_GAIN_ACRO:
-
-H\_GYR\_GAIN\_ACRO: ACRO External Gyro Gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-PWM in microseconds sent to external gyro on an servo\/output whose function is Motor7 when tail type is Servo w\/ ExtGyro in mode ACRO instead of H\_GYR\_GAIN\. A value of zero means to use H\_GYR\_GAIN
-
-
-+-----------+-----------+---------------------+
-| Increment | Range     | Units               |
-+===========+===========+=====================+
-| 1         | 0 to 1000 | PWM in microseconds |
-+-----------+-----------+---------------------+
 
 
 
@@ -48743,6 +48762,25 @@ This linearizes the swashplate servo\'s mechanical output to account for nonline
 
 
 
+.. _H_SW_PHANG__AP_MotorsHeli_Single:
+
+H\_SW\_PHANG \(AP\_MotorsHeli\_Single\): Swashplate Phase Angle Compensation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Phase angle compensation can be used to correct control coupling issues\.  If pitching the swash forward induces a roll\, this can be correct the problem\.
+
+
++-----------+-----------+---------+
+| Increment | Range     | Units   |
++===========+===========+=========+
+| 1         | -30 to 30 | degrees |
++-----------+-----------+---------+
+
+
+
+
 .. _H_SW_H3_ENABLE__AP_MotorsHeli_Single:
 
 H\_SW\_H3\_ENABLE \(AP\_MotorsHeli\_Single\): H3 Generic Enable
@@ -48822,25 +48860,6 @@ Azimuth position on swashplate for servo 3 with the front of the heli being 0 de
 +=============+=========+
 | -180 to 180 | degrees |
 +-------------+---------+
-
-
-
-
-.. _H_SW_H3_PHANG__AP_MotorsHeli_Single:
-
-H\_SW\_H3\_PHANG \(AP\_MotorsHeli\_Single\): H3 Generic Phase Angle Comp
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Only for H3 swashplate\.  If pitching the swash forward induces a roll\, this can be correct the problem
-
-
-+-----------+-----------+---------+
-| Increment | Range     | Units   |
-+===========+===========+=========+
-| 1         | -30 to 30 | degrees |
-+-----------+-----------+---------+
 
 
 
@@ -49214,6 +49233,25 @@ This linearizes the swashplate 1 servo\'s mechanical output to account for nonli
 
 
 
+.. _H_SW_PHANG__AP_MotorsHeli_Dual:
+
+H\_SW\_PHANG \(AP\_MotorsHeli\_Dual\): Swash 1 Phase Angle Compensation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Phase angle compensation can be used to correct control coupling issues\.  If pitching the swash forward induces a roll\, this can be correct the problem\.
+
+
++-----------+-----------+---------+
+| Increment | Range     | Units   |
++===========+===========+=========+
+| 1         | -30 to 30 | degrees |
++-----------+-----------+---------+
+
+
+
+
 .. _H_SW_H3_ENABLE__AP_MotorsHeli_Dual:
 
 H\_SW\_H3\_ENABLE \(AP\_MotorsHeli\_Dual\): Swash 1 H3 Generic Enable
@@ -49293,25 +49331,6 @@ Azimuth position on swashplate 1 for servo 3 with the front of the heli being 0 
 +=============+=========+
 | -180 to 180 | degrees |
 +-------------+---------+
-
-
-
-
-.. _H_SW_H3_PHANG__AP_MotorsHeli_Dual:
-
-H\_SW\_H3\_PHANG \(AP\_MotorsHeli\_Dual\): Swash 1 H3 Generic Phase Angle Comp
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Only for H3 swashplate\.  If pitching the swash forward induces a roll\, this can be correct the problem
-
-
-+-----------+-----------+---------+
-| Increment | Range     | Units   |
-+===========+===========+=========+
-| 1         | -30 to 30 | degrees |
-+-----------+-----------+---------+
 
 
 
@@ -49399,6 +49418,25 @@ This linearizes the swashplate 2 servo\'s mechanical output to account for nonli
 
 
 
+.. _H_SW2_PHANG:
+
+H\_SW2\_PHANG: Swash 2 Phase Angle Compensation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Phase angle compensation can be used to correct control coupling issues\.  If pitching the swash forward induces a roll\, this can be correct the problem\.
+
+
++-----------+-----------+---------+
+| Increment | Range     | Units   |
++===========+===========+=========+
+| 1         | -30 to 30 | degrees |
++-----------+-----------+---------+
+
+
+
+
 .. _H_SW2_H3_ENABLE:
 
 H\_SW2\_H3\_ENABLE: Swash 2 H3 Generic Enable
@@ -49478,25 +49516,6 @@ Azimuth position on swashplate 2 for servo 3 with the front of the heli being 0 
 +=============+=========+
 | -180 to 180 | degrees |
 +-------------+---------+
-
-
-
-
-.. _H_SW2_H3_PHANG:
-
-H\_SW2\_H3\_PHANG: Swash 2 H3 Generic Phase Angle Comp
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Only for H3 swashplate\.  If pitching the swash forward induces a roll\, this can be correct the problem
-
-
-+-----------+-----------+---------+
-| Increment | Range     | Units   |
-+===========+===========+=========+
-| 1         | -30 to 30 | degrees |
-+-----------+-----------+---------+
 
 
 
