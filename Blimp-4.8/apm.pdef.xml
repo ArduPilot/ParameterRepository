@@ -2958,6 +2958,11 @@
       <param humanName="Thrust compensation" name="BARO1_THST_SCALE" documentation="Thrust scaling in Pascals. This value scaled by the normalized thrust is subtracted from the barometer pressure. This is used to adjust linearly based on the thrust output for local pressure difference induced by the props." user="Advanced">
         <field name="Range">-300 300</field>
       </param>
+      <param humanName="Thrust compensation filter cutoff" name="BARO_THST_FILT" documentation="Low-pass filter cutoff frequency for thrust compensation. This smooths the throttle input to prevent rapid baro altitude changes during throttle transients. Set to 0 to disable filtering." user="Advanced">
+        <field name="Range">0 10</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
     </parameters>
     <parameters name="BARO1_WCF_">
       <param humanName="Wind coefficient enable" name="BARO1_WCF_ENABLE" documentation="This enables the use of wind coefficients for barometer compensation" user="Advanced">

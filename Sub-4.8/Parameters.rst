@@ -6013,6 +6013,25 @@ Thrust scaling in Pascals\. This value scaled by the normalized thrust is subtra
 
 
 
+.. _BARO_THST_FILT:
+
+BARO\_THST\_FILT: Thrust compensation filter cutoff
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Low\-pass filter cutoff frequency for thrust compensation\. This smooths the throttle input to prevent rapid baro altitude changes during throttle transients\. Set to 0 to disable filtering\.
+
+
++---------+-------+
+| Range   | Units |
++=========+=======+
+| 0 to 10 | hertz |
++---------+-------+
+
+
+
+
 
 .. _parameters_BARO1_WCF_:
 
@@ -43631,20 +43650,20 @@ CAM1\_RC\_BT\_DELAY: RunCam boot delay before allowing updates
 Time it takes for the RunCam to become fully ready in ms\. If this is too short then commands can get out of sync\.
 
 
-.. _CAM1_RC_BTN_DELAY:
+.. _CAM1_RC_BTN_DELY:
 
-CAM1\_RC\_BTN\_DELAY: RunCam button delay before allowing further button presses
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CAM1\_RC\_BTN\_DELY: RunCam button delay before allowing further button presses
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
 Time it takes for the a RunCam button press to be actived in ms\. If this is too short then commands can get out of sync\.
 
 
-.. _CAM1_RC_MDE_DELAY:
+.. _CAM1_RC_MDE_DELY:
 
-CAM1\_RC\_MDE\_DELAY: RunCam mode delay before allowing further button presses
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CAM1\_RC\_MDE\_DELY: RunCam mode delay before allowing further button presses
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
@@ -44061,20 +44080,20 @@ CAM2\_RC\_BT\_DELAY: RunCam boot delay before allowing updates
 Time it takes for the RunCam to become fully ready in ms\. If this is too short then commands can get out of sync\.
 
 
-.. _CAM2_RC_BTN_DELAY:
+.. _CAM2_RC_BTN_DELY:
 
-CAM2\_RC\_BTN\_DELAY: RunCam button delay before allowing further button presses
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CAM2\_RC\_BTN\_DELY: RunCam button delay before allowing further button presses
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
 Time it takes for the a RunCam button press to be actived in ms\. If this is too short then commands can get out of sync\.
 
 
-.. _CAM2_RC_MDE_DELAY:
+.. _CAM2_RC_MDE_DELY:
 
-CAM2\_RC\_MDE\_DELAY: RunCam mode delay before allowing further button presses
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CAM2\_RC\_MDE\_DELY: RunCam mode delay before allowing further button presses
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 

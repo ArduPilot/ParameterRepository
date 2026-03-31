@@ -5089,6 +5089,16 @@ Thrust scaling in Pascals. This value scaled by the normalized thrust is subtrac
 
 - Range: -300 300
 
+## BARO_THST_FILT: Thrust compensation filter cutoff
+
+*Note: This parameter is for advanced users*
+
+Low-pass filter cutoff frequency for thrust compensation. This smooths the throttle input to prevent rapid baro altitude changes during throttle transients. Set to 0 to disable filtering.
+
+- Range: 0 10
+
+- Units: Hz
+
 # BARO1WCF Parameters
 
 ## BARO1_WCF_ENABLE: Wind coefficient enable
@@ -14238,13 +14248,13 @@ The available features of the attached RunCam device. If 0 then the RunCam devic
 
 Time it takes for the RunCam to become fully ready in ms. If this is too short then commands can get out of sync.
 
-## CAM1_RC_BTN_DELAY: RunCam button delay before allowing further button presses
+## CAM1_RC_BTN_DELY: RunCam button delay before allowing further button presses
 
 *Note: This parameter is for advanced users*
 
 Time it takes for the a RunCam button press to be actived in ms. If this is too short then commands can get out of sync.
 
-## CAM1_RC_MDE_DELAY: RunCam mode delay before allowing further button presses
+## CAM1_RC_MDE_DELY: RunCam mode delay before allowing further button presses
 
 *Note: This parameter is for advanced users*
 
@@ -14407,13 +14417,13 @@ The available features of the attached RunCam device. If 0 then the RunCam devic
 
 Time it takes for the RunCam to become fully ready in ms. If this is too short then commands can get out of sync.
 
-## CAM2_RC_BTN_DELAY: RunCam button delay before allowing further button presses
+## CAM2_RC_BTN_DELY: RunCam button delay before allowing further button presses
 
 *Note: This parameter is for advanced users*
 
 Time it takes for the a RunCam button press to be actived in ms. If this is too short then commands can get out of sync.
 
-## CAM2_RC_MDE_DELAY: RunCam mode delay before allowing further button presses
+## CAM2_RC_MDE_DELY: RunCam mode delay before allowing further button presses
 
 *Note: This parameter is for advanced users*
 

@@ -2081,6 +2081,16 @@
         "1.0": "Freshwater",
         "1.024": "Saltwater"
       }
+    },
+    "BARO_THST_FILT": {
+      "Description": "Low-pass filter cutoff frequency for thrust compensation. This smooths the throttle input to prevent rapid baro altitude changes during throttle transients. Set to 0 to disable filtering.",
+      "DisplayName": "Thrust compensation filter cutoff",
+      "Range": {
+        "high": "10",
+        "low": "0"
+      },
+      "Units": "Hz",
+      "User": "Advanced"
     }
   },
   "BARO1_WCF_": {
@@ -17647,7 +17657,7 @@
     }
   },
   "CAM1_RC_": {
-    "CAM1_RC_BTN_DELAY": {
+    "CAM1_RC_BTN_DELY": {
       "Description": "Time it takes for the a RunCam button press to be actived in ms. If this is too short then commands can get out of sync.",
       "DisplayName": "RunCam button delay before allowing further button presses",
       "User": "Advanced"
@@ -17684,7 +17694,7 @@
       "DisplayName": "RunCam features available",
       "User": "Advanced"
     },
-    "CAM1_RC_MDE_DELAY": {
+    "CAM1_RC_MDE_DELY": {
       "Description": "Time it takes for the a RunCam mode button press to be actived in ms. If a mode change first requires a video recording change then double this value is used. If this is too short then commands can get out of sync.",
       "DisplayName": "RunCam mode delay before allowing further button presses",
       "User": "Advanced"
@@ -17841,7 +17851,7 @@
     }
   },
   "CAM2_RC_": {
-    "CAM2_RC_BTN_DELAY": {
+    "CAM2_RC_BTN_DELY": {
       "Description": "Time it takes for the a RunCam button press to be actived in ms. If this is too short then commands can get out of sync.",
       "DisplayName": "RunCam button delay before allowing further button presses",
       "User": "Advanced"
@@ -17878,7 +17888,7 @@
       "DisplayName": "RunCam features available",
       "User": "Advanced"
     },
-    "CAM2_RC_MDE_DELAY": {
+    "CAM2_RC_MDE_DELY": {
       "Description": "Time it takes for the a RunCam mode button press to be actived in ms. If a mode change first requires a video recording change then double this value is used. If this is too short then commands can get out of sync.",
       "DisplayName": "RunCam mode delay before allowing further button presses",
       "User": "Advanced"

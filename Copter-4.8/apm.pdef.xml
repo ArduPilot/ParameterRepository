@@ -4461,6 +4461,11 @@
       <param humanName="Thrust compensation" name="BARO1_THST_SCALE" documentation="Thrust scaling in Pascals. This value scaled by the normalized thrust is subtracted from the barometer pressure. This is used to adjust linearly based on the thrust output for local pressure difference induced by the props." user="Advanced">
         <field name="Range">-300 300</field>
       </param>
+      <param humanName="Thrust compensation filter cutoff" name="BARO_THST_FILT" documentation="Low-pass filter cutoff frequency for thrust compensation. This smooths the throttle input to prevent rapid baro altitude changes during throttle transients. Set to 0 to disable filtering." user="Advanced">
+        <field name="Range">0 10</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
     </parameters>
     <parameters name="BARO1_WCF_">
       <param humanName="Wind coefficient enable" name="BARO1_WCF_ENABLE" documentation="This enables the use of wind coefficients for barometer compensation" user="Advanced">
@@ -11186,9 +11191,9 @@
       </param>
       <param humanName="RunCam boot delay before allowing updates" name="CAM1_RC_BT_DELAY" documentation="Time it takes for the RunCam to become fully ready in ms. If this is too short then commands can get out of sync." user="Advanced">
 </param>
-      <param humanName="RunCam button delay before allowing further button presses" name="CAM1_RC_BTN_DELAY" documentation="Time it takes for the a RunCam button press to be actived in ms. If this is too short then commands can get out of sync." user="Advanced">
+      <param humanName="RunCam button delay before allowing further button presses" name="CAM1_RC_BTN_DELY" documentation="Time it takes for the a RunCam button press to be actived in ms. If this is too short then commands can get out of sync." user="Advanced">
 </param>
-      <param humanName="RunCam mode delay before allowing further button presses" name="CAM1_RC_MDE_DELAY" documentation="Time it takes for the a RunCam mode button press to be actived in ms. If a mode change first requires a video recording change then double this value is used. If this is too short then commands can get out of sync." user="Advanced">
+      <param humanName="RunCam mode delay before allowing further button presses" name="CAM1_RC_MDE_DELY" documentation="Time it takes for the a RunCam mode button press to be actived in ms. If a mode change first requires a video recording change then double this value is used. If this is too short then commands can get out of sync." user="Advanced">
 </param>
       <param humanName="RunCam control option" name="CAM1_RC_CONTROL" documentation="Specifies the allowed actions required to enter the OSD menu and other option like autorecording" user="Advanced">
         <bitmask>
@@ -11310,9 +11315,9 @@
       </param>
       <param humanName="RunCam boot delay before allowing updates" name="CAM2_RC_BT_DELAY" documentation="Time it takes for the RunCam to become fully ready in ms. If this is too short then commands can get out of sync." user="Advanced">
 </param>
-      <param humanName="RunCam button delay before allowing further button presses" name="CAM2_RC_BTN_DELAY" documentation="Time it takes for the a RunCam button press to be actived in ms. If this is too short then commands can get out of sync." user="Advanced">
+      <param humanName="RunCam button delay before allowing further button presses" name="CAM2_RC_BTN_DELY" documentation="Time it takes for the a RunCam button press to be actived in ms. If this is too short then commands can get out of sync." user="Advanced">
 </param>
-      <param humanName="RunCam mode delay before allowing further button presses" name="CAM2_RC_MDE_DELAY" documentation="Time it takes for the a RunCam mode button press to be actived in ms. If a mode change first requires a video recording change then double this value is used. If this is too short then commands can get out of sync." user="Advanced">
+      <param humanName="RunCam mode delay before allowing further button presses" name="CAM2_RC_MDE_DELY" documentation="Time it takes for the a RunCam mode button press to be actived in ms. If a mode change first requires a video recording change then double this value is used. If this is too short then commands can get out of sync." user="Advanced">
 </param>
       <param humanName="RunCam control option" name="CAM2_RC_CONTROL" documentation="Specifies the allowed actions required to enter the OSD menu and other option like autorecording" user="Advanced">
         <bitmask>

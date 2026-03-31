@@ -4964,6 +4964,25 @@ Thrust scaling in Pascals\. This value scaled by the normalized thrust is subtra
 
 
 
+.. _BARO_THST_FILT:
+
+BARO\_THST\_FILT: Thrust compensation filter cutoff
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Low\-pass filter cutoff frequency for thrust compensation\. This smooths the throttle input to prevent rapid baro altitude changes during throttle transients\. Set to 0 to disable filtering\.
+
+
++---------+-------+
+| Range   | Units |
++=========+=======+
+| 0 to 10 | hertz |
++---------+-------+
+
+
+
+
 
 .. _parameters_BARO1_WCF_:
 
