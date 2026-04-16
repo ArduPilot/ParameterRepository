@@ -13898,6 +13898,428 @@
       }
     }
   },
+  "CC2_": {
+    "CC2_ANG_PIT_P": {
+      "Description": "Pitch axis angle controller P gain.  Converts the error between the desired pitch angle and actual angle to a desired pitch rate",
+      "DisplayName": "Pitch axis angle controller P gain",
+      "Range": {
+        "high": "12.000",
+        "low": "3.000"
+      },
+      "User": "Standard"
+    },
+    "CC2_ANG_RLL_P": {
+      "Description": "Roll axis angle controller P gain.  Converts the error between the desired roll angle and actual angle to a desired roll rate",
+      "DisplayName": "Roll axis angle controller P gain",
+      "Range": {
+        "high": "12.000",
+        "low": "3.000"
+      },
+      "User": "Standard"
+    },
+    "CC2_ANG_YAW_P": {
+      "Description": "Yaw axis angle controller P gain.  Converts the error between the desired yaw angle and actual angle to a desired yaw rate",
+      "DisplayName": "Yaw axis angle controller P gain",
+      "Range": {
+        "high": "12.000",
+        "low": "3.000"
+      },
+      "User": "Standard"
+    },
+    "CC2_RAT_PIT_D": {
+      "Description": "Pitch axis rate controller D gain.  Compensates for short-term change in desired pitch rate vs actual pitch rate",
+      "DisplayName": "Pitch axis rate controller D gain",
+      "Increment": "0.001",
+      "Range": {
+        "high": "0.05",
+        "low": "0.0"
+      },
+      "User": "Standard"
+    },
+    "CC2_RAT_PIT_D_FF": {
+      "Description": "FF D Gain which produces an output that is proportional to the rate of change of the target",
+      "DisplayName": "Pitch Derivative FeedForward Gain",
+      "Increment": "0.0001",
+      "Range": {
+        "high": "0.02",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
+    "CC2_RAT_PIT_FF": {
+      "Description": "Pitch axis rate controller feed forward",
+      "DisplayName": "Pitch axis rate controller feed forward",
+      "Increment": "0.001",
+      "Range": {
+        "high": "0.5",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "CC2_RAT_PIT_FLTD": {
+      "Description": "Pitch axis rate controller derivative frequency in Hz",
+      "DisplayName": "Pitch axis rate controller derivative frequency in Hz",
+      "Increment": "1",
+      "Range": {
+        "high": "100",
+        "low": "5"
+      },
+      "Units": "Hz",
+      "User": "Standard"
+    },
+    "CC2_RAT_PIT_FLTE": {
+      "Description": "Pitch axis rate controller error frequency in Hz",
+      "DisplayName": "Pitch axis rate controller error frequency in Hz",
+      "Increment": "1",
+      "Range": {
+        "high": "100",
+        "low": "0"
+      },
+      "Units": "Hz",
+      "User": "Standard"
+    },
+    "CC2_RAT_PIT_FLTT": {
+      "Description": "Pitch axis rate controller target frequency in Hz",
+      "DisplayName": "Pitch axis rate controller target frequency in Hz",
+      "Increment": "1",
+      "Range": {
+        "high": "100",
+        "low": "5"
+      },
+      "Units": "Hz",
+      "User": "Standard"
+    },
+    "CC2_RAT_PIT_I": {
+      "Description": "Pitch axis rate controller I gain.  Corrects long-term difference in desired pitch rate vs actual pitch rate",
+      "DisplayName": "Pitch axis rate controller I gain",
+      "Increment": "0.01",
+      "Range": {
+        "high": "2.0",
+        "low": "0.01"
+      },
+      "User": "Standard"
+    },
+    "CC2_RAT_PIT_IMAX": {
+      "Description": "Pitch axis rate controller I gain maximum.  Constrains the maximum that the I term will output",
+      "DisplayName": "Pitch axis rate controller I gain maximum",
+      "Increment": "0.01",
+      "Range": {
+        "high": "1",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "CC2_RAT_PIT_NEF": {
+      "Description": "Pitch Error notch filter index",
+      "DisplayName": "Pitch Error notch filter index",
+      "Range": {
+        "high": "8",
+        "low": "1"
+      },
+      "User": "Advanced"
+    },
+    "CC2_RAT_PIT_NTF": {
+      "Description": "Pitch Target notch filter index",
+      "DisplayName": "Pitch Target notch filter index",
+      "Range": {
+        "high": "8",
+        "low": "1"
+      },
+      "User": "Advanced"
+    },
+    "CC2_RAT_PIT_P": {
+      "Description": "Pitch axis rate controller P gain.  Corrects in proportion to the difference between the desired pitch rate vs actual pitch rate",
+      "DisplayName": "Pitch axis rate controller P gain",
+      "Increment": "0.005",
+      "Range": {
+        "high": "0.50",
+        "low": "0.01"
+      },
+      "User": "Standard"
+    },
+    "CC2_RAT_PIT_PDMX": {
+      "Description": "Pitch axis rate controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output",
+      "DisplayName": "Pitch axis rate controller PD sum maximum",
+      "Increment": "0.01",
+      "Range": {
+        "high": "1",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
+    "CC2_RAT_PIT_SMAX": {
+      "Description": "Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature.",
+      "DisplayName": "Pitch slew rate limit",
+      "Increment": "0.5",
+      "Range": {
+        "high": "200",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
+    "CC2_RAT_RLL_D": {
+      "Description": "Roll axis rate controller D gain.  Compensates for short-term change in desired roll rate vs actual roll rate",
+      "DisplayName": "Roll axis rate controller D gain",
+      "Increment": "0.001",
+      "Range": {
+        "high": "0.05",
+        "low": "0.0"
+      },
+      "User": "Standard"
+    },
+    "CC2_RAT_RLL_D_FF": {
+      "Description": "FF D Gain which produces an output that is proportional to the rate of change of the target",
+      "DisplayName": "Roll Derivative FeedForward Gain",
+      "Increment": "0.0001",
+      "Range": {
+        "high": "0.02",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
+    "CC2_RAT_RLL_FF": {
+      "Description": "Roll axis rate controller feed forward",
+      "DisplayName": "Roll axis rate controller feed forward",
+      "Increment": "0.001",
+      "Range": {
+        "high": "0.5",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "CC2_RAT_RLL_FLTD": {
+      "Description": "Roll axis rate controller derivative frequency in Hz",
+      "DisplayName": "Roll axis rate controller derivative frequency in Hz",
+      "Increment": "1",
+      "Range": {
+        "high": "100",
+        "low": "5"
+      },
+      "Units": "Hz",
+      "User": "Standard"
+    },
+    "CC2_RAT_RLL_FLTE": {
+      "Description": "Roll axis rate controller error frequency in Hz",
+      "DisplayName": "Roll axis rate controller error frequency in Hz",
+      "Increment": "1",
+      "Range": {
+        "high": "100",
+        "low": "0"
+      },
+      "Units": "Hz",
+      "User": "Standard"
+    },
+    "CC2_RAT_RLL_FLTT": {
+      "Description": "Roll axis rate controller target frequency in Hz",
+      "DisplayName": "Roll axis rate controller target frequency in Hz",
+      "Increment": "1",
+      "Range": {
+        "high": "100",
+        "low": "5"
+      },
+      "Units": "Hz",
+      "User": "Standard"
+    },
+    "CC2_RAT_RLL_I": {
+      "Description": "Roll axis rate controller I gain.  Corrects long-term difference in desired roll rate vs actual roll rate",
+      "DisplayName": "Roll axis rate controller I gain",
+      "Increment": "0.01",
+      "Range": {
+        "high": "2.0",
+        "low": "0.01"
+      },
+      "User": "Standard"
+    },
+    "CC2_RAT_RLL_IMAX": {
+      "Description": "Roll axis rate controller I gain maximum.  Constrains the maximum that the I term will output",
+      "DisplayName": "Roll axis rate controller I gain maximum",
+      "Increment": "0.01",
+      "Range": {
+        "high": "1",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "CC2_RAT_RLL_NEF": {
+      "Description": "Roll Error notch filter index",
+      "DisplayName": "Roll Error notch filter index",
+      "Range": {
+        "high": "8",
+        "low": "1"
+      },
+      "User": "Advanced"
+    },
+    "CC2_RAT_RLL_NTF": {
+      "Description": "Roll Target notch filter index",
+      "DisplayName": "Roll Target notch filter index",
+      "Range": {
+        "high": "8",
+        "low": "1"
+      },
+      "User": "Advanced"
+    },
+    "CC2_RAT_RLL_P": {
+      "Description": "Roll axis rate controller P gain. Corrects in proportion to the difference between the desired roll rate vs actual roll rate",
+      "DisplayName": "Roll axis rate controller P gain",
+      "Increment": "0.005",
+      "Range": {
+        "high": "0.5",
+        "low": "0.01"
+      },
+      "User": "Standard"
+    },
+    "CC2_RAT_RLL_PDMX": {
+      "Description": "Roll axis rate controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output",
+      "DisplayName": "Roll axis rate controller PD sum maximum",
+      "Increment": "0.01",
+      "Range": {
+        "high": "1",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
+    "CC2_RAT_RLL_SMAX": {
+      "Description": "Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature.",
+      "DisplayName": "Roll slew rate limit",
+      "Increment": "0.5",
+      "Range": {
+        "high": "200",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
+    "CC2_RAT_YAW_D": {
+      "Description": "Yaw axis rate controller D gain.  Compensates for short-term change in desired yaw rate vs actual yaw rate",
+      "DisplayName": "Yaw axis rate controller D gain",
+      "Increment": "0.001",
+      "Range": {
+        "high": "0.02",
+        "low": "0.000"
+      },
+      "User": "Standard"
+    },
+    "CC2_RAT_YAW_D_FF": {
+      "Description": "FF D Gain which produces an output that is proportional to the rate of change of the target",
+      "DisplayName": "Yaw Derivative FeedForward Gain",
+      "Increment": "0.0001",
+      "Range": {
+        "high": "0.02",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
+    "CC2_RAT_YAW_FF": {
+      "Description": "Yaw axis rate controller feed forward",
+      "DisplayName": "Yaw axis rate controller feed forward",
+      "Increment": "0.001",
+      "Range": {
+        "high": "0.5",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "CC2_RAT_YAW_FLTD": {
+      "Description": "Yaw axis rate controller derivative frequency in Hz",
+      "DisplayName": "Yaw axis rate controller derivative frequency in Hz",
+      "Increment": "1",
+      "Range": {
+        "high": "50",
+        "low": "5"
+      },
+      "Units": "Hz",
+      "User": "Standard"
+    },
+    "CC2_RAT_YAW_FLTE": {
+      "Description": "Yaw axis rate controller error frequency in Hz",
+      "DisplayName": "Yaw axis rate controller error frequency in Hz",
+      "Increment": "1",
+      "Range": {
+        "high": "20",
+        "low": "0"
+      },
+      "Units": "Hz",
+      "User": "Standard"
+    },
+    "CC2_RAT_YAW_FLTT": {
+      "Description": "Yaw axis rate controller target frequency in Hz",
+      "DisplayName": "Yaw axis rate controller target frequency in Hz",
+      "Increment": "1",
+      "Range": {
+        "high": "50",
+        "low": "1"
+      },
+      "Units": "Hz",
+      "User": "Standard"
+    },
+    "CC2_RAT_YAW_I": {
+      "Description": "Yaw axis rate controller I gain.  Corrects long-term difference in desired yaw rate vs actual yaw rate",
+      "DisplayName": "Yaw axis rate controller I gain",
+      "Increment": "0.01",
+      "Range": {
+        "high": "1.0",
+        "low": "0.010"
+      },
+      "User": "Standard"
+    },
+    "CC2_RAT_YAW_IMAX": {
+      "Description": "Yaw axis rate controller I gain maximum.  Constrains the maximum that the I term will output",
+      "DisplayName": "Yaw axis rate controller I gain maximum",
+      "Increment": "0.01",
+      "Range": {
+        "high": "1",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "CC2_RAT_YAW_NEF": {
+      "Description": "Yaw Error notch filter index",
+      "DisplayName": "Yaw Error notch filter index",
+      "Range": {
+        "high": "8",
+        "low": "1"
+      },
+      "User": "Advanced"
+    },
+    "CC2_RAT_YAW_NTF": {
+      "Description": "Yaw Target notch filter index",
+      "DisplayName": "Yaw Target notch filter index",
+      "Range": {
+        "high": "8",
+        "low": "1"
+      },
+      "User": "Advanced"
+    },
+    "CC2_RAT_YAW_P": {
+      "Description": "Yaw axis rate controller P gain.  Corrects in proportion to the difference between the desired yaw rate vs actual yaw rate",
+      "DisplayName": "Yaw axis rate controller P gain",
+      "Increment": "0.005",
+      "Range": {
+        "high": "2.50",
+        "low": "0.10"
+      },
+      "User": "Standard"
+    },
+    "CC2_RAT_YAW_PDMX": {
+      "Description": "Yaw axis rate controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output",
+      "DisplayName": "Yaw axis rate controller PD sum maximum",
+      "Increment": "0.01",
+      "Range": {
+        "high": "1",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
+    "CC2_RAT_YAW_SMAX": {
+      "Description": "Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature.",
+      "DisplayName": "Yaw slew rate limit",
+      "Increment": "0.5",
+      "Range": {
+        "high": "200",
+        "low": "0"
+      },
+      "User": "Advanced"
+    }
+  },
   "CHUTE_": {
     "CHUTE_ALT_MIN": {
       "Description": "Parachute min altitude above home.  Parachute will not be released below this altitude.  0 to disable alt check.",
@@ -41884,6 +42306,7 @@
         "14": "DroneCAN",
         "15": "Ghost",
         "16": "MAVRadio",
+        "18": "SITL UDP",
         "2": "IBUS",
         "3": "SBUS",
         "4": "SBUS_NI",

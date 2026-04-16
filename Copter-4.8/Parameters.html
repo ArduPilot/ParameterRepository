@@ -19571,6 +19571,387 @@ DO NOT EDIT
 </ul>
 
 
+<h1>CC2_ Parameters</h1>
+
+
+<h2>Roll axis angle controller P gain (CC2_ANG_RLL_P)</h2>
+
+<p>Roll axis angle controller P gain.  Converts the error between the desired roll angle and actual angle to a desired roll rate</p>
+<ul>
+<li>Range: 3.000 12.000</li>
+</ul>
+
+
+<h2>Pitch axis angle controller P gain (CC2_ANG_PIT_P)</h2>
+
+<p>Pitch axis angle controller P gain.  Converts the error between the desired pitch angle and actual angle to a desired pitch rate</p>
+<ul>
+<li>Range: 3.000 12.000</li>
+</ul>
+
+
+<h2>Yaw axis angle controller P gain (CC2_ANG_YAW_P)</h2>
+
+<p>Yaw axis angle controller P gain.  Converts the error between the desired yaw angle and actual angle to a desired yaw rate</p>
+<ul>
+<li>Range: 3.000 12.000</li>
+</ul>
+
+
+<h2>Roll axis rate controller P gain (CC2_RAT_RLL_P)</h2>
+
+<p>Roll axis rate controller P gain. Corrects in proportion to the difference between the desired roll rate vs actual roll rate</p>
+<ul>
+<li>Range: 0.01 0.5</li>
+<li>Increment: 0.005</li>
+</ul>
+
+
+<h2>Roll axis rate controller I gain (CC2_RAT_RLL_I)</h2>
+
+<p>Roll axis rate controller I gain.  Corrects long-term difference in desired roll rate vs actual roll rate</p>
+<ul>
+<li>Range: 0.01 2.0</li>
+<li>Increment: 0.01</li>
+</ul>
+
+
+<h2>Roll axis rate controller I gain maximum (CC2_RAT_RLL_IMAX)</h2>
+
+<p>Roll axis rate controller I gain maximum.  Constrains the maximum that the I term will output</p>
+<ul>
+<li>Range: 0 1</li>
+<li>Increment: 0.01</li>
+</ul>
+
+
+<h2>Roll axis rate controller D gain (CC2_RAT_RLL_D)</h2>
+
+<p>Roll axis rate controller D gain.  Compensates for short-term change in desired roll rate vs actual roll rate</p>
+<ul>
+<li>Range: 0.0 0.05</li>
+<li>Increment: 0.001</li>
+</ul>
+
+
+<h2>Roll axis rate controller feed forward (CC2_RAT_RLL_FF)</h2>
+
+<p>Roll axis rate controller feed forward</p>
+<ul>
+<li>Range: 0 0.5</li>
+<li>Increment: 0.001</li>
+</ul>
+
+
+<h2>Roll axis rate controller target frequency in Hz (CC2_RAT_RLL_FLTT)</h2>
+
+<p>Roll axis rate controller target frequency in Hz</p>
+<ul>
+<li>Range: 5 100</li>
+<li>Increment: 1</li>
+<li>Units: hertz</li>
+</ul>
+
+
+<h2>Roll axis rate controller error frequency in Hz (CC2_RAT_RLL_FLTE)</h2>
+
+<p>Roll axis rate controller error frequency in Hz</p>
+<ul>
+<li>Range: 0 100</li>
+<li>Increment: 1</li>
+<li>Units: hertz</li>
+</ul>
+
+
+<h2>Roll axis rate controller derivative frequency in Hz (CC2_RAT_RLL_FLTD)</h2>
+
+<p>Roll axis rate controller derivative frequency in Hz</p>
+<ul>
+<li>Range: 5 100</li>
+<li>Increment: 1</li>
+<li>Units: hertz</li>
+</ul>
+
+
+<h2>Roll slew rate limit (CC2_RAT_RLL_SMAX)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature.</p>
+<ul>
+<li>Range: 0 200</li>
+<li>Increment: 0.5</li>
+</ul>
+
+
+<h2>Roll axis rate controller PD sum maximum (CC2_RAT_RLL_PDMX)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Roll axis rate controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output</p>
+<ul>
+<li>Range: 0 1</li>
+<li>Increment: 0.01</li>
+</ul>
+
+
+<h2>Roll Derivative FeedForward Gain (CC2_RAT_RLL_D_FF)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>FF D Gain which produces an output that is proportional to the rate of change of the target</p>
+<ul>
+<li>Range: 0 0.02</li>
+<li>Increment: 0.0001</li>
+</ul>
+
+
+<h2>Roll Target notch filter index (CC2_RAT_RLL_NTF)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Roll Target notch filter index</p>
+<ul>
+<li>Range: 1 8</li>
+</ul>
+
+
+<h2>Roll Error notch filter index (CC2_RAT_RLL_NEF)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Roll Error notch filter index</p>
+<ul>
+<li>Range: 1 8</li>
+</ul>
+
+
+<h2>Pitch axis rate controller P gain (CC2_RAT_PIT_P)</h2>
+
+<p>Pitch axis rate controller P gain.  Corrects in proportion to the difference between the desired pitch rate vs actual pitch rate</p>
+<ul>
+<li>Range: 0.01 0.50</li>
+<li>Increment: 0.005</li>
+</ul>
+
+
+<h2>Pitch axis rate controller I gain (CC2_RAT_PIT_I)</h2>
+
+<p>Pitch axis rate controller I gain.  Corrects long-term difference in desired pitch rate vs actual pitch rate</p>
+<ul>
+<li>Range: 0.01 2.0</li>
+<li>Increment: 0.01</li>
+</ul>
+
+
+<h2>Pitch axis rate controller I gain maximum (CC2_RAT_PIT_IMAX)</h2>
+
+<p>Pitch axis rate controller I gain maximum.  Constrains the maximum that the I term will output</p>
+<ul>
+<li>Range: 0 1</li>
+<li>Increment: 0.01</li>
+</ul>
+
+
+<h2>Pitch axis rate controller D gain (CC2_RAT_PIT_D)</h2>
+
+<p>Pitch axis rate controller D gain.  Compensates for short-term change in desired pitch rate vs actual pitch rate</p>
+<ul>
+<li>Range: 0.0 0.05</li>
+<li>Increment: 0.001</li>
+</ul>
+
+
+<h2>Pitch axis rate controller feed forward (CC2_RAT_PIT_FF)</h2>
+
+<p>Pitch axis rate controller feed forward</p>
+<ul>
+<li>Range: 0 0.5</li>
+<li>Increment: 0.001</li>
+</ul>
+
+
+<h2>Pitch axis rate controller target frequency in Hz (CC2_RAT_PIT_FLTT)</h2>
+
+<p>Pitch axis rate controller target frequency in Hz</p>
+<ul>
+<li>Range: 5 100</li>
+<li>Increment: 1</li>
+<li>Units: hertz</li>
+</ul>
+
+
+<h2>Pitch axis rate controller error frequency in Hz (CC2_RAT_PIT_FLTE)</h2>
+
+<p>Pitch axis rate controller error frequency in Hz</p>
+<ul>
+<li>Range: 0 100</li>
+<li>Increment: 1</li>
+<li>Units: hertz</li>
+</ul>
+
+
+<h2>Pitch axis rate controller derivative frequency in Hz (CC2_RAT_PIT_FLTD)</h2>
+
+<p>Pitch axis rate controller derivative frequency in Hz</p>
+<ul>
+<li>Range: 5 100</li>
+<li>Increment: 1</li>
+<li>Units: hertz</li>
+</ul>
+
+
+<h2>Pitch slew rate limit (CC2_RAT_PIT_SMAX)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature.</p>
+<ul>
+<li>Range: 0 200</li>
+<li>Increment: 0.5</li>
+</ul>
+
+
+<h2>Pitch axis rate controller PD sum maximum (CC2_RAT_PIT_PDMX)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Pitch axis rate controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output</p>
+<ul>
+<li>Range: 0 1</li>
+<li>Increment: 0.01</li>
+</ul>
+
+
+<h2>Pitch Derivative FeedForward Gain (CC2_RAT_PIT_D_FF)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>FF D Gain which produces an output that is proportional to the rate of change of the target</p>
+<ul>
+<li>Range: 0 0.02</li>
+<li>Increment: 0.0001</li>
+</ul>
+
+
+<h2>Pitch Target notch filter index (CC2_RAT_PIT_NTF)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Pitch Target notch filter index</p>
+<ul>
+<li>Range: 1 8</li>
+</ul>
+
+
+<h2>Pitch Error notch filter index (CC2_RAT_PIT_NEF)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Pitch Error notch filter index</p>
+<ul>
+<li>Range: 1 8</li>
+</ul>
+
+
+<h2>Yaw axis rate controller P gain (CC2_RAT_YAW_P)</h2>
+
+<p>Yaw axis rate controller P gain.  Corrects in proportion to the difference between the desired yaw rate vs actual yaw rate</p>
+<ul>
+<li>Range: 0.10 2.50</li>
+<li>Increment: 0.005</li>
+</ul>
+
+
+<h2>Yaw axis rate controller I gain (CC2_RAT_YAW_I)</h2>
+
+<p>Yaw axis rate controller I gain.  Corrects long-term difference in desired yaw rate vs actual yaw rate</p>
+<ul>
+<li>Range: 0.010 1.0</li>
+<li>Increment: 0.01</li>
+</ul>
+
+
+<h2>Yaw axis rate controller I gain maximum (CC2_RAT_YAW_IMAX)</h2>
+
+<p>Yaw axis rate controller I gain maximum.  Constrains the maximum that the I term will output</p>
+<ul>
+<li>Range: 0 1</li>
+<li>Increment: 0.01</li>
+</ul>
+
+
+<h2>Yaw axis rate controller D gain (CC2_RAT_YAW_D)</h2>
+
+<p>Yaw axis rate controller D gain.  Compensates for short-term change in desired yaw rate vs actual yaw rate</p>
+<ul>
+<li>Range: 0.000 0.02</li>
+<li>Increment: 0.001</li>
+</ul>
+
+
+<h2>Yaw axis rate controller feed forward (CC2_RAT_YAW_FF)</h2>
+
+<p>Yaw axis rate controller feed forward</p>
+<ul>
+<li>Range: 0 0.5</li>
+<li>Increment: 0.001</li>
+</ul>
+
+
+<h2>Yaw axis rate controller target frequency in Hz (CC2_RAT_YAW_FLTT)</h2>
+
+<p>Yaw axis rate controller target frequency in Hz</p>
+<ul>
+<li>Range: 1 50</li>
+<li>Increment: 1</li>
+<li>Units: hertz</li>
+</ul>
+
+
+<h2>Yaw axis rate controller error frequency in Hz (CC2_RAT_YAW_FLTE)</h2>
+
+<p>Yaw axis rate controller error frequency in Hz</p>
+<ul>
+<li>Range: 0 20</li>
+<li>Increment: 1</li>
+<li>Units: hertz</li>
+</ul>
+
+
+<h2>Yaw axis rate controller derivative frequency in Hz (CC2_RAT_YAW_FLTD)</h2>
+
+<p>Yaw axis rate controller derivative frequency in Hz</p>
+<ul>
+<li>Range: 5 50</li>
+<li>Increment: 1</li>
+<li>Units: hertz</li>
+</ul>
+
+
+<h2>Yaw slew rate limit (CC2_RAT_YAW_SMAX)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature.</p>
+<ul>
+<li>Range: 0 200</li>
+<li>Increment: 0.5</li>
+</ul>
+
+
+<h2>Yaw axis rate controller PD sum maximum (CC2_RAT_YAW_PDMX)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Yaw axis rate controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output</p>
+<ul>
+<li>Range: 0 1</li>
+<li>Increment: 0.01</li>
+</ul>
+
+
+<h2>Yaw Derivative FeedForward Gain (CC2_RAT_YAW_D_FF)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>FF D Gain which produces an output that is proportional to the rate of change of the target</p>
+<ul>
+<li>Range: 0 0.02</li>
+<li>Increment: 0.0001</li>
+</ul>
+
+
+<h2>Yaw Target notch filter index (CC2_RAT_YAW_NTF)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Yaw Target notch filter index</p>
+<ul>
+<li>Range: 1 8</li>
+</ul>
+
+
+<h2>Yaw Error notch filter index (CC2_RAT_YAW_NEF)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Yaw Error notch filter index</p>
+<ul>
+<li>Range: 1 8</li>
+</ul>
+
+
 <h1>CHUTE_ Parameters</h1>
 
 
@@ -44120,7 +44501,7 @@ DO NOT EDIT
 
 <p>Bitmask of enabled RC protocols. Allows narrowing the protocol detection to only specific types of RC receivers which can avoid issues with incorrect detection. Set to 1 to enable all protocols.</p>
 <ul>
-<li>Bitmask: 0:All,1:PPM,2:IBUS,3:SBUS,4:SBUS_NI,5:DSM,6:SUMD,7:SRXL,8:SRXL2,9:CRSF,10:ST24,11:FPORT,12:FPORT2,13:FastSBUS,14:DroneCAN,15:Ghost,16:MAVRadio</li>
+<li>Bitmask: 0:All,1:PPM,2:IBUS,3:SBUS,4:SBUS_NI,5:DSM,6:SUMD,7:SRXL,8:SRXL2,9:CRSF,10:ST24,11:FPORT,12:FPORT2,13:FastSBUS,14:DroneCAN,15:Ghost,16:MAVRadio,18:SITL UDP</li>
 </ul>
 
 

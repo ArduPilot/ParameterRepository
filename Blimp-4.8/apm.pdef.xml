@@ -17802,8 +17802,9 @@
           <bit code="14">DroneCAN</bit>
           <bit code="15">Ghost</bit>
           <bit code="16">MAVRadio</bit>
+          <bit code="18">SITL UDP</bit>
         </bitmask>
-        <field name="Bitmask">0:All,1:PPM,2:IBUS,3:SBUS,4:SBUS_NI,5:DSM,6:SUMD,7:SRXL,8:SRXL2,9:CRSF,10:ST24,11:FPORT,12:FPORT2,13:FastSBUS,14:DroneCAN,15:Ghost,16:MAVRadio</field>
+        <field name="Bitmask">0:All,1:PPM,2:IBUS,3:SBUS,4:SBUS_NI,5:DSM,6:SUMD,7:SRXL,8:SRXL2,9:CRSF,10:ST24,11:FPORT,12:FPORT2,13:FastSBUS,14:DroneCAN,15:Ghost,16:MAVRadio,18:SITL UDP</field>
       </param>
       <param humanName="RC Failsafe timeout" name="RC_FS_TIMEOUT" documentation="RC failsafe will trigger this many seconds after loss of RC" user="Standard">
         <field name="Range">0.1 10.0</field>
