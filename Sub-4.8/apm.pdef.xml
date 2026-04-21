@@ -41501,11 +41501,11 @@
       </param>
       <param humanName="Sonar rotation" name="SIM_SONAR_ROT" documentation="Sonar rotation from rotations enumeration">
 </param>
-      <param humanName="Simulated battery voltage" name="SIM_BATT_VOLTAGE" documentation="Simulated battery voltage. Constant voltage when SIM_BATT_CAP_AH is 0, otherwise changing this parameter will re-initialize the state of charge of the battery based on this voltage versus the battery's maximum voltage (default is max voltage)." user="Advanced">
+      <param humanName="Simulated battery resting voltage" name="SIM_BATT_VOLTAGE" documentation="Simulated battery resting voltage (no load sag). Defaults to and clipped to the battery model's maximum voltage. Changes re-initialize the state of charge, and values below the maximum indicate a partially-charged battery. For batteries with unlimited capacity, see `SIM_BATT_CAP_AH`. Value ignored when receiving battery state updates from an external source." user="Advanced">
         <field name="Units">V</field>
         <field name="UnitText">volt</field>
       </param>
-      <param humanName="Simulated battery capacity" name="SIM_BATT_CAP_AH" documentation="Simulated battery capacity. Set to 0 for unlimited capacity. Changing this parameter will re-initialize the state of charge of the battery." user="Advanced">
+      <param humanName="Simulated battery capacity" name="SIM_BATT_CAP_AH" documentation="Simulated battery capacity. Changes re-initialize the state of charge of the battery. Set to 0 for unlimited capacity. Value ignored when receiving battery state updates from an external source." user="Advanced">
         <field name="Units">Ah</field>
         <field name="UnitText">ampere hour</field>
       </param>

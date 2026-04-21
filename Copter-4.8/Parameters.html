@@ -60512,9 +60512,9 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Simulated battery voltage (SIM_BATT_VOLTAGE)</h2><em>Note: This parameter is for advanced users</em><br>
+<h2>Simulated battery resting voltage (SIM_BATT_VOLTAGE)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Simulated battery voltage. Constant voltage when SIM_BATT_CAP_AH is 0, otherwise changing this parameter will re-initialize the state of charge of the battery based on this voltage versus the battery&#x27;s maximum voltage (default is max voltage).</p>
+<p>Simulated battery resting voltage (no load sag). Defaults to and clipped to the battery model&#x27;s maximum voltage. Changes re-initialize the state of charge, and values below the maximum indicate a partially-charged battery. For batteries with unlimited capacity, see `SIM_BATT_CAP_AH`. Value ignored when receiving battery state updates from an external source.</p>
 <ul>
 <li>Units: volt</li>
 </ul>
@@ -60522,7 +60522,7 @@ DO NOT EDIT
 
 <h2>Simulated battery capacity (SIM_BATT_CAP_AH)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Simulated battery capacity. Set to 0 for unlimited capacity. Changing this parameter will re-initialize the state of charge of the battery.</p>
+<p>Simulated battery capacity. Changes re-initialize the state of charge of the battery. Set to 0 for unlimited capacity. Value ignored when receiving battery state updates from an external source.</p>
 <ul>
 <li>Units: ampere hour</li>
 </ul>

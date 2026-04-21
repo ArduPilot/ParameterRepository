@@ -29451,20 +29451,20 @@ CAM1\_RC\_BT\_DELAY: RunCam boot delay before allowing updates
 Time it takes for the RunCam to become fully ready in ms\. If this is too short then commands can get out of sync\.
 
 
-.. _CAM1_RC_BTN_DELAY:
+.. _CAM1_RC_BTN_DELY:
 
-CAM1\_RC\_BTN\_DELAY: RunCam button delay before allowing further button presses
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CAM1\_RC\_BTN\_DELY: RunCam button delay before allowing further button presses
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
 Time it takes for the a RunCam button press to be actived in ms\. If this is too short then commands can get out of sync\.
 
 
-.. _CAM1_RC_MDE_DELAY:
+.. _CAM1_RC_MDE_DELY:
 
-CAM1\_RC\_MDE\_DELAY: RunCam mode delay before allowing further button presses
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CAM1\_RC\_MDE\_DELY: RunCam mode delay before allowing further button presses
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
@@ -29881,20 +29881,20 @@ CAM2\_RC\_BT\_DELAY: RunCam boot delay before allowing updates
 Time it takes for the RunCam to become fully ready in ms\. If this is too short then commands can get out of sync\.
 
 
-.. _CAM2_RC_BTN_DELAY:
+.. _CAM2_RC_BTN_DELY:
 
-CAM2\_RC\_BTN\_DELAY: RunCam button delay before allowing further button presses
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CAM2\_RC\_BTN\_DELY: RunCam button delay before allowing further button presses
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
 Time it takes for the a RunCam button press to be actived in ms\. If this is too short then commands can get out of sync\.
 
 
-.. _CAM2_RC_MDE_DELAY:
+.. _CAM2_RC_MDE_DELY:
 
-CAM2\_RC\_MDE\_DELAY: RunCam mode delay before allowing further button presses
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+CAM2\_RC\_MDE\_DELY: RunCam mode delay before allowing further button presses
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
@@ -37501,6 +37501,8 @@ Type of AHRS device
 | +-------+--------------+ |
 | | 8     | SBG          | |
 | +-------+--------------+ |
+| | 11    | SensAItion   | |
+| +-------+--------------+ |
 |                          |
 +--------------------------+
 
@@ -37534,18 +37536,20 @@ EAHRS\_OPTIONS: External AHRS options
 External AHRS options bitmask
 
 
-+-----------------------------------------------------------------------+
-| Bitmask                                                               |
-+=======================================================================+
-| +-----+-------------------------------------------------------------+ |
-| | Bit | Meaning                                                     | |
-| +=====+=============================================================+ |
-| | 0   | Vector Nav use uncompensated values for accel gyro and mag. | |
-| +-----+-------------------------------------------------------------+ |
-| | 1   | SBG uses EKF as GNSS.                                       | |
-| +-----+-------------------------------------------------------------+ |
-|                                                                       |
-+-----------------------------------------------------------------------+
++----------------------------------------------------------------------+
+| Bitmask                                                              |
++======================================================================+
+| +-----+------------------------------------------------------------+ |
+| | Bit | Meaning                                                    | |
+| +=====+============================================================+ |
+| | 0   | Vector Nav use uncompensated values for accel gyro and mag | |
+| +-----+------------------------------------------------------------+ |
+| | 1   | SBG uses EKF as GNSS                                       | |
+| +-----+------------------------------------------------------------+ |
+| | 2   | SensAItion used as AHRS                                    | |
+| +-----+------------------------------------------------------------+ |
+|                                                                      |
++----------------------------------------------------------------------+
 
 
 
@@ -41199,6 +41203,66 @@ Distance that autopilot\'s should maintain from the fence in the horizontal plan
 +=========+========+
 | 0 to 50 | meters |
 +---------+--------+
+
+
+
+
+.. _FENCE_ALT_MAX_TP:
+
+FENCE\_ALT\_MAX\_TP: Altitude max frame type
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+The altitude reference frame for the maximum altitude fence\. Can be AMSL\, home\-relative\, origin relative or AGL\.
+
+
++-----------------------------+
+| Values                      |
++=============================+
+| +-------+-----------------+ |
+| | Value | Meaning         | |
+| +=======+=================+ |
+| | 0     | Above sea level | |
+| +-------+-----------------+ |
+| | 1     | Above Home      | |
+| +-------+-----------------+ |
+| | 2     | Above Origin    | |
+| +-------+-----------------+ |
+| | 3     | Above Terrain   | |
+| +-------+-----------------+ |
+|                             |
++-----------------------------+
+
+
+
+
+.. _FENCE_ALT_MIN_TP:
+
+FENCE\_ALT\_MIN\_TP: Altitude min frame type
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+The altitude reference frame for the minimum altitude fence\. Can be AMSL\, home\-relative\, origin relative or AGL\.
+
+
++-----------------------------+
+| Values                      |
++=============================+
+| +-------+-----------------+ |
+| | Value | Meaning         | |
+| +=======+=================+ |
+| | 0     | Above sea level | |
+| +-------+-----------------+ |
+| | 1     | Above Home      | |
+| +-------+-----------------+ |
+| | 2     | Above Origin    | |
+| +-------+-----------------+ |
+| | 3     | Above Terrain   | |
+| +-------+-----------------+ |
+|                             |
++-----------------------------+
 
 
 

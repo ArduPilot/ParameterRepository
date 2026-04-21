@@ -11957,8 +11957,9 @@
     },
     "EAHRS_OPTIONS": {
       "Bitmask": {
-        "0": "Vector Nav use uncompensated values for accel gyro and mag.",
-        "1": "SBG uses EKF as GNSS."
+        "0": "Vector Nav use uncompensated values for accel gyro and mag",
+        "1": "SBG uses EKF as GNSS",
+        "2": "SensAItion used as AHRS"
       },
       "Description": "External AHRS options bitmask",
       "DisplayName": "External AHRS options",
@@ -11988,6 +11989,7 @@
       "Values": {
         "0": "None",
         "1": "VectorNav",
+        "11": "SensAItion",
         "2": "MicroStrain5",
         "5": "InertialLabs",
         "6": "Trimble GSOF",
@@ -13635,6 +13637,28 @@
       "Values": {
         "0": "Report Only",
         "1": "RTL or Land"
+      }
+    },
+    "FENCE_ALT_MAX_TP": {
+      "Description": "The altitude reference frame for the maximum altitude fence. Can be AMSL, home-relative, origin relative or AGL.",
+      "DisplayName": "Altitude max frame type",
+      "User": "Advanced",
+      "Values": {
+        "0": "Above sea level",
+        "1": "Above Home",
+        "2": "Above Origin",
+        "3": "Above Terrain"
+      }
+    },
+    "FENCE_ALT_MIN_TP": {
+      "Description": "The altitude reference frame for the minimum altitude fence. Can be AMSL, home-relative, origin relative or AGL.",
+      "DisplayName": "Altitude min frame type",
+      "User": "Advanced",
+      "Values": {
+        "0": "Above sea level",
+        "1": "Above Home",
+        "2": "Above Origin",
+        "3": "Above Terrain"
       }
     },
     "FENCE_ENABLE": {

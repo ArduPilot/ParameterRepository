@@ -438,64 +438,141 @@
   </vehicles>
   <libraries>
     <parameters name="Lua Script">
-      <param humanName="terrain brake enable" name="TERR_BRK_ENABLE" documentation="terrain brake enable" user="Standard">
+      <param humanName="AHRS/EKF Origin Latitude" name="AHRS_ORIG_LAT" documentation="AHRS/EKF origin will be set to this latitude if not already set" user="Standard">
+        <field name="Range">-180 180</field>
+      </param>
+      <param humanName="AHRS/EKF Origin Longitude" name="AHRS_ORIG_LON" documentation="AHRS/EKF origin will be set to this longitude if not already set" user="Standard">
+        <field name="Range">-180 180</field>
+      </param>
+      <param humanName="AHRS/EKF Origin Altitude" name="AHRS_ORIG_ALT" documentation="AHRS/EKF origin will be set to this altitude (in meters above sea level) if not already set" user="Standard">
+        <field name="Range">0 10000</field>
+      </param>
+      <param humanName="Activation Function for Terrain Avoidance" name="TA_ACT_FN" documentation="Setting an RC channel's _OPTION to this value will use it for Terrain Avoidance enable/disable">
+        <field name="Range">300 307</field>
+      </param>
+      <param humanName="down distance minimum for Pitching" name="TA_PTCH_DWN_MIN" documentation="If the downward distance is less than this value then start Pitching up to gain altitude.">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="forward distance minimum for Pitching" name="TA_PTCH_FWD_MIN" documentation="If the farwardward distance is less than this value then start Pitching up to gain altitude.">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="Downward distance minimum Quading" name="TA_QUAD_DWN_MIN" documentation="If the downward distance is less than this value then start Quading up to gain altitude.">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="minimum forward distance for Quading" name="TA_QUAD_FWD_MIN" documentation="If the farwardward distance is less than this value then start Quading up to gain altitude.">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="minimum ground speed for Pitching" name="TA_PTCH_GSP_MIN" documentation="Minimum Groundspeed (not airspeed) to be flying for Pitching to be used.">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+      </param>
+      <param humanName="timeout Pitching" name="TA_PTCH_TIMEOUT" documentation="Minimum down or forward distance must be triggered for more than this many seconds to start Pitching">
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+      </param>
+      <param humanName="safe distance around home" name="TA_HOME_DIST" documentation="Terrain avoidance will not be applied if the vehicle is less than this distance from home">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="ceiling for pitching/quading" name="TA_ALT_MAX" documentation="This is a limit on how high the terrain avoidane will take the vehicle. It acts a failsafe to prevent vertical flyaways.">
+        <field name="Range">20 1000</field>
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="Maximum Groundspeed" name="TA_GSP_MAX" documentation="This is a limit on how fast in groundspeeed terrain avoidance will take the vehicle. This is to allow for reliable sensor readings. -1 for disabled.">
+        <field name="Range">10 40</field>
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+      </param>
+      <param humanName="Groudspeed Airbrake limt" name="TA_GSP_AIRBRAKE" documentation="This is the limit for triggering airbrake to slow groundspeed as a difference between the airspeed and groundspeed. -1 for disabled.">
+        <field name="Range">-1 -10</field>
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+      </param>
+      <param humanName="CMTC Height" name="TA_CMTC_HGT" documentation="The minimum Height above terrain to maintain when following an AUTO mission or RTL. If zero(0) use TA_PTCH_DOW_MIN.">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="CMTC Enable" name="TA_CMTC_ENABLE" documentation="Whether to enable Can't Make That Climb while running Terrain Avoidance">
+        <field name="Range">0 1</field>
+      </param>
+      <param humanName="Frequency to process avoidance" name="TA_UPDATE_RATE" documentation="Avoidance processing rate">
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="CMTC loiter radius" name="TA_CMTC_RAD" documentation="Use this radius for the loiter when trying to gain altitude. If not set or &lt;=0 use WP_LOITER_RAD">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="Mount POI distance max" name="POI_DIST_MAX" documentation="POI's max distance (in meters) from the vehicle" user="Standard">
+        <field name="Range">0 10000</field>
+      </param>
+      <param humanName="parameter reversion enable" name="PREV_ENABLE" documentation="Enable parameter reversion system" user="Standard">
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
         </values>
       </param>
-      <param humanName="terrain brake altitude" name="TERR_BRK_ALT" documentation="terrain brake altitude. The altitude above the ground below which BRAKE mode will be engaged if in LOITER mode." user="Standard">
+      <param humanName="param reversion RC function" name="PREV_RC_FUNC" documentation="RCn_OPTION number to used to trigger parameter reversion" user="Standard">
+</param>
+      <param humanName="AUX function to kill engine" name="THR_KILL_FUNC" documentation="AUX function to kill engine. This can be activated either with a RCn_OPTION and a R/C switch or with a ground station auxilliary function" user="Standard">
+        <field name="Range">300 307</field>
+      </param>
+      <param humanName="PWM on kill active" name="THR_KILL_PWM" documentation="PWM on kill active" user="Standard">
+        <field name="Range">800 2200</field>
+      </param>
+      <param humanName="output channel to change on throttle kill" name="THR_KILL_CHAN" documentation="output channel to change on throttle kill, a value of zero disables the feature" user="Standard">
+        <field name="Range">0 32</field>
+      </param>
+      <param humanName="auxilliary value to kill throttle" name="THR_KILL_VAL" documentation="auxilliary value to kill throttle. Set to 2 to kill the throttle when the auxilliary is high. Set to 0 to kill when auxilliary is low" user="Standard">
+        <field name="Range">0 2</field>
+      </param>
+      <param humanName="throttle kill default value" name="THR_KILL_DEF" documentation="throttle kill default value. The default auxilliary function position on boot" user="Standard">
+        <field name="Range">0 2</field>
+      </param>
+      <param humanName="WinchControl Rate Up" name="WINCH_RATE_UP" documentation="Maximum rate when retracting line" user="Standard">
+        <field name="Range">0.1 5.0</field>
+      </param>
+      <param humanName="WinchControl Rate Down" name="WINCH_RATE_DN" documentation="Maximum rate when releasing line" user="Standard">
+        <field name="Range">0.1 5.0</field>
+      </param>
+      <param humanName="Winch Rate Control RC function" name="WINCH_RC_FUNC" documentation="RCn_OPTION number to use to control winch rate" user="Standard">
+        <values>
+          <value code="300">Scripting1</value>
+          <value code="301">Scripting2</value>
+          <value code="302">Scripting3</value>
+          <value code="303">Scripting4</value>
+          <value code="304">Scripting5</value>
+          <value code="305">Scripting6</value>
+          <value code="306">Scripting7</value>
+          <value code="307">Scripting8</value>
+        </values>
+      </param>
+      <param humanName="Auto land enable" name="ALAND_ENABLE" documentation="enable Auto land script action" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Final approach waypoint alt" name="ALAND_WP_ALT" documentation="Altitude of final approach waypoint created by script" user="Standard">
         <field name="Range">1 100</field>
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
       </param>
-      <param humanName="terrain brake home distance" name="TERR_BRK_HDIST" documentation="terrain brake home distance. The distance from home where the auto BRAKE will be enabled. When within this distance of home the script will not activate" user="Standard">
+      <param humanName="Final approach waypoint distance" name="ALAND_WP_DIST" documentation="Distance from landing point (HOME) to final approach waypoint created by script in the opposite direction of initial takeoff" user="Standard">
         <field name="Range">0 1000</field>
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
       </param>
-      <param humanName="terrain brake speed threshold" name="TERR_BRK_SPD" documentation="terrain brake speed threshold. Don't trigger BRAKE if both horizontal speed and descent rate are below this threshold. By setting this to a small value this can be used to allow the user to climb up to a safe altitude in LOITER mode. A value of 0.5 is recommended if you want to use LOITER to recover from an emergency terrain BRAKE mode change." user="Standard">
-        <field name="Range">0 5</field>
-        <field name="Units">m/s</field>
-        <field name="UnitText">meters per second</field>
-      </param>
-      <param humanName="enable battery info support" name="BTAG_ENABLE" documentation="enable battery info support" user="Standard">
+      <param humanName="Param Lockdown enable" name="PARAM_LOCK_ENAB" documentation="Param Lockdown enable" user="Standard">
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
         </values>
-      </param>
-      <param humanName="max battery cycles" name="BTAG_MAX_CYCLES" documentation="max battery cycles for arming" user="Standard">
-        <field name="Range">0 10000</field>
-      </param>
-      <param humanName="current battery cycles" name="BTAG_CUR_CYCLES" documentation="this is the highest value for battery cycles for all connected batteries" user="Advanced">
-        <field name="Range">0 10000</field>
-      </param>
-      <param humanName="enable web server" name="WEB_ENABLE" documentation="enable web server" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="web server TCP port" name="WEB_BIND_PORT" documentation="web server TCP port" user="Standard">
-        <field name="Range">1 65535</field>
-      </param>
-      <param humanName="web server debugging" name="WEB_DEBUG" documentation="web server debugging" user="Advanced">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="web server block size" name="WEB_BLOCK_SIZE" documentation="web server block size for download" user="Advanced">
-        <field name="Range">1 65535</field>
-      </param>
-      <param humanName="web server timeout" name="WEB_TIMEOUT" documentation="timeout for inactive connections" user="Advanced">
-        <field name="Units">s</field>
-        <field name="UnitText">seconds</field>
-        <field name="Range">0.1 60</field>
-      </param>
-      <param humanName="web server minimum file size for sendfile" name="WEB_SENDFILE_MIN" documentation="sendfile is an offloading mechanism for faster file download. If this is non-zero and the file is larger than this size then sendfile will be used for file download" user="Advanced">
-        <field name="Range">0 10000000</field>
       </param>
       <param humanName="Camera1 Thermal Palette" name="CAM1_THERM_PAL" documentation="thermal image colour palette" user="Standard">
         <values>
@@ -528,6 +605,372 @@
         </values>
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
+      </param>
+      <param humanName="terrain brake enable" name="TERR_BRK_ENABLE" documentation="terrain brake enable" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="terrain brake altitude" name="TERR_BRK_ALT" documentation="terrain brake altitude. The altitude above the ground below which BRAKE mode will be engaged if in LOITER mode." user="Standard">
+        <field name="Range">1 100</field>
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="terrain brake home distance" name="TERR_BRK_HDIST" documentation="terrain brake home distance. The distance from home where the auto BRAKE will be enabled. When within this distance of home the script will not activate" user="Standard">
+        <field name="Range">0 1000</field>
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="terrain brake speed threshold" name="TERR_BRK_SPD" documentation="terrain brake speed threshold. Don't trigger BRAKE if both horizontal speed and descent rate are below this threshold. By setting this to a small value this can be used to allow the user to climb up to a safe altitude in LOITER mode. A value of 0.5 is recommended if you want to use LOITER to recover from an emergency terrain BRAKE mode change." user="Standard">
+        <field name="Range">0 5</field>
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+      </param>
+      <param humanName="EKF Source ExternalNav Innovation Threshold" name="ESRC_EXTN_THRESH" documentation="ExternalNav may be used if innovations are below this threshold" user="Standard">
+        <field name="Range">0 1</field>
+      </param>
+      <param humanName="EKF Source ExternalNav Quality Threshold" name="ESRC_EXTN_QUAL" documentation="ExternalNav may be used if quality is above this threshold" user="Standard">
+        <field name="Range">0 100</field>
+        <field name="Units">%</field>
+        <field name="UnitText">percent</field>
+      </param>
+      <param humanName="EKF Source OpticalFlow Innovation Threshold" name="ESRC_FLOW_THRESH" documentation="OpticalFlow may be used if innovations are below this threshold" user="Standard">
+        <field name="Range">0 1</field>
+      </param>
+      <param humanName="EKF Source OpticalFlow Quality Threshold" name="ESRC_FLOW_QUAL" documentation="OpticalFlow may be used if quality is above this threshold" user="Standard">
+        <field name="Range">0 100</field>
+        <field name="Units">%</field>
+        <field name="UnitText">percent</field>
+      </param>
+      <param humanName="EKF Source Rangefinder Max" name="ESRC_RNGFND_MAX" documentation="OpticalFlow may be used if rangefinder distance is below this threshold" user="Standard">
+        <field name="Range">0 50</field>
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="Rover Quicktune enable" name="RTUN_ENABLE" documentation="Enable quicktune system" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Rover Quicktune axes" name="RTUN_AXES" documentation="axes to tune" user="Standard">
+        <bitmask>
+          <bit code="0">Steering</bit>
+          <bit code="1">Speed</bit>
+        </bitmask>
+        <field name="Bitmask">0:Steering,1:Speed</field>
+      </param>
+      <param humanName="Rover Quicktune Steering Rate FeedForward ratio" name="RTUN_STR_FFRATIO" documentation="Ratio between measured response and FF gain. Raise this to get a higher FF gain" user="Standard">
+        <field name="Range">0 1.0</field>
+      </param>
+      <param humanName="Rover Quicktune Steering FF to P ratio" name="RTUN_STR_P_RATIO" documentation="Ratio between steering FF and P gains. Raise this to get a higher P gain, 0 to leave P unchanged" user="Standard">
+        <field name="Range">0 2.0</field>
+      </param>
+      <param humanName="Rover Quicktune Steering FF to I ratio" name="RTUN_STR_I_RATIO" documentation="Ratio between steering FF and I gains. Raise this to get a higher I gain, 0 to leave I unchanged" user="Standard">
+        <field name="Range">0 2.0</field>
+      </param>
+      <param humanName="Rover Quicktune Speed FeedForward (equivalent) ratio" name="RTUN_SPD_FFRATIO" documentation="Ratio between measured response and CRUISE_THROTTLE value. Raise this to get a higher CRUISE_THROTTLE value" user="Standard">
+        <field name="Range">0 1.0</field>
+      </param>
+      <param humanName="Rover Quicktune Speed FF to P ratio" name="RTUN_SPD_P_RATIO" documentation="Ratio between speed FF and P gain. Raise this to get a higher P gain, 0 to leave P unchanged" user="Standard">
+        <field name="Range">0 2.0</field>
+      </param>
+      <param humanName="Rover Quicktune Speed FF to I ratio" name="RTUN_SPD_I_RATIO" documentation="Ratio between speed FF and I gain. Raise this to get a higher I gain, 0 to leave I unchanged" user="Standard">
+        <field name="Range">0 2.0</field>
+      </param>
+      <param humanName="Rover Quicktune auto filter enable" name="RTUN_AUTO_FILTER" documentation="When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Rover Quicktune auto save" name="RTUN_AUTO_SAVE" documentation="Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune" user="Standard">
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+      </param>
+      <param humanName="Rover Quicktune RC function" name="RTUN_RC_FUNC" documentation="RCn_OPTION number to use to control tuning stop/start/save" user="Standard">
+        <values>
+          <value code="300">Scripting1</value>
+          <value code="301">Scripting2</value>
+          <value code="302">Scripting3</value>
+          <value code="303">Scripting4</value>
+          <value code="304">Scripting5</value>
+          <value code="305">Scripting6</value>
+          <value code="306">Scripting7</value>
+          <value code="307">Scripting8</value>
+        </values>
+      </param>
+      <param humanName="Rover Quicktune minimum speed for tuning" name="RTUN_SPEED_MIN" documentation="The mimimum speed in m/s required for tuning to start" user="Standard">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+        <field name="Range">0.1 0.5</field>
+      </param>
+      <param humanName="Camera1 Video Stream Camera Model" name="VID1_CAMMODEL" documentation="Video stream camera model" user="Standard">
+        <values>
+          <value code="0">Unknown</value>
+          <value code="1">Siyi A8</value>
+          <value code="2">Siyi ZR10</value>
+          <value code="3">Siyi ZR30</value>
+          <value code="4">Siyi ZT30 Zoom</value>
+          <value code="5">Siyi ZT30 Wide</value>
+          <value code="6">Siyi ZT30 IR</value>
+          <value code="7">Siyi ZT6 RGB</value>
+          <value code="8">Siyi ZT6 IR</value>
+          <value code="9">Herelink WifiAP</value>
+          <value code="10">Herelink USB-tethering</value>
+          <value code="11">Topotek 1080p</value>
+          <value code="12">Topotek 480p</value>
+          <value code="13">Viewpro</value>
+        </values>
+      </param>
+      <param humanName="Camera1 Video Stream Id" name="VID1_ID" documentation="Video stream id" user="Standard">
+        <field name="Range">0 50</field>
+      </param>
+      <param humanName="Camera1 Video Stream Type" name="VID1_TYPE" documentation="Video stream type" user="Standard">
+        <values>
+          <value code="0">RTSP</value>
+          <value code="1">RTPUDP</value>
+          <value code="2">TCP_MPEG</value>
+          <value code="3">MPEG_TS</value>
+        </values>
+      </param>
+      <param humanName="Camera1 Video Stream Flags" name="VID1_FLAG" documentation="Video stream flags" user="Standard">
+        <bitmask>
+          <bit code="0">Running</bit>
+          <bit code="1">Thermal</bit>
+          <bit code="2">Thermal Range Enabled</bit>
+        </bitmask>
+        <field name="Bitmask">0:Running,1:Thermal,2:Thermal Range Enabled</field>
+      </param>
+      <param humanName="Camera1 Video Stream Frame Rate" name="VID1_FRAME_RATE" documentation="Video stream frame rate" user="Standard">
+        <field name="Range">0 50</field>
+      </param>
+      <param humanName="Camera1 Video Stream Horizontal Resolution" name="VID1_HRES" documentation="Video stream horizontal resolution" user="Standard">
+        <field name="Range">0 4096</field>
+      </param>
+      <param humanName="Camera1 Video Stream Vertical Resolution" name="VID1_VRES" documentation="Video stream vertical resolution" user="Standard">
+        <field name="Range">0 4096</field>
+      </param>
+      <param humanName="Camera1 Video Stream Bitrate" name="VID1_BITRATE" documentation="Video stream bitrate" user="Standard">
+        <field name="Range">0 10000</field>
+      </param>
+      <param humanName="Camera1 Video Stream Horizontal FOV" name="VID1_HFOV" documentation="Video stream horizontal FOV" user="Standard">
+        <field name="Range">0 360</field>
+      </param>
+      <param humanName="Camera1 Video Stream Encoding" name="VID1_ENCODING" documentation="Video stream encoding" user="Standard">
+        <values>
+          <value code="0">Unknown</value>
+          <value code="1">H264</value>
+          <value code="2">H265</value>
+        </values>
+      </param>
+      <param humanName="Camera1 Video Stream IP Address 0" name="VID1_IPADDR0" documentation="Video stream IP Address first octet" user="Standard">
+        <field name="Range">0 255</field>
+      </param>
+      <param humanName="Camera1 Video Stream IP Address 1" name="VID1_IPADDR1" documentation="Video stream IP Address second octet" user="Standard">
+        <field name="Range">0 255</field>
+      </param>
+      <param humanName="Camera1 Video Stream IP Address 2" name="VID1_IPADDR2" documentation="Video stream IP Address third octet" user="Standard">
+        <field name="Range">0 255</field>
+      </param>
+      <param humanName="Camera1 Video Stream IP Address 3" name="VID1_IPADDR3" documentation="Video stream IP Address fourth octet" user="Standard">
+        <field name="Range">0 255</field>
+      </param>
+      <param humanName="Camera1 Video Stream IP Address Port" name="VID1_IPPORT" documentation="Video stream IP Address Port" user="Standard">
+        <field name="Range">0 65535</field>
+      </param>
+      <param humanName="Force enable High Latency mode" name="RCK_FORCEHL" documentation="Automatically enables High Latency mode if not already enabled" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+          <value code="2">Enabled on telemetry loss</value>
+        </values>
+      </param>
+      <param humanName="Update rate" name="RCK_PERIOD" documentation="When in High Latency mode, send Rockblock updates every N seconds" user="Standard">
+        <field name="Range">0 600</field>
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+      </param>
+      <param humanName="Display Rockblock debugging text" name="RCK_DEBUG" documentation="Sends Rockblock debug text to GCS via statustexts" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Enable Message transmission" name="RCK_ENABLE" documentation="Enables the Rockblock sending and recieving" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="GCS timeout to start sendin Rockblock messages" name="RCK_TIMEOUT" documentation="If RCK_FORCEHL=2, this is the number of seconds of GCS timeout until High Latency mode is auto-enabled" user="Standard">
+        <field name="Range">0 600</field>
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+      </param>
+      <param humanName="Follow Target Send Enable" name="FOLT_ENABLE" documentation="Follow Target Send Enable" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Follow Target Send MAVLink Channel" name="FOLT_MAV_CHAN" documentation="MAVLink channel to which FOLLOW_TARGET should be sent" user="Standard">
+        <field name="Range">0 10</field>
+      </param>
+      <param humanName="enable battery info support" name="BTAG_ENABLE" documentation="enable battery info support" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="max battery cycles" name="BTAG_MAX_CYCLES" documentation="max battery cycles for arming" user="Standard">
+        <field name="Range">0 10000</field>
+      </param>
+      <param humanName="current battery cycles" name="BTAG_CUR_CYCLES" documentation="this is the highest value for battery cycles for all connected batteries" user="Advanced">
+        <field name="Range">0 10000</field>
+      </param>
+      <param humanName="Ship landing enable" name="SHIP_ENABLE" documentation="Enable ship landing system" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Ship landing angle" name="SHIP_LAND_ANGLE" documentation="Angle from the stern of the ship for landing approach. Use this to ensure that on a go-around that ship superstructure and cables are avoided. A value of zero means to approach from the rear of the ship. A value of 90 means the landing will approach from the port (left) side of the ship. A value of -90 will mean approaching from the starboard (right) side of the ship. A value of 180 will approach from the bow of the ship. This parameter is combined with the sign of the RTL_RADIUS parameter to determine the holdoff pattern. If RTL_RADIUS is positive then a clockwise loiter is performed, if RTL_RADIUS is negative then a counter-clockwise loiter is used." user="Standard">
+        <field name="Range">-180 180</field>
+        <field name="Units">deg</field>
+        <field name="UnitText">degrees</field>
+      </param>
+      <param humanName="Ship automatic offset trigger" name="SHIP_AUTO_OFS" documentation="Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target. NOTE: This parameter will auto-reset to zero once the offset has been calculated." user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Trigger</value>
+        </values>
+      </param>
+      <param humanName="Count of SOC estimators" name="BATT_SOC_COUNT" documentation="Number of battery SOC estimators" user="Standard">
+        <field name="Range">0 4</field>
+      </param>
+      <param humanName="Battery estimator index" name="BATT_SOC1_IDX" documentation="Battery estimator index" user="Standard">
+        <field name="Range">0 4</field>
+      </param>
+      <param humanName="Battery estimator cell count" name="BATT_SOC1_NCELL" documentation="Battery estimator cell count" user="Standard">
+        <field name="Range">0 48</field>
+      </param>
+      <param humanName="Battery estimator coefficient1" name="BATT_SOC1_C1" documentation="Battery estimator coefficient1" user="Standard">
+        <field name="Range">100 200</field>
+      </param>
+      <param humanName="Battery estimator coefficient2" name="BATT_SOC1_C2" documentation="Battery estimator coefficient2" user="Standard">
+        <field name="Range">2 5</field>
+      </param>
+      <param humanName="Battery estimator coefficient3" name="BATT_SOC1_C3" documentation="Battery estimator coefficient3" user="Standard">
+        <field name="Range">0.01 0.5</field>
+      </param>
+      <param humanName="Battery estimator coefficient4" name="BATT_SOC1_C4" documentation="Battery estimator coefficient4" user="Standard">
+        <field name="Range">5 100</field>
+      </param>
+      <param humanName="Battery estimator index" name="BATT_SOC2_IDX" documentation="Battery estimator index" user="Standard">
+        <field name="Range">0 4</field>
+      </param>
+      <param humanName="Battery estimator cell count" name="BATT_SOC2_NCELL" documentation="Battery estimator cell count" user="Standard">
+        <field name="Range">0 48</field>
+      </param>
+      <param humanName="Battery estimator coefficient1" name="BATT_SOC2_C1" documentation="Battery estimator coefficient1" user="Standard">
+        <field name="Range">100 200</field>
+      </param>
+      <param humanName="Battery estimator coefficient2" name="BATT_SOC2_C2" documentation="Battery estimator coefficient2" user="Standard">
+        <field name="Range">2 5</field>
+      </param>
+      <param humanName="Battery estimator coefficient3" name="BATT_SOC2_C3" documentation="Battery estimator coefficient3" user="Standard">
+        <field name="Range">0.01 0.5</field>
+      </param>
+      <param humanName="Battery estimator coefficient4" name="BATT_SOC2_C4" documentation="Battery estimator coefficient4" user="Standard">
+        <field name="Range">5 100</field>
+      </param>
+      <param humanName="Battery estimator index" name="BATT_SOC3_IDX" documentation="Battery estimator index" user="Standard">
+        <field name="Range">0 4</field>
+      </param>
+      <param humanName="Battery estimator cell count" name="BATT_SOC3_NCELL" documentation="Battery estimator cell count" user="Standard">
+        <field name="Range">0 48</field>
+      </param>
+      <param humanName="Battery estimator coefficient1" name="BATT_SOC3_C1" documentation="Battery estimator coefficient1" user="Standard">
+        <field name="Range">100 200</field>
+      </param>
+      <param humanName="Battery estimator coefficient2" name="BATT_SOC3_C2" documentation="Battery estimator coefficient2" user="Standard">
+        <field name="Range">2 5</field>
+      </param>
+      <param humanName="Battery estimator coefficient3" name="BATT_SOC3_C3" documentation="Battery estimator coefficient3" user="Standard">
+        <field name="Range">0.01 0.5</field>
+      </param>
+      <param humanName="Battery estimator coefficient4" name="BATT_SOC3_C4" documentation="Battery estimator coefficient4" user="Standard">
+        <field name="Range">5 100</field>
+      </param>
+      <param humanName="Battery estimator index" name="BATT_SOC4_IDX" documentation="Battery estimator index" user="Standard">
+        <field name="Range">0 4</field>
+      </param>
+      <param humanName="Battery estimator cell count" name="BATT_SOC4_NCELL" documentation="Battery estimator cell count" user="Standard">
+        <field name="Range">0 48</field>
+      </param>
+      <param humanName="Battery estimator coefficient1" name="BATT_SOC4_C1" documentation="Battery estimator coefficient1" user="Standard">
+        <field name="Range">100 200</field>
+      </param>
+      <param humanName="Battery estimator coefficient2" name="BATT_SOC4_C2" documentation="Battery estimator coefficient2" user="Standard">
+        <field name="Range">2 5</field>
+      </param>
+      <param humanName="Battery estimator coefficient3" name="BATT_SOC4_C3" documentation="Battery estimator coefficient3" user="Standard">
+        <field name="Range">0.01 0.5</field>
+      </param>
+      <param humanName="Battery estimator coefficient4" name="BATT_SOC4_C4" documentation="Battery estimator coefficient4" user="Standard">
+        <field name="Range">5 100</field>
+      </param>
+      <param humanName="Deadreckoning Enable" name="DR_ENABLE" documentation="Deadreckoning Enable" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Deadreckoning Enable Distance" name="DR_ENABLE_DIST" documentation="Distance from home (in meters) beyond which the dead reckoning will be enabled" user="Standard">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="Deadreckoning GPS speed accuracy maximum threshold" name="DR_GPS_SACC_MAX" documentation="GPS speed accuracy maximum, above which deadreckoning home will begin (default is 0.8).  Lower values trigger with good GPS quality, higher values will allow poorer GPS before triggering. Set to 0 to disable use of GPS speed accuracy" user="Standard">
+        <field name="Range">0 10</field>
+      </param>
+      <param humanName="Deadreckoning GPS satellite count min threshold" name="DR_GPS_SAT_MIN" documentation="GPS satellite count threshold below which deadreckoning home will begin (default is 6).  Higher values trigger with good GPS quality, Lower values trigger with worse GPS quality. Set to 0 to disable use of GPS satellite count" user="Standard">
+        <field name="Range">0 30</field>
+      </param>
+      <param humanName="Deadreckoning GPS check trigger seconds" name="DR_GPS_TRIGG_SEC" documentation="GPS checks must fail for this many seconds before dead reckoning will be triggered" user="Standard">
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+      </param>
+      <param humanName="Deadreckoning Lean Angle" name="DR_FLY_ANGLE" documentation="lean angle (in degrees) during deadreckoning" user="Standard">
+        <field name="Units">deg</field>
+        <field name="UnitText">degrees</field>
+        <field name="Range">0 45</field>
+      </param>
+      <param humanName="Deadreckoning Altitude Min" name="DR_FLY_ALT_MIN" documentation="Copter will fly at at least this altitude (in meters) above home during deadreckoning" user="Standard">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+        <field name="Range">0 1000</field>
+      </param>
+      <param humanName="Deadreckoning flight timeout" name="DR_FLY_TIMEOUT" documentation="Copter will attempt to switch to NEXT_MODE after this many seconds of deadreckoning.  If it cannot switch modes it will continue in Guided_NoGPS.  Set to 0 to disable timeout" user="Standard">
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+      </param>
+      <param humanName="Deadreckoning Next Mode" name="DR_NEXT_MODE" documentation="Copter switch to this mode after GPS recovers or DR_FLY_TIMEOUT has elapsed.  Default is 6/RTL.  Set to -1 to return to mode used before deadreckoning was triggered" user="Standard">
+        <values>
+          <value code="2">AltHold</value>
+          <value code="3">Auto</value>
+          <value code="4">Guided</value>
+          <value code="5">Loiter</value>
+          <value code="6">RTL</value>
+          <value code="7">Circle</value>
+          <value code="9">Land</value>
+          <value code="16">PosHold</value>
+          <value code="17">Brake</value>
+          <value code="20">Guided_NoGPS</value>
+          <value code="21">Smart_RTL</value>
+          <value code="27">Auto RTL</value>
+        </values>
       </param>
       <param humanName="Plane Follow lost target mode" name="FOLLP_FAIL_MODE" documentation="Mode to switch to if the target is lost (no signal or &gt; FOLL_DIST_MAX)." user="Standard">
 </param>
@@ -613,6 +1056,113 @@
         <field name="Units">s</field>
         <field name="UnitText">seconds</field>
       </param>
+      <param humanName="Force enable High Latency mode" name="RK9_FORCEHL" documentation="Automatically enables High Latency mode if not already enabled" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+          <value code="2">Enabled on telemetry loss</value>
+        </values>
+      </param>
+      <param humanName="Update rate" name="RK9_PERIOD" documentation="When in High Latency mode, send Rockblock updates every N seconds" user="Standard">
+        <field name="Range">0 600</field>
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+      </param>
+      <param humanName="Display Rockblock debugging text" name="RK9_DEBUG" documentation="Sends Rockblock debug text to GCS via statustexts" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Enable Message transmission" name="RK9_ENABLE" documentation="Enables the Rockblock sending and recieving" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="GCS timeout to start sendin Rockblock messages" name="RK9_TIMEOUT" documentation="If RK9_FORCEHL=2, this is the number of seconds of GCS timeout until High Latency mode is auto-enabled" user="Standard">
+        <field name="Range">0 600</field>
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+      </param>
+      <param humanName="Rockblock Serial Port" name="RK9_SERPORT" documentation="Serial port number to which the Rockblock is connected.This is the index of the SERIALn_ ports that are set to 28 for &quot;scripting&quot;" user="Standard">
+        <field name="Range">0 8</field>
+      </param>
+      <param humanName="Rockblock Scripting Serial Port" name="RK9_SCRPORT" documentation="Scripting Serial port number to which the Rockblock is connected for HL2 messages This is the index of the SCR_SDEV ports that are set to 2 for &quot;MavlinkHL&quot;" user="Standard">
+        <field name="Range">0 8</field>
+      </param>
+      <param humanName="Rockblock Power Relay" name="RK9_RELAY" documentation="RELAYn output to control Rockblock power. This connects to I_EN on the Rockblock header." user="Standard">
+        <field name="Range">1 8</field>
+      </param>
+      <param humanName="Rockblock booted feedback" name="RK9_BOOTED" documentation="SERVOn GPIO channel that reads the Rockblock booted state. This connects to I_BTD on the Rockblock header. Requires SERVON_FUNCTION=-1" user="Standard">
+        <field name="Range">50 110</field>
+      </param>
+      <param humanName="Precland altitude cutoff" name="PLND_ALT_CUTOFF" documentation="The altitude (rangefinder distance) below which we stop using the precision landing sensor and continue landing" user="Standard">
+        <field name="Range">0 20</field>
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="Precland distance cutoff" name="DIST_CUTOFF" documentation="The distance from target beyond which the target is ignored" user="Standard">
+        <field name="Range">0 100</field>
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="enable web server" name="WEB_ENABLE" documentation="enable web server" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="web server TCP port" name="WEB_BIND_PORT" documentation="web server TCP port" user="Standard">
+        <field name="Range">1 65535</field>
+      </param>
+      <param humanName="web server debugging" name="WEB_DEBUG" documentation="web server debugging" user="Advanced">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="web server block size" name="WEB_BLOCK_SIZE" documentation="web server block size for download" user="Advanced">
+        <field name="Range">1 65535</field>
+      </param>
+      <param humanName="web server timeout" name="WEB_TIMEOUT" documentation="timeout for inactive connections" user="Advanced">
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+        <field name="Range">0.1 60</field>
+      </param>
+      <param humanName="web server minimum file size for sendfile" name="WEB_SENDFILE_MIN" documentation="sendfile is an offloading mechanism for faster file download. If this is non-zero and the file is larger than this size then sendfile will be used for file download" user="Advanced">
+        <field name="Range">0 10000000</field>
+      </param>
+      <param humanName="CoG adjustment ratio" name="CGA_RATIO" documentation="The ratio between the front and back motor outputs during steady-state hover. Positive when the CoG is in front of the motors midpoint (front motors work harder)." user="Advanced">
+        <field name="Range">0.5 2</field>
+      </param>
+      <param humanName="Slung Payload enable" name="SLUP_ENABLE" documentation="Slung Payload enable" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Slung Payload Velocity P gain" name="SLUP_VEL_P" documentation="Slung Payload Velocity P gain, higher values will result in faster movements in sync with payload" user="Standard">
+        <field name="Range">0 0.8</field>
+      </param>
+      <param humanName="Slung Payload horizontal distance max" name="SLUP_DIST_MAX" documentation="Oscillation is suppressed when vehicle and payload are no more than this distance horizontally.  Set to 0 to always suppress" user="Standard">
+        <field name="Range">0 30</field>
+      </param>
+      <param humanName="Slung Payload mavlink system id" name="SLUP_SYSID" documentation="Slung Payload mavlink system id.  0 to use any/all system ids" user="Standard">
+        <field name="Range">0 255</field>
+      </param>
+      <param humanName="Slung Payload return to WP position P gain" name="SLUP_WP_POS_P" documentation="WP position P gain. higher values will result in vehicle moving more quickly back to the original waypoint" user="Standard">
+        <field name="Range">0 1</field>
+      </param>
+      <param humanName="Slung Payload resting offset estimate filter time constant" name="SLUP_RESTOFS_TC" documentation="payload's position estimator's time constant used to compensate for GPS errors and wind.  Higher values result in smoother estimate but slower response" user="Standard">
+        <field name="Range">1 20</field>
+      </param>
+      <param humanName="Slung Payload debug output" name="SLUP_DEBUG" documentation="Slung payload debug output, set to 1 to enable debug" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
       <param humanName="Quicktune enable" name="QUIK_ENABLE" documentation="Enable quicktune system" user="Standard">
         <values>
           <value code="0">Disabled</value>
@@ -678,131 +1228,6 @@
       <param humanName="maximum angle error for tune abort" name="QUIK_ANGLE_MAX" documentation="If while tuning the angle error goes over this limit then the tune will aborts to prevent a bad oscillation in the case of the tuning algorithm failing. If you get an error &quot;Tuning: attitude error ABORTING&quot; and you think it is a false positive then you can either raise this parameter or you can try increasing the QUIK_DOUBLE_TIME to do the tune more slowly. A value of zero disables this check." user="Standard">
         <field name="Units">deg</field>
         <field name="UnitText">degrees</field>
-      </param>
-      <param humanName="Deadreckoning Enable" name="DR_ENABLE" documentation="Deadreckoning Enable" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Deadreckoning Enable Distance" name="DR_ENABLE_DIST" documentation="Distance from home (in meters) beyond which the dead reckoning will be enabled" user="Standard">
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-      </param>
-      <param humanName="Deadreckoning GPS speed accuracy maximum threshold" name="DR_GPS_SACC_MAX" documentation="GPS speed accuracy maximum, above which deadreckoning home will begin (default is 0.8).  Lower values trigger with good GPS quality, higher values will allow poorer GPS before triggering. Set to 0 to disable use of GPS speed accuracy" user="Standard">
-        <field name="Range">0 10</field>
-      </param>
-      <param humanName="Deadreckoning GPS satellite count min threshold" name="DR_GPS_SAT_MIN" documentation="GPS satellite count threshold below which deadreckoning home will begin (default is 6).  Higher values trigger with good GPS quality, Lower values trigger with worse GPS quality. Set to 0 to disable use of GPS satellite count" user="Standard">
-        <field name="Range">0 30</field>
-      </param>
-      <param humanName="Deadreckoning GPS check trigger seconds" name="DR_GPS_TRIGG_SEC" documentation="GPS checks must fail for this many seconds before dead reckoning will be triggered" user="Standard">
-        <field name="Units">s</field>
-        <field name="UnitText">seconds</field>
-      </param>
-      <param humanName="Deadreckoning Lean Angle" name="DR_FLY_ANGLE" documentation="lean angle (in degrees) during deadreckoning" user="Standard">
-        <field name="Units">deg</field>
-        <field name="UnitText">degrees</field>
-        <field name="Range">0 45</field>
-      </param>
-      <param humanName="Deadreckoning Altitude Min" name="DR_FLY_ALT_MIN" documentation="Copter will fly at at least this altitude (in meters) above home during deadreckoning" user="Standard">
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-        <field name="Range">0 1000</field>
-      </param>
-      <param humanName="Deadreckoning flight timeout" name="DR_FLY_TIMEOUT" documentation="Copter will attempt to switch to NEXT_MODE after this many seconds of deadreckoning.  If it cannot switch modes it will continue in Guided_NoGPS.  Set to 0 to disable timeout" user="Standard">
-        <field name="Units">s</field>
-        <field name="UnitText">seconds</field>
-      </param>
-      <param humanName="Deadreckoning Next Mode" name="DR_NEXT_MODE" documentation="Copter switch to this mode after GPS recovers or DR_FLY_TIMEOUT has elapsed.  Default is 6/RTL.  Set to -1 to return to mode used before deadreckoning was triggered" user="Standard">
-        <values>
-          <value code="2">AltHold</value>
-          <value code="3">Auto</value>
-          <value code="4">Guided</value>
-          <value code="5">Loiter</value>
-          <value code="6">RTL</value>
-          <value code="7">Circle</value>
-          <value code="9">Land</value>
-          <value code="16">PosHold</value>
-          <value code="17">Brake</value>
-          <value code="20">Guided_NoGPS</value>
-          <value code="21">Smart_RTL</value>
-          <value code="27">Auto RTL</value>
-        </values>
-      </param>
-      <param humanName="Count of SOC estimators" name="BATT_SOC_COUNT" documentation="Number of battery SOC estimators" user="Standard">
-        <field name="Range">0 4</field>
-      </param>
-      <param humanName="Battery estimator index" name="BATT_SOC1_IDX" documentation="Battery estimator index" user="Standard">
-        <field name="Range">0 4</field>
-      </param>
-      <param humanName="Battery estimator cell count" name="BATT_SOC1_NCELL" documentation="Battery estimator cell count" user="Standard">
-        <field name="Range">0 48</field>
-      </param>
-      <param humanName="Battery estimator coefficient1" name="BATT_SOC1_C1" documentation="Battery estimator coefficient1" user="Standard">
-        <field name="Range">100 200</field>
-      </param>
-      <param humanName="Battery estimator coefficient2" name="BATT_SOC1_C2" documentation="Battery estimator coefficient2" user="Standard">
-        <field name="Range">2 5</field>
-      </param>
-      <param humanName="Battery estimator coefficient3" name="BATT_SOC1_C3" documentation="Battery estimator coefficient3" user="Standard">
-        <field name="Range">0.01 0.5</field>
-      </param>
-      <param humanName="Battery estimator coefficient4" name="BATT_SOC1_C4" documentation="Battery estimator coefficient4" user="Standard">
-        <field name="Range">5 100</field>
-      </param>
-      <param humanName="Battery estimator index" name="BATT_SOC2_IDX" documentation="Battery estimator index" user="Standard">
-        <field name="Range">0 4</field>
-      </param>
-      <param humanName="Battery estimator cell count" name="BATT_SOC2_NCELL" documentation="Battery estimator cell count" user="Standard">
-        <field name="Range">0 48</field>
-      </param>
-      <param humanName="Battery estimator coefficient1" name="BATT_SOC2_C1" documentation="Battery estimator coefficient1" user="Standard">
-        <field name="Range">100 200</field>
-      </param>
-      <param humanName="Battery estimator coefficient2" name="BATT_SOC2_C2" documentation="Battery estimator coefficient2" user="Standard">
-        <field name="Range">2 5</field>
-      </param>
-      <param humanName="Battery estimator coefficient3" name="BATT_SOC2_C3" documentation="Battery estimator coefficient3" user="Standard">
-        <field name="Range">0.01 0.5</field>
-      </param>
-      <param humanName="Battery estimator coefficient4" name="BATT_SOC2_C4" documentation="Battery estimator coefficient4" user="Standard">
-        <field name="Range">5 100</field>
-      </param>
-      <param humanName="Battery estimator index" name="BATT_SOC3_IDX" documentation="Battery estimator index" user="Standard">
-        <field name="Range">0 4</field>
-      </param>
-      <param humanName="Battery estimator cell count" name="BATT_SOC3_NCELL" documentation="Battery estimator cell count" user="Standard">
-        <field name="Range">0 48</field>
-      </param>
-      <param humanName="Battery estimator coefficient1" name="BATT_SOC3_C1" documentation="Battery estimator coefficient1" user="Standard">
-        <field name="Range">100 200</field>
-      </param>
-      <param humanName="Battery estimator coefficient2" name="BATT_SOC3_C2" documentation="Battery estimator coefficient2" user="Standard">
-        <field name="Range">2 5</field>
-      </param>
-      <param humanName="Battery estimator coefficient3" name="BATT_SOC3_C3" documentation="Battery estimator coefficient3" user="Standard">
-        <field name="Range">0.01 0.5</field>
-      </param>
-      <param humanName="Battery estimator coefficient4" name="BATT_SOC3_C4" documentation="Battery estimator coefficient4" user="Standard">
-        <field name="Range">5 100</field>
-      </param>
-      <param humanName="Battery estimator index" name="BATT_SOC4_IDX" documentation="Battery estimator index" user="Standard">
-        <field name="Range">0 4</field>
-      </param>
-      <param humanName="Battery estimator cell count" name="BATT_SOC4_NCELL" documentation="Battery estimator cell count" user="Standard">
-        <field name="Range">0 48</field>
-      </param>
-      <param humanName="Battery estimator coefficient1" name="BATT_SOC4_C1" documentation="Battery estimator coefficient1" user="Standard">
-        <field name="Range">100 200</field>
-      </param>
-      <param humanName="Battery estimator coefficient2" name="BATT_SOC4_C2" documentation="Battery estimator coefficient2" user="Standard">
-        <field name="Range">2 5</field>
-      </param>
-      <param humanName="Battery estimator coefficient3" name="BATT_SOC4_C3" documentation="Battery estimator coefficient3" user="Standard">
-        <field name="Range">0.01 0.5</field>
-      </param>
-      <param humanName="Battery estimator coefficient4" name="BATT_SOC4_C4" documentation="Battery estimator coefficient4" user="Standard">
-        <field name="Range">5 100</field>
       </param>
       <param humanName="MAV_SYSID must be set" name="ARM_SYSID" documentation="Check that MAV_SYSID (or SYDID_THISMAV) has been set. 3 or less to prevent arming. -1 to disable." user="Standard">
         <values>
@@ -1029,431 +1454,6 @@
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
       </param>
-      <param humanName="Mount POI distance max" name="POI_DIST_MAX" documentation="POI's max distance (in meters) from the vehicle" user="Standard">
-        <field name="Range">0 10000</field>
-      </param>
-      <param humanName="Activation Function for Terrain Avoidance" name="TA_ACT_FN" documentation="Setting an RC channel's _OPTION to this value will use it for Terrain Avoidance enable/disable">
-        <field name="Range">300 307</field>
-      </param>
-      <param humanName="down distance minimum for Pitching" name="TA_PTCH_DWN_MIN" documentation="If the downward distance is less than this value then start Pitching up to gain altitude.">
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-      </param>
-      <param humanName="forward distance minimum for Pitching" name="TA_PTCH_FWD_MIN" documentation="If the farwardward distance is less than this value then start Pitching up to gain altitude.">
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-      </param>
-      <param humanName="Downward distance minimum Quading" name="TA_QUAD_DWN_MIN" documentation="If the downward distance is less than this value then start Quading up to gain altitude.">
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-      </param>
-      <param humanName="minimum forward distance for Quading" name="TA_QUAD_FWD_MIN" documentation="If the farwardward distance is less than this value then start Quading up to gain altitude.">
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-      </param>
-      <param humanName="minimum ground speed for Pitching" name="TA_PTCH_GSP_MIN" documentation="Minimum Groundspeed (not airspeed) to be flying for Pitching to be used.">
-        <field name="Units">m/s</field>
-        <field name="UnitText">meters per second</field>
-      </param>
-      <param humanName="timeout Pitching" name="TA_PTCH_TIMEOUT" documentation="Minimum down or forward distance must be triggered for more than this many seconds to start Pitching">
-        <field name="Units">s</field>
-        <field name="UnitText">seconds</field>
-      </param>
-      <param humanName="safe distance around home" name="TA_HOME_DIST" documentation="Terrain avoidance will not be applied if the vehicle is less than this distance from home">
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-      </param>
-      <param humanName="ceiling for pitching/quading" name="TA_ALT_MAX" documentation="This is a limit on how high the terrain avoidane will take the vehicle. It acts a failsafe to prevent vertical flyaways.">
-        <field name="Range">20 1000</field>
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-      </param>
-      <param humanName="Maximum Groundspeed" name="TA_GSP_MAX" documentation="This is a limit on how fast in groundspeeed terrain avoidance will take the vehicle. This is to allow for reliable sensor readings. -1 for disabled.">
-        <field name="Range">10 40</field>
-        <field name="Units">m/s</field>
-        <field name="UnitText">meters per second</field>
-      </param>
-      <param humanName="Groudspeed Airbrake limt" name="TA_GSP_AIRBRAKE" documentation="This is the limit for triggering airbrake to slow groundspeed as a difference between the airspeed and groundspeed. -1 for disabled.">
-        <field name="Range">-1 -10</field>
-        <field name="Units">m/s</field>
-        <field name="UnitText">meters per second</field>
-      </param>
-      <param humanName="CMTC Height" name="TA_CMTC_HGT" documentation="The minimum Height above terrain to maintain when following an AUTO mission or RTL. If zero(0) use TA_PTCH_DOW_MIN.">
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-      </param>
-      <param humanName="CMTC Enable" name="TA_CMTC_ENABLE" documentation="Whether to enable Can't Make That Climb while running Terrain Avoidance">
-        <field name="Range">0 1</field>
-      </param>
-      <param humanName="Frequency to process avoidance" name="TA_UPDATE_RATE" documentation="Avoidance processing rate">
-        <field name="Units">Hz</field>
-        <field name="UnitText">hertz</field>
-      </param>
-      <param humanName="CMTC loiter radius" name="TA_CMTC_RAD" documentation="Use this radius for the loiter when trying to gain altitude. If not set or &lt;=0 use WP_LOITER_RAD">
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-      </param>
-      <param humanName="Force enable High Latency mode" name="RCK_FORCEHL" documentation="Automatically enables High Latency mode if not already enabled" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-          <value code="2">Enabled on telemetry loss</value>
-        </values>
-      </param>
-      <param humanName="Update rate" name="RCK_PERIOD" documentation="When in High Latency mode, send Rockblock updates every N seconds" user="Standard">
-        <field name="Range">0 600</field>
-        <field name="Units">s</field>
-        <field name="UnitText">seconds</field>
-      </param>
-      <param humanName="Display Rockblock debugging text" name="RCK_DEBUG" documentation="Sends Rockblock debug text to GCS via statustexts" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Enable Message transmission" name="RCK_ENABLE" documentation="Enables the Rockblock sending and recieving" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="GCS timeout to start sendin Rockblock messages" name="RCK_TIMEOUT" documentation="If RCK_FORCEHL=2, this is the number of seconds of GCS timeout until High Latency mode is auto-enabled" user="Standard">
-        <field name="Range">0 600</field>
-        <field name="Units">s</field>
-        <field name="UnitText">seconds</field>
-      </param>
-      <param humanName="WinchControl Rate Up" name="WINCH_RATE_UP" documentation="Maximum rate when retracting line" user="Standard">
-        <field name="Range">0.1 5.0</field>
-      </param>
-      <param humanName="WinchControl Rate Down" name="WINCH_RATE_DN" documentation="Maximum rate when releasing line" user="Standard">
-        <field name="Range">0.1 5.0</field>
-      </param>
-      <param humanName="Winch Rate Control RC function" name="WINCH_RC_FUNC" documentation="RCn_OPTION number to use to control winch rate" user="Standard">
-        <values>
-          <value code="300">Scripting1</value>
-          <value code="301">Scripting2</value>
-          <value code="302">Scripting3</value>
-          <value code="303">Scripting4</value>
-          <value code="304">Scripting5</value>
-          <value code="305">Scripting6</value>
-          <value code="306">Scripting7</value>
-          <value code="307">Scripting8</value>
-        </values>
-      </param>
-      <param humanName="Param Lockdown enable" name="PARAM_LOCK_ENAB" documentation="Param Lockdown enable" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="AUX function to kill engine" name="THR_KILL_FUNC" documentation="AUX function to kill engine. This can be activated either with a RCn_OPTION and a R/C switch or with a ground station auxilliary function" user="Standard">
-        <field name="Range">300 307</field>
-      </param>
-      <param humanName="PWM on kill active" name="THR_KILL_PWM" documentation="PWM on kill active" user="Standard">
-        <field name="Range">800 2200</field>
-      </param>
-      <param humanName="output channel to change on throttle kill" name="THR_KILL_CHAN" documentation="output channel to change on throttle kill, a value of zero disables the feature" user="Standard">
-        <field name="Range">0 32</field>
-      </param>
-      <param humanName="auxilliary value to kill throttle" name="THR_KILL_VAL" documentation="auxilliary value to kill throttle. Set to 2 to kill the throttle when the auxilliary is high. Set to 0 to kill when auxilliary is low" user="Standard">
-        <field name="Range">0 2</field>
-      </param>
-      <param humanName="throttle kill default value" name="THR_KILL_DEF" documentation="throttle kill default value. The default auxilliary function position on boot" user="Standard">
-        <field name="Range">0 2</field>
-      </param>
-      <param humanName="Slung Payload enable" name="SLUP_ENABLE" documentation="Slung Payload enable" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Slung Payload Velocity P gain" name="SLUP_VEL_P" documentation="Slung Payload Velocity P gain, higher values will result in faster movements in sync with payload" user="Standard">
-        <field name="Range">0 0.8</field>
-      </param>
-      <param humanName="Slung Payload horizontal distance max" name="SLUP_DIST_MAX" documentation="Oscillation is suppressed when vehicle and payload are no more than this distance horizontally.  Set to 0 to always suppress" user="Standard">
-        <field name="Range">0 30</field>
-      </param>
-      <param humanName="Slung Payload mavlink system id" name="SLUP_SYSID" documentation="Slung Payload mavlink system id.  0 to use any/all system ids" user="Standard">
-        <field name="Range">0 255</field>
-      </param>
-      <param humanName="Slung Payload return to WP position P gain" name="SLUP_WP_POS_P" documentation="WP position P gain. higher values will result in vehicle moving more quickly back to the original waypoint" user="Standard">
-        <field name="Range">0 1</field>
-      </param>
-      <param humanName="Slung Payload resting offset estimate filter time constant" name="SLUP_RESTOFS_TC" documentation="payload's position estimator's time constant used to compensate for GPS errors and wind.  Higher values result in smoother estimate but slower response" user="Standard">
-        <field name="Range">1 20</field>
-      </param>
-      <param humanName="Slung Payload debug output" name="SLUP_DEBUG" documentation="Slung payload debug output, set to 1 to enable debug" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="parameter reversion enable" name="PREV_ENABLE" documentation="Enable parameter reversion system" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="param reversion RC function" name="PREV_RC_FUNC" documentation="RCn_OPTION number to used to trigger parameter reversion" user="Standard">
-</param>
-      <param humanName="Follow Target Send Enable" name="FOLT_ENABLE" documentation="Follow Target Send Enable" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Follow Target Send MAVLink Channel" name="FOLT_MAV_CHAN" documentation="MAVLink channel to which FOLLOW_TARGET should be sent" user="Standard">
-        <field name="Range">0 10</field>
-      </param>
-      <param humanName="Precland altitude cutoff" name="PLND_ALT_CUTOFF" documentation="The altitude (rangefinder distance) below which we stop using the precision landing sensor and continue landing" user="Standard">
-        <field name="Range">0 20</field>
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-      </param>
-      <param humanName="Precland distance cutoff" name="DIST_CUTOFF" documentation="The distance from target beyond which the target is ignored" user="Standard">
-        <field name="Range">0 100</field>
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-      </param>
-      <param humanName="CoG adjustment ratio" name="CGA_RATIO" documentation="The ratio between the front and back motor outputs during steady-state hover. Positive when the CoG is in front of the motors midpoint (front motors work harder)." user="Advanced">
-        <field name="Range">0.5 2</field>
-      </param>
-      <param humanName="Camera1 Video Stream Camera Model" name="VID1_CAMMODEL" documentation="Video stream camera model" user="Standard">
-        <values>
-          <value code="0">Unknown</value>
-          <value code="1">Siyi A8</value>
-          <value code="2">Siyi ZR10</value>
-          <value code="3">Siyi ZR30</value>
-          <value code="4">Siyi ZT30 Zoom</value>
-          <value code="5">Siyi ZT30 Wide</value>
-          <value code="6">Siyi ZT30 IR</value>
-          <value code="7">Siyi ZT6 RGB</value>
-          <value code="8">Siyi ZT6 IR</value>
-          <value code="9">Herelink WifiAP</value>
-          <value code="10">Herelink USB-tethering</value>
-          <value code="11">Topotek 1080p</value>
-          <value code="12">Topotek 480p</value>
-          <value code="13">Viewpro</value>
-        </values>
-      </param>
-      <param humanName="Camera1 Video Stream Id" name="VID1_ID" documentation="Video stream id" user="Standard">
-        <field name="Range">0 50</field>
-      </param>
-      <param humanName="Camera1 Video Stream Type" name="VID1_TYPE" documentation="Video stream type" user="Standard">
-        <values>
-          <value code="0">RTSP</value>
-          <value code="1">RTPUDP</value>
-          <value code="2">TCP_MPEG</value>
-          <value code="3">MPEG_TS</value>
-        </values>
-      </param>
-      <param humanName="Camera1 Video Stream Flags" name="VID1_FLAG" documentation="Video stream flags" user="Standard">
-        <bitmask>
-          <bit code="0">Running</bit>
-          <bit code="1">Thermal</bit>
-          <bit code="2">Thermal Range Enabled</bit>
-        </bitmask>
-        <field name="Bitmask">0:Running,1:Thermal,2:Thermal Range Enabled</field>
-      </param>
-      <param humanName="Camera1 Video Stream Frame Rate" name="VID1_FRAME_RATE" documentation="Video stream frame rate" user="Standard">
-        <field name="Range">0 50</field>
-      </param>
-      <param humanName="Camera1 Video Stream Horizontal Resolution" name="VID1_HRES" documentation="Video stream horizontal resolution" user="Standard">
-        <field name="Range">0 4096</field>
-      </param>
-      <param humanName="Camera1 Video Stream Vertical Resolution" name="VID1_VRES" documentation="Video stream vertical resolution" user="Standard">
-        <field name="Range">0 4096</field>
-      </param>
-      <param humanName="Camera1 Video Stream Bitrate" name="VID1_BITRATE" documentation="Video stream bitrate" user="Standard">
-        <field name="Range">0 10000</field>
-      </param>
-      <param humanName="Camera1 Video Stream Horizontal FOV" name="VID1_HFOV" documentation="Video stream horizontal FOV" user="Standard">
-        <field name="Range">0 360</field>
-      </param>
-      <param humanName="Camera1 Video Stream Encoding" name="VID1_ENCODING" documentation="Video stream encoding" user="Standard">
-        <values>
-          <value code="0">Unknown</value>
-          <value code="1">H264</value>
-          <value code="2">H265</value>
-        </values>
-      </param>
-      <param humanName="Camera1 Video Stream IP Address 0" name="VID1_IPADDR0" documentation="Video stream IP Address first octet" user="Standard">
-        <field name="Range">0 255</field>
-      </param>
-      <param humanName="Camera1 Video Stream IP Address 1" name="VID1_IPADDR1" documentation="Video stream IP Address second octet" user="Standard">
-        <field name="Range">0 255</field>
-      </param>
-      <param humanName="Camera1 Video Stream IP Address 2" name="VID1_IPADDR2" documentation="Video stream IP Address third octet" user="Standard">
-        <field name="Range">0 255</field>
-      </param>
-      <param humanName="Camera1 Video Stream IP Address 3" name="VID1_IPADDR3" documentation="Video stream IP Address fourth octet" user="Standard">
-        <field name="Range">0 255</field>
-      </param>
-      <param humanName="Camera1 Video Stream IP Address Port" name="VID1_IPPORT" documentation="Video stream IP Address Port" user="Standard">
-        <field name="Range">0 65535</field>
-      </param>
-      <param humanName="Rover Quicktune enable" name="RTUN_ENABLE" documentation="Enable quicktune system" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Rover Quicktune axes" name="RTUN_AXES" documentation="axes to tune" user="Standard">
-        <bitmask>
-          <bit code="0">Steering</bit>
-          <bit code="1">Speed</bit>
-        </bitmask>
-        <field name="Bitmask">0:Steering,1:Speed</field>
-      </param>
-      <param humanName="Rover Quicktune Steering Rate FeedForward ratio" name="RTUN_STR_FFRATIO" documentation="Ratio between measured response and FF gain. Raise this to get a higher FF gain" user="Standard">
-        <field name="Range">0 1.0</field>
-      </param>
-      <param humanName="Rover Quicktune Steering FF to P ratio" name="RTUN_STR_P_RATIO" documentation="Ratio between steering FF and P gains. Raise this to get a higher P gain, 0 to leave P unchanged" user="Standard">
-        <field name="Range">0 2.0</field>
-      </param>
-      <param humanName="Rover Quicktune Steering FF to I ratio" name="RTUN_STR_I_RATIO" documentation="Ratio between steering FF and I gains. Raise this to get a higher I gain, 0 to leave I unchanged" user="Standard">
-        <field name="Range">0 2.0</field>
-      </param>
-      <param humanName="Rover Quicktune Speed FeedForward (equivalent) ratio" name="RTUN_SPD_FFRATIO" documentation="Ratio between measured response and CRUISE_THROTTLE value. Raise this to get a higher CRUISE_THROTTLE value" user="Standard">
-        <field name="Range">0 1.0</field>
-      </param>
-      <param humanName="Rover Quicktune Speed FF to P ratio" name="RTUN_SPD_P_RATIO" documentation="Ratio between speed FF and P gain. Raise this to get a higher P gain, 0 to leave P unchanged" user="Standard">
-        <field name="Range">0 2.0</field>
-      </param>
-      <param humanName="Rover Quicktune Speed FF to I ratio" name="RTUN_SPD_I_RATIO" documentation="Ratio between speed FF and I gain. Raise this to get a higher I gain, 0 to leave I unchanged" user="Standard">
-        <field name="Range">0 2.0</field>
-      </param>
-      <param humanName="Rover Quicktune auto filter enable" name="RTUN_AUTO_FILTER" documentation="When enabled the PID filter settings are automatically set based on INS_GYRO_FILTER" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Rover Quicktune auto save" name="RTUN_AUTO_SAVE" documentation="Number of seconds after completion of tune to auto-save. This is useful when using a 2 position switch for quicktune" user="Standard">
-        <field name="Units">s</field>
-        <field name="UnitText">seconds</field>
-      </param>
-      <param humanName="Rover Quicktune RC function" name="RTUN_RC_FUNC" documentation="RCn_OPTION number to use to control tuning stop/start/save" user="Standard">
-        <values>
-          <value code="300">Scripting1</value>
-          <value code="301">Scripting2</value>
-          <value code="302">Scripting3</value>
-          <value code="303">Scripting4</value>
-          <value code="304">Scripting5</value>
-          <value code="305">Scripting6</value>
-          <value code="306">Scripting7</value>
-          <value code="307">Scripting8</value>
-        </values>
-      </param>
-      <param humanName="Rover Quicktune minimum speed for tuning" name="RTUN_SPEED_MIN" documentation="The mimimum speed in m/s required for tuning to start" user="Standard">
-        <field name="Units">m/s</field>
-        <field name="UnitText">meters per second</field>
-        <field name="Range">0.1 0.5</field>
-      </param>
-      <param humanName="AHRS/EKF Origin Latitude" name="AHRS_ORIG_LAT" documentation="AHRS/EKF origin will be set to this latitude if not already set" user="Standard">
-        <field name="Range">-180 180</field>
-      </param>
-      <param humanName="AHRS/EKF Origin Longitude" name="AHRS_ORIG_LON" documentation="AHRS/EKF origin will be set to this longitude if not already set" user="Standard">
-        <field name="Range">-180 180</field>
-      </param>
-      <param humanName="AHRS/EKF Origin Altitude" name="AHRS_ORIG_ALT" documentation="AHRS/EKF origin will be set to this altitude (in meters above sea level) if not already set" user="Standard">
-        <field name="Range">0 10000</field>
-      </param>
-      <param humanName="Auto land enable" name="ALAND_ENABLE" documentation="enable Auto land script action" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Final approach waypoint alt" name="ALAND_WP_ALT" documentation="Altitude of final approach waypoint created by script" user="Standard">
-        <field name="Range">1 100</field>
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-      </param>
-      <param humanName="Final approach waypoint distance" name="ALAND_WP_DIST" documentation="Distance from landing point (HOME) to final approach waypoint created by script in the opposite direction of initial takeoff" user="Standard">
-        <field name="Range">0 1000</field>
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-      </param>
-      <param humanName="Ship landing enable" name="SHIP_ENABLE" documentation="Enable ship landing system" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Ship landing angle" name="SHIP_LAND_ANGLE" documentation="Angle from the stern of the ship for landing approach. Use this to ensure that on a go-around that ship superstructure and cables are avoided. A value of zero means to approach from the rear of the ship. A value of 90 means the landing will approach from the port (left) side of the ship. A value of -90 will mean approaching from the starboard (right) side of the ship. A value of 180 will approach from the bow of the ship. This parameter is combined with the sign of the RTL_RADIUS parameter to determine the holdoff pattern. If RTL_RADIUS is positive then a clockwise loiter is performed, if RTL_RADIUS is negative then a counter-clockwise loiter is used." user="Standard">
-        <field name="Range">-180 180</field>
-        <field name="Units">deg</field>
-        <field name="UnitText">degrees</field>
-      </param>
-      <param humanName="Ship automatic offset trigger" name="SHIP_AUTO_OFS" documentation="Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target. NOTE: This parameter will auto-reset to zero once the offset has been calculated." user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Trigger</value>
-        </values>
-      </param>
-      <param humanName="Force enable High Latency mode" name="RK9_FORCEHL" documentation="Automatically enables High Latency mode if not already enabled" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-          <value code="2">Enabled on telemetry loss</value>
-        </values>
-      </param>
-      <param humanName="Update rate" name="RK9_PERIOD" documentation="When in High Latency mode, send Rockblock updates every N seconds" user="Standard">
-        <field name="Range">0 600</field>
-        <field name="Units">s</field>
-        <field name="UnitText">seconds</field>
-      </param>
-      <param humanName="Display Rockblock debugging text" name="RK9_DEBUG" documentation="Sends Rockblock debug text to GCS via statustexts" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Enable Message transmission" name="RK9_ENABLE" documentation="Enables the Rockblock sending and recieving" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="GCS timeout to start sendin Rockblock messages" name="RK9_TIMEOUT" documentation="If RK9_FORCEHL=2, this is the number of seconds of GCS timeout until High Latency mode is auto-enabled" user="Standard">
-        <field name="Range">0 600</field>
-        <field name="Units">s</field>
-        <field name="UnitText">seconds</field>
-      </param>
-      <param humanName="Rockblock Serial Port" name="RK9_SERPORT" documentation="Serial port number to which the Rockblock is connected.This is the index of the SERIALn_ ports that are set to 28 for &quot;scripting&quot;" user="Standard">
-        <field name="Range">0 8</field>
-      </param>
-      <param humanName="Rockblock Scripting Serial Port" name="RK9_SCRPORT" documentation="Scripting Serial port number to which the Rockblock is connected for HL2 messages This is the index of the SCR_SDEV ports that are set to 2 for &quot;MavlinkHL&quot;" user="Standard">
-        <field name="Range">0 8</field>
-      </param>
-      <param humanName="Rockblock Power Relay" name="RK9_RELAY" documentation="RELAYn output to control Rockblock power. This connects to I_EN on the Rockblock header." user="Standard">
-        <field name="Range">1 8</field>
-      </param>
-      <param humanName="Rockblock booted feedback" name="RK9_BOOTED" documentation="SERVOn GPIO channel that reads the Rockblock booted state. This connects to I_BTD on the Rockblock header. Requires SERVON_FUNCTION=-1" user="Standard">
-        <field name="Range">50 110</field>
-      </param>
-      <param humanName="EKF Source ExternalNav Innovation Threshold" name="ESRC_EXTN_THRESH" documentation="ExternalNav may be used if innovations are below this threshold" user="Standard">
-        <field name="Range">0 1</field>
-      </param>
-      <param humanName="EKF Source ExternalNav Quality Threshold" name="ESRC_EXTN_QUAL" documentation="ExternalNav may be used if quality is above this threshold" user="Standard">
-        <field name="Range">0 100</field>
-        <field name="Units">%</field>
-        <field name="UnitText">percent</field>
-      </param>
-      <param humanName="EKF Source OpticalFlow Innovation Threshold" name="ESRC_FLOW_THRESH" documentation="OpticalFlow may be used if innovations are below this threshold" user="Standard">
-        <field name="Range">0 1</field>
-      </param>
-      <param humanName="EKF Source OpticalFlow Quality Threshold" name="ESRC_FLOW_QUAL" documentation="OpticalFlow may be used if quality is above this threshold" user="Standard">
-        <field name="Range">0 100</field>
-        <field name="Units">%</field>
-        <field name="UnitText">percent</field>
-      </param>
-      <param humanName="EKF Source Rangefinder Max" name="ESRC_RNGFND_MAX" documentation="OpticalFlow may be used if rangefinder distance is below this threshold" user="Standard">
-        <field name="Range">0 50</field>
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-      </param>
       <param humanName="Angular acceleration limit" name="AEROM_ANG_ACCEL" documentation="Maximum angular acceleration in maneuvers">
         <field name="Units">deg/s/s</field>
         <field name="UnitText">degrees per square second</field>
@@ -1576,26 +1576,62 @@
       <param humanName="Trik Count" name="TRIK_COUNT" documentation="Number of tricks which can be selected over the range of the trik selection RC channel">
         <field name="Range">1 11</field>
       </param>
-      <param humanName="Torqeedo TorqLink Enable" name="TRQL_ENABLE" documentation="Torqeedo TorqLink Enable" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
+      <param humanName="Mask of UltraMotion servos" name="UM_SERVO_MASK" documentation="Mask of UltraMotion servos" user="Standard">
+        <bitmask>
+          <bit code="0">SERVO1</bit>
+          <bit code="1">SERVO2</bit>
+          <bit code="2">SERVO3</bit>
+          <bit code="3">SERVO4</bit>
+          <bit code="4">SERVO5</bit>
+          <bit code="5">SERVO6</bit>
+          <bit code="6">SERVO7</bit>
+          <bit code="7">SERVO8</bit>
+          <bit code="8">SERVO9</bit>
+          <bit code="9">SERVO10</bit>
+          <bit code="10">SERVO11</bit>
+          <bit code="11">SERVO12</bit>
+        </bitmask>
+        <field name="Bitmask">0:SERVO1,1:SERVO2,2:SERVO3,3:SERVO4,4:SERVO5,5:SERVO6,6:SERVO7,7:SERVO8,8:SERVO9,9:SERVO10,10:SERVO11,11:SERVO12</field>
       </param>
-      <param humanName="Torqeedo TorqLink Debug Level" name="TRQL_DEBUG" documentation="Torqeedo TorqLink Debug Level" user="Standard">
+      <param humanName="Set CAN driver" name="UM_CANDRV" documentation="Set CAN driver" user="Standard">
         <values>
           <value code="0">None</value>
-          <value code="1">Low</value>
-          <value code="2">Medium</value>
-          <value code="3">High</value>
+          <value code="1">1stCANDriver</value>
+          <value code="2">2ndCanDriver</value>
         </values>
       </param>
-      <param humanName="EFI DLA64 enable" name="EFI_DLA64_ENABLE" documentation="Enable EFI DLA64 driver" user="Standard">
+      <param humanName="Update rate for UltraMotion servos" name="UM_RATE_HZ" documentation="Update rate for UltraMotion servos" user="Standard">
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+        <field name="Range">1 400</field>
+      </param>
+      <param humanName="Optional settings" name="UM_OPTIONS" documentation="Optional settings" user="Standard">
+        <bitmask>
+          <bit code="0">LogAllFrames</bit>
+          <bit code="1">ParseTelemetry</bit>
+          <bit code="2">SendPosAsNamedValueFloat</bit>
+        </bitmask>
+        <field name="Bitmask">0:LogAllFrames,1:ParseTelemetry,2:SendPosAsNamedValueFloat</field>
+      </param>
+      <param humanName="EFI INF-Inject enable" name="EFI_INF_ENABLE" documentation="Enable EFI INF-Inject driver" user="Standard">
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
         </values>
       </param>
+      <param humanName="EFI INF-Inject options" name="EFI_INF_OPTIONS" documentation="EFI INF driver options" user="Standard">
+        <bitmask>
+          <bit code="0">EnableLogging</bit>
+        </bitmask>
+        <field name="Bitmask">0:EnableLogging</field>
+      </param>
+      <param humanName="EFI INF-Inject throttle rate" name="EFI_INF_THR_HZ" documentation="EFI INF throttle output rate" user="Standard">
+        <field name="Range">0 50</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="EFI INF-Inject ignition aux function" name="EFI_INF_IGN_AUX" documentation="EFI INF throttle ignition aux function" user="Standard">
+</param>
       <param humanName="LTE Enable" name="LTE_ENABLE" documentation="Enable or disable the LTE modem driver" user="Standard">
         <values>
           <value code="0">Disabled</value>
@@ -1682,6 +1718,18 @@
       <param humanName="LTE band selection" name="LTE_BAND" documentation="This allows selection of LTE band. A value of -1 means no band setting change is made. A value of 0 sets all bands. Otherwise the specified band is set." user="Standard">
         <field name="Range">-1 50</field>
       </param>
+      <param humanName="Generator SVFFI enable" name="EFI_SVF_ENABLE" documentation="Enable SVFFI generator support" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Generator SVFFI arming check" name="EFI_SVF_ARMCHECK" documentation="Check for Generator ARM state before arming" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
       <param humanName="Hobbywing ESC Enable" name="ESC_HW_ENABLE" documentation="Enable Hobbywing ESC telemetry" user="Standard">
         <values>
           <value code="0">Disabled</value>
@@ -1693,6 +1741,58 @@
       </param>
       <param humanName="Hobbywing ESC motor offset" name="ESC_HW_OFS" documentation="Motor number offset of first ESC" user="Standard">
         <field name="Range">0 31</field>
+      </param>
+      <param humanName="Enable ANX battery support" name="BATT_ANX_ENABLE" documentation="Enable ANX battery support" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Set ANX CAN driver" name="BATT_ANX_CANDRV" documentation="Set ANX CAN driver" user="Standard">
+        <values>
+          <value code="0">None</value>
+          <value code="1">1stCANDriver</value>
+          <value code="2">2ndCanDriver</value>
+        </values>
+      </param>
+      <param humanName="ANX CAN battery index" name="BATT_ANX_INDEX" documentation="ANX CAN battery index" user="Standard">
+        <field name="Range">1 10</field>
+      </param>
+      <param humanName="ANX CAN battery options" name="BATT_ANX_OPTIONS" documentation="ANX CAN battery options" user="Advanced">
+        <bitmask>
+          <bit code="0">LogAllFrames</bit>
+        </bitmask>
+        <field name="Bitmask">0:LogAllFrames</field>
+      </param>
+      <param humanName="EFI DLA64 enable" name="EFI_DLA64_ENABLE" documentation="Enable EFI DLA64 driver" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="DJIRS2 debug" name="DJIR_DEBUG" documentation="Enable DJIRS2 debug" user="Advanced">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+          <value code="2">Enabled with attitude reporting</value>
+        </values>
+      </param>
+      <param humanName="DJIRS2 upside down" name="DJIR_UPSIDEDOWN" documentation="DJIRS2 upside down" user="Standard">
+        <values>
+          <value code="0">Right side up</value>
+          <value code="1">Upside down</value>
+        </values>
+      </param>
+      <param humanName="EFI DLA enable" name="EFI_DLA_ENABLE" documentation="Enable EFI DLA driver" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="EFI DLA fuel scale" name="EFI_DLA_LPS" documentation="EFI DLA litres of fuel per second of injection time" user="Standard">
+        <field name="Range">0.00001 1</field>
+        <field name="Units">litres</field>
+        <field name="UnitText">litres</field>
       </param>
       <param humanName="Enable HFE EFI driver" name="EFI_HFE_ENABLE" documentation="Enable HFE EFI driver" user="Standard">
         <values>
@@ -1744,84 +1844,6 @@
         </bitmask>
         <field name="Bitmask">0:EnableLogging</field>
       </param>
-      <param humanName="EFI INF-Inject enable" name="EFI_INF_ENABLE" documentation="Enable EFI INF-Inject driver" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="EFI INF-Inject options" name="EFI_INF_OPTIONS" documentation="EFI INF driver options" user="Standard">
-        <bitmask>
-          <bit code="0">EnableLogging</bit>
-        </bitmask>
-        <field name="Bitmask">0:EnableLogging</field>
-      </param>
-      <param humanName="EFI INF-Inject throttle rate" name="EFI_INF_THR_HZ" documentation="EFI INF throttle output rate" user="Standard">
-        <field name="Range">0 50</field>
-        <field name="Units">Hz</field>
-        <field name="UnitText">hertz</field>
-      </param>
-      <param humanName="EFI INF-Inject ignition aux function" name="EFI_INF_IGN_AUX" documentation="EFI INF throttle ignition aux function" user="Standard">
-</param>
-      <param humanName="Enable ANX battery support" name="BATT_ANX_ENABLE" documentation="Enable ANX battery support" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Set ANX CAN driver" name="BATT_ANX_CANDRV" documentation="Set ANX CAN driver" user="Standard">
-        <values>
-          <value code="0">None</value>
-          <value code="1">1stCANDriver</value>
-          <value code="2">2ndCanDriver</value>
-        </values>
-      </param>
-      <param humanName="ANX CAN battery index" name="BATT_ANX_INDEX" documentation="ANX CAN battery index" user="Standard">
-        <field name="Range">1 10</field>
-      </param>
-      <param humanName="ANX CAN battery options" name="BATT_ANX_OPTIONS" documentation="ANX CAN battery options" user="Advanced">
-        <bitmask>
-          <bit code="0">LogAllFrames</bit>
-        </bitmask>
-        <field name="Bitmask">0:LogAllFrames</field>
-      </param>
-      <param humanName="Generator SVFFI enable" name="EFI_SVF_ENABLE" documentation="Enable SVFFI generator support" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Generator SVFFI arming check" name="EFI_SVF_ARMCHECK" documentation="Check for Generator ARM state before arming" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="Enable this script" name="ENABLE" documentation="When set to 0 this script will not run. When set to 1 this script will run." user="Standard">
-        <field name="Range">0 1</field>
-      </param>
-      <param humanName="Index of assigned battery." name="BATT_IDX" documentation="Ensure this battery is configured with `BATT*_MONITOR=29`." user="Standard">
-</param>
-      <param humanName="Measurement correction factor" name="CFACT" documentation="This is multiplicative factor to correct the measured flow. Set to &lt;1 if your sensor measures too high." user="Standard">
-</param>
-      <param humanName="Sensor operating mode" name="MODE" documentation="0: The sensor will save the fuel consumption across power resets. 1: The sensor will reset the power consumption." user="Standard">
-</param>
-      <param humanName="Scripting serial port number" name="PORT" documentation="Which Scripting serial port the sensor is connected at." user="Standard">
-        <field name="Range">1 10</field>
-      </param>
-      <param humanName="DJIRS2 debug" name="DJIR_DEBUG" documentation="Enable DJIRS2 debug" user="Advanced">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-          <value code="2">Enabled with attitude reporting</value>
-        </values>
-      </param>
-      <param humanName="DJIRS2 upside down" name="DJIR_UPSIDEDOWN" documentation="DJIRS2 upside down" user="Standard">
-        <values>
-          <value code="0">Right side up</value>
-          <value code="1">Upside down</value>
-        </values>
-      </param>
       <param humanName="Enable Halo6000 EFI driver" name="EFI_H6K_ENABLE" documentation="Enable Halo6000 EFI driver" user="Standard">
         <values>
           <value code="0">Disabled</value>
@@ -1861,6 +1883,32 @@
           <bit code="0">LogAllCanPackets</bit>
         </bitmask>
         <field name="Bitmask">0:LogAllCanPackets</field>
+      </param>
+      <param humanName="Torqeedo TorqLink Enable" name="TRQL_ENABLE" documentation="Torqeedo TorqLink Enable" user="Standard">
+        <values>
+          <value code="0">Disabled</value>
+          <value code="1">Enabled</value>
+        </values>
+      </param>
+      <param humanName="Torqeedo TorqLink Debug Level" name="TRQL_DEBUG" documentation="Torqeedo TorqLink Debug Level" user="Standard">
+        <values>
+          <value code="0">None</value>
+          <value code="1">Low</value>
+          <value code="2">Medium</value>
+          <value code="3">High</value>
+        </values>
+      </param>
+      <param humanName="Enable this script" name="ENABLE" documentation="When set to 0 this script will not run. When set to 1 this script will run." user="Standard">
+        <field name="Range">0 1</field>
+      </param>
+      <param humanName="Index of assigned battery." name="BATT_IDX" documentation="Ensure this battery is configured with `BATT*_MONITOR=29`." user="Standard">
+</param>
+      <param humanName="Measurement correction factor" name="CFACT" documentation="This is multiplicative factor to correct the measured flow. Set to &lt;1 if your sensor measures too high." user="Standard">
+</param>
+      <param humanName="Sensor operating mode" name="MODE" documentation="0: The sensor will save the fuel consumption across power resets. 1: The sensor will reset the power consumption." user="Standard">
+</param>
+      <param humanName="Scripting serial port number" name="PORT" documentation="Which Scripting serial port the sensor is connected at." user="Standard">
+        <field name="Range">1 10</field>
       </param>
       <param humanName="Enable SkyPower EFI support" name="EFI_SP_ENABLE" documentation="Enable SkyPower EFI support" user="Standard">
         <values>
@@ -1954,65 +2002,6 @@
         <field name="Units">s</field>
         <field name="UnitText">seconds</field>
       </param>
-      <param humanName="Mask of UltraMotion servos" name="UM_SERVO_MASK" documentation="Mask of UltraMotion servos" user="Standard">
-        <bitmask>
-          <bit code="0">SERVO1</bit>
-          <bit code="1">SERVO2</bit>
-          <bit code="2">SERVO3</bit>
-          <bit code="3">SERVO4</bit>
-          <bit code="4">SERVO5</bit>
-          <bit code="5">SERVO6</bit>
-          <bit code="6">SERVO7</bit>
-          <bit code="7">SERVO8</bit>
-          <bit code="8">SERVO9</bit>
-          <bit code="9">SERVO10</bit>
-          <bit code="10">SERVO11</bit>
-          <bit code="11">SERVO12</bit>
-        </bitmask>
-        <field name="Bitmask">0:SERVO1,1:SERVO2,2:SERVO3,3:SERVO4,4:SERVO5,5:SERVO6,6:SERVO7,7:SERVO8,8:SERVO9,9:SERVO10,10:SERVO11,11:SERVO12</field>
-      </param>
-      <param humanName="Set CAN driver" name="UM_CANDRV" documentation="Set CAN driver" user="Standard">
-        <values>
-          <value code="0">None</value>
-          <value code="1">1stCANDriver</value>
-          <value code="2">2ndCanDriver</value>
-        </values>
-      </param>
-      <param humanName="Update rate for UltraMotion servos" name="UM_RATE_HZ" documentation="Update rate for UltraMotion servos" user="Standard">
-        <field name="Units">Hz</field>
-        <field name="UnitText">hertz</field>
-        <field name="Range">1 400</field>
-      </param>
-      <param humanName="Optional settings" name="UM_OPTIONS" documentation="Optional settings" user="Standard">
-        <bitmask>
-          <bit code="0">LogAllFrames</bit>
-          <bit code="1">ParseTelemetry</bit>
-          <bit code="2">SendPosAsNamedValueFloat</bit>
-        </bitmask>
-        <field name="Bitmask">0:LogAllFrames,1:ParseTelemetry,2:SendPosAsNamedValueFloat</field>
-      </param>
-      <param humanName="EFI DLA enable" name="EFI_DLA_ENABLE" documentation="Enable EFI DLA driver" user="Standard">
-        <values>
-          <value code="0">Disabled</value>
-          <value code="1">Enabled</value>
-        </values>
-      </param>
-      <param humanName="EFI DLA fuel scale" name="EFI_DLA_LPS" documentation="EFI DLA litres of fuel per second of injection time" user="Standard">
-        <field name="Range">0.00001 1</field>
-        <field name="Units">litres</field>
-        <field name="UnitText">litres</field>
-      </param>
-      <param humanName="TOFSENSE-M to be used as Proximity sensor" name="TOFSENSE_S1_PRX" documentation="Set 0 if sensor is to be used as a 1-D rangefinder (minimum of all distances will be sent, typically used for height detection). Set 1 if it should be used as a 3-D proximity device (Eg. Obstacle Avoidance)" user="Standard">
-        <values>
-          <value code="0">Set as Rangefinder</value>
-          <value code="1">Set as Proximity sensor</value>
-        </values>
-      </param>
-      <param humanName="TOFSENSE-M serial port config" name="TOFSENSE_S1_SP" documentation="UART instance sensor is connected to. Set 1 if sensor is connected to the port with fist SERIALx_PROTOCOL = 28." user="Standard">
-        <field name="Range">1 4</field>
-      </param>
-      <param humanName="TOFSENSE-M serial port baudrate" name="TOFSENSE_S1_BR" documentation="Serial Port baud rate. Sensor baud rate can be changed from Nassistant software" user="Standard">
-</param>
       <param humanName="TOFSENSE-M to be used as Proximity sensor" name="TOFSENSE_PRX" documentation="Set 0 if sensor is to be used as a 1-D rangefinder (minimum of all distances will be sent, typically used for height detection). Set 1 if it should be used as a 3-D proximity device (Eg. Obstacle Avoidance)" user="Standard">
         <values>
           <value code="0">Set as Rangefinder</value>
@@ -2046,6 +2035,17 @@
       <param humanName="TOFSENSE-M Thir ID" name="TOFSENSE_ID3" documentation="Third TOFSENSE-M sensor ID. This cannot be 0. You can change ID of sensor from NAssistant Software" user="Standard">
         <field name="Range">1 255</field>
       </param>
+      <param humanName="TOFSENSE-M to be used as Proximity sensor" name="TOFSENSE_S1_PRX" documentation="Set 0 if sensor is to be used as a 1-D rangefinder (minimum of all distances will be sent, typically used for height detection). Set 1 if it should be used as a 3-D proximity device (Eg. Obstacle Avoidance)" user="Standard">
+        <values>
+          <value code="0">Set as Rangefinder</value>
+          <value code="1">Set as Proximity sensor</value>
+        </values>
+      </param>
+      <param humanName="TOFSENSE-M serial port config" name="TOFSENSE_S1_SP" documentation="UART instance sensor is connected to. Set 1 if sensor is connected to the port with fist SERIALx_PROTOCOL = 28." user="Standard">
+        <field name="Range">1 4</field>
+      </param>
+      <param humanName="TOFSENSE-M serial port baudrate" name="TOFSENSE_S1_BR" documentation="Serial Port baud rate. Sensor baud rate can be changed from Nassistant software" user="Standard">
+</param>
     </parameters>
     <parameters name="ACT">
       <param humanName="Number of actuator channels" name="ACT_NUM_CHANS" documentation="Number of actuator channels to monitor for telemetry." user="Standard">

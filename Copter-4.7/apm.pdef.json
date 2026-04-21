@@ -11347,7 +11347,7 @@
     }
   },
   "CAM1_RC_": {
-    "CAM1_RC_BTN_DELAY": {
+    "CAM1_RC_BTN_DELY": {
       "Description": "Time it takes for the a RunCam button press to be actived in ms. If this is too short then commands can get out of sync.",
       "DisplayName": "RunCam button delay before allowing further button presses",
       "User": "Advanced"
@@ -11384,7 +11384,7 @@
       "DisplayName": "RunCam features available",
       "User": "Advanced"
     },
-    "CAM1_RC_MDE_DELAY": {
+    "CAM1_RC_MDE_DELY": {
       "Description": "Time it takes for the a RunCam mode button press to be actived in ms. If a mode change first requires a video recording change then double this value is used. If this is too short then commands can get out of sync.",
       "DisplayName": "RunCam mode delay before allowing further button presses",
       "User": "Advanced"
@@ -11541,7 +11541,7 @@
     }
   },
   "CAM2_RC_": {
-    "CAM2_RC_BTN_DELAY": {
+    "CAM2_RC_BTN_DELY": {
       "Description": "Time it takes for the a RunCam button press to be actived in ms. If this is too short then commands can get out of sync.",
       "DisplayName": "RunCam button delay before allowing further button presses",
       "User": "Advanced"
@@ -11578,7 +11578,7 @@
       "DisplayName": "RunCam features available",
       "User": "Advanced"
     },
-    "CAM2_RC_MDE_DELAY": {
+    "CAM2_RC_MDE_DELY": {
       "Description": "Time it takes for the a RunCam mode button press to be actived in ms. If a mode change first requires a video recording change then double this value is used. If this is too short then commands can get out of sync.",
       "DisplayName": "RunCam mode delay before allowing further button presses",
       "User": "Advanced"
@@ -16328,8 +16328,9 @@
     },
     "EAHRS_OPTIONS": {
       "Bitmask": {
-        "0": "Vector Nav use uncompensated values for accel gyro and mag.",
-        "1": "SBG uses EKF as GNSS."
+        "0": "Vector Nav use uncompensated values for accel gyro and mag",
+        "1": "SBG uses EKF as GNSS",
+        "2": "SensAItion used as AHRS"
       },
       "Description": "External AHRS options bitmask",
       "DisplayName": "External AHRS options",
@@ -16359,6 +16360,7 @@
       "Values": {
         "0": "None",
         "1": "VectorNav",
+        "11": "SensAItion",
         "2": "MicroStrain5",
         "5": "InertialLabs",
         "6": "Trimble GSOF",
@@ -18013,7 +18015,7 @@
       }
     },
     "FENCE_ALT_MAX": {
-      "Description": "Maximum altitude allowed before geofence triggers",
+      "Description": "Maximum altitude allowed before geofence triggers. See FENCE_ALT_MAX_TP for reference frame.",
       "DisplayName": "Fence Maximum Altitude",
       "Increment": "1",
       "Range": {
@@ -18023,8 +18025,19 @@
       "Units": "m",
       "User": "Standard"
     },
+    "FENCE_ALT_MAX_TP": {
+      "Description": "The altitude reference frame for the maximum altitude fence. Can be AMSL, home-relative, origin relative or AGL.",
+      "DisplayName": "Altitude max frame type",
+      "User": "Advanced",
+      "Values": {
+        "0": "Above sea level",
+        "1": "Above Home",
+        "2": "Above Origin",
+        "3": "Above Terrain"
+      }
+    },
     "FENCE_ALT_MIN": {
-      "Description": "Minimum altitude allowed before geofence triggers",
+      "Description": "Minimum altitude allowed before geofence triggers. See FENCE_ALT_MIN_TP for reference frame.",
       "DisplayName": "Fence Minimum Altitude",
       "Increment": "1",
       "Range": {
@@ -18033,6 +18046,17 @@
       },
       "Units": "m",
       "User": "Standard"
+    },
+    "FENCE_ALT_MIN_TP": {
+      "Description": "The altitude reference frame for the minimum altitude fence. Can be AMSL, home-relative, origin relative or AGL.",
+      "DisplayName": "Altitude min frame type",
+      "User": "Advanced",
+      "Values": {
+        "0": "Above sea level",
+        "1": "Above Home",
+        "2": "Above Origin",
+        "3": "Above Terrain"
+      }
     },
     "FENCE_AUTOENABLE": {
       "Description": "Auto-enable of fences. AutoEnableOnTakeoff enables all configured fences, except the minimum altitude fence (which is enabled when the minimum altitude is reached), after autotakeoffs reach altitude. During autolandings the fences will be disabled.  AutoEnableDisableFloorOnLanding enables all configured fences, except the minimum altitude fence (which is enabled when the minimum altitude is reached), after autotakeoffs reach altitude. During autolandings only the Minimum Altitude fence will be disabled. AutoEnableOnlyWhenArmed enables all configured fences on arming, except the minimum altitude fence (which is enabled when the minimum altitude is reached), but no fences are disabled during autolandings. However, fence breaches are ignored while executing prior breach recovery actions which may include autolandings.",

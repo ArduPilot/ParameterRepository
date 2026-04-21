@@ -78097,12 +78097,12 @@ Sonar rotation from rotations enumeration
 
 .. _SIM_BATT_VOLTAGE:
 
-SIM\_BATT\_VOLTAGE: Simulated battery voltage
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SIM\_BATT\_VOLTAGE: Simulated battery resting voltage
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
-Simulated battery voltage\. Constant voltage when SIM\_BATT\_CAP\_AH is 0\, otherwise changing this parameter will re\-initialize the state of charge of the battery based on this voltage versus the battery\'s maximum voltage \(default is max voltage\)\.
+Simulated battery resting voltage \(no load sag\)\. Defaults to and clipped to the battery model\'s maximum voltage\. Changes re\-initialize the state of charge\, and values below the maximum indicate a partially\-charged battery\. For batteries with unlimited capacity\, see \`SIM\_BATT\_CAP\_AH\`\. Value ignored when receiving battery state updates from an external source\.
 
 
 +-------+
@@ -78121,7 +78121,7 @@ SIM\_BATT\_CAP\_AH: Simulated battery capacity
 
 | *Note: This parameter is for advanced users*
 
-Simulated battery capacity\. Set to 0 for unlimited capacity\. Changing this parameter will re\-initialize the state of charge of the battery\.
+Simulated battery capacity\. Changes re\-initialize the state of charge of the battery\. Set to 0 for unlimited capacity\. Value ignored when receiving battery state updates from an external source\.
 
 
 +-------------+
