@@ -751,7 +751,7 @@ This enables the vibration failsafe which will use modified altitude estimation 
 
 *Note: This parameter is for advanced users*
 
-Bitmask of additional options for battery, radio, & GCS failsafes. 0 (default) disables all options.
+Bitmask of additional options for battery, radio, & GCS failsafes. 0 disables all options.
 
 - Bitmask: 0:Continue if in Auto on RC failsafe, 1:Continue if in Auto on GCS failsafe, 2:Continue if in Guided on RC failsafe, 3:Continue if landing on any failsafe, 4:Continue if in pilot controlled modes on GCS failsafe, 5:Release Gripper
 

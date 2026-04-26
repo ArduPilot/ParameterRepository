@@ -15513,10 +15513,10 @@
         <field name="Increment">0.0001</field>
       </param>
       <param humanName="PID Target notch filter index" name="GUIDED_NTF" documentation="PID Target notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+        <field name="Range">0 8</field>
       </param>
       <param humanName="PID Error notch filter index" name="GUIDED_NEF" documentation="PID Error notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+        <field name="Range">0 8</field>
       </param>
     </parameters>
     <parameters name="ICE_">

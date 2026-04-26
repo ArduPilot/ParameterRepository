@@ -17788,7 +17788,7 @@
       "DisplayName": "PID Error notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
@@ -17797,7 +17797,7 @@
       "DisplayName": "PID Target notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },

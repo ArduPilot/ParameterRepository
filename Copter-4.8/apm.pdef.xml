@@ -589,7 +589,7 @@
           <value code="1">Enabled</value>
         </values>
       </param>
-      <param humanName="Failsafe options bitmask" name="ArduCopter:FS_OPTIONS" documentation="Bitmask of additional options for battery, radio, &amp; GCS failsafes. 0 (default) disables all options." user="Advanced">
+      <param humanName="Failsafe options bitmask" name="ArduCopter:FS_OPTIONS" documentation="Bitmask of additional options for battery, radio, &amp; GCS failsafes. 0 disables all options." user="Advanced">
         <bitmask>
           <bit code="0">Continue if in Auto on RC failsafe</bit>
           <bit code="1">Continue if in Auto on GCS failsafe</bit>

@@ -15960,7 +15960,7 @@
         "4": "Continue if in pilot controlled modes on GCS failsafe",
         "5": "Release Gripper"
       },
-      "Description": "Bitmask of additional options for battery, radio, & GCS failsafes. 0 (default) disables all options.",
+      "Description": "Bitmask of additional options for battery, radio, & GCS failsafes. 0 disables all options.",
       "DisplayName": "Failsafe options bitmask",
       "User": "Advanced"
     },

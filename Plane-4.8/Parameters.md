@@ -22791,7 +22791,7 @@ FF D Gain which produces an output that is proportional to the rate of change of
 
 PID Target notch filter index
 
-- Range: 1 8
+- Range: 0 8
 
 ## GUIDED_NEF: PID Error notch filter index
 
@@ -22799,7 +22799,7 @@ PID Target notch filter index
 
 PID Error notch filter index
 
-- Range: 1 8
+- Range: 0 8
 
 # ICE Parameters
 

@@ -46245,7 +46245,7 @@ PID Target notch filter index
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -46264,7 +46264,7 @@ PID Error notch filter index
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 

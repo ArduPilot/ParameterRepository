@@ -1788,7 +1788,7 @@ FS\_OPTIONS: Failsafe options bitmask
 
 | *Note: This parameter is for advanced users*
 
-Bitmask of additional options for battery\, radio\, \& GCS failsafes\. 0 \(default\) disables all options\.
+Bitmask of additional options for battery\, radio\, \& GCS failsafes\. 0 disables all options\.
 
 
 +-----------------------------------------------------------------+
