@@ -50819,7 +50819,7 @@ PID Target notch filter index
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -50838,7 +50838,7 @@ PID Error notch filter index
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -91903,6 +91903,8 @@ Bitmask of enabled RC protocols\. Allows narrowing the protocol detection to onl
 | 15  | Ghost    |
 +-----+----------+
 | 16  | MAVRadio |
++-----+----------+
+| 18  | SITL UDP |
 +-----+----------+
 
 

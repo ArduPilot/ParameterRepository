@@ -86219,6 +86219,8 @@ Bitmask of enabled RC protocols\. Allows narrowing the protocol detection to onl
 +-----+----------+
 | 16  | MAVRadio |
 +-----+----------+
+| 18  | SITL UDP |
++-----+----------+
 
 
 

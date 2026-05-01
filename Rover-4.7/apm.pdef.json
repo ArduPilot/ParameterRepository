@@ -38370,6 +38370,7 @@
         "14": "DroneCAN",
         "15": "Ghost",
         "16": "MAVRadio",
+        "18": "SITL UDP",
         "2": "IBUS",
         "3": "SBUS",
         "4": "SBUS_NI",

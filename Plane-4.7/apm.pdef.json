@@ -17767,7 +17767,7 @@
       "DisplayName": "PID Error notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
@@ -17776,7 +17776,7 @@
       "DisplayName": "PID Target notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
@@ -41903,6 +41903,7 @@
         "14": "DroneCAN",
         "15": "Ghost",
         "16": "MAVRadio",
+        "18": "SITL UDP",
         "2": "IBUS",
         "3": "SBUS",
         "4": "SBUS_NI",

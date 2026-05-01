@@ -13060,6 +13060,185 @@
         <field name="Bitmask">0:Roll, 1:Pitch, 2:Yaw</field>
       </param>
     </parameters>
+    <parameters name="CC2_">
+      <param humanName="Roll axis angle controller P gain" name="CC2_ANG_RLL_P" documentation="Roll axis angle controller P gain.  Converts the error between the desired roll angle and actual angle to a desired roll rate" user="Standard">
+        <field name="Range">3.000 12.000</field>
+      </param>
+      <param humanName="Pitch axis angle controller P gain" name="CC2_ANG_PIT_P" documentation="Pitch axis angle controller P gain.  Converts the error between the desired pitch angle and actual angle to a desired pitch rate" user="Standard">
+        <field name="Range">3.000 12.000</field>
+      </param>
+      <param humanName="Yaw axis angle controller P gain" name="CC2_ANG_YAW_P" documentation="Yaw axis angle controller P gain.  Converts the error between the desired yaw angle and actual angle to a desired yaw rate" user="Standard">
+        <field name="Range">3.000 12.000</field>
+      </param>
+      <param humanName="Roll axis rate controller P gain" name="CC2_RAT_RLL_P" documentation="Roll axis rate controller P gain. Corrects in proportion to the difference between the desired roll rate vs actual roll rate" user="Standard">
+        <field name="Range">0.01 0.5</field>
+        <field name="Increment">0.005</field>
+      </param>
+      <param humanName="Roll axis rate controller I gain" name="CC2_RAT_RLL_I" documentation="Roll axis rate controller I gain.  Corrects long-term difference in desired roll rate vs actual roll rate" user="Standard">
+        <field name="Range">0.01 2.0</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Roll axis rate controller I gain maximum" name="CC2_RAT_RLL_IMAX" documentation="Roll axis rate controller I gain maximum.  Constrains the maximum that the I term will output" user="Standard">
+        <field name="Range">0 1</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Roll axis rate controller D gain" name="CC2_RAT_RLL_D" documentation="Roll axis rate controller D gain.  Compensates for short-term change in desired roll rate vs actual roll rate" user="Standard">
+        <field name="Range">0.0 0.05</field>
+        <field name="Increment">0.001</field>
+      </param>
+      <param humanName="Roll axis rate controller feed forward" name="CC2_RAT_RLL_FF" documentation="Roll axis rate controller feed forward" user="Standard">
+        <field name="Range">0 0.5</field>
+        <field name="Increment">0.001</field>
+      </param>
+      <param humanName="Roll axis rate controller target frequency in Hz" name="CC2_RAT_RLL_FLTT" documentation="Roll axis rate controller target frequency in Hz" user="Standard">
+        <field name="Range">5 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Roll axis rate controller error frequency in Hz" name="CC2_RAT_RLL_FLTE" documentation="Roll axis rate controller error frequency in Hz" user="Standard">
+        <field name="Range">0 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Roll axis rate controller derivative frequency in Hz" name="CC2_RAT_RLL_FLTD" documentation="Roll axis rate controller derivative frequency in Hz" user="Standard">
+        <field name="Range">5 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Roll slew rate limit" name="CC2_RAT_RLL_SMAX" documentation="Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature." user="Advanced">
+        <field name="Range">0 200</field>
+        <field name="Increment">0.5</field>
+      </param>
+      <param humanName="Roll axis rate controller PD sum maximum" name="CC2_RAT_RLL_PDMX" documentation="Roll axis rate controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output" user="Advanced">
+        <field name="Range">0 1</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Roll Derivative FeedForward Gain" name="CC2_RAT_RLL_D_FF" documentation="FF D Gain which produces an output that is proportional to the rate of change of the target" user="Advanced">
+        <field name="Range">0 0.02</field>
+        <field name="Increment">0.0001</field>
+      </param>
+      <param humanName="Roll Target notch filter index" name="CC2_RAT_RLL_NTF" documentation="Roll Target notch filter index" user="Advanced">
+        <field name="Range">1 8</field>
+      </param>
+      <param humanName="Roll Error notch filter index" name="CC2_RAT_RLL_NEF" documentation="Roll Error notch filter index" user="Advanced">
+        <field name="Range">1 8</field>
+      </param>
+      <param humanName="Pitch axis rate controller P gain" name="CC2_RAT_PIT_P" documentation="Pitch axis rate controller P gain.  Corrects in proportion to the difference between the desired pitch rate vs actual pitch rate" user="Standard">
+        <field name="Range">0.01 0.50</field>
+        <field name="Increment">0.005</field>
+      </param>
+      <param humanName="Pitch axis rate controller I gain" name="CC2_RAT_PIT_I" documentation="Pitch axis rate controller I gain.  Corrects long-term difference in desired pitch rate vs actual pitch rate" user="Standard">
+        <field name="Range">0.01 2.0</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Pitch axis rate controller I gain maximum" name="CC2_RAT_PIT_IMAX" documentation="Pitch axis rate controller I gain maximum.  Constrains the maximum that the I term will output" user="Standard">
+        <field name="Range">0 1</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Pitch axis rate controller D gain" name="CC2_RAT_PIT_D" documentation="Pitch axis rate controller D gain.  Compensates for short-term change in desired pitch rate vs actual pitch rate" user="Standard">
+        <field name="Range">0.0 0.05</field>
+        <field name="Increment">0.001</field>
+      </param>
+      <param humanName="Pitch axis rate controller feed forward" name="CC2_RAT_PIT_FF" documentation="Pitch axis rate controller feed forward" user="Standard">
+        <field name="Range">0 0.5</field>
+        <field name="Increment">0.001</field>
+      </param>
+      <param humanName="Pitch axis rate controller target frequency in Hz" name="CC2_RAT_PIT_FLTT" documentation="Pitch axis rate controller target frequency in Hz" user="Standard">
+        <field name="Range">5 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Pitch axis rate controller error frequency in Hz" name="CC2_RAT_PIT_FLTE" documentation="Pitch axis rate controller error frequency in Hz" user="Standard">
+        <field name="Range">0 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Pitch axis rate controller derivative frequency in Hz" name="CC2_RAT_PIT_FLTD" documentation="Pitch axis rate controller derivative frequency in Hz" user="Standard">
+        <field name="Range">5 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Pitch slew rate limit" name="CC2_RAT_PIT_SMAX" documentation="Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature." user="Advanced">
+        <field name="Range">0 200</field>
+        <field name="Increment">0.5</field>
+      </param>
+      <param humanName="Pitch axis rate controller PD sum maximum" name="CC2_RAT_PIT_PDMX" documentation="Pitch axis rate controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output" user="Advanced">
+        <field name="Range">0 1</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Pitch Derivative FeedForward Gain" name="CC2_RAT_PIT_D_FF" documentation="FF D Gain which produces an output that is proportional to the rate of change of the target" user="Advanced">
+        <field name="Range">0 0.02</field>
+        <field name="Increment">0.0001</field>
+      </param>
+      <param humanName="Pitch Target notch filter index" name="CC2_RAT_PIT_NTF" documentation="Pitch Target notch filter index" user="Advanced">
+        <field name="Range">1 8</field>
+      </param>
+      <param humanName="Pitch Error notch filter index" name="CC2_RAT_PIT_NEF" documentation="Pitch Error notch filter index" user="Advanced">
+        <field name="Range">1 8</field>
+      </param>
+      <param humanName="Yaw axis rate controller P gain" name="CC2_RAT_YAW_P" documentation="Yaw axis rate controller P gain.  Corrects in proportion to the difference between the desired yaw rate vs actual yaw rate" user="Standard">
+        <field name="Range">0.10 2.50</field>
+        <field name="Increment">0.005</field>
+      </param>
+      <param humanName="Yaw axis rate controller I gain" name="CC2_RAT_YAW_I" documentation="Yaw axis rate controller I gain.  Corrects long-term difference in desired yaw rate vs actual yaw rate" user="Standard">
+        <field name="Range">0.010 1.0</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Yaw axis rate controller I gain maximum" name="CC2_RAT_YAW_IMAX" documentation="Yaw axis rate controller I gain maximum.  Constrains the maximum that the I term will output" user="Standard">
+        <field name="Range">0 1</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Yaw axis rate controller D gain" name="CC2_RAT_YAW_D" documentation="Yaw axis rate controller D gain.  Compensates for short-term change in desired yaw rate vs actual yaw rate" user="Standard">
+        <field name="Range">0.000 0.02</field>
+        <field name="Increment">0.001</field>
+      </param>
+      <param humanName="Yaw axis rate controller feed forward" name="CC2_RAT_YAW_FF" documentation="Yaw axis rate controller feed forward" user="Standard">
+        <field name="Range">0 0.5</field>
+        <field name="Increment">0.001</field>
+      </param>
+      <param humanName="Yaw axis rate controller target frequency in Hz" name="CC2_RAT_YAW_FLTT" documentation="Yaw axis rate controller target frequency in Hz" user="Standard">
+        <field name="Range">1 50</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Yaw axis rate controller error frequency in Hz" name="CC2_RAT_YAW_FLTE" documentation="Yaw axis rate controller error frequency in Hz" user="Standard">
+        <field name="Range">0 20</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Yaw axis rate controller derivative frequency in Hz" name="CC2_RAT_YAW_FLTD" documentation="Yaw axis rate controller derivative frequency in Hz" user="Standard">
+        <field name="Range">5 50</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Yaw slew rate limit" name="CC2_RAT_YAW_SMAX" documentation="Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature." user="Advanced">
+        <field name="Range">0 200</field>
+        <field name="Increment">0.5</field>
+      </param>
+      <param humanName="Yaw axis rate controller PD sum maximum" name="CC2_RAT_YAW_PDMX" documentation="Yaw axis rate controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output" user="Advanced">
+        <field name="Range">0 1</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Yaw Derivative FeedForward Gain" name="CC2_RAT_YAW_D_FF" documentation="FF D Gain which produces an output that is proportional to the rate of change of the target" user="Advanced">
+        <field name="Range">0 0.02</field>
+        <field name="Increment">0.0001</field>
+      </param>
+      <param humanName="Yaw Target notch filter index" name="CC2_RAT_YAW_NTF" documentation="Yaw Target notch filter index" user="Advanced">
+        <field name="Range">1 8</field>
+      </param>
+      <param humanName="Yaw Error notch filter index" name="CC2_RAT_YAW_NEF" documentation="Yaw Error notch filter index" user="Advanced">
+        <field name="Range">1 8</field>
+      </param>
+    </parameters>
     <parameters name="CHUTE_">
       <param humanName="Parachute release enabled or disabled" name="CHUTE_ENABLED" documentation="Parachute release enabled or disabled" user="Standard">
         <values>
@@ -26549,8 +26728,9 @@
           <bit code="14">DroneCAN</bit>
           <bit code="15">Ghost</bit>
           <bit code="16">MAVRadio</bit>
+          <bit code="18">SITL UDP</bit>
         </bitmask>
-        <field name="Bitmask">0:All,1:PPM,2:IBUS,3:SBUS,4:SBUS_NI,5:DSM,6:SUMD,7:SRXL,8:SRXL2,9:CRSF,10:ST24,11:FPORT,12:FPORT2,13:FastSBUS,14:DroneCAN,15:Ghost,16:MAVRadio</field>
+        <field name="Bitmask">0:All,1:PPM,2:IBUS,3:SBUS,4:SBUS_NI,5:DSM,6:SUMD,7:SRXL,8:SRXL2,9:CRSF,10:ST24,11:FPORT,12:FPORT2,13:FastSBUS,14:DroneCAN,15:Ghost,16:MAVRadio,18:SITL UDP</field>
       </param>
       <param humanName="RC Failsafe timeout" name="RC_FS_TIMEOUT" documentation="RC failsafe will trigger this many seconds after loss of RC" user="Standard">
         <field name="Range">0.1 10.0</field>
