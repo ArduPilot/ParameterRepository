@@ -33066,6 +33066,8 @@ Yaw control is given at least this pwm in microseconds range
 
 - Units: PWM
 
+- Increment: 1
+
 ## MOT_THST_EXPO: Thrust Curve Expo
 
 *Note: This parameter is for advanced users*
@@ -33098,6 +33100,8 @@ Battery voltage compensation maximum voltage (voltage above this will have no ad
 
 - Units: V
 
+- Increment: 0.1
+
 ## MOT_BAT_VOLT_MIN: Battery voltage compensation minimum voltage
 
 *Note: This parameter is for advanced users*
@@ -33108,6 +33112,8 @@ Battery voltage compensation minimum voltage (voltage below this will have no ad
 
 - Units: V
 
+- Increment: 0.1
+
 ## MOT_BAT_CURR_MAX: Motor Current Max
 
 *Note: This parameter is for advanced users*
@@ -33117,6 +33123,8 @@ Maximum current over which maximum throttle is limited (0 = Disabled)
 - Range: 0 200
 
 - Units: A
+
+- Increment: 0.1
 
 ## MOT_PWM_TYPE: Output PWM type
 
@@ -33149,6 +33157,8 @@ This sets the min PWM output value in microseconds that will ever be output to t
 
 - Range: 0 2000
 
+- Increment: 1
+
 ## MOT_PWM_MAX: PWM output maximum
 
 *Note: This parameter is for advanced users*
@@ -33158,6 +33168,8 @@ This sets the max PWM value in microseconds that will ever be output to the moto
 - Units: PWM
 
 - Range: 0 2000
+
+- Increment: 1
 
 ## MOT_SPIN_MIN: Motor Spin minimum
 
@@ -33173,6 +33185,8 @@ Point at which the thrust starts expressed as a number from 0 to 1 in the entire
 
 - Range: 0.0 0.25
 
+- Increment: 0.01
+
 ## MOT_SPIN_ARM: Motor Spin armed
 
 *Note: This parameter is for advanced users*
@@ -33187,6 +33201,8 @@ Point at which the motors start to spin expressed as a number from 0 to 1 in the
 
 - Range: 0.0 0.2
 
+- Increment: 0.01
+
 ## MOT_BAT_CURR_TC: Motor Current Max Time Constant
 
 *Note: This parameter is for advanced users*
@@ -33196,6 +33212,8 @@ Time constant used to limit the maximum current
 - Range: 0 10
 
 - Units: s
+
+- Increment: 0.01
 
 ## MOT_THST_HOVER: Thrust Hover Value
 
@@ -33272,6 +33290,8 @@ Which battery monitor should be used for doing compensation
 |1|Second battery|
 
 - Range: 0 15
+
+- Increment: 1
 
 ## MOT_SLEW_UP_TIME: Output slew time for increasing throttle
 

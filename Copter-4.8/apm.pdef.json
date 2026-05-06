@@ -31481,6 +31481,7 @@
     "MOT_BAT_CURR_MAX": {
       "Description": "Maximum current over which maximum throttle is limited (0 = Disabled)",
       "DisplayName": "Motor Current Max",
+      "Increment": "0.1",
       "Range": {
         "high": "200",
         "low": "0"
@@ -31491,6 +31492,7 @@
     "MOT_BAT_CURR_TC": {
       "Description": "Time constant used to limit the maximum current",
       "DisplayName": "Motor Current Max Time Constant",
+      "Increment": "0.01",
       "Range": {
         "high": "10",
         "low": "0"
@@ -31501,6 +31503,7 @@
     "MOT_BAT_IDX": {
       "Description": "Which battery monitor should be used for doing compensation",
       "DisplayName": "Battery compensation index",
+      "Increment": "1",
       "Range": {
         "high": "15",
         "low": "0"
@@ -31514,6 +31517,7 @@
     "MOT_BAT_VOLT_MAX": {
       "Description": "Battery voltage compensation maximum voltage (voltage above this will have no additional scaling effect on thrust).  Recommend 4.2 * cell count, 0 = Disabled",
       "DisplayName": "Battery voltage compensation maximum voltage",
+      "Increment": "0.1",
       "Range": {
         "high": "53",
         "low": "6"
@@ -31524,6 +31528,7 @@
     "MOT_BAT_VOLT_MIN": {
       "Description": "Battery voltage compensation minimum voltage (voltage below this will have no additional scaling effect on thrust).  Recommend 3.3 * cell count, 0 = Disabled",
       "DisplayName": "Battery voltage compensation minimum voltage",
+      "Increment": "0.1",
       "Range": {
         "high": "42",
         "low": "6"
@@ -31573,6 +31578,7 @@
     "MOT_PWM_MAX": {
       "Description": "This sets the max PWM value in microseconds that will ever be output to the motors",
       "DisplayName": "PWM output maximum",
+      "Increment": "1",
       "Range": {
         "high": "2000",
         "low": "0"
@@ -31583,6 +31589,7 @@
     "MOT_PWM_MIN": {
       "Description": "This sets the min PWM output value in microseconds that will ever be output to the motors",
       "DisplayName": "PWM output minimum",
+      "Increment": "1",
       "Range": {
         "high": "2000",
         "low": "0"
@@ -31653,6 +31660,7 @@
     "MOT_SPIN_ARM": {
       "Description": "Point at which the motors start to spin expressed as a number from 0 to 1 in the entire output range.  Should be lower than MOT_SPIN_MIN.",
       "DisplayName": "Motor Spin armed",
+      "Increment": "0.01",
       "Range": {
         "high": "0.2",
         "low": "0.0"
@@ -31681,6 +31689,7 @@
     "MOT_SPIN_MIN": {
       "Description": "Point at which the thrust starts expressed as a number from 0 to 1 in the entire output range.  Should be higher than MOT_SPIN_ARM.",
       "DisplayName": "Motor Spin minimum",
+      "Increment": "0.01",
       "Range": {
         "high": "0.25",
         "low": "0.0"
@@ -31735,6 +31744,7 @@
     "MOT_YAW_HEADROOM": {
       "Description": "Yaw control is given at least this pwm in microseconds range",
       "DisplayName": "Matrix Yaw Min",
+      "Increment": "1",
       "Range": {
         "high": "500",
         "low": "0"

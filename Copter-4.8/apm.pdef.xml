@@ -21185,6 +21185,7 @@
         <field name="Range">0 500</field>
         <field name="Units">PWM</field>
         <field name="UnitText">PWM in microseconds</field>
+        <field name="Increment">1</field>
       </param>
       <param humanName="Thrust Curve Expo" name="MOT_THST_EXPO" documentation="Motor thrust curve exponent (0.0 for linear to 1.0 for second order curve)" user="Advanced">
         <field name="Range">-1.0 1.0</field>
@@ -21201,16 +21202,19 @@
         <field name="Range">6 53</field>
         <field name="Units">V</field>
         <field name="UnitText">volt</field>
+        <field name="Increment">0.1</field>
       </param>
       <param humanName="Battery voltage compensation minimum voltage" name="MOT_BAT_VOLT_MIN" documentation="Battery voltage compensation minimum voltage (voltage below this will have no additional scaling effect on thrust).  Recommend 3.3 * cell count, 0 = Disabled" user="Advanced">
         <field name="Range">6 42</field>
         <field name="Units">V</field>
         <field name="UnitText">volt</field>
+        <field name="Increment">0.1</field>
       </param>
       <param humanName="Motor Current Max" name="MOT_BAT_CURR_MAX" documentation="Maximum current over which maximum throttle is limited (0 = Disabled)" user="Advanced">
         <field name="Range">0 200</field>
         <field name="Units">A</field>
         <field name="UnitText">ampere</field>
+        <field name="Increment">0.1</field>
       </param>
       <param humanName="Output PWM type" name="MOT_PWM_TYPE" documentation="This selects the output PWM type, allowing for normal PWM continuous output, OneShot, brushed or DShot motor output.PWMRange and PWMAngle are PWM special/rare cases for ESCs that dont calibrate normally (some Sub motors) or where each ESC must have its PWM range set individually using the Servo params instead of PWM_MIN/MAX parameters." user="Advanced">
         <values>
@@ -21231,11 +21235,13 @@
         <field name="Units">PWM</field>
         <field name="UnitText">PWM in microseconds</field>
         <field name="Range">0 2000</field>
+        <field name="Increment">1</field>
       </param>
       <param humanName="PWM output maximum" name="MOT_PWM_MAX" documentation="This sets the max PWM value in microseconds that will ever be output to the motors" user="Advanced">
         <field name="Units">PWM</field>
         <field name="UnitText">PWM in microseconds</field>
         <field name="Range">0 2000</field>
+        <field name="Increment">1</field>
       </param>
       <param humanName="Motor Spin minimum" name="MOT_SPIN_MIN" documentation="Point at which the thrust starts expressed as a number from 0 to 1 in the entire output range.  Should be higher than MOT_SPIN_ARM." user="Advanced">
         <values>
@@ -21244,6 +21250,7 @@
           <value code="0.25">High</value>
         </values>
         <field name="Range">0.0 0.25</field>
+        <field name="Increment">0.01</field>
       </param>
       <param humanName="Motor Spin armed" name="MOT_SPIN_ARM" documentation="Point at which the motors start to spin expressed as a number from 0 to 1 in the entire output range.  Should be lower than MOT_SPIN_MIN." user="Advanced">
         <values>
@@ -21252,11 +21259,13 @@
           <value code="0.2">High</value>
         </values>
         <field name="Range">0.0 0.2</field>
+        <field name="Increment">0.01</field>
       </param>
       <param humanName="Motor Current Max Time Constant" name="MOT_BAT_CURR_TC" documentation="Time constant used to limit the maximum current" user="Advanced">
         <field name="Range">0 10</field>
         <field name="Units">s</field>
         <field name="UnitText">seconds</field>
+        <field name="Increment">0.01</field>
       </param>
       <param humanName="Thrust Hover Value" name="MOT_THST_HOVER" documentation="Motor thrust needed to hover expressed as a number from 0 to 1" user="Advanced">
         <field name="Range">0.125 0.6875</field>
@@ -21296,6 +21305,7 @@
           <value code="1">Second battery</value>
         </values>
         <field name="Range">0 15</field>
+        <field name="Increment">1</field>
       </param>
       <param humanName="Output slew time for increasing throttle" name="MOT_SLEW_UP_TIME" documentation="Time in seconds to slew output from zero to full. This is used to limit the rate at which output can change. Range is constrained between 0 and 0.5." user="Advanced">
         <field name="Range">0 0.5</field>

@@ -89639,11 +89639,11 @@ Q\_M\_YAW\_HEADROOM: Matrix Yaw Min
 Yaw control is given at least this pwm in microseconds range
 
 
-+----------+---------------------+
-| Range    | Units               |
-+==========+=====================+
-| 0 to 500 | PWM in microseconds |
-+----------+---------------------+
++-----------+----------+---------------------+
+| Increment | Range    | Units               |
++===========+==========+=====================+
+| 1         | 0 to 500 | PWM in microseconds |
++-----------+----------+---------------------+
 
 
 
@@ -89709,11 +89709,11 @@ Q\_M\_BAT\_VOLT\_MAX: Battery voltage compensation maximum voltage
 Battery voltage compensation maximum voltage \(voltage above this will have no additional scaling effect on thrust\)\.  Recommend 4\.2 \* cell count\, 0 \= Disabled
 
 
-+---------+-------+
-| Range   | Units |
-+=========+=======+
-| 6 to 53 | volt  |
-+---------+-------+
++-----------+---------+-------+
+| Increment | Range   | Units |
++===========+=========+=======+
+| 0.1       | 6 to 53 | volt  |
++-----------+---------+-------+
 
 
 
@@ -89728,11 +89728,11 @@ Q\_M\_BAT\_VOLT\_MIN: Battery voltage compensation minimum voltage
 Battery voltage compensation minimum voltage \(voltage below this will have no additional scaling effect on thrust\)\.  Recommend 3\.3 \* cell count\, 0 \= Disabled
 
 
-+---------+-------+
-| Range   | Units |
-+=========+=======+
-| 6 to 42 | volt  |
-+---------+-------+
++-----------+---------+-------+
+| Increment | Range   | Units |
++===========+=========+=======+
+| 0.1       | 6 to 42 | volt  |
++-----------+---------+-------+
 
 
 
@@ -89747,11 +89747,11 @@ Q\_M\_BAT\_CURR\_MAX: Motor Current Max
 Maximum current over which maximum throttle is limited \(0 \= Disabled\)
 
 
-+----------+--------+
-| Range    | Units  |
-+==========+========+
-| 0 to 200 | ampere |
-+----------+--------+
++-----------+----------+--------+
+| Increment | Range    | Units  |
++===========+==========+========+
+| 0.1       | 0 to 200 | ampere |
++-----------+----------+--------+
 
 
 
@@ -89804,11 +89804,11 @@ Q\_M\_PWM\_MIN: PWM output minimum
 This sets the min PWM output value in microseconds that will ever be output to the motors
 
 
-+-----------+---------------------+
-| Range     | Units               |
-+===========+=====================+
-| 0 to 2000 | PWM in microseconds |
-+-----------+---------------------+
++-----------+-----------+---------------------+
+| Increment | Range     | Units               |
++===========+===========+=====================+
+| 1         | 0 to 2000 | PWM in microseconds |
++-----------+-----------+---------------------+
 
 
 
@@ -89823,11 +89823,11 @@ Q\_M\_PWM\_MAX: PWM output maximum
 This sets the max PWM value in microseconds that will ever be output to the motors
 
 
-+-----------+---------------------+
-| Range     | Units               |
-+===========+=====================+
-| 0 to 2000 | PWM in microseconds |
-+-----------+---------------------+
++-----------+-----------+---------------------+
+| Increment | Range     | Units               |
++===========+===========+=====================+
+| 1         | 0 to 2000 | PWM in microseconds |
++-----------+-----------+---------------------+
 
 
 
@@ -89855,11 +89855,11 @@ Point at which the thrust starts expressed as a number from 0 to 1 in the entire
 
 
 
-+-------------+
-| Range       |
-+=============+
-| 0.0 to 0.25 |
-+-------------+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.01      | 0.0 to 0.25 |
++-----------+-------------+
 
 
 
@@ -89887,11 +89887,11 @@ Point at which the motors start to spin expressed as a number from 0 to 1 in the
 
 
 
-+------------+
-| Range      |
-+============+
-| 0.0 to 0.2 |
-+------------+
++-----------+------------+
+| Increment | Range      |
++===========+============+
+| 0.01      | 0.0 to 0.2 |
++-----------+------------+
 
 
 
@@ -89906,11 +89906,11 @@ Q\_M\_BAT\_CURR\_TC: Motor Current Max Time Constant
 Time constant used to limit the maximum current
 
 
-+---------+---------+
-| Range   | Units   |
-+=========+=========+
-| 0 to 10 | seconds |
-+---------+---------+
++-----------+---------+---------+
+| Increment | Range   | Units   |
++===========+=========+=========+
+| 0.01      | 0 to 10 | seconds |
++-----------+---------+---------+
 
 
 
@@ -90055,11 +90055,11 @@ Which battery monitor should be used for doing compensation
 
 
 
-+---------+
-| Range   |
-+=========+
-| 0 to 15 |
-+---------+
++-----------+---------+
+| Increment | Range   |
++===========+=========+
+| 1         | 0 to 15 |
++-----------+---------+
 
 
 

@@ -73316,11 +73316,11 @@ MOT\_YAW\_HEADROOM: Matrix Yaw Min
 Yaw control is given at least this pwm in microseconds range
 
 
-+----------+---------------------+
-| Range    | Units               |
-+==========+=====================+
-| 0 to 500 | PWM in microseconds |
-+----------+---------------------+
++-----------+----------+---------------------+
+| Increment | Range    | Units               |
++===========+==========+=====================+
+| 1         | 0 to 500 | PWM in microseconds |
++-----------+----------+---------------------+
 
 
 
@@ -73382,11 +73382,11 @@ MOT\_BAT\_VOLT\_MAX: Battery voltage compensation maximum voltage
 Battery voltage compensation maximum voltage \(voltage above this will have no additional scaling effect on thrust\)\.  Recommend 4\.2 \* cell count\, 0 \= Disabled
 
 
-+---------+-------+
-| Range   | Units |
-+=========+=======+
-| 6 to 53 | volt  |
-+---------+-------+
++-----------+---------+-------+
+| Increment | Range   | Units |
++===========+=========+=======+
+| 0.1       | 6 to 53 | volt  |
++-----------+---------+-------+
 
 
 
@@ -73401,11 +73401,11 @@ MOT\_BAT\_VOLT\_MIN: Battery voltage compensation minimum voltage
 Battery voltage compensation minimum voltage \(voltage below this will have no additional scaling effect on thrust\)\.  Recommend 3\.3 \* cell count\, 0 \= Disabled
 
 
-+---------+-------+
-| Range   | Units |
-+=========+=======+
-| 6 to 42 | volt  |
-+---------+-------+
++-----------+---------+-------+
+| Increment | Range   | Units |
++===========+=========+=======+
+| 0.1       | 6 to 42 | volt  |
++-----------+---------+-------+
 
 
 
@@ -73420,11 +73420,11 @@ MOT\_BAT\_CURR\_MAX: Motor Current Max
 Maximum current over which maximum throttle is limited \(0 \= Disabled\)
 
 
-+----------+--------+
-| Range    | Units  |
-+==========+========+
-| 0 to 200 | ampere |
-+----------+--------+
++-----------+----------+--------+
+| Increment | Range    | Units  |
++===========+==========+========+
+| 0.1       | 0 to 200 | ampere |
++-----------+----------+--------+
 
 
 
@@ -73482,11 +73482,11 @@ MOT\_PWM\_MIN: PWM output minimum
 This sets the min PWM output value in microseconds that will ever be output to the motors
 
 
-+-----------+---------------------+
-| Range     | Units               |
-+===========+=====================+
-| 0 to 2000 | PWM in microseconds |
-+-----------+---------------------+
++-----------+-----------+---------------------+
+| Increment | Range     | Units               |
++===========+===========+=====================+
+| 1         | 0 to 2000 | PWM in microseconds |
++-----------+-----------+---------------------+
 
 
 
@@ -73501,11 +73501,11 @@ MOT\_PWM\_MAX: PWM output maximum
 This sets the max PWM value in microseconds that will ever be output to the motors
 
 
-+-----------+---------------------+
-| Range     | Units               |
-+===========+=====================+
-| 0 to 2000 | PWM in microseconds |
-+-----------+---------------------+
++-----------+-----------+---------------------+
+| Increment | Range     | Units               |
++===========+===========+=====================+
+| 1         | 0 to 2000 | PWM in microseconds |
++-----------+-----------+---------------------+
 
 
 
@@ -73520,20 +73520,20 @@ MOT\_SPIN\_MIN: Motor Spin minimum
 Point at which the thrust starts expressed as a number from 0 to 1 in the entire output range\.  Should be higher than MOT\_SPIN\_ARM\.
 
 
-+-------------+---------------------+
-| Range       | Values              |
-+=============+=====================+
-| 0.0 to 0.25 | +-------+---------+ |
-|             | | Value | Meaning | |
-|             | +=======+=========+ |
-|             | | 0.0   | Low     | |
-|             | +-------+---------+ |
-|             | | 0.15  | Default | |
-|             | +-------+---------+ |
-|             | | 0.25  | High    | |
-|             | +-------+---------+ |
-|             |                     |
-+-------------+---------------------+
++-----------+-------------+---------------------+
+| Increment | Range       | Values              |
++===========+=============+=====================+
+| 0.01      | 0.0 to 0.25 | +-------+---------+ |
+|           |             | | Value | Meaning | |
+|           |             | +=======+=========+ |
+|           |             | | 0.0   | Low     | |
+|           |             | +-------+---------+ |
+|           |             | | 0.15  | Default | |
+|           |             | +-------+---------+ |
+|           |             | | 0.25  | High    | |
+|           |             | +-------+---------+ |
+|           |             |                     |
++-----------+-------------+---------------------+
 
 
 
@@ -73548,20 +73548,20 @@ MOT\_SPIN\_ARM: Motor Spin armed
 Point at which the motors start to spin expressed as a number from 0 to 1 in the entire output range\.  Should be lower than MOT\_SPIN\_MIN\.
 
 
-+------------+---------------------+
-| Range      | Values              |
-+============+=====================+
-| 0.0 to 0.2 | +-------+---------+ |
-|            | | Value | Meaning | |
-|            | +=======+=========+ |
-|            | | 0.0   | Low     | |
-|            | +-------+---------+ |
-|            | | 0.1   | Default | |
-|            | +-------+---------+ |
-|            | | 0.2   | High    | |
-|            | +-------+---------+ |
-|            |                     |
-+------------+---------------------+
++-----------+------------+---------------------+
+| Increment | Range      | Values              |
++===========+============+=====================+
+| 0.01      | 0.0 to 0.2 | +-------+---------+ |
+|           |            | | Value | Meaning | |
+|           |            | +=======+=========+ |
+|           |            | | 0.0   | Low     | |
+|           |            | +-------+---------+ |
+|           |            | | 0.1   | Default | |
+|           |            | +-------+---------+ |
+|           |            | | 0.2   | High    | |
+|           |            | +-------+---------+ |
+|           |            |                     |
++-----------+------------+---------------------+
 
 
 
@@ -73576,11 +73576,11 @@ MOT\_BAT\_CURR\_TC: Motor Current Max Time Constant
 Time constant used to limit the maximum current
 
 
-+---------+---------+
-| Range   | Units   |
-+=========+=========+
-| 0 to 10 | seconds |
-+---------+---------+
++-----------+---------+---------+
+| Increment | Range   | Units   |
++===========+=========+=========+
+| 0.01      | 0 to 10 | seconds |
++-----------+---------+---------+
 
 
 
@@ -73702,18 +73702,18 @@ MOT\_BAT\_IDX: Battery compensation index
 Which battery monitor should be used for doing compensation
 
 
-+---------+----------------------------+
-| Range   | Values                     |
-+=========+============================+
-| 0 to 15 | +-------+----------------+ |
-|         | | Value | Meaning        | |
-|         | +=======+================+ |
-|         | | 0     | First battery  | |
-|         | +-------+----------------+ |
-|         | | 1     | Second battery | |
-|         | +-------+----------------+ |
-|         |                            |
-+---------+----------------------------+
++-----------+---------+----------------------------+
+| Increment | Range   | Values                     |
++===========+=========+============================+
+| 1         | 0 to 15 | +-------+----------------+ |
+|           |         | | Value | Meaning        | |
+|           |         | +=======+================+ |
+|           |         | | 0     | First battery  | |
+|           |         | +-------+----------------+ |
+|           |         | | 1     | Second battery | |
+|           |         | +-------+----------------+ |
+|           |         |                            |
++-----------+---------+----------------------------+
 
 
 
