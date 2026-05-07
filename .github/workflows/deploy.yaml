@@ -6,7 +6,13 @@ on:
       - main
   schedule:
     - cron:  '0 0 */5 * *' # Runs every 5 days at midnight
+    - cron:  '0 0 1 * *'   # Runs on the 1st of each month to regenerate all versions
   workflow_dispatch: # Allows manual triggering
+    inputs:
+      since:
+        description: 'Override the "latest" date to regenerate older versions (ISO 8601, e.g. 2020-01-01)'
+        required: false
+        default: ''
 
 jobs:
   run-and-commit:
@@ -27,9 +33,22 @@ jobs:
           python -m pip install --upgrade pip GitPython packaging lxml emit xmltodict pymavlink
           # Add any other dependencies here
 
+      - name: Determine --since flag
+        id: since
+        run: |
+          # Monthly schedule (1st of month) → regenerate all versions
+          if [[ "${{ github.event.schedule }}" == "0 0 1 * *" ]]; then
+            echo "args=--since 2000-01-01" >> "$GITHUB_OUTPUT"
+          # Manual trigger with explicit since date
+          elif [[ -n "${{ github.event.inputs.since }}" ]]; then
+            echo "args=--since ${{ github.event.inputs.since }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "args=" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Run Python script
         run: |
-          python scripts/run_parsers.py
+          python scripts/run_parsers.py ${{ steps.since.outputs.args }}
           python scripts/json_from_xml.py
 
       - name: Commit and push if changed
