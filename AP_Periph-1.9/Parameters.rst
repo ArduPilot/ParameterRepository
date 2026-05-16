@@ -4385,68 +4385,6 @@ Barometer3 sensor ID\, taking into account its type\, bus and instance
 
 
 
-.. _BARO_FIELD_ELV:
-
-BARO\_FIELD\_ELV: field elevation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-User provided field elevation in meters\. This is used to improve the calculation of the altitude the vehicle is at\. This parameter is not persistent and will be reset to 0 every time the vehicle is rebooted\. Changes to this parameter will only be used when disarmed\. A value of 0 means the EKF origin height is used for takeoff height above sea level\.
-
-
-+-----------+--------+----------+
-| Increment | Units  | Volatile |
-+===========+========+==========+
-| 0.1       | meters | True     |
-+-----------+--------+----------+
-
-
-
-
-.. _BARO_ALTERR_MAX:
-
-BARO\_ALTERR\_MAX: Altitude error maximum
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-This is the maximum acceptable altitude discrepancy between GPS altitude and barometric presssure altitude calculated against a standard atmosphere for arming checks to pass\. If you are getting an arming error due to this parameter then you may have a faulty or substituted barometer\. A common issue is vendors replacing a MS5611 in a \"Pixhawk\" with a MS5607\. If you have that issue then please see BARO\_OPTIONS parameter to force the MS5611 to be treated as a MS5607\. This check is disabled if the value is zero\.
-
-
-+-----------+-----------+--------+
-| Increment | Range     | Units  |
-+===========+===========+========+
-| 1         | 0 to 5000 | meters |
-+-----------+-----------+--------+
-
-
-
-
-.. _BARO_OPTIONS:
-
-BARO\_OPTIONS: Barometer options
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Barometer options
-
-
-+----------------------------------+
-| Bitmask                          |
-+==================================+
-| +-----+------------------------+ |
-| | Bit | Meaning                | |
-| +=====+========================+ |
-| | 0   | Treat MS5611 as MS5607 | |
-| +-----+------------------------+ |
-|                                  |
-+----------------------------------+
-
-
-
-
 .. _BARO1_THST_SCALE:
 
 BARO1\_THST\_SCALE: Thrust compensation

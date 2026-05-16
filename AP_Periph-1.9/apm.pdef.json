@@ -1838,17 +1838,6 @@
       "User": "Advanced",
       "Volatile": "True"
     },
-    "BARO_ALTERR_MAX": {
-      "Description": "This is the maximum acceptable altitude discrepancy between GPS altitude and barometric presssure altitude calculated against a standard atmosphere for arming checks to pass. If you are getting an arming error due to this parameter then you may have a faulty or substituted barometer. A common issue is vendors replacing a MS5611 in a \"Pixhawk\" with a MS5607. If you have that issue then please see BARO_OPTIONS parameter to force the MS5611 to be treated as a MS5607. This check is disabled if the value is zero.",
-      "DisplayName": "Altitude error maximum",
-      "Increment": "1",
-      "Range": {
-        "high": "5000",
-        "low": "0"
-      },
-      "Units": "m",
-      "User": "Advanced"
-    },
     "BARO_ALT_OFFSET": {
       "Description": "altitude offset in meters added to barometric altitude. This is used to allow for automatic adjustment of the base barometric altitude by a ground station equipped with a barometer. The value is added to the barometric altitude read by the aircraft. It is automatically reset to 0 when the barometer is calibrated on each reboot or when a preflight calibration is performed.",
       "DisplayName": "altitude offset",
@@ -1867,14 +1856,6 @@
         "6": "Bus6"
       }
     },
-    "BARO_FIELD_ELV": {
-      "Description": "User provided field elevation in meters. This is used to improve the calculation of the altitude the vehicle is at. This parameter is not persistent and will be reset to 0 every time the vehicle is rebooted. Changes to this parameter will only be used when disarmed. A value of 0 means the EKF origin height is used for takeoff height above sea level.",
-      "DisplayName": "field elevation",
-      "Increment": "0.1",
-      "Units": "m",
-      "User": "Advanced",
-      "Volatile": "True"
-    },
     "BARO_FLTR_RNG": {
       "Description": "This sets the range around the average value that new samples must be within to be accepted. This can help reduce the impact of noise on sensors that are on long I2C cables. The value is a percentage from the average value. A value of zero disables this filter.",
       "DisplayName": "Range in which sample is accepted",
@@ -1892,14 +1873,6 @@
       "Units": "degC",
       "User": "Advanced",
       "Volatile": "True"
-    },
-    "BARO_OPTIONS": {
-      "Bitmask": {
-        "0": "Treat MS5611 as MS5607"
-      },
-      "Description": "Barometer options",
-      "DisplayName": "Barometer options",
-      "User": "Advanced"
     },
     "BARO_PRIMARY": {
       "Description": "This selects which barometer will be the primary if multiple barometers are found",

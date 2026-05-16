@@ -4902,49 +4902,6 @@ User provided field elevation in meters\. This is used to improve the calculatio
 
 
 
-.. _BARO_ALTERR_MAX:
-
-BARO\_ALTERR\_MAX: Altitude error maximum
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-This is the maximum acceptable altitude discrepancy between GPS altitude and barometric presssure altitude calculated against a standard atmosphere for arming checks to pass\. If you are getting an arming error due to this parameter then you may have a faulty or substituted barometer\. A common issue is vendors replacing a MS5611 in a \"Pixhawk\" with a MS5607\. If you have that issue then please see BARO\_OPTIONS parameter to force the MS5611 to be treated as a MS5607\. This check is disabled if the value is zero\.
-
-
-+-----------+-----------+--------+
-| Increment | Range     | Units  |
-+===========+===========+========+
-| 1         | 0 to 5000 | meters |
-+-----------+-----------+--------+
-
-
-
-
-.. _BARO_OPTIONS:
-
-BARO\_OPTIONS: Barometer options
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Barometer options
-
-
-+----------------------------------+
-| Bitmask                          |
-+==================================+
-| +-----+------------------------+ |
-| | Bit | Meaning                | |
-| +=====+========================+ |
-| | 0   | Treat MS5611 as MS5607 | |
-| +-----+------------------------+ |
-|                                  |
-+----------------------------------+
-
-
-
-
 .. _BARO1_THST_SCALE:
 
 BARO1\_THST\_SCALE: Thrust compensation
@@ -36043,7 +36000,7 @@ EK3\_OPTIONS: Optional EKF behaviour
 
 | *Note: This parameter is for advanced users*
 
-EKF optional behaviour\. Bit 0 \(JammingExpected\)\: Setting JammingExpected will change the EKF behaviour such that if dead reckoning navigation is possible it will require the preflight alignment GPS quality checks controlled by EK3\_GPS\_CHECK and EK3\_CHECK\_SCALE to pass before resuming GPS use if GPS lock is lost for more than 2 seconds to prevent bad position estimate\. Bit 1 \(Manual lane switching\)\: DANGEROUS \– If enabled\, this disables automatic lane switching\. If the active lane becomes unhealthy\, no automatic switching will occur\. Users must manually set EK3\_PRIMARY to change lanes\. No health checks will be performed on the selected lane\. Use with extreme caution\.  Bit 2 \(Optflow may use terrain alt\)\: Terrain SRTM data will be used if the vehicle climbs above the rangefinder\'s range allowing optical flow to be used at higher altitudes\.
+EKF optional behaviour\. Bit 0 \(JammingExpected\)\: Setting JammingExpected will change the EKF behaviour such that if dead reckoning navigation is possible it will require the preflight alignment GPS quality checks controlled by EK3\_GPS\_CHECK and EK3\_CHECK\_SCALE to pass before resuming GPS use if GPS lock is lost for more than 2 seconds to prevent bad position estimate\. Bit 1 \(Manual lane switching\)\: DANGEROUS \– If enabled\, this disables automatic lane switching\. If the active lane becomes unhealthy\, no automatic switching will occur\. Users must manually set EK3\_PRIMARY to change lanes\. No health checks will be performed on the selected lane\. Use with extreme caution\.  Bit 2 \(Optflow may use terrain alt\)\: Terrain SRTM data will be used if the vehicle climbs above the rangefinder\'s range allowing optical flow to be used at higher altitudes\. Bit 3 \(AGL KF for optflow scaling\)\: Use a 2\-state IMU\-aided AGL Kalman filter \(height \+ vertical velocity\, fused with rangefinder\) to compute the height\-above\-ground used for optical flow velocity scaling\, instead of terrainState\-pd\. This decouples optical flow scaling from errors in the main filter\'s vertical position state\.
 
 
 +---------------------------------------+
@@ -36057,6 +36014,8 @@ EKF optional behaviour\. Bit 0 \(JammingExpected\)\: Setting JammingExpected wil
 | | 1   | ManualLaneSwitching         | |
 | +-----+-----------------------------+ |
 | | 2   | Optflow may use terrain alt | |
+| +-----+-----------------------------+ |
+| | 3   | AGL KF for optflow scaling  | |
 | +-----+-----------------------------+ |
 |                                       |
 +---------------------------------------+
@@ -55419,6 +55378,8 @@ Function assigned to this RC channel
 | +-------+-------------------------+ |
 | | 186   | Mount POI Lock          | |
 | +-------+-------------------------+ |
+| | 187   | EKF Reset               | |
+| +-------+-------------------------+ |
 | | 218   | Loweheiser throttle     | |
 | +-------+-------------------------+ |
 | | 300   | Scripting1              | |
@@ -55636,6 +55597,8 @@ Function assigned to this RC channel
 | | 185   | Mount Roll/Pitch Lock   | |
 | +-------+-------------------------+ |
 | | 186   | Mount POI Lock          | |
+| +-------+-------------------------+ |
+| | 187   | EKF Reset               | |
 | +-------+-------------------------+ |
 | | 218   | Loweheiser throttle     | |
 | +-------+-------------------------+ |
@@ -55855,6 +55818,8 @@ Function assigned to this RC channel
 | +-------+-------------------------+ |
 | | 186   | Mount POI Lock          | |
 | +-------+-------------------------+ |
+| | 187   | EKF Reset               | |
+| +-------+-------------------------+ |
 | | 218   | Loweheiser throttle     | |
 | +-------+-------------------------+ |
 | | 300   | Scripting1              | |
@@ -56072,6 +56037,8 @@ Function assigned to this RC channel
 | | 185   | Mount Roll/Pitch Lock   | |
 | +-------+-------------------------+ |
 | | 186   | Mount POI Lock          | |
+| +-------+-------------------------+ |
+| | 187   | EKF Reset               | |
 | +-------+-------------------------+ |
 | | 218   | Loweheiser throttle     | |
 | +-------+-------------------------+ |
@@ -56291,6 +56258,8 @@ Function assigned to this RC channel
 | +-------+-------------------------+ |
 | | 186   | Mount POI Lock          | |
 | +-------+-------------------------+ |
+| | 187   | EKF Reset               | |
+| +-------+-------------------------+ |
 | | 218   | Loweheiser throttle     | |
 | +-------+-------------------------+ |
 | | 300   | Scripting1              | |
@@ -56508,6 +56477,8 @@ Function assigned to this RC channel
 | | 185   | Mount Roll/Pitch Lock   | |
 | +-------+-------------------------+ |
 | | 186   | Mount POI Lock          | |
+| +-------+-------------------------+ |
+| | 187   | EKF Reset               | |
 | +-------+-------------------------+ |
 | | 218   | Loweheiser throttle     | |
 | +-------+-------------------------+ |
@@ -56727,6 +56698,8 @@ Function assigned to this RC channel
 | +-------+-------------------------+ |
 | | 186   | Mount POI Lock          | |
 | +-------+-------------------------+ |
+| | 187   | EKF Reset               | |
+| +-------+-------------------------+ |
 | | 218   | Loweheiser throttle     | |
 | +-------+-------------------------+ |
 | | 300   | Scripting1              | |
@@ -56944,6 +56917,8 @@ Function assigned to this RC channel
 | | 185   | Mount Roll/Pitch Lock   | |
 | +-------+-------------------------+ |
 | | 186   | Mount POI Lock          | |
+| +-------+-------------------------+ |
+| | 187   | EKF Reset               | |
 | +-------+-------------------------+ |
 | | 218   | Loweheiser throttle     | |
 | +-------+-------------------------+ |
@@ -57163,6 +57138,8 @@ Function assigned to this RC channel
 | +-------+-------------------------+ |
 | | 186   | Mount POI Lock          | |
 | +-------+-------------------------+ |
+| | 187   | EKF Reset               | |
+| +-------+-------------------------+ |
 | | 218   | Loweheiser throttle     | |
 | +-------+-------------------------+ |
 | | 300   | Scripting1              | |
@@ -57380,6 +57357,8 @@ Function assigned to this RC channel
 | | 185   | Mount Roll/Pitch Lock   | |
 | +-------+-------------------------+ |
 | | 186   | Mount POI Lock          | |
+| +-------+-------------------------+ |
+| | 187   | EKF Reset               | |
 | +-------+-------------------------+ |
 | | 218   | Loweheiser throttle     | |
 | +-------+-------------------------+ |
@@ -57599,6 +57578,8 @@ Function assigned to this RC channel
 | +-------+-------------------------+ |
 | | 186   | Mount POI Lock          | |
 | +-------+-------------------------+ |
+| | 187   | EKF Reset               | |
+| +-------+-------------------------+ |
 | | 218   | Loweheiser throttle     | |
 | +-------+-------------------------+ |
 | | 300   | Scripting1              | |
@@ -57816,6 +57797,8 @@ Function assigned to this RC channel
 | | 185   | Mount Roll/Pitch Lock   | |
 | +-------+-------------------------+ |
 | | 186   | Mount POI Lock          | |
+| +-------+-------------------------+ |
+| | 187   | EKF Reset               | |
 | +-------+-------------------------+ |
 | | 218   | Loweheiser throttle     | |
 | +-------+-------------------------+ |
@@ -58035,6 +58018,8 @@ Function assigned to this RC channel
 | +-------+-------------------------+ |
 | | 186   | Mount POI Lock          | |
 | +-------+-------------------------+ |
+| | 187   | EKF Reset               | |
+| +-------+-------------------------+ |
 | | 218   | Loweheiser throttle     | |
 | +-------+-------------------------+ |
 | | 300   | Scripting1              | |
@@ -58252,6 +58237,8 @@ Function assigned to this RC channel
 | | 185   | Mount Roll/Pitch Lock   | |
 | +-------+-------------------------+ |
 | | 186   | Mount POI Lock          | |
+| +-------+-------------------------+ |
+| | 187   | EKF Reset               | |
 | +-------+-------------------------+ |
 | | 218   | Loweheiser throttle     | |
 | +-------+-------------------------+ |
@@ -58471,6 +58458,8 @@ Function assigned to this RC channel
 | +-------+-------------------------+ |
 | | 186   | Mount POI Lock          | |
 | +-------+-------------------------+ |
+| | 187   | EKF Reset               | |
+| +-------+-------------------------+ |
 | | 218   | Loweheiser throttle     | |
 | +-------+-------------------------+ |
 | | 300   | Scripting1              | |
@@ -58688,6 +58677,8 @@ Function assigned to this RC channel
 | | 185   | Mount Roll/Pitch Lock   | |
 | +-------+-------------------------+ |
 | | 186   | Mount POI Lock          | |
+| +-------+-------------------------+ |
+| | 187   | EKF Reset               | |
 | +-------+-------------------------+ |
 | | 218   | Loweheiser throttle     | |
 | +-------+-------------------------+ |

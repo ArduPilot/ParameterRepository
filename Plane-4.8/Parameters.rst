@@ -29353,6 +29353,8 @@ Auxiliary RC Options function executed on pin change
 | +-------+-----------------------------------------------------+ |
 | | 186   | Mount POI Lock                                      | |
 | +-------+-----------------------------------------------------+ |
+| | 187   | EKF Reset                                           | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -29609,6 +29611,8 @@ Auxiliary RC Options function executed on pin change
 | | 185   | Mount Roll/Pitch Lock                               | |
 | +-------+-----------------------------------------------------+ |
 | | 186   | Mount POI Lock                                      | |
+| +-------+-----------------------------------------------------+ |
+| | 187   | EKF Reset                                           | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -29867,6 +29871,8 @@ Auxiliary RC Options function executed on pin change
 | +-------+-----------------------------------------------------+ |
 | | 186   | Mount POI Lock                                      | |
 | +-------+-----------------------------------------------------+ |
+| | 187   | EKF Reset                                           | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -30123,6 +30129,8 @@ Auxiliary RC Options function executed on pin change
 | | 185   | Mount Roll/Pitch Lock                               | |
 | +-------+-----------------------------------------------------+ |
 | | 186   | Mount POI Lock                                      | |
+| +-------+-----------------------------------------------------+ |
+| | 187   | EKF Reset                                           | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -41616,7 +41624,7 @@ EK3\_OPTIONS: Optional EKF behaviour
 
 | *Note: This parameter is for advanced users*
 
-EKF optional behaviour\. Bit 0 \(JammingExpected\)\: Setting JammingExpected will change the EKF behaviour such that if dead reckoning navigation is possible it will require the preflight alignment GPS quality checks controlled by EK3\_GPS\_CHECK and EK3\_CHECK\_SCALE to pass before resuming GPS use if GPS lock is lost for more than 2 seconds to prevent bad position estimate\. Bit 1 \(Manual lane switching\)\: DANGEROUS \– If enabled\, this disables automatic lane switching\. If the active lane becomes unhealthy\, no automatic switching will occur\. Users must manually set EK3\_PRIMARY to change lanes\. No health checks will be performed on the selected lane\. Use with extreme caution\.  Bit 2 \(Optflow may use terrain alt\)\: Terrain SRTM data will be used if the vehicle climbs above the rangefinder\'s range allowing optical flow to be used at higher altitudes\.
+EKF optional behaviour\. Bit 0 \(JammingExpected\)\: Setting JammingExpected will change the EKF behaviour such that if dead reckoning navigation is possible it will require the preflight alignment GPS quality checks controlled by EK3\_GPS\_CHECK and EK3\_CHECK\_SCALE to pass before resuming GPS use if GPS lock is lost for more than 2 seconds to prevent bad position estimate\. Bit 1 \(Manual lane switching\)\: DANGEROUS \– If enabled\, this disables automatic lane switching\. If the active lane becomes unhealthy\, no automatic switching will occur\. Users must manually set EK3\_PRIMARY to change lanes\. No health checks will be performed on the selected lane\. Use with extreme caution\.  Bit 2 \(Optflow may use terrain alt\)\: Terrain SRTM data will be used if the vehicle climbs above the rangefinder\'s range allowing optical flow to be used at higher altitudes\. Bit 3 \(AGL KF for optflow scaling\)\: Use a 2\-state IMU\-aided AGL Kalman filter \(height \+ vertical velocity\, fused with rangefinder\) to compute the height\-above\-ground used for optical flow velocity scaling\, instead of terrainState\-pd\. This decouples optical flow scaling from errors in the main filter\'s vertical position state\.
 
 
 +---------------------------------------+
@@ -41630,6 +41638,8 @@ EKF optional behaviour\. Bit 0 \(JammingExpected\)\: Setting JammingExpected wil
 | | 1   | ManualLaneSwitching         | |
 | +-----+-----------------------------+ |
 | | 2   | Optflow may use terrain alt | |
+| +-----+-----------------------------+ |
+| | 3   | AGL KF for optflow scaling  | |
 | +-----+-----------------------------+ |
 |                                       |
 +---------------------------------------+
@@ -89854,6 +89864,8 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 186   | Mount POI Lock                                      | |
 | +-------+-----------------------------------------------------+ |
+| | 187   | EKF Reset                                           | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -90219,6 +90231,8 @@ Function assigned to this RC channel
 | | 185   | Mount Roll/Pitch Lock                               | |
 | +-------+-----------------------------------------------------+ |
 | | 186   | Mount POI Lock                                      | |
+| +-------+-----------------------------------------------------+ |
+| | 187   | EKF Reset                                           | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -90586,6 +90600,8 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 186   | Mount POI Lock                                      | |
 | +-------+-----------------------------------------------------+ |
+| | 187   | EKF Reset                                           | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -90951,6 +90967,8 @@ Function assigned to this RC channel
 | | 185   | Mount Roll/Pitch Lock                               | |
 | +-------+-----------------------------------------------------+ |
 | | 186   | Mount POI Lock                                      | |
+| +-------+-----------------------------------------------------+ |
+| | 187   | EKF Reset                                           | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -91318,6 +91336,8 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 186   | Mount POI Lock                                      | |
 | +-------+-----------------------------------------------------+ |
+| | 187   | EKF Reset                                           | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -91683,6 +91703,8 @@ Function assigned to this RC channel
 | | 185   | Mount Roll/Pitch Lock                               | |
 | +-------+-----------------------------------------------------+ |
 | | 186   | Mount POI Lock                                      | |
+| +-------+-----------------------------------------------------+ |
+| | 187   | EKF Reset                                           | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -92050,6 +92072,8 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 186   | Mount POI Lock                                      | |
 | +-------+-----------------------------------------------------+ |
+| | 187   | EKF Reset                                           | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -92415,6 +92439,8 @@ Function assigned to this RC channel
 | | 185   | Mount Roll/Pitch Lock                               | |
 | +-------+-----------------------------------------------------+ |
 | | 186   | Mount POI Lock                                      | |
+| +-------+-----------------------------------------------------+ |
+| | 187   | EKF Reset                                           | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -92782,6 +92808,8 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 186   | Mount POI Lock                                      | |
 | +-------+-----------------------------------------------------+ |
+| | 187   | EKF Reset                                           | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -93147,6 +93175,8 @@ Function assigned to this RC channel
 | | 185   | Mount Roll/Pitch Lock                               | |
 | +-------+-----------------------------------------------------+ |
 | | 186   | Mount POI Lock                                      | |
+| +-------+-----------------------------------------------------+ |
+| | 187   | EKF Reset                                           | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -93514,6 +93544,8 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 186   | Mount POI Lock                                      | |
 | +-------+-----------------------------------------------------+ |
+| | 187   | EKF Reset                                           | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -93879,6 +93911,8 @@ Function assigned to this RC channel
 | | 185   | Mount Roll/Pitch Lock                               | |
 | +-------+-----------------------------------------------------+ |
 | | 186   | Mount POI Lock                                      | |
+| +-------+-----------------------------------------------------+ |
+| | 187   | EKF Reset                                           | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -94246,6 +94280,8 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 186   | Mount POI Lock                                      | |
 | +-------+-----------------------------------------------------+ |
+| | 187   | EKF Reset                                           | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -94611,6 +94647,8 @@ Function assigned to this RC channel
 | | 185   | Mount Roll/Pitch Lock                               | |
 | +-------+-----------------------------------------------------+ |
 | | 186   | Mount POI Lock                                      | |
+| +-------+-----------------------------------------------------+ |
+| | 187   | EKF Reset                                           | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
@@ -94978,6 +95016,8 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 186   | Mount POI Lock                                      | |
 | +-------+-----------------------------------------------------+ |
+| | 187   | EKF Reset                                           | |
+| +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
 | | 209   | VTOL Forward Throttle                               | |
@@ -95343,6 +95383,8 @@ Function assigned to this RC channel
 | | 185   | Mount Roll/Pitch Lock                               | |
 | +-------+-----------------------------------------------------+ |
 | | 186   | Mount POI Lock                                      | |
+| +-------+-----------------------------------------------------+ |
+| | 187   | EKF Reset                                           | |
 | +-------+-----------------------------------------------------+ |
 | | 208   | Flap                                                | |
 | +-------+-----------------------------------------------------+ |
