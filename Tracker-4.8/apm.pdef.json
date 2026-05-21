@@ -1780,6 +1780,7 @@
     "BATT2_SHUNT": {
       "Description": "This sets the shunt resistor used in the device",
       "DisplayName": "Battery monitor shunt resistor",
+      "Increment": "0.0001",
       "Range": {
         "high": "0.01",
         "low": "0.0001"
@@ -2194,6 +2195,7 @@
     "BATT3_SHUNT": {
       "Description": "This sets the shunt resistor used in the device",
       "DisplayName": "Battery monitor shunt resistor",
+      "Increment": "0.0001",
       "Range": {
         "high": "0.01",
         "low": "0.0001"
@@ -2608,6 +2610,7 @@
     "BATT4_SHUNT": {
       "Description": "This sets the shunt resistor used in the device",
       "DisplayName": "Battery monitor shunt resistor",
+      "Increment": "0.0001",
       "Range": {
         "high": "0.01",
         "low": "0.0001"
@@ -3022,6 +3025,7 @@
     "BATT5_SHUNT": {
       "Description": "This sets the shunt resistor used in the device",
       "DisplayName": "Battery monitor shunt resistor",
+      "Increment": "0.0001",
       "Range": {
         "high": "0.01",
         "low": "0.0001"
@@ -3436,6 +3440,7 @@
     "BATT6_SHUNT": {
       "Description": "This sets the shunt resistor used in the device",
       "DisplayName": "Battery monitor shunt resistor",
+      "Increment": "0.0001",
       "Range": {
         "high": "0.01",
         "low": "0.0001"
@@ -3850,6 +3855,7 @@
     "BATT7_SHUNT": {
       "Description": "This sets the shunt resistor used in the device",
       "DisplayName": "Battery monitor shunt resistor",
+      "Increment": "0.0001",
       "Range": {
         "high": "0.01",
         "low": "0.0001"
@@ -4264,6 +4270,7 @@
     "BATT8_SHUNT": {
       "Description": "This sets the shunt resistor used in the device",
       "DisplayName": "Battery monitor shunt resistor",
+      "Increment": "0.0001",
       "Range": {
         "high": "0.01",
         "low": "0.0001"
@@ -4678,6 +4685,7 @@
     "BATT9_SHUNT": {
       "Description": "This sets the shunt resistor used in the device",
       "DisplayName": "Battery monitor shunt resistor",
+      "Increment": "0.0001",
       "Range": {
         "high": "0.01",
         "low": "0.0001"
@@ -5092,6 +5100,7 @@
     "BATTA_SHUNT": {
       "Description": "This sets the shunt resistor used in the device",
       "DisplayName": "Battery monitor shunt resistor",
+      "Increment": "0.0001",
       "Range": {
         "high": "0.01",
         "low": "0.0001"
@@ -5506,6 +5515,7 @@
     "BATTB_SHUNT": {
       "Description": "This sets the shunt resistor used in the device",
       "DisplayName": "Battery monitor shunt resistor",
+      "Increment": "0.0001",
       "Range": {
         "high": "0.01",
         "low": "0.0001"
@@ -5920,6 +5930,7 @@
     "BATTC_SHUNT": {
       "Description": "This sets the shunt resistor used in the device",
       "DisplayName": "Battery monitor shunt resistor",
+      "Increment": "0.0001",
       "Range": {
         "high": "0.01",
         "low": "0.0001"
@@ -6334,6 +6345,7 @@
     "BATTD_SHUNT": {
       "Description": "This sets the shunt resistor used in the device",
       "DisplayName": "Battery monitor shunt resistor",
+      "Increment": "0.0001",
       "Range": {
         "high": "0.01",
         "low": "0.0001"
@@ -6748,6 +6760,7 @@
     "BATTE_SHUNT": {
       "Description": "This sets the shunt resistor used in the device",
       "DisplayName": "Battery monitor shunt resistor",
+      "Increment": "0.0001",
       "Range": {
         "high": "0.01",
         "low": "0.0001"
@@ -7162,6 +7175,7 @@
     "BATTF_SHUNT": {
       "Description": "This sets the shunt resistor used in the device",
       "DisplayName": "Battery monitor shunt resistor",
+      "Increment": "0.0001",
       "Range": {
         "high": "0.01",
         "low": "0.0001"
@@ -7576,6 +7590,7 @@
     "BATTG_SHUNT": {
       "Description": "This sets the shunt resistor used in the device",
       "DisplayName": "Battery monitor shunt resistor",
+      "Increment": "0.0001",
       "Range": {
         "high": "0.01",
         "low": "0.0001"
@@ -7990,6 +8005,7 @@
     "BATT_SHUNT": {
       "Description": "This sets the shunt resistor used in the device",
       "DisplayName": "Battery monitor shunt resistor",
+      "Increment": "0.0001",
       "Range": {
         "high": "0.01",
         "low": "0.0001"

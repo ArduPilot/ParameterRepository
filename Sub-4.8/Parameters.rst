@@ -7294,11 +7294,11 @@ BATT2\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -7417,11 +7417,11 @@ BATT2\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -8482,11 +8482,11 @@ BATT3\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -8605,11 +8605,11 @@ BATT3\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -9670,11 +9670,11 @@ BATT4\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -9793,11 +9793,11 @@ BATT4\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -10858,11 +10858,11 @@ BATT5\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -10981,11 +10981,11 @@ BATT5\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -12046,11 +12046,11 @@ BATT6\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -12169,11 +12169,11 @@ BATT6\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -13234,11 +13234,11 @@ BATT7\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -13357,11 +13357,11 @@ BATT7\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -14422,11 +14422,11 @@ BATT8\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -14545,11 +14545,11 @@ BATT8\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -15610,11 +15610,11 @@ BATT9\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -15733,11 +15733,11 @@ BATT9\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -16798,11 +16798,11 @@ BATTA\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -16921,11 +16921,11 @@ BATTA\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -17986,11 +17986,11 @@ BATTB\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -18109,11 +18109,11 @@ BATTB\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -19174,11 +19174,11 @@ BATTC\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -19297,11 +19297,11 @@ BATTC\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -20362,11 +20362,11 @@ BATTD\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -20485,11 +20485,11 @@ BATTD\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -21550,11 +21550,11 @@ BATTE\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -21673,11 +21673,11 @@ BATTE\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -22738,11 +22738,11 @@ BATTF\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -22861,11 +22861,11 @@ BATTF\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -23926,11 +23926,11 @@ BATTG\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -24049,11 +24049,11 @@ BATTG\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -25114,11 +25114,11 @@ BATT\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -25237,11 +25237,11 @@ BATT\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -73134,7 +73134,7 @@ MOT\_FV\_CPLNG\_K: Forward\/vertical to pitch decoupling factor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Used to decouple pitch from forward\/vertical motion\. 0 to disable\, 1\.2 normal
+\(Vectored frame only\) Used to decouple pitch from forward\/vertical motion\. 0 to disable\, 1\.2 normal
 
 
 +-----------+------------+
@@ -105314,6 +105314,8 @@ Type of connected rangefinder
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
 | +-------+------------------------+ |
+| | 48    | LightWare-GRF-I2C      | |
+| +-------+------------------------+ |
 | | 100   | SITL                   | |
 | +-------+------------------------+ |
 |                                    |
@@ -105850,6 +105852,13 @@ RangeFinder Minimum signal strength \(SNR\) to accept distance
 
 
 
+
+.. _parameters_RNGFND1_GRF_:
+
+RNGFND1\_GRF\_ Parameters
+-------------------------
+
+
 .. _RNGFND1_GRF_RET:
 
 RNGFND1\_GRF\_RET: LightWare GRF Distance Return Type
@@ -105908,7 +105917,7 @@ RNGFND1\_GRF\_RATE: LightWare GRF Update Rate
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-The update rate of the sensor in Hz\. Must match the
+The update rate of the sensor in Hz\.
 
 
 +---------+
@@ -106035,6 +106044,8 @@ Type of connected rangefinder
 | | 46    | BenewakeTFS20L         | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
+| +-------+------------------------+ |
+| | 48    | LightWare-GRF-I2C      | |
 | +-------+------------------------+ |
 | | 100   | SITL                   | |
 | +-------+------------------------+ |
@@ -106572,6 +106583,13 @@ RangeFinder Minimum signal strength \(SNR\) to accept distance
 
 
 
+
+.. _parameters_RNGFND2_GRF_:
+
+RNGFND2\_GRF\_ Parameters
+-------------------------
+
+
 .. _RNGFND2_GRF_RET:
 
 RNGFND2\_GRF\_RET: LightWare GRF Distance Return Type
@@ -106630,7 +106648,7 @@ RNGFND2\_GRF\_RATE: LightWare GRF Update Rate
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-The update rate of the sensor in Hz\. Must match the
+The update rate of the sensor in Hz\.
 
 
 +---------+
@@ -106757,6 +106775,8 @@ Type of connected rangefinder
 | | 46    | BenewakeTFS20L         | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
+| +-------+------------------------+ |
+| | 48    | LightWare-GRF-I2C      | |
 | +-------+------------------------+ |
 | | 100   | SITL                   | |
 | +-------+------------------------+ |
@@ -107294,6 +107314,13 @@ RangeFinder Minimum signal strength \(SNR\) to accept distance
 
 
 
+
+.. _parameters_RNGFND3_GRF_:
+
+RNGFND3\_GRF\_ Parameters
+-------------------------
+
+
 .. _RNGFND3_GRF_RET:
 
 RNGFND3\_GRF\_RET: LightWare GRF Distance Return Type
@@ -107352,7 +107379,7 @@ RNGFND3\_GRF\_RATE: LightWare GRF Update Rate
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-The update rate of the sensor in Hz\. Must match the
+The update rate of the sensor in Hz\.
 
 
 +---------+
@@ -107479,6 +107506,8 @@ Type of connected rangefinder
 | | 46    | BenewakeTFS20L         | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
+| +-------+------------------------+ |
+| | 48    | LightWare-GRF-I2C      | |
 | +-------+------------------------+ |
 | | 100   | SITL                   | |
 | +-------+------------------------+ |
@@ -108016,6 +108045,13 @@ RangeFinder Minimum signal strength \(SNR\) to accept distance
 
 
 
+
+.. _parameters_RNGFND4_GRF_:
+
+RNGFND4\_GRF\_ Parameters
+-------------------------
+
+
 .. _RNGFND4_GRF_RET:
 
 RNGFND4\_GRF\_RET: LightWare GRF Distance Return Type
@@ -108074,7 +108110,7 @@ RNGFND4\_GRF\_RATE: LightWare GRF Update Rate
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-The update rate of the sensor in Hz\. Must match the
+The update rate of the sensor in Hz\.
 
 
 +---------+
@@ -108201,6 +108237,8 @@ Type of connected rangefinder
 | | 46    | BenewakeTFS20L         | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
+| +-------+------------------------+ |
+| | 48    | LightWare-GRF-I2C      | |
 | +-------+------------------------+ |
 | | 100   | SITL                   | |
 | +-------+------------------------+ |
@@ -108738,6 +108776,13 @@ RangeFinder Minimum signal strength \(SNR\) to accept distance
 
 
 
+
+.. _parameters_RNGFND5_GRF_:
+
+RNGFND5\_GRF\_ Parameters
+-------------------------
+
+
 .. _RNGFND5_GRF_RET:
 
 RNGFND5\_GRF\_RET: LightWare GRF Distance Return Type
@@ -108796,7 +108841,7 @@ RNGFND5\_GRF\_RATE: LightWare GRF Update Rate
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-The update rate of the sensor in Hz\. Must match the
+The update rate of the sensor in Hz\.
 
 
 +---------+
@@ -108923,6 +108968,8 @@ Type of connected rangefinder
 | | 46    | BenewakeTFS20L         | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
+| +-------+------------------------+ |
+| | 48    | LightWare-GRF-I2C      | |
 | +-------+------------------------+ |
 | | 100   | SITL                   | |
 | +-------+------------------------+ |
@@ -109460,6 +109507,13 @@ RangeFinder Minimum signal strength \(SNR\) to accept distance
 
 
 
+
+.. _parameters_RNGFND6_GRF_:
+
+RNGFND6\_GRF\_ Parameters
+-------------------------
+
+
 .. _RNGFND6_GRF_RET:
 
 RNGFND6\_GRF\_RET: LightWare GRF Distance Return Type
@@ -109518,7 +109572,7 @@ RNGFND6\_GRF\_RATE: LightWare GRF Update Rate
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-The update rate of the sensor in Hz\. Must match the
+The update rate of the sensor in Hz\.
 
 
 +---------+
@@ -109645,6 +109699,8 @@ Type of connected rangefinder
 | | 46    | BenewakeTFS20L         | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
+| +-------+------------------------+ |
+| | 48    | LightWare-GRF-I2C      | |
 | +-------+------------------------+ |
 | | 100   | SITL                   | |
 | +-------+------------------------+ |
@@ -110182,6 +110238,13 @@ RangeFinder Minimum signal strength \(SNR\) to accept distance
 
 
 
+
+.. _parameters_RNGFND7_GRF_:
+
+RNGFND7\_GRF\_ Parameters
+-------------------------
+
+
 .. _RNGFND7_GRF_RET:
 
 RNGFND7\_GRF\_RET: LightWare GRF Distance Return Type
@@ -110240,7 +110303,7 @@ RNGFND7\_GRF\_RATE: LightWare GRF Update Rate
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-The update rate of the sensor in Hz\. Must match the
+The update rate of the sensor in Hz\.
 
 
 +---------+
@@ -110367,6 +110430,8 @@ Type of connected rangefinder
 | | 46    | BenewakeTFS20L         | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
+| +-------+------------------------+ |
+| | 48    | LightWare-GRF-I2C      | |
 | +-------+------------------------+ |
 | | 100   | SITL                   | |
 | +-------+------------------------+ |
@@ -110904,6 +110969,13 @@ RangeFinder Minimum signal strength \(SNR\) to accept distance
 
 
 
+
+.. _parameters_RNGFND8_GRF_:
+
+RNGFND8\_GRF\_ Parameters
+-------------------------
+
+
 .. _RNGFND8_GRF_RET:
 
 RNGFND8\_GRF\_RET: LightWare GRF Distance Return Type
@@ -110962,7 +111034,7 @@ RNGFND8\_GRF\_RATE: LightWare GRF Update Rate
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-The update rate of the sensor in Hz\. Must match the
+The update rate of the sensor in Hz\.
 
 
 +---------+
@@ -111089,6 +111161,8 @@ Type of connected rangefinder
 | | 46    | BenewakeTFS20L         | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
+| +-------+------------------------+ |
+| | 48    | LightWare-GRF-I2C      | |
 | +-------+------------------------+ |
 | | 100   | SITL                   | |
 | +-------+------------------------+ |
@@ -111626,6 +111700,13 @@ RangeFinder Minimum signal strength \(SNR\) to accept distance
 
 
 
+
+.. _parameters_RNGFND9_GRF_:
+
+RNGFND9\_GRF\_ Parameters
+-------------------------
+
+
 .. _RNGFND9_GRF_RET:
 
 RNGFND9\_GRF\_RET: LightWare GRF Distance Return Type
@@ -111684,7 +111765,7 @@ RNGFND9\_GRF\_RATE: LightWare GRF Update Rate
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-The update rate of the sensor in Hz\. Must match the
+The update rate of the sensor in Hz\.
 
 
 +---------+
@@ -111811,6 +111892,8 @@ Type of connected rangefinder
 | | 46    | BenewakeTFS20L         | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
+| +-------+------------------------+ |
+| | 48    | LightWare-GRF-I2C      | |
 | +-------+------------------------+ |
 | | 100   | SITL                   | |
 | +-------+------------------------+ |
@@ -112348,6 +112431,13 @@ RangeFinder Minimum signal strength \(SNR\) to accept distance
 
 
 
+
+.. _parameters_RNGFNDA_GRF_:
+
+RNGFNDA\_GRF\_ Parameters
+-------------------------
+
+
 .. _RNGFNDA_GRF_RET:
 
 RNGFNDA\_GRF\_RET: LightWare GRF Distance Return Type
@@ -112406,7 +112496,7 @@ RNGFNDA\_GRF\_RATE: LightWare GRF Update Rate
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-The update rate of the sensor in Hz\. Must match the
+The update rate of the sensor in Hz\.
 
 
 +---------+

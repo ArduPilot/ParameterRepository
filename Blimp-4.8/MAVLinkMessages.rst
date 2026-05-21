@@ -296,7 +296,6 @@ Messages that can be requested/streamed from the autopilot.
   #105, `HIGHRES_IMU <https://mavlink.io/en/messages/common.html#HIGHRES_IMU>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #235, `HIGH_LATENCY2 <https://mavlink.io/en/messages/common.html#HIGH_LATENCY2>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #242, `HOME_POSITION <https://mavlink.io/en/messages/common.html#HOME_POSITION>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #165, `HWSTATUS <https://mavlink.io/en/messages/ardupilotmega.html#HWSTATUS>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
   #32, `LOCAL_POSITION_NED <https://mavlink.io/en/messages/common.html#LOCAL_POSITION_NED>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #191, `MAG_CAL_PROGRESS <https://mavlink.io/en/messages/ardupilotmega.html#MAG_CAL_PROGRESS>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
   #192, `MAG_CAL_REPORT <https://mavlink.io/en/messages/common.html#MAG_CAL_REPORT>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
@@ -396,7 +395,6 @@ Messages the autopilot will send automatically (unrequested).
   #0, `HEARTBEAT <https://mavlink.io/en/messages/minimal.html#HEARTBEAT>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, minimal
   #235, `HIGH_LATENCY2 <https://mavlink.io/en/messages/common.html#HIGH_LATENCY2>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #242, `HOME_POSITION <https://mavlink.io/en/messages/common.html#HOME_POSITION>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #165, `HWSTATUS <https://mavlink.io/en/messages/ardupilotmega.html#HWSTATUS>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
   #32, `LOCAL_POSITION_NED <https://mavlink.io/en/messages/common.html#LOCAL_POSITION_NED>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #118, `LOG_ENTRY <https://mavlink.io/en/messages/common.html#LOG_ENTRY>`_, `AP_Logger/AP_Logger_MAVLinkLogTransfer.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/AP_Logger/AP_Logger_MAVLinkLogTransfer.cpp>`_, common
   #191, `MAG_CAL_PROGRESS <https://mavlink.io/en/messages/ardupilotmega.html#MAG_CAL_PROGRESS>`_, `AP_Compass/AP_Compass_Calibration.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/AP_Compass/AP_Compass_Calibration.cpp>`_, ardupilotmega
@@ -539,6 +537,7 @@ Unsupported / unhandled messages.
   #107, `HIL_SENSOR <https://mavlink.io/en/messages/common.html#HIL_SENSOR>`_, UNSUPPORTED, common
   #90, `HIL_STATE <https://mavlink.io/en/messages/common.html#HIL_STATE>`_, UNSUPPORTED, common
   #115, `HIL_STATE_QUATERNION <https://mavlink.io/en/messages/common.html#HIL_STATE_QUATERNION>`_, UNSUPPORTED, common
+  #165, `HWSTATUS <https://mavlink.io/en/messages/ardupilotmega.html#HWSTATUS>`_, UNSUPPORTED, ardupilotmega
   #12920, `HYGROMETER_SENSOR <https://mavlink.io/en/messages/common.html#HYGROMETER_SENSOR>`_, UNSUPPORTED, common
   #42000, `ICAROUS_HEARTBEAT <https://mavlink.io/en/messages/icarous.html#ICAROUS_HEARTBEAT>`_, UNSUPPORTED, icarous
   #42001, `ICAROUS_KINEMATIC_BANDS <https://mavlink.io/en/messages/icarous.html#ICAROUS_KINEMATIC_BANDS>`_, UNSUPPORTED, icarous

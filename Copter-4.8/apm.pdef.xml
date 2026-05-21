@@ -4814,6 +4814,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT2_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -4861,6 +4862,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT2_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -5156,6 +5158,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT3_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -5203,6 +5206,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT3_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -5498,6 +5502,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT4_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -5545,6 +5550,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT4_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -5840,6 +5846,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT5_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -5887,6 +5894,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT5_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -6182,6 +6190,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT6_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -6229,6 +6238,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT6_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -6524,6 +6534,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT7_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -6571,6 +6582,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT7_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -6866,6 +6878,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT8_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -6913,6 +6926,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT8_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -7208,6 +7222,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT9_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -7255,6 +7270,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT9_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -7550,6 +7566,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTA_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -7597,6 +7614,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTA_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -7892,6 +7910,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTB_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -7939,6 +7958,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTB_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -8234,6 +8254,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTC_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -8281,6 +8302,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTC_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -8576,6 +8598,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTD_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -8623,6 +8646,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTD_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -8918,6 +8942,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTE_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -8965,6 +8990,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTE_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -9260,6 +9286,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTF_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -9307,6 +9334,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTF_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -9602,6 +9630,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTG_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -9649,6 +9678,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTG_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -9944,6 +9974,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -9991,6 +10022,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -30617,6 +30649,7 @@
           <value code="3">LidarLite-I2C</value>
           <value code="15">LidarLiteV3-I2C</value>
           <value code="45">LightWare-GRF</value>
+          <value code="48">LightWare-GRF-I2C</value>
           <value code="7">LightWareI2C</value>
           <value code="8">LightWareSerial</value>
           <value code="36">Lua_Scripting</value>
@@ -30784,6 +30817,8 @@
       <param humanName="RangeFinder Minimum signal strength" name="RNGFND1_SNR_MIN" documentation="RangeFinder Minimum signal strength (SNR) to accept distance" user="Advanced">
         <field name="Range">0 65535</field>
       </param>
+    </parameters>
+    <parameters name="RNGFND1_GRF_">
       <param humanName="LightWare GRF Distance Return Type" name="RNGFND1_GRF_RET" documentation="Selects which single return to use." user="Standard">
         <values>
           <value code="0">FirstRaw</value>
@@ -30797,7 +30832,7 @@
         <field name="Range">0 255</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="LightWare GRF Update Rate" name="RNGFND1_GRF_RATE" documentation="The update rate of the sensor in Hz. Must match the" user="Advanced">
+      <param humanName="LightWare GRF Update Rate" name="RNGFND1_GRF_RATE" documentation="The update rate of the sensor in Hz." user="Advanced">
         <field name="Range">1 50</field>
         <field name="RebootRequired">True</field>
       </param>
@@ -30830,6 +30865,7 @@
           <value code="3">LidarLite-I2C</value>
           <value code="15">LidarLiteV3-I2C</value>
           <value code="45">LightWare-GRF</value>
+          <value code="48">LightWare-GRF-I2C</value>
           <value code="7">LightWareI2C</value>
           <value code="8">LightWareSerial</value>
           <value code="36">Lua_Scripting</value>
@@ -30997,6 +31033,8 @@
       <param humanName="RangeFinder Minimum signal strength" name="RNGFND2_SNR_MIN" documentation="RangeFinder Minimum signal strength (SNR) to accept distance" user="Advanced">
         <field name="Range">0 65535</field>
       </param>
+    </parameters>
+    <parameters name="RNGFND2_GRF_">
       <param humanName="LightWare GRF Distance Return Type" name="RNGFND2_GRF_RET" documentation="Selects which single return to use." user="Standard">
         <values>
           <value code="0">FirstRaw</value>
@@ -31010,7 +31048,7 @@
         <field name="Range">0 255</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="LightWare GRF Update Rate" name="RNGFND2_GRF_RATE" documentation="The update rate of the sensor in Hz. Must match the" user="Advanced">
+      <param humanName="LightWare GRF Update Rate" name="RNGFND2_GRF_RATE" documentation="The update rate of the sensor in Hz." user="Advanced">
         <field name="Range">1 50</field>
         <field name="RebootRequired">True</field>
       </param>
@@ -31043,6 +31081,7 @@
           <value code="3">LidarLite-I2C</value>
           <value code="15">LidarLiteV3-I2C</value>
           <value code="45">LightWare-GRF</value>
+          <value code="48">LightWare-GRF-I2C</value>
           <value code="7">LightWareI2C</value>
           <value code="8">LightWareSerial</value>
           <value code="36">Lua_Scripting</value>
@@ -31210,6 +31249,8 @@
       <param humanName="RangeFinder Minimum signal strength" name="RNGFND3_SNR_MIN" documentation="RangeFinder Minimum signal strength (SNR) to accept distance" user="Advanced">
         <field name="Range">0 65535</field>
       </param>
+    </parameters>
+    <parameters name="RNGFND3_GRF_">
       <param humanName="LightWare GRF Distance Return Type" name="RNGFND3_GRF_RET" documentation="Selects which single return to use." user="Standard">
         <values>
           <value code="0">FirstRaw</value>
@@ -31223,7 +31264,7 @@
         <field name="Range">0 255</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="LightWare GRF Update Rate" name="RNGFND3_GRF_RATE" documentation="The update rate of the sensor in Hz. Must match the" user="Advanced">
+      <param humanName="LightWare GRF Update Rate" name="RNGFND3_GRF_RATE" documentation="The update rate of the sensor in Hz." user="Advanced">
         <field name="Range">1 50</field>
         <field name="RebootRequired">True</field>
       </param>
@@ -31256,6 +31297,7 @@
           <value code="3">LidarLite-I2C</value>
           <value code="15">LidarLiteV3-I2C</value>
           <value code="45">LightWare-GRF</value>
+          <value code="48">LightWare-GRF-I2C</value>
           <value code="7">LightWareI2C</value>
           <value code="8">LightWareSerial</value>
           <value code="36">Lua_Scripting</value>
@@ -31423,6 +31465,8 @@
       <param humanName="RangeFinder Minimum signal strength" name="RNGFND4_SNR_MIN" documentation="RangeFinder Minimum signal strength (SNR) to accept distance" user="Advanced">
         <field name="Range">0 65535</field>
       </param>
+    </parameters>
+    <parameters name="RNGFND4_GRF_">
       <param humanName="LightWare GRF Distance Return Type" name="RNGFND4_GRF_RET" documentation="Selects which single return to use." user="Standard">
         <values>
           <value code="0">FirstRaw</value>
@@ -31436,7 +31480,7 @@
         <field name="Range">0 255</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="LightWare GRF Update Rate" name="RNGFND4_GRF_RATE" documentation="The update rate of the sensor in Hz. Must match the" user="Advanced">
+      <param humanName="LightWare GRF Update Rate" name="RNGFND4_GRF_RATE" documentation="The update rate of the sensor in Hz." user="Advanced">
         <field name="Range">1 50</field>
         <field name="RebootRequired">True</field>
       </param>
@@ -31469,6 +31513,7 @@
           <value code="3">LidarLite-I2C</value>
           <value code="15">LidarLiteV3-I2C</value>
           <value code="45">LightWare-GRF</value>
+          <value code="48">LightWare-GRF-I2C</value>
           <value code="7">LightWareI2C</value>
           <value code="8">LightWareSerial</value>
           <value code="36">Lua_Scripting</value>
@@ -31636,6 +31681,8 @@
       <param humanName="RangeFinder Minimum signal strength" name="RNGFND5_SNR_MIN" documentation="RangeFinder Minimum signal strength (SNR) to accept distance" user="Advanced">
         <field name="Range">0 65535</field>
       </param>
+    </parameters>
+    <parameters name="RNGFND5_GRF_">
       <param humanName="LightWare GRF Distance Return Type" name="RNGFND5_GRF_RET" documentation="Selects which single return to use." user="Standard">
         <values>
           <value code="0">FirstRaw</value>
@@ -31649,7 +31696,7 @@
         <field name="Range">0 255</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="LightWare GRF Update Rate" name="RNGFND5_GRF_RATE" documentation="The update rate of the sensor in Hz. Must match the" user="Advanced">
+      <param humanName="LightWare GRF Update Rate" name="RNGFND5_GRF_RATE" documentation="The update rate of the sensor in Hz." user="Advanced">
         <field name="Range">1 50</field>
         <field name="RebootRequired">True</field>
       </param>
@@ -31682,6 +31729,7 @@
           <value code="3">LidarLite-I2C</value>
           <value code="15">LidarLiteV3-I2C</value>
           <value code="45">LightWare-GRF</value>
+          <value code="48">LightWare-GRF-I2C</value>
           <value code="7">LightWareI2C</value>
           <value code="8">LightWareSerial</value>
           <value code="36">Lua_Scripting</value>
@@ -31849,6 +31897,8 @@
       <param humanName="RangeFinder Minimum signal strength" name="RNGFND6_SNR_MIN" documentation="RangeFinder Minimum signal strength (SNR) to accept distance" user="Advanced">
         <field name="Range">0 65535</field>
       </param>
+    </parameters>
+    <parameters name="RNGFND6_GRF_">
       <param humanName="LightWare GRF Distance Return Type" name="RNGFND6_GRF_RET" documentation="Selects which single return to use." user="Standard">
         <values>
           <value code="0">FirstRaw</value>
@@ -31862,7 +31912,7 @@
         <field name="Range">0 255</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="LightWare GRF Update Rate" name="RNGFND6_GRF_RATE" documentation="The update rate of the sensor in Hz. Must match the" user="Advanced">
+      <param humanName="LightWare GRF Update Rate" name="RNGFND6_GRF_RATE" documentation="The update rate of the sensor in Hz." user="Advanced">
         <field name="Range">1 50</field>
         <field name="RebootRequired">True</field>
       </param>
@@ -31895,6 +31945,7 @@
           <value code="3">LidarLite-I2C</value>
           <value code="15">LidarLiteV3-I2C</value>
           <value code="45">LightWare-GRF</value>
+          <value code="48">LightWare-GRF-I2C</value>
           <value code="7">LightWareI2C</value>
           <value code="8">LightWareSerial</value>
           <value code="36">Lua_Scripting</value>
@@ -32062,6 +32113,8 @@
       <param humanName="RangeFinder Minimum signal strength" name="RNGFND7_SNR_MIN" documentation="RangeFinder Minimum signal strength (SNR) to accept distance" user="Advanced">
         <field name="Range">0 65535</field>
       </param>
+    </parameters>
+    <parameters name="RNGFND7_GRF_">
       <param humanName="LightWare GRF Distance Return Type" name="RNGFND7_GRF_RET" documentation="Selects which single return to use." user="Standard">
         <values>
           <value code="0">FirstRaw</value>
@@ -32075,7 +32128,7 @@
         <field name="Range">0 255</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="LightWare GRF Update Rate" name="RNGFND7_GRF_RATE" documentation="The update rate of the sensor in Hz. Must match the" user="Advanced">
+      <param humanName="LightWare GRF Update Rate" name="RNGFND7_GRF_RATE" documentation="The update rate of the sensor in Hz." user="Advanced">
         <field name="Range">1 50</field>
         <field name="RebootRequired">True</field>
       </param>
@@ -32108,6 +32161,7 @@
           <value code="3">LidarLite-I2C</value>
           <value code="15">LidarLiteV3-I2C</value>
           <value code="45">LightWare-GRF</value>
+          <value code="48">LightWare-GRF-I2C</value>
           <value code="7">LightWareI2C</value>
           <value code="8">LightWareSerial</value>
           <value code="36">Lua_Scripting</value>
@@ -32275,6 +32329,8 @@
       <param humanName="RangeFinder Minimum signal strength" name="RNGFND8_SNR_MIN" documentation="RangeFinder Minimum signal strength (SNR) to accept distance" user="Advanced">
         <field name="Range">0 65535</field>
       </param>
+    </parameters>
+    <parameters name="RNGFND8_GRF_">
       <param humanName="LightWare GRF Distance Return Type" name="RNGFND8_GRF_RET" documentation="Selects which single return to use." user="Standard">
         <values>
           <value code="0">FirstRaw</value>
@@ -32288,7 +32344,7 @@
         <field name="Range">0 255</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="LightWare GRF Update Rate" name="RNGFND8_GRF_RATE" documentation="The update rate of the sensor in Hz. Must match the" user="Advanced">
+      <param humanName="LightWare GRF Update Rate" name="RNGFND8_GRF_RATE" documentation="The update rate of the sensor in Hz." user="Advanced">
         <field name="Range">1 50</field>
         <field name="RebootRequired">True</field>
       </param>
@@ -32321,6 +32377,7 @@
           <value code="3">LidarLite-I2C</value>
           <value code="15">LidarLiteV3-I2C</value>
           <value code="45">LightWare-GRF</value>
+          <value code="48">LightWare-GRF-I2C</value>
           <value code="7">LightWareI2C</value>
           <value code="8">LightWareSerial</value>
           <value code="36">Lua_Scripting</value>
@@ -32488,6 +32545,8 @@
       <param humanName="RangeFinder Minimum signal strength" name="RNGFND9_SNR_MIN" documentation="RangeFinder Minimum signal strength (SNR) to accept distance" user="Advanced">
         <field name="Range">0 65535</field>
       </param>
+    </parameters>
+    <parameters name="RNGFND9_GRF_">
       <param humanName="LightWare GRF Distance Return Type" name="RNGFND9_GRF_RET" documentation="Selects which single return to use." user="Standard">
         <values>
           <value code="0">FirstRaw</value>
@@ -32501,7 +32560,7 @@
         <field name="Range">0 255</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="LightWare GRF Update Rate" name="RNGFND9_GRF_RATE" documentation="The update rate of the sensor in Hz. Must match the" user="Advanced">
+      <param humanName="LightWare GRF Update Rate" name="RNGFND9_GRF_RATE" documentation="The update rate of the sensor in Hz." user="Advanced">
         <field name="Range">1 50</field>
         <field name="RebootRequired">True</field>
       </param>
@@ -32534,6 +32593,7 @@
           <value code="3">LidarLite-I2C</value>
           <value code="15">LidarLiteV3-I2C</value>
           <value code="45">LightWare-GRF</value>
+          <value code="48">LightWare-GRF-I2C</value>
           <value code="7">LightWareI2C</value>
           <value code="8">LightWareSerial</value>
           <value code="36">Lua_Scripting</value>
@@ -32701,6 +32761,8 @@
       <param humanName="RangeFinder Minimum signal strength" name="RNGFNDA_SNR_MIN" documentation="RangeFinder Minimum signal strength (SNR) to accept distance" user="Advanced">
         <field name="Range">0 65535</field>
       </param>
+    </parameters>
+    <parameters name="RNGFNDA_GRF_">
       <param humanName="LightWare GRF Distance Return Type" name="RNGFNDA_GRF_RET" documentation="Selects which single return to use." user="Standard">
         <values>
           <value code="0">FirstRaw</value>
@@ -32714,7 +32776,7 @@
         <field name="Range">0 255</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="LightWare GRF Update Rate" name="RNGFNDA_GRF_RATE" documentation="The update rate of the sensor in Hz. Must match the" user="Advanced">
+      <param humanName="LightWare GRF Update Rate" name="RNGFNDA_GRF_RATE" documentation="The update rate of the sensor in Hz." user="Advanced">
         <field name="Range">1 50</field>
         <field name="RebootRequired">True</field>
       </param>

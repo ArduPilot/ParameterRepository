@@ -6260,11 +6260,11 @@ BATT2\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -6383,11 +6383,11 @@ BATT2\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -7444,11 +7444,11 @@ BATT3\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -7567,11 +7567,11 @@ BATT3\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -8628,11 +8628,11 @@ BATT4\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -8751,11 +8751,11 @@ BATT4\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -9812,11 +9812,11 @@ BATT5\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -9935,11 +9935,11 @@ BATT5\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -10996,11 +10996,11 @@ BATT6\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -11119,11 +11119,11 @@ BATT6\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -12180,11 +12180,11 @@ BATT7\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -12303,11 +12303,11 @@ BATT7\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -13364,11 +13364,11 @@ BATT8\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -13487,11 +13487,11 @@ BATT8\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -14548,11 +14548,11 @@ BATT9\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -14671,11 +14671,11 @@ BATT9\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -15732,11 +15732,11 @@ BATTA\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -15855,11 +15855,11 @@ BATTA\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -16916,11 +16916,11 @@ BATTB\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -17039,11 +17039,11 @@ BATTB\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -18100,11 +18100,11 @@ BATTC\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -18223,11 +18223,11 @@ BATTC\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -19284,11 +19284,11 @@ BATTD\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -19407,11 +19407,11 @@ BATTD\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -20468,11 +20468,11 @@ BATTE\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -20591,11 +20591,11 @@ BATTE\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -21652,11 +21652,11 @@ BATTF\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -21775,11 +21775,11 @@ BATTF\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -22836,11 +22836,11 @@ BATTG\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -22959,11 +22959,11 @@ BATTG\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -24020,11 +24020,11 @@ BATT\_SHUNT \(AP\_BattMonitor\_INA2xx\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 
@@ -24143,11 +24143,11 @@ BATT\_SHUNT \(AP\_BattMonitor\_INA239\): Battery monitor shunt resistor
 This sets the shunt resistor used in the device
 
 
-+----------------+-------+
-| Range          | Units |
-+================+=======+
-| 0.0001 to 0.01 | Ohm   |
-+----------------+-------+
++-----------+----------------+-------+
+| Increment | Range          | Units |
++===========+================+=======+
+| 0.0001    | 0.0001 to 0.01 | Ohm   |
++-----------+----------------+-------+
 
 
 

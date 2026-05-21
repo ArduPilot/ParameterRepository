@@ -3052,6 +3052,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT2_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -3099,6 +3100,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT2_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -3380,6 +3382,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT3_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -3427,6 +3430,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT3_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -3708,6 +3712,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT4_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -3755,6 +3760,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT4_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -4036,6 +4042,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT5_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -4083,6 +4090,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT5_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -4364,6 +4372,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT6_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -4411,6 +4420,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT6_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -4692,6 +4702,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT7_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -4739,6 +4750,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT7_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -5020,6 +5032,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT8_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -5067,6 +5080,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT8_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -5348,6 +5362,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT9_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -5395,6 +5410,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT9_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -5676,6 +5692,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTA_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -5723,6 +5740,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTA_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -6004,6 +6022,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTB_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -6051,6 +6070,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTB_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -6332,6 +6352,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTC_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -6379,6 +6400,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTC_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -6660,6 +6682,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTD_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -6707,6 +6730,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTD_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -6988,6 +7012,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTE_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -7035,6 +7060,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTE_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -7316,6 +7342,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTF_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -7363,6 +7390,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTF_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -7644,6 +7672,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTG_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -7691,6 +7720,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATTG_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -7972,6 +8002,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>
@@ -8019,6 +8050,7 @@
       </param>
       <param humanName="Battery monitor shunt resistor" name="BATT_SHUNT" documentation="This sets the shunt resistor used in the device" user="Advanced">
         <field name="Range">0.0001 0.01</field>
+        <field name="Increment">0.0001</field>
         <field name="Units">Ohm</field>
         <field name="UnitText">Ohm</field>
       </param>

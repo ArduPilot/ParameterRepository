@@ -6383,6 +6383,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATT2_ESC_MASK: ESC mask
@@ -6408,6 +6410,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -6900,6 +6904,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATT3_ESC_MASK: ESC mask
@@ -6925,6 +6931,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -7417,6 +7425,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATT4_ESC_MASK: ESC mask
@@ -7442,6 +7452,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -7934,6 +7946,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATT5_ESC_MASK: ESC mask
@@ -7959,6 +7973,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -8451,6 +8467,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATT6_ESC_MASK: ESC mask
@@ -8476,6 +8494,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -8968,6 +8988,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATT7_ESC_MASK: ESC mask
@@ -8993,6 +9015,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -9485,6 +9509,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATT8_ESC_MASK: ESC mask
@@ -9510,6 +9536,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -10002,6 +10030,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATT9_ESC_MASK: ESC mask
@@ -10027,6 +10057,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -10519,6 +10551,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATTA_ESC_MASK: ESC mask
@@ -10544,6 +10578,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -11036,6 +11072,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATTB_ESC_MASK: ESC mask
@@ -11061,6 +11099,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -11553,6 +11593,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATTC_ESC_MASK: ESC mask
@@ -11578,6 +11620,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -12070,6 +12114,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATTD_ESC_MASK: ESC mask
@@ -12095,6 +12141,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -12587,6 +12635,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATTE_ESC_MASK: ESC mask
@@ -12612,6 +12662,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -13104,6 +13156,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATTF_ESC_MASK: ESC mask
@@ -13129,6 +13183,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -13621,6 +13677,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATTG_ESC_MASK: ESC mask
@@ -13646,6 +13704,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -14138,6 +14198,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATT_ESC_MASK: ESC mask
@@ -14163,6 +14225,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -43577,6 +43641,7 @@ Type of connected rangefinder
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
 |47|DTS6012M-Serial|
+|48|LightWare-GRF-I2C|
 |100|SITL|
 
 ## RNGFND1_PIN: Rangefinder pin
@@ -43821,6 +43886,8 @@ RangeFinder Minimum signal strength (SNR) to accept distance
 
 - Range: 0 65535
 
+# RNGFND1GRF Parameters
+
 ## RNGFND1_GRF_RET: LightWare GRF Distance Return Type
 
 Selects which single return to use.
@@ -43848,7 +43915,7 @@ Minimum acceptable return signal strength in dB. Returns weaker than this will b
 
 *Note: This parameter is for advanced users*
 
-The update rate of the sensor in Hz. Must match the
+The update rate of the sensor in Hz.
 
 - Range: 1 50
 
@@ -43909,6 +43976,7 @@ Type of connected rangefinder
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
 |47|DTS6012M-Serial|
+|48|LightWare-GRF-I2C|
 |100|SITL|
 
 ## RNGFND2_PIN: Rangefinder pin
@@ -44153,6 +44221,8 @@ RangeFinder Minimum signal strength (SNR) to accept distance
 
 - Range: 0 65535
 
+# RNGFND2GRF Parameters
+
 ## RNGFND2_GRF_RET: LightWare GRF Distance Return Type
 
 Selects which single return to use.
@@ -44180,7 +44250,7 @@ Minimum acceptable return signal strength in dB. Returns weaker than this will b
 
 *Note: This parameter is for advanced users*
 
-The update rate of the sensor in Hz. Must match the
+The update rate of the sensor in Hz.
 
 - Range: 1 50
 
@@ -44241,6 +44311,7 @@ Type of connected rangefinder
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
 |47|DTS6012M-Serial|
+|48|LightWare-GRF-I2C|
 |100|SITL|
 
 ## RNGFND3_PIN: Rangefinder pin
@@ -44485,6 +44556,8 @@ RangeFinder Minimum signal strength (SNR) to accept distance
 
 - Range: 0 65535
 
+# RNGFND3GRF Parameters
+
 ## RNGFND3_GRF_RET: LightWare GRF Distance Return Type
 
 Selects which single return to use.
@@ -44512,7 +44585,7 @@ Minimum acceptable return signal strength in dB. Returns weaker than this will b
 
 *Note: This parameter is for advanced users*
 
-The update rate of the sensor in Hz. Must match the
+The update rate of the sensor in Hz.
 
 - Range: 1 50
 
@@ -44573,6 +44646,7 @@ Type of connected rangefinder
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
 |47|DTS6012M-Serial|
+|48|LightWare-GRF-I2C|
 |100|SITL|
 
 ## RNGFND4_PIN: Rangefinder pin
@@ -44817,6 +44891,8 @@ RangeFinder Minimum signal strength (SNR) to accept distance
 
 - Range: 0 65535
 
+# RNGFND4GRF Parameters
+
 ## RNGFND4_GRF_RET: LightWare GRF Distance Return Type
 
 Selects which single return to use.
@@ -44844,7 +44920,7 @@ Minimum acceptable return signal strength in dB. Returns weaker than this will b
 
 *Note: This parameter is for advanced users*
 
-The update rate of the sensor in Hz. Must match the
+The update rate of the sensor in Hz.
 
 - Range: 1 50
 
@@ -44905,6 +44981,7 @@ Type of connected rangefinder
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
 |47|DTS6012M-Serial|
+|48|LightWare-GRF-I2C|
 |100|SITL|
 
 ## RNGFND5_PIN: Rangefinder pin
@@ -45149,6 +45226,8 @@ RangeFinder Minimum signal strength (SNR) to accept distance
 
 - Range: 0 65535
 
+# RNGFND5GRF Parameters
+
 ## RNGFND5_GRF_RET: LightWare GRF Distance Return Type
 
 Selects which single return to use.
@@ -45176,7 +45255,7 @@ Minimum acceptable return signal strength in dB. Returns weaker than this will b
 
 *Note: This parameter is for advanced users*
 
-The update rate of the sensor in Hz. Must match the
+The update rate of the sensor in Hz.
 
 - Range: 1 50
 
@@ -45237,6 +45316,7 @@ Type of connected rangefinder
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
 |47|DTS6012M-Serial|
+|48|LightWare-GRF-I2C|
 |100|SITL|
 
 ## RNGFND6_PIN: Rangefinder pin
@@ -45481,6 +45561,8 @@ RangeFinder Minimum signal strength (SNR) to accept distance
 
 - Range: 0 65535
 
+# RNGFND6GRF Parameters
+
 ## RNGFND6_GRF_RET: LightWare GRF Distance Return Type
 
 Selects which single return to use.
@@ -45508,7 +45590,7 @@ Minimum acceptable return signal strength in dB. Returns weaker than this will b
 
 *Note: This parameter is for advanced users*
 
-The update rate of the sensor in Hz. Must match the
+The update rate of the sensor in Hz.
 
 - Range: 1 50
 
@@ -45569,6 +45651,7 @@ Type of connected rangefinder
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
 |47|DTS6012M-Serial|
+|48|LightWare-GRF-I2C|
 |100|SITL|
 
 ## RNGFND7_PIN: Rangefinder pin
@@ -45813,6 +45896,8 @@ RangeFinder Minimum signal strength (SNR) to accept distance
 
 - Range: 0 65535
 
+# RNGFND7GRF Parameters
+
 ## RNGFND7_GRF_RET: LightWare GRF Distance Return Type
 
 Selects which single return to use.
@@ -45840,7 +45925,7 @@ Minimum acceptable return signal strength in dB. Returns weaker than this will b
 
 *Note: This parameter is for advanced users*
 
-The update rate of the sensor in Hz. Must match the
+The update rate of the sensor in Hz.
 
 - Range: 1 50
 
@@ -45901,6 +45986,7 @@ Type of connected rangefinder
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
 |47|DTS6012M-Serial|
+|48|LightWare-GRF-I2C|
 |100|SITL|
 
 ## RNGFND8_PIN: Rangefinder pin
@@ -46145,6 +46231,8 @@ RangeFinder Minimum signal strength (SNR) to accept distance
 
 - Range: 0 65535
 
+# RNGFND8GRF Parameters
+
 ## RNGFND8_GRF_RET: LightWare GRF Distance Return Type
 
 Selects which single return to use.
@@ -46172,7 +46260,7 @@ Minimum acceptable return signal strength in dB. Returns weaker than this will b
 
 *Note: This parameter is for advanced users*
 
-The update rate of the sensor in Hz. Must match the
+The update rate of the sensor in Hz.
 
 - Range: 1 50
 
@@ -46233,6 +46321,7 @@ Type of connected rangefinder
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
 |47|DTS6012M-Serial|
+|48|LightWare-GRF-I2C|
 |100|SITL|
 
 ## RNGFND9_PIN: Rangefinder pin
@@ -46477,6 +46566,8 @@ RangeFinder Minimum signal strength (SNR) to accept distance
 
 - Range: 0 65535
 
+# RNGFND9GRF Parameters
+
 ## RNGFND9_GRF_RET: LightWare GRF Distance Return Type
 
 Selects which single return to use.
@@ -46504,7 +46595,7 @@ Minimum acceptable return signal strength in dB. Returns weaker than this will b
 
 *Note: This parameter is for advanced users*
 
-The update rate of the sensor in Hz. Must match the
+The update rate of the sensor in Hz.
 
 - Range: 1 50
 
@@ -46565,6 +46656,7 @@ Type of connected rangefinder
 |45|LightWare-GRF|
 |46|BenewakeTFS20L|
 |47|DTS6012M-Serial|
+|48|LightWare-GRF-I2C|
 |100|SITL|
 
 ## RNGFNDA_PIN: Rangefinder pin
@@ -46809,6 +46901,8 @@ RangeFinder Minimum signal strength (SNR) to accept distance
 
 - Range: 0 65535
 
+# RNGFNDAGRF Parameters
+
 ## RNGFNDA_GRF_RET: LightWare GRF Distance Return Type
 
 Selects which single return to use.
@@ -46836,7 +46930,7 @@ Minimum acceptable return signal strength in dB. Returns weaker than this will b
 
 *Note: This parameter is for advanced users*
 
-The update rate of the sensor in Hz. Must match the
+The update rate of the sensor in Hz.
 
 - Range: 1 50
 

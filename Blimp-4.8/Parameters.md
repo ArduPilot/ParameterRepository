@@ -5287,6 +5287,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATT2_ESC_MASK: ESC mask
@@ -5312,6 +5314,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -5782,6 +5786,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATT3_ESC_MASK: ESC mask
@@ -5807,6 +5813,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -6277,6 +6285,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATT4_ESC_MASK: ESC mask
@@ -6302,6 +6312,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -6772,6 +6784,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATT5_ESC_MASK: ESC mask
@@ -6797,6 +6811,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -7267,6 +7283,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATT6_ESC_MASK: ESC mask
@@ -7292,6 +7310,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -7762,6 +7782,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATT7_ESC_MASK: ESC mask
@@ -7787,6 +7809,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -8257,6 +8281,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATT8_ESC_MASK: ESC mask
@@ -8282,6 +8308,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -8752,6 +8780,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATT9_ESC_MASK: ESC mask
@@ -8777,6 +8807,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -9247,6 +9279,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATTA_ESC_MASK: ESC mask
@@ -9272,6 +9306,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -9742,6 +9778,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATTB_ESC_MASK: ESC mask
@@ -9767,6 +9805,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -10237,6 +10277,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATTC_ESC_MASK: ESC mask
@@ -10262,6 +10304,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -10732,6 +10776,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATTD_ESC_MASK: ESC mask
@@ -10757,6 +10803,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -11227,6 +11275,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATTE_ESC_MASK: ESC mask
@@ -11252,6 +11302,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -11722,6 +11774,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATTF_ESC_MASK: ESC mask
@@ -11747,6 +11801,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -12217,6 +12273,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATTG_ESC_MASK: ESC mask
@@ -12242,6 +12300,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
@@ -12712,6 +12772,8 @@ This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
 
+- Increment: 0.0001
+
 - Units: Ohm
 
 ## BATT_ESC_MASK: ESC mask
@@ -12737,6 +12799,8 @@ This controls the maximum current the INA239 sensor will work with.
 This sets the shunt resistor used in the device
 
 - Range: 0.0001 0.01
+
+- Increment: 0.0001
 
 - Units: Ohm
 
