@@ -3041,7 +3041,7 @@
         <field name="Range">0 3</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Battery monitor I2C address" name="BATT2_I2C_ADDR" documentation="Battery monitor I2C address. If this is zero then probe list of supported addresses" user="Advanced">
+      <param humanName="Battery monitor I2C address" name="BATT2_I2C_ADDR" documentation="Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses" user="Advanced">
         <field name="Range">0 127</field>
         <field name="RebootRequired">True</field>
       </param>
@@ -3371,7 +3371,7 @@
         <field name="Range">0 3</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Battery monitor I2C address" name="BATT3_I2C_ADDR" documentation="Battery monitor I2C address. If this is zero then probe list of supported addresses" user="Advanced">
+      <param humanName="Battery monitor I2C address" name="BATT3_I2C_ADDR" documentation="Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses" user="Advanced">
         <field name="Range">0 127</field>
         <field name="RebootRequired">True</field>
       </param>
@@ -3701,7 +3701,7 @@
         <field name="Range">0 3</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Battery monitor I2C address" name="BATT4_I2C_ADDR" documentation="Battery monitor I2C address. If this is zero then probe list of supported addresses" user="Advanced">
+      <param humanName="Battery monitor I2C address" name="BATT4_I2C_ADDR" documentation="Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses" user="Advanced">
         <field name="Range">0 127</field>
         <field name="RebootRequired">True</field>
       </param>
@@ -4031,7 +4031,7 @@
         <field name="Range">0 3</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Battery monitor I2C address" name="BATT5_I2C_ADDR" documentation="Battery monitor I2C address. If this is zero then probe list of supported addresses" user="Advanced">
+      <param humanName="Battery monitor I2C address" name="BATT5_I2C_ADDR" documentation="Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses" user="Advanced">
         <field name="Range">0 127</field>
         <field name="RebootRequired">True</field>
       </param>
@@ -4361,7 +4361,7 @@
         <field name="Range">0 3</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Battery monitor I2C address" name="BATT6_I2C_ADDR" documentation="Battery monitor I2C address. If this is zero then probe list of supported addresses" user="Advanced">
+      <param humanName="Battery monitor I2C address" name="BATT6_I2C_ADDR" documentation="Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses" user="Advanced">
         <field name="Range">0 127</field>
         <field name="RebootRequired">True</field>
       </param>
@@ -4691,7 +4691,7 @@
         <field name="Range">0 3</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Battery monitor I2C address" name="BATT7_I2C_ADDR" documentation="Battery monitor I2C address. If this is zero then probe list of supported addresses" user="Advanced">
+      <param humanName="Battery monitor I2C address" name="BATT7_I2C_ADDR" documentation="Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses" user="Advanced">
         <field name="Range">0 127</field>
         <field name="RebootRequired">True</field>
       </param>
@@ -5021,7 +5021,7 @@
         <field name="Range">0 3</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Battery monitor I2C address" name="BATT8_I2C_ADDR" documentation="Battery monitor I2C address. If this is zero then probe list of supported addresses" user="Advanced">
+      <param humanName="Battery monitor I2C address" name="BATT8_I2C_ADDR" documentation="Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses" user="Advanced">
         <field name="Range">0 127</field>
         <field name="RebootRequired">True</field>
       </param>
@@ -5351,7 +5351,7 @@
         <field name="Range">0 3</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Battery monitor I2C address" name="BATT9_I2C_ADDR" documentation="Battery monitor I2C address. If this is zero then probe list of supported addresses" user="Advanced">
+      <param humanName="Battery monitor I2C address" name="BATT9_I2C_ADDR" documentation="Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses" user="Advanced">
         <field name="Range">0 127</field>
         <field name="RebootRequired">True</field>
       </param>
@@ -5681,7 +5681,7 @@
         <field name="Range">0 3</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Battery monitor I2C address" name="BATTA_I2C_ADDR" documentation="Battery monitor I2C address. If this is zero then probe list of supported addresses" user="Advanced">
+      <param humanName="Battery monitor I2C address" name="BATTA_I2C_ADDR" documentation="Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses" user="Advanced">
         <field name="Range">0 127</field>
         <field name="RebootRequired">True</field>
       </param>
@@ -6011,7 +6011,7 @@
         <field name="Range">0 3</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Battery monitor I2C address" name="BATTB_I2C_ADDR" documentation="Battery monitor I2C address. If this is zero then probe list of supported addresses" user="Advanced">
+      <param humanName="Battery monitor I2C address" name="BATTB_I2C_ADDR" documentation="Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses" user="Advanced">
         <field name="Range">0 127</field>
         <field name="RebootRequired">True</field>
       </param>
@@ -6341,7 +6341,7 @@
         <field name="Range">0 3</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Battery monitor I2C address" name="BATTC_I2C_ADDR" documentation="Battery monitor I2C address. If this is zero then probe list of supported addresses" user="Advanced">
+      <param humanName="Battery monitor I2C address" name="BATTC_I2C_ADDR" documentation="Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses" user="Advanced">
         <field name="Range">0 127</field>
         <field name="RebootRequired">True</field>
       </param>
@@ -6671,7 +6671,7 @@
         <field name="Range">0 3</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Battery monitor I2C address" name="BATTD_I2C_ADDR" documentation="Battery monitor I2C address. If this is zero then probe list of supported addresses" user="Advanced">
+      <param humanName="Battery monitor I2C address" name="BATTD_I2C_ADDR" documentation="Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses" user="Advanced">
         <field name="Range">0 127</field>
         <field name="RebootRequired">True</field>
       </param>
@@ -7001,7 +7001,7 @@
         <field name="Range">0 3</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Battery monitor I2C address" name="BATTE_I2C_ADDR" documentation="Battery monitor I2C address. If this is zero then probe list of supported addresses" user="Advanced">
+      <param humanName="Battery monitor I2C address" name="BATTE_I2C_ADDR" documentation="Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses" user="Advanced">
         <field name="Range">0 127</field>
         <field name="RebootRequired">True</field>
       </param>
@@ -7331,7 +7331,7 @@
         <field name="Range">0 3</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Battery monitor I2C address" name="BATTF_I2C_ADDR" documentation="Battery monitor I2C address. If this is zero then probe list of supported addresses" user="Advanced">
+      <param humanName="Battery monitor I2C address" name="BATTF_I2C_ADDR" documentation="Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses" user="Advanced">
         <field name="Range">0 127</field>
         <field name="RebootRequired">True</field>
       </param>
@@ -7661,7 +7661,7 @@
         <field name="Range">0 3</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Battery monitor I2C address" name="BATTG_I2C_ADDR" documentation="Battery monitor I2C address. If this is zero then probe list of supported addresses" user="Advanced">
+      <param humanName="Battery monitor I2C address" name="BATTG_I2C_ADDR" documentation="Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses" user="Advanced">
         <field name="Range">0 127</field>
         <field name="RebootRequired">True</field>
       </param>
@@ -7991,7 +7991,7 @@
         <field name="Range">0 3</field>
         <field name="RebootRequired">True</field>
       </param>
-      <param humanName="Battery monitor I2C address" name="BATT_I2C_ADDR" documentation="Battery monitor I2C address. If this is zero then probe list of supported addresses" user="Advanced">
+      <param humanName="Battery monitor I2C address" name="BATT_I2C_ADDR" documentation="Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses" user="Advanced">
         <field name="Range">0 127</field>
         <field name="RebootRequired">True</field>
       </param>

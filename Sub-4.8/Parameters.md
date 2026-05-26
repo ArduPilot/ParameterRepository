@@ -5651,7 +5651,7 @@ Battery monitor I2C bus number
 
 *Note: This parameter is for advanced users*
 
-Battery monitor I2C address. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses
 
 - Range: 0 127
 
@@ -6152,7 +6152,7 @@ Battery monitor I2C bus number
 
 *Note: This parameter is for advanced users*
 
-Battery monitor I2C address. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses
 
 - Range: 0 127
 
@@ -6653,7 +6653,7 @@ Battery monitor I2C bus number
 
 *Note: This parameter is for advanced users*
 
-Battery monitor I2C address. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses
 
 - Range: 0 127
 
@@ -7154,7 +7154,7 @@ Battery monitor I2C bus number
 
 *Note: This parameter is for advanced users*
 
-Battery monitor I2C address. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses
 
 - Range: 0 127
 
@@ -7655,7 +7655,7 @@ Battery monitor I2C bus number
 
 *Note: This parameter is for advanced users*
 
-Battery monitor I2C address. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses
 
 - Range: 0 127
 
@@ -8156,7 +8156,7 @@ Battery monitor I2C bus number
 
 *Note: This parameter is for advanced users*
 
-Battery monitor I2C address. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses
 
 - Range: 0 127
 
@@ -8657,7 +8657,7 @@ Battery monitor I2C bus number
 
 *Note: This parameter is for advanced users*
 
-Battery monitor I2C address. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses
 
 - Range: 0 127
 
@@ -9158,7 +9158,7 @@ Battery monitor I2C bus number
 
 *Note: This parameter is for advanced users*
 
-Battery monitor I2C address. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses
 
 - Range: 0 127
 
@@ -9659,7 +9659,7 @@ Battery monitor I2C bus number
 
 *Note: This parameter is for advanced users*
 
-Battery monitor I2C address. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses
 
 - Range: 0 127
 
@@ -10160,7 +10160,7 @@ Battery monitor I2C bus number
 
 *Note: This parameter is for advanced users*
 
-Battery monitor I2C address. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses
 
 - Range: 0 127
 
@@ -10661,7 +10661,7 @@ Battery monitor I2C bus number
 
 *Note: This parameter is for advanced users*
 
-Battery monitor I2C address. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses
 
 - Range: 0 127
 
@@ -11162,7 +11162,7 @@ Battery monitor I2C bus number
 
 *Note: This parameter is for advanced users*
 
-Battery monitor I2C address. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses
 
 - Range: 0 127
 
@@ -11663,7 +11663,7 @@ Battery monitor I2C bus number
 
 *Note: This parameter is for advanced users*
 
-Battery monitor I2C address. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses
 
 - Range: 0 127
 
@@ -12164,7 +12164,7 @@ Battery monitor I2C bus number
 
 *Note: This parameter is for advanced users*
 
-Battery monitor I2C address. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses
 
 - Range: 0 127
 
@@ -12665,7 +12665,7 @@ Battery monitor I2C bus number
 
 *Note: This parameter is for advanced users*
 
-Battery monitor I2C address. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses
 
 - Range: 0 127
 
@@ -13166,7 +13166,7 @@ Battery monitor I2C bus number
 
 *Note: This parameter is for advanced users*
 
-Battery monitor I2C address. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal. If this is zero then probe list of supported addresses
 
 - Range: 0 127
 

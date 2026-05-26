@@ -5652,7 +5652,7 @@ BATT2\_I2C\_ADDR \(AP\_BattMonitor\_INA2xx\): Battery monitor I2C address
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-Battery monitor I2C address\. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal\. If this is zero then probe list of supported addresses
 
 
 +----------+
@@ -6786,7 +6786,7 @@ BATT3\_I2C\_ADDR \(AP\_BattMonitor\_INA2xx\): Battery monitor I2C address
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-Battery monitor I2C address\. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal\. If this is zero then probe list of supported addresses
 
 
 +----------+
@@ -7920,7 +7920,7 @@ BATT4\_I2C\_ADDR \(AP\_BattMonitor\_INA2xx\): Battery monitor I2C address
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-Battery monitor I2C address\. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal\. If this is zero then probe list of supported addresses
 
 
 +----------+
@@ -9054,7 +9054,7 @@ BATT5\_I2C\_ADDR \(AP\_BattMonitor\_INA2xx\): Battery monitor I2C address
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-Battery monitor I2C address\. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal\. If this is zero then probe list of supported addresses
 
 
 +----------+
@@ -10188,7 +10188,7 @@ BATT6\_I2C\_ADDR \(AP\_BattMonitor\_INA2xx\): Battery monitor I2C address
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-Battery monitor I2C address\. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal\. If this is zero then probe list of supported addresses
 
 
 +----------+
@@ -11322,7 +11322,7 @@ BATT7\_I2C\_ADDR \(AP\_BattMonitor\_INA2xx\): Battery monitor I2C address
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-Battery monitor I2C address\. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal\. If this is zero then probe list of supported addresses
 
 
 +----------+
@@ -12456,7 +12456,7 @@ BATT8\_I2C\_ADDR \(AP\_BattMonitor\_INA2xx\): Battery monitor I2C address
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-Battery monitor I2C address\. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal\. If this is zero then probe list of supported addresses
 
 
 +----------+
@@ -13590,7 +13590,7 @@ BATT9\_I2C\_ADDR \(AP\_BattMonitor\_INA2xx\): Battery monitor I2C address
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-Battery monitor I2C address\. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal\. If this is zero then probe list of supported addresses
 
 
 +----------+
@@ -14724,7 +14724,7 @@ BATTA\_I2C\_ADDR \(AP\_BattMonitor\_INA2xx\): Battery monitor I2C address
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-Battery monitor I2C address\. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal\. If this is zero then probe list of supported addresses
 
 
 +----------+
@@ -15858,7 +15858,7 @@ BATTB\_I2C\_ADDR \(AP\_BattMonitor\_INA2xx\): Battery monitor I2C address
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-Battery monitor I2C address\. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal\. If this is zero then probe list of supported addresses
 
 
 +----------+
@@ -16992,7 +16992,7 @@ BATTC\_I2C\_ADDR \(AP\_BattMonitor\_INA2xx\): Battery monitor I2C address
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-Battery monitor I2C address\. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal\. If this is zero then probe list of supported addresses
 
 
 +----------+
@@ -18126,7 +18126,7 @@ BATTD\_I2C\_ADDR \(AP\_BattMonitor\_INA2xx\): Battery monitor I2C address
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-Battery monitor I2C address\. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal\. If this is zero then probe list of supported addresses
 
 
 +----------+
@@ -19260,7 +19260,7 @@ BATTE\_I2C\_ADDR \(AP\_BattMonitor\_INA2xx\): Battery monitor I2C address
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-Battery monitor I2C address\. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal\. If this is zero then probe list of supported addresses
 
 
 +----------+
@@ -20394,7 +20394,7 @@ BATTF\_I2C\_ADDR \(AP\_BattMonitor\_INA2xx\): Battery monitor I2C address
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-Battery monitor I2C address\. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal\. If this is zero then probe list of supported addresses
 
 
 +----------+
@@ -21528,7 +21528,7 @@ BATTG\_I2C\_ADDR \(AP\_BattMonitor\_INA2xx\): Battery monitor I2C address
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-Battery monitor I2C address\. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal\. If this is zero then probe list of supported addresses
 
 
 +----------+
@@ -22662,7 +22662,7 @@ BATT\_I2C\_ADDR \(AP\_BattMonitor\_INA2xx\): Battery monitor I2C address
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-Battery monitor I2C address\. If this is zero then probe list of supported addresses
+Battery monitor I2C address in decimal\. If this is zero then probe list of supported addresses
 
 
 +----------+
