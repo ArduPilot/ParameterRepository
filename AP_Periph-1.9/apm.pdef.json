@@ -39045,6 +39045,11 @@
       },
       "User": "Advanced"
     },
+    "SIM_SONAR_OFFSET": {
+      "Description": "Sonar measurement offset, in meters. Can be used for error injection.",
+      "DisplayName": "Sonar measurement offset.",
+      "User": "Advanced"
+    },
     "SIM_SONAR_POS_X": {
       "Description": "XYZ position of the sonar relative to the body frame origin (X-axis)",
       "DisplayName": "Sonar Offsets",

@@ -41049,7 +41049,7 @@ FENCE\_TYPE: Fence Type
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Configured fence types held as bitmask\. Max altitide\, Circle and Polygon fences will be immediately enabled if configured\. Min altitude fence will only be enabled once the minimum altitude is reached\.
+Configured fence types held as bitmask\. Max altitude\, Circle and Polygon fences will be immediately enabled if configured\. Min altitude fence will only be enabled once the minimum altitude is reached\.
 
 
 +------------------------------------------------+
@@ -122289,6 +122289,16 @@ Probablility a sonar glitch would happen
 +--------+
 
 
+
+
+.. _SIM_SONAR_OFFSET:
+
+SIM\_SONAR\_OFFSET: Sonar measurement offset\.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Sonar measurement offset\, in meters\. Can be used for error injection\.
 
 
 .. _SIM_SONAR_POS_X:

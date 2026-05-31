@@ -85077,6 +85077,16 @@ Probablility a sonar glitch would happen
 
 
 
+.. _SIM_SONAR_OFFSET:
+
+SIM\_SONAR\_OFFSET: Sonar measurement offset\.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Sonar measurement offset\, in meters\. Can be used for error injection\.
+
+
 .. _SIM_SONAR_POS_X:
 
 SIM\_SONAR\_POS\_X: Sonar Offsets

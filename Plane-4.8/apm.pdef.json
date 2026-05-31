@@ -15902,7 +15902,7 @@
         "2": "Inclusion/Exclusion Circles+Polygons",
         "3": "Min altitude"
       },
-      "Description": "Configured fence types held as bitmask. Max altitide, Circle and Polygon fences will be immediately enabled if configured. Min altitude fence will only be enabled once the minimum altitude is reached.",
+      "Description": "Configured fence types held as bitmask. Max altitude, Circle and Polygon fences will be immediately enabled if configured. Min altitude fence will only be enabled once the minimum altitude is reached.",
       "DisplayName": "Fence Type",
       "User": "Standard"
     }
@@ -60370,6 +60370,11 @@
         "high": "1",
         "low": "0"
       },
+      "User": "Advanced"
+    },
+    "SIM_SONAR_OFFSET": {
+      "Description": "Sonar measurement offset, in meters. Can be used for error injection.",
+      "DisplayName": "Sonar measurement offset.",
       "User": "Advanced"
     },
     "SIM_SONAR_POS_X": {

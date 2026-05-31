@@ -2761,6 +2761,46 @@ Altitude that altitude control modes will climb to when a takeoff is triggered w
 
 
 
+.. _SURFTRAK_GLDST:
+
+SURFTRAK\_GLDST: Surface Tracking Glitch threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+When a rangefinder reading differs from the previous by more than this\, it will be considered a glitch and will not be used\. A value of zero disables this check\.
+
+
++----------+--------+
+| Range    | Units  |
++==========+========+
+| 0 to 100 | meters |
++----------+--------+
+
+
+
+
+.. _SURFTRAK_GLSAM:
+
+SURFTRAK\_GLSAM: Surface Tracking glitched sample count
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+When this many consecutive samples are considered a glitch\, we give up and accept the new reading\. A value of zero disables this behaviour and glitched values are never accepted\.
+
+
++---------+
+| Range   |
++=========+
+| 0 to 10 |
++---------+
+
+
+
+
 
 .. _parameters_VEHICLE:
 
@@ -45463,7 +45503,7 @@ FENCE\_TYPE: Fence Type
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Configured fence types held as bitmask\. Max altitide\, Circle and Polygon fences will be immediately enabled if configured\. Min altitude fence will only be enabled once the minimum altitude is reached\.
+Configured fence types held as bitmask\. Max altitude\, Circle and Polygon fences will be immediately enabled if configured\. Min altitude fence will only be enabled once the minimum altitude is reached\.
 
 
 +------------------------------------------------+
@@ -133160,6 +133200,16 @@ Probablility a sonar glitch would happen
 +--------+
 
 
+
+
+.. _SIM_SONAR_OFFSET:
+
+SIM\_SONAR\_OFFSET: Sonar measurement offset\.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Sonar measurement offset\, in meters\. Can be used for error injection\.
 
 
 .. _SIM_SONAR_POS_X:
