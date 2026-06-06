@@ -187,6 +187,7 @@ Commands the autopilot handles when received.
   #195, `MAV_CMD_DO_SET_ROI_LOCATION <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_ROI_LOCATION>`_, `ArduSub/commands_logic.cpp <https://github.com/ArduPilot/ardupilot/tree/Sub-4.8/ArduSub/commands_logic.cpp>`_, common
   #197, `MAV_CMD_DO_SET_ROI_NONE <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_ROI_NONE>`_, `ArduSub/commands_logic.cpp <https://github.com/ArduPilot/ardupilot/tree/Sub-4.8/ArduSub/commands_logic.cpp>`_, common
   #198, `MAV_CMD_DO_SET_ROI_SYSID <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_ROI_SYSID>`_, `AP_Mount/AP_Mount.cpp <https://github.com/ArduPilot/ardupilot/tree/Sub-4.8/libraries/AP_Mount/AP_Mount.cpp>`_, common
+  #196, `MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Sub-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #5300, `MAV_CMD_DO_SET_SAFETY_SWITCH_STATE <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_SAFETY_SWITCH_STATE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Sub-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #183, `MAV_CMD_DO_SET_SERVO <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_SERVO>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Sub-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #216, `MAV_CMD_DO_SPRAYER <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_DO_SPRAYER>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Sub-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, ardupilotmega
@@ -675,7 +676,6 @@ Unsupported / unhandled commands.
   #190, `MAV_CMD_DO_RALLY_LAND <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_RALLY_LAND>`_, UNSUPPORTED, common
   #214, `MAV_CMD_DO_SET_CAM_TRIGG_INTERVAL <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_CAM_TRIGG_INTERVAL>`_, UNSUPPORTED, common
   #180, `MAV_CMD_DO_SET_PARAMETER <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_PARAMETER>`_, UNSUPPORTED, common
-  #196, `MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET>`_, UNSUPPORTED, common
   #262, `MAV_CMD_DO_SET_STANDARD_MODE <https://mavlink.io/en/messages/development.html#MAV_CMD_DO_SET_STANDARD_MODE>`_, UNSUPPORTED, development
   #610, `MAV_CMD_DO_SET_SYS_CMP_ID <https://mavlink.io/en/messages/development.html#MAV_CMD_DO_SET_SYS_CMP_ID>`_, UNSUPPORTED, development
   #2003, `MAV_CMD_DO_TRIGGER_CONTROL <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_TRIGGER_CONTROL>`_, UNSUPPORTED, common

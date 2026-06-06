@@ -165,23 +165,33 @@
           <value code="1">Enabled</value>
         </values>
       </param>
-      <param humanName="Max XY Velocity" name="Blimp:MAX_VEL_XY" documentation="Sets the maximum XY velocity, in m/s" user="Standard">
-        <field name="Range">0.2 5</field>
+      <param humanName="Max Throttle in Manual Mode" name="Blimp:MAX_MAN_THR" documentation="Sets the maximum commanded throttle in manual mode. Note that this will be on top of FINS_THR_MAX." user="Standard">
+        <field name="Range">0.1 1</field>
       </param>
-      <param humanName="Max Z Velocity" name="Blimp:MAX_VEL_Z" documentation="Sets the maximum Z velocity, in m/s" user="Standard">
-        <field name="Range">0.2 5</field>
+      <param humanName="Waypoint Acceleration" name="Blimp:WP_ACCEL" documentation="Sets the maximum acceleration for waypoint navigation" user="Standard">
+        <field name="Units">m/s/s</field>
+        <field name="UnitText">meters per square second</field>
+        <field name="Range">0.1 1</field>
       </param>
-      <param humanName="Max yaw Velocity" name="Blimp:MAX_VEL_YAW" documentation="Sets the maximum yaw velocity, in rad/s" user="Standard">
-        <field name="Range">0.2 5</field>
+      <param humanName="Waypoint Velocity" name="Blimp:WP_VEL" documentation="Sets the maximum velocity for waypoint navigation" user="Standard">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+        <field name="Range">0.1 1</field>
       </param>
-      <param humanName="Max XY Position change" name="Blimp:MAX_POS_XY" documentation="Sets the maximum XY position change, in m/s" user="Standard">
-        <field name="Range">0.1 5</field>
+      <param humanName="Waypoint Radius" name="Blimp:WP_RADIUS" documentation="Sets the waypoint acceptance radius for waypoint navigation" user="Standard">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+        <field name="Range">0.1 10</field>
       </param>
-      <param humanName="Max Z Position change" name="Blimp:MAX_POS_Z" documentation="Sets the maximum Z position change, in m/s" user="Standard">
-        <field name="Range">0.1 5</field>
+      <param humanName="Waypoint Yaw Minimum Velocity" name="Blimp:WP_YAW_MIN_VEL" documentation="Sets the minimum horizontal speed for waypoint navigation" user="Standard">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+        <field name="Range">0.1 1</field>
       </param>
-      <param humanName="Max Yaw Position change" name="Blimp:MAX_POS_YAW" documentation="Sets the maximum Yaw position change, in rad/s" user="Standard">
-        <field name="Range">0.1 5</field>
+      <param humanName="Waypoint Yaw speed" name="Blimp:WP_YAW_SPD" documentation="Sets the yaw speed for yawing to direction of travel during waypoint navigation" user="Standard">
+        <field name="Units">rad/s</field>
+        <field name="UnitText">radians per second</field>
+        <field name="Range">0.1 1</field>
       </param>
       <param humanName="Simple mode" name="Blimp:SIMPLE_MODE" documentation="Simple mode for Position control - &quot;forward&quot; moves blimp in +ve X direction world-frame" user="Standard">
         <values>
@@ -189,248 +199,13 @@
           <value code="1">Enabled</value>
         </values>
       </param>
-      <param humanName="Disable output mask" name="Blimp:DIS_MASK" documentation="Mask for disabling (setting to zero) one or more of the 4 output axis in mode Velocity or Loiter" user="Standard">
-        <bitmask>
-          <bit code="0">Right</bit>
-          <bit code="1">Front</bit>
-          <bit code="2">Down</bit>
-          <bit code="3">Yaw</bit>
-        </bitmask>
-        <field name="Bitmask">0:Right,1:Front,2:Down,3:Yaw</field>
-      </param>
-      <param humanName="Deadzone for the position PIDs" name="Blimp:PID_DZ" documentation="Output 0 thrust signal when blimp is within this distance (in meters) of the target position. Warning: If this param is greater than MAX_POS_XY param then the blimp won't move at all in the XY plane in Loiter mode as it does not allow more than a second's lag. Same for the other axes." user="Standard">
-        <field name="Units">m</field>
-        <field name="UnitText">meters</field>
-        <field name="Range">0.1 1</field>
-      </param>
-      <param humanName="ESC Update Speed" name="Blimp:RC_SPEED" documentation="This is the speed in Hertz that your ESCs will receive updates" user="Advanced">
-        <field name="Units">Hz</field>
-        <field name="UnitText">hertz</field>
-        <field name="Range">50 490</field>
-        <field name="Increment">1</field>
-      </param>
-      <param humanName="Velocity (horizontal) P gain" name="Blimp:VELXY_P" documentation="Velocity (horizontal) P gain.  Converts the difference between desired and actual velocity to a target acceleration" user="Advanced">
-        <field name="Range">0.1 6.0</field>
-        <field name="Increment">0.1</field>
-      </param>
-      <param humanName="Velocity (horizontal) I gain" name="Blimp:VELXY_I" documentation="Velocity (horizontal) I gain.  Corrects long-term difference between desired and actual velocity to a target acceleration" user="Advanced">
-        <field name="Range">0.02 1.00</field>
-        <field name="Increment">0.01</field>
-      </param>
-      <param humanName="Velocity (horizontal) D gain" name="Blimp:VELXY_D" documentation="Velocity (horizontal) D gain.  Corrects short-term changes in velocity" user="Advanced">
-        <field name="Range">0.00 1.00</field>
-        <field name="Increment">0.001</field>
-      </param>
-      <param humanName="Velocity (horizontal) integrator maximum" name="Blimp:VELXY_IMAX" documentation="Velocity (horizontal) integrator maximum.  Constrains the target acceleration that the I gain will output" user="Advanced">
-        <field name="Range">0 4500</field>
-        <field name="Increment">10</field>
-        <field name="Units">cm/s/s</field>
-        <field name="UnitText">centimeters per square second</field>
-      </param>
-      <param humanName="Velocity (horizontal) input filter" name="Blimp:VELXY_FLTE" documentation="Velocity (horizontal) input filter.  This filter (in Hz) is applied to the input for P and I terms" user="Advanced">
-        <field name="Range">0 100</field>
-        <field name="Units">Hz</field>
-        <field name="UnitText">hertz</field>
-      </param>
-      <param humanName="Velocity (horizontal) input filter" name="Blimp:VELXY_FLTD" documentation="Velocity (horizontal) input filter.  This filter (in Hz) is applied to the input for D term" user="Advanced">
-        <field name="Range">0 100</field>
-        <field name="Units">Hz</field>
-        <field name="UnitText">hertz</field>
-      </param>
-      <param humanName="Velocity (horizontal) feed forward gain" name="Blimp:VELXY_FF" documentation="Velocity (horizontal) feed forward gain.  Converts the difference between desired velocity to a target acceleration" user="Advanced">
-        <field name="Range">0 6</field>
-        <field name="Increment">0.01</field>
-      </param>
-      <param humanName="Velocity (vertical) P gain" name="Blimp:VELZ_P" documentation="Velocity (vertical) P gain.  Converts the difference between desired and actual velocity to a target acceleration" user="Advanced">
-        <field name="Range">0.1 6.0</field>
-        <field name="Increment">0.1</field>
-      </param>
-      <param humanName="Velocity (vertical) I gain" name="Blimp:VELZ_I" documentation="Velocity (vertical) I gain.  Corrects long-term difference between desired and actual velocity to a target acceleration" user="Advanced">
-        <field name="Range">0.02 1.00</field>
-        <field name="Increment">0.01</field>
-      </param>
-      <param humanName="Velocity (vertical) D gain" name="Blimp:VELZ_D" documentation="Velocity (vertical) D gain.  Corrects short-term changes in velocity" user="Advanced">
-        <field name="Range">0.00 1.00</field>
-        <field name="Increment">0.001</field>
-      </param>
-      <param humanName="Velocity (vertical) integrator maximum" name="Blimp:VELZ_IMAX" documentation="Velocity (vertical) integrator maximum.  Constrains the target acceleration that the I gain will output" user="Advanced">
-        <field name="Range">0 4500</field>
-        <field name="Increment">10</field>
-        <field name="Units">cm/s/s</field>
-        <field name="UnitText">centimeters per square second</field>
-      </param>
-      <param humanName="Velocity (vertical) input filter" name="Blimp:VELZ_FLTE" documentation="Velocity (vertical) input filter.  This filter (in Hz) is applied to the input for P and I terms" user="Advanced">
-        <field name="Range">0 100</field>
-        <field name="Units">Hz</field>
-        <field name="UnitText">hertz</field>
-      </param>
-      <param humanName="Velocity (vertical) input filter" name="Blimp:VELZ_FLTD" documentation="Velocity (vertical) input filter.  This filter (in Hz) is applied to the input for D term" user="Advanced">
-        <field name="Range">0 100</field>
-        <field name="Units">Hz</field>
-        <field name="UnitText">hertz</field>
-      </param>
-      <param humanName="Velocity (vertical) feed forward gain" name="Blimp:VELZ_FF" documentation="Velocity (vertical) feed forward gain.  Converts the difference between desired velocity to a target acceleration" user="Advanced">
-        <field name="Range">0 6</field>
-        <field name="Increment">0.01</field>
-      </param>
-      <param humanName="Velocity (yaw) P gain" name="Blimp:VELYAW_P" documentation="Velocity (yaw) P gain.  Converts the difference between desired and actual velocity to a target acceleration" user="Advanced">
-        <field name="Range">0.1 6.0</field>
-        <field name="Increment">0.1</field>
-      </param>
-      <param humanName="Velocity (yaw) I gain" name="Blimp:VELYAW_I" documentation="Velocity (yaw) I gain.  Corrects long-term difference between desired and actual velocity to a target acceleration" user="Advanced">
-        <field name="Range">0.02 1.00</field>
-        <field name="Increment">0.01</field>
-      </param>
-      <param humanName="Velocity (yaw) D gain" name="Blimp:VELYAW_D" documentation="Velocity (yaw) D gain.  Corrects short-term changes in velocity" user="Advanced">
-        <field name="Range">0.00 1.00</field>
-        <field name="Increment">0.001</field>
-      </param>
-      <param humanName="Velocity (yaw) integrator maximum" name="Blimp:VELYAW_IMAX" documentation="Velocity (yaw) integrator maximum.  Constrains the target acceleration that the I gain will output" user="Advanced">
-        <field name="Range">0 4500</field>
-        <field name="Increment">10</field>
-        <field name="Units">cm/s/s</field>
-        <field name="UnitText">centimeters per square second</field>
-      </param>
-      <param humanName="Velocity (yaw) input filter" name="Blimp:VELYAW_FLTE" documentation="Velocity (yaw) input filter.  This filter (in Hz) is applied to the input for P and I terms" user="Advanced">
-        <field name="Range">0 100</field>
-        <field name="Units">Hz</field>
-        <field name="UnitText">hertz</field>
-      </param>
-      <param humanName="Velocity (yaw) feed forward gain" name="Blimp:VELYAW_FF" documentation="Velocity (yaw) feed forward gain.  Converts the difference between desired velocity to a target acceleration" user="Advanced">
-        <field name="Range">0 6</field>
-        <field name="Increment">0.01</field>
-      </param>
-      <param humanName="Position (horizontal) P gain" name="Blimp:POSXY_P" documentation="Position (horizontal) P gain.  Converts the difference between desired and actual position to a target velocity" user="Advanced">
-        <field name="Range">0.1 6.0</field>
-        <field name="Increment">0.1</field>
-      </param>
-      <param humanName="Position (horizontal) I gain" name="Blimp:POSXY_I" documentation="Position (horizontal) I gain.  Corrects long-term difference between desired and actual position to a target velocity" user="Advanced">
-        <field name="Range">0.02 1.00</field>
-        <field name="Increment">0.01</field>
-      </param>
-      <param humanName="Position (horizontal) D gain" name="Blimp:POSXY_D" documentation="Position (horizontal) D gain.  Corrects short-term changes in position" user="Advanced">
-        <field name="Range">0.00 1.00</field>
-        <field name="Increment">0.001</field>
-      </param>
-      <param humanName="Position (horizontal) integrator maximum" name="Blimp:POSXY_IMAX" documentation="Position (horizontal) integrator maximum.  Constrains the target acceleration that the I gain will output" user="Advanced">
-        <field name="Range">0 4500</field>
-        <field name="Increment">10</field>
-        <field name="Units">cm/s/s</field>
-        <field name="UnitText">centimeters per square second</field>
-      </param>
-      <param humanName="Position (horizontal) input filter" name="Blimp:POSXY_FLTE" documentation="Position (horizontal) input filter.  This filter (in Hz) is applied to the input for P and I terms" user="Advanced">
-        <field name="Range">0 100</field>
-        <field name="Units">Hz</field>
-        <field name="UnitText">hertz</field>
-      </param>
-      <param humanName="Position (horizontal) input filter" name="Blimp:POSXY_FLTD" documentation="Position (horizontal) input filter.  This filter (in Hz) is applied to the input for D term" user="Advanced">
-        <field name="Range">0 100</field>
-        <field name="Units">Hz</field>
-        <field name="UnitText">hertz</field>
-      </param>
-      <param humanName="Position (horizontal) feed forward gain" name="Blimp:POSXY_FF" documentation="Position (horizontal) feed forward gain.  Converts the difference between desired position to a target velocity" user="Advanced">
-        <field name="Range">0 6</field>
-        <field name="Increment">0.01</field>
-      </param>
-      <param humanName="Position (vertical) P gain" name="Blimp:POSZ_P" documentation="Position (vertical) P gain.  Converts the difference between desired and actual position to a target velocity" user="Advanced">
-        <field name="Range">0.1 6.0</field>
-        <field name="Increment">0.1</field>
-      </param>
-      <param humanName="Position (vertical) I gain" name="Blimp:POSZ_I" documentation="Position (vertical) I gain.  Corrects long-term difference between desired and actual position to a target velocity" user="Advanced">
-        <field name="Range">0.02 1.00</field>
-        <field name="Increment">0.01</field>
-      </param>
-      <param humanName="Position (vertical) D gain" name="Blimp:POSZ_D" documentation="Position (vertical) D gain.  Corrects short-term changes in position" user="Advanced">
-        <field name="Range">0.00 1.00</field>
-        <field name="Increment">0.001</field>
-      </param>
-      <param humanName="Position (vertical) integrator maximum" name="Blimp:POSZ_IMAX" documentation="Position (vertical) integrator maximum.  Constrains the target acceleration that the I gain will output" user="Advanced">
-        <field name="Range">0 4500</field>
-        <field name="Increment">10</field>
-        <field name="Units">cm/s/s</field>
-        <field name="UnitText">centimeters per square second</field>
-      </param>
-      <param humanName="Position (vertical) input filter" name="Blimp:POSZ_FLTE" documentation="Position (vertical) input filter.  This filter (in Hz) is applied to the input for P and I terms" user="Advanced">
-        <field name="Range">0 100</field>
-        <field name="Units">Hz</field>
-        <field name="UnitText">hertz</field>
-      </param>
-      <param humanName="Position (vertical) input filter" name="Blimp:POSZ_FLTD" documentation="Position (vertical) input filter.  This filter (in Hz) is applied to the input for D term" user="Advanced">
-        <field name="Range">0 100</field>
-        <field name="Units">Hz</field>
-        <field name="UnitText">hertz</field>
-      </param>
-      <param humanName="Position (vertical) feed forward gain" name="Blimp:POSZ_FF" documentation="Position (vertical) feed forward gain.  Converts the difference between desired position to a target velocity" user="Advanced">
-        <field name="Range">0 6</field>
-        <field name="Increment">0.01</field>
-      </param>
-      <param humanName="Position (yaw) axis controller P gain" name="Blimp:POSYAW_P" documentation="Position (yaw) axis controller P gain." user="Standard">
-        <field name="Range">0.0 3.0</field>
-        <field name="Increment">0.01</field>
-      </param>
-      <param humanName="Position (yaw) axis controller I gain" name="Blimp:POSYAW_I" documentation="Position (yaw) axis controller I gain." user="Standard">
-        <field name="Range">0.0 3.0</field>
-        <field name="Increment">0.01</field>
-      </param>
-      <param humanName="Position (yaw) axis controller I gain maximum" name="Blimp:POSYAW_IMAX" documentation="Position (yaw) axis controller I gain maximum." user="Standard">
-        <field name="Range">0 4000</field>
-        <field name="Increment">10</field>
-        <field name="Units">d%</field>
-        <field name="UnitText">decipercent</field>
-      </param>
-      <param humanName="Position (yaw) axis controller D gain" name="Blimp:POSYAW_D" documentation="Position (yaw) axis controller D gain." user="Standard">
-        <field name="Range">0.001 0.1</field>
-        <field name="Increment">0.001</field>
-      </param>
-      <param humanName="Position (yaw) axis controller feed forward" name="Blimp:POSYAW_FF" documentation="Position (yaw) axis controller feed forward" user="Standard">
-        <field name="Range">0 0.5</field>
-        <field name="Increment">0.001</field>
-      </param>
-      <param humanName="Position (yaw) target frequency filter in Hz" name="Blimp:POSYAW_FLTT" documentation="Position (yaw) target frequency filter in Hz" user="Standard">
-        <field name="Range">1 50</field>
-        <field name="Increment">1</field>
-        <field name="Units">Hz</field>
-        <field name="UnitText">hertz</field>
-      </param>
-      <param humanName="Position (yaw) error frequency filter in Hz" name="Blimp:POSYAW_FLTE" documentation="Position (yaw) error frequency filter in Hz" user="Standard">
-        <field name="Range">1 100</field>
-        <field name="Increment">1</field>
-        <field name="Units">Hz</field>
-        <field name="UnitText">hertz</field>
-      </param>
-      <param humanName="Position (yaw) derivative input filter in Hz" name="Blimp:POSYAW_FLTD" documentation="Position (yaw) derivative input filter in Hz" user="Standard">
-        <field name="Range">1 100</field>
-        <field name="Increment">1</field>
-        <field name="Units">Hz</field>
-        <field name="UnitText">hertz</field>
-      </param>
-      <param humanName="Yaw slew rate limit" name="Blimp:POSYAW_SMAX" documentation="Sets an upper limit on the slew rate produced by the combined P and D gains." user="Advanced">
-        <field name="Range">0 200</field>
-        <field name="Increment">0.5</field>
-      </param>
-      <param humanName="Position (yaw) axis controller PD sum maximum" name="Blimp:POSYAW_PDMX" documentation="Position (yaw) axis controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output" user="Advanced">
-        <field name="Range">0 4000</field>
-        <field name="Increment">10</field>
-        <field name="Units">d%</field>
-        <field name="UnitText">decipercent</field>
-      </param>
-      <param humanName="Position (yaw) Derivative FeedForward Gain" name="Blimp:POSYAW_D_FF" documentation="FF D Gain which produces an output that is proportional to the rate of change of the target" user="Advanced">
-        <field name="Range">0 0.1</field>
-        <field name="Increment">0.001</field>
-      </param>
-      <param humanName="Position (yaw) Target notch filter index" name="Blimp:POSYAW_NTF" documentation="Position (yaw) Target notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
-      </param>
-      <param humanName="Position (yaw) Error notch filter index" name="Blimp:POSYAW_NEF" documentation="Position (yaw) Error notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
-      </param>
       <param humanName="Development options" name="Blimp:DEV_OPTIONS" documentation="Bitmask of developer options. The meanings of the bit fields in this parameter may vary at any time. Developers should check the source code for current meaning" user="Advanced">
         <bitmask>
           <bit code="0">Unknown</bit>
         </bitmask>
         <field name="Bitmask">0:Unknown</field>
       </param>
-      <param humanName="Frame Class" name="Blimp:FRAME_CLASS" documentation="Controls major frame class for blimp." user="Standard">
+      <param humanName="Frame class" name="Blimp:FRAME_CLASS" documentation="Controls frame for blimp." user="Standard">
         <values>
           <value code="0">Finnedblimp</value>
         </values>
@@ -10935,10 +10710,9 @@
           <bit code="19">MMC5XX3</bit>
           <bit code="20">QMC5883P</bit>
           <bit code="21">BMM350</bit>
-          <bit code="22">IIS2MDC</bit>
-          <bit code="23">LIS2MDL</bit>
+          <bit code="22">IIS2MDC or LIS2MDL</bit>
         </bitmask>
-        <field name="Bitmask">0:HMC5883,1:LSM303D,2:AK8963,3:BMM150,4:LSM9DS1,5:LIS3MDL,6:AK0991x,7:IST8310,8:ICM20948,9:MMC3416,11:DroneCAN,12:QMC5883,14:MAG3110,15:IST8308,16:RM3100,17:MSP,18:ExternalAHRS,19:MMC5XX3,20:QMC5883P,21:BMM350,22:IIS2MDC,23:LIS2MDL</field>
+        <field name="Bitmask">0:HMC5883,1:LSM303D,2:AK8963,3:BMM150,4:LSM9DS1,5:LIS3MDL,6:AK0991x,7:IST8310,8:ICM20948,9:MMC3416,11:DroneCAN,12:QMC5883,14:MAG3110,15:IST8308,16:RM3100,17:MSP,18:ExternalAHRS,19:MMC5XX3,20:QMC5883P,21:BMM350,22:IIS2MDC or LIS2MDL</field>
       </param>
       <param humanName="Range in which sample is accepted" name="COMPASS_FLTR_RNG" documentation="This sets the range around the average value that new samples must be within to be accepted. This can help reduce the impact of noise on sensors that are on long I2C cables. The value is a percentage from the average value. A value of zero disables this filter.">
         <field name="Units">%</field>
@@ -12512,7 +12286,10 @@
       <param humanName="Fins frequency" name="FINS_FREQ_HZ" documentation="This is the oscillation frequency of the fins" user="Standard">
         <field name="Range">1 10</field>
       </param>
-      <param humanName="Enable turbo mode" name="FINS_TURBO_MODE" documentation="Enables double speed on high offset." user="Standard">
+      <param humanName="Enable turbo mode" name="FINS_TURBO_MODE" documentation="Enables double speed on high offset (finned blimp only)." user="Standard">
+        <field name="Range">0 1</field>
+      </param>
+      <param humanName="Maximum throttle" name="FINS_THR_MAX" documentation="Maximum throttle allowed. Constrains any throttle input to this value (negative and positive) Set it to 1 to disable (i.e. allow max throttle)." user="Standard">
         <field name="Range">0 1</field>
       </param>
     </parameters>
@@ -14570,6 +14347,502 @@
         <field name="Range">2 500</field>
         <field name="Increment">1</field>
         <field name="RebootRequired">True</field>
+      </param>
+    </parameters>
+    <parameters name="LOIT_">
+      <param humanName="X axis velocity controller P gain" name="LOIT_VELX_P" documentation="X axis velocity controller P gain.  Corrects in proportion to the difference between the desired X velocity vs actual X velocity" user="Standard">
+        <field name="Range">0.01 0.5</field>
+        <field name="Increment">0.005</field>
+      </param>
+      <param humanName="X axis velocity controller I gain" name="LOIT_VELX_I" documentation="X axis velocity controller I gain.  Corrects long-term difference in desired X velocity vs actual X velocity" user="Standard">
+        <field name="Range">0.01 2.0</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="X axis velocity controller I gain maximum" name="LOIT_VELX_IMAX" documentation="X axis velocity controller I gain maximum.  Constrains the maximum that the I term will output" user="Standard">
+        <field name="Range">0 1</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="X axis velocity controller D gain" name="LOIT_VELX_D" documentation="X axis velocity controller D gain.  Compensates for short-term change in desired X velocity vs actual X velocity" user="Standard">
+        <field name="Range">0.0 0.05</field>
+        <field name="Increment">0.001</field>
+      </param>
+      <param humanName="X axis velocity controller feed forward" name="LOIT_VELX_FF" documentation="X axis velocity controller feed forward" user="Standard">
+        <field name="Range">0 0.5</field>
+        <field name="Increment">0.001</field>
+      </param>
+      <param humanName="X axis velocity controller target frequency in Hz" name="LOIT_VELX_FLTT" documentation="X axis velocity controller target frequency in Hz" user="Standard">
+        <field name="Range">5 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="X axis velocity controller error frequency in Hz" name="LOIT_VELX_FLTE" documentation="X axis velocity controller error frequency in Hz" user="Standard">
+        <field name="Range">0 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="X axis velocity controller derivative frequency in Hz" name="LOIT_VELX_FLTD" documentation="X axis velocity controller derivative frequency in Hz" user="Standard">
+        <field name="Range">5 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="X axis velocity slew rate limit" name="LOIT_VELX_SMAX" documentation="Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature." user="Advanced">
+        <field name="Range">0 200</field>
+        <field name="Increment">0.5</field>
+      </param>
+      <param humanName="X axis velocity controller PD sum maximum" name="LOIT_VELX_PDMX" documentation="X axis velocity controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output" user="Advanced">
+        <field name="Range">0 1</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="X axis velocity derivative feedforward gain" name="LOIT_VELX_D_FF" documentation="FF D Gain which produces an output that is proportional to the rate of change of the target" user="Advanced">
+        <field name="Range">0 0.02</field>
+        <field name="Increment">0.0001</field>
+      </param>
+      <param humanName="X axis velocity target notch filter index" name="LOIT_VELX_NTF" documentation="X axis velocity target notch filter index" user="Advanced">
+        <field name="Range">1 8</field>
+      </param>
+      <param humanName="X axis velocity error notch filter index" name="LOIT_VELX_NEF" documentation="X axis velocity error notch filter index" user="Advanced">
+        <field name="Range">1 8</field>
+      </param>
+      <param humanName="Y axis velocity controller P gain" name="LOIT_VELY_P" documentation="Y axis velocity controller P gain.  Corrects in proportion to the difference between the desired Y velocity vs actual Y velocity" user="Standard">
+        <field name="Range">0.01 0.5</field>
+        <field name="Increment">0.005</field>
+      </param>
+      <param humanName="Y axis velocity controller I gain" name="LOIT_VELY_I" documentation="Y axis velocity controller I gain.  Corrects long-term difference in desired Y velocity vs actual Y velocity" user="Standard">
+        <field name="Range">0.01 2.0</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Y axis velocity controller I gain maximum" name="LOIT_VELY_IMAX" documentation="Y axis velocity controller I gain maximum.  Constrains the maximum that the I term will output" user="Standard">
+        <field name="Range">0 1</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Y axis velocity controller D gain" name="LOIT_VELY_D" documentation="Y axis velocity controller D gain.  Compensates for short-term change in desired Y velocity vs actual Y velocity" user="Standard">
+        <field name="Range">0.0 0.05</field>
+        <field name="Increment">0.001</field>
+      </param>
+      <param humanName="Y axis velocity controller feed forward" name="LOIT_VELY_FF" documentation="Y axis velocity controller feed forward" user="Standard">
+        <field name="Range">0 0.5</field>
+        <field name="Increment">0.001</field>
+      </param>
+      <param humanName="Y axis velocity controller target frequency in Hz" name="LOIT_VELY_FLTT" documentation="Y axis velocity controller target frequency in Hz" user="Standard">
+        <field name="Range">5 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Y axis velocity controller error frequency in Hz" name="LOIT_VELY_FLTE" documentation="Y axis velocity controller error frequency in Hz" user="Standard">
+        <field name="Range">0 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Y axis velocity controller derivative frequency in Hz" name="LOIT_VELY_FLTD" documentation="Y axis velocity controller derivative frequency in Hz" user="Standard">
+        <field name="Range">5 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Y axis velocity slew rate limit" name="LOIT_VELY_SMAX" documentation="Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature." user="Advanced">
+        <field name="Range">0 200</field>
+        <field name="Increment">0.5</field>
+      </param>
+      <param humanName="Y axis velocity controller PD sum maximum" name="LOIT_VELY_PDMX" documentation="Y axis velocity controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output" user="Advanced">
+        <field name="Range">0 1</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Y axis velocity derivative feedforward gain" name="LOIT_VELY_D_FF" documentation="FF D Gain which produces an output that is proportional to the rate of change of the target" user="Advanced">
+        <field name="Range">0 0.02</field>
+        <field name="Increment">0.0001</field>
+      </param>
+      <param humanName="Y axis velocity target notch filter index" name="LOIT_VELY_NTF" documentation="Y axis velocity target notch filter index" user="Advanced">
+        <field name="Range">1 8</field>
+      </param>
+      <param humanName="Y axis velocity error notch filter index" name="LOIT_VELY_NEF" documentation="Y axis velocity error notch filter index" user="Advanced">
+        <field name="Range">1 8</field>
+      </param>
+      <param humanName="Z axis velocity controller P gain" name="LOIT_VELZ_P" documentation="Z axis velocity controller P gain.  Corrects in proportion to the difference between the desired Z velocity vs actual Z velocity" user="Standard">
+        <field name="Range">0.01 0.5</field>
+        <field name="Increment">0.005</field>
+      </param>
+      <param humanName="Z axis velocity controller I gain" name="LOIT_VELZ_I" documentation="Z axis velocity controller I gain.  Corrects long-term difference in desired Z velocity vs actual Z velocity" user="Standard">
+        <field name="Range">0.01 2.0</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Z axis velocity controller I gain maximum" name="LOIT_VELZ_IMAX" documentation="Z axis velocity controller I gain maximum.  Constrains the maximum that the I term will output" user="Standard">
+        <field name="Range">0 1</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Z axis velocity controller D gain" name="LOIT_VELZ_D" documentation="Z axis velocity controller D gain.  Compensates for short-term change in desired Z velocity vs actual Z velocity" user="Standard">
+        <field name="Range">0.0 0.05</field>
+        <field name="Increment">0.001</field>
+      </param>
+      <param humanName="Z axis velocity controller feed forward" name="LOIT_VELZ_FF" documentation="Z axis velocity controller feed forward" user="Standard">
+        <field name="Range">0 0.5</field>
+        <field name="Increment">0.001</field>
+      </param>
+      <param humanName="Z axis velocity controller target frequency in Hz" name="LOIT_VELZ_FLTT" documentation="Z axis velocity controller target frequency in Hz" user="Standard">
+        <field name="Range">5 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Z axis velocity controller error frequency in Hz" name="LOIT_VELZ_FLTE" documentation="Z axis velocity controller error frequency in Hz" user="Standard">
+        <field name="Range">0 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Z axis velocity controller derivative frequency in Hz" name="LOIT_VELZ_FLTD" documentation="Z axis velocity controller derivative frequency in Hz" user="Standard">
+        <field name="Range">5 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Z axis velocity slew rate limit" name="LOIT_VELZ_SMAX" documentation="Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature." user="Advanced">
+        <field name="Range">0 200</field>
+        <field name="Increment">0.5</field>
+      </param>
+      <param humanName="Z axis velocity controller PD sum maximum" name="LOIT_VELZ_PDMX" documentation="Z axis velocity controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output" user="Advanced">
+        <field name="Range">0 1</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Z axis velocity derivative feedforward gain" name="LOIT_VELZ_D_FF" documentation="FF D Gain which produces an output that is proportional to the rate of change of the target" user="Advanced">
+        <field name="Range">0 0.02</field>
+        <field name="Increment">0.0001</field>
+      </param>
+      <param humanName="Z axis velocity target notch filter index" name="LOIT_VELZ_NTF" documentation="Z axis velocity target notch filter index" user="Advanced">
+        <field name="Range">1 8</field>
+      </param>
+      <param humanName="Z axis velocity error notch filter index" name="LOIT_VELZ_NEF" documentation="Z axis velocity error notch filter index" user="Advanced">
+        <field name="Range">1 8</field>
+      </param>
+      <param humanName="Yaw axis velocity controller P gain" name="LOIT_VELYAW_P" documentation="Yaw axis velocity controller P gain.  Corrects in proportion to the difference between the desired Yaw velocity vs actual Yaw velocity" user="Standard">
+        <field name="Range">0.01 0.5</field>
+        <field name="Increment">0.005</field>
+      </param>
+      <param humanName="Yaw axis velocity controller I gain" name="LOIT_VELYAW_I" documentation="Yaw axis velocity controller I gain.  Corrects long-term difference in desired Yaw velocity vs actual Yaw velocity" user="Standard">
+        <field name="Range">0.01 2.0</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Yaw axis velocity controller I gain maximum" name="LOIT_VELYAW_IMAX" documentation="Yaw axis velocity controller I gain maximum.  Constrains the maximum that the I term will output" user="Standard">
+        <field name="Range">0 1</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Yaw axis velocity controller D gain" name="LOIT_VELYAW_D" documentation="Yaw axis velocity controller D gain.  Compensates for short-term change in desired Yaw velocity vs actual Yaw velocity" user="Standard">
+        <field name="Range">0.0 0.05</field>
+        <field name="Increment">0.001</field>
+      </param>
+      <param humanName="Yaw axis velocity controller feed forward" name="LOIT_VELYAW_FF" documentation="Yaw axis velocity controller feed forward" user="Standard">
+        <field name="Range">0 0.5</field>
+        <field name="Increment">0.001</field>
+      </param>
+      <param humanName="Yaw axis velocity controller target frequency in Hz" name="LOIT_VELYAW_FLTT" documentation="Yaw axis velocity controller target frequency in Hz" user="Standard">
+        <field name="Range">5 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Yaw axis velocity controller error frequency in Hz" name="LOIT_VELYAW_FLTE" documentation="Yaw axis velocity controller error frequency in Hz" user="Standard">
+        <field name="Range">0 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Yaw axis velocity controller derivative frequency in Hz" name="LOIT_VELYAW_FLTD" documentation="Yaw axis velocity controller derivative frequency in Hz" user="Standard">
+        <field name="Range">5 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Yaw axis velocity slew rate limit" name="LOIT_VELYAW_SMAX" documentation="Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature." user="Advanced">
+        <field name="Range">0 200</field>
+        <field name="Increment">0.5</field>
+      </param>
+      <param humanName="Yaw axis velocity controller PD sum maximum" name="LOIT_VELYAW_PDMX" documentation="Yaw axis velocity controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output" user="Advanced">
+        <field name="Range">0 1</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Yaw axis velocity derivative feedforward gain" name="LOIT_VELYAW_D_FF" documentation="FF D Gain which produces an output that is proportional to the rate of change of the target" user="Advanced">
+        <field name="Range">0 0.02</field>
+        <field name="Increment">0.0001</field>
+      </param>
+      <param humanName="Yaw axis velocity target notch filter index" name="LOIT_VELYAW_NTF" documentation="Yaw axis velocity target notch filter index" user="Advanced">
+        <field name="Range">1 8</field>
+      </param>
+      <param humanName="Yaw axis velocity error notch filter index" name="LOIT_VELYAW_NEF" documentation="Yaw axis velocity error notch filter index" user="Advanced">
+        <field name="Range">1 8</field>
+      </param>
+      <param humanName="X axis position controller P gain" name="LOIT_POSX_P" documentation="X axis position controller P gain.  Corrects in proportion to the difference between the desired X position vs actual X position" user="Standard">
+        <field name="Range">0.01 0.5</field>
+        <field name="Increment">0.005</field>
+      </param>
+      <param humanName="X axis position controller I gain" name="LOIT_POSX_I" documentation="X axis position controller I gain.  Corrects long-term difference in desired X position vs actual X position" user="Standard">
+        <field name="Range">0.01 2.0</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="X axis position controller I gain maximum" name="LOIT_POSX_IMAX" documentation="X axis position controller I gain maximum.  Constrains the maximum that the I term will output" user="Standard">
+        <field name="Range">0 1</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="X axis position controller D gain" name="LOIT_POSX_D" documentation="X axis position controller D gain.  Compensates for short-term change in desired X position vs actual X position" user="Standard">
+        <field name="Range">0.0 0.05</field>
+        <field name="Increment">0.001</field>
+      </param>
+      <param humanName="X axis position controller feed forward" name="LOIT_POSX_FF" documentation="X axis position controller feed forward" user="Standard">
+        <field name="Range">0 0.5</field>
+        <field name="Increment">0.001</field>
+      </param>
+      <param humanName="X axis position controller target frequency in Hz" name="LOIT_POSX_FLTT" documentation="X axis position controller target frequency in Hz" user="Standard">
+        <field name="Range">5 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="X axis position controller error frequency in Hz" name="LOIT_POSX_FLTE" documentation="X axis position controller error frequency in Hz" user="Standard">
+        <field name="Range">0 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="X axis position controller derivative frequency in Hz" name="LOIT_POSX_FLTD" documentation="X axis position controller derivative frequency in Hz" user="Standard">
+        <field name="Range">5 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="X axis position slew rate limit" name="LOIT_POSX_SMAX" documentation="Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature." user="Advanced">
+        <field name="Range">0 200</field>
+        <field name="Increment">0.5</field>
+      </param>
+      <param humanName="X axis position controller PD sum maximum" name="LOIT_POSX_PDMX" documentation="X axis position controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output" user="Advanced">
+        <field name="Range">0 1</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="X axis position derivative feedforward gain" name="LOIT_POSX_D_FF" documentation="FF D Gain which produces an output that is proportional to the rate of change of the target" user="Advanced">
+        <field name="Range">0 0.02</field>
+        <field name="Increment">0.0001</field>
+      </param>
+      <param humanName="X axis position target notch filter index" name="LOIT_POSX_NTF" documentation="X axis position target notch filter index" user="Advanced">
+        <field name="Range">1 8</field>
+      </param>
+      <param humanName="X axis position error notch filter index" name="LOIT_POSX_NEF" documentation="X axis position error notch filter index" user="Advanced">
+        <field name="Range">1 8</field>
+      </param>
+      <param humanName="Y axis position controller P gain" name="LOIT_POSY_P" documentation="Y axis position controller P gain.  Corrects in proportion to the difference between the desired Y position vs actual Y position" user="Standard">
+        <field name="Range">0.01 0.5</field>
+        <field name="Increment">0.005</field>
+      </param>
+      <param humanName="Y axis position controller I gain" name="LOIT_POSY_I" documentation="Y axis position controller I gain.  Corrects long-term difference in desired Y position vs actual Y position" user="Standard">
+        <field name="Range">0.01 2.0</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Y axis position controller I gain maximum" name="LOIT_POSY_IMAX" documentation="Y axis position controller I gain maximum.  Constrains the maximum that the I term will output" user="Standard">
+        <field name="Range">0 1</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Y axis position controller D gain" name="LOIT_POSY_D" documentation="Y axis position controller D gain.  Compensates for short-term change in desired Y position vs actual Y position" user="Standard">
+        <field name="Range">0.0 0.05</field>
+        <field name="Increment">0.001</field>
+      </param>
+      <param humanName="Y axis position controller feed forward" name="LOIT_POSY_FF" documentation="Y axis position controller feed forward" user="Standard">
+        <field name="Range">0 0.5</field>
+        <field name="Increment">0.001</field>
+      </param>
+      <param humanName="Y axis position controller target frequency in Hz" name="LOIT_POSY_FLTT" documentation="Y axis position controller target frequency in Hz" user="Standard">
+        <field name="Range">5 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Y axis position controller error frequency in Hz" name="LOIT_POSY_FLTE" documentation="Y axis position controller error frequency in Hz" user="Standard">
+        <field name="Range">0 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Y axis position controller derivative frequency in Hz" name="LOIT_POSY_FLTD" documentation="Y axis position controller derivative frequency in Hz" user="Standard">
+        <field name="Range">5 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Y axis position slew rate limit" name="LOIT_POSY_SMAX" documentation="Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature." user="Advanced">
+        <field name="Range">0 200</field>
+        <field name="Increment">0.5</field>
+      </param>
+      <param humanName="Y axis position controller PD sum maximum" name="LOIT_POSY_PDMX" documentation="Y axis position controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output" user="Advanced">
+        <field name="Range">0 1</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Y axis position derivative feedforward gain" name="LOIT_POSY_D_FF" documentation="FF D Gain which produces an output that is proportional to the rate of change of the target" user="Advanced">
+        <field name="Range">0 0.02</field>
+        <field name="Increment">0.0001</field>
+      </param>
+      <param humanName="Y axis position target notch filter index" name="LOIT_POSY_NTF" documentation="Y axis position target notch filter index" user="Advanced">
+        <field name="Range">1 8</field>
+      </param>
+      <param humanName="Y axis position error notch filter index" name="LOIT_POSY_NEF" documentation="Y axis position error notch filter index" user="Advanced">
+        <field name="Range">1 8</field>
+      </param>
+      <param humanName="Z axis position controller P gain" name="LOIT_POSZ_P" documentation="Z axis position controller P gain.  Corrects in proportion to the difference between the desired Z position vs actual Z position" user="Standard">
+        <field name="Range">0.01 0.5</field>
+        <field name="Increment">0.005</field>
+      </param>
+      <param humanName="Z axis position controller I gain" name="LOIT_POSZ_I" documentation="Z axis position controller I gain.  Corrects long-term difference in desired Z position vs actual Z position" user="Standard">
+        <field name="Range">0.01 2.0</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Z axis position controller I gain maximum" name="LOIT_POSZ_IMAX" documentation="Z axis position controller I gain maximum.  Constrains the maximum that the I term will output" user="Standard">
+        <field name="Range">0 1</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Z axis position controller D gain" name="LOIT_POSZ_D" documentation="Z axis position controller D gain.  Compensates for short-term change in desired Z position vs actual Z position" user="Standard">
+        <field name="Range">0.0 0.05</field>
+        <field name="Increment">0.001</field>
+      </param>
+      <param humanName="Z axis position controller feed forward" name="LOIT_POSZ_FF" documentation="Z axis position controller feed forward" user="Standard">
+        <field name="Range">0 0.5</field>
+        <field name="Increment">0.001</field>
+      </param>
+      <param humanName="Z axis position controller target frequency in Hz" name="LOIT_POSZ_FLTT" documentation="Z axis position controller target frequency in Hz" user="Standard">
+        <field name="Range">5 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Z axis position controller error frequency in Hz" name="LOIT_POSZ_FLTE" documentation="Z axis position controller error frequency in Hz" user="Standard">
+        <field name="Range">0 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Z axis position controller derivative frequency in Hz" name="LOIT_POSZ_FLTD" documentation="Z axis position controller derivative frequency in Hz" user="Standard">
+        <field name="Range">5 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Z axis position slew rate limit" name="LOIT_POSZ_SMAX" documentation="Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature." user="Advanced">
+        <field name="Range">0 200</field>
+        <field name="Increment">0.5</field>
+      </param>
+      <param humanName="Z axis position controller PD sum maximum" name="LOIT_POSZ_PDMX" documentation="Z axis position controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output" user="Advanced">
+        <field name="Range">0 1</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Z axis position derivative feedforward gain" name="LOIT_POSZ_D_FF" documentation="FF D Gain which produces an output that is proportional to the rate of change of the target" user="Advanced">
+        <field name="Range">0 0.02</field>
+        <field name="Increment">0.0001</field>
+      </param>
+      <param humanName="Z axis position target notch filter index" name="LOIT_POSZ_NTF" documentation="Z axis position target notch filter index" user="Advanced">
+        <field name="Range">1 8</field>
+      </param>
+      <param humanName="Z axis position error notch filter index" name="LOIT_POSZ_NEF" documentation="Z axis position error notch filter index" user="Advanced">
+        <field name="Range">1 8</field>
+      </param>
+      <param humanName="Yaw axis position controller P gain" name="LOIT_POSYAW_P" documentation="Yaw axis position controller P gain.  Corrects in proportion to the difference between the desired Yaw position vs actual Yaw position" user="Standard">
+        <field name="Range">0.01 0.5</field>
+        <field name="Increment">0.005</field>
+      </param>
+      <param humanName="Yaw axis position controller I gain" name="LOIT_POSYAW_I" documentation="Yaw axis position controller I gain.  Corrects long-term difference in desired Yaw position vs actual Yaw position" user="Standard">
+        <field name="Range">0.01 2.0</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Yaw axis position controller I gain maximum" name="LOIT_POSYAW_IMAX" documentation="Yaw axis position controller I gain maximum.  Constrains the maximum that the I term will output" user="Standard">
+        <field name="Range">0 1</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Yaw axis position controller D gain" name="LOIT_POSYAW_D" documentation="Yaw axis position controller D gain.  Compensates for short-term change in desired Yaw position vs actual Yaw position" user="Standard">
+        <field name="Range">0.0 0.05</field>
+        <field name="Increment">0.001</field>
+      </param>
+      <param humanName="Yaw axis position controller feed forward" name="LOIT_POSYAW_FF" documentation="Yaw axis position controller feed forward" user="Standard">
+        <field name="Range">0 0.5</field>
+        <field name="Increment">0.001</field>
+      </param>
+      <param humanName="Yaw axis position controller target frequency in Hz" name="LOIT_POSYAW_FLTT" documentation="Yaw axis position controller target frequency in Hz" user="Standard">
+        <field name="Range">5 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Yaw axis position controller error frequency in Hz" name="LOIT_POSYAW_FLTE" documentation="Yaw axis position controller error frequency in Hz" user="Standard">
+        <field name="Range">0 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Yaw axis position controller derivative frequency in Hz" name="LOIT_POSYAW_FLTD" documentation="Yaw axis position controller derivative frequency in Hz" user="Standard">
+        <field name="Range">5 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Yaw axis position slew rate limit" name="LOIT_POSYAW_SMAX" documentation="Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature." user="Advanced">
+        <field name="Range">0 200</field>
+        <field name="Increment">0.5</field>
+      </param>
+      <param humanName="Yaw axis position controller PD sum maximum" name="LOIT_POSYAW_PDMX" documentation="Yaw axis position controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output" user="Advanced">
+        <field name="Range">0 1</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Yaw axis position derivative feedforward gain" name="LOIT_POSYAW_D_FF" documentation="FF D Gain which produces an output that is proportional to the rate of change of the target" user="Advanced">
+        <field name="Range">0 0.02</field>
+        <field name="Increment">0.0001</field>
+      </param>
+      <param humanName="Yaw axis position target notch filter index" name="LOIT_POSYAW_NTF" documentation="Yaw axis position target notch filter index" user="Advanced">
+        <field name="Range">1 8</field>
+      </param>
+      <param humanName="Yaw axis position error notch filter index" name="LOIT_POSYAW_NEF" documentation="Yaw axis position error notch filter index" user="Advanced">
+        <field name="Range">1 8</field>
+      </param>
+      <param humanName="Max X Velocity" name="LOIT_MAX_VELX" documentation="Sets the maximum X velocity, in m/s" user="Standard">
+        <field name="Range">0.2 5</field>
+      </param>
+      <param humanName="Max Y Velocity" name="LOIT_MAX_VELY" documentation="Sets the maximum Y velocity, in m/s" user="Standard">
+        <field name="Range">0.2 5</field>
+      </param>
+      <param humanName="Max Z Velocity" name="LOIT_MAX_VELZ" documentation="Sets the maximum Z velocity, in m/s" user="Standard">
+        <field name="Range">0.2 5</field>
+      </param>
+      <param humanName="Max yaw Velocity" name="LOIT_MAX_VELYAW" documentation="Sets the maximum yaw velocity, in rad/s" user="Standard">
+        <field name="Range">0.2 5</field>
+      </param>
+      <param humanName="Max X Position change" name="LOIT_MAX_POSX" documentation="Sets the maximum X position change, in m/s" user="Standard">
+        <field name="Range">0.1 5</field>
+      </param>
+      <param humanName="Max Y Position change" name="LOIT_MAX_POSY" documentation="Sets the maximum Y position change, in m/s" user="Standard">
+        <field name="Range">0.1 5</field>
+      </param>
+      <param humanName="Max Z Position change" name="LOIT_MAX_POSZ" documentation="Sets the maximum Z position change, in m/s" user="Standard">
+        <field name="Range">0.1 5</field>
+      </param>
+      <param humanName="Max Yaw Position change" name="LOIT_MAX_POSYAW" documentation="Sets the maximum Yaw position change, in rad/s" user="Standard">
+        <field name="Range">0.1 5</field>
+      </param>
+      <param humanName="Disable output mask" name="LOIT_DIS_MASK" documentation="Mask for disabling (setting to zero) one or more of the 4 output axis in Velocity or Loiter modes" user="Standard">
+        <bitmask>
+          <bit code="0">Right</bit>
+          <bit code="1">Front</bit>
+          <bit code="2">Down</bit>
+          <bit code="3">Yaw</bit>
+        </bitmask>
+        <field name="Bitmask">0:Right,1:Front,2:Down,3:Yaw</field>
+      </param>
+      <param humanName="Deadzone for the position PIDs" name="LOIT_PID_DZ" documentation="Output 0 thrust signal when blimp is within this distance (in meters) of the target position. Warning: If this param is greater than LOIT_MAX_POS_X multiplied by LOIT_LAG then the blimp won't move at all in the X axis in Loiter mode. Same for the other axes." user="Standard">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+        <field name="Range">0.1 1</field>
+      </param>
+      <param humanName="Loiter scaler speed" name="LOIT_SCALER_SPD" documentation="Factor for scaler filter,  speed at which the scaler updates. Zero means immediate change (no filter). Higher number means slower change." user="Advanced">
+        <field name="Range">0 0.999</field>
+      </param>
+      <param humanName="Loiter position lag" name="LOIT_POS_LAG" documentation="Number of seconds' worth of travel that the actual position can be behind the target position." user="Standard">
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+        <field name="Range">0 0.999</field>
       </param>
     </parameters>
     <parameters name="MAV">
@@ -17801,8 +18074,9 @@
           <bit code="11">Use Link Quality for RSSI with CRSF</bit>
           <bit code="12">Annotate CRSF flight mode with * on disarm</bit>
           <bit code="13">Use 420kbaud for ELRS protocol</bit>
+          <bit code="14">Clear MAVLink overrides on any stick input</bit>
         </bitmask>
-        <field name="Bitmask">0:Ignore RC Receiver, 1:Ignore MAVLink Overrides, 2:Ignore Receiver Failsafe bit but allow other RC failsafes if setup, 3:FPort Pad, 4:Log RC input bytes, 5:Arming check throttle for 0 input, 6:Skip the arming check for neutral Roll/Pitch/Yaw sticks, 7:Allow Switch reverse, 8:Use passthrough for CRSF telemetry, 9:Suppress CRSF mode/rate message for ELRS systems,10:Enable multiple receiver support, 11:Use Link Quality for RSSI with CRSF, 12:Annotate CRSF flight mode with * on disarm, 13: Use 420kbaud for ELRS protocol</field>
+        <field name="Bitmask">0:Ignore RC Receiver, 1:Ignore MAVLink Overrides, 2:Ignore Receiver Failsafe bit but allow other RC failsafes if setup, 3:FPort Pad, 4:Log RC input bytes, 5:Arming check throttle for 0 input, 6:Skip the arming check for neutral Roll/Pitch/Yaw sticks, 7:Allow Switch reverse, 8:Use passthrough for CRSF telemetry, 9:Suppress CRSF mode/rate message for ELRS systems,10:Enable multiple receiver support, 11:Use Link Quality for RSSI with CRSF, 12:Annotate CRSF flight mode with * on disarm, 13: Use 420kbaud for ELRS protocol, 14: Clear MAVLink overrides on any stick input</field>
       </param>
       <param humanName="RC protocols enabled" name="RC_PROTOCOLS" documentation="Bitmask of enabled RC protocols. Allows narrowing the protocol detection to only specific types of RC receivers which can avoid issues with incorrect detection. Set to 1 to enable all protocols." user="Advanced">
         <bitmask>

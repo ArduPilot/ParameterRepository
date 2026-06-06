@@ -24532,58 +24532,56 @@ COMPASS\_DISBLMSK: Compass disable driver type mask
 This is a bitmask of driver types to disable\. If a driver type is set in this mask then that driver will not try to find a sensor at startup
 
 
-+------------------------+
-| Bitmask                |
-+========================+
-| +-----+--------------+ |
-| | Bit | Meaning      | |
-| +=====+==============+ |
-| | 0   | HMC5883      | |
-| +-----+--------------+ |
-| | 1   | LSM303D      | |
-| +-----+--------------+ |
-| | 2   | AK8963       | |
-| +-----+--------------+ |
-| | 3   | BMM150       | |
-| +-----+--------------+ |
-| | 4   | LSM9DS1      | |
-| +-----+--------------+ |
-| | 5   | LIS3MDL      | |
-| +-----+--------------+ |
-| | 6   | AK0991x      | |
-| +-----+--------------+ |
-| | 7   | IST8310      | |
-| +-----+--------------+ |
-| | 8   | ICM20948     | |
-| +-----+--------------+ |
-| | 9   | MMC3416      | |
-| +-----+--------------+ |
-| | 11  | DroneCAN     | |
-| +-----+--------------+ |
-| | 12  | QMC5883      | |
-| +-----+--------------+ |
-| | 14  | MAG3110      | |
-| +-----+--------------+ |
-| | 15  | IST8308      | |
-| +-----+--------------+ |
-| | 16  | RM3100       | |
-| +-----+--------------+ |
-| | 17  | MSP          | |
-| +-----+--------------+ |
-| | 18  | ExternalAHRS | |
-| +-----+--------------+ |
-| | 19  | MMC5XX3      | |
-| +-----+--------------+ |
-| | 20  | QMC5883P     | |
-| +-----+--------------+ |
-| | 21  | BMM350       | |
-| +-----+--------------+ |
-| | 22  | IIS2MDC      | |
-| +-----+--------------+ |
-| | 23  | LIS2MDL      | |
-| +-----+--------------+ |
-|                        |
-+------------------------+
++------------------------------+
+| Bitmask                      |
++==============================+
+| +-----+--------------------+ |
+| | Bit | Meaning            | |
+| +=====+====================+ |
+| | 0   | HMC5883            | |
+| +-----+--------------------+ |
+| | 1   | LSM303D            | |
+| +-----+--------------------+ |
+| | 2   | AK8963             | |
+| +-----+--------------------+ |
+| | 3   | BMM150             | |
+| +-----+--------------------+ |
+| | 4   | LSM9DS1            | |
+| +-----+--------------------+ |
+| | 5   | LIS3MDL            | |
+| +-----+--------------------+ |
+| | 6   | AK0991x            | |
+| +-----+--------------------+ |
+| | 7   | IST8310            | |
+| +-----+--------------------+ |
+| | 8   | ICM20948           | |
+| +-----+--------------------+ |
+| | 9   | MMC3416            | |
+| +-----+--------------------+ |
+| | 11  | DroneCAN           | |
+| +-----+--------------------+ |
+| | 12  | QMC5883            | |
+| +-----+--------------------+ |
+| | 14  | MAG3110            | |
+| +-----+--------------------+ |
+| | 15  | IST8308            | |
+| +-----+--------------------+ |
+| | 16  | RM3100             | |
+| +-----+--------------------+ |
+| | 17  | MSP                | |
+| +-----+--------------------+ |
+| | 18  | ExternalAHRS       | |
+| +-----+--------------------+ |
+| | 19  | MMC5XX3            | |
+| +-----+--------------------+ |
+| | 20  | QMC5883P           | |
+| +-----+--------------------+ |
+| | 21  | BMM350             | |
+| +-----+--------------------+ |
+| | 22  | IIS2MDC or LIS2MDL | |
+| +-----+--------------------+ |
+|                              |
++------------------------------+
 
 
 
@@ -65943,6 +65941,8 @@ Type of connected rangefinder
 | +-------+------------------------+ |
 | | 47    | DTS6012M               | |
 | +-------+------------------------+ |
+| | 48    | LightWare-GRF-I2C      | |
+| +-------+------------------------+ |
 | | 100   | SITL                   | |
 | +-------+------------------------+ |
 |                                    |
@@ -66479,6 +66479,13 @@ RangeFinder Minimum signal strength \(SNR\) to accept distance
 
 
 
+
+.. _parameters_RNGFND1_GRF_:
+
+RNGFND1\_GRF\_ Parameters
+-------------------------
+
+
 .. _RNGFND1_GRF_RET:
 
 RNGFND1\_GRF\_RET: LightWare GRF Distance Return Type
@@ -66537,7 +66544,84 @@ RNGFND1\_GRF\_RATE: LightWare GRF Update Rate
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-The update rate of the sensor in Hz\. Must match the
+The update rate of the sensor in Hz\.
+
+
++---------+
+| Range   |
++=========+
+| 1 to 50 |
++---------+
+
+
+
+
+
+.. _parameters_RNGFND1_GRF_:
+
+RNGFND1\_GRF\_ Parameters
+-------------------------
+
+
+.. _RNGFND1_GRF_RET:
+
+RNGFND1\_GRF\_RET: LightWare GRF Distance Return Type
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: Reboot required after change*
+
+Selects which single return to use\.
+
+
++---------------------------+
+| Values                    |
++===========================+
+| +-------+---------------+ |
+| | Value | Meaning       | |
+| +=======+===============+ |
+| | 0     | FirstRaw      | |
+| +-------+---------------+ |
+| | 1     | FirstFiltered | |
+| +-------+---------------+ |
+| | 2     | LastRaw       | |
+| +-------+---------------+ |
+| | 3     | LastFiltered  | |
+| +-------+---------------+ |
+|                           |
++---------------------------+
+
+
+
+
+.. _RNGFND1_GRF_ST:
+
+RNGFND1\_GRF\_ST: LightWare GRF Minimum Return Strength
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+Minimum acceptable return signal strength in dB\. Returns weaker than this will be ignored\. Set to 0 to disable filtering\.
+
+
++----------+
+| Range    |
++==========+
+| 0 to 255 |
++----------+
+
+
+
+
+.. _RNGFND1_GRF_RATE:
+
+RNGFND1\_GRF\_RATE: LightWare GRF Update Rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+The update rate of the sensor in Hz\.
 
 
 +---------+
@@ -66664,6 +66748,8 @@ Type of connected rangefinder
 | | 46    | BenewakeTFS20L         | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M               | |
+| +-------+------------------------+ |
+| | 48    | LightWare-GRF-I2C      | |
 | +-------+------------------------+ |
 | | 100   | SITL                   | |
 | +-------+------------------------+ |
@@ -67201,6 +67287,13 @@ RangeFinder Minimum signal strength \(SNR\) to accept distance
 
 
 
+
+.. _parameters_RNGFND2_GRF_:
+
+RNGFND2\_GRF\_ Parameters
+-------------------------
+
+
 .. _RNGFND2_GRF_RET:
 
 RNGFND2\_GRF\_RET: LightWare GRF Distance Return Type
@@ -67259,7 +67352,84 @@ RNGFND2\_GRF\_RATE: LightWare GRF Update Rate
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-The update rate of the sensor in Hz\. Must match the
+The update rate of the sensor in Hz\.
+
+
++---------+
+| Range   |
++=========+
+| 1 to 50 |
++---------+
+
+
+
+
+
+.. _parameters_RNGFND2_GRF_:
+
+RNGFND2\_GRF\_ Parameters
+-------------------------
+
+
+.. _RNGFND2_GRF_RET:
+
+RNGFND2\_GRF\_RET: LightWare GRF Distance Return Type
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: Reboot required after change*
+
+Selects which single return to use\.
+
+
++---------------------------+
+| Values                    |
++===========================+
+| +-------+---------------+ |
+| | Value | Meaning       | |
+| +=======+===============+ |
+| | 0     | FirstRaw      | |
+| +-------+---------------+ |
+| | 1     | FirstFiltered | |
+| +-------+---------------+ |
+| | 2     | LastRaw       | |
+| +-------+---------------+ |
+| | 3     | LastFiltered  | |
+| +-------+---------------+ |
+|                           |
++---------------------------+
+
+
+
+
+.. _RNGFND2_GRF_ST:
+
+RNGFND2\_GRF\_ST: LightWare GRF Minimum Return Strength
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+Minimum acceptable return signal strength in dB\. Returns weaker than this will be ignored\. Set to 0 to disable filtering\.
+
+
++----------+
+| Range    |
++==========+
+| 0 to 255 |
++----------+
+
+
+
+
+.. _RNGFND2_GRF_RATE:
+
+RNGFND2\_GRF\_RATE: LightWare GRF Update Rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+The update rate of the sensor in Hz\.
 
 
 +---------+
@@ -67386,6 +67556,8 @@ Type of connected rangefinder
 | | 46    | BenewakeTFS20L         | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M               | |
+| +-------+------------------------+ |
+| | 48    | LightWare-GRF-I2C      | |
 | +-------+------------------------+ |
 | | 100   | SITL                   | |
 | +-------+------------------------+ |
@@ -67923,6 +68095,13 @@ RangeFinder Minimum signal strength \(SNR\) to accept distance
 
 
 
+
+.. _parameters_RNGFND3_GRF_:
+
+RNGFND3\_GRF\_ Parameters
+-------------------------
+
+
 .. _RNGFND3_GRF_RET:
 
 RNGFND3\_GRF\_RET: LightWare GRF Distance Return Type
@@ -67981,7 +68160,84 @@ RNGFND3\_GRF\_RATE: LightWare GRF Update Rate
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-The update rate of the sensor in Hz\. Must match the
+The update rate of the sensor in Hz\.
+
+
++---------+
+| Range   |
++=========+
+| 1 to 50 |
++---------+
+
+
+
+
+
+.. _parameters_RNGFND3_GRF_:
+
+RNGFND3\_GRF\_ Parameters
+-------------------------
+
+
+.. _RNGFND3_GRF_RET:
+
+RNGFND3\_GRF\_RET: LightWare GRF Distance Return Type
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: Reboot required after change*
+
+Selects which single return to use\.
+
+
++---------------------------+
+| Values                    |
++===========================+
+| +-------+---------------+ |
+| | Value | Meaning       | |
+| +=======+===============+ |
+| | 0     | FirstRaw      | |
+| +-------+---------------+ |
+| | 1     | FirstFiltered | |
+| +-------+---------------+ |
+| | 2     | LastRaw       | |
+| +-------+---------------+ |
+| | 3     | LastFiltered  | |
+| +-------+---------------+ |
+|                           |
++---------------------------+
+
+
+
+
+.. _RNGFND3_GRF_ST:
+
+RNGFND3\_GRF\_ST: LightWare GRF Minimum Return Strength
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+Minimum acceptable return signal strength in dB\. Returns weaker than this will be ignored\. Set to 0 to disable filtering\.
+
+
++----------+
+| Range    |
++==========+
+| 0 to 255 |
++----------+
+
+
+
+
+.. _RNGFND3_GRF_RATE:
+
+RNGFND3\_GRF\_RATE: LightWare GRF Update Rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+The update rate of the sensor in Hz\.
 
 
 +---------+
@@ -68108,6 +68364,8 @@ Type of connected rangefinder
 | | 46    | BenewakeTFS20L         | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M               | |
+| +-------+------------------------+ |
+| | 48    | LightWare-GRF-I2C      | |
 | +-------+------------------------+ |
 | | 100   | SITL                   | |
 | +-------+------------------------+ |
@@ -68645,6 +68903,13 @@ RangeFinder Minimum signal strength \(SNR\) to accept distance
 
 
 
+
+.. _parameters_RNGFND4_GRF_:
+
+RNGFND4\_GRF\_ Parameters
+-------------------------
+
+
 .. _RNGFND4_GRF_RET:
 
 RNGFND4\_GRF\_RET: LightWare GRF Distance Return Type
@@ -68703,7 +68968,84 @@ RNGFND4\_GRF\_RATE: LightWare GRF Update Rate
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-The update rate of the sensor in Hz\. Must match the
+The update rate of the sensor in Hz\.
+
+
++---------+
+| Range   |
++=========+
+| 1 to 50 |
++---------+
+
+
+
+
+
+.. _parameters_RNGFND4_GRF_:
+
+RNGFND4\_GRF\_ Parameters
+-------------------------
+
+
+.. _RNGFND4_GRF_RET:
+
+RNGFND4\_GRF\_RET: LightWare GRF Distance Return Type
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: Reboot required after change*
+
+Selects which single return to use\.
+
+
++---------------------------+
+| Values                    |
++===========================+
+| +-------+---------------+ |
+| | Value | Meaning       | |
+| +=======+===============+ |
+| | 0     | FirstRaw      | |
+| +-------+---------------+ |
+| | 1     | FirstFiltered | |
+| +-------+---------------+ |
+| | 2     | LastRaw       | |
+| +-------+---------------+ |
+| | 3     | LastFiltered  | |
+| +-------+---------------+ |
+|                           |
++---------------------------+
+
+
+
+
+.. _RNGFND4_GRF_ST:
+
+RNGFND4\_GRF\_ST: LightWare GRF Minimum Return Strength
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+Minimum acceptable return signal strength in dB\. Returns weaker than this will be ignored\. Set to 0 to disable filtering\.
+
+
++----------+
+| Range    |
++==========+
+| 0 to 255 |
++----------+
+
+
+
+
+.. _RNGFND4_GRF_RATE:
+
+RNGFND4\_GRF\_RATE: LightWare GRF Update Rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+The update rate of the sensor in Hz\.
 
 
 +---------+
@@ -68830,6 +69172,8 @@ Type of connected rangefinder
 | | 46    | BenewakeTFS20L         | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M               | |
+| +-------+------------------------+ |
+| | 48    | LightWare-GRF-I2C      | |
 | +-------+------------------------+ |
 | | 100   | SITL                   | |
 | +-------+------------------------+ |
@@ -69367,6 +69711,13 @@ RangeFinder Minimum signal strength \(SNR\) to accept distance
 
 
 
+
+.. _parameters_RNGFND5_GRF_:
+
+RNGFND5\_GRF\_ Parameters
+-------------------------
+
+
 .. _RNGFND5_GRF_RET:
 
 RNGFND5\_GRF\_RET: LightWare GRF Distance Return Type
@@ -69425,7 +69776,84 @@ RNGFND5\_GRF\_RATE: LightWare GRF Update Rate
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-The update rate of the sensor in Hz\. Must match the
+The update rate of the sensor in Hz\.
+
+
++---------+
+| Range   |
++=========+
+| 1 to 50 |
++---------+
+
+
+
+
+
+.. _parameters_RNGFND5_GRF_:
+
+RNGFND5\_GRF\_ Parameters
+-------------------------
+
+
+.. _RNGFND5_GRF_RET:
+
+RNGFND5\_GRF\_RET: LightWare GRF Distance Return Type
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: Reboot required after change*
+
+Selects which single return to use\.
+
+
++---------------------------+
+| Values                    |
++===========================+
+| +-------+---------------+ |
+| | Value | Meaning       | |
+| +=======+===============+ |
+| | 0     | FirstRaw      | |
+| +-------+---------------+ |
+| | 1     | FirstFiltered | |
+| +-------+---------------+ |
+| | 2     | LastRaw       | |
+| +-------+---------------+ |
+| | 3     | LastFiltered  | |
+| +-------+---------------+ |
+|                           |
++---------------------------+
+
+
+
+
+.. _RNGFND5_GRF_ST:
+
+RNGFND5\_GRF\_ST: LightWare GRF Minimum Return Strength
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+Minimum acceptable return signal strength in dB\. Returns weaker than this will be ignored\. Set to 0 to disable filtering\.
+
+
++----------+
+| Range    |
++==========+
+| 0 to 255 |
++----------+
+
+
+
+
+.. _RNGFND5_GRF_RATE:
+
+RNGFND5\_GRF\_RATE: LightWare GRF Update Rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+The update rate of the sensor in Hz\.
 
 
 +---------+
@@ -69552,6 +69980,8 @@ Type of connected rangefinder
 | | 46    | BenewakeTFS20L         | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M               | |
+| +-------+------------------------+ |
+| | 48    | LightWare-GRF-I2C      | |
 | +-------+------------------------+ |
 | | 100   | SITL                   | |
 | +-------+------------------------+ |
@@ -70089,6 +70519,13 @@ RangeFinder Minimum signal strength \(SNR\) to accept distance
 
 
 
+
+.. _parameters_RNGFND6_GRF_:
+
+RNGFND6\_GRF\_ Parameters
+-------------------------
+
+
 .. _RNGFND6_GRF_RET:
 
 RNGFND6\_GRF\_RET: LightWare GRF Distance Return Type
@@ -70147,7 +70584,84 @@ RNGFND6\_GRF\_RATE: LightWare GRF Update Rate
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-The update rate of the sensor in Hz\. Must match the
+The update rate of the sensor in Hz\.
+
+
++---------+
+| Range   |
++=========+
+| 1 to 50 |
++---------+
+
+
+
+
+
+.. _parameters_RNGFND6_GRF_:
+
+RNGFND6\_GRF\_ Parameters
+-------------------------
+
+
+.. _RNGFND6_GRF_RET:
+
+RNGFND6\_GRF\_RET: LightWare GRF Distance Return Type
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: Reboot required after change*
+
+Selects which single return to use\.
+
+
++---------------------------+
+| Values                    |
++===========================+
+| +-------+---------------+ |
+| | Value | Meaning       | |
+| +=======+===============+ |
+| | 0     | FirstRaw      | |
+| +-------+---------------+ |
+| | 1     | FirstFiltered | |
+| +-------+---------------+ |
+| | 2     | LastRaw       | |
+| +-------+---------------+ |
+| | 3     | LastFiltered  | |
+| +-------+---------------+ |
+|                           |
++---------------------------+
+
+
+
+
+.. _RNGFND6_GRF_ST:
+
+RNGFND6\_GRF\_ST: LightWare GRF Minimum Return Strength
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+Minimum acceptable return signal strength in dB\. Returns weaker than this will be ignored\. Set to 0 to disable filtering\.
+
+
++----------+
+| Range    |
++==========+
+| 0 to 255 |
++----------+
+
+
+
+
+.. _RNGFND6_GRF_RATE:
+
+RNGFND6\_GRF\_RATE: LightWare GRF Update Rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+The update rate of the sensor in Hz\.
 
 
 +---------+
@@ -70274,6 +70788,8 @@ Type of connected rangefinder
 | | 46    | BenewakeTFS20L         | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M               | |
+| +-------+------------------------+ |
+| | 48    | LightWare-GRF-I2C      | |
 | +-------+------------------------+ |
 | | 100   | SITL                   | |
 | +-------+------------------------+ |
@@ -70811,6 +71327,13 @@ RangeFinder Minimum signal strength \(SNR\) to accept distance
 
 
 
+
+.. _parameters_RNGFND7_GRF_:
+
+RNGFND7\_GRF\_ Parameters
+-------------------------
+
+
 .. _RNGFND7_GRF_RET:
 
 RNGFND7\_GRF\_RET: LightWare GRF Distance Return Type
@@ -70869,7 +71392,84 @@ RNGFND7\_GRF\_RATE: LightWare GRF Update Rate
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-The update rate of the sensor in Hz\. Must match the
+The update rate of the sensor in Hz\.
+
+
++---------+
+| Range   |
++=========+
+| 1 to 50 |
++---------+
+
+
+
+
+
+.. _parameters_RNGFND7_GRF_:
+
+RNGFND7\_GRF\_ Parameters
+-------------------------
+
+
+.. _RNGFND7_GRF_RET:
+
+RNGFND7\_GRF\_RET: LightWare GRF Distance Return Type
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: Reboot required after change*
+
+Selects which single return to use\.
+
+
++---------------------------+
+| Values                    |
++===========================+
+| +-------+---------------+ |
+| | Value | Meaning       | |
+| +=======+===============+ |
+| | 0     | FirstRaw      | |
+| +-------+---------------+ |
+| | 1     | FirstFiltered | |
+| +-------+---------------+ |
+| | 2     | LastRaw       | |
+| +-------+---------------+ |
+| | 3     | LastFiltered  | |
+| +-------+---------------+ |
+|                           |
++---------------------------+
+
+
+
+
+.. _RNGFND7_GRF_ST:
+
+RNGFND7\_GRF\_ST: LightWare GRF Minimum Return Strength
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+Minimum acceptable return signal strength in dB\. Returns weaker than this will be ignored\. Set to 0 to disable filtering\.
+
+
++----------+
+| Range    |
++==========+
+| 0 to 255 |
++----------+
+
+
+
+
+.. _RNGFND7_GRF_RATE:
+
+RNGFND7\_GRF\_RATE: LightWare GRF Update Rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+The update rate of the sensor in Hz\.
 
 
 +---------+
@@ -70996,6 +71596,8 @@ Type of connected rangefinder
 | | 46    | BenewakeTFS20L         | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M               | |
+| +-------+------------------------+ |
+| | 48    | LightWare-GRF-I2C      | |
 | +-------+------------------------+ |
 | | 100   | SITL                   | |
 | +-------+------------------------+ |
@@ -71533,6 +72135,13 @@ RangeFinder Minimum signal strength \(SNR\) to accept distance
 
 
 
+
+.. _parameters_RNGFND8_GRF_:
+
+RNGFND8\_GRF\_ Parameters
+-------------------------
+
+
 .. _RNGFND8_GRF_RET:
 
 RNGFND8\_GRF\_RET: LightWare GRF Distance Return Type
@@ -71591,7 +72200,84 @@ RNGFND8\_GRF\_RATE: LightWare GRF Update Rate
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-The update rate of the sensor in Hz\. Must match the
+The update rate of the sensor in Hz\.
+
+
++---------+
+| Range   |
++=========+
+| 1 to 50 |
++---------+
+
+
+
+
+
+.. _parameters_RNGFND8_GRF_:
+
+RNGFND8\_GRF\_ Parameters
+-------------------------
+
+
+.. _RNGFND8_GRF_RET:
+
+RNGFND8\_GRF\_RET: LightWare GRF Distance Return Type
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: Reboot required after change*
+
+Selects which single return to use\.
+
+
++---------------------------+
+| Values                    |
++===========================+
+| +-------+---------------+ |
+| | Value | Meaning       | |
+| +=======+===============+ |
+| | 0     | FirstRaw      | |
+| +-------+---------------+ |
+| | 1     | FirstFiltered | |
+| +-------+---------------+ |
+| | 2     | LastRaw       | |
+| +-------+---------------+ |
+| | 3     | LastFiltered  | |
+| +-------+---------------+ |
+|                           |
++---------------------------+
+
+
+
+
+.. _RNGFND8_GRF_ST:
+
+RNGFND8\_GRF\_ST: LightWare GRF Minimum Return Strength
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+Minimum acceptable return signal strength in dB\. Returns weaker than this will be ignored\. Set to 0 to disable filtering\.
+
+
++----------+
+| Range    |
++==========+
+| 0 to 255 |
++----------+
+
+
+
+
+.. _RNGFND8_GRF_RATE:
+
+RNGFND8\_GRF\_RATE: LightWare GRF Update Rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+The update rate of the sensor in Hz\.
 
 
 +---------+
@@ -71718,6 +72404,8 @@ Type of connected rangefinder
 | | 46    | BenewakeTFS20L         | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M               | |
+| +-------+------------------------+ |
+| | 48    | LightWare-GRF-I2C      | |
 | +-------+------------------------+ |
 | | 100   | SITL                   | |
 | +-------+------------------------+ |
@@ -72255,6 +72943,13 @@ RangeFinder Minimum signal strength \(SNR\) to accept distance
 
 
 
+
+.. _parameters_RNGFND9_GRF_:
+
+RNGFND9\_GRF\_ Parameters
+-------------------------
+
+
 .. _RNGFND9_GRF_RET:
 
 RNGFND9\_GRF\_RET: LightWare GRF Distance Return Type
@@ -72313,7 +73008,84 @@ RNGFND9\_GRF\_RATE: LightWare GRF Update Rate
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-The update rate of the sensor in Hz\. Must match the
+The update rate of the sensor in Hz\.
+
+
++---------+
+| Range   |
++=========+
+| 1 to 50 |
++---------+
+
+
+
+
+
+.. _parameters_RNGFND9_GRF_:
+
+RNGFND9\_GRF\_ Parameters
+-------------------------
+
+
+.. _RNGFND9_GRF_RET:
+
+RNGFND9\_GRF\_RET: LightWare GRF Distance Return Type
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: Reboot required after change*
+
+Selects which single return to use\.
+
+
++---------------------------+
+| Values                    |
++===========================+
+| +-------+---------------+ |
+| | Value | Meaning       | |
+| +=======+===============+ |
+| | 0     | FirstRaw      | |
+| +-------+---------------+ |
+| | 1     | FirstFiltered | |
+| +-------+---------------+ |
+| | 2     | LastRaw       | |
+| +-------+---------------+ |
+| | 3     | LastFiltered  | |
+| +-------+---------------+ |
+|                           |
++---------------------------+
+
+
+
+
+.. _RNGFND9_GRF_ST:
+
+RNGFND9\_GRF\_ST: LightWare GRF Minimum Return Strength
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+Minimum acceptable return signal strength in dB\. Returns weaker than this will be ignored\. Set to 0 to disable filtering\.
+
+
++----------+
+| Range    |
++==========+
+| 0 to 255 |
++----------+
+
+
+
+
+.. _RNGFND9_GRF_RATE:
+
+RNGFND9\_GRF\_RATE: LightWare GRF Update Rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+The update rate of the sensor in Hz\.
 
 
 +---------+
@@ -72440,6 +73212,8 @@ Type of connected rangefinder
 | | 46    | BenewakeTFS20L         | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M               | |
+| +-------+------------------------+ |
+| | 48    | LightWare-GRF-I2C      | |
 | +-------+------------------------+ |
 | | 100   | SITL                   | |
 | +-------+------------------------+ |
@@ -72977,6 +73751,13 @@ RangeFinder Minimum signal strength \(SNR\) to accept distance
 
 
 
+
+.. _parameters_RNGFNDA_GRF_:
+
+RNGFNDA\_GRF\_ Parameters
+-------------------------
+
+
 .. _RNGFNDA_GRF_RET:
 
 RNGFNDA\_GRF\_RET: LightWare GRF Distance Return Type
@@ -73035,7 +73816,84 @@ RNGFNDA\_GRF\_RATE: LightWare GRF Update Rate
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-The update rate of the sensor in Hz\. Must match the
+The update rate of the sensor in Hz\.
+
+
++---------+
+| Range   |
++=========+
+| 1 to 50 |
++---------+
+
+
+
+
+
+.. _parameters_RNGFNDA_GRF_:
+
+RNGFNDA\_GRF\_ Parameters
+-------------------------
+
+
+.. _RNGFNDA_GRF_RET:
+
+RNGFNDA\_GRF\_RET: LightWare GRF Distance Return Type
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: Reboot required after change*
+
+Selects which single return to use\.
+
+
++---------------------------+
+| Values                    |
++===========================+
+| +-------+---------------+ |
+| | Value | Meaning       | |
+| +=======+===============+ |
+| | 0     | FirstRaw      | |
+| +-------+---------------+ |
+| | 1     | FirstFiltered | |
+| +-------+---------------+ |
+| | 2     | LastRaw       | |
+| +-------+---------------+ |
+| | 3     | LastFiltered  | |
+| +-------+---------------+ |
+|                           |
++---------------------------+
+
+
+
+
+.. _RNGFNDA_GRF_ST:
+
+RNGFNDA\_GRF\_ST: LightWare GRF Minimum Return Strength
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+Minimum acceptable return signal strength in dB\. Returns weaker than this will be ignored\. Set to 0 to disable filtering\.
+
+
++----------+
+| Range    |
++==========+
+| 0 to 255 |
++----------+
+
+
+
+
+.. _RNGFNDA_GRF_RATE:
+
+RNGFNDA\_GRF\_RATE: LightWare GRF Update Rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+The update rate of the sensor in Hz\.
 
 
 +---------+

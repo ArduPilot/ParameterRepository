@@ -20385,8 +20385,7 @@
         "2": "AK8963",
         "20": "QMC5883P",
         "21": "BMM350",
-        "22": "IIS2MDC",
-        "23": "LIS2MDL",
+        "22": "IIS2MDC or LIS2MDL",
         "3": "BMM150",
         "4": "LSM9DS1",
         "5": "LIS3MDL",
@@ -35022,7 +35021,7 @@
       "User": "Advanced"
     },
     "MOT_FV_CPLNG_K": {
-      "Description": "Used to decouple pitch from forward/vertical motion. 0 to disable, 1.2 normal",
+      "Description": "(Vectored frame only) Used to decouple pitch from forward/vertical motion. 0 to disable, 1.2 normal",
       "DisplayName": "Forward/vertical to pitch decoupling factor",
       "Increment": "0.1",
       "Range": {
@@ -48805,38 +48804,6 @@
       "Units": "m",
       "User": "Standard"
     },
-    "RNGFND1_GRF_RATE": {
-      "Description": "The update rate of the sensor in Hz. Must match the",
-      "DisplayName": "LightWare GRF Update Rate",
-      "Range": {
-        "high": "50",
-        "low": "1"
-      },
-      "RebootRequired": "True",
-      "User": "Advanced"
-    },
-    "RNGFND1_GRF_RET": {
-      "Description": "Selects which single return to use.",
-      "DisplayName": "LightWare GRF Distance Return Type",
-      "RebootRequired": "True",
-      "User": "Standard",
-      "Values": {
-        "0": "FirstRaw",
-        "1": "FirstFiltered",
-        "2": "LastRaw",
-        "3": "LastFiltered"
-      }
-    },
-    "RNGFND1_GRF_ST": {
-      "Description": "Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.",
-      "DisplayName": "LightWare GRF Minimum Return Strength",
-      "Range": {
-        "high": "255",
-        "low": "0"
-      },
-      "RebootRequired": "True",
-      "User": "Advanced"
-    },
     "RNGFND1_MAX": {
       "Description": "Maximum distance in metres that rangefinder can reliably read",
       "DisplayName": "Rangefinder maximum distance",
@@ -49047,6 +49014,7 @@
         "45": "LightWare-GRF",
         "46": "BenewakeTFS20L",
         "47": "DTS6012M",
+        "48": "LightWare-GRF-I2C",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -49109,6 +49077,40 @@
       "User": "Advanced"
     }
   },
+  "RNGFND1_GRF_": {
+    "RNGFND1_GRF_RATE": {
+      "Description": "The update rate of the sensor in Hz.",
+      "DisplayName": "LightWare GRF Update Rate",
+      "Range": {
+        "high": "50",
+        "low": "1"
+      },
+      "RebootRequired": "True",
+      "User": "Advanced"
+    },
+    "RNGFND1_GRF_RET": {
+      "Description": "Selects which single return to use.",
+      "DisplayName": "LightWare GRF Distance Return Type",
+      "RebootRequired": "True",
+      "User": "Standard",
+      "Values": {
+        "0": "FirstRaw",
+        "1": "FirstFiltered",
+        "2": "LastRaw",
+        "3": "LastFiltered"
+      }
+    },
+    "RNGFND1_GRF_ST": {
+      "Description": "Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.",
+      "DisplayName": "LightWare GRF Minimum Return Strength",
+      "Range": {
+        "high": "255",
+        "low": "0"
+      },
+      "RebootRequired": "True",
+      "User": "Advanced"
+    }
+  },
   "RNGFND2_": {
     "RNGFND2_ADDR": {
       "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.",
@@ -49140,38 +49142,6 @@
       },
       "Units": "m",
       "User": "Standard"
-    },
-    "RNGFND2_GRF_RATE": {
-      "Description": "The update rate of the sensor in Hz. Must match the",
-      "DisplayName": "LightWare GRF Update Rate",
-      "Range": {
-        "high": "50",
-        "low": "1"
-      },
-      "RebootRequired": "True",
-      "User": "Advanced"
-    },
-    "RNGFND2_GRF_RET": {
-      "Description": "Selects which single return to use.",
-      "DisplayName": "LightWare GRF Distance Return Type",
-      "RebootRequired": "True",
-      "User": "Standard",
-      "Values": {
-        "0": "FirstRaw",
-        "1": "FirstFiltered",
-        "2": "LastRaw",
-        "3": "LastFiltered"
-      }
-    },
-    "RNGFND2_GRF_ST": {
-      "Description": "Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.",
-      "DisplayName": "LightWare GRF Minimum Return Strength",
-      "Range": {
-        "high": "255",
-        "low": "0"
-      },
-      "RebootRequired": "True",
-      "User": "Advanced"
     },
     "RNGFND2_MAX": {
       "Description": "Maximum distance in metres that rangefinder can reliably read",
@@ -49383,6 +49353,7 @@
         "45": "LightWare-GRF",
         "46": "BenewakeTFS20L",
         "47": "DTS6012M",
+        "48": "LightWare-GRF-I2C",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -49445,6 +49416,40 @@
       "User": "Advanced"
     }
   },
+  "RNGFND2_GRF_": {
+    "RNGFND2_GRF_RATE": {
+      "Description": "The update rate of the sensor in Hz.",
+      "DisplayName": "LightWare GRF Update Rate",
+      "Range": {
+        "high": "50",
+        "low": "1"
+      },
+      "RebootRequired": "True",
+      "User": "Advanced"
+    },
+    "RNGFND2_GRF_RET": {
+      "Description": "Selects which single return to use.",
+      "DisplayName": "LightWare GRF Distance Return Type",
+      "RebootRequired": "True",
+      "User": "Standard",
+      "Values": {
+        "0": "FirstRaw",
+        "1": "FirstFiltered",
+        "2": "LastRaw",
+        "3": "LastFiltered"
+      }
+    },
+    "RNGFND2_GRF_ST": {
+      "Description": "Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.",
+      "DisplayName": "LightWare GRF Minimum Return Strength",
+      "Range": {
+        "high": "255",
+        "low": "0"
+      },
+      "RebootRequired": "True",
+      "User": "Advanced"
+    }
+  },
   "RNGFND3_": {
     "RNGFND3_ADDR": {
       "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.",
@@ -49476,38 +49481,6 @@
       },
       "Units": "m",
       "User": "Standard"
-    },
-    "RNGFND3_GRF_RATE": {
-      "Description": "The update rate of the sensor in Hz. Must match the",
-      "DisplayName": "LightWare GRF Update Rate",
-      "Range": {
-        "high": "50",
-        "low": "1"
-      },
-      "RebootRequired": "True",
-      "User": "Advanced"
-    },
-    "RNGFND3_GRF_RET": {
-      "Description": "Selects which single return to use.",
-      "DisplayName": "LightWare GRF Distance Return Type",
-      "RebootRequired": "True",
-      "User": "Standard",
-      "Values": {
-        "0": "FirstRaw",
-        "1": "FirstFiltered",
-        "2": "LastRaw",
-        "3": "LastFiltered"
-      }
-    },
-    "RNGFND3_GRF_ST": {
-      "Description": "Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.",
-      "DisplayName": "LightWare GRF Minimum Return Strength",
-      "Range": {
-        "high": "255",
-        "low": "0"
-      },
-      "RebootRequired": "True",
-      "User": "Advanced"
     },
     "RNGFND3_MAX": {
       "Description": "Maximum distance in metres that rangefinder can reliably read",
@@ -49719,6 +49692,7 @@
         "45": "LightWare-GRF",
         "46": "BenewakeTFS20L",
         "47": "DTS6012M",
+        "48": "LightWare-GRF-I2C",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -49781,6 +49755,40 @@
       "User": "Advanced"
     }
   },
+  "RNGFND3_GRF_": {
+    "RNGFND3_GRF_RATE": {
+      "Description": "The update rate of the sensor in Hz.",
+      "DisplayName": "LightWare GRF Update Rate",
+      "Range": {
+        "high": "50",
+        "low": "1"
+      },
+      "RebootRequired": "True",
+      "User": "Advanced"
+    },
+    "RNGFND3_GRF_RET": {
+      "Description": "Selects which single return to use.",
+      "DisplayName": "LightWare GRF Distance Return Type",
+      "RebootRequired": "True",
+      "User": "Standard",
+      "Values": {
+        "0": "FirstRaw",
+        "1": "FirstFiltered",
+        "2": "LastRaw",
+        "3": "LastFiltered"
+      }
+    },
+    "RNGFND3_GRF_ST": {
+      "Description": "Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.",
+      "DisplayName": "LightWare GRF Minimum Return Strength",
+      "Range": {
+        "high": "255",
+        "low": "0"
+      },
+      "RebootRequired": "True",
+      "User": "Advanced"
+    }
+  },
   "RNGFND4_": {
     "RNGFND4_ADDR": {
       "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.",
@@ -49812,38 +49820,6 @@
       },
       "Units": "m",
       "User": "Standard"
-    },
-    "RNGFND4_GRF_RATE": {
-      "Description": "The update rate of the sensor in Hz. Must match the",
-      "DisplayName": "LightWare GRF Update Rate",
-      "Range": {
-        "high": "50",
-        "low": "1"
-      },
-      "RebootRequired": "True",
-      "User": "Advanced"
-    },
-    "RNGFND4_GRF_RET": {
-      "Description": "Selects which single return to use.",
-      "DisplayName": "LightWare GRF Distance Return Type",
-      "RebootRequired": "True",
-      "User": "Standard",
-      "Values": {
-        "0": "FirstRaw",
-        "1": "FirstFiltered",
-        "2": "LastRaw",
-        "3": "LastFiltered"
-      }
-    },
-    "RNGFND4_GRF_ST": {
-      "Description": "Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.",
-      "DisplayName": "LightWare GRF Minimum Return Strength",
-      "Range": {
-        "high": "255",
-        "low": "0"
-      },
-      "RebootRequired": "True",
-      "User": "Advanced"
     },
     "RNGFND4_MAX": {
       "Description": "Maximum distance in metres that rangefinder can reliably read",
@@ -50055,6 +50031,7 @@
         "45": "LightWare-GRF",
         "46": "BenewakeTFS20L",
         "47": "DTS6012M",
+        "48": "LightWare-GRF-I2C",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -50117,6 +50094,40 @@
       "User": "Advanced"
     }
   },
+  "RNGFND4_GRF_": {
+    "RNGFND4_GRF_RATE": {
+      "Description": "The update rate of the sensor in Hz.",
+      "DisplayName": "LightWare GRF Update Rate",
+      "Range": {
+        "high": "50",
+        "low": "1"
+      },
+      "RebootRequired": "True",
+      "User": "Advanced"
+    },
+    "RNGFND4_GRF_RET": {
+      "Description": "Selects which single return to use.",
+      "DisplayName": "LightWare GRF Distance Return Type",
+      "RebootRequired": "True",
+      "User": "Standard",
+      "Values": {
+        "0": "FirstRaw",
+        "1": "FirstFiltered",
+        "2": "LastRaw",
+        "3": "LastFiltered"
+      }
+    },
+    "RNGFND4_GRF_ST": {
+      "Description": "Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.",
+      "DisplayName": "LightWare GRF Minimum Return Strength",
+      "Range": {
+        "high": "255",
+        "low": "0"
+      },
+      "RebootRequired": "True",
+      "User": "Advanced"
+    }
+  },
   "RNGFND5_": {
     "RNGFND5_ADDR": {
       "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.",
@@ -50148,38 +50159,6 @@
       },
       "Units": "m",
       "User": "Standard"
-    },
-    "RNGFND5_GRF_RATE": {
-      "Description": "The update rate of the sensor in Hz. Must match the",
-      "DisplayName": "LightWare GRF Update Rate",
-      "Range": {
-        "high": "50",
-        "low": "1"
-      },
-      "RebootRequired": "True",
-      "User": "Advanced"
-    },
-    "RNGFND5_GRF_RET": {
-      "Description": "Selects which single return to use.",
-      "DisplayName": "LightWare GRF Distance Return Type",
-      "RebootRequired": "True",
-      "User": "Standard",
-      "Values": {
-        "0": "FirstRaw",
-        "1": "FirstFiltered",
-        "2": "LastRaw",
-        "3": "LastFiltered"
-      }
-    },
-    "RNGFND5_GRF_ST": {
-      "Description": "Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.",
-      "DisplayName": "LightWare GRF Minimum Return Strength",
-      "Range": {
-        "high": "255",
-        "low": "0"
-      },
-      "RebootRequired": "True",
-      "User": "Advanced"
     },
     "RNGFND5_MAX": {
       "Description": "Maximum distance in metres that rangefinder can reliably read",
@@ -50391,6 +50370,7 @@
         "45": "LightWare-GRF",
         "46": "BenewakeTFS20L",
         "47": "DTS6012M",
+        "48": "LightWare-GRF-I2C",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -50453,6 +50433,40 @@
       "User": "Advanced"
     }
   },
+  "RNGFND5_GRF_": {
+    "RNGFND5_GRF_RATE": {
+      "Description": "The update rate of the sensor in Hz.",
+      "DisplayName": "LightWare GRF Update Rate",
+      "Range": {
+        "high": "50",
+        "low": "1"
+      },
+      "RebootRequired": "True",
+      "User": "Advanced"
+    },
+    "RNGFND5_GRF_RET": {
+      "Description": "Selects which single return to use.",
+      "DisplayName": "LightWare GRF Distance Return Type",
+      "RebootRequired": "True",
+      "User": "Standard",
+      "Values": {
+        "0": "FirstRaw",
+        "1": "FirstFiltered",
+        "2": "LastRaw",
+        "3": "LastFiltered"
+      }
+    },
+    "RNGFND5_GRF_ST": {
+      "Description": "Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.",
+      "DisplayName": "LightWare GRF Minimum Return Strength",
+      "Range": {
+        "high": "255",
+        "low": "0"
+      },
+      "RebootRequired": "True",
+      "User": "Advanced"
+    }
+  },
   "RNGFND6_": {
     "RNGFND6_ADDR": {
       "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.",
@@ -50484,38 +50498,6 @@
       },
       "Units": "m",
       "User": "Standard"
-    },
-    "RNGFND6_GRF_RATE": {
-      "Description": "The update rate of the sensor in Hz. Must match the",
-      "DisplayName": "LightWare GRF Update Rate",
-      "Range": {
-        "high": "50",
-        "low": "1"
-      },
-      "RebootRequired": "True",
-      "User": "Advanced"
-    },
-    "RNGFND6_GRF_RET": {
-      "Description": "Selects which single return to use.",
-      "DisplayName": "LightWare GRF Distance Return Type",
-      "RebootRequired": "True",
-      "User": "Standard",
-      "Values": {
-        "0": "FirstRaw",
-        "1": "FirstFiltered",
-        "2": "LastRaw",
-        "3": "LastFiltered"
-      }
-    },
-    "RNGFND6_GRF_ST": {
-      "Description": "Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.",
-      "DisplayName": "LightWare GRF Minimum Return Strength",
-      "Range": {
-        "high": "255",
-        "low": "0"
-      },
-      "RebootRequired": "True",
-      "User": "Advanced"
     },
     "RNGFND6_MAX": {
       "Description": "Maximum distance in metres that rangefinder can reliably read",
@@ -50727,6 +50709,7 @@
         "45": "LightWare-GRF",
         "46": "BenewakeTFS20L",
         "47": "DTS6012M",
+        "48": "LightWare-GRF-I2C",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -50789,6 +50772,40 @@
       "User": "Advanced"
     }
   },
+  "RNGFND6_GRF_": {
+    "RNGFND6_GRF_RATE": {
+      "Description": "The update rate of the sensor in Hz.",
+      "DisplayName": "LightWare GRF Update Rate",
+      "Range": {
+        "high": "50",
+        "low": "1"
+      },
+      "RebootRequired": "True",
+      "User": "Advanced"
+    },
+    "RNGFND6_GRF_RET": {
+      "Description": "Selects which single return to use.",
+      "DisplayName": "LightWare GRF Distance Return Type",
+      "RebootRequired": "True",
+      "User": "Standard",
+      "Values": {
+        "0": "FirstRaw",
+        "1": "FirstFiltered",
+        "2": "LastRaw",
+        "3": "LastFiltered"
+      }
+    },
+    "RNGFND6_GRF_ST": {
+      "Description": "Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.",
+      "DisplayName": "LightWare GRF Minimum Return Strength",
+      "Range": {
+        "high": "255",
+        "low": "0"
+      },
+      "RebootRequired": "True",
+      "User": "Advanced"
+    }
+  },
   "RNGFND7_": {
     "RNGFND7_ADDR": {
       "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.",
@@ -50820,38 +50837,6 @@
       },
       "Units": "m",
       "User": "Standard"
-    },
-    "RNGFND7_GRF_RATE": {
-      "Description": "The update rate of the sensor in Hz. Must match the",
-      "DisplayName": "LightWare GRF Update Rate",
-      "Range": {
-        "high": "50",
-        "low": "1"
-      },
-      "RebootRequired": "True",
-      "User": "Advanced"
-    },
-    "RNGFND7_GRF_RET": {
-      "Description": "Selects which single return to use.",
-      "DisplayName": "LightWare GRF Distance Return Type",
-      "RebootRequired": "True",
-      "User": "Standard",
-      "Values": {
-        "0": "FirstRaw",
-        "1": "FirstFiltered",
-        "2": "LastRaw",
-        "3": "LastFiltered"
-      }
-    },
-    "RNGFND7_GRF_ST": {
-      "Description": "Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.",
-      "DisplayName": "LightWare GRF Minimum Return Strength",
-      "Range": {
-        "high": "255",
-        "low": "0"
-      },
-      "RebootRequired": "True",
-      "User": "Advanced"
     },
     "RNGFND7_MAX": {
       "Description": "Maximum distance in metres that rangefinder can reliably read",
@@ -51063,6 +51048,7 @@
         "45": "LightWare-GRF",
         "46": "BenewakeTFS20L",
         "47": "DTS6012M",
+        "48": "LightWare-GRF-I2C",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -51125,6 +51111,40 @@
       "User": "Advanced"
     }
   },
+  "RNGFND7_GRF_": {
+    "RNGFND7_GRF_RATE": {
+      "Description": "The update rate of the sensor in Hz.",
+      "DisplayName": "LightWare GRF Update Rate",
+      "Range": {
+        "high": "50",
+        "low": "1"
+      },
+      "RebootRequired": "True",
+      "User": "Advanced"
+    },
+    "RNGFND7_GRF_RET": {
+      "Description": "Selects which single return to use.",
+      "DisplayName": "LightWare GRF Distance Return Type",
+      "RebootRequired": "True",
+      "User": "Standard",
+      "Values": {
+        "0": "FirstRaw",
+        "1": "FirstFiltered",
+        "2": "LastRaw",
+        "3": "LastFiltered"
+      }
+    },
+    "RNGFND7_GRF_ST": {
+      "Description": "Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.",
+      "DisplayName": "LightWare GRF Minimum Return Strength",
+      "Range": {
+        "high": "255",
+        "low": "0"
+      },
+      "RebootRequired": "True",
+      "User": "Advanced"
+    }
+  },
   "RNGFND8_": {
     "RNGFND8_ADDR": {
       "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.",
@@ -51156,38 +51176,6 @@
       },
       "Units": "m",
       "User": "Standard"
-    },
-    "RNGFND8_GRF_RATE": {
-      "Description": "The update rate of the sensor in Hz. Must match the",
-      "DisplayName": "LightWare GRF Update Rate",
-      "Range": {
-        "high": "50",
-        "low": "1"
-      },
-      "RebootRequired": "True",
-      "User": "Advanced"
-    },
-    "RNGFND8_GRF_RET": {
-      "Description": "Selects which single return to use.",
-      "DisplayName": "LightWare GRF Distance Return Type",
-      "RebootRequired": "True",
-      "User": "Standard",
-      "Values": {
-        "0": "FirstRaw",
-        "1": "FirstFiltered",
-        "2": "LastRaw",
-        "3": "LastFiltered"
-      }
-    },
-    "RNGFND8_GRF_ST": {
-      "Description": "Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.",
-      "DisplayName": "LightWare GRF Minimum Return Strength",
-      "Range": {
-        "high": "255",
-        "low": "0"
-      },
-      "RebootRequired": "True",
-      "User": "Advanced"
     },
     "RNGFND8_MAX": {
       "Description": "Maximum distance in metres that rangefinder can reliably read",
@@ -51399,6 +51387,7 @@
         "45": "LightWare-GRF",
         "46": "BenewakeTFS20L",
         "47": "DTS6012M",
+        "48": "LightWare-GRF-I2C",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -51461,6 +51450,40 @@
       "User": "Advanced"
     }
   },
+  "RNGFND8_GRF_": {
+    "RNGFND8_GRF_RATE": {
+      "Description": "The update rate of the sensor in Hz.",
+      "DisplayName": "LightWare GRF Update Rate",
+      "Range": {
+        "high": "50",
+        "low": "1"
+      },
+      "RebootRequired": "True",
+      "User": "Advanced"
+    },
+    "RNGFND8_GRF_RET": {
+      "Description": "Selects which single return to use.",
+      "DisplayName": "LightWare GRF Distance Return Type",
+      "RebootRequired": "True",
+      "User": "Standard",
+      "Values": {
+        "0": "FirstRaw",
+        "1": "FirstFiltered",
+        "2": "LastRaw",
+        "3": "LastFiltered"
+      }
+    },
+    "RNGFND8_GRF_ST": {
+      "Description": "Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.",
+      "DisplayName": "LightWare GRF Minimum Return Strength",
+      "Range": {
+        "high": "255",
+        "low": "0"
+      },
+      "RebootRequired": "True",
+      "User": "Advanced"
+    }
+  },
   "RNGFND9_": {
     "RNGFND9_ADDR": {
       "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.",
@@ -51492,38 +51515,6 @@
       },
       "Units": "m",
       "User": "Standard"
-    },
-    "RNGFND9_GRF_RATE": {
-      "Description": "The update rate of the sensor in Hz. Must match the",
-      "DisplayName": "LightWare GRF Update Rate",
-      "Range": {
-        "high": "50",
-        "low": "1"
-      },
-      "RebootRequired": "True",
-      "User": "Advanced"
-    },
-    "RNGFND9_GRF_RET": {
-      "Description": "Selects which single return to use.",
-      "DisplayName": "LightWare GRF Distance Return Type",
-      "RebootRequired": "True",
-      "User": "Standard",
-      "Values": {
-        "0": "FirstRaw",
-        "1": "FirstFiltered",
-        "2": "LastRaw",
-        "3": "LastFiltered"
-      }
-    },
-    "RNGFND9_GRF_ST": {
-      "Description": "Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.",
-      "DisplayName": "LightWare GRF Minimum Return Strength",
-      "Range": {
-        "high": "255",
-        "low": "0"
-      },
-      "RebootRequired": "True",
-      "User": "Advanced"
     },
     "RNGFND9_MAX": {
       "Description": "Maximum distance in metres that rangefinder can reliably read",
@@ -51735,6 +51726,7 @@
         "45": "LightWare-GRF",
         "46": "BenewakeTFS20L",
         "47": "DTS6012M",
+        "48": "LightWare-GRF-I2C",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -51797,6 +51789,40 @@
       "User": "Advanced"
     }
   },
+  "RNGFND9_GRF_": {
+    "RNGFND9_GRF_RATE": {
+      "Description": "The update rate of the sensor in Hz.",
+      "DisplayName": "LightWare GRF Update Rate",
+      "Range": {
+        "high": "50",
+        "low": "1"
+      },
+      "RebootRequired": "True",
+      "User": "Advanced"
+    },
+    "RNGFND9_GRF_RET": {
+      "Description": "Selects which single return to use.",
+      "DisplayName": "LightWare GRF Distance Return Type",
+      "RebootRequired": "True",
+      "User": "Standard",
+      "Values": {
+        "0": "FirstRaw",
+        "1": "FirstFiltered",
+        "2": "LastRaw",
+        "3": "LastFiltered"
+      }
+    },
+    "RNGFND9_GRF_ST": {
+      "Description": "Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.",
+      "DisplayName": "LightWare GRF Minimum Return Strength",
+      "Range": {
+        "high": "255",
+        "low": "0"
+      },
+      "RebootRequired": "True",
+      "User": "Advanced"
+    }
+  },
   "RNGFNDA_": {
     "RNGFNDA_ADDR": {
       "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.",
@@ -51828,38 +51854,6 @@
       },
       "Units": "m",
       "User": "Standard"
-    },
-    "RNGFNDA_GRF_RATE": {
-      "Description": "The update rate of the sensor in Hz. Must match the",
-      "DisplayName": "LightWare GRF Update Rate",
-      "Range": {
-        "high": "50",
-        "low": "1"
-      },
-      "RebootRequired": "True",
-      "User": "Advanced"
-    },
-    "RNGFNDA_GRF_RET": {
-      "Description": "Selects which single return to use.",
-      "DisplayName": "LightWare GRF Distance Return Type",
-      "RebootRequired": "True",
-      "User": "Standard",
-      "Values": {
-        "0": "FirstRaw",
-        "1": "FirstFiltered",
-        "2": "LastRaw",
-        "3": "LastFiltered"
-      }
-    },
-    "RNGFNDA_GRF_ST": {
-      "Description": "Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.",
-      "DisplayName": "LightWare GRF Minimum Return Strength",
-      "Range": {
-        "high": "255",
-        "low": "0"
-      },
-      "RebootRequired": "True",
-      "User": "Advanced"
     },
     "RNGFNDA_MAX": {
       "Description": "Maximum distance in metres that rangefinder can reliably read",
@@ -52071,6 +52065,7 @@
         "45": "LightWare-GRF",
         "46": "BenewakeTFS20L",
         "47": "DTS6012M",
+        "48": "LightWare-GRF-I2C",
         "5": "PWM",
         "6": "BBB-PRU",
         "7": "LightWareI2C",
@@ -52130,6 +52125,40 @@
         "high": "255",
         "low": "-1"
       },
+      "User": "Advanced"
+    }
+  },
+  "RNGFNDA_GRF_": {
+    "RNGFNDA_GRF_RATE": {
+      "Description": "The update rate of the sensor in Hz.",
+      "DisplayName": "LightWare GRF Update Rate",
+      "Range": {
+        "high": "50",
+        "low": "1"
+      },
+      "RebootRequired": "True",
+      "User": "Advanced"
+    },
+    "RNGFNDA_GRF_RET": {
+      "Description": "Selects which single return to use.",
+      "DisplayName": "LightWare GRF Distance Return Type",
+      "RebootRequired": "True",
+      "User": "Standard",
+      "Values": {
+        "0": "FirstRaw",
+        "1": "FirstFiltered",
+        "2": "LastRaw",
+        "3": "LastFiltered"
+      }
+    },
+    "RNGFNDA_GRF_ST": {
+      "Description": "Minimum acceptable return signal strength in dB. Returns weaker than this will be ignored. Set to 0 to disable filtering.",
+      "DisplayName": "LightWare GRF Minimum Return Strength",
+      "Range": {
+        "high": "255",
+        "low": "0"
+      },
+      "RebootRequired": "True",
       "User": "Advanced"
     }
   },

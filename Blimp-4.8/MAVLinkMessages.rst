@@ -182,6 +182,7 @@ Commands the autopilot handles when received.
   #195, `MAV_CMD_DO_SET_ROI_LOCATION <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_ROI_LOCATION>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #197, `MAV_CMD_DO_SET_ROI_NONE <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_ROI_NONE>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #198, `MAV_CMD_DO_SET_ROI_SYSID <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_ROI_SYSID>`_, `AP_Mount/AP_Mount.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/AP_Mount/AP_Mount.cpp>`_, common
+  #196, `MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #5300, `MAV_CMD_DO_SET_SAFETY_SWITCH_STATE <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_SAFETY_SWITCH_STATE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #183, `MAV_CMD_DO_SET_SERVO <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_SERVO>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #216, `MAV_CMD_DO_SPRAYER <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_DO_SPRAYER>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, ardupilotmega
@@ -224,7 +225,7 @@ Commands the autopilot handles when received.
   #24, `MAV_CMD_NAV_TAKEOFF_LOCAL <https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_TAKEOFF_LOCAL>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #85, `MAV_CMD_NAV_VTOL_LAND <https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_VTOL_LAND>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #84, `MAV_CMD_NAV_VTOL_TAKEOFF <https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_VTOL_TAKEOFF>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
-  #16, `MAV_CMD_NAV_WAYPOINT <https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_WAYPOINT>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
+  #16, `MAV_CMD_NAV_WAYPOINT <https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_WAYPOINT>`_, `Blimp/mode_auto.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/Blimp/mode_auto.cpp>`_, common
   #241, `MAV_CMD_PREFLIGHT_CALIBRATION <https://mavlink.io/en/messages/common.html#MAV_CMD_PREFLIGHT_CALIBRATION>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #246, `MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN <https://mavlink.io/en/messages/common.html#MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #242, `MAV_CMD_PREFLIGHT_SET_SENSOR_OFFSETS <https://mavlink.io/en/messages/common.html#MAV_CMD_PREFLIGHT_SET_SENSOR_OFFSETS>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
@@ -438,6 +439,20 @@ Messages the autopilot will send automatically (unrequested).
   #9005, `WINCH_STATUS <https://mavlink.io/en/messages/common.html#WINCH_STATUS>`_, `AP_Winch/AP_Winch_PWM.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/AP_Winch/AP_Winch_PWM.cpp>`_, common
   #168, `WIND <https://mavlink.io/en/messages/ardupilotmega.html#WIND>`_, `Blimp/GCS_MAVLink_Blimp.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/Blimp/GCS_MAVLink_Blimp.cpp>`_, ardupilotmega
 
+.. _mavlink_named_floats:
+
+Named Floats
+============
+
+Breakout of named floating-point (numerical) values sent by the autopilot.
+
+.. csv-table::
+  :header: ID, MAVLink Message, Code Source, MAVLink Dialect
+
+
+  #251, `NAMED_VALUE_FLOAT:TarX <https://mavlink.io/en/messages/common.html#NAMED_VALUE_FLOAT>`_, `Blimp/mode_auto.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/Blimp/mode_auto.cpp>`_, common
+  #251, `NAMED_VALUE_FLOAT:TarY <https://mavlink.io/en/messages/common.html#NAMED_VALUE_FLOAT>`_, `Blimp/mode_auto.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/Blimp/mode_auto.cpp>`_, common
+
 .. _mavlink_missing_messages:
 
 Missing Messages
@@ -648,7 +663,6 @@ Unsupported / unhandled commands.
   #190, `MAV_CMD_DO_RALLY_LAND <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_RALLY_LAND>`_, UNSUPPORTED, common
   #214, `MAV_CMD_DO_SET_CAM_TRIGG_INTERVAL <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_CAM_TRIGG_INTERVAL>`_, UNSUPPORTED, common
   #180, `MAV_CMD_DO_SET_PARAMETER <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_PARAMETER>`_, UNSUPPORTED, common
-  #196, `MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET>`_, UNSUPPORTED, common
   #262, `MAV_CMD_DO_SET_STANDARD_MODE <https://mavlink.io/en/messages/development.html#MAV_CMD_DO_SET_STANDARD_MODE>`_, UNSUPPORTED, development
   #610, `MAV_CMD_DO_SET_SYS_CMP_ID <https://mavlink.io/en/messages/development.html#MAV_CMD_DO_SET_SYS_CMP_ID>`_, UNSUPPORTED, development
   #2003, `MAV_CMD_DO_TRIGGER_CONTROL <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_TRIGGER_CONTROL>`_, UNSUPPORTED, common

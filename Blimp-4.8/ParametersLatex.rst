@@ -528,110 +528,110 @@ This enables automatic crash checking\. When enabled the motors will disarm if a
 
 
 
-.. _MAX_VEL_XY:
+.. _MAX_MAN_THR:
 
-MAX\_VEL\_XY: Max XY Velocity
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+MAX\_MAN\_THR: Max Throttle in Manual Mode
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Sets the maximum XY velocity\, in m\/s
+Sets the maximum commanded throttle in manual mode\. Note that this will be on top of FINS\_THR\_MAX\.
 
 
 +----------+
 | Range    |
 +==========+
-| 0.2 to 5 |
+| 0.1 to 1 |
 +----------+
 
 
 
 
-.. _MAX_VEL_Z:
+.. _WP_ACCEL:
 
-MAX\_VEL\_Z: Max Z Velocity
+WP\_ACCEL: Waypoint Acceleration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Sets the maximum acceleration for waypoint navigation
+
+
++----------+--------------------------+
+| Range    | Units                    |
++==========+==========================+
+| 0.1 to 1 | meters per square second |
++----------+--------------------------+
+
+
+
+
+.. _WP_VEL:
+
+WP\_VEL: Waypoint Velocity
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Sets the maximum velocity for waypoint navigation
+
+
++----------+-------------------+
+| Range    | Units             |
++==========+===================+
+| 0.1 to 1 | meters per second |
++----------+-------------------+
+
+
+
+
+.. _WP_RADIUS:
+
+WP\_RADIUS: Waypoint Radius
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Sets the maximum Z velocity\, in m\/s
+Sets the waypoint acceptance radius for waypoint navigation
 
 
-+----------+
-| Range    |
-+==========+
-| 0.2 to 5 |
-+----------+
-
-
-
-
-.. _MAX_VEL_YAW:
-
-MAX\_VEL\_YAW: Max yaw Velocity
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Sets the maximum yaw velocity\, in rad\/s
-
-
-+----------+
-| Range    |
-+==========+
-| 0.2 to 5 |
-+----------+
++-----------+--------+
+| Range     | Units  |
++===========+========+
+| 0.1 to 10 | meters |
++-----------+--------+
 
 
 
 
-.. _MAX_POS_XY:
+.. _WP_YAW_MIN_VEL:
 
-MAX\_POS\_XY: Max XY Position change
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Sets the maximum XY position change\, in m\/s
+WP\_YAW\_MIN\_VEL: Waypoint Yaw Minimum Velocity
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-+----------+
-| Range    |
-+==========+
-| 0.1 to 5 |
-+----------+
+Sets the minimum horizontal speed for waypoint navigation
 
 
-
-
-.. _MAX_POS_Z:
-
-MAX\_POS\_Z: Max Z Position change
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Sets the maximum Z position change\, in m\/s
-
-
-+----------+
-| Range    |
-+==========+
-| 0.1 to 5 |
-+----------+
++----------+-------------------+
+| Range    | Units             |
++==========+===================+
+| 0.1 to 1 | meters per second |
++----------+-------------------+
 
 
 
 
-.. _MAX_POS_YAW:
+.. _WP_YAW_SPD:
 
-MAX\_POS\_YAW: Max Yaw Position change
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Sets the maximum Yaw position change\, in rad\/s
+WP\_YAW\_SPD: Waypoint Yaw speed
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-+----------+
-| Range    |
-+==========+
-| 0.1 to 5 |
-+----------+
+Sets the yaw speed for yawing to direction of travel during waypoint navigation
+
+
++----------+--------------------+
+| Range    | Units              |
++==========+====================+
+| 0.1 to 1 | radians per second |
++----------+--------------------+
 
 
 
@@ -652,952 +652,6 @@ Simple mode for Position control \- \"forward\" moves blimp in \+ve X direction 
 +-------+----------+
 | 1     | Enabled  |
 +-------+----------+
-
-
-
-
-.. _DIS_MASK:
-
-DIS\_MASK: Disable output mask
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Mask for disabling \(setting to zero\) one or more of the 4 output axis in mode Velocity or Loiter
-
-
-+-----+---------+
-| Bit | Meaning |
-+=====+=========+
-| 0   | Right   |
-+-----+---------+
-| 1   | Front   |
-+-----+---------+
-| 2   | Down    |
-+-----+---------+
-| 3   | Yaw     |
-+-----+---------+
-
-
-
-
-.. _PID_DZ:
-
-PID\_DZ: Deadzone for the position PIDs
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Output 0 thrust signal when blimp is within this distance \(in meters\) of the target position\. Warning\: If this param is greater than MAX\_POS\_XY param then the blimp won\'t move at all in the XY plane in Loiter mode as it does not allow more than a second\'s lag\. Same for the other axes\.
-
-
-+----------+--------+
-| Range    | Units  |
-+==========+========+
-| 0.1 to 1 | meters |
-+----------+--------+
-
-
-
-
-.. _RC_SPEED:
-
-RC\_SPEED: ESC Update Speed
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-This is the speed in Hertz that your ESCs will receive updates
-
-
-+-----------+-----------+-------+
-| Increment | Range     | Units |
-+===========+===========+=======+
-| 1         | 50 to 490 | hertz |
-+-----------+-----------+-------+
-
-
-
-
-.. _VELXY_P:
-
-VELXY\_P: Velocity \(horizontal\) P gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Velocity \(horizontal\) P gain\.  Converts the difference between desired and actual velocity to a target acceleration
-
-
-+-----------+------------+
-| Increment | Range      |
-+===========+============+
-| 0.1       | 0.1 to 6.0 |
-+-----------+------------+
-
-
-
-
-.. _VELXY_I:
-
-VELXY\_I: Velocity \(horizontal\) I gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Velocity \(horizontal\) I gain\.  Corrects long\-term difference between desired and actual velocity to a target acceleration
-
-
-+-----------+--------------+
-| Increment | Range        |
-+===========+==============+
-| 0.01      | 0.02 to 1.00 |
-+-----------+--------------+
-
-
-
-
-.. _VELXY_D:
-
-VELXY\_D: Velocity \(horizontal\) D gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Velocity \(horizontal\) D gain\.  Corrects short\-term changes in velocity
-
-
-+-----------+--------------+
-| Increment | Range        |
-+===========+==============+
-| 0.001     | 0.00 to 1.00 |
-+-----------+--------------+
-
-
-
-
-.. _VELXY_IMAX:
-
-VELXY\_IMAX: Velocity \(horizontal\) integrator maximum
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Velocity \(horizontal\) integrator maximum\.  Constrains the target acceleration that the I gain will output
-
-
-+-----------+-----------+-------------------------------+
-| Increment | Range     | Units                         |
-+===========+===========+===============================+
-| 10        | 0 to 4500 | centimeters per square second |
-+-----------+-----------+-------------------------------+
-
-
-
-
-.. _VELXY_FLTE:
-
-VELXY\_FLTE: Velocity \(horizontal\) input filter
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Velocity \(horizontal\) input filter\.  This filter \(in Hz\) is applied to the input for P and I terms
-
-
-+----------+-------+
-| Range    | Units |
-+==========+=======+
-| 0 to 100 | hertz |
-+----------+-------+
-
-
-
-
-.. _VELXY_FLTD:
-
-VELXY\_FLTD: Velocity \(horizontal\) input filter
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Velocity \(horizontal\) input filter\.  This filter \(in Hz\) is applied to the input for D term
-
-
-+----------+-------+
-| Range    | Units |
-+==========+=======+
-| 0 to 100 | hertz |
-+----------+-------+
-
-
-
-
-.. _VELXY_FF:
-
-VELXY\_FF: Velocity \(horizontal\) feed forward gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Velocity \(horizontal\) feed forward gain\.  Converts the difference between desired velocity to a target acceleration
-
-
-+-----------+--------+
-| Increment | Range  |
-+===========+========+
-| 0.01      | 0 to 6 |
-+-----------+--------+
-
-
-
-
-.. _VELZ_P:
-
-VELZ\_P: Velocity \(vertical\) P gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Velocity \(vertical\) P gain\.  Converts the difference between desired and actual velocity to a target acceleration
-
-
-+-----------+------------+
-| Increment | Range      |
-+===========+============+
-| 0.1       | 0.1 to 6.0 |
-+-----------+------------+
-
-
-
-
-.. _VELZ_I:
-
-VELZ\_I: Velocity \(vertical\) I gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Velocity \(vertical\) I gain\.  Corrects long\-term difference between desired and actual velocity to a target acceleration
-
-
-+-----------+--------------+
-| Increment | Range        |
-+===========+==============+
-| 0.01      | 0.02 to 1.00 |
-+-----------+--------------+
-
-
-
-
-.. _VELZ_D:
-
-VELZ\_D: Velocity \(vertical\) D gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Velocity \(vertical\) D gain\.  Corrects short\-term changes in velocity
-
-
-+-----------+--------------+
-| Increment | Range        |
-+===========+==============+
-| 0.001     | 0.00 to 1.00 |
-+-----------+--------------+
-
-
-
-
-.. _VELZ_IMAX:
-
-VELZ\_IMAX: Velocity \(vertical\) integrator maximum
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Velocity \(vertical\) integrator maximum\.  Constrains the target acceleration that the I gain will output
-
-
-+-----------+-----------+-------------------------------+
-| Increment | Range     | Units                         |
-+===========+===========+===============================+
-| 10        | 0 to 4500 | centimeters per square second |
-+-----------+-----------+-------------------------------+
-
-
-
-
-.. _VELZ_FLTE:
-
-VELZ\_FLTE: Velocity \(vertical\) input filter
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Velocity \(vertical\) input filter\.  This filter \(in Hz\) is applied to the input for P and I terms
-
-
-+----------+-------+
-| Range    | Units |
-+==========+=======+
-| 0 to 100 | hertz |
-+----------+-------+
-
-
-
-
-.. _VELZ_FLTD:
-
-VELZ\_FLTD: Velocity \(vertical\) input filter
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Velocity \(vertical\) input filter\.  This filter \(in Hz\) is applied to the input for D term
-
-
-+----------+-------+
-| Range    | Units |
-+==========+=======+
-| 0 to 100 | hertz |
-+----------+-------+
-
-
-
-
-.. _VELZ_FF:
-
-VELZ\_FF: Velocity \(vertical\) feed forward gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Velocity \(vertical\) feed forward gain\.  Converts the difference between desired velocity to a target acceleration
-
-
-+-----------+--------+
-| Increment | Range  |
-+===========+========+
-| 0.01      | 0 to 6 |
-+-----------+--------+
-
-
-
-
-.. _VELYAW_P:
-
-VELYAW\_P: Velocity \(yaw\) P gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Velocity \(yaw\) P gain\.  Converts the difference between desired and actual velocity to a target acceleration
-
-
-+-----------+------------+
-| Increment | Range      |
-+===========+============+
-| 0.1       | 0.1 to 6.0 |
-+-----------+------------+
-
-
-
-
-.. _VELYAW_I:
-
-VELYAW\_I: Velocity \(yaw\) I gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Velocity \(yaw\) I gain\.  Corrects long\-term difference between desired and actual velocity to a target acceleration
-
-
-+-----------+--------------+
-| Increment | Range        |
-+===========+==============+
-| 0.01      | 0.02 to 1.00 |
-+-----------+--------------+
-
-
-
-
-.. _VELYAW_D:
-
-VELYAW\_D: Velocity \(yaw\) D gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Velocity \(yaw\) D gain\.  Corrects short\-term changes in velocity
-
-
-+-----------+--------------+
-| Increment | Range        |
-+===========+==============+
-| 0.001     | 0.00 to 1.00 |
-+-----------+--------------+
-
-
-
-
-.. _VELYAW_IMAX:
-
-VELYAW\_IMAX: Velocity \(yaw\) integrator maximum
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Velocity \(yaw\) integrator maximum\.  Constrains the target acceleration that the I gain will output
-
-
-+-----------+-----------+-------------------------------+
-| Increment | Range     | Units                         |
-+===========+===========+===============================+
-| 10        | 0 to 4500 | centimeters per square second |
-+-----------+-----------+-------------------------------+
-
-
-
-
-.. _VELYAW_FLTE:
-
-VELYAW\_FLTE: Velocity \(yaw\) input filter
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Velocity \(yaw\) input filter\.  This filter \(in Hz\) is applied to the input for P and I terms
-
-
-+----------+-------+
-| Range    | Units |
-+==========+=======+
-| 0 to 100 | hertz |
-+----------+-------+
-
-
-
-
-.. _VELYAW_FF:
-
-VELYAW\_FF: Velocity \(yaw\) feed forward gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Velocity \(yaw\) feed forward gain\.  Converts the difference between desired velocity to a target acceleration
-
-
-+-----------+--------+
-| Increment | Range  |
-+===========+========+
-| 0.01      | 0 to 6 |
-+-----------+--------+
-
-
-
-
-.. _POSXY_P:
-
-POSXY\_P: Position \(horizontal\) P gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Position \(horizontal\) P gain\.  Converts the difference between desired and actual position to a target velocity
-
-
-+-----------+------------+
-| Increment | Range      |
-+===========+============+
-| 0.1       | 0.1 to 6.0 |
-+-----------+------------+
-
-
-
-
-.. _POSXY_I:
-
-POSXY\_I: Position \(horizontal\) I gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Position \(horizontal\) I gain\.  Corrects long\-term difference between desired and actual position to a target velocity
-
-
-+-----------+--------------+
-| Increment | Range        |
-+===========+==============+
-| 0.01      | 0.02 to 1.00 |
-+-----------+--------------+
-
-
-
-
-.. _POSXY_D:
-
-POSXY\_D: Position \(horizontal\) D gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Position \(horizontal\) D gain\.  Corrects short\-term changes in position
-
-
-+-----------+--------------+
-| Increment | Range        |
-+===========+==============+
-| 0.001     | 0.00 to 1.00 |
-+-----------+--------------+
-
-
-
-
-.. _POSXY_IMAX:
-
-POSXY\_IMAX: Position \(horizontal\) integrator maximum
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Position \(horizontal\) integrator maximum\.  Constrains the target acceleration that the I gain will output
-
-
-+-----------+-----------+-------------------------------+
-| Increment | Range     | Units                         |
-+===========+===========+===============================+
-| 10        | 0 to 4500 | centimeters per square second |
-+-----------+-----------+-------------------------------+
-
-
-
-
-.. _POSXY_FLTE:
-
-POSXY\_FLTE: Position \(horizontal\) input filter
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Position \(horizontal\) input filter\.  This filter \(in Hz\) is applied to the input for P and I terms
-
-
-+----------+-------+
-| Range    | Units |
-+==========+=======+
-| 0 to 100 | hertz |
-+----------+-------+
-
-
-
-
-.. _POSXY_FLTD:
-
-POSXY\_FLTD: Position \(horizontal\) input filter
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Position \(horizontal\) input filter\.  This filter \(in Hz\) is applied to the input for D term
-
-
-+----------+-------+
-| Range    | Units |
-+==========+=======+
-| 0 to 100 | hertz |
-+----------+-------+
-
-
-
-
-.. _POSXY_FF:
-
-POSXY\_FF: Position \(horizontal\) feed forward gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Position \(horizontal\) feed forward gain\.  Converts the difference between desired position to a target velocity
-
-
-+-----------+--------+
-| Increment | Range  |
-+===========+========+
-| 0.01      | 0 to 6 |
-+-----------+--------+
-
-
-
-
-.. _POSZ_P:
-
-POSZ\_P: Position \(vertical\) P gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Position \(vertical\) P gain\.  Converts the difference between desired and actual position to a target velocity
-
-
-+-----------+------------+
-| Increment | Range      |
-+===========+============+
-| 0.1       | 0.1 to 6.0 |
-+-----------+------------+
-
-
-
-
-.. _POSZ_I:
-
-POSZ\_I: Position \(vertical\) I gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Position \(vertical\) I gain\.  Corrects long\-term difference between desired and actual position to a target velocity
-
-
-+-----------+--------------+
-| Increment | Range        |
-+===========+==============+
-| 0.01      | 0.02 to 1.00 |
-+-----------+--------------+
-
-
-
-
-.. _POSZ_D:
-
-POSZ\_D: Position \(vertical\) D gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Position \(vertical\) D gain\.  Corrects short\-term changes in position
-
-
-+-----------+--------------+
-| Increment | Range        |
-+===========+==============+
-| 0.001     | 0.00 to 1.00 |
-+-----------+--------------+
-
-
-
-
-.. _POSZ_IMAX:
-
-POSZ\_IMAX: Position \(vertical\) integrator maximum
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Position \(vertical\) integrator maximum\.  Constrains the target acceleration that the I gain will output
-
-
-+-----------+-----------+-------------------------------+
-| Increment | Range     | Units                         |
-+===========+===========+===============================+
-| 10        | 0 to 4500 | centimeters per square second |
-+-----------+-----------+-------------------------------+
-
-
-
-
-.. _POSZ_FLTE:
-
-POSZ\_FLTE: Position \(vertical\) input filter
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Position \(vertical\) input filter\.  This filter \(in Hz\) is applied to the input for P and I terms
-
-
-+----------+-------+
-| Range    | Units |
-+==========+=======+
-| 0 to 100 | hertz |
-+----------+-------+
-
-
-
-
-.. _POSZ_FLTD:
-
-POSZ\_FLTD: Position \(vertical\) input filter
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Position \(vertical\) input filter\.  This filter \(in Hz\) is applied to the input for D term
-
-
-+----------+-------+
-| Range    | Units |
-+==========+=======+
-| 0 to 100 | hertz |
-+----------+-------+
-
-
-
-
-.. _POSZ_FF:
-
-POSZ\_FF: Position \(vertical\) feed forward gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Position \(vertical\) feed forward gain\.  Converts the difference between desired position to a target velocity
-
-
-+-----------+--------+
-| Increment | Range  |
-+===========+========+
-| 0.01      | 0 to 6 |
-+-----------+--------+
-
-
-
-
-.. _POSYAW_P:
-
-POSYAW\_P: Position \(yaw\) axis controller P gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Position \(yaw\) axis controller P gain\.
-
-
-+-----------+------------+
-| Increment | Range      |
-+===========+============+
-| 0.01      | 0.0 to 3.0 |
-+-----------+------------+
-
-
-
-
-.. _POSYAW_I:
-
-POSYAW\_I: Position \(yaw\) axis controller I gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Position \(yaw\) axis controller I gain\.
-
-
-+-----------+------------+
-| Increment | Range      |
-+===========+============+
-| 0.01      | 0.0 to 3.0 |
-+-----------+------------+
-
-
-
-
-.. _POSYAW_IMAX:
-
-POSYAW\_IMAX: Position \(yaw\) axis controller I gain maximum
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Position \(yaw\) axis controller I gain maximum\.
-
-
-+-----------+-----------+-------------+
-| Increment | Range     | Units       |
-+===========+===========+=============+
-| 10        | 0 to 4000 | decipercent |
-+-----------+-----------+-------------+
-
-
-
-
-.. _POSYAW_D:
-
-POSYAW\_D: Position \(yaw\) axis controller D gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Position \(yaw\) axis controller D gain\.
-
-
-+-----------+--------------+
-| Increment | Range        |
-+===========+==============+
-| 0.001     | 0.001 to 0.1 |
-+-----------+--------------+
-
-
-
-
-.. _POSYAW_FF:
-
-POSYAW\_FF: Position \(yaw\) axis controller feed forward
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Position \(yaw\) axis controller feed forward
-
-
-+-----------+----------+
-| Increment | Range    |
-+===========+==========+
-| 0.001     | 0 to 0.5 |
-+-----------+----------+
-
-
-
-
-.. _POSYAW_FLTT:
-
-POSYAW\_FLTT: Position \(yaw\) target frequency filter in Hz
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Position \(yaw\) target frequency filter in Hz
-
-
-+-----------+---------+-------+
-| Increment | Range   | Units |
-+===========+=========+=======+
-| 1         | 1 to 50 | hertz |
-+-----------+---------+-------+
-
-
-
-
-.. _POSYAW_FLTE:
-
-POSYAW\_FLTE: Position \(yaw\) error frequency filter in Hz
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Position \(yaw\) error frequency filter in Hz
-
-
-+-----------+----------+-------+
-| Increment | Range    | Units |
-+===========+==========+=======+
-| 1         | 1 to 100 | hertz |
-+-----------+----------+-------+
-
-
-
-
-.. _POSYAW_FLTD:
-
-POSYAW\_FLTD: Position \(yaw\) derivative input filter in Hz
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Position \(yaw\) derivative input filter in Hz
-
-
-+-----------+----------+-------+
-| Increment | Range    | Units |
-+===========+==========+=======+
-| 1         | 1 to 100 | hertz |
-+-----------+----------+-------+
-
-
-
-
-.. _POSYAW_SMAX:
-
-POSYAW\_SMAX: Yaw slew rate limit
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Sets an upper limit on the slew rate produced by the combined P and D gains\.
-
-
-+-----------+----------+
-| Increment | Range    |
-+===========+==========+
-| 0.5       | 0 to 200 |
-+-----------+----------+
-
-
-
-
-.. _POSYAW_PDMX:
-
-POSYAW\_PDMX: Position \(yaw\) axis controller PD sum maximum
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Position \(yaw\) axis controller PD sum maximum\.  The maximum\/minimum value that the sum of the P and D term can output
-
-
-+-----------+-----------+-------------+
-| Increment | Range     | Units       |
-+===========+===========+=============+
-| 10        | 0 to 4000 | decipercent |
-+-----------+-----------+-------------+
-
-
-
-
-.. _POSYAW_D_FF:
-
-POSYAW\_D\_FF: Position \(yaw\) Derivative FeedForward Gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-FF D Gain which produces an output that is proportional to the rate of change of the target
-
-
-+-----------+----------+
-| Increment | Range    |
-+===========+==========+
-| 0.001     | 0 to 0.1 |
-+-----------+----------+
-
-
-
-
-.. _POSYAW_NTF:
-
-POSYAW\_NTF: Position \(yaw\) Target notch filter index
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Position \(yaw\) Target notch filter index
-
-
-+--------+
-| Range  |
-+========+
-| 1 to 8 |
-+--------+
-
-
-
-
-.. _POSYAW_NEF:
-
-POSYAW\_NEF: Position \(yaw\) Error notch filter index
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Position \(yaw\) Error notch filter index
-
-
-+--------+
-| Range  |
-+========+
-| 1 to 8 |
-+--------+
 
 
 
@@ -1623,12 +677,12 @@ Bitmask of developer options\. The meanings of the bit fields in this parameter 
 
 .. _FRAME_CLASS:
 
-FRAME\_CLASS: Frame Class
+FRAME\_CLASS: Frame class
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: Reboot required after change*
 
-Controls major frame class for blimp\.
+Controls frame for blimp\.
 
 
 +-------+-------------+
@@ -37343,53 +36397,51 @@ COMPASS\_DISBLMSK: Compass disable driver type mask
 This is a bitmask of driver types to disable\. If a driver type is set in this mask then that driver will not try to find a sensor at startup
 
 
-+-----+--------------+
-| Bit | Meaning      |
-+=====+==============+
-| 0   | HMC5883      |
-+-----+--------------+
-| 1   | LSM303D      |
-+-----+--------------+
-| 2   | AK8963       |
-+-----+--------------+
-| 3   | BMM150       |
-+-----+--------------+
-| 4   | LSM9DS1      |
-+-----+--------------+
-| 5   | LIS3MDL      |
-+-----+--------------+
-| 6   | AK0991x      |
-+-----+--------------+
-| 7   | IST8310      |
-+-----+--------------+
-| 8   | ICM20948     |
-+-----+--------------+
-| 9   | MMC3416      |
-+-----+--------------+
-| 11  | DroneCAN     |
-+-----+--------------+
-| 12  | QMC5883      |
-+-----+--------------+
-| 14  | MAG3110      |
-+-----+--------------+
-| 15  | IST8308      |
-+-----+--------------+
-| 16  | RM3100       |
-+-----+--------------+
-| 17  | MSP          |
-+-----+--------------+
-| 18  | ExternalAHRS |
-+-----+--------------+
-| 19  | MMC5XX3      |
-+-----+--------------+
-| 20  | QMC5883P     |
-+-----+--------------+
-| 21  | BMM350       |
-+-----+--------------+
-| 22  | IIS2MDC      |
-+-----+--------------+
-| 23  | LIS2MDL      |
-+-----+--------------+
++-----+--------------------+
+| Bit | Meaning            |
++=====+====================+
+| 0   | HMC5883            |
++-----+--------------------+
+| 1   | LSM303D            |
++-----+--------------------+
+| 2   | AK8963             |
++-----+--------------------+
+| 3   | BMM150             |
++-----+--------------------+
+| 4   | LSM9DS1            |
++-----+--------------------+
+| 5   | LIS3MDL            |
++-----+--------------------+
+| 6   | AK0991x            |
++-----+--------------------+
+| 7   | IST8310            |
++-----+--------------------+
+| 8   | ICM20948           |
++-----+--------------------+
+| 9   | MMC3416            |
++-----+--------------------+
+| 11  | DroneCAN           |
++-----+--------------------+
+| 12  | QMC5883            |
++-----+--------------------+
+| 14  | MAG3110            |
++-----+--------------------+
+| 15  | IST8308            |
++-----+--------------------+
+| 16  | RM3100             |
++-----+--------------------+
+| 17  | MSP                |
++-----+--------------------+
+| 18  | ExternalAHRS       |
++-----+--------------------+
+| 19  | MMC5XX3            |
++-----+--------------------+
+| 20  | QMC5883P           |
++-----+--------------------+
+| 21  | BMM350             |
++-----+--------------------+
+| 22  | IIS2MDC or LIS2MDL |
++-----+--------------------+
 
 
 
@@ -42919,7 +41971,25 @@ FINS\_TURBO\_MODE: Enable turbo mode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Enables double speed on high offset\.
+Enables double speed on high offset \(finned blimp only\)\.
+
+
++--------+
+| Range  |
++========+
+| 0 to 1 |
++--------+
+
+
+
+
+.. _FINS_THR_MAX:
+
+FINS\_THR\_MAX: Maximum throttle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Maximum throttle allowed\. Constrains any throttle input to this value \(negative and positive\) Set it to 1 to disable \(i\.e\. allow max throttle\)\.
 
 
 +--------+
@@ -50012,6 +49082,2148 @@ This sets the maximum number of log file that will be written on dataflash or sd
 +===========+==========+
 | 1         | 2 to 500 |
 +-----------+----------+
+
+
+
+
+
+.. _parameters_LOIT_:
+
+LOIT\_ Parameters
+-----------------
+
+
+.. _LOIT_VELX_P:
+
+LOIT\_VELX\_P: X axis velocity controller P gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X axis velocity controller P gain\.  Corrects in proportion to the difference between the desired X velocity vs actual X velocity
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.005     | 0.01 to 0.5 |
++-----------+-------------+
+
+
+
+
+.. _LOIT_VELX_I:
+
+LOIT\_VELX\_I: X axis velocity controller I gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X axis velocity controller I gain\.  Corrects long\-term difference in desired X velocity vs actual X velocity
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.01      | 0.01 to 2.0 |
++-----------+-------------+
+
+
+
+
+.. _LOIT_VELX_IMAX:
+
+LOIT\_VELX\_IMAX: X axis velocity controller I gain maximum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X axis velocity controller I gain maximum\.  Constrains the maximum that the I term will output
+
+
++-----------+--------+
+| Increment | Range  |
++===========+========+
+| 0.01      | 0 to 1 |
++-----------+--------+
+
+
+
+
+.. _LOIT_VELX_D:
+
+LOIT\_VELX\_D: X axis velocity controller D gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X axis velocity controller D gain\.  Compensates for short\-term change in desired X velocity vs actual X velocity
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.001     | 0.0 to 0.05 |
++-----------+-------------+
+
+
+
+
+.. _LOIT_VELX_FF:
+
+LOIT\_VELX\_FF: X axis velocity controller feed forward
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X axis velocity controller feed forward
+
+
++-----------+----------+
+| Increment | Range    |
++===========+==========+
+| 0.001     | 0 to 0.5 |
++-----------+----------+
+
+
+
+
+.. _LOIT_VELX_FLTT:
+
+LOIT\_VELX\_FLTT: X axis velocity controller target frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X axis velocity controller target frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 5 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _LOIT_VELX_FLTE:
+
+LOIT\_VELX\_FLTE: X axis velocity controller error frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X axis velocity controller error frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 0 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _LOIT_VELX_FLTD:
+
+LOIT\_VELX\_FLTD: X axis velocity controller derivative frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X axis velocity controller derivative frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 5 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _LOIT_VELX_SMAX:
+
+LOIT\_VELX\_SMAX: X axis velocity slew rate limit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Sets an upper limit on the slew rate produced by the combined P and D gains\. If the amplitude of the control action produced by the rate feedback exceeds this value\, then the D\+P gain is reduced to respect the limit\. This limits the amplitude of high frequency oscillations caused by an excessive gain\. The limit should be set to no more than 25\% of the actuators maximum slew rate to allow for load effects\. Note\: The gain will not be reduced to less than 10\% of the nominal value\. A value of zero will disable this feature\.
+
+
++-----------+----------+
+| Increment | Range    |
++===========+==========+
+| 0.5       | 0 to 200 |
++-----------+----------+
+
+
+
+
+.. _LOIT_VELX_PDMX:
+
+LOIT\_VELX\_PDMX: X axis velocity controller PD sum maximum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+X axis velocity controller PD sum maximum\.  The maximum\/minimum value that the sum of the P and D term can output
+
+
++-----------+--------+
+| Increment | Range  |
++===========+========+
+| 0.01      | 0 to 1 |
++-----------+--------+
+
+
+
+
+.. _LOIT_VELX_D_FF:
+
+LOIT\_VELX\_D\_FF: X axis velocity derivative feedforward gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+FF D Gain which produces an output that is proportional to the rate of change of the target
+
+
++-----------+-----------+
+| Increment | Range     |
++===========+===========+
+| 0.0001    | 0 to 0.02 |
++-----------+-----------+
+
+
+
+
+.. _LOIT_VELX_NTF:
+
+LOIT\_VELX\_NTF: X axis velocity target notch filter index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+X axis velocity target notch filter index
+
+
++--------+
+| Range  |
++========+
+| 1 to 8 |
++--------+
+
+
+
+
+.. _LOIT_VELX_NEF:
+
+LOIT\_VELX\_NEF: X axis velocity error notch filter index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+X axis velocity error notch filter index
+
+
++--------+
+| Range  |
++========+
+| 1 to 8 |
++--------+
+
+
+
+
+.. _LOIT_VELY_P:
+
+LOIT\_VELY\_P: Y axis velocity controller P gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Y axis velocity controller P gain\.  Corrects in proportion to the difference between the desired Y velocity vs actual Y velocity
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.005     | 0.01 to 0.5 |
++-----------+-------------+
+
+
+
+
+.. _LOIT_VELY_I:
+
+LOIT\_VELY\_I: Y axis velocity controller I gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Y axis velocity controller I gain\.  Corrects long\-term difference in desired Y velocity vs actual Y velocity
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.01      | 0.01 to 2.0 |
++-----------+-------------+
+
+
+
+
+.. _LOIT_VELY_IMAX:
+
+LOIT\_VELY\_IMAX: Y axis velocity controller I gain maximum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Y axis velocity controller I gain maximum\.  Constrains the maximum that the I term will output
+
+
++-----------+--------+
+| Increment | Range  |
++===========+========+
+| 0.01      | 0 to 1 |
++-----------+--------+
+
+
+
+
+.. _LOIT_VELY_D:
+
+LOIT\_VELY\_D: Y axis velocity controller D gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Y axis velocity controller D gain\.  Compensates for short\-term change in desired Y velocity vs actual Y velocity
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.001     | 0.0 to 0.05 |
++-----------+-------------+
+
+
+
+
+.. _LOIT_VELY_FF:
+
+LOIT\_VELY\_FF: Y axis velocity controller feed forward
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Y axis velocity controller feed forward
+
+
++-----------+----------+
+| Increment | Range    |
++===========+==========+
+| 0.001     | 0 to 0.5 |
++-----------+----------+
+
+
+
+
+.. _LOIT_VELY_FLTT:
+
+LOIT\_VELY\_FLTT: Y axis velocity controller target frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Y axis velocity controller target frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 5 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _LOIT_VELY_FLTE:
+
+LOIT\_VELY\_FLTE: Y axis velocity controller error frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Y axis velocity controller error frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 0 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _LOIT_VELY_FLTD:
+
+LOIT\_VELY\_FLTD: Y axis velocity controller derivative frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Y axis velocity controller derivative frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 5 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _LOIT_VELY_SMAX:
+
+LOIT\_VELY\_SMAX: Y axis velocity slew rate limit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Sets an upper limit on the slew rate produced by the combined P and D gains\. If the amplitude of the control action produced by the rate feedback exceeds this value\, then the D\+P gain is reduced to respect the limit\. This limits the amplitude of high frequency oscillations caused by an excessive gain\. The limit should be set to no more than 25\% of the actuators maximum slew rate to allow for load effects\. Note\: The gain will not be reduced to less than 10\% of the nominal value\. A value of zero will disable this feature\.
+
+
++-----------+----------+
+| Increment | Range    |
++===========+==========+
+| 0.5       | 0 to 200 |
++-----------+----------+
+
+
+
+
+.. _LOIT_VELY_PDMX:
+
+LOIT\_VELY\_PDMX: Y axis velocity controller PD sum maximum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Y axis velocity controller PD sum maximum\.  The maximum\/minimum value that the sum of the P and D term can output
+
+
++-----------+--------+
+| Increment | Range  |
++===========+========+
+| 0.01      | 0 to 1 |
++-----------+--------+
+
+
+
+
+.. _LOIT_VELY_D_FF:
+
+LOIT\_VELY\_D\_FF: Y axis velocity derivative feedforward gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+FF D Gain which produces an output that is proportional to the rate of change of the target
+
+
++-----------+-----------+
+| Increment | Range     |
++===========+===========+
+| 0.0001    | 0 to 0.02 |
++-----------+-----------+
+
+
+
+
+.. _LOIT_VELY_NTF:
+
+LOIT\_VELY\_NTF: Y axis velocity target notch filter index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Y axis velocity target notch filter index
+
+
++--------+
+| Range  |
++========+
+| 1 to 8 |
++--------+
+
+
+
+
+.. _LOIT_VELY_NEF:
+
+LOIT\_VELY\_NEF: Y axis velocity error notch filter index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Y axis velocity error notch filter index
+
+
++--------+
+| Range  |
++========+
+| 1 to 8 |
++--------+
+
+
+
+
+.. _LOIT_VELZ_P:
+
+LOIT\_VELZ\_P: Z axis velocity controller P gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Z axis velocity controller P gain\.  Corrects in proportion to the difference between the desired Z velocity vs actual Z velocity
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.005     | 0.01 to 0.5 |
++-----------+-------------+
+
+
+
+
+.. _LOIT_VELZ_I:
+
+LOIT\_VELZ\_I: Z axis velocity controller I gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Z axis velocity controller I gain\.  Corrects long\-term difference in desired Z velocity vs actual Z velocity
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.01      | 0.01 to 2.0 |
++-----------+-------------+
+
+
+
+
+.. _LOIT_VELZ_IMAX:
+
+LOIT\_VELZ\_IMAX: Z axis velocity controller I gain maximum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Z axis velocity controller I gain maximum\.  Constrains the maximum that the I term will output
+
+
++-----------+--------+
+| Increment | Range  |
++===========+========+
+| 0.01      | 0 to 1 |
++-----------+--------+
+
+
+
+
+.. _LOIT_VELZ_D:
+
+LOIT\_VELZ\_D: Z axis velocity controller D gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Z axis velocity controller D gain\.  Compensates for short\-term change in desired Z velocity vs actual Z velocity
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.001     | 0.0 to 0.05 |
++-----------+-------------+
+
+
+
+
+.. _LOIT_VELZ_FF:
+
+LOIT\_VELZ\_FF: Z axis velocity controller feed forward
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Z axis velocity controller feed forward
+
+
++-----------+----------+
+| Increment | Range    |
++===========+==========+
+| 0.001     | 0 to 0.5 |
++-----------+----------+
+
+
+
+
+.. _LOIT_VELZ_FLTT:
+
+LOIT\_VELZ\_FLTT: Z axis velocity controller target frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Z axis velocity controller target frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 5 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _LOIT_VELZ_FLTE:
+
+LOIT\_VELZ\_FLTE: Z axis velocity controller error frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Z axis velocity controller error frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 0 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _LOIT_VELZ_FLTD:
+
+LOIT\_VELZ\_FLTD: Z axis velocity controller derivative frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Z axis velocity controller derivative frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 5 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _LOIT_VELZ_SMAX:
+
+LOIT\_VELZ\_SMAX: Z axis velocity slew rate limit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Sets an upper limit on the slew rate produced by the combined P and D gains\. If the amplitude of the control action produced by the rate feedback exceeds this value\, then the D\+P gain is reduced to respect the limit\. This limits the amplitude of high frequency oscillations caused by an excessive gain\. The limit should be set to no more than 25\% of the actuators maximum slew rate to allow for load effects\. Note\: The gain will not be reduced to less than 10\% of the nominal value\. A value of zero will disable this feature\.
+
+
++-----------+----------+
+| Increment | Range    |
++===========+==========+
+| 0.5       | 0 to 200 |
++-----------+----------+
+
+
+
+
+.. _LOIT_VELZ_PDMX:
+
+LOIT\_VELZ\_PDMX: Z axis velocity controller PD sum maximum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Z axis velocity controller PD sum maximum\.  The maximum\/minimum value that the sum of the P and D term can output
+
+
++-----------+--------+
+| Increment | Range  |
++===========+========+
+| 0.01      | 0 to 1 |
++-----------+--------+
+
+
+
+
+.. _LOIT_VELZ_D_FF:
+
+LOIT\_VELZ\_D\_FF: Z axis velocity derivative feedforward gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+FF D Gain which produces an output that is proportional to the rate of change of the target
+
+
++-----------+-----------+
+| Increment | Range     |
++===========+===========+
+| 0.0001    | 0 to 0.02 |
++-----------+-----------+
+
+
+
+
+.. _LOIT_VELZ_NTF:
+
+LOIT\_VELZ\_NTF: Z axis velocity target notch filter index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Z axis velocity target notch filter index
+
+
++--------+
+| Range  |
++========+
+| 1 to 8 |
++--------+
+
+
+
+
+.. _LOIT_VELZ_NEF:
+
+LOIT\_VELZ\_NEF: Z axis velocity error notch filter index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Z axis velocity error notch filter index
+
+
++--------+
+| Range  |
++========+
+| 1 to 8 |
++--------+
+
+
+
+
+.. _LOIT_VELYAW_P:
+
+LOIT\_VELYAW\_P: Yaw axis velocity controller P gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Yaw axis velocity controller P gain\.  Corrects in proportion to the difference between the desired Yaw velocity vs actual Yaw velocity
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.005     | 0.01 to 0.5 |
++-----------+-------------+
+
+
+
+
+.. _LOIT_VELYAW_I:
+
+LOIT\_VELYAW\_I: Yaw axis velocity controller I gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Yaw axis velocity controller I gain\.  Corrects long\-term difference in desired Yaw velocity vs actual Yaw velocity
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.01      | 0.01 to 2.0 |
++-----------+-------------+
+
+
+
+
+.. _LOIT_VELYAW_IMAX:
+
+LOIT\_VELYAW\_IMAX: Yaw axis velocity controller I gain maximum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Yaw axis velocity controller I gain maximum\.  Constrains the maximum that the I term will output
+
+
++-----------+--------+
+| Increment | Range  |
++===========+========+
+| 0.01      | 0 to 1 |
++-----------+--------+
+
+
+
+
+.. _LOIT_VELYAW_D:
+
+LOIT\_VELYAW\_D: Yaw axis velocity controller D gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Yaw axis velocity controller D gain\.  Compensates for short\-term change in desired Yaw velocity vs actual Yaw velocity
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.001     | 0.0 to 0.05 |
++-----------+-------------+
+
+
+
+
+.. _LOIT_VELYAW_FF:
+
+LOIT\_VELYAW\_FF: Yaw axis velocity controller feed forward
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Yaw axis velocity controller feed forward
+
+
++-----------+----------+
+| Increment | Range    |
++===========+==========+
+| 0.001     | 0 to 0.5 |
++-----------+----------+
+
+
+
+
+.. _LOIT_VELYAW_FLTT:
+
+LOIT\_VELYAW\_FLTT: Yaw axis velocity controller target frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Yaw axis velocity controller target frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 5 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _LOIT_VELYAW_FLTE:
+
+LOIT\_VELYAW\_FLTE: Yaw axis velocity controller error frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Yaw axis velocity controller error frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 0 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _LOIT_VELYAW_FLTD:
+
+LOIT\_VELYAW\_FLTD: Yaw axis velocity controller derivative frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Yaw axis velocity controller derivative frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 5 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _LOIT_VELYAW_SMAX:
+
+LOIT\_VELYAW\_SMAX: Yaw axis velocity slew rate limit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Sets an upper limit on the slew rate produced by the combined P and D gains\. If the amplitude of the control action produced by the rate feedback exceeds this value\, then the D\+P gain is reduced to respect the limit\. This limits the amplitude of high frequency oscillations caused by an excessive gain\. The limit should be set to no more than 25\% of the actuators maximum slew rate to allow for load effects\. Note\: The gain will not be reduced to less than 10\% of the nominal value\. A value of zero will disable this feature\.
+
+
++-----------+----------+
+| Increment | Range    |
++===========+==========+
+| 0.5       | 0 to 200 |
++-----------+----------+
+
+
+
+
+.. _LOIT_VELYAW_PDMX:
+
+LOIT\_VELYAW\_PDMX: Yaw axis velocity controller PD sum maximum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Yaw axis velocity controller PD sum maximum\.  The maximum\/minimum value that the sum of the P and D term can output
+
+
++-----------+--------+
+| Increment | Range  |
++===========+========+
+| 0.01      | 0 to 1 |
++-----------+--------+
+
+
+
+
+.. _LOIT_VELYAW_D_FF:
+
+LOIT\_VELYAW\_D\_FF: Yaw axis velocity derivative feedforward gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+FF D Gain which produces an output that is proportional to the rate of change of the target
+
+
++-----------+-----------+
+| Increment | Range     |
++===========+===========+
+| 0.0001    | 0 to 0.02 |
++-----------+-----------+
+
+
+
+
+.. _LOIT_VELYAW_NTF:
+
+LOIT\_VELYAW\_NTF: Yaw axis velocity target notch filter index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Yaw axis velocity target notch filter index
+
+
++--------+
+| Range  |
++========+
+| 1 to 8 |
++--------+
+
+
+
+
+.. _LOIT_VELYAW_NEF:
+
+LOIT\_VELYAW\_NEF: Yaw axis velocity error notch filter index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Yaw axis velocity error notch filter index
+
+
++--------+
+| Range  |
++========+
+| 1 to 8 |
++--------+
+
+
+
+
+.. _LOIT_POSX_P:
+
+LOIT\_POSX\_P: X axis position controller P gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X axis position controller P gain\.  Corrects in proportion to the difference between the desired X position vs actual X position
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.005     | 0.01 to 0.5 |
++-----------+-------------+
+
+
+
+
+.. _LOIT_POSX_I:
+
+LOIT\_POSX\_I: X axis position controller I gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X axis position controller I gain\.  Corrects long\-term difference in desired X position vs actual X position
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.01      | 0.01 to 2.0 |
++-----------+-------------+
+
+
+
+
+.. _LOIT_POSX_IMAX:
+
+LOIT\_POSX\_IMAX: X axis position controller I gain maximum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X axis position controller I gain maximum\.  Constrains the maximum that the I term will output
+
+
++-----------+--------+
+| Increment | Range  |
++===========+========+
+| 0.01      | 0 to 1 |
++-----------+--------+
+
+
+
+
+.. _LOIT_POSX_D:
+
+LOIT\_POSX\_D: X axis position controller D gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X axis position controller D gain\.  Compensates for short\-term change in desired X position vs actual X position
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.001     | 0.0 to 0.05 |
++-----------+-------------+
+
+
+
+
+.. _LOIT_POSX_FF:
+
+LOIT\_POSX\_FF: X axis position controller feed forward
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X axis position controller feed forward
+
+
++-----------+----------+
+| Increment | Range    |
++===========+==========+
+| 0.001     | 0 to 0.5 |
++-----------+----------+
+
+
+
+
+.. _LOIT_POSX_FLTT:
+
+LOIT\_POSX\_FLTT: X axis position controller target frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X axis position controller target frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 5 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _LOIT_POSX_FLTE:
+
+LOIT\_POSX\_FLTE: X axis position controller error frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X axis position controller error frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 0 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _LOIT_POSX_FLTD:
+
+LOIT\_POSX\_FLTD: X axis position controller derivative frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+X axis position controller derivative frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 5 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _LOIT_POSX_SMAX:
+
+LOIT\_POSX\_SMAX: X axis position slew rate limit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Sets an upper limit on the slew rate produced by the combined P and D gains\. If the amplitude of the control action produced by the rate feedback exceeds this value\, then the D\+P gain is reduced to respect the limit\. This limits the amplitude of high frequency oscillations caused by an excessive gain\. The limit should be set to no more than 25\% of the actuators maximum slew rate to allow for load effects\. Note\: The gain will not be reduced to less than 10\% of the nominal value\. A value of zero will disable this feature\.
+
+
++-----------+----------+
+| Increment | Range    |
++===========+==========+
+| 0.5       | 0 to 200 |
++-----------+----------+
+
+
+
+
+.. _LOIT_POSX_PDMX:
+
+LOIT\_POSX\_PDMX: X axis position controller PD sum maximum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+X axis position controller PD sum maximum\.  The maximum\/minimum value that the sum of the P and D term can output
+
+
++-----------+--------+
+| Increment | Range  |
++===========+========+
+| 0.01      | 0 to 1 |
++-----------+--------+
+
+
+
+
+.. _LOIT_POSX_D_FF:
+
+LOIT\_POSX\_D\_FF: X axis position derivative feedforward gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+FF D Gain which produces an output that is proportional to the rate of change of the target
+
+
++-----------+-----------+
+| Increment | Range     |
++===========+===========+
+| 0.0001    | 0 to 0.02 |
++-----------+-----------+
+
+
+
+
+.. _LOIT_POSX_NTF:
+
+LOIT\_POSX\_NTF: X axis position target notch filter index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+X axis position target notch filter index
+
+
++--------+
+| Range  |
++========+
+| 1 to 8 |
++--------+
+
+
+
+
+.. _LOIT_POSX_NEF:
+
+LOIT\_POSX\_NEF: X axis position error notch filter index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+X axis position error notch filter index
+
+
++--------+
+| Range  |
++========+
+| 1 to 8 |
++--------+
+
+
+
+
+.. _LOIT_POSY_P:
+
+LOIT\_POSY\_P: Y axis position controller P gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Y axis position controller P gain\.  Corrects in proportion to the difference between the desired Y position vs actual Y position
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.005     | 0.01 to 0.5 |
++-----------+-------------+
+
+
+
+
+.. _LOIT_POSY_I:
+
+LOIT\_POSY\_I: Y axis position controller I gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Y axis position controller I gain\.  Corrects long\-term difference in desired Y position vs actual Y position
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.01      | 0.01 to 2.0 |
++-----------+-------------+
+
+
+
+
+.. _LOIT_POSY_IMAX:
+
+LOIT\_POSY\_IMAX: Y axis position controller I gain maximum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Y axis position controller I gain maximum\.  Constrains the maximum that the I term will output
+
+
++-----------+--------+
+| Increment | Range  |
++===========+========+
+| 0.01      | 0 to 1 |
++-----------+--------+
+
+
+
+
+.. _LOIT_POSY_D:
+
+LOIT\_POSY\_D: Y axis position controller D gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Y axis position controller D gain\.  Compensates for short\-term change in desired Y position vs actual Y position
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.001     | 0.0 to 0.05 |
++-----------+-------------+
+
+
+
+
+.. _LOIT_POSY_FF:
+
+LOIT\_POSY\_FF: Y axis position controller feed forward
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Y axis position controller feed forward
+
+
++-----------+----------+
+| Increment | Range    |
++===========+==========+
+| 0.001     | 0 to 0.5 |
++-----------+----------+
+
+
+
+
+.. _LOIT_POSY_FLTT:
+
+LOIT\_POSY\_FLTT: Y axis position controller target frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Y axis position controller target frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 5 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _LOIT_POSY_FLTE:
+
+LOIT\_POSY\_FLTE: Y axis position controller error frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Y axis position controller error frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 0 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _LOIT_POSY_FLTD:
+
+LOIT\_POSY\_FLTD: Y axis position controller derivative frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Y axis position controller derivative frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 5 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _LOIT_POSY_SMAX:
+
+LOIT\_POSY\_SMAX: Y axis position slew rate limit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Sets an upper limit on the slew rate produced by the combined P and D gains\. If the amplitude of the control action produced by the rate feedback exceeds this value\, then the D\+P gain is reduced to respect the limit\. This limits the amplitude of high frequency oscillations caused by an excessive gain\. The limit should be set to no more than 25\% of the actuators maximum slew rate to allow for load effects\. Note\: The gain will not be reduced to less than 10\% of the nominal value\. A value of zero will disable this feature\.
+
+
++-----------+----------+
+| Increment | Range    |
++===========+==========+
+| 0.5       | 0 to 200 |
++-----------+----------+
+
+
+
+
+.. _LOIT_POSY_PDMX:
+
+LOIT\_POSY\_PDMX: Y axis position controller PD sum maximum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Y axis position controller PD sum maximum\.  The maximum\/minimum value that the sum of the P and D term can output
+
+
++-----------+--------+
+| Increment | Range  |
++===========+========+
+| 0.01      | 0 to 1 |
++-----------+--------+
+
+
+
+
+.. _LOIT_POSY_D_FF:
+
+LOIT\_POSY\_D\_FF: Y axis position derivative feedforward gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+FF D Gain which produces an output that is proportional to the rate of change of the target
+
+
++-----------+-----------+
+| Increment | Range     |
++===========+===========+
+| 0.0001    | 0 to 0.02 |
++-----------+-----------+
+
+
+
+
+.. _LOIT_POSY_NTF:
+
+LOIT\_POSY\_NTF: Y axis position target notch filter index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Y axis position target notch filter index
+
+
++--------+
+| Range  |
++========+
+| 1 to 8 |
++--------+
+
+
+
+
+.. _LOIT_POSY_NEF:
+
+LOIT\_POSY\_NEF: Y axis position error notch filter index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Y axis position error notch filter index
+
+
++--------+
+| Range  |
++========+
+| 1 to 8 |
++--------+
+
+
+
+
+.. _LOIT_POSZ_P:
+
+LOIT\_POSZ\_P: Z axis position controller P gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Z axis position controller P gain\.  Corrects in proportion to the difference between the desired Z position vs actual Z position
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.005     | 0.01 to 0.5 |
++-----------+-------------+
+
+
+
+
+.. _LOIT_POSZ_I:
+
+LOIT\_POSZ\_I: Z axis position controller I gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Z axis position controller I gain\.  Corrects long\-term difference in desired Z position vs actual Z position
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.01      | 0.01 to 2.0 |
++-----------+-------------+
+
+
+
+
+.. _LOIT_POSZ_IMAX:
+
+LOIT\_POSZ\_IMAX: Z axis position controller I gain maximum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Z axis position controller I gain maximum\.  Constrains the maximum that the I term will output
+
+
++-----------+--------+
+| Increment | Range  |
++===========+========+
+| 0.01      | 0 to 1 |
++-----------+--------+
+
+
+
+
+.. _LOIT_POSZ_D:
+
+LOIT\_POSZ\_D: Z axis position controller D gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Z axis position controller D gain\.  Compensates for short\-term change in desired Z position vs actual Z position
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.001     | 0.0 to 0.05 |
++-----------+-------------+
+
+
+
+
+.. _LOIT_POSZ_FF:
+
+LOIT\_POSZ\_FF: Z axis position controller feed forward
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Z axis position controller feed forward
+
+
++-----------+----------+
+| Increment | Range    |
++===========+==========+
+| 0.001     | 0 to 0.5 |
++-----------+----------+
+
+
+
+
+.. _LOIT_POSZ_FLTT:
+
+LOIT\_POSZ\_FLTT: Z axis position controller target frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Z axis position controller target frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 5 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _LOIT_POSZ_FLTE:
+
+LOIT\_POSZ\_FLTE: Z axis position controller error frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Z axis position controller error frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 0 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _LOIT_POSZ_FLTD:
+
+LOIT\_POSZ\_FLTD: Z axis position controller derivative frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Z axis position controller derivative frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 5 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _LOIT_POSZ_SMAX:
+
+LOIT\_POSZ\_SMAX: Z axis position slew rate limit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Sets an upper limit on the slew rate produced by the combined P and D gains\. If the amplitude of the control action produced by the rate feedback exceeds this value\, then the D\+P gain is reduced to respect the limit\. This limits the amplitude of high frequency oscillations caused by an excessive gain\. The limit should be set to no more than 25\% of the actuators maximum slew rate to allow for load effects\. Note\: The gain will not be reduced to less than 10\% of the nominal value\. A value of zero will disable this feature\.
+
+
++-----------+----------+
+| Increment | Range    |
++===========+==========+
+| 0.5       | 0 to 200 |
++-----------+----------+
+
+
+
+
+.. _LOIT_POSZ_PDMX:
+
+LOIT\_POSZ\_PDMX: Z axis position controller PD sum maximum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Z axis position controller PD sum maximum\.  The maximum\/minimum value that the sum of the P and D term can output
+
+
++-----------+--------+
+| Increment | Range  |
++===========+========+
+| 0.01      | 0 to 1 |
++-----------+--------+
+
+
+
+
+.. _LOIT_POSZ_D_FF:
+
+LOIT\_POSZ\_D\_FF: Z axis position derivative feedforward gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+FF D Gain which produces an output that is proportional to the rate of change of the target
+
+
++-----------+-----------+
+| Increment | Range     |
++===========+===========+
+| 0.0001    | 0 to 0.02 |
++-----------+-----------+
+
+
+
+
+.. _LOIT_POSZ_NTF:
+
+LOIT\_POSZ\_NTF: Z axis position target notch filter index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Z axis position target notch filter index
+
+
++--------+
+| Range  |
++========+
+| 1 to 8 |
++--------+
+
+
+
+
+.. _LOIT_POSZ_NEF:
+
+LOIT\_POSZ\_NEF: Z axis position error notch filter index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Z axis position error notch filter index
+
+
++--------+
+| Range  |
++========+
+| 1 to 8 |
++--------+
+
+
+
+
+.. _LOIT_POSYAW_P:
+
+LOIT\_POSYAW\_P: Yaw axis position controller P gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Yaw axis position controller P gain\.  Corrects in proportion to the difference between the desired Yaw position vs actual Yaw position
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.005     | 0.01 to 0.5 |
++-----------+-------------+
+
+
+
+
+.. _LOIT_POSYAW_I:
+
+LOIT\_POSYAW\_I: Yaw axis position controller I gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Yaw axis position controller I gain\.  Corrects long\-term difference in desired Yaw position vs actual Yaw position
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.01      | 0.01 to 2.0 |
++-----------+-------------+
+
+
+
+
+.. _LOIT_POSYAW_IMAX:
+
+LOIT\_POSYAW\_IMAX: Yaw axis position controller I gain maximum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Yaw axis position controller I gain maximum\.  Constrains the maximum that the I term will output
+
+
++-----------+--------+
+| Increment | Range  |
++===========+========+
+| 0.01      | 0 to 1 |
++-----------+--------+
+
+
+
+
+.. _LOIT_POSYAW_D:
+
+LOIT\_POSYAW\_D: Yaw axis position controller D gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Yaw axis position controller D gain\.  Compensates for short\-term change in desired Yaw position vs actual Yaw position
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.001     | 0.0 to 0.05 |
++-----------+-------------+
+
+
+
+
+.. _LOIT_POSYAW_FF:
+
+LOIT\_POSYAW\_FF: Yaw axis position controller feed forward
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Yaw axis position controller feed forward
+
+
++-----------+----------+
+| Increment | Range    |
++===========+==========+
+| 0.001     | 0 to 0.5 |
++-----------+----------+
+
+
+
+
+.. _LOIT_POSYAW_FLTT:
+
+LOIT\_POSYAW\_FLTT: Yaw axis position controller target frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Yaw axis position controller target frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 5 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _LOIT_POSYAW_FLTE:
+
+LOIT\_POSYAW\_FLTE: Yaw axis position controller error frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Yaw axis position controller error frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 0 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _LOIT_POSYAW_FLTD:
+
+LOIT\_POSYAW\_FLTD: Yaw axis position controller derivative frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Yaw axis position controller derivative frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 5 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _LOIT_POSYAW_SMAX:
+
+LOIT\_POSYAW\_SMAX: Yaw axis position slew rate limit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Sets an upper limit on the slew rate produced by the combined P and D gains\. If the amplitude of the control action produced by the rate feedback exceeds this value\, then the D\+P gain is reduced to respect the limit\. This limits the amplitude of high frequency oscillations caused by an excessive gain\. The limit should be set to no more than 25\% of the actuators maximum slew rate to allow for load effects\. Note\: The gain will not be reduced to less than 10\% of the nominal value\. A value of zero will disable this feature\.
+
+
++-----------+----------+
+| Increment | Range    |
++===========+==========+
+| 0.5       | 0 to 200 |
++-----------+----------+
+
+
+
+
+.. _LOIT_POSYAW_PDMX:
+
+LOIT\_POSYAW\_PDMX: Yaw axis position controller PD sum maximum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Yaw axis position controller PD sum maximum\.  The maximum\/minimum value that the sum of the P and D term can output
+
+
++-----------+--------+
+| Increment | Range  |
++===========+========+
+| 0.01      | 0 to 1 |
++-----------+--------+
+
+
+
+
+.. _LOIT_POSYAW_D_FF:
+
+LOIT\_POSYAW\_D\_FF: Yaw axis position derivative feedforward gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+FF D Gain which produces an output that is proportional to the rate of change of the target
+
+
++-----------+-----------+
+| Increment | Range     |
++===========+===========+
+| 0.0001    | 0 to 0.02 |
++-----------+-----------+
+
+
+
+
+.. _LOIT_POSYAW_NTF:
+
+LOIT\_POSYAW\_NTF: Yaw axis position target notch filter index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Yaw axis position target notch filter index
+
+
++--------+
+| Range  |
++========+
+| 1 to 8 |
++--------+
+
+
+
+
+.. _LOIT_POSYAW_NEF:
+
+LOIT\_POSYAW\_NEF: Yaw axis position error notch filter index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Yaw axis position error notch filter index
+
+
++--------+
+| Range  |
++========+
+| 1 to 8 |
++--------+
+
+
+
+
+.. _LOIT_MAX_VELX:
+
+LOIT\_MAX\_VELX: Max X Velocity
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Sets the maximum X velocity\, in m\/s
+
+
++----------+
+| Range    |
++==========+
+| 0.2 to 5 |
++----------+
+
+
+
+
+.. _LOIT_MAX_VELY:
+
+LOIT\_MAX\_VELY: Max Y Velocity
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Sets the maximum Y velocity\, in m\/s
+
+
++----------+
+| Range    |
++==========+
+| 0.2 to 5 |
++----------+
+
+
+
+
+.. _LOIT_MAX_VELZ:
+
+LOIT\_MAX\_VELZ: Max Z Velocity
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Sets the maximum Z velocity\, in m\/s
+
+
++----------+
+| Range    |
++==========+
+| 0.2 to 5 |
++----------+
+
+
+
+
+.. _LOIT_MAX_VELYAW:
+
+LOIT\_MAX\_VELYAW: Max yaw Velocity
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Sets the maximum yaw velocity\, in rad\/s
+
+
++----------+
+| Range    |
++==========+
+| 0.2 to 5 |
++----------+
+
+
+
+
+.. _LOIT_MAX_POSX:
+
+LOIT\_MAX\_POSX: Max X Position change
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Sets the maximum X position change\, in m\/s
+
+
++----------+
+| Range    |
++==========+
+| 0.1 to 5 |
++----------+
+
+
+
+
+.. _LOIT_MAX_POSY:
+
+LOIT\_MAX\_POSY: Max Y Position change
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Sets the maximum Y position change\, in m\/s
+
+
++----------+
+| Range    |
++==========+
+| 0.1 to 5 |
++----------+
+
+
+
+
+.. _LOIT_MAX_POSZ:
+
+LOIT\_MAX\_POSZ: Max Z Position change
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Sets the maximum Z position change\, in m\/s
+
+
++----------+
+| Range    |
++==========+
+| 0.1 to 5 |
++----------+
+
+
+
+
+.. _LOIT_MAX_POSYAW:
+
+LOIT\_MAX\_POSYAW: Max Yaw Position change
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Sets the maximum Yaw position change\, in rad\/s
+
+
++----------+
+| Range    |
++==========+
+| 0.1 to 5 |
++----------+
+
+
+
+
+.. _LOIT_DIS_MASK:
+
+LOIT\_DIS\_MASK: Disable output mask
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Mask for disabling \(setting to zero\) one or more of the 4 output axis in Velocity or Loiter modes
+
+
++-----+---------+
+| Bit | Meaning |
++=====+=========+
+| 0   | Right   |
++-----+---------+
+| 1   | Front   |
++-----+---------+
+| 2   | Down    |
++-----+---------+
+| 3   | Yaw     |
++-----+---------+
+
+
+
+
+.. _LOIT_PID_DZ:
+
+LOIT\_PID\_DZ: Deadzone for the position PIDs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Output 0 thrust signal when blimp is within this distance \(in meters\) of the target position\. Warning\: If this param is greater than LOIT\_MAX\_POS\_X multiplied by LOIT\_LAG then the blimp won\'t move at all in the X axis in Loiter mode\. Same for the other axes\.
+
+
++----------+--------+
+| Range    | Units  |
++==========+========+
+| 0.1 to 1 | meters |
++----------+--------+
+
+
+
+
+.. _LOIT_SCALER_SPD:
+
+LOIT\_SCALER\_SPD: Loiter scaler speed
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Factor for scaler filter\,  speed at which the scaler updates\. Zero means immediate change \(no filter\)\. Higher number means slower change\.
+
+
++------------+
+| Range      |
++============+
+| 0 to 0.999 |
++------------+
+
+
+
+
+.. _LOIT_POS_LAG:
+
+LOIT\_POS\_LAG: Loiter position lag
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Number of seconds\' worth of travel that the actual position can be behind the target position\.
+
+
++------------+---------+
+| Range      | Units   |
++============+=========+
+| 0 to 0.999 | seconds |
++------------+---------+
 
 
 
@@ -59593,6 +60805,8 @@ RC input options
 | 12  | Annotate CRSF flight mode with * on disarm                         |
 +-----+--------------------------------------------------------------------+
 | 13  | Use 420kbaud for ELRS protocol                                     |
++-----+--------------------------------------------------------------------+
+| 14  | Clear MAVLink overrides on any stick input                         |
 +-----+--------------------------------------------------------------------+
 
 
