@@ -53226,11 +53226,11 @@ EK3\_ALT\_M\_NSE: Altitude measurement noise \(m\)
 This is the RMS value of noise in the altitude measurement\. Increasing it reduces the weighting of the baro measurement and will make the filter respond more slowly to baro measurement errors\, but will make it more sensitive to GPS and accelerometer errors\. A larger value for EK3\_ALT\_M\_NSE may be required when operating with EK3\_SRCx\_POSZ \= 0\. This parameter also sets the noise for the \'synthetic\' zero height measurement that is used when EK3\_SRCx\_POSZ \= 0\.
 
 
-+-----------+--------------+--------+
-| Increment | Range        | Units  |
-+===========+==============+========+
-| 0.1       | 0.1 to 100.0 | meters |
-+-----------+--------------+--------+
++-----------+---------------+--------+
+| Increment | Range         | Units  |
++===========+===============+========+
+| 0.1       | 0.01 to 100.0 | meters |
++-----------+---------------+--------+
 
 
 

@@ -14837,7 +14837,7 @@
       "Increment": "0.1",
       "Range": {
         "high": "100.0",
-        "low": "0.1"
+        "low": "0.01"
       },
       "Units": "m",
       "User": "Advanced"
