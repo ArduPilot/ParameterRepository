@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import argparse
 from typing import Tuple
 import git
 import glob
@@ -114,11 +115,11 @@ class Groundskeeper:
             return 'Ardu'
         return ''  # No prefix, or unknown vehicle type
 
-    def run(self):
+    def run(self, since: datetime | None = None):
         self.repository = self.clone_repository()
         self.tag_latest_versions()  # Create temporary/local tags, to include development versions in metadata generation
         tag_names = [tag.path[len('refs/tags/'):] for tag in self.repository.tags]
-        last_ground_change = self.get_last_ground_change()
+        last_ground_change = since if since is not None else self.get_last_ground_change()
 
         # Prepare for MAVLink parsing - always use the latest script (since it might cover new dialects or messages)
         shutil.copy(f'{self.repository_path}/Tools/scripts/mavlink_parse.py', self.temp_folder)
@@ -236,5 +237,19 @@ class Groundskeeper:
                 print(exception)
 
 
-G = Groundskeeper()
-G.run()
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(
+        description='Generate parameter files for ArduPilot vehicle versions.'
+    )
+    parser.add_argument(
+        '--since',
+        type=lambda s: datetime.fromisoformat(s),
+        default=None,
+        help='Override the "latest" date to regenerate older versions. '
+             'Versions with tags newer than this date will be regenerated. '
+             'Use ISO 8601 format, e.g. 2020-01-01 or 2020-01-01T00:00:00+00:00'
+    )
+    args = parser.parse_args()
+
+    G = Groundskeeper()
+    G.run(since=args.since)
