@@ -36623,11 +36623,11 @@
 </param>
       <param humanName="Accel 3 scaling factor" name="SIM_ACC3_SCAL_Z" documentation="scaling factors applied to simulated accelerometer (Z-axis)" user="Advanced">
 </param>
-      <param humanName="Accelerometer trim" name="SIM_ACC_TRIM_X" documentation="Trim applied to simulated accelerometer (X-axis)" user="Advanced">
+      <param humanName="Board mounting trim" name="SIM_BRD_TRIM_X" documentation="Rigid board mounting offset (roll, pitch, yaw in radians) applied as a rotation to the simulated accelerometers, gyros and compasses, as a tilted autopilot mounting would be. Intended to be cancelled by AHRS_TRIM. (X-axis)" user="Advanced">
 </param>
-      <param humanName="Accelerometer trim" name="SIM_ACC_TRIM_Y" documentation="Trim applied to simulated accelerometer (Y-axis)" user="Advanced">
+      <param humanName="Board mounting trim" name="SIM_BRD_TRIM_Y" documentation="Rigid board mounting offset (roll, pitch, yaw in radians) applied as a rotation to the simulated accelerometers, gyros and compasses, as a tilted autopilot mounting would be. Intended to be cancelled by AHRS_TRIM. (Y-axis)" user="Advanced">
 </param>
-      <param humanName="Accelerometer trim" name="SIM_ACC_TRIM_Z" documentation="Trim applied to simulated accelerometer (Z-axis)" user="Advanced">
+      <param humanName="Board mounting trim" name="SIM_BRD_TRIM_Z" documentation="Rigid board mounting offset (roll, pitch, yaw in radians) applied as a rotation to the simulated accelerometers, gyros and compasses, as a tilted autopilot mounting would be. Intended to be cancelled by AHRS_TRIM. (Z-axis)" user="Advanced">
 </param>
       <param humanName="Sailboat simulation sail type" name="SIM_SAIL_TYPE" documentation="0: mainsail with sheet, 1: directly actuated wing">
 </param>

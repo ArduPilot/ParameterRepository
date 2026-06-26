@@ -37462,21 +37462,6 @@
         "3": "Read data from file and stop on EOF"
       }
     },
-    "SIM_ACC_TRIM_X": {
-      "Description": "Trim applied to simulated accelerometer (X-axis)",
-      "DisplayName": "Accelerometer trim",
-      "User": "Advanced"
-    },
-    "SIM_ACC_TRIM_Y": {
-      "Description": "Trim applied to simulated accelerometer (Y-axis)",
-      "DisplayName": "Accelerometer trim",
-      "User": "Advanced"
-    },
-    "SIM_ACC_TRIM_Z": {
-      "Description": "Trim applied to simulated accelerometer (Z-axis)",
-      "DisplayName": "Accelerometer trim",
-      "User": "Advanced"
-    },
     "SIM_ADSB_ALT": {
       "Description": "Simulated ADSB altitude of another aircraft",
       "DisplayName": "ADSB altitude of another aircraft",
@@ -37531,6 +37516,21 @@
     "SIM_BAUDLIMIT_EN": {
       "Description": "SITL enable bandwidth limitting on telemetry ports with non-zero values",
       "DisplayName": "Telemetry bandwidth limitting"
+    },
+    "SIM_BRD_TRIM_X": {
+      "Description": "Rigid board mounting offset (roll, pitch, yaw in radians) applied as a rotation to the simulated accelerometers, gyros and compasses, as a tilted autopilot mounting would be. Intended to be cancelled by AHRS_TRIM. (X-axis)",
+      "DisplayName": "Board mounting trim",
+      "User": "Advanced"
+    },
+    "SIM_BRD_TRIM_Y": {
+      "Description": "Rigid board mounting offset (roll, pitch, yaw in radians) applied as a rotation to the simulated accelerometers, gyros and compasses, as a tilted autopilot mounting would be. Intended to be cancelled by AHRS_TRIM. (Y-axis)",
+      "DisplayName": "Board mounting trim",
+      "User": "Advanced"
+    },
+    "SIM_BRD_TRIM_Z": {
+      "Description": "Rigid board mounting offset (roll, pitch, yaw in radians) applied as a rotation to the simulated accelerometers, gyros and compasses, as a tilted autopilot mounting would be. Intended to be cancelled by AHRS_TRIM. (Z-axis)",
+      "DisplayName": "Board mounting trim",
+      "User": "Advanced"
     },
     "SIM_CAN_SRV_MSK": {
       "Bitmask": {

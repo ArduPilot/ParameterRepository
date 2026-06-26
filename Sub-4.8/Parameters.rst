@@ -126349,36 +126349,6 @@ Read and write accelerometer data to\/from files
 
 
 
-.. _SIM_ACC_TRIM_X:
-
-SIM\_ACC\_TRIM\_X: Accelerometer trim
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Trim applied to simulated accelerometer \(X\-axis\)
-
-
-.. _SIM_ACC_TRIM_Y:
-
-SIM\_ACC\_TRIM\_Y: Accelerometer trim
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Trim applied to simulated accelerometer \(Y\-axis\)
-
-
-.. _SIM_ACC_TRIM_Z:
-
-SIM\_ACC\_TRIM\_Z: Accelerometer trim
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Trim applied to simulated accelerometer \(Z\-axis\)
-
-
 .. _SIM_ADSB_ALT:
 
 SIM\_ADSB\_ALT: ADSB altitude of another aircraft
@@ -127357,6 +127327,36 @@ SIM\_BAUDLIMIT\_EN: Telemetry bandwidth limitting
 
 
 SITL enable bandwidth limitting on telemetry ports with non\-zero values
+
+
+.. _SIM_BRD_TRIM_X:
+
+SIM\_BRD\_TRIM\_X: Board mounting trim
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Rigid board mounting offset \(roll\, pitch\, yaw in radians\) applied as a rotation to the simulated accelerometers\, gyros and compasses\, as a tilted autopilot mounting would be\. Intended to be cancelled by AHRS\_TRIM\. \(X\-axis\)
+
+
+.. _SIM_BRD_TRIM_Y:
+
+SIM\_BRD\_TRIM\_Y: Board mounting trim
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Rigid board mounting offset \(roll\, pitch\, yaw in radians\) applied as a rotation to the simulated accelerometers\, gyros and compasses\, as a tilted autopilot mounting would be\. Intended to be cancelled by AHRS\_TRIM\. \(Y\-axis\)
+
+
+.. _SIM_BRD_TRIM_Z:
+
+SIM\_BRD\_TRIM\_Z: Board mounting trim
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Rigid board mounting offset \(roll\, pitch\, yaw in radians\) applied as a rotation to the simulated accelerometers\, gyros and compasses\, as a tilted autopilot mounting would be\. Intended to be cancelled by AHRS\_TRIM\. \(Z\-axis\)
 
 
 .. _SIM_BUOYANCY:

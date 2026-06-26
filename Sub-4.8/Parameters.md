@@ -46182,23 +46182,23 @@ scaling factors applied to simulated accelerometer (Y-axis)
 
 scaling factors applied to simulated accelerometer (Z-axis)
 
-## SIM_ACC_TRIM_X: Accelerometer trim
+## SIM_BRD_TRIM_X: Board mounting trim
 
 *Note: This parameter is for advanced users*
 
-Trim applied to simulated accelerometer (X-axis)
+Rigid board mounting offset (roll, pitch, yaw in radians) applied as a rotation to the simulated accelerometers, gyros and compasses, as a tilted autopilot mounting would be. Intended to be cancelled by AHRS_TRIM. (X-axis)
 
-## SIM_ACC_TRIM_Y: Accelerometer trim
-
-*Note: This parameter is for advanced users*
-
-Trim applied to simulated accelerometer (Y-axis)
-
-## SIM_ACC_TRIM_Z: Accelerometer trim
+## SIM_BRD_TRIM_Y: Board mounting trim
 
 *Note: This parameter is for advanced users*
 
-Trim applied to simulated accelerometer (Z-axis)
+Rigid board mounting offset (roll, pitch, yaw in radians) applied as a rotation to the simulated accelerometers, gyros and compasses, as a tilted autopilot mounting would be. Intended to be cancelled by AHRS_TRIM. (Y-axis)
+
+## SIM_BRD_TRIM_Z: Board mounting trim
+
+*Note: This parameter is for advanced users*
+
+Rigid board mounting offset (roll, pitch, yaw in radians) applied as a rotation to the simulated accelerometers, gyros and compasses, as a tilted autopilot mounting would be. Intended to be cancelled by AHRS_TRIM. (Z-axis)
 
 ## SIM_JSON_MASTER: JSON master instance
 
