@@ -409,6 +409,7 @@ Messages the autopilot will send automatically (unrequested).
   #46, `MISSION_ITEM_REACHED <https://mavlink.io/en/messages/common.html#MISSION_ITEM_REACHED>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #40, `MISSION_REQUEST <https://mavlink.io/en/messages/common.html#MISSION_REQUEST>`_, `GCS_MAVLink/MissionItemProtocol.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/GCS_MAVLink/MissionItemProtocol.cpp>`_, common
   #251, `NAMED_VALUE_FLOAT <https://mavlink.io/en/messages/common.html#NAMED_VALUE_FLOAT>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
+  #252, `NAMED_VALUE_INT <https://mavlink.io/en/messages/common.html#NAMED_VALUE_INT>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #100, `OPTICAL_FLOW <https://mavlink.io/en/messages/common.html#OPTICAL_FLOW>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #11034, `OSD_PARAM_CONFIG_REPLY <https://mavlink.io/en/messages/ardupilotmega.html#OSD_PARAM_CONFIG_REPLY>`_, `AP_OSD/AP_OSD.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/AP_OSD/AP_OSD.cpp>`_, ardupilotmega
   #11036, `OSD_PARAM_SHOW_CONFIG_REPLY <https://mavlink.io/en/messages/ardupilotmega.html#OSD_PARAM_SHOW_CONFIG_REPLY>`_, `AP_OSD/AP_OSD.cpp <https://github.com/ArduPilot/ardupilot/tree/Blimp-4.8/libraries/AP_OSD/AP_OSD.cpp>`_, ardupilotmega
@@ -575,7 +576,6 @@ Unsupported / unhandled messages.
   #157, `MOUNT_CONTROL <https://mavlink.io/en/messages/ardupilotmega.html#MOUNT_CONTROL>`_, UNSUPPORTED, ardupilotmega
   #265, `MOUNT_ORIENTATION <https://mavlink.io/en/messages/common.html#MOUNT_ORIENTATION>`_, UNSUPPORTED, common
   #158, `MOUNT_STATUS <https://mavlink.io/en/messages/ardupilotmega.html#MOUNT_STATUS>`_, UNSUPPORTED, ardupilotmega
-  #252, `NAMED_VALUE_INT <https://mavlink.io/en/messages/common.html#NAMED_VALUE_INT>`_, UNSUPPORTED, common
   #220, `NAV_FILTER_BIAS <https://mavlink.io/en/messages/all.html#NAV_FILTER_BIAS>`_, UNSUPPORTED, all
   #12902, `OPEN_DRONE_ID_AUTHENTICATION <https://mavlink.io/en/messages/common.html#OPEN_DRONE_ID_AUTHENTICATION>`_, UNSUPPORTED, common
   #12901, `OPEN_DRONE_ID_LOCATION <https://mavlink.io/en/messages/common.html#OPEN_DRONE_ID_LOCATION>`_, UNSUPPORTED, common

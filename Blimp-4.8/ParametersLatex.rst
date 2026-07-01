@@ -29112,6 +29112,116 @@ Voltage offset on voltage pin\. This allows for an offset due to a diode\. This 
 
 
 
+.. _parameters_BCN:
+
+BCN Parameters
+--------------
+
+
+.. _BCN_TYPE:
+
+BCN\_TYPE: Beacon based position estimation device type
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+What type of beacon based position estimation device is connected
+
+
++-------+------------+
+| Value | Meaning    |
++=======+============+
+| 0     | None       |
++-------+------------+
+| 1     | Pozyx      |
++-------+------------+
+| 2     | Marvelmind |
++-------+------------+
+| 3     | Nooploop   |
++-------+------------+
+| 10    | SITL       |
++-------+------------+
+
+
+
+
+.. _BCN_LATITUDE:
+
+BCN\_LATITUDE: Beacon origin\'s latitude
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Beacon origin\'s latitude
+
+
++-----------+-----------+---------+
+| Increment | Range     | Units   |
++===========+===========+=========+
+| 0.000001  | -90 to 90 | degrees |
++-----------+-----------+---------+
+
+
+
+
+.. _BCN_LONGITUDE:
+
+BCN\_LONGITUDE: Beacon origin\'s longitude
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Beacon origin\'s longitude
+
+
++-----------+-------------+---------+
+| Increment | Range       | Units   |
++===========+=============+=========+
+| 0.000001  | -180 to 180 | degrees |
++-----------+-------------+---------+
+
+
+
+
+.. _BCN_ALT:
+
+BCN\_ALT: Beacon origin\'s altitude above sealevel in meters
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Beacon origin\'s altitude above sealevel in meters
+
+
++-----------+------------+--------+
+| Increment | Range      | Units  |
++===========+============+========+
+| 1         | 0 to 10000 | meters |
++-----------+------------+--------+
+
+
+
+
+.. _BCN_ORIENT_YAW:
+
+BCN\_ORIENT\_YAW: Beacon systems rotation from north in degrees
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Beacon systems rotation from north in degrees
+
+
++-----------+--------------+---------+
+| Increment | Range        | Units   |
++===========+==============+=========+
+| 1         | -180 to +180 | degrees |
++-----------+--------------+---------+
+
+
+
+
+
 .. _parameters_BRD_:
 
 BRD\_ Parameters
@@ -81364,6 +81474,8 @@ Enables temperature sensors
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
 +-------+----------------------+
+| 10    | TMP119               |
++-------+----------------------+
 
 
 
@@ -81619,6 +81731,8 @@ Enables temperature sensors
 | 8     | SHT3x                |
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
++-------+----------------------+
+| 10    | TMP119               |
 +-------+----------------------+
 
 
@@ -81876,6 +81990,8 @@ Enables temperature sensors
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
 +-------+----------------------+
+| 10    | TMP119               |
++-------+----------------------+
 
 
 
@@ -82131,6 +82247,8 @@ Enables temperature sensors
 | 8     | SHT3x                |
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
++-------+----------------------+
+| 10    | TMP119               |
 +-------+----------------------+
 
 
@@ -82388,6 +82506,8 @@ Enables temperature sensors
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
 +-------+----------------------+
+| 10    | TMP119               |
++-------+----------------------+
 
 
 
@@ -82643,6 +82763,8 @@ Enables temperature sensors
 | 8     | SHT3x                |
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
++-------+----------------------+
+| 10    | TMP119               |
 +-------+----------------------+
 
 
@@ -82900,6 +83022,8 @@ Enables temperature sensors
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
 +-------+----------------------+
+| 10    | TMP119               |
++-------+----------------------+
 
 
 
@@ -83155,6 +83279,8 @@ Enables temperature sensors
 | 8     | SHT3x                |
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
++-------+----------------------+
+| 10    | TMP119               |
 +-------+----------------------+
 
 
@@ -83412,6 +83538,8 @@ Enables temperature sensors
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
 +-------+----------------------+
+| 10    | TMP119               |
++-------+----------------------+
 
 
 
@@ -83667,6 +83795,8 @@ Enables temperature sensors
 | 8     | SHT3x                |
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
++-------+----------------------+
+| 10    | TMP119               |
 +-------+----------------------+
 
 
@@ -83924,6 +84054,8 @@ Enables temperature sensors
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
 +-------+----------------------+
+| 10    | TMP119               |
++-------+----------------------+
 
 
 
@@ -84179,6 +84311,8 @@ Enables temperature sensors
 | 8     | SHT3x                |
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
++-------+----------------------+
+| 10    | TMP119               |
 +-------+----------------------+
 
 
@@ -84436,6 +84570,8 @@ Enables temperature sensors
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
 +-------+----------------------+
+| 10    | TMP119               |
++-------+----------------------+
 
 
 
@@ -84692,6 +84828,8 @@ Enables temperature sensors
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
 +-------+----------------------+
+| 10    | TMP119               |
++-------+----------------------+
 
 
 
@@ -84947,6 +85085,8 @@ Enables temperature sensors
 | 8     | SHT3x                |
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
++-------+----------------------+
+| 10    | TMP119               |
 +-------+----------------------+
 
 

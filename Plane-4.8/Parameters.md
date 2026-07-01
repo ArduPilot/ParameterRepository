@@ -14310,6 +14310,70 @@ Voltage offset on voltage pin. This allows for an offset due to a diode. This vo
 
 - Units: V
 
+# BCN Parameters
+
+## BCN_TYPE: Beacon based position estimation device type
+
+*Note: This parameter is for advanced users*
+
+What type of beacon based position estimation device is connected
+
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|1|Pozyx|
+|2|Marvelmind|
+|3|Nooploop|
+|10|SITL|
+
+## BCN_LATITUDE: Beacon origin's latitude
+
+*Note: This parameter is for advanced users*
+
+Beacon origin's latitude
+
+- Units: deg
+
+- Increment: 0.000001
+
+- Range: -90 90
+
+## BCN_LONGITUDE: Beacon origin's longitude
+
+*Note: This parameter is for advanced users*
+
+Beacon origin's longitude
+
+- Units: deg
+
+- Increment: 0.000001
+
+- Range: -180 180
+
+## BCN_ALT: Beacon origin's altitude above sealevel in meters
+
+*Note: This parameter is for advanced users*
+
+Beacon origin's altitude above sealevel in meters
+
+- Units: m
+
+- Increment: 1
+
+- Range: 0 10000
+
+## BCN_ORIENT_YAW: Beacon systems rotation from north in degrees
+
+*Note: This parameter is for advanced users*
+
+Beacon systems rotation from north in degrees
+
+- Units: deg
+
+- Increment: 1
+
+- Range: -180 +180
+
 # BRD Parameters
 
 ## BRD_SER1_RTSCTS: Serial 1 flow control
@@ -54264,6 +54328,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -54379,6 +54444,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -54494,6 +54560,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -54609,6 +54676,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -54724,6 +54792,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -54839,6 +54908,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -54954,6 +55024,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -55069,6 +55140,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -55184,6 +55256,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -55299,6 +55372,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -55414,6 +55488,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -55529,6 +55604,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -55644,6 +55720,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -55759,6 +55836,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -55874,6 +55952,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 

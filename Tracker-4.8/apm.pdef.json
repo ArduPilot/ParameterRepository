@@ -8054,6 +8054,64 @@
       }
     }
   },
+  "BCN": {
+    "BCN_ALT": {
+      "Description": "Beacon origin's altitude above sealevel in meters",
+      "DisplayName": "Beacon origin's altitude above sealevel in meters",
+      "Increment": "1",
+      "Range": {
+        "high": "10000",
+        "low": "0"
+      },
+      "Units": "m",
+      "User": "Advanced"
+    },
+    "BCN_LATITUDE": {
+      "Description": "Beacon origin's latitude",
+      "DisplayName": "Beacon origin's latitude",
+      "Increment": "0.000001",
+      "Range": {
+        "high": "90",
+        "low": "-90"
+      },
+      "Units": "deg",
+      "User": "Advanced"
+    },
+    "BCN_LONGITUDE": {
+      "Description": "Beacon origin's longitude",
+      "DisplayName": "Beacon origin's longitude",
+      "Increment": "0.000001",
+      "Range": {
+        "high": "180",
+        "low": "-180"
+      },
+      "Units": "deg",
+      "User": "Advanced"
+    },
+    "BCN_ORIENT_YAW": {
+      "Description": "Beacon systems rotation from north in degrees",
+      "DisplayName": "Beacon systems rotation from north in degrees",
+      "Increment": "1",
+      "Range": {
+        "high": "+180",
+        "low": "-180"
+      },
+      "Units": "deg",
+      "User": "Advanced"
+    },
+    "BCN_TYPE": {
+      "Description": "What type of beacon based position estimation device is connected",
+      "DisplayName": "Beacon based position estimation device type",
+      "User": "Advanced",
+      "Values": {
+        "0": "None",
+        "1": "Pozyx",
+        "10": "SITL",
+        "2": "Marvelmind",
+        "3": "Nooploop"
+      }
+    }
+  },
   "BRD_": {
     "BRD_ALT_CONFIG": {
       "Description": "Select an alternative hardware configuration. A value of zero selects the default configuration for this board. Other values are board specific. Please see the documentation for your board for details on any alternative configuration values that may be available.",
@@ -39340,6 +39398,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -39460,6 +39519,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -39580,6 +39640,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -39700,6 +39761,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -39820,6 +39882,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -39940,6 +40003,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -40060,6 +40124,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -40180,6 +40245,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -40300,6 +40366,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -40420,6 +40487,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -40540,6 +40608,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -40660,6 +40729,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -40780,6 +40850,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -40900,6 +40971,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -41020,6 +41092,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",

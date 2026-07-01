@@ -9520,6 +9520,41 @@
         <field name="UnitText">volt</field>
       </param>
     </parameters>
+    <parameters name="BCN">
+      <param humanName="Beacon based position estimation device type" name="BCN_TYPE" documentation="What type of beacon based position estimation device is connected" user="Advanced">
+        <values>
+          <value code="0">None</value>
+          <value code="1">Pozyx</value>
+          <value code="2">Marvelmind</value>
+          <value code="3">Nooploop</value>
+          <value code="10">SITL</value>
+        </values>
+      </param>
+      <param humanName="Beacon origin's latitude" name="BCN_LATITUDE" documentation="Beacon origin's latitude" user="Advanced">
+        <field name="Units">deg</field>
+        <field name="UnitText">degrees</field>
+        <field name="Increment">0.000001</field>
+        <field name="Range">-90 90</field>
+      </param>
+      <param humanName="Beacon origin's longitude" name="BCN_LONGITUDE" documentation="Beacon origin's longitude" user="Advanced">
+        <field name="Units">deg</field>
+        <field name="UnitText">degrees</field>
+        <field name="Increment">0.000001</field>
+        <field name="Range">-180 180</field>
+      </param>
+      <param humanName="Beacon origin's altitude above sealevel in meters" name="BCN_ALT" documentation="Beacon origin's altitude above sealevel in meters" user="Advanced">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+        <field name="Increment">1</field>
+        <field name="Range">0 10000</field>
+      </param>
+      <param humanName="Beacon systems rotation from north in degrees" name="BCN_ORIENT_YAW" documentation="Beacon systems rotation from north in degrees" user="Advanced">
+        <field name="Units">deg</field>
+        <field name="UnitText">degrees</field>
+        <field name="Increment">1</field>
+        <field name="Range">-180 +180</field>
+      </param>
+    </parameters>
     <parameters name="BRD_">
       <param humanName="Serial 1 flow control" name="BRD_SER1_RTSCTS" documentation="Enable flow control on serial 1 (telemetry 1). You must have the RTS and CTS pins connected to your radio. The standard DF13 6 pin connector for a 3DR radio does have those pins connected. If this is set to 2 then flow control will be auto-detected by checking for the output buffer filling on startup. Note that the PX4v1 does not have hardware flow control pins on this port, so you should leave this disabled." user="Advanced">
         <values>
@@ -42398,6 +42433,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -42469,6 +42505,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -42540,6 +42577,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -42611,6 +42649,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -42682,6 +42721,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -42753,6 +42793,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -42824,6 +42865,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -42895,6 +42937,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -42966,6 +43009,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -43037,6 +43081,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -43108,6 +43153,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -43179,6 +43225,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -43250,6 +43297,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -43321,6 +43369,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -43392,6 +43441,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
