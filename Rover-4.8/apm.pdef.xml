@@ -399,6 +399,30 @@
         <field name="Range">2 120</field>
         <field name="Increment">1</field>
       </param>
+      <param humanName="Crash throttle minimum" name="Rover:CRASH_THR_MIN" documentation="Throttle above this threshold accompanied by a low speed condition triggers crash detection. Zero disables velocity and turn rate checks." user="Advanced">
+        <field name="Units">%</field>
+        <field name="UnitText">percent</field>
+        <field name="Range">0 100</field>
+        <field name="Increment">1</field>
+      </param>
+      <param humanName="Crash velocity minimum" name="Rover:CRASH_VEL_MIN" documentation="Velocity below this threshold with accompanying throttle demand triggers crash detection. Zero disables velocity check." user="Advanced">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+        <field name="Range">0 60</field>
+        <field name="Increment">0.1</field>
+      </param>
+      <param humanName="Crash turn rate minimum" name="Rover:CRASH_TRAT_MIN" documentation="Turn rate below this threshold with accompanying throttle demand triggers crash detection. Zero disables turn rate check." user="Advanced">
+        <field name="Units">deg/s</field>
+        <field name="UnitText">degrees per second</field>
+        <field name="Range">0 360</field>
+        <field name="Increment">1</field>
+      </param>
+      <param humanName="Crash timeout" name="Rover:CRASH_TIMEOUT" documentation="Crash conditions persisting for this duration trigger crash detection." user="Advanced">
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+        <field name="Range">0 60</field>
+        <field name="Increment">0.5</field>
+      </param>
       <param humanName="Channel 7 option" name="Rover:CH7_OPTION" documentation="What to do use channel 7 for" user="Standard">
         <values>
           <value code="0">Nothing</value>
@@ -35965,6 +35989,11 @@
         <field name="Units">Ah</field>
         <field name="UnitText">ampere hour</field>
       </param>
+      <param humanName="Simulated battery internal resistance" name="SIM_BATT_RES_OHM" documentation="Simulated battery internal resistance, used to model voltage sag under load (sag = current * resistance) and temperature growth. A negative value implies &quot;use previous resistance&quot;, which is the default in order that a model-provided resistance is the default behavior. Set to 0 to disable voltage sag and temperature growth entirely." user="Advanced">
+        <field name="Units">Ohm</field>
+        <field name="UnitText">Ohm</field>
+        <field name="RebootRequired">True</field>
+      </param>
       <param humanName="Simulated RC signal failure" name="SIM_RC_FAIL" documentation="Allows you to emulate rc failures in sim" user="Advanced">
         <values>
           <value code="0">Disabled</value>
@@ -36771,6 +36800,21 @@
 </param>
       <param humanName="Simulated Clamp Channel" name="SIM_CLAMP_CH" documentation="If non-zero the vehicle will be clamped in position until the value on this servo channel passes 1800PWM">
 </param>
+      <param humanName="Sim AHRS offset roll" name="SIM_AHRS_OFF_RLL" documentation="Roll offset applied to SIM AHRS type. For testing stepless handover between AHRS estimators.">
+        <field name="Range">-10 10</field>
+        <field name="Units">deg</field>
+        <field name="UnitText">degrees</field>
+      </param>
+      <param humanName="Sim AHRS offset pitch" name="SIM_AHRS_OFF_PIT" documentation="Pitch offset applied to SIM AHRS type. For testing stepless handover between AHRS estimators.">
+        <field name="Range">-10 10</field>
+        <field name="Units">deg</field>
+        <field name="UnitText">degrees</field>
+      </param>
+      <param humanName="Sim AHRS offset yaw" name="SIM_AHRS_OFF_YAW" documentation="Yaw offset applied to SIM AHRS type. For testing stepless handover between AHRS estimators.">
+        <field name="Range">-10 10</field>
+        <field name="Units">deg</field>
+        <field name="UnitText">degrees</field>
+      </param>
       <param humanName="Enable simulated temperature disturbance for sensor data" name="SIM_IMUT1_ENABLE" documentation="Enable the injection of temperature disturbance to the accelerometer and gyroscope data to simulate temperature calibration" user="Advanced">
         <values>
           <value code="0">Disable</value>
@@ -37335,7 +37379,7 @@
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
       </param>
-      <param humanName="GPS Noise" name="SIM_GPS1_NOISE" documentation="Amplitude of the GPS altitude error" user="Advanced">
+      <param humanName="GPS vertical noise" name="SIM_GPS1_NOISE" documentation="Amplitude of the GPS vertical position error" user="Advanced">
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
       </param>
@@ -37388,6 +37432,10 @@
           <value code="5">3D RTK Float</value>
           <value code="6">3D RTK Fixed</value>
         </values>
+      </param>
+      <param humanName="GPS horizontal noise" name="SIM_GPS1_HNSE" documentation="Radius of the GPS horizontal position error in meters" user="Advanced">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
       </param>
     </parameters>
     <parameters name="SIM_GPS2_">
@@ -37446,7 +37494,7 @@
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
       </param>
-      <param humanName="GPS Noise" name="SIM_GPS2_NOISE" documentation="Amplitude of the GPS altitude error" user="Advanced">
+      <param humanName="GPS vertical noise" name="SIM_GPS2_NOISE" documentation="Amplitude of the GPS vertical position error" user="Advanced">
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
       </param>
@@ -37499,6 +37547,10 @@
           <value code="5">3D RTK Float</value>
           <value code="6">3D RTK Fixed</value>
         </values>
+      </param>
+      <param humanName="GPS horizontal noise" name="SIM_GPS2_HNSE" documentation="Radius of the GPS horizontal position error in meters" user="Advanced">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
       </param>
     </parameters>
     <parameters name="SIM_GPS3_">
@@ -37557,7 +37609,7 @@
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
       </param>
-      <param humanName="GPS Noise" name="SIM_GPS3_NOISE" documentation="Amplitude of the GPS altitude error" user="Advanced">
+      <param humanName="GPS vertical noise" name="SIM_GPS3_NOISE" documentation="Amplitude of the GPS vertical position error" user="Advanced">
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
       </param>
@@ -37610,6 +37662,10 @@
           <value code="5">3D RTK Float</value>
           <value code="6">3D RTK Fixed</value>
         </values>
+      </param>
+      <param humanName="GPS horizontal noise" name="SIM_GPS3_HNSE" documentation="Radius of the GPS horizontal position error in meters" user="Advanced">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
       </param>
     </parameters>
     <parameters name="SIM_GPS4_">
@@ -37668,7 +37724,7 @@
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
       </param>
-      <param humanName="GPS Noise" name="SIM_GPS4_NOISE" documentation="Amplitude of the GPS altitude error" user="Advanced">
+      <param humanName="GPS vertical noise" name="SIM_GPS4_NOISE" documentation="Amplitude of the GPS vertical position error" user="Advanced">
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
       </param>
@@ -37721,6 +37777,10 @@
           <value code="5">3D RTK Float</value>
           <value code="6">3D RTK Fixed</value>
         </values>
+      </param>
+      <param humanName="GPS horizontal noise" name="SIM_GPS4_HNSE" documentation="Radius of the GPS horizontal position error in meters" user="Advanced">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
       </param>
     </parameters>
     <parameters name="SIM_GRPE_">

@@ -14426,12 +14426,12 @@
   "CIRCLE_": {
     "CIRCLE_OPTIONS": {
       "Bitmask": {
-        "0": "manual control",
-        "1": "face direction of travel",
+        "0": "RC pitch and roll control radius and rate",
+        "1": "Face direction of travel",
         "2": "Start at center rather than on perimeter",
         "3": "Make Mount ROI the center of the circle"
       },
-      "Description": "0:Enable or disable using the pitch/roll stick control circle mode's radius and rate",
+      "Description": "Circle behaviour options",
       "DisplayName": "Circle options",
       "User": "Standard"
     },
@@ -58706,6 +58706,33 @@
       "DisplayName": "Simulated ADSB Type mask",
       "User": "Advanced"
     },
+    "SIM_AHRS_OFF_PIT": {
+      "Description": "Pitch offset applied to SIM AHRS type. For testing stepless handover between AHRS estimators.",
+      "DisplayName": "Sim AHRS offset pitch",
+      "Range": {
+        "high": "10",
+        "low": "-10"
+      },
+      "Units": "deg"
+    },
+    "SIM_AHRS_OFF_RLL": {
+      "Description": "Roll offset applied to SIM AHRS type. For testing stepless handover between AHRS estimators.",
+      "DisplayName": "Sim AHRS offset roll",
+      "Range": {
+        "high": "10",
+        "low": "-10"
+      },
+      "Units": "deg"
+    },
+    "SIM_AHRS_OFF_YAW": {
+      "Description": "Yaw offset applied to SIM AHRS type. For testing stepless handover between AHRS estimators.",
+      "DisplayName": "Sim AHRS offset yaw",
+      "Range": {
+        "high": "10",
+        "low": "-10"
+      },
+      "Units": "deg"
+    },
     "SIM_BARO_COUNT": {
       "Description": "Number of simulated baros to create in SITL",
       "DisplayName": "Baro count",
@@ -58718,6 +58745,13 @@
       "Description": "Simulated battery capacity. Changes re-initialize the state of charge of the battery. Set to 0 for unlimited capacity. Value ignored when receiving battery state updates from an external source.",
       "DisplayName": "Simulated battery capacity",
       "Units": "Ah",
+      "User": "Advanced"
+    },
+    "SIM_BATT_RES_OHM": {
+      "Description": "Simulated battery internal resistance, used to model voltage sag under load (sag = current * resistance) and temperature growth. A negative value implies \"use previous resistance\", which is the default in order that a model-provided resistance is the default behavior. Set to 0 to disable voltage sag and temperature growth entirely.",
+      "DisplayName": "Simulated battery internal resistance",
+      "RebootRequired": "True",
+      "Units": "Ohm",
       "User": "Advanced"
     },
     "SIM_BATT_VOLTAGE": {
@@ -60940,6 +60974,12 @@
       "DisplayName": "GPS heading offset",
       "User": "Advanced"
     },
+    "SIM_GPS1_HNSE": {
+      "Description": "Radius of the GPS horizontal position error in meters",
+      "DisplayName": "GPS horizontal noise",
+      "Units": "m",
+      "User": "Advanced"
+    },
     "SIM_GPS1_HZ": {
       "Description": "GPS Update rate",
       "DisplayName": "GPS Hz",
@@ -60967,8 +61007,8 @@
       "User": "Advanced"
     },
     "SIM_GPS1_NOISE": {
-      "Description": "Amplitude of the GPS altitude error",
-      "DisplayName": "GPS Noise",
+      "Description": "Amplitude of the GPS vertical position error",
+      "DisplayName": "GPS vertical noise",
       "Units": "m",
       "User": "Advanced"
     },
@@ -61109,6 +61149,12 @@
       "DisplayName": "GPS heading offset",
       "User": "Advanced"
     },
+    "SIM_GPS2_HNSE": {
+      "Description": "Radius of the GPS horizontal position error in meters",
+      "DisplayName": "GPS horizontal noise",
+      "Units": "m",
+      "User": "Advanced"
+    },
     "SIM_GPS2_HZ": {
       "Description": "GPS Update rate",
       "DisplayName": "GPS Hz",
@@ -61136,8 +61182,8 @@
       "User": "Advanced"
     },
     "SIM_GPS2_NOISE": {
-      "Description": "Amplitude of the GPS altitude error",
-      "DisplayName": "GPS Noise",
+      "Description": "Amplitude of the GPS vertical position error",
+      "DisplayName": "GPS vertical noise",
       "Units": "m",
       "User": "Advanced"
     },
@@ -61278,6 +61324,12 @@
       "DisplayName": "GPS heading offset",
       "User": "Advanced"
     },
+    "SIM_GPS3_HNSE": {
+      "Description": "Radius of the GPS horizontal position error in meters",
+      "DisplayName": "GPS horizontal noise",
+      "Units": "m",
+      "User": "Advanced"
+    },
     "SIM_GPS3_HZ": {
       "Description": "GPS Update rate",
       "DisplayName": "GPS Hz",
@@ -61305,8 +61357,8 @@
       "User": "Advanced"
     },
     "SIM_GPS3_NOISE": {
-      "Description": "Amplitude of the GPS altitude error",
-      "DisplayName": "GPS Noise",
+      "Description": "Amplitude of the GPS vertical position error",
+      "DisplayName": "GPS vertical noise",
       "Units": "m",
       "User": "Advanced"
     },
@@ -61447,6 +61499,12 @@
       "DisplayName": "GPS heading offset",
       "User": "Advanced"
     },
+    "SIM_GPS4_HNSE": {
+      "Description": "Radius of the GPS horizontal position error in meters",
+      "DisplayName": "GPS horizontal noise",
+      "Units": "m",
+      "User": "Advanced"
+    },
     "SIM_GPS4_HZ": {
       "Description": "GPS Update rate",
       "DisplayName": "GPS Hz",
@@ -61474,8 +61532,8 @@
       "User": "Advanced"
     },
     "SIM_GPS4_NOISE": {
-      "Description": "Amplitude of the GPS altitude error",
-      "DisplayName": "GPS Noise",
+      "Description": "Amplitude of the GPS vertical position error",
+      "DisplayName": "GPS vertical noise",
       "Units": "m",
       "User": "Advanced"
     },

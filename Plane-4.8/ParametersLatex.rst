@@ -2143,11 +2143,11 @@ CRASH\_ACC\_THRESH: Crash Deceleration Threshold
 X\-Axis deceleration threshold to notify the crash detector that there was a possible impact which helps disarm the motor quickly after a crash\. This value should be much higher than normal negative x\-axis forces during normal flight\, check flight log files to determine the average IMU\.x values for your aircraft and motor type\. Higher value means less sensitive \(triggers on higher impact\)\. For electric planes that don\'t vibrate much during fight a value of 25 is good \(that\'s about 2\.5G\)\. For petrol\/nitro planes you\'ll want a higher value\. Set to 0 to disable the collision detector\.
 
 
-+-----------+-----------+--------------------------+
-| Increment | Range     | Units                    |
-+===========+===========+==========================+
-| 1         | 10 to 127 | meters per square second |
-+-----------+-----------+--------------------------+
++-----------+----------+--------------------------+
+| Increment | Range    | Units                    |
++===========+==========+==========================+
+| 1         | 0 to 127 | meters per square second |
++-----------+----------+--------------------------+
 
 
 
@@ -86695,6 +86695,44 @@ Pitch Error notch filter index
 
 
 
+.. _PTCH2SRV_ACCEL:
+
+PTCH2SRV\_ACCEL: Pitch max acceleration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Pitch acceleration limit\. Setting to zero disables input shaping\.
+
+
++-----------+-----------+---------------------------+
+| Increment | Range     | Units                     |
++===========+===========+===========================+
+| 1         | 0 to 2500 | degrees per square second |
++-----------+-----------+---------------------------+
+
+
+
+
+.. _PTCH_ANGLE_P:
+
+PTCH\_ANGLE\_P: Pitch angle P gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Pitch angle P gain\. If zero a gain of \(1 \/ PTCH2SRV\_TCONST\) will be used\.
+
+
++-----------+-----------------+
+| Increment | Range           |
++===========+=================+
+| 0.01      | 0.000 to 12.000 |
++-----------+-----------------+
+
+
+
+
 
 .. _parameters_PUP_:
 
@@ -100986,6 +101024,44 @@ Roll Error notch filter index
 +========+
 | 1 to 8 |
 +--------+
+
+
+
+
+.. _RLL2SRV_ACCEL:
+
+RLL2SRV\_ACCEL: Roll max acceleration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Roll acceleration limit\. Setting to zero disables input shaping\.
+
+
++-----------+-----------+---------------------------+
+| Increment | Range     | Units                     |
++===========+===========+===========================+
+| 1         | 0 to 2500 | degrees per square second |
++-----------+-----------+---------------------------+
+
+
+
+
+.. _RLL_ANGLE_P:
+
+RLL\_ANGLE\_P: Roll angle P gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Roll angle P gain\. If zero a gain of \(1 \/ RLL2SRV\_TCONST\) will be used\.
+
+
++-----------+-----------------+
+| Increment | Range           |
++===========+=================+
+| 0.01      | 0.000 to 12.000 |
++-----------+-----------------+
 
 
 
@@ -125924,6 +126000,26 @@ Simulated battery capacity\. Changes re\-initialize the state of charge of the b
 
 
 
+.. _SIM_BATT_RES_OHM:
+
+SIM\_BATT\_RES\_OHM: Simulated battery internal resistance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+Simulated battery internal resistance\, used to model voltage sag under load \(sag \= current \* resistance\) and temperature growth\. A negative value implies \"use previous resistance\"\, which is the default in order that a model\-provided resistance is the default behavior\. Set to 0 to disable voltage sag and temperature growth entirely\.
+
+
++-------+
+| Units |
++=======+
+| Ohm   |
++-------+
+
+
+
+
 .. _SIM_RC_FAIL:
 
 SIM\_RC\_FAIL: Simulated RC signal failure
@@ -129229,6 +129325,60 @@ SIM\_CLAMP\_CH: Simulated Clamp Channel
 If non\-zero the vehicle will be clamped in position until the value on this servo channel passes 1800PWM
 
 
+.. _SIM_AHRS_OFF_RLL:
+
+SIM\_AHRS\_OFF\_RLL: Sim AHRS offset roll
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Roll offset applied to SIM AHRS type\. For testing stepless handover between AHRS estimators\.
+
+
++-----------+---------+
+| Range     | Units   |
++===========+=========+
+| -10 to 10 | degrees |
++-----------+---------+
+
+
+
+
+.. _SIM_AHRS_OFF_PIT:
+
+SIM\_AHRS\_OFF\_PIT: Sim AHRS offset pitch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Pitch offset applied to SIM AHRS type\. For testing stepless handover between AHRS estimators\.
+
+
++-----------+---------+
+| Range     | Units   |
++===========+=========+
+| -10 to 10 | degrees |
++-----------+---------+
+
+
+
+
+.. _SIM_AHRS_OFF_YAW:
+
+SIM\_AHRS\_OFF\_YAW: Sim AHRS offset yaw
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Yaw offset applied to SIM AHRS type\. For testing stepless handover between AHRS estimators\.
+
+
++-----------+---------+
+| Range     | Units   |
++===========+=========+
+| -10 to 10 | degrees |
++-----------+---------+
+
+
+
+
 .. _SIM_IMUT1_ENABLE:
 
 SIM\_IMUT1\_ENABLE: Enable simulated temperature disturbance for sensor data
@@ -131681,12 +131831,12 @@ GPS antenna phase center position relative to the body frame origin \(Z\-axis\)
 
 .. _SIM_GPS1_NOISE:
 
-SIM\_GPS1\_NOISE: GPS Noise
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SIM\_GPS1\_NOISE: GPS vertical noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
-Amplitude of the GPS altitude error
+Amplitude of the GPS vertical position error
 
 
 +--------+
@@ -131879,6 +132029,25 @@ Allow setting which fix type \(only some GPS\'s supported\)\; matches AP\_GPS\_F
 +-------+------------------+
 | 6     | 3D RTK Fixed     |
 +-------+------------------+
+
+
+
+
+.. _SIM_GPS1_HNSE:
+
+SIM\_GPS1\_HNSE: GPS horizontal noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Radius of the GPS horizontal position error in meters
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
 
 
 
@@ -132110,12 +132279,12 @@ GPS antenna phase center position relative to the body frame origin \(Z\-axis\)
 
 .. _SIM_GPS2_NOISE:
 
-SIM\_GPS2\_NOISE: GPS Noise
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SIM\_GPS2\_NOISE: GPS vertical noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
-Amplitude of the GPS altitude error
+Amplitude of the GPS vertical position error
 
 
 +--------+
@@ -132308,6 +132477,25 @@ Allow setting which fix type \(only some GPS\'s supported\)\; matches AP\_GPS\_F
 +-------+------------------+
 | 6     | 3D RTK Fixed     |
 +-------+------------------+
+
+
+
+
+.. _SIM_GPS2_HNSE:
+
+SIM\_GPS2\_HNSE: GPS horizontal noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Radius of the GPS horizontal position error in meters
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
 
 
 
@@ -132539,12 +132727,12 @@ GPS antenna phase center position relative to the body frame origin \(Z\-axis\)
 
 .. _SIM_GPS3_NOISE:
 
-SIM\_GPS3\_NOISE: GPS Noise
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SIM\_GPS3\_NOISE: GPS vertical noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
-Amplitude of the GPS altitude error
+Amplitude of the GPS vertical position error
 
 
 +--------+
@@ -132737,6 +132925,25 @@ Allow setting which fix type \(only some GPS\'s supported\)\; matches AP\_GPS\_F
 +-------+------------------+
 | 6     | 3D RTK Fixed     |
 +-------+------------------+
+
+
+
+
+.. _SIM_GPS3_HNSE:
+
+SIM\_GPS3\_HNSE: GPS horizontal noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Radius of the GPS horizontal position error in meters
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
 
 
 
@@ -132968,12 +133175,12 @@ GPS antenna phase center position relative to the body frame origin \(Z\-axis\)
 
 .. _SIM_GPS4_NOISE:
 
-SIM\_GPS4\_NOISE: GPS Noise
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SIM\_GPS4\_NOISE: GPS vertical noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
-Amplitude of the GPS altitude error
+Amplitude of the GPS vertical position error
 
 
 +--------+
@@ -133166,6 +133373,25 @@ Allow setting which fix type \(only some GPS\'s supported\)\; matches AP\_GPS\_F
 +-------+------------------+
 | 6     | 3D RTK Fixed     |
 +-------+------------------+
+
+
+
+
+.. _SIM_GPS4_HNSE:
+
+SIM\_GPS4\_HNSE: GPS horizontal noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Radius of the GPS horizontal position error in meters
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
 
 
 

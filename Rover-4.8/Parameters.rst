@@ -1277,6 +1277,82 @@ Timeout before triggering the GCS failsafe
 
 
 
+.. _CRASH_THR_MIN:
+
+CRASH\_THR\_MIN: Crash throttle minimum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Throttle above this threshold accompanied by a low speed condition triggers crash detection\. Zero disables velocity and turn rate checks\.
+
+
++-----------+----------+---------+
+| Increment | Range    | Units   |
++===========+==========+=========+
+| 1         | 0 to 100 | percent |
++-----------+----------+---------+
+
+
+
+
+.. _CRASH_VEL_MIN:
+
+CRASH\_VEL\_MIN: Crash velocity minimum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Velocity below this threshold with accompanying throttle demand triggers crash detection\. Zero disables velocity check\.
+
+
++-----------+---------+-------------------+
+| Increment | Range   | Units             |
++===========+=========+===================+
+| 0.1       | 0 to 60 | meters per second |
++-----------+---------+-------------------+
+
+
+
+
+.. _CRASH_TRAT_MIN:
+
+CRASH\_TRAT\_MIN: Crash turn rate minimum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Turn rate below this threshold with accompanying throttle demand triggers crash detection\. Zero disables turn rate check\.
+
+
++-----------+----------+--------------------+
+| Increment | Range    | Units              |
++===========+==========+====================+
+| 1         | 0 to 360 | degrees per second |
++-----------+----------+--------------------+
+
+
+
+
+.. _CRASH_TIMEOUT:
+
+CRASH\_TIMEOUT: Crash timeout
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Crash conditions persisting for this duration trigger crash detection\.
+
+
++-----------+---------+---------+
+| Increment | Range   | Units   |
++===========+=========+=========+
+| 0.5       | 0 to 60 | seconds |
++-----------+---------+---------+
+
+
+
+
 .. _CH7_OPTION:
 
 CH7\_OPTION: Channel 7 option
@@ -114783,6 +114859,60 @@ specifies which simulated ADSB types are active
 
 
 
+.. _SIM_AHRS_OFF_PIT:
+
+SIM\_AHRS\_OFF\_PIT: Sim AHRS offset pitch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Pitch offset applied to SIM AHRS type\. For testing stepless handover between AHRS estimators\.
+
+
++-----------+---------+
+| Range     | Units   |
++===========+=========+
+| -10 to 10 | degrees |
++-----------+---------+
+
+
+
+
+.. _SIM_AHRS_OFF_RLL:
+
+SIM\_AHRS\_OFF\_RLL: Sim AHRS offset roll
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Roll offset applied to SIM AHRS type\. For testing stepless handover between AHRS estimators\.
+
+
++-----------+---------+
+| Range     | Units   |
++===========+=========+
+| -10 to 10 | degrees |
++-----------+---------+
+
+
+
+
+.. _SIM_AHRS_OFF_YAW:
+
+SIM\_AHRS\_OFF\_YAW: Sim AHRS offset yaw
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Yaw offset applied to SIM AHRS type\. For testing stepless handover between AHRS estimators\.
+
+
++-----------+---------+
+| Range     | Units   |
++===========+=========+
+| -10 to 10 | degrees |
++-----------+---------+
+
+
+
+
 .. _SIM_AIS_COUNT:
 
 SIM\_AIS\_COUNT: Number of AIS vessels
@@ -115639,6 +115769,26 @@ Simulated battery capacity\. Changes re\-initialize the state of charge of the b
 
 
 
+.. _SIM_BATT_RES_OHM:
+
+SIM\_BATT\_RES\_OHM: Simulated battery internal resistance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+Simulated battery internal resistance\, used to model voltage sag under load \(sag \= current \* resistance\) and temperature growth\. A negative value implies \"use previous resistance\"\, which is the default in order that a model\-provided resistance is the default behavior\. Set to 0 to disable voltage sag and temperature growth entirely\.
+
+
++-------+
+| Units |
++=======+
+| Ohm   |
++-------+
+
+
+
+
 .. _SIM_BATT_VOLTAGE:
 
 SIM\_BATT\_VOLTAGE: Simulated battery resting voltage
@@ -116487,6 +116637,25 @@ SIM\_GPS1\_HDG\_OFS: GPS heading offset
 GPS heading offset in degrees\. how off the simulated GPS heading is from the actual heading
 
 
+.. _SIM_GPS1_HNSE:
+
+SIM\_GPS1\_HNSE: GPS horizontal noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Radius of the GPS horizontal position error in meters
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
 .. _SIM_GPS1_HZ:
 
 SIM\_GPS1\_HZ: GPS Hz
@@ -116571,12 +116740,12 @@ Delay in seconds before GPS acquires lock
 
 .. _SIM_GPS1_NOISE:
 
-SIM\_GPS1\_NOISE: GPS Noise
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SIM\_GPS1\_NOISE: GPS vertical noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
-Amplitude of the GPS altitude error
+Amplitude of the GPS vertical position error
 
 
 +--------+
@@ -116945,6 +117114,25 @@ SIM\_GPS2\_HDG\_OFS: GPS heading offset
 GPS heading offset in degrees\. how off the simulated GPS heading is from the actual heading
 
 
+.. _SIM_GPS2_HNSE:
+
+SIM\_GPS2\_HNSE: GPS horizontal noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Radius of the GPS horizontal position error in meters
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
 .. _SIM_GPS2_HZ:
 
 SIM\_GPS2\_HZ: GPS Hz
@@ -117029,12 +117217,12 @@ Delay in seconds before GPS acquires lock
 
 .. _SIM_GPS2_NOISE:
 
-SIM\_GPS2\_NOISE: GPS Noise
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SIM\_GPS2\_NOISE: GPS vertical noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
-Amplitude of the GPS altitude error
+Amplitude of the GPS vertical position error
 
 
 +--------+
@@ -117403,6 +117591,25 @@ SIM\_GPS3\_HDG\_OFS: GPS heading offset
 GPS heading offset in degrees\. how off the simulated GPS heading is from the actual heading
 
 
+.. _SIM_GPS3_HNSE:
+
+SIM\_GPS3\_HNSE: GPS horizontal noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Radius of the GPS horizontal position error in meters
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
 .. _SIM_GPS3_HZ:
 
 SIM\_GPS3\_HZ: GPS Hz
@@ -117487,12 +117694,12 @@ Delay in seconds before GPS acquires lock
 
 .. _SIM_GPS3_NOISE:
 
-SIM\_GPS3\_NOISE: GPS Noise
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SIM\_GPS3\_NOISE: GPS vertical noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
-Amplitude of the GPS altitude error
+Amplitude of the GPS vertical position error
 
 
 +--------+
@@ -117861,6 +118068,25 @@ SIM\_GPS4\_HDG\_OFS: GPS heading offset
 GPS heading offset in degrees\. how off the simulated GPS heading is from the actual heading
 
 
+.. _SIM_GPS4_HNSE:
+
+SIM\_GPS4\_HNSE: GPS horizontal noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Radius of the GPS horizontal position error in meters
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
 .. _SIM_GPS4_HZ:
 
 SIM\_GPS4\_HZ: GPS Hz
@@ -117945,12 +118171,12 @@ Delay in seconds before GPS acquires lock
 
 .. _SIM_GPS4_NOISE:
 
-SIM\_GPS4\_NOISE: GPS Noise
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SIM\_GPS4\_NOISE: GPS vertical noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
-Amplitude of the GPS altitude error
+Amplitude of the GPS vertical position error
 
 
 +--------+

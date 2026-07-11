@@ -49097,25 +49097,25 @@ CIRCLE\_OPTIONS: Circle options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-0\:Enable or disable using the pitch\/roll stick control circle mode\'s radius and rate
+Circle behaviour options
 
 
-+----------------------------------------------------+
-| Bitmask                                            |
-+====================================================+
-| +-----+------------------------------------------+ |
-| | Bit | Meaning                                  | |
-| +=====+==========================================+ |
-| | 0   | manual control                           | |
-| +-----+------------------------------------------+ |
-| | 1   | face direction of travel                 | |
-| +-----+------------------------------------------+ |
-| | 2   | Start at center rather than on perimeter | |
-| +-----+------------------------------------------+ |
-| | 3   | Make Mount ROI the center of the circle  | |
-| +-----+------------------------------------------+ |
-|                                                    |
-+----------------------------------------------------+
++-----------------------------------------------------+
+| Bitmask                                             |
++=====================================================+
+| +-----+-------------------------------------------+ |
+| | Bit | Meaning                                   | |
+| +=====+===========================================+ |
+| | 0   | RC pitch and roll control radius and rate | |
+| +-----+-------------------------------------------+ |
+| | 1   | Face direction of travel                  | |
+| +-----+-------------------------------------------+ |
+| | 2   | Start at center rather than on perimeter  | |
+| +-----+-------------------------------------------+ |
+| | 3   | Make Mount ROI the center of the circle   | |
+| +-----+-------------------------------------------+ |
+|                                                     |
++-----------------------------------------------------+
 
 
 
@@ -126560,6 +126560,60 @@ specifies which simulated ADSB types are active
 
 
 
+.. _SIM_AHRS_OFF_PIT:
+
+SIM\_AHRS\_OFF\_PIT: Sim AHRS offset pitch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Pitch offset applied to SIM AHRS type\. For testing stepless handover between AHRS estimators\.
+
+
++-----------+---------+
+| Range     | Units   |
++===========+=========+
+| -10 to 10 | degrees |
++-----------+---------+
+
+
+
+
+.. _SIM_AHRS_OFF_RLL:
+
+SIM\_AHRS\_OFF\_RLL: Sim AHRS offset roll
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Roll offset applied to SIM AHRS type\. For testing stepless handover between AHRS estimators\.
+
+
++-----------+---------+
+| Range     | Units   |
++===========+=========+
+| -10 to 10 | degrees |
++-----------+---------+
+
+
+
+
+.. _SIM_AHRS_OFF_YAW:
+
+SIM\_AHRS\_OFF\_YAW: Sim AHRS offset yaw
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Yaw offset applied to SIM AHRS type\. For testing stepless handover between AHRS estimators\.
+
+
++-----------+---------+
+| Range     | Units   |
++===========+=========+
+| -10 to 10 | degrees |
++-----------+---------+
+
+
+
+
 .. _SIM_AIS_COUNT:
 
 SIM\_AIS\_COUNT: Number of AIS vessels
@@ -127412,6 +127466,26 @@ Simulated battery capacity\. Changes re\-initialize the state of charge of the b
 +=============+
 | ampere hour |
 +-------------+
+
+
+
+
+.. _SIM_BATT_RES_OHM:
+
+SIM\_BATT\_RES\_OHM: Simulated battery internal resistance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+Simulated battery internal resistance\, used to model voltage sag under load \(sag \= current \* resistance\) and temperature growth\. A negative value implies \"use previous resistance\"\, which is the default in order that a model\-provided resistance is the default behavior\. Set to 0 to disable voltage sag and temperature growth entirely\.
+
+
++-------+
+| Units |
++=======+
+| Ohm   |
++-------+
 
 
 
@@ -128273,6 +128347,25 @@ SIM\_GPS1\_HDG\_OFS: GPS heading offset
 GPS heading offset in degrees\. how off the simulated GPS heading is from the actual heading
 
 
+.. _SIM_GPS1_HNSE:
+
+SIM\_GPS1\_HNSE: GPS horizontal noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Radius of the GPS horizontal position error in meters
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
 .. _SIM_GPS1_HZ:
 
 SIM\_GPS1\_HZ: GPS Hz
@@ -128357,12 +128450,12 @@ Delay in seconds before GPS acquires lock
 
 .. _SIM_GPS1_NOISE:
 
-SIM\_GPS1\_NOISE: GPS Noise
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SIM\_GPS1\_NOISE: GPS vertical noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
-Amplitude of the GPS altitude error
+Amplitude of the GPS vertical position error
 
 
 +--------+
@@ -128731,6 +128824,25 @@ SIM\_GPS2\_HDG\_OFS: GPS heading offset
 GPS heading offset in degrees\. how off the simulated GPS heading is from the actual heading
 
 
+.. _SIM_GPS2_HNSE:
+
+SIM\_GPS2\_HNSE: GPS horizontal noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Radius of the GPS horizontal position error in meters
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
 .. _SIM_GPS2_HZ:
 
 SIM\_GPS2\_HZ: GPS Hz
@@ -128815,12 +128927,12 @@ Delay in seconds before GPS acquires lock
 
 .. _SIM_GPS2_NOISE:
 
-SIM\_GPS2\_NOISE: GPS Noise
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SIM\_GPS2\_NOISE: GPS vertical noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
-Amplitude of the GPS altitude error
+Amplitude of the GPS vertical position error
 
 
 +--------+
@@ -129189,6 +129301,25 @@ SIM\_GPS3\_HDG\_OFS: GPS heading offset
 GPS heading offset in degrees\. how off the simulated GPS heading is from the actual heading
 
 
+.. _SIM_GPS3_HNSE:
+
+SIM\_GPS3\_HNSE: GPS horizontal noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Radius of the GPS horizontal position error in meters
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
 .. _SIM_GPS3_HZ:
 
 SIM\_GPS3\_HZ: GPS Hz
@@ -129273,12 +129404,12 @@ Delay in seconds before GPS acquires lock
 
 .. _SIM_GPS3_NOISE:
 
-SIM\_GPS3\_NOISE: GPS Noise
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SIM\_GPS3\_NOISE: GPS vertical noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
-Amplitude of the GPS altitude error
+Amplitude of the GPS vertical position error
 
 
 +--------+
@@ -129647,6 +129778,25 @@ SIM\_GPS4\_HDG\_OFS: GPS heading offset
 GPS heading offset in degrees\. how off the simulated GPS heading is from the actual heading
 
 
+.. _SIM_GPS4_HNSE:
+
+SIM\_GPS4\_HNSE: GPS horizontal noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Radius of the GPS horizontal position error in meters
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
 .. _SIM_GPS4_HZ:
 
 SIM\_GPS4\_HZ: GPS Hz
@@ -129731,12 +129881,12 @@ Delay in seconds before GPS acquires lock
 
 .. _SIM_GPS4_NOISE:
 
-SIM\_GPS4\_NOISE: GPS Noise
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SIM\_GPS4\_NOISE: GPS vertical noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
-Amplitude of the GPS altitude error
+Amplitude of the GPS vertical position error
 
 
 +--------+

@@ -1160,6 +1160,82 @@ Timeout before triggering the GCS failsafe
 
 
 
+.. _CRASH_THR_MIN:
+
+CRASH\_THR\_MIN: Crash throttle minimum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Throttle above this threshold accompanied by a low speed condition triggers crash detection\. Zero disables velocity and turn rate checks\.
+
+
++-----------+----------+---------+
+| Increment | Range    | Units   |
++===========+==========+=========+
+| 1         | 0 to 100 | percent |
++-----------+----------+---------+
+
+
+
+
+.. _CRASH_VEL_MIN:
+
+CRASH\_VEL\_MIN: Crash velocity minimum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Velocity below this threshold with accompanying throttle demand triggers crash detection\. Zero disables velocity check\.
+
+
++-----------+---------+-------------------+
+| Increment | Range   | Units             |
++===========+=========+===================+
+| 0.1       | 0 to 60 | meters per second |
++-----------+---------+-------------------+
+
+
+
+
+.. _CRASH_TRAT_MIN:
+
+CRASH\_TRAT\_MIN: Crash turn rate minimum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Turn rate below this threshold with accompanying throttle demand triggers crash detection\. Zero disables turn rate check\.
+
+
++-----------+----------+--------------------+
+| Increment | Range    | Units              |
++===========+==========+====================+
+| 1         | 0 to 360 | degrees per second |
++-----------+----------+--------------------+
+
+
+
+
+.. _CRASH_TIMEOUT:
+
+CRASH\_TIMEOUT: Crash timeout
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Crash conditions persisting for this duration trigger crash detection\.
+
+
++-----------+---------+---------+
+| Increment | Range   | Units   |
++===========+=========+=========+
+| 0.5       | 0 to 60 | seconds |
++-----------+---------+---------+
+
+
+
+
 .. _CH7_OPTION:
 
 CH7\_OPTION: Channel 7 option
@@ -115829,6 +115905,26 @@ Simulated battery capacity\. Changes re\-initialize the state of charge of the b
 
 
 
+.. _SIM_BATT_RES_OHM:
+
+SIM\_BATT\_RES\_OHM: Simulated battery internal resistance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+Simulated battery internal resistance\, used to model voltage sag under load \(sag \= current \* resistance\) and temperature growth\. A negative value implies \"use previous resistance\"\, which is the default in order that a model\-provided resistance is the default behavior\. Set to 0 to disable voltage sag and temperature growth entirely\.
+
+
++-------+
+| Units |
++=======+
+| Ohm   |
++-------+
+
+
+
+
 .. _SIM_RC_FAIL:
 
 SIM\_RC\_FAIL: Simulated RC signal failure
@@ -119143,6 +119239,60 @@ SIM\_CLAMP\_CH: Simulated Clamp Channel
 If non\-zero the vehicle will be clamped in position until the value on this servo channel passes 1800PWM
 
 
+.. _SIM_AHRS_OFF_RLL:
+
+SIM\_AHRS\_OFF\_RLL: Sim AHRS offset roll
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Roll offset applied to SIM AHRS type\. For testing stepless handover between AHRS estimators\.
+
+
++-----------+---------+
+| Range     | Units   |
++===========+=========+
+| -10 to 10 | degrees |
++-----------+---------+
+
+
+
+
+.. _SIM_AHRS_OFF_PIT:
+
+SIM\_AHRS\_OFF\_PIT: Sim AHRS offset pitch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Pitch offset applied to SIM AHRS type\. For testing stepless handover between AHRS estimators\.
+
+
++-----------+---------+
+| Range     | Units   |
++===========+=========+
+| -10 to 10 | degrees |
++-----------+---------+
+
+
+
+
+.. _SIM_AHRS_OFF_YAW:
+
+SIM\_AHRS\_OFF\_YAW: Sim AHRS offset yaw
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Yaw offset applied to SIM AHRS type\. For testing stepless handover between AHRS estimators\.
+
+
++-----------+---------+
+| Range     | Units   |
++===========+=========+
+| -10 to 10 | degrees |
++-----------+---------+
+
+
+
+
 .. _SIM_IMUT1_ENABLE:
 
 SIM\_IMUT1\_ENABLE: Enable simulated temperature disturbance for sensor data
@@ -121595,12 +121745,12 @@ GPS antenna phase center position relative to the body frame origin \(Z\-axis\)
 
 .. _SIM_GPS1_NOISE:
 
-SIM\_GPS1\_NOISE: GPS Noise
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SIM\_GPS1\_NOISE: GPS vertical noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
-Amplitude of the GPS altitude error
+Amplitude of the GPS vertical position error
 
 
 +--------+
@@ -121793,6 +121943,25 @@ Allow setting which fix type \(only some GPS\'s supported\)\; matches AP\_GPS\_F
 +-------+------------------+
 | 6     | 3D RTK Fixed     |
 +-------+------------------+
+
+
+
+
+.. _SIM_GPS1_HNSE:
+
+SIM\_GPS1\_HNSE: GPS horizontal noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Radius of the GPS horizontal position error in meters
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
 
 
 
@@ -122024,12 +122193,12 @@ GPS antenna phase center position relative to the body frame origin \(Z\-axis\)
 
 .. _SIM_GPS2_NOISE:
 
-SIM\_GPS2\_NOISE: GPS Noise
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SIM\_GPS2\_NOISE: GPS vertical noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
-Amplitude of the GPS altitude error
+Amplitude of the GPS vertical position error
 
 
 +--------+
@@ -122222,6 +122391,25 @@ Allow setting which fix type \(only some GPS\'s supported\)\; matches AP\_GPS\_F
 +-------+------------------+
 | 6     | 3D RTK Fixed     |
 +-------+------------------+
+
+
+
+
+.. _SIM_GPS2_HNSE:
+
+SIM\_GPS2\_HNSE: GPS horizontal noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Radius of the GPS horizontal position error in meters
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
 
 
 
@@ -122453,12 +122641,12 @@ GPS antenna phase center position relative to the body frame origin \(Z\-axis\)
 
 .. _SIM_GPS3_NOISE:
 
-SIM\_GPS3\_NOISE: GPS Noise
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SIM\_GPS3\_NOISE: GPS vertical noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
-Amplitude of the GPS altitude error
+Amplitude of the GPS vertical position error
 
 
 +--------+
@@ -122651,6 +122839,25 @@ Allow setting which fix type \(only some GPS\'s supported\)\; matches AP\_GPS\_F
 +-------+------------------+
 | 6     | 3D RTK Fixed     |
 +-------+------------------+
+
+
+
+
+.. _SIM_GPS3_HNSE:
+
+SIM\_GPS3\_HNSE: GPS horizontal noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Radius of the GPS horizontal position error in meters
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
 
 
 
@@ -122882,12 +123089,12 @@ GPS antenna phase center position relative to the body frame origin \(Z\-axis\)
 
 .. _SIM_GPS4_NOISE:
 
-SIM\_GPS4\_NOISE: GPS Noise
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SIM\_GPS4\_NOISE: GPS vertical noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
-Amplitude of the GPS altitude error
+Amplitude of the GPS vertical position error
 
 
 +--------+
@@ -123080,6 +123287,25 @@ Allow setting which fix type \(only some GPS\'s supported\)\; matches AP\_GPS\_F
 +-------+------------------+
 | 6     | 3D RTK Fixed     |
 +-------+------------------+
+
+
+
+
+.. _SIM_GPS4_HNSE:
+
+SIM\_GPS4\_HNSE: GPS horizontal noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Radius of the GPS horizontal position error in meters
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
 
 
 

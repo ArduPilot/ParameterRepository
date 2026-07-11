@@ -38494,6 +38494,15 @@ DO NOT EDIT
 </ul>
 
 
+<h2>Simulated battery internal resistance (SIM_BATT_RES_OHM)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Simulated battery internal resistance, used to model voltage sag under load (sag = current * resistance) and temperature growth. A negative value implies &quot;use previous resistance&quot;, which is the default in order that a model-provided resistance is the default behavior. Set to 0 to disable voltage sag and temperature growth entirely.</p>
+<ul>
+<li>Units: Ohm</li>
+<li>RebootRequired: True</li>
+</ul>
+
+
 <h2>Simulated RC signal failure (SIM_RC_FAIL)</h2><em>Note: This parameter is for advanced users</em><br>
 
 <p>Allows you to emulate rc failures in sim</p>
@@ -40295,6 +40304,33 @@ DO NOT EDIT
 </ul>
 
 
+<h2>Sim AHRS offset roll (SIM_AHRS_OFF_RLL)</h2>
+
+<p>Roll offset applied to SIM AHRS type. For testing stepless handover between AHRS estimators.</p>
+<ul>
+<li>Range: -10 10</li>
+<li>Units: degrees</li>
+</ul>
+
+
+<h2>Sim AHRS offset pitch (SIM_AHRS_OFF_PIT)</h2>
+
+<p>Pitch offset applied to SIM AHRS type. For testing stepless handover between AHRS estimators.</p>
+<ul>
+<li>Range: -10 10</li>
+<li>Units: degrees</li>
+</ul>
+
+
+<h2>Sim AHRS offset yaw (SIM_AHRS_OFF_YAW)</h2>
+
+<p>Yaw offset applied to SIM AHRS type. For testing stepless handover between AHRS estimators.</p>
+<ul>
+<li>Range: -10 10</li>
+<li>Units: degrees</li>
+</ul>
+
+
 <h2>Enable simulated temperature disturbance for sensor data (SIM_IMUT1_ENABLE)</h2><em>Note: This parameter is for advanced users</em><br>
 
 <p>Enable the injection of temperature disturbance to the accelerometer and gyroscope data to simulate temperature calibration</p>
@@ -41745,9 +41781,9 @@ DO NOT EDIT
 </ul>
 
 
-<h2>GPS Noise (SIM_GPS1_NOISE)</h2><em>Note: This parameter is for advanced users</em><br>
+<h2>GPS vertical noise (SIM_GPS1_NOISE)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Amplitude of the GPS altitude error</p>
+<p>Amplitude of the GPS vertical position error</p>
 <ul>
 <li>Units: meters</li>
 </ul>
@@ -41850,6 +41886,14 @@ DO NOT EDIT
 <tr><td>5</td><td>3D RTK Float</td></tr>
 <tr><td>6</td><td>3D RTK Fixed</td></tr>
 </table>
+</ul>
+
+
+<h2>GPS horizontal noise (SIM_GPS1_HNSE)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Radius of the GPS horizontal position error in meters</p>
+<ul>
+<li>Units: meters</li>
 </ul>
 
 
@@ -41969,9 +42013,9 @@ DO NOT EDIT
 </ul>
 
 
-<h2>GPS Noise (SIM_GPS2_NOISE)</h2><em>Note: This parameter is for advanced users</em><br>
+<h2>GPS vertical noise (SIM_GPS2_NOISE)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Amplitude of the GPS altitude error</p>
+<p>Amplitude of the GPS vertical position error</p>
 <ul>
 <li>Units: meters</li>
 </ul>
@@ -42074,6 +42118,14 @@ DO NOT EDIT
 <tr><td>5</td><td>3D RTK Float</td></tr>
 <tr><td>6</td><td>3D RTK Fixed</td></tr>
 </table>
+</ul>
+
+
+<h2>GPS horizontal noise (SIM_GPS2_HNSE)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Radius of the GPS horizontal position error in meters</p>
+<ul>
+<li>Units: meters</li>
 </ul>
 
 
@@ -42193,9 +42245,9 @@ DO NOT EDIT
 </ul>
 
 
-<h2>GPS Noise (SIM_GPS3_NOISE)</h2><em>Note: This parameter is for advanced users</em><br>
+<h2>GPS vertical noise (SIM_GPS3_NOISE)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Amplitude of the GPS altitude error</p>
+<p>Amplitude of the GPS vertical position error</p>
 <ul>
 <li>Units: meters</li>
 </ul>
@@ -42298,6 +42350,14 @@ DO NOT EDIT
 <tr><td>5</td><td>3D RTK Float</td></tr>
 <tr><td>6</td><td>3D RTK Fixed</td></tr>
 </table>
+</ul>
+
+
+<h2>GPS horizontal noise (SIM_GPS3_HNSE)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Radius of the GPS horizontal position error in meters</p>
+<ul>
+<li>Units: meters</li>
 </ul>
 
 
@@ -42417,9 +42477,9 @@ DO NOT EDIT
 </ul>
 
 
-<h2>GPS Noise (SIM_GPS4_NOISE)</h2><em>Note: This parameter is for advanced users</em><br>
+<h2>GPS vertical noise (SIM_GPS4_NOISE)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Amplitude of the GPS altitude error</p>
+<p>Amplitude of the GPS vertical position error</p>
 <ul>
 <li>Units: meters</li>
 </ul>
@@ -42522,6 +42582,14 @@ DO NOT EDIT
 <tr><td>5</td><td>3D RTK Float</td></tr>
 <tr><td>6</td><td>3D RTK Fixed</td></tr>
 </table>
+</ul>
+
+
+<h2>GPS horizontal noise (SIM_GPS4_HNSE)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Radius of the GPS horizontal position error in meters</p>
+<ul>
+<li>Units: meters</li>
 </ul>
 
 

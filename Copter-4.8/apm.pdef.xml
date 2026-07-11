@@ -13408,14 +13408,14 @@
         <field name="Range">-90 90</field>
         <field name="Increment">1</field>
       </param>
-      <param humanName="Circle options" name="CIRCLE_OPTIONS" documentation="0:Enable or disable using the pitch/roll stick control circle mode's radius and rate" user="Standard">
+      <param humanName="Circle options" name="CIRCLE_OPTIONS" documentation="Circle behaviour options" user="Standard">
         <bitmask>
-          <bit code="0">manual control</bit>
-          <bit code="1">face direction of travel</bit>
+          <bit code="0">RC pitch and roll control radius and rate</bit>
+          <bit code="1">Face direction of travel</bit>
           <bit code="2">Start at center rather than on perimeter</bit>
           <bit code="3">Make Mount ROI the center of the circle</bit>
         </bitmask>
-        <field name="Bitmask">0:manual control, 1:face direction of travel, 2:Start at center rather than on perimeter, 3:Make Mount ROI the center of the circle</field>
+        <field name="Bitmask">0:RC pitch and roll control radius and rate, 1:Face direction of travel, 2:Start at center rather than on perimeter, 3:Make Mount ROI the center of the circle</field>
       </param>
       <param humanName="Circle Radius" name="CIRCLE_RADIUS_M" documentation="Radius of the circle the vehicle will fly when in Circle flight mode" user="Standard">
         <field name="Units">m</field>
@@ -39877,6 +39877,11 @@
         <field name="Units">Ah</field>
         <field name="UnitText">ampere hour</field>
       </param>
+      <param humanName="Simulated battery internal resistance" name="SIM_BATT_RES_OHM" documentation="Simulated battery internal resistance, used to model voltage sag under load (sag = current * resistance) and temperature growth. A negative value implies &quot;use previous resistance&quot;, which is the default in order that a model-provided resistance is the default behavior. Set to 0 to disable voltage sag and temperature growth entirely." user="Advanced">
+        <field name="Units">Ohm</field>
+        <field name="UnitText">Ohm</field>
+        <field name="RebootRequired">True</field>
+      </param>
       <param humanName="Simulated RC signal failure" name="SIM_RC_FAIL" documentation="Allows you to emulate rc failures in sim" user="Advanced">
         <values>
           <value code="0">Disabled</value>
@@ -40681,6 +40686,21 @@
 </param>
       <param humanName="Simulated Clamp Channel" name="SIM_CLAMP_CH" documentation="If non-zero the vehicle will be clamped in position until the value on this servo channel passes 1800PWM">
 </param>
+      <param humanName="Sim AHRS offset roll" name="SIM_AHRS_OFF_RLL" documentation="Roll offset applied to SIM AHRS type. For testing stepless handover between AHRS estimators.">
+        <field name="Range">-10 10</field>
+        <field name="Units">deg</field>
+        <field name="UnitText">degrees</field>
+      </param>
+      <param humanName="Sim AHRS offset pitch" name="SIM_AHRS_OFF_PIT" documentation="Pitch offset applied to SIM AHRS type. For testing stepless handover between AHRS estimators.">
+        <field name="Range">-10 10</field>
+        <field name="Units">deg</field>
+        <field name="UnitText">degrees</field>
+      </param>
+      <param humanName="Sim AHRS offset yaw" name="SIM_AHRS_OFF_YAW" documentation="Yaw offset applied to SIM AHRS type. For testing stepless handover between AHRS estimators.">
+        <field name="Range">-10 10</field>
+        <field name="Units">deg</field>
+        <field name="UnitText">degrees</field>
+      </param>
       <param humanName="Enable simulated temperature disturbance for sensor data" name="SIM_IMUT1_ENABLE" documentation="Enable the injection of temperature disturbance to the accelerometer and gyroscope data to simulate temperature calibration" user="Advanced">
         <values>
           <value code="0">Disable</value>
@@ -41245,7 +41265,7 @@
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
       </param>
-      <param humanName="GPS Noise" name="SIM_GPS1_NOISE" documentation="Amplitude of the GPS altitude error" user="Advanced">
+      <param humanName="GPS vertical noise" name="SIM_GPS1_NOISE" documentation="Amplitude of the GPS vertical position error" user="Advanced">
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
       </param>
@@ -41298,6 +41318,10 @@
           <value code="5">3D RTK Float</value>
           <value code="6">3D RTK Fixed</value>
         </values>
+      </param>
+      <param humanName="GPS horizontal noise" name="SIM_GPS1_HNSE" documentation="Radius of the GPS horizontal position error in meters" user="Advanced">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
       </param>
     </parameters>
     <parameters name="SIM_GPS2_">
@@ -41356,7 +41380,7 @@
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
       </param>
-      <param humanName="GPS Noise" name="SIM_GPS2_NOISE" documentation="Amplitude of the GPS altitude error" user="Advanced">
+      <param humanName="GPS vertical noise" name="SIM_GPS2_NOISE" documentation="Amplitude of the GPS vertical position error" user="Advanced">
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
       </param>
@@ -41409,6 +41433,10 @@
           <value code="5">3D RTK Float</value>
           <value code="6">3D RTK Fixed</value>
         </values>
+      </param>
+      <param humanName="GPS horizontal noise" name="SIM_GPS2_HNSE" documentation="Radius of the GPS horizontal position error in meters" user="Advanced">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
       </param>
     </parameters>
     <parameters name="SIM_GPS3_">
@@ -41467,7 +41495,7 @@
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
       </param>
-      <param humanName="GPS Noise" name="SIM_GPS3_NOISE" documentation="Amplitude of the GPS altitude error" user="Advanced">
+      <param humanName="GPS vertical noise" name="SIM_GPS3_NOISE" documentation="Amplitude of the GPS vertical position error" user="Advanced">
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
       </param>
@@ -41520,6 +41548,10 @@
           <value code="5">3D RTK Float</value>
           <value code="6">3D RTK Fixed</value>
         </values>
+      </param>
+      <param humanName="GPS horizontal noise" name="SIM_GPS3_HNSE" documentation="Radius of the GPS horizontal position error in meters" user="Advanced">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
       </param>
     </parameters>
     <parameters name="SIM_GPS4_">
@@ -41578,7 +41610,7 @@
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
       </param>
-      <param humanName="GPS Noise" name="SIM_GPS4_NOISE" documentation="Amplitude of the GPS altitude error" user="Advanced">
+      <param humanName="GPS vertical noise" name="SIM_GPS4_NOISE" documentation="Amplitude of the GPS vertical position error" user="Advanced">
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
       </param>
@@ -41631,6 +41663,10 @@
           <value code="5">3D RTK Float</value>
           <value code="6">3D RTK Fixed</value>
         </values>
+      </param>
+      <param humanName="GPS horizontal noise" name="SIM_GPS4_HNSE" documentation="Radius of the GPS horizontal position error in meters" user="Advanced">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
       </param>
     </parameters>
     <parameters name="SIM_GRPE_">

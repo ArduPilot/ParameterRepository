@@ -46369,6 +46369,50 @@
       "Units": "deg",
       "User": "Standard"
     },
+    "CRASH_THR_MIN": {
+      "Description": "Throttle above this threshold accompanied by a low speed condition triggers crash detection. Zero disables velocity and turn rate checks.",
+      "DisplayName": "Crash throttle minimum",
+      "Increment": "1",
+      "Range": {
+        "high": "100",
+        "low": "0"
+      },
+      "Units": "%",
+      "User": "Advanced"
+    },
+    "CRASH_TIMEOUT": {
+      "Description": "Crash conditions persisting for this duration trigger crash detection.",
+      "DisplayName": "Crash timeout",
+      "Increment": "0.5",
+      "Range": {
+        "high": "60",
+        "low": "0"
+      },
+      "Units": "s",
+      "User": "Advanced"
+    },
+    "CRASH_TRAT_MIN": {
+      "Description": "Turn rate below this threshold with accompanying throttle demand triggers crash detection. Zero disables turn rate check.",
+      "DisplayName": "Crash turn rate minimum",
+      "Increment": "1",
+      "Range": {
+        "high": "360",
+        "low": "0"
+      },
+      "Units": "deg/s",
+      "User": "Advanced"
+    },
+    "CRASH_VEL_MIN": {
+      "Description": "Velocity below this threshold with accompanying throttle demand triggers crash detection. Zero disables velocity check.",
+      "DisplayName": "Crash velocity minimum",
+      "Increment": "0.1",
+      "Range": {
+        "high": "60",
+        "low": "0"
+      },
+      "Units": "m/s",
+      "User": "Advanced"
+    },
     "CRUISE_SPEED": {
       "Description": "The target speed in auto missions.",
       "DisplayName": "Target cruise speed in auto modes",
@@ -53724,6 +53768,33 @@
       "DisplayName": "Simulated ADSB Type mask",
       "User": "Advanced"
     },
+    "SIM_AHRS_OFF_PIT": {
+      "Description": "Pitch offset applied to SIM AHRS type. For testing stepless handover between AHRS estimators.",
+      "DisplayName": "Sim AHRS offset pitch",
+      "Range": {
+        "high": "10",
+        "low": "-10"
+      },
+      "Units": "deg"
+    },
+    "SIM_AHRS_OFF_RLL": {
+      "Description": "Roll offset applied to SIM AHRS type. For testing stepless handover between AHRS estimators.",
+      "DisplayName": "Sim AHRS offset roll",
+      "Range": {
+        "high": "10",
+        "low": "-10"
+      },
+      "Units": "deg"
+    },
+    "SIM_AHRS_OFF_YAW": {
+      "Description": "Yaw offset applied to SIM AHRS type. For testing stepless handover between AHRS estimators.",
+      "DisplayName": "Sim AHRS offset yaw",
+      "Range": {
+        "high": "10",
+        "low": "-10"
+      },
+      "Units": "deg"
+    },
     "SIM_BARO_COUNT": {
       "Description": "Number of simulated baros to create in SITL",
       "DisplayName": "Baro count",
@@ -53736,6 +53807,13 @@
       "Description": "Simulated battery capacity. Changes re-initialize the state of charge of the battery. Set to 0 for unlimited capacity. Value ignored when receiving battery state updates from an external source.",
       "DisplayName": "Simulated battery capacity",
       "Units": "Ah",
+      "User": "Advanced"
+    },
+    "SIM_BATT_RES_OHM": {
+      "Description": "Simulated battery internal resistance, used to model voltage sag under load (sag = current * resistance) and temperature growth. A negative value implies \"use previous resistance\", which is the default in order that a model-provided resistance is the default behavior. Set to 0 to disable voltage sag and temperature growth entirely.",
+      "DisplayName": "Simulated battery internal resistance",
+      "RebootRequired": "True",
+      "Units": "Ohm",
       "User": "Advanced"
     },
     "SIM_BATT_VOLTAGE": {
@@ -55962,6 +56040,12 @@
       "DisplayName": "GPS heading offset",
       "User": "Advanced"
     },
+    "SIM_GPS1_HNSE": {
+      "Description": "Radius of the GPS horizontal position error in meters",
+      "DisplayName": "GPS horizontal noise",
+      "Units": "m",
+      "User": "Advanced"
+    },
     "SIM_GPS1_HZ": {
       "Description": "GPS Update rate",
       "DisplayName": "GPS Hz",
@@ -55989,8 +56073,8 @@
       "User": "Advanced"
     },
     "SIM_GPS1_NOISE": {
-      "Description": "Amplitude of the GPS altitude error",
-      "DisplayName": "GPS Noise",
+      "Description": "Amplitude of the GPS vertical position error",
+      "DisplayName": "GPS vertical noise",
       "Units": "m",
       "User": "Advanced"
     },
@@ -56131,6 +56215,12 @@
       "DisplayName": "GPS heading offset",
       "User": "Advanced"
     },
+    "SIM_GPS2_HNSE": {
+      "Description": "Radius of the GPS horizontal position error in meters",
+      "DisplayName": "GPS horizontal noise",
+      "Units": "m",
+      "User": "Advanced"
+    },
     "SIM_GPS2_HZ": {
       "Description": "GPS Update rate",
       "DisplayName": "GPS Hz",
@@ -56158,8 +56248,8 @@
       "User": "Advanced"
     },
     "SIM_GPS2_NOISE": {
-      "Description": "Amplitude of the GPS altitude error",
-      "DisplayName": "GPS Noise",
+      "Description": "Amplitude of the GPS vertical position error",
+      "DisplayName": "GPS vertical noise",
       "Units": "m",
       "User": "Advanced"
     },
@@ -56300,6 +56390,12 @@
       "DisplayName": "GPS heading offset",
       "User": "Advanced"
     },
+    "SIM_GPS3_HNSE": {
+      "Description": "Radius of the GPS horizontal position error in meters",
+      "DisplayName": "GPS horizontal noise",
+      "Units": "m",
+      "User": "Advanced"
+    },
     "SIM_GPS3_HZ": {
       "Description": "GPS Update rate",
       "DisplayName": "GPS Hz",
@@ -56327,8 +56423,8 @@
       "User": "Advanced"
     },
     "SIM_GPS3_NOISE": {
-      "Description": "Amplitude of the GPS altitude error",
-      "DisplayName": "GPS Noise",
+      "Description": "Amplitude of the GPS vertical position error",
+      "DisplayName": "GPS vertical noise",
       "Units": "m",
       "User": "Advanced"
     },
@@ -56469,6 +56565,12 @@
       "DisplayName": "GPS heading offset",
       "User": "Advanced"
     },
+    "SIM_GPS4_HNSE": {
+      "Description": "Radius of the GPS horizontal position error in meters",
+      "DisplayName": "GPS horizontal noise",
+      "Units": "m",
+      "User": "Advanced"
+    },
     "SIM_GPS4_HZ": {
       "Description": "GPS Update rate",
       "DisplayName": "GPS Hz",
@@ -56496,8 +56598,8 @@
       "User": "Advanced"
     },
     "SIM_GPS4_NOISE": {
-      "Description": "Amplitude of the GPS altitude error",
-      "DisplayName": "GPS Noise",
+      "Description": "Amplitude of the GPS vertical position error",
+      "DisplayName": "GPS vertical noise",
       "Units": "m",
       "User": "Advanced"
     },

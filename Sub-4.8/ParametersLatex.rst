@@ -54174,20 +54174,20 @@ CIRCLE\_OPTIONS: Circle options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-0\:Enable or disable using the pitch\/roll stick control circle mode\'s radius and rate
+Circle behaviour options
 
 
-+-----+------------------------------------------+
-| Bit | Meaning                                  |
-+=====+==========================================+
-| 0   | manual control                           |
-+-----+------------------------------------------+
-| 1   | face direction of travel                 |
-+-----+------------------------------------------+
-| 2   | Start at center rather than on perimeter |
-+-----+------------------------------------------+
-| 3   | Make Mount ROI the center of the circle  |
-+-----+------------------------------------------+
++-----+-------------------------------------------+
+| Bit | Meaning                                   |
++=====+===========================================+
+| 0   | RC pitch and roll control radius and rate |
++-----+-------------------------------------------+
+| 1   | Face direction of travel                  |
++-----+-------------------------------------------+
+| 2   | Start at center rather than on perimeter  |
++-----+-------------------------------------------+
+| 3   | Make Mount ROI the center of the circle   |
++-----+-------------------------------------------+
 
 
 
@@ -127412,6 +127412,26 @@ Simulated battery capacity\. Changes re\-initialize the state of charge of the b
 
 
 
+.. _SIM_BATT_RES_OHM:
+
+SIM\_BATT\_RES\_OHM: Simulated battery internal resistance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+Simulated battery internal resistance\, used to model voltage sag under load \(sag \= current \* resistance\) and temperature growth\. A negative value implies \"use previous resistance\"\, which is the default in order that a model\-provided resistance is the default behavior\. Set to 0 to disable voltage sag and temperature growth entirely\.
+
+
++-------+
+| Units |
++=======+
+| Ohm   |
++-------+
+
+
+
+
 .. _SIM_RC_FAIL:
 
 SIM\_RC\_FAIL: Simulated RC signal failure
@@ -130726,6 +130746,60 @@ SIM\_CLAMP\_CH: Simulated Clamp Channel
 If non\-zero the vehicle will be clamped in position until the value on this servo channel passes 1800PWM
 
 
+.. _SIM_AHRS_OFF_RLL:
+
+SIM\_AHRS\_OFF\_RLL: Sim AHRS offset roll
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Roll offset applied to SIM AHRS type\. For testing stepless handover between AHRS estimators\.
+
+
++-----------+---------+
+| Range     | Units   |
++===========+=========+
+| -10 to 10 | degrees |
++-----------+---------+
+
+
+
+
+.. _SIM_AHRS_OFF_PIT:
+
+SIM\_AHRS\_OFF\_PIT: Sim AHRS offset pitch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Pitch offset applied to SIM AHRS type\. For testing stepless handover between AHRS estimators\.
+
+
++-----------+---------+
+| Range     | Units   |
++===========+=========+
+| -10 to 10 | degrees |
++-----------+---------+
+
+
+
+
+.. _SIM_AHRS_OFF_YAW:
+
+SIM\_AHRS\_OFF\_YAW: Sim AHRS offset yaw
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Yaw offset applied to SIM AHRS type\. For testing stepless handover between AHRS estimators\.
+
+
++-----------+---------+
+| Range     | Units   |
++===========+=========+
+| -10 to 10 | degrees |
++-----------+---------+
+
+
+
+
 .. _SIM_IMUT1_ENABLE:
 
 SIM\_IMUT1\_ENABLE: Enable simulated temperature disturbance for sensor data
@@ -133178,12 +133252,12 @@ GPS antenna phase center position relative to the body frame origin \(Z\-axis\)
 
 .. _SIM_GPS1_NOISE:
 
-SIM\_GPS1\_NOISE: GPS Noise
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SIM\_GPS1\_NOISE: GPS vertical noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
-Amplitude of the GPS altitude error
+Amplitude of the GPS vertical position error
 
 
 +--------+
@@ -133376,6 +133450,25 @@ Allow setting which fix type \(only some GPS\'s supported\)\; matches AP\_GPS\_F
 +-------+------------------+
 | 6     | 3D RTK Fixed     |
 +-------+------------------+
+
+
+
+
+.. _SIM_GPS1_HNSE:
+
+SIM\_GPS1\_HNSE: GPS horizontal noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Radius of the GPS horizontal position error in meters
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
 
 
 
@@ -133607,12 +133700,12 @@ GPS antenna phase center position relative to the body frame origin \(Z\-axis\)
 
 .. _SIM_GPS2_NOISE:
 
-SIM\_GPS2\_NOISE: GPS Noise
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SIM\_GPS2\_NOISE: GPS vertical noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
-Amplitude of the GPS altitude error
+Amplitude of the GPS vertical position error
 
 
 +--------+
@@ -133805,6 +133898,25 @@ Allow setting which fix type \(only some GPS\'s supported\)\; matches AP\_GPS\_F
 +-------+------------------+
 | 6     | 3D RTK Fixed     |
 +-------+------------------+
+
+
+
+
+.. _SIM_GPS2_HNSE:
+
+SIM\_GPS2\_HNSE: GPS horizontal noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Radius of the GPS horizontal position error in meters
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
 
 
 
@@ -134036,12 +134148,12 @@ GPS antenna phase center position relative to the body frame origin \(Z\-axis\)
 
 .. _SIM_GPS3_NOISE:
 
-SIM\_GPS3\_NOISE: GPS Noise
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SIM\_GPS3\_NOISE: GPS vertical noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
-Amplitude of the GPS altitude error
+Amplitude of the GPS vertical position error
 
 
 +--------+
@@ -134234,6 +134346,25 @@ Allow setting which fix type \(only some GPS\'s supported\)\; matches AP\_GPS\_F
 +-------+------------------+
 | 6     | 3D RTK Fixed     |
 +-------+------------------+
+
+
+
+
+.. _SIM_GPS3_HNSE:
+
+SIM\_GPS3\_HNSE: GPS horizontal noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Radius of the GPS horizontal position error in meters
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
 
 
 
@@ -134465,12 +134596,12 @@ GPS antenna phase center position relative to the body frame origin \(Z\-axis\)
 
 .. _SIM_GPS4_NOISE:
 
-SIM\_GPS4\_NOISE: GPS Noise
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SIM\_GPS4\_NOISE: GPS vertical noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
-Amplitude of the GPS altitude error
+Amplitude of the GPS vertical position error
 
 
 +--------+
@@ -134663,6 +134794,25 @@ Allow setting which fix type \(only some GPS\'s supported\)\; matches AP\_GPS\_F
 +-------+------------------+
 | 6     | 3D RTK Fixed     |
 +-------+------------------+
+
+
+
+
+.. _SIM_GPS4_HNSE:
+
+SIM\_GPS4\_HNSE: GPS horizontal noise
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Radius of the GPS horizontal position error in meters
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
 
 
 
