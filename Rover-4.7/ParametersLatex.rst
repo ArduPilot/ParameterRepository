@@ -1160,6 +1160,82 @@ Timeout before triggering the GCS failsafe
 
 
 
+.. _CRASH_THR_MIN:
+
+CRASH\_THR\_MIN: Crash throttle minimum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Throttle above this threshold accompanied by a low speed condition triggers crash detection\. Zero disables velocity and turn rate checks\.
+
+
++-----------+----------+---------+
+| Increment | Range    | Units   |
++===========+==========+=========+
+| 1         | 0 to 100 | percent |
++-----------+----------+---------+
+
+
+
+
+.. _CRASH_VEL_MIN:
+
+CRASH\_VEL\_MIN: Crash velocity minimum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Velocity below this threshold with accompanying throttle demand triggers crash detection\. Zero disables velocity check\.
+
+
++-----------+---------+-------------------+
+| Increment | Range   | Units             |
++===========+=========+===================+
+| 0.1       | 0 to 60 | meters per second |
++-----------+---------+-------------------+
+
+
+
+
+.. _CRASH_TRAT_MIN:
+
+CRASH\_TRAT\_MIN: Crash turn rate minimum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Turn rate below this threshold with accompanying throttle demand triggers crash detection\. Zero disables turn rate check\.
+
+
++-----------+----------+--------------------+
+| Increment | Range    | Units              |
++===========+==========+====================+
+| 1         | 0 to 360 | degrees per second |
++-----------+----------+--------------------+
+
+
+
+
+.. _CRASH_TIMEOUT:
+
+CRASH\_TIMEOUT: Crash timeout
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Crash conditions persisting for this duration trigger crash detection\.
+
+
++-----------+---------+---------+
+| Increment | Range   | Units   |
++===========+=========+=========+
+| 0.5       | 0 to 60 | seconds |
++-----------+---------+---------+
+
+
+
+
 .. _CH7_OPTION:
 
 CH7\_OPTION: Channel 7 option
@@ -125655,6 +125731,8 @@ Enables temperature sensors
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
 +-------+----------------------+
+| 10    | TMP119               |
++-------+----------------------+
 
 
 
@@ -125910,6 +125988,8 @@ Enables temperature sensors
 | 8     | SHT3x                |
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
++-------+----------------------+
+| 10    | TMP119               |
 +-------+----------------------+
 
 
@@ -126167,6 +126247,8 @@ Enables temperature sensors
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
 +-------+----------------------+
+| 10    | TMP119               |
++-------+----------------------+
 
 
 
@@ -126422,6 +126504,8 @@ Enables temperature sensors
 | 8     | SHT3x                |
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
++-------+----------------------+
+| 10    | TMP119               |
 +-------+----------------------+
 
 
@@ -126679,6 +126763,8 @@ Enables temperature sensors
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
 +-------+----------------------+
+| 10    | TMP119               |
++-------+----------------------+
 
 
 
@@ -126934,6 +127020,8 @@ Enables temperature sensors
 | 8     | SHT3x                |
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
++-------+----------------------+
+| 10    | TMP119               |
 +-------+----------------------+
 
 
@@ -127191,6 +127279,8 @@ Enables temperature sensors
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
 +-------+----------------------+
+| 10    | TMP119               |
++-------+----------------------+
 
 
 
@@ -127446,6 +127536,8 @@ Enables temperature sensors
 | 8     | SHT3x                |
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
++-------+----------------------+
+| 10    | TMP119               |
 +-------+----------------------+
 
 
@@ -127703,6 +127795,8 @@ Enables temperature sensors
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
 +-------+----------------------+
+| 10    | TMP119               |
++-------+----------------------+
 
 
 
@@ -127958,6 +128052,8 @@ Enables temperature sensors
 | 8     | SHT3x                |
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
++-------+----------------------+
+| 10    | TMP119               |
 +-------+----------------------+
 
 
@@ -128215,6 +128311,8 @@ Enables temperature sensors
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
 +-------+----------------------+
+| 10    | TMP119               |
++-------+----------------------+
 
 
 
@@ -128470,6 +128568,8 @@ Enables temperature sensors
 | 8     | SHT3x                |
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
++-------+----------------------+
+| 10    | TMP119               |
 +-------+----------------------+
 
 
@@ -128727,6 +128827,8 @@ Enables temperature sensors
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
 +-------+----------------------+
+| 10    | TMP119               |
++-------+----------------------+
 
 
 
@@ -128983,6 +129085,8 @@ Enables temperature sensors
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
 +-------+----------------------+
+| 10    | TMP119               |
++-------+----------------------+
 
 
 
@@ -129238,6 +129342,8 @@ Enables temperature sensors
 | 8     | SHT3x                |
 +-------+----------------------+
 | 9     | MAX31865 3 wire      |
++-------+----------------------+
+| 10    | TMP119               |
 +-------+----------------------+
 
 

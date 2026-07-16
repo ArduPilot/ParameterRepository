@@ -38341,6 +38341,7 @@
           <value code="6">DroneCAN-out on AP_Periph</value>
           <value code="7">Servo motor</value>
           <value code="8">Servo PCB</value>
+          <value code="9">Rangefinder</value>
         </values>
       </param>
       <param humanName="Sensor Source Identification" name="TEMP1_SRC_ID" documentation="Sensor Source Identification is used to replace a specific instance of a system component's temperature report with the temp sensor's. Examples: TEMP_SRC = 1 (ESC), TEMP_SRC_ID = 1 will set the temp of ESC1. TEMP_SRC = 3 (BatteryIndex),TEMP_SRC_ID = 2 will set the temp of BATT2. TEMP_SRC = 4 (BatteryId/SerialNum),TEMP_SRC_ID=42 will set the temp of all batteries that have param BATTn_SERIAL = 42.">
@@ -38413,6 +38414,7 @@
           <value code="6">DroneCAN-out on AP_Periph</value>
           <value code="7">Servo motor</value>
           <value code="8">Servo PCB</value>
+          <value code="9">Rangefinder</value>
         </values>
       </param>
       <param humanName="Sensor Source Identification" name="TEMP2_SRC_ID" documentation="Sensor Source Identification is used to replace a specific instance of a system component's temperature report with the temp sensor's. Examples: TEMP_SRC = 1 (ESC), TEMP_SRC_ID = 1 will set the temp of ESC1. TEMP_SRC = 3 (BatteryIndex),TEMP_SRC_ID = 2 will set the temp of BATT2. TEMP_SRC = 4 (BatteryId/SerialNum),TEMP_SRC_ID=42 will set the temp of all batteries that have param BATTn_SERIAL = 42.">
@@ -38485,6 +38487,7 @@
           <value code="6">DroneCAN-out on AP_Periph</value>
           <value code="7">Servo motor</value>
           <value code="8">Servo PCB</value>
+          <value code="9">Rangefinder</value>
         </values>
       </param>
       <param humanName="Sensor Source Identification" name="TEMP3_SRC_ID" documentation="Sensor Source Identification is used to replace a specific instance of a system component's temperature report with the temp sensor's. Examples: TEMP_SRC = 1 (ESC), TEMP_SRC_ID = 1 will set the temp of ESC1. TEMP_SRC = 3 (BatteryIndex),TEMP_SRC_ID = 2 will set the temp of BATT2. TEMP_SRC = 4 (BatteryId/SerialNum),TEMP_SRC_ID=42 will set the temp of all batteries that have param BATTn_SERIAL = 42.">
@@ -38557,6 +38560,7 @@
           <value code="6">DroneCAN-out on AP_Periph</value>
           <value code="7">Servo motor</value>
           <value code="8">Servo PCB</value>
+          <value code="9">Rangefinder</value>
         </values>
       </param>
       <param humanName="Sensor Source Identification" name="TEMP4_SRC_ID" documentation="Sensor Source Identification is used to replace a specific instance of a system component's temperature report with the temp sensor's. Examples: TEMP_SRC = 1 (ESC), TEMP_SRC_ID = 1 will set the temp of ESC1. TEMP_SRC = 3 (BatteryIndex),TEMP_SRC_ID = 2 will set the temp of BATT2. TEMP_SRC = 4 (BatteryId/SerialNum),TEMP_SRC_ID=42 will set the temp of all batteries that have param BATTn_SERIAL = 42.">
@@ -38629,6 +38633,7 @@
           <value code="6">DroneCAN-out on AP_Periph</value>
           <value code="7">Servo motor</value>
           <value code="8">Servo PCB</value>
+          <value code="9">Rangefinder</value>
         </values>
       </param>
       <param humanName="Sensor Source Identification" name="TEMP5_SRC_ID" documentation="Sensor Source Identification is used to replace a specific instance of a system component's temperature report with the temp sensor's. Examples: TEMP_SRC = 1 (ESC), TEMP_SRC_ID = 1 will set the temp of ESC1. TEMP_SRC = 3 (BatteryIndex),TEMP_SRC_ID = 2 will set the temp of BATT2. TEMP_SRC = 4 (BatteryId/SerialNum),TEMP_SRC_ID=42 will set the temp of all batteries that have param BATTn_SERIAL = 42.">
@@ -38701,6 +38706,7 @@
           <value code="6">DroneCAN-out on AP_Periph</value>
           <value code="7">Servo motor</value>
           <value code="8">Servo PCB</value>
+          <value code="9">Rangefinder</value>
         </values>
       </param>
       <param humanName="Sensor Source Identification" name="TEMP6_SRC_ID" documentation="Sensor Source Identification is used to replace a specific instance of a system component's temperature report with the temp sensor's. Examples: TEMP_SRC = 1 (ESC), TEMP_SRC_ID = 1 will set the temp of ESC1. TEMP_SRC = 3 (BatteryIndex),TEMP_SRC_ID = 2 will set the temp of BATT2. TEMP_SRC = 4 (BatteryId/SerialNum),TEMP_SRC_ID=42 will set the temp of all batteries that have param BATTn_SERIAL = 42.">
@@ -38773,6 +38779,7 @@
           <value code="6">DroneCAN-out on AP_Periph</value>
           <value code="7">Servo motor</value>
           <value code="8">Servo PCB</value>
+          <value code="9">Rangefinder</value>
         </values>
       </param>
       <param humanName="Sensor Source Identification" name="TEMP7_SRC_ID" documentation="Sensor Source Identification is used to replace a specific instance of a system component's temperature report with the temp sensor's. Examples: TEMP_SRC = 1 (ESC), TEMP_SRC_ID = 1 will set the temp of ESC1. TEMP_SRC = 3 (BatteryIndex),TEMP_SRC_ID = 2 will set the temp of BATT2. TEMP_SRC = 4 (BatteryId/SerialNum),TEMP_SRC_ID=42 will set the temp of all batteries that have param BATTn_SERIAL = 42.">
@@ -38845,6 +38852,7 @@
           <value code="6">DroneCAN-out on AP_Periph</value>
           <value code="7">Servo motor</value>
           <value code="8">Servo PCB</value>
+          <value code="9">Rangefinder</value>
         </values>
       </param>
       <param humanName="Sensor Source Identification" name="TEMP8_SRC_ID" documentation="Sensor Source Identification is used to replace a specific instance of a system component's temperature report with the temp sensor's. Examples: TEMP_SRC = 1 (ESC), TEMP_SRC_ID = 1 will set the temp of ESC1. TEMP_SRC = 3 (BatteryIndex),TEMP_SRC_ID = 2 will set the temp of BATT2. TEMP_SRC = 4 (BatteryId/SerialNum),TEMP_SRC_ID=42 will set the temp of all batteries that have param BATTn_SERIAL = 42.">
@@ -38917,6 +38925,7 @@
           <value code="6">DroneCAN-out on AP_Periph</value>
           <value code="7">Servo motor</value>
           <value code="8">Servo PCB</value>
+          <value code="9">Rangefinder</value>
         </values>
       </param>
       <param humanName="Sensor Source Identification" name="TEMP9_SRC_ID" documentation="Sensor Source Identification is used to replace a specific instance of a system component's temperature report with the temp sensor's. Examples: TEMP_SRC = 1 (ESC), TEMP_SRC_ID = 1 will set the temp of ESC1. TEMP_SRC = 3 (BatteryIndex),TEMP_SRC_ID = 2 will set the temp of BATT2. TEMP_SRC = 4 (BatteryId/SerialNum),TEMP_SRC_ID=42 will set the temp of all batteries that have param BATTn_SERIAL = 42.">
@@ -38989,6 +38998,7 @@
           <value code="6">DroneCAN-out on AP_Periph</value>
           <value code="7">Servo motor</value>
           <value code="8">Servo PCB</value>
+          <value code="9">Rangefinder</value>
         </values>
       </param>
       <param humanName="Sensor Source Identification" name="TEMP10_SRC_ID" documentation="Sensor Source Identification is used to replace a specific instance of a system component's temperature report with the temp sensor's. Examples: TEMP_SRC = 1 (ESC), TEMP_SRC_ID = 1 will set the temp of ESC1. TEMP_SRC = 3 (BatteryIndex),TEMP_SRC_ID = 2 will set the temp of BATT2. TEMP_SRC = 4 (BatteryId/SerialNum),TEMP_SRC_ID=42 will set the temp of all batteries that have param BATTn_SERIAL = 42.">
@@ -39061,6 +39071,7 @@
           <value code="6">DroneCAN-out on AP_Periph</value>
           <value code="7">Servo motor</value>
           <value code="8">Servo PCB</value>
+          <value code="9">Rangefinder</value>
         </values>
       </param>
       <param humanName="Sensor Source Identification" name="TEMP11_SRC_ID" documentation="Sensor Source Identification is used to replace a specific instance of a system component's temperature report with the temp sensor's. Examples: TEMP_SRC = 1 (ESC), TEMP_SRC_ID = 1 will set the temp of ESC1. TEMP_SRC = 3 (BatteryIndex),TEMP_SRC_ID = 2 will set the temp of BATT2. TEMP_SRC = 4 (BatteryId/SerialNum),TEMP_SRC_ID=42 will set the temp of all batteries that have param BATTn_SERIAL = 42.">
@@ -39133,6 +39144,7 @@
           <value code="6">DroneCAN-out on AP_Periph</value>
           <value code="7">Servo motor</value>
           <value code="8">Servo PCB</value>
+          <value code="9">Rangefinder</value>
         </values>
       </param>
       <param humanName="Sensor Source Identification" name="TEMP12_SRC_ID" documentation="Sensor Source Identification is used to replace a specific instance of a system component's temperature report with the temp sensor's. Examples: TEMP_SRC = 1 (ESC), TEMP_SRC_ID = 1 will set the temp of ESC1. TEMP_SRC = 3 (BatteryIndex),TEMP_SRC_ID = 2 will set the temp of BATT2. TEMP_SRC = 4 (BatteryId/SerialNum),TEMP_SRC_ID=42 will set the temp of all batteries that have param BATTn_SERIAL = 42.">
@@ -39205,6 +39217,7 @@
           <value code="6">DroneCAN-out on AP_Periph</value>
           <value code="7">Servo motor</value>
           <value code="8">Servo PCB</value>
+          <value code="9">Rangefinder</value>
         </values>
       </param>
       <param humanName="Sensor Source Identification" name="TEMP13_SRC_ID" documentation="Sensor Source Identification is used to replace a specific instance of a system component's temperature report with the temp sensor's. Examples: TEMP_SRC = 1 (ESC), TEMP_SRC_ID = 1 will set the temp of ESC1. TEMP_SRC = 3 (BatteryIndex),TEMP_SRC_ID = 2 will set the temp of BATT2. TEMP_SRC = 4 (BatteryId/SerialNum),TEMP_SRC_ID=42 will set the temp of all batteries that have param BATTn_SERIAL = 42.">
@@ -39277,6 +39290,7 @@
           <value code="6">DroneCAN-out on AP_Periph</value>
           <value code="7">Servo motor</value>
           <value code="8">Servo PCB</value>
+          <value code="9">Rangefinder</value>
         </values>
       </param>
       <param humanName="Sensor Source Identification" name="TEMP14_SRC_ID" documentation="Sensor Source Identification is used to replace a specific instance of a system component's temperature report with the temp sensor's. Examples: TEMP_SRC = 1 (ESC), TEMP_SRC_ID = 1 will set the temp of ESC1. TEMP_SRC = 3 (BatteryIndex),TEMP_SRC_ID = 2 will set the temp of BATT2. TEMP_SRC = 4 (BatteryId/SerialNum),TEMP_SRC_ID=42 will set the temp of all batteries that have param BATTn_SERIAL = 42.">
@@ -39349,6 +39363,7 @@
           <value code="6">DroneCAN-out on AP_Periph</value>
           <value code="7">Servo motor</value>
           <value code="8">Servo PCB</value>
+          <value code="9">Rangefinder</value>
         </values>
       </param>
       <param humanName="Sensor Source Identification" name="TEMP15_SRC_ID" documentation="Sensor Source Identification is used to replace a specific instance of a system component's temperature report with the temp sensor's. Examples: TEMP_SRC = 1 (ESC), TEMP_SRC_ID = 1 will set the temp of ESC1. TEMP_SRC = 3 (BatteryIndex),TEMP_SRC_ID = 2 will set the temp of BATT2. TEMP_SRC = 4 (BatteryId/SerialNum),TEMP_SRC_ID=42 will set the temp of all batteries that have param BATTn_SERIAL = 42.">

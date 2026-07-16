@@ -399,6 +399,30 @@
         <field name="Range">2 120</field>
         <field name="Increment">1</field>
       </param>
+      <param humanName="Crash throttle minimum" name="Rover:CRASH_THR_MIN" documentation="Throttle above this threshold accompanied by a low speed condition triggers crash detection. Zero disables velocity and turn rate checks." user="Advanced">
+        <field name="Units">%</field>
+        <field name="UnitText">percent</field>
+        <field name="Range">0 100</field>
+        <field name="Increment">1</field>
+      </param>
+      <param humanName="Crash velocity minimum" name="Rover:CRASH_VEL_MIN" documentation="Velocity below this threshold with accompanying throttle demand triggers crash detection. Zero disables velocity check." user="Advanced">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+        <field name="Range">0 60</field>
+        <field name="Increment">0.1</field>
+      </param>
+      <param humanName="Crash turn rate minimum" name="Rover:CRASH_TRAT_MIN" documentation="Turn rate below this threshold with accompanying throttle demand triggers crash detection. Zero disables turn rate check." user="Advanced">
+        <field name="Units">deg/s</field>
+        <field name="UnitText">degrees per second</field>
+        <field name="Range">0 360</field>
+        <field name="Increment">1</field>
+      </param>
+      <param humanName="Crash timeout" name="Rover:CRASH_TIMEOUT" documentation="Crash conditions persisting for this duration trigger crash detection." user="Advanced">
+        <field name="Units">s</field>
+        <field name="UnitText">seconds</field>
+        <field name="Range">0 60</field>
+        <field name="Increment">0.5</field>
+      </param>
       <param humanName="Channel 7 option" name="Rover:CH7_OPTION" documentation="What to do use channel 7 for" user="Standard">
         <values>
           <value code="0">Nothing</value>
@@ -38347,6 +38371,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -38418,6 +38443,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -38489,6 +38515,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -38560,6 +38587,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -38631,6 +38659,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -38702,6 +38731,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -38773,6 +38803,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -38844,6 +38875,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -38915,6 +38947,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -38986,6 +39019,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -39057,6 +39091,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -39128,6 +39163,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -39199,6 +39235,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -39270,6 +39307,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -39341,6 +39379,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>

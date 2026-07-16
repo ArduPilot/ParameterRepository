@@ -19161,9 +19161,9 @@ Circle mode's maximum turn rate in deg/sec.  Positive to turn clockwise, negativ
 
 ## CIRCLE_OPTIONS: Circle options
 
-0:Enable or disable using the pitch/roll stick control circle mode's radius and rate
+Circle behaviour options
 
-- Bitmask: 0:manual control, 1:face direction of travel, 2:Start at center rather than on perimeter, 3:Make Mount ROI the center of the circle
+- Bitmask: 0:RC pitch and roll control radius and rate, 1:Face direction of travel, 2:Start at center rather than on perimeter, 3:Make Mount ROI the center of the circle
 
 ## CIRCLE_RADIUS_M: Circle Radius
 
@@ -54533,6 +54533,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -54648,6 +54649,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -54763,6 +54765,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -54878,6 +54881,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -54993,6 +54997,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -55108,6 +55113,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -55223,6 +55229,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -55338,6 +55345,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -55453,6 +55461,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -55568,6 +55577,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -55683,6 +55693,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -55798,6 +55809,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -55913,6 +55925,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -56028,6 +56041,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -56143,6 +56157,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 

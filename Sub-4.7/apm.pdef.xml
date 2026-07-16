@@ -18831,14 +18831,14 @@
         <field name="Range">-90 90</field>
         <field name="Increment">1</field>
       </param>
-      <param humanName="Circle options" name="CIRCLE_OPTIONS" documentation="0:Enable or disable using the pitch/roll stick control circle mode's radius and rate" user="Standard">
+      <param humanName="Circle options" name="CIRCLE_OPTIONS" documentation="Circle behaviour options" user="Standard">
         <bitmask>
-          <bit code="0">manual control</bit>
-          <bit code="1">face direction of travel</bit>
+          <bit code="0">RC pitch and roll control radius and rate</bit>
+          <bit code="1">Face direction of travel</bit>
           <bit code="2">Start at center rather than on perimeter</bit>
           <bit code="3">Make Mount ROI the center of the circle</bit>
         </bitmask>
-        <field name="Bitmask">0:manual control, 1:face direction of travel, 2:Start at center rather than on perimeter, 3:Make Mount ROI the center of the circle</field>
+        <field name="Bitmask">0:RC pitch and roll control radius and rate, 1:Face direction of travel, 2:Start at center rather than on perimeter, 3:Make Mount ROI the center of the circle</field>
       </param>
       <param humanName="Circle Radius" name="CIRCLE_RADIUS_M" documentation="Radius of the circle the vehicle will fly when in Circle flight mode" user="Standard">
         <field name="Units">m</field>
@@ -43925,6 +43925,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -43996,6 +43997,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -44067,6 +44069,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -44138,6 +44141,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -44209,6 +44213,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -44280,6 +44285,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -44351,6 +44357,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -44422,6 +44429,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -44493,6 +44501,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -44564,6 +44573,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -44635,6 +44645,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -44706,6 +44717,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -44777,6 +44789,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -44848,6 +44861,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -44919,6 +44933,7 @@
           <value code="7">MLX90614</value>
           <value code="8">SHT3x</value>
           <value code="9">MAX31865 3 wire</value>
+          <value code="10">TMP119</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>

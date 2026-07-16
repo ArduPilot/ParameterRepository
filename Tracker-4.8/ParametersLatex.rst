@@ -87540,6 +87540,8 @@ Sensor Source is used to designate which device\'s temperature report will be re
 +-------+---------------------------+
 | 8     | Servo PCB                 |
 +-------+---------------------------+
+| 9     | Rangefinder               |
++-------+---------------------------+
 
 
 
@@ -87797,6 +87799,8 @@ Sensor Source is used to designate which device\'s temperature report will be re
 | 7     | Servo motor               |
 +-------+---------------------------+
 | 8     | Servo PCB                 |
++-------+---------------------------+
+| 9     | Rangefinder               |
 +-------+---------------------------+
 
 
@@ -88056,6 +88060,8 @@ Sensor Source is used to designate which device\'s temperature report will be re
 +-------+---------------------------+
 | 8     | Servo PCB                 |
 +-------+---------------------------+
+| 9     | Rangefinder               |
++-------+---------------------------+
 
 
 
@@ -88313,6 +88319,8 @@ Sensor Source is used to designate which device\'s temperature report will be re
 | 7     | Servo motor               |
 +-------+---------------------------+
 | 8     | Servo PCB                 |
++-------+---------------------------+
+| 9     | Rangefinder               |
 +-------+---------------------------+
 
 
@@ -88572,6 +88580,8 @@ Sensor Source is used to designate which device\'s temperature report will be re
 +-------+---------------------------+
 | 8     | Servo PCB                 |
 +-------+---------------------------+
+| 9     | Rangefinder               |
++-------+---------------------------+
 
 
 
@@ -88829,6 +88839,8 @@ Sensor Source is used to designate which device\'s temperature report will be re
 | 7     | Servo motor               |
 +-------+---------------------------+
 | 8     | Servo PCB                 |
++-------+---------------------------+
+| 9     | Rangefinder               |
 +-------+---------------------------+
 
 
@@ -89088,6 +89100,8 @@ Sensor Source is used to designate which device\'s temperature report will be re
 +-------+---------------------------+
 | 8     | Servo PCB                 |
 +-------+---------------------------+
+| 9     | Rangefinder               |
++-------+---------------------------+
 
 
 
@@ -89345,6 +89359,8 @@ Sensor Source is used to designate which device\'s temperature report will be re
 | 7     | Servo motor               |
 +-------+---------------------------+
 | 8     | Servo PCB                 |
++-------+---------------------------+
+| 9     | Rangefinder               |
 +-------+---------------------------+
 
 
@@ -89604,6 +89620,8 @@ Sensor Source is used to designate which device\'s temperature report will be re
 +-------+---------------------------+
 | 8     | Servo PCB                 |
 +-------+---------------------------+
+| 9     | Rangefinder               |
++-------+---------------------------+
 
 
 
@@ -89861,6 +89879,8 @@ Sensor Source is used to designate which device\'s temperature report will be re
 | 7     | Servo motor               |
 +-------+---------------------------+
 | 8     | Servo PCB                 |
++-------+---------------------------+
+| 9     | Rangefinder               |
 +-------+---------------------------+
 
 
@@ -90120,6 +90140,8 @@ Sensor Source is used to designate which device\'s temperature report will be re
 +-------+---------------------------+
 | 8     | Servo PCB                 |
 +-------+---------------------------+
+| 9     | Rangefinder               |
++-------+---------------------------+
 
 
 
@@ -90377,6 +90399,8 @@ Sensor Source is used to designate which device\'s temperature report will be re
 | 7     | Servo motor               |
 +-------+---------------------------+
 | 8     | Servo PCB                 |
++-------+---------------------------+
+| 9     | Rangefinder               |
 +-------+---------------------------+
 
 
@@ -90636,6 +90660,8 @@ Sensor Source is used to designate which device\'s temperature report will be re
 +-------+---------------------------+
 | 8     | Servo PCB                 |
 +-------+---------------------------+
+| 9     | Rangefinder               |
++-------+---------------------------+
 
 
 
@@ -90894,6 +90920,8 @@ Sensor Source is used to designate which device\'s temperature report will be re
 +-------+---------------------------+
 | 8     | Servo PCB                 |
 +-------+---------------------------+
+| 9     | Rangefinder               |
++-------+---------------------------+
 
 
 
@@ -91151,6 +91179,8 @@ Sensor Source is used to designate which device\'s temperature report will be re
 | 7     | Servo motor               |
 +-------+---------------------------+
 | 8     | Servo PCB                 |
++-------+---------------------------+
+| 9     | Rangefinder               |
 +-------+---------------------------+
 
 

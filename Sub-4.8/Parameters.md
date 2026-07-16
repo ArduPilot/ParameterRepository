@@ -49555,6 +49555,7 @@ Sensor Source is used to designate which device's temperature report will be rep
 |6|DroneCAN-out on AP_Periph|
 |7|Servo motor|
 |8|Servo PCB|
+|9|Rangefinder|
 
 ## TEMP1_SRC_ID: Sensor Source Identification
 
@@ -49671,6 +49672,7 @@ Sensor Source is used to designate which device's temperature report will be rep
 |6|DroneCAN-out on AP_Periph|
 |7|Servo motor|
 |8|Servo PCB|
+|9|Rangefinder|
 
 ## TEMP2_SRC_ID: Sensor Source Identification
 
@@ -49787,6 +49789,7 @@ Sensor Source is used to designate which device's temperature report will be rep
 |6|DroneCAN-out on AP_Periph|
 |7|Servo motor|
 |8|Servo PCB|
+|9|Rangefinder|
 
 ## TEMP3_SRC_ID: Sensor Source Identification
 
@@ -49903,6 +49906,7 @@ Sensor Source is used to designate which device's temperature report will be rep
 |6|DroneCAN-out on AP_Periph|
 |7|Servo motor|
 |8|Servo PCB|
+|9|Rangefinder|
 
 ## TEMP4_SRC_ID: Sensor Source Identification
 
@@ -50019,6 +50023,7 @@ Sensor Source is used to designate which device's temperature report will be rep
 |6|DroneCAN-out on AP_Periph|
 |7|Servo motor|
 |8|Servo PCB|
+|9|Rangefinder|
 
 ## TEMP5_SRC_ID: Sensor Source Identification
 
@@ -50135,6 +50140,7 @@ Sensor Source is used to designate which device's temperature report will be rep
 |6|DroneCAN-out on AP_Periph|
 |7|Servo motor|
 |8|Servo PCB|
+|9|Rangefinder|
 
 ## TEMP6_SRC_ID: Sensor Source Identification
 
@@ -50251,6 +50257,7 @@ Sensor Source is used to designate which device's temperature report will be rep
 |6|DroneCAN-out on AP_Periph|
 |7|Servo motor|
 |8|Servo PCB|
+|9|Rangefinder|
 
 ## TEMP7_SRC_ID: Sensor Source Identification
 
@@ -50367,6 +50374,7 @@ Sensor Source is used to designate which device's temperature report will be rep
 |6|DroneCAN-out on AP_Periph|
 |7|Servo motor|
 |8|Servo PCB|
+|9|Rangefinder|
 
 ## TEMP8_SRC_ID: Sensor Source Identification
 
@@ -50483,6 +50491,7 @@ Sensor Source is used to designate which device's temperature report will be rep
 |6|DroneCAN-out on AP_Periph|
 |7|Servo motor|
 |8|Servo PCB|
+|9|Rangefinder|
 
 ## TEMP9_SRC_ID: Sensor Source Identification
 
@@ -50599,6 +50608,7 @@ Sensor Source is used to designate which device's temperature report will be rep
 |6|DroneCAN-out on AP_Periph|
 |7|Servo motor|
 |8|Servo PCB|
+|9|Rangefinder|
 
 ## TEMP10_SRC_ID: Sensor Source Identification
 
@@ -50715,6 +50725,7 @@ Sensor Source is used to designate which device's temperature report will be rep
 |6|DroneCAN-out on AP_Periph|
 |7|Servo motor|
 |8|Servo PCB|
+|9|Rangefinder|
 
 ## TEMP11_SRC_ID: Sensor Source Identification
 
@@ -50831,6 +50842,7 @@ Sensor Source is used to designate which device's temperature report will be rep
 |6|DroneCAN-out on AP_Periph|
 |7|Servo motor|
 |8|Servo PCB|
+|9|Rangefinder|
 
 ## TEMP12_SRC_ID: Sensor Source Identification
 
@@ -50947,6 +50959,7 @@ Sensor Source is used to designate which device's temperature report will be rep
 |6|DroneCAN-out on AP_Periph|
 |7|Servo motor|
 |8|Servo PCB|
+|9|Rangefinder|
 
 ## TEMP13_SRC_ID: Sensor Source Identification
 
@@ -51063,6 +51076,7 @@ Sensor Source is used to designate which device's temperature report will be rep
 |6|DroneCAN-out on AP_Periph|
 |7|Servo motor|
 |8|Servo PCB|
+|9|Rangefinder|
 
 ## TEMP14_SRC_ID: Sensor Source Identification
 
@@ -51179,6 +51193,7 @@ Sensor Source is used to designate which device's temperature report will be rep
 |6|DroneCAN-out on AP_Periph|
 |7|Servo motor|
 |8|Servo PCB|
+|9|Rangefinder|
 
 ## TEMP15_SRC_ID: Sensor Source Identification
 

@@ -43058,6 +43058,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -43173,6 +43174,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -43288,6 +43290,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -43403,6 +43406,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -43518,6 +43522,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -43633,6 +43638,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -43748,6 +43754,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -43863,6 +43870,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -43978,6 +43986,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -44093,6 +44102,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -44208,6 +44218,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -44323,6 +44334,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -44438,6 +44450,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -44553,6 +44566,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -44668,6 +44682,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 

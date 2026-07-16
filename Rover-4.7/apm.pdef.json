@@ -46329,6 +46329,50 @@
       "Units": "deg",
       "User": "Standard"
     },
+    "CRASH_THR_MIN": {
+      "Description": "Throttle above this threshold accompanied by a low speed condition triggers crash detection. Zero disables velocity and turn rate checks.",
+      "DisplayName": "Crash throttle minimum",
+      "Increment": "1",
+      "Range": {
+        "high": "100",
+        "low": "0"
+      },
+      "Units": "%",
+      "User": "Advanced"
+    },
+    "CRASH_TIMEOUT": {
+      "Description": "Crash conditions persisting for this duration trigger crash detection.",
+      "DisplayName": "Crash timeout",
+      "Increment": "0.5",
+      "Range": {
+        "high": "60",
+        "low": "0"
+      },
+      "Units": "s",
+      "User": "Advanced"
+    },
+    "CRASH_TRAT_MIN": {
+      "Description": "Turn rate below this threshold with accompanying throttle demand triggers crash detection. Zero disables turn rate check.",
+      "DisplayName": "Crash turn rate minimum",
+      "Increment": "1",
+      "Range": {
+        "high": "360",
+        "low": "0"
+      },
+      "Units": "deg/s",
+      "User": "Advanced"
+    },
+    "CRASH_VEL_MIN": {
+      "Description": "Velocity below this threshold with accompanying throttle demand triggers crash detection. Zero disables velocity check.",
+      "DisplayName": "Crash velocity minimum",
+      "Increment": "0.1",
+      "Range": {
+        "high": "60",
+        "low": "0"
+      },
+      "Units": "m/s",
+      "User": "Advanced"
+    },
     "CRUISE_SPEED": {
       "Description": "The target speed in auto missions.",
       "DisplayName": "Target cruise speed in auto modes",
@@ -57434,6 +57478,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -57554,6 +57599,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -57674,6 +57720,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -57794,6 +57841,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -57914,6 +57962,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -58034,6 +58083,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -58154,6 +58204,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -58274,6 +58325,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -58394,6 +58446,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -58514,6 +58567,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -58634,6 +58688,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -58754,6 +58809,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -58874,6 +58930,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -58994,6 +59051,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -59114,6 +59172,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",

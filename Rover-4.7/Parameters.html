@@ -588,6 +588,46 @@ DO NOT EDIT
 </ul>
 
 
+<h2>Crash throttle minimum (Rover:CRASH_THR_MIN)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Throttle above this threshold accompanied by a low speed condition triggers crash detection. Zero disables velocity and turn rate checks.</p>
+<ul>
+<li>Units: percent</li>
+<li>Range: 0 100</li>
+<li>Increment: 1</li>
+</ul>
+
+
+<h2>Crash velocity minimum (Rover:CRASH_VEL_MIN)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Velocity below this threshold with accompanying throttle demand triggers crash detection. Zero disables velocity check.</p>
+<ul>
+<li>Units: meters per second</li>
+<li>Range: 0 60</li>
+<li>Increment: 0.1</li>
+</ul>
+
+
+<h2>Crash turn rate minimum (Rover:CRASH_TRAT_MIN)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Turn rate below this threshold with accompanying throttle demand triggers crash detection. Zero disables turn rate check.</p>
+<ul>
+<li>Units: degrees per second</li>
+<li>Range: 0 360</li>
+<li>Increment: 1</li>
+</ul>
+
+
+<h2>Crash timeout (Rover:CRASH_TIMEOUT)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Crash conditions persisting for this duration trigger crash detection.</p>
+<ul>
+<li>Units: seconds</li>
+<li>Range: 0 60</li>
+<li>Increment: 0.5</li>
+</ul>
+
+
 <h2>Channel 7 option (Rover:CH7_OPTION)</h2>
 
 <p>What to do use channel 7 for</p>
@@ -60676,6 +60716,7 @@ DO NOT EDIT
 <tr><td>7</td><td>MLX90614</td></tr>
 <tr><td>8</td><td>SHT3x</td></tr>
 <tr><td>9</td><td>MAX31865 3 wire</td></tr>
+<tr><td>10</td><td>TMP119</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -60823,6 +60864,7 @@ DO NOT EDIT
 <tr><td>7</td><td>MLX90614</td></tr>
 <tr><td>8</td><td>SHT3x</td></tr>
 <tr><td>9</td><td>MAX31865 3 wire</td></tr>
+<tr><td>10</td><td>TMP119</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -60970,6 +61012,7 @@ DO NOT EDIT
 <tr><td>7</td><td>MLX90614</td></tr>
 <tr><td>8</td><td>SHT3x</td></tr>
 <tr><td>9</td><td>MAX31865 3 wire</td></tr>
+<tr><td>10</td><td>TMP119</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -61117,6 +61160,7 @@ DO NOT EDIT
 <tr><td>7</td><td>MLX90614</td></tr>
 <tr><td>8</td><td>SHT3x</td></tr>
 <tr><td>9</td><td>MAX31865 3 wire</td></tr>
+<tr><td>10</td><td>TMP119</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -61264,6 +61308,7 @@ DO NOT EDIT
 <tr><td>7</td><td>MLX90614</td></tr>
 <tr><td>8</td><td>SHT3x</td></tr>
 <tr><td>9</td><td>MAX31865 3 wire</td></tr>
+<tr><td>10</td><td>TMP119</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -61411,6 +61456,7 @@ DO NOT EDIT
 <tr><td>7</td><td>MLX90614</td></tr>
 <tr><td>8</td><td>SHT3x</td></tr>
 <tr><td>9</td><td>MAX31865 3 wire</td></tr>
+<tr><td>10</td><td>TMP119</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -61558,6 +61604,7 @@ DO NOT EDIT
 <tr><td>7</td><td>MLX90614</td></tr>
 <tr><td>8</td><td>SHT3x</td></tr>
 <tr><td>9</td><td>MAX31865 3 wire</td></tr>
+<tr><td>10</td><td>TMP119</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -61705,6 +61752,7 @@ DO NOT EDIT
 <tr><td>7</td><td>MLX90614</td></tr>
 <tr><td>8</td><td>SHT3x</td></tr>
 <tr><td>9</td><td>MAX31865 3 wire</td></tr>
+<tr><td>10</td><td>TMP119</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -61852,6 +61900,7 @@ DO NOT EDIT
 <tr><td>7</td><td>MLX90614</td></tr>
 <tr><td>8</td><td>SHT3x</td></tr>
 <tr><td>9</td><td>MAX31865 3 wire</td></tr>
+<tr><td>10</td><td>TMP119</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -61999,6 +62048,7 @@ DO NOT EDIT
 <tr><td>7</td><td>MLX90614</td></tr>
 <tr><td>8</td><td>SHT3x</td></tr>
 <tr><td>9</td><td>MAX31865 3 wire</td></tr>
+<tr><td>10</td><td>TMP119</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -62146,6 +62196,7 @@ DO NOT EDIT
 <tr><td>7</td><td>MLX90614</td></tr>
 <tr><td>8</td><td>SHT3x</td></tr>
 <tr><td>9</td><td>MAX31865 3 wire</td></tr>
+<tr><td>10</td><td>TMP119</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -62293,6 +62344,7 @@ DO NOT EDIT
 <tr><td>7</td><td>MLX90614</td></tr>
 <tr><td>8</td><td>SHT3x</td></tr>
 <tr><td>9</td><td>MAX31865 3 wire</td></tr>
+<tr><td>10</td><td>TMP119</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -62440,6 +62492,7 @@ DO NOT EDIT
 <tr><td>7</td><td>MLX90614</td></tr>
 <tr><td>8</td><td>SHT3x</td></tr>
 <tr><td>9</td><td>MAX31865 3 wire</td></tr>
+<tr><td>10</td><td>TMP119</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -62587,6 +62640,7 @@ DO NOT EDIT
 <tr><td>7</td><td>MLX90614</td></tr>
 <tr><td>8</td><td>SHT3x</td></tr>
 <tr><td>9</td><td>MAX31865 3 wire</td></tr>
+<tr><td>10</td><td>TMP119</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -62734,6 +62788,7 @@ DO NOT EDIT
 <tr><td>7</td><td>MLX90614</td></tr>
 <tr><td>8</td><td>SHT3x</td></tr>
 <tr><td>9</td><td>MAX31865 3 wire</td></tr>
+<tr><td>10</td><td>TMP119</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>

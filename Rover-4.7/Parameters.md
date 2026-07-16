@@ -542,6 +542,54 @@ Timeout before triggering the GCS failsafe
 
 - Increment: 1
 
+## CRASH_THR_MIN: Crash throttle minimum
+
+*Note: This parameter is for advanced users*
+
+Throttle above this threshold accompanied by a low speed condition triggers crash detection. Zero disables velocity and turn rate checks.
+
+- Units: %
+
+- Range: 0 100
+
+- Increment: 1
+
+## CRASH_VEL_MIN: Crash velocity minimum
+
+*Note: This parameter is for advanced users*
+
+Velocity below this threshold with accompanying throttle demand triggers crash detection. Zero disables velocity check.
+
+- Units: m/s
+
+- Range: 0 60
+
+- Increment: 0.1
+
+## CRASH_TRAT_MIN: Crash turn rate minimum
+
+*Note: This parameter is for advanced users*
+
+Turn rate below this threshold with accompanying throttle demand triggers crash detection. Zero disables turn rate check.
+
+- Units: deg/s
+
+- Range: 0 360
+
+- Increment: 1
+
+## CRASH_TIMEOUT: Crash timeout
+
+*Note: This parameter is for advanced users*
+
+Crash conditions persisting for this duration trigger crash detection.
+
+- Units: s
+
+- Range: 0 60
+
+- Increment: 0.5
+
 ## CH7_OPTION: Channel 7 option
 
 What to do use channel 7 for
@@ -50938,6 +50986,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -51053,6 +51102,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -51168,6 +51218,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -51283,6 +51334,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -51398,6 +51450,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -51513,6 +51566,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -51628,6 +51682,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -51743,6 +51798,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -51858,6 +51914,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -51973,6 +52030,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -52088,6 +52146,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -52203,6 +52262,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -52318,6 +52378,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -52433,6 +52494,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 
@@ -52548,6 +52610,7 @@ Enables temperature sensors
 |7|MLX90614|
 |8|SHT3x|
 |9|MAX31865 3 wire|
+|10|TMP119|
 
 - RebootRequired: True
 

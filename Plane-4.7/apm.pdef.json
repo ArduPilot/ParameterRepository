@@ -63041,6 +63041,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -63161,6 +63162,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -63281,6 +63283,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -63401,6 +63404,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -63521,6 +63525,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -63641,6 +63646,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -63761,6 +63767,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -63881,6 +63888,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -64001,6 +64009,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -64121,6 +64130,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -64241,6 +64251,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -64361,6 +64372,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -64481,6 +64493,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -64601,6 +64614,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
@@ -64721,6 +64735,7 @@
       "Values": {
         "0": "Disabled",
         "1": "TSYS01",
+        "10": "TMP119",
         "2": "MCP9600",
         "3": "MAX31865 2 or 4 wire",
         "4": "TSYS03",
