@@ -7599,6 +7599,34 @@ Voltage offset on voltage pin\. This allows for an offset due to a diode\. This 
 
 
 
+.. _BATT2_CFG_UPDATE:
+
+BATT2\_CFG\_UPDATE: Battery BMS configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Controls startup configuration behavior\. 1 writes configuration once then clears to 0\. 2 checks current configuration and writes only if needed\.
+
+
++----------------------------------------+
+| Values                                 |
++========================================+
+| +-------+----------------------------+ |
+| | Value | Meaning                    | |
+| +=======+============================+ |
+| | 0     | Disabled                   | |
+| +-------+----------------------------+ |
+| | 1     | Write configuration once   | |
+| +-------+----------------------------+ |
+| | 2     | Check and update if needed | |
+| +-------+----------------------------+ |
+|                                        |
++----------------------------------------+
+
+
+
+
 
 .. _parameters_BATT3_:
 
@@ -8783,6 +8811,34 @@ Voltage offset on voltage pin\. This allows for an offset due to a diode\. This 
 +=======+
 | volt  |
 +-------+
+
+
+
+
+.. _BATT3_CFG_UPDATE:
+
+BATT3\_CFG\_UPDATE: Battery BMS configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Controls startup configuration behavior\. 1 writes configuration once then clears to 0\. 2 checks current configuration and writes only if needed\.
+
+
++----------------------------------------+
+| Values                                 |
++========================================+
+| +-------+----------------------------+ |
+| | Value | Meaning                    | |
+| +=======+============================+ |
+| | 0     | Disabled                   | |
+| +-------+----------------------------+ |
+| | 1     | Write configuration once   | |
+| +-------+----------------------------+ |
+| | 2     | Check and update if needed | |
+| +-------+----------------------------+ |
+|                                        |
++----------------------------------------+
 
 
 
@@ -9975,6 +10031,34 @@ Voltage offset on voltage pin\. This allows for an offset due to a diode\. This 
 
 
 
+.. _BATT4_CFG_UPDATE:
+
+BATT4\_CFG\_UPDATE: Battery BMS configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Controls startup configuration behavior\. 1 writes configuration once then clears to 0\. 2 checks current configuration and writes only if needed\.
+
+
++----------------------------------------+
+| Values                                 |
++========================================+
+| +-------+----------------------------+ |
+| | Value | Meaning                    | |
+| +=======+============================+ |
+| | 0     | Disabled                   | |
+| +-------+----------------------------+ |
+| | 1     | Write configuration once   | |
+| +-------+----------------------------+ |
+| | 2     | Check and update if needed | |
+| +-------+----------------------------+ |
+|                                        |
++----------------------------------------+
+
+
+
+
 
 .. _parameters_BATT5_:
 
@@ -11159,6 +11243,34 @@ Voltage offset on voltage pin\. This allows for an offset due to a diode\. This 
 +=======+
 | volt  |
 +-------+
+
+
+
+
+.. _BATT5_CFG_UPDATE:
+
+BATT5\_CFG\_UPDATE: Battery BMS configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Controls startup configuration behavior\. 1 writes configuration once then clears to 0\. 2 checks current configuration and writes only if needed\.
+
+
++----------------------------------------+
+| Values                                 |
++========================================+
+| +-------+----------------------------+ |
+| | Value | Meaning                    | |
+| +=======+============================+ |
+| | 0     | Disabled                   | |
+| +-------+----------------------------+ |
+| | 1     | Write configuration once   | |
+| +-------+----------------------------+ |
+| | 2     | Check and update if needed | |
+| +-------+----------------------------+ |
+|                                        |
++----------------------------------------+
 
 
 
@@ -12351,6 +12463,34 @@ Voltage offset on voltage pin\. This allows for an offset due to a diode\. This 
 
 
 
+.. _BATT6_CFG_UPDATE:
+
+BATT6\_CFG\_UPDATE: Battery BMS configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Controls startup configuration behavior\. 1 writes configuration once then clears to 0\. 2 checks current configuration and writes only if needed\.
+
+
++----------------------------------------+
+| Values                                 |
++========================================+
+| +-------+----------------------------+ |
+| | Value | Meaning                    | |
+| +=======+============================+ |
+| | 0     | Disabled                   | |
+| +-------+----------------------------+ |
+| | 1     | Write configuration once   | |
+| +-------+----------------------------+ |
+| | 2     | Check and update if needed | |
+| +-------+----------------------------+ |
+|                                        |
++----------------------------------------+
+
+
+
+
 
 .. _parameters_BATT7_:
 
@@ -13535,6 +13675,34 @@ Voltage offset on voltage pin\. This allows for an offset due to a diode\. This 
 +=======+
 | volt  |
 +-------+
+
+
+
+
+.. _BATT7_CFG_UPDATE:
+
+BATT7\_CFG\_UPDATE: Battery BMS configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Controls startup configuration behavior\. 1 writes configuration once then clears to 0\. 2 checks current configuration and writes only if needed\.
+
+
++----------------------------------------+
+| Values                                 |
++========================================+
+| +-------+----------------------------+ |
+| | Value | Meaning                    | |
+| +=======+============================+ |
+| | 0     | Disabled                   | |
+| +-------+----------------------------+ |
+| | 1     | Write configuration once   | |
+| +-------+----------------------------+ |
+| | 2     | Check and update if needed | |
+| +-------+----------------------------+ |
+|                                        |
++----------------------------------------+
 
 
 
@@ -14727,6 +14895,34 @@ Voltage offset on voltage pin\. This allows for an offset due to a diode\. This 
 
 
 
+.. _BATT8_CFG_UPDATE:
+
+BATT8\_CFG\_UPDATE: Battery BMS configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Controls startup configuration behavior\. 1 writes configuration once then clears to 0\. 2 checks current configuration and writes only if needed\.
+
+
++----------------------------------------+
+| Values                                 |
++========================================+
+| +-------+----------------------------+ |
+| | Value | Meaning                    | |
+| +=======+============================+ |
+| | 0     | Disabled                   | |
+| +-------+----------------------------+ |
+| | 1     | Write configuration once   | |
+| +-------+----------------------------+ |
+| | 2     | Check and update if needed | |
+| +-------+----------------------------+ |
+|                                        |
++----------------------------------------+
+
+
+
+
 
 .. _parameters_BATT9_:
 
@@ -15911,6 +16107,34 @@ Voltage offset on voltage pin\. This allows for an offset due to a diode\. This 
 +=======+
 | volt  |
 +-------+
+
+
+
+
+.. _BATT9_CFG_UPDATE:
+
+BATT9\_CFG\_UPDATE: Battery BMS configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Controls startup configuration behavior\. 1 writes configuration once then clears to 0\. 2 checks current configuration and writes only if needed\.
+
+
++----------------------------------------+
+| Values                                 |
++========================================+
+| +-------+----------------------------+ |
+| | Value | Meaning                    | |
+| +=======+============================+ |
+| | 0     | Disabled                   | |
+| +-------+----------------------------+ |
+| | 1     | Write configuration once   | |
+| +-------+----------------------------+ |
+| | 2     | Check and update if needed | |
+| +-------+----------------------------+ |
+|                                        |
++----------------------------------------+
 
 
 
@@ -17103,6 +17327,34 @@ Voltage offset on voltage pin\. This allows for an offset due to a diode\. This 
 
 
 
+.. _BATTA_CFG_UPDATE:
+
+BATTA\_CFG\_UPDATE: Battery BMS configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Controls startup configuration behavior\. 1 writes configuration once then clears to 0\. 2 checks current configuration and writes only if needed\.
+
+
++----------------------------------------+
+| Values                                 |
++========================================+
+| +-------+----------------------------+ |
+| | Value | Meaning                    | |
+| +=======+============================+ |
+| | 0     | Disabled                   | |
+| +-------+----------------------------+ |
+| | 1     | Write configuration once   | |
+| +-------+----------------------------+ |
+| | 2     | Check and update if needed | |
+| +-------+----------------------------+ |
+|                                        |
++----------------------------------------+
+
+
+
+
 
 .. _parameters_BATTB_:
 
@@ -18287,6 +18539,34 @@ Voltage offset on voltage pin\. This allows for an offset due to a diode\. This 
 +=======+
 | volt  |
 +-------+
+
+
+
+
+.. _BATTB_CFG_UPDATE:
+
+BATTB\_CFG\_UPDATE: Battery BMS configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Controls startup configuration behavior\. 1 writes configuration once then clears to 0\. 2 checks current configuration and writes only if needed\.
+
+
++----------------------------------------+
+| Values                                 |
++========================================+
+| +-------+----------------------------+ |
+| | Value | Meaning                    | |
+| +=======+============================+ |
+| | 0     | Disabled                   | |
+| +-------+----------------------------+ |
+| | 1     | Write configuration once   | |
+| +-------+----------------------------+ |
+| | 2     | Check and update if needed | |
+| +-------+----------------------------+ |
+|                                        |
++----------------------------------------+
 
 
 
@@ -19479,6 +19759,34 @@ Voltage offset on voltage pin\. This allows for an offset due to a diode\. This 
 
 
 
+.. _BATTC_CFG_UPDATE:
+
+BATTC\_CFG\_UPDATE: Battery BMS configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Controls startup configuration behavior\. 1 writes configuration once then clears to 0\. 2 checks current configuration and writes only if needed\.
+
+
++----------------------------------------+
+| Values                                 |
++========================================+
+| +-------+----------------------------+ |
+| | Value | Meaning                    | |
+| +=======+============================+ |
+| | 0     | Disabled                   | |
+| +-------+----------------------------+ |
+| | 1     | Write configuration once   | |
+| +-------+----------------------------+ |
+| | 2     | Check and update if needed | |
+| +-------+----------------------------+ |
+|                                        |
++----------------------------------------+
+
+
+
+
 
 .. _parameters_BATTD_:
 
@@ -20663,6 +20971,34 @@ Voltage offset on voltage pin\. This allows for an offset due to a diode\. This 
 +=======+
 | volt  |
 +-------+
+
+
+
+
+.. _BATTD_CFG_UPDATE:
+
+BATTD\_CFG\_UPDATE: Battery BMS configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Controls startup configuration behavior\. 1 writes configuration once then clears to 0\. 2 checks current configuration and writes only if needed\.
+
+
++----------------------------------------+
+| Values                                 |
++========================================+
+| +-------+----------------------------+ |
+| | Value | Meaning                    | |
+| +=======+============================+ |
+| | 0     | Disabled                   | |
+| +-------+----------------------------+ |
+| | 1     | Write configuration once   | |
+| +-------+----------------------------+ |
+| | 2     | Check and update if needed | |
+| +-------+----------------------------+ |
+|                                        |
++----------------------------------------+
 
 
 
@@ -21855,6 +22191,34 @@ Voltage offset on voltage pin\. This allows for an offset due to a diode\. This 
 
 
 
+.. _BATTE_CFG_UPDATE:
+
+BATTE\_CFG\_UPDATE: Battery BMS configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Controls startup configuration behavior\. 1 writes configuration once then clears to 0\. 2 checks current configuration and writes only if needed\.
+
+
++----------------------------------------+
+| Values                                 |
++========================================+
+| +-------+----------------------------+ |
+| | Value | Meaning                    | |
+| +=======+============================+ |
+| | 0     | Disabled                   | |
+| +-------+----------------------------+ |
+| | 1     | Write configuration once   | |
+| +-------+----------------------------+ |
+| | 2     | Check and update if needed | |
+| +-------+----------------------------+ |
+|                                        |
++----------------------------------------+
+
+
+
+
 
 .. _parameters_BATTF_:
 
@@ -23039,6 +23403,34 @@ Voltage offset on voltage pin\. This allows for an offset due to a diode\. This 
 +=======+
 | volt  |
 +-------+
+
+
+
+
+.. _BATTF_CFG_UPDATE:
+
+BATTF\_CFG\_UPDATE: Battery BMS configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Controls startup configuration behavior\. 1 writes configuration once then clears to 0\. 2 checks current configuration and writes only if needed\.
+
+
++----------------------------------------+
+| Values                                 |
++========================================+
+| +-------+----------------------------+ |
+| | Value | Meaning                    | |
+| +=======+============================+ |
+| | 0     | Disabled                   | |
+| +-------+----------------------------+ |
+| | 1     | Write configuration once   | |
+| +-------+----------------------------+ |
+| | 2     | Check and update if needed | |
+| +-------+----------------------------+ |
+|                                        |
++----------------------------------------+
 
 
 
@@ -24231,6 +24623,34 @@ Voltage offset on voltage pin\. This allows for an offset due to a diode\. This 
 
 
 
+.. _BATTG_CFG_UPDATE:
+
+BATTG\_CFG\_UPDATE: Battery BMS configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Controls startup configuration behavior\. 1 writes configuration once then clears to 0\. 2 checks current configuration and writes only if needed\.
+
+
++----------------------------------------+
+| Values                                 |
++========================================+
+| +-------+----------------------------+ |
+| | Value | Meaning                    | |
+| +=======+============================+ |
+| | 0     | Disabled                   | |
+| +-------+----------------------------+ |
+| | 1     | Write configuration once   | |
+| +-------+----------------------------+ |
+| | 2     | Check and update if needed | |
+| +-------+----------------------------+ |
+|                                        |
++----------------------------------------+
+
+
+
+
 
 .. _parameters_BATT_:
 
@@ -25415,6 +25835,34 @@ Voltage offset on voltage pin\. This allows for an offset due to a diode\. This 
 +=======+
 | volt  |
 +-------+
+
+
+
+
+.. _BATT_CFG_UPDATE:
+
+BATT\_CFG\_UPDATE: Battery BMS configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Controls startup configuration behavior\. 1 writes configuration once then clears to 0\. 2 checks current configuration and writes only if needed\.
+
+
++----------------------------------------+
+| Values                                 |
++========================================+
+| +-------+----------------------------+ |
+| | Value | Meaning                    | |
+| +=======+============================+ |
+| | 0     | Disabled                   | |
+| +-------+----------------------------+ |
+| | 1     | Write configuration once   | |
+| +-------+----------------------------+ |
+| | 2     | Check and update if needed | |
+| +-------+----------------------------+ |
+|                                        |
++----------------------------------------+
 
 
 

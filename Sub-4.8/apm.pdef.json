@@ -2313,6 +2313,16 @@
       "Units": "mAh",
       "User": "Standard"
     },
+    "BATT2_CFG_UPDATE": {
+      "Description": "Controls startup configuration behavior. 1 writes configuration once then clears to 0. 2 checks current configuration and writes only if needed.",
+      "DisplayName": "Battery BMS configuration",
+      "User": "Advanced",
+      "Values": {
+        "0": "Disabled",
+        "1": "Write configuration once",
+        "2": "Check and update if needed"
+      }
+    },
     "BATT2_CHANNEL": {
       "Description": "INA3221 channel to return data for",
       "DisplayName": "INA3221 channel",
@@ -2731,6 +2741,16 @@
       "Increment": "50",
       "Units": "mAh",
       "User": "Standard"
+    },
+    "BATT3_CFG_UPDATE": {
+      "Description": "Controls startup configuration behavior. 1 writes configuration once then clears to 0. 2 checks current configuration and writes only if needed.",
+      "DisplayName": "Battery BMS configuration",
+      "User": "Advanced",
+      "Values": {
+        "0": "Disabled",
+        "1": "Write configuration once",
+        "2": "Check and update if needed"
+      }
     },
     "BATT3_CHANNEL": {
       "Description": "INA3221 channel to return data for",
@@ -3151,6 +3171,16 @@
       "Units": "mAh",
       "User": "Standard"
     },
+    "BATT4_CFG_UPDATE": {
+      "Description": "Controls startup configuration behavior. 1 writes configuration once then clears to 0. 2 checks current configuration and writes only if needed.",
+      "DisplayName": "Battery BMS configuration",
+      "User": "Advanced",
+      "Values": {
+        "0": "Disabled",
+        "1": "Write configuration once",
+        "2": "Check and update if needed"
+      }
+    },
     "BATT4_CHANNEL": {
       "Description": "INA3221 channel to return data for",
       "DisplayName": "INA3221 channel",
@@ -3569,6 +3599,16 @@
       "Increment": "50",
       "Units": "mAh",
       "User": "Standard"
+    },
+    "BATT5_CFG_UPDATE": {
+      "Description": "Controls startup configuration behavior. 1 writes configuration once then clears to 0. 2 checks current configuration and writes only if needed.",
+      "DisplayName": "Battery BMS configuration",
+      "User": "Advanced",
+      "Values": {
+        "0": "Disabled",
+        "1": "Write configuration once",
+        "2": "Check and update if needed"
+      }
     },
     "BATT5_CHANNEL": {
       "Description": "INA3221 channel to return data for",
@@ -3989,6 +4029,16 @@
       "Units": "mAh",
       "User": "Standard"
     },
+    "BATT6_CFG_UPDATE": {
+      "Description": "Controls startup configuration behavior. 1 writes configuration once then clears to 0. 2 checks current configuration and writes only if needed.",
+      "DisplayName": "Battery BMS configuration",
+      "User": "Advanced",
+      "Values": {
+        "0": "Disabled",
+        "1": "Write configuration once",
+        "2": "Check and update if needed"
+      }
+    },
     "BATT6_CHANNEL": {
       "Description": "INA3221 channel to return data for",
       "DisplayName": "INA3221 channel",
@@ -4407,6 +4457,16 @@
       "Increment": "50",
       "Units": "mAh",
       "User": "Standard"
+    },
+    "BATT7_CFG_UPDATE": {
+      "Description": "Controls startup configuration behavior. 1 writes configuration once then clears to 0. 2 checks current configuration and writes only if needed.",
+      "DisplayName": "Battery BMS configuration",
+      "User": "Advanced",
+      "Values": {
+        "0": "Disabled",
+        "1": "Write configuration once",
+        "2": "Check and update if needed"
+      }
     },
     "BATT7_CHANNEL": {
       "Description": "INA3221 channel to return data for",
@@ -4827,6 +4887,16 @@
       "Units": "mAh",
       "User": "Standard"
     },
+    "BATT8_CFG_UPDATE": {
+      "Description": "Controls startup configuration behavior. 1 writes configuration once then clears to 0. 2 checks current configuration and writes only if needed.",
+      "DisplayName": "Battery BMS configuration",
+      "User": "Advanced",
+      "Values": {
+        "0": "Disabled",
+        "1": "Write configuration once",
+        "2": "Check and update if needed"
+      }
+    },
     "BATT8_CHANNEL": {
       "Description": "INA3221 channel to return data for",
       "DisplayName": "INA3221 channel",
@@ -5245,6 +5315,16 @@
       "Increment": "50",
       "Units": "mAh",
       "User": "Standard"
+    },
+    "BATT9_CFG_UPDATE": {
+      "Description": "Controls startup configuration behavior. 1 writes configuration once then clears to 0. 2 checks current configuration and writes only if needed.",
+      "DisplayName": "Battery BMS configuration",
+      "User": "Advanced",
+      "Values": {
+        "0": "Disabled",
+        "1": "Write configuration once",
+        "2": "Check and update if needed"
+      }
     },
     "BATT9_CHANNEL": {
       "Description": "INA3221 channel to return data for",
@@ -5665,6 +5745,16 @@
       "Units": "mAh",
       "User": "Standard"
     },
+    "BATTA_CFG_UPDATE": {
+      "Description": "Controls startup configuration behavior. 1 writes configuration once then clears to 0. 2 checks current configuration and writes only if needed.",
+      "DisplayName": "Battery BMS configuration",
+      "User": "Advanced",
+      "Values": {
+        "0": "Disabled",
+        "1": "Write configuration once",
+        "2": "Check and update if needed"
+      }
+    },
     "BATTA_CHANNEL": {
       "Description": "INA3221 channel to return data for",
       "DisplayName": "INA3221 channel",
@@ -6083,6 +6173,16 @@
       "Increment": "50",
       "Units": "mAh",
       "User": "Standard"
+    },
+    "BATTB_CFG_UPDATE": {
+      "Description": "Controls startup configuration behavior. 1 writes configuration once then clears to 0. 2 checks current configuration and writes only if needed.",
+      "DisplayName": "Battery BMS configuration",
+      "User": "Advanced",
+      "Values": {
+        "0": "Disabled",
+        "1": "Write configuration once",
+        "2": "Check and update if needed"
+      }
     },
     "BATTB_CHANNEL": {
       "Description": "INA3221 channel to return data for",
@@ -6503,6 +6603,16 @@
       "Units": "mAh",
       "User": "Standard"
     },
+    "BATTC_CFG_UPDATE": {
+      "Description": "Controls startup configuration behavior. 1 writes configuration once then clears to 0. 2 checks current configuration and writes only if needed.",
+      "DisplayName": "Battery BMS configuration",
+      "User": "Advanced",
+      "Values": {
+        "0": "Disabled",
+        "1": "Write configuration once",
+        "2": "Check and update if needed"
+      }
+    },
     "BATTC_CHANNEL": {
       "Description": "INA3221 channel to return data for",
       "DisplayName": "INA3221 channel",
@@ -6921,6 +7031,16 @@
       "Increment": "50",
       "Units": "mAh",
       "User": "Standard"
+    },
+    "BATTD_CFG_UPDATE": {
+      "Description": "Controls startup configuration behavior. 1 writes configuration once then clears to 0. 2 checks current configuration and writes only if needed.",
+      "DisplayName": "Battery BMS configuration",
+      "User": "Advanced",
+      "Values": {
+        "0": "Disabled",
+        "1": "Write configuration once",
+        "2": "Check and update if needed"
+      }
     },
     "BATTD_CHANNEL": {
       "Description": "INA3221 channel to return data for",
@@ -7341,6 +7461,16 @@
       "Units": "mAh",
       "User": "Standard"
     },
+    "BATTE_CFG_UPDATE": {
+      "Description": "Controls startup configuration behavior. 1 writes configuration once then clears to 0. 2 checks current configuration and writes only if needed.",
+      "DisplayName": "Battery BMS configuration",
+      "User": "Advanced",
+      "Values": {
+        "0": "Disabled",
+        "1": "Write configuration once",
+        "2": "Check and update if needed"
+      }
+    },
     "BATTE_CHANNEL": {
       "Description": "INA3221 channel to return data for",
       "DisplayName": "INA3221 channel",
@@ -7759,6 +7889,16 @@
       "Increment": "50",
       "Units": "mAh",
       "User": "Standard"
+    },
+    "BATTF_CFG_UPDATE": {
+      "Description": "Controls startup configuration behavior. 1 writes configuration once then clears to 0. 2 checks current configuration and writes only if needed.",
+      "DisplayName": "Battery BMS configuration",
+      "User": "Advanced",
+      "Values": {
+        "0": "Disabled",
+        "1": "Write configuration once",
+        "2": "Check and update if needed"
+      }
     },
     "BATTF_CHANNEL": {
       "Description": "INA3221 channel to return data for",
@@ -8179,6 +8319,16 @@
       "Units": "mAh",
       "User": "Standard"
     },
+    "BATTG_CFG_UPDATE": {
+      "Description": "Controls startup configuration behavior. 1 writes configuration once then clears to 0. 2 checks current configuration and writes only if needed.",
+      "DisplayName": "Battery BMS configuration",
+      "User": "Advanced",
+      "Values": {
+        "0": "Disabled",
+        "1": "Write configuration once",
+        "2": "Check and update if needed"
+      }
+    },
     "BATTG_CHANNEL": {
       "Description": "INA3221 channel to return data for",
       "DisplayName": "INA3221 channel",
@@ -8597,6 +8747,16 @@
       "Increment": "50",
       "Units": "mAh",
       "User": "Standard"
+    },
+    "BATT_CFG_UPDATE": {
+      "Description": "Controls startup configuration behavior. 1 writes configuration once then clears to 0. 2 checks current configuration and writes only if needed.",
+      "DisplayName": "Battery BMS configuration",
+      "User": "Advanced",
+      "Values": {
+        "0": "Disabled",
+        "1": "Write configuration once",
+        "2": "Check and update if needed"
+      }
     },
     "BATT_CHANNEL": {
       "Description": "INA3221 channel to return data for",
