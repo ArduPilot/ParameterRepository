@@ -3571,6 +3571,7 @@ Type of airspeed sensor
 |17|AUAV-10in|
 |18|AUAV-5in|
 |19|AUAV-30in|
+|20|Scripting|
 |100|SITL|
 
 ## ARSPD2_USE: Airspeed use
@@ -3704,6 +3705,7 @@ Type of airspeed sensor
 |17|AUAV-10in|
 |18|AUAV-5in|
 |19|AUAV-30in|
+|20|Scripting|
 |100|SITL|
 
 ## ARSPD3_USE: Airspeed use
@@ -3837,6 +3839,7 @@ Type of airspeed sensor
 |17|AUAV-10in|
 |18|AUAV-5in|
 |19|AUAV-30in|
+|20|Scripting|
 |100|SITL|
 
 ## ARSPD4_USE: Airspeed use
@@ -3970,6 +3973,7 @@ Type of airspeed sensor
 |17|AUAV-10in|
 |18|AUAV-5in|
 |19|AUAV-30in|
+|20|Scripting|
 |100|SITL|
 
 ## ARSPD5_USE: Airspeed use
@@ -4103,6 +4107,7 @@ Type of airspeed sensor
 |17|AUAV-10in|
 |18|AUAV-5in|
 |19|AUAV-30in|
+|20|Scripting|
 |100|SITL|
 
 ## ARSPD6_USE: Airspeed use
@@ -4236,6 +4241,7 @@ Type of airspeed sensor
 |17|AUAV-10in|
 |18|AUAV-5in|
 |19|AUAV-30in|
+|20|Scripting|
 |100|SITL|
 
 ## ARSPD_USE: Airspeed use

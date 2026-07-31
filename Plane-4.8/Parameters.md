@@ -4639,6 +4639,7 @@ Type of airspeed sensor
 |17|AUAV-10in|
 |18|AUAV-5in|
 |19|AUAV-30in|
+|20|Scripting|
 |100|SITL|
 
 ## ARSPD2_USE: Airspeed use
@@ -4772,6 +4773,7 @@ Type of airspeed sensor
 |17|AUAV-10in|
 |18|AUAV-5in|
 |19|AUAV-30in|
+|20|Scripting|
 |100|SITL|
 
 ## ARSPD3_USE: Airspeed use
@@ -4905,6 +4907,7 @@ Type of airspeed sensor
 |17|AUAV-10in|
 |18|AUAV-5in|
 |19|AUAV-30in|
+|20|Scripting|
 |100|SITL|
 
 ## ARSPD4_USE: Airspeed use
@@ -5038,6 +5041,7 @@ Type of airspeed sensor
 |17|AUAV-10in|
 |18|AUAV-5in|
 |19|AUAV-30in|
+|20|Scripting|
 |100|SITL|
 
 ## ARSPD5_USE: Airspeed use
@@ -5171,6 +5175,7 @@ Type of airspeed sensor
 |17|AUAV-10in|
 |18|AUAV-5in|
 |19|AUAV-30in|
+|20|Scripting|
 |100|SITL|
 
 ## ARSPD6_USE: Airspeed use
@@ -5304,6 +5309,7 @@ Type of airspeed sensor
 |17|AUAV-10in|
 |18|AUAV-5in|
 |19|AUAV-30in|
+|20|Scripting|
 |100|SITL|
 
 ## ARSPD_USE: Airspeed use
@@ -31476,9 +31482,9 @@ Used for average cell voltage calculation
 
 ## MSP_OPTIONS: MSP OSD Options
 
-A bitmask to set some MSP specific options: EnableTelemetryMode-allows "push" mode telemetry when only rx line of OSD ic connected to autopilot,  EnableBTFLFonts-uses indexes corresponding to Betaflight fonts if OSD uses those instead of ArduPilot fonts. EnableINAVFonts uses INAV fonts and overrides EnableBTFLFonts if that option is enabled.
+A bitmask to set some MSP specific options: EnableTelemetryMode-allows "push" mode telemetry when only rx line of OSD ic connected to autopilot,  EnableBTFLFonts-uses indexes corresponding to Betaflight fonts if OSD uses those instead of ArduPilot fonts. EnableINAVFonts uses INAV fonts and overrides EnableBTFLFonts if that option is enabled. ForceVTXHighPower always reports the vehicle as armed so a VTX that drops to low power when disarmed stays at full power.
 
-- Bitmask: 0:EnableTelemetryMode, 1: unused, 2:EnableBTFLFonts, 3:EnableINAVFonts
+- Bitmask: 0:EnableTelemetryMode, 1: unused, 2:EnableBTFLFonts, 3:EnableINAVFonts, 4:ForceVTXHighPower
 
 # NAVL1 Parameters
 
@@ -41440,7 +41446,7 @@ Maximum lean angle autopilot can request. Set to zero to use ANGLE_MAX parameter
 
 - Increment: 1
 
-## Q_P_JERK_NE: Jerk limit for the horizontal kinematic input shaping
+## Q_P_NE_JERK: Jerk limit for the horizontal kinematic input shaping
 
 *Note: This parameter is for advanced users*
 
@@ -41452,7 +41458,7 @@ Jerk limit of the horizontal kinematic path generation used to determine how qui
 
 - Increment: 1
 
-## Q_P_JERK_D: Jerk limit for the vertical kinematic input shaping
+## Q_P_D_JERK: Jerk limit for the vertical kinematic input shaping
 
 *Note: This parameter is for advanced users*
 
@@ -56793,6 +56799,14 @@ Video Transmitter Options. Pitmode puts the VTX in a low power state. Unlocked e
 Video Transmitter Maximum Power Level. Different VTXs support different power levels, this prevents the power aux switch from requesting too high a power level. The switch supports 6 power levels and the selected power will be a subdivision between 0 and this setting.
 
 - Range: 25 1000
+
+## VTX_TYPES: Allowed VTX control transports
+
+*Note: This parameter is for advanced users*
+
+Bitmask of the control transports permitted to manage the VTX. AP_VideoTX represents a single VTX, so when more than one transport is present (for example a CRSF VTX on the receiver and an MSP VTX on the goggles) this selects which one owns it. Clear a transport's bit to stop it taking control of the VTX.
+
+- Bitmask: 0:CRSF,1:SmartAudio,2:Tramp,3:MSP
 
 # YAW Parameters
 

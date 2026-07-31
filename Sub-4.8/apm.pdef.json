@@ -567,6 +567,7 @@
         "18": "AUAV-5in",
         "19": "AUAV-30in",
         "2": "Analog",
+        "20": "Scripting",
         "3": "I2C-MS5525",
         "4": "I2C-MS5525 (0x76)",
         "5": "I2C-MS5525 (0x77)",
@@ -685,6 +686,7 @@
         "18": "AUAV-5in",
         "19": "AUAV-30in",
         "2": "Analog",
+        "20": "Scripting",
         "3": "I2C-MS5525",
         "4": "I2C-MS5525 (0x76)",
         "5": "I2C-MS5525 (0x77)",
@@ -803,6 +805,7 @@
         "18": "AUAV-5in",
         "19": "AUAV-30in",
         "2": "Analog",
+        "20": "Scripting",
         "3": "I2C-MS5525",
         "4": "I2C-MS5525 (0x76)",
         "5": "I2C-MS5525 (0x77)",
@@ -921,6 +924,7 @@
         "18": "AUAV-5in",
         "19": "AUAV-30in",
         "2": "Analog",
+        "20": "Scripting",
         "3": "I2C-MS5525",
         "4": "I2C-MS5525 (0x76)",
         "5": "I2C-MS5525 (0x77)",
@@ -1039,6 +1043,7 @@
         "18": "AUAV-5in",
         "19": "AUAV-30in",
         "2": "Analog",
+        "20": "Scripting",
         "3": "I2C-MS5525",
         "4": "I2C-MS5525 (0x76)",
         "5": "I2C-MS5525 (0x77)",
@@ -1157,6 +1162,7 @@
         "18": "AUAV-5in",
         "19": "AUAV-30in",
         "2": "Analog",
+        "20": "Scripting",
         "3": "I2C-MS5525",
         "4": "I2C-MS5525 (0x76)",
         "5": "I2C-MS5525 (0x77)",
@@ -35470,9 +35476,10 @@
         "0": "EnableTelemetryMode",
         "1": "unused",
         "2": "EnableBTFLFonts",
-        "3": "EnableINAVFonts"
+        "3": "EnableINAVFonts",
+        "4": "ForceVTXHighPower"
       },
-      "Description": "A bitmask to set some MSP specific options: EnableTelemetryMode-allows \"push\" mode telemetry when only rx line of OSD ic connected to autopilot,  EnableBTFLFonts-uses indexes corresponding to Betaflight fonts if OSD uses those instead of ArduPilot fonts. EnableINAVFonts uses INAV fonts and overrides EnableBTFLFonts if that option is enabled.",
+      "Description": "A bitmask to set some MSP specific options: EnableTelemetryMode-allows \"push\" mode telemetry when only rx line of OSD ic connected to autopilot,  EnableBTFLFonts-uses indexes corresponding to Betaflight fonts if OSD uses those instead of ArduPilot fonts. EnableINAVFonts uses INAV fonts and overrides EnableBTFLFonts if that option is enabled. ForceVTXHighPower always reports the vehicle as armed so a VTX that drops to low power when disarmed stays at full power.",
       "DisplayName": "MSP OSD Options",
       "User": "Standard"
     },
@@ -45358,6 +45365,17 @@
       },
       "User": "Advanced"
     },
+    "PSC_D_JERK": {
+      "Description": "Jerk limit of the vertical kinematic path generation used to determine how quickly the aircraft varies the acceleration target",
+      "DisplayName": "Jerk limit for the vertical kinematic input shaping",
+      "Increment": "1",
+      "Range": {
+        "high": "50",
+        "low": "1"
+      },
+      "Units": "m/s/s/s",
+      "User": "Advanced"
+    },
     "PSC_D_POS_P": {
       "Description": "Position (vertical) controller P gain. Converts the difference between the desired altitude and actual altitude into a climb or descent rate which is passed to the throttle rate controller. Previously _POSZ_P.",
       "DisplayName": "Position (vertical) controller P gain",
@@ -45440,18 +45458,7 @@
       },
       "User": "Standard"
     },
-    "PSC_JERK_D": {
-      "Description": "Jerk limit of the vertical kinematic path generation used to determine how quickly the aircraft varies the acceleration target",
-      "DisplayName": "Jerk limit for the vertical kinematic input shaping",
-      "Increment": "1",
-      "Range": {
-        "high": "50",
-        "low": "1"
-      },
-      "Units": "m/s/s/s",
-      "User": "Advanced"
-    },
-    "PSC_JERK_NE": {
+    "PSC_NE_JERK": {
       "Description": "Jerk limit of the horizontal kinematic path generation used to determine how quickly the aircraft varies the acceleration target",
       "DisplayName": "Jerk limit for the horizontal kinematic input shaping",
       "Increment": "1",
@@ -65374,6 +65381,17 @@
         "high": "1000",
         "low": "1"
       }
+    },
+    "VTX_TYPES": {
+      "Bitmask": {
+        "0": "CRSF",
+        "1": "SmartAudio",
+        "2": "Tramp",
+        "3": "MSP"
+      },
+      "Description": "Bitmask of the control transports permitted to manage the VTX. AP_VideoTX represents a single VTX, so when more than one transport is present (for example a CRSF VTX on the receiver and an MSP VTX on the goggles) this selects which one owns it. Clear a transport's bit to stop it taking control of the VTX.",
+      "DisplayName": "Allowed VTX control transports",
+      "User": "Advanced"
     }
   },
   "WP_": {

@@ -4161,6 +4161,7 @@ DO NOT EDIT
 <tr><td>17</td><td>AUAV-10in</td></tr>
 <tr><td>18</td><td>AUAV-5in</td></tr>
 <tr><td>19</td><td>AUAV-30in</td></tr>
+<tr><td>20</td><td>Scripting</td></tr>
 <tr><td>100</td><td>SITL</td></tr>
 </table>
 </ul>
@@ -4299,6 +4300,7 @@ DO NOT EDIT
 <tr><td>17</td><td>AUAV-10in</td></tr>
 <tr><td>18</td><td>AUAV-5in</td></tr>
 <tr><td>19</td><td>AUAV-30in</td></tr>
+<tr><td>20</td><td>Scripting</td></tr>
 <tr><td>100</td><td>SITL</td></tr>
 </table>
 </ul>
@@ -4437,6 +4439,7 @@ DO NOT EDIT
 <tr><td>17</td><td>AUAV-10in</td></tr>
 <tr><td>18</td><td>AUAV-5in</td></tr>
 <tr><td>19</td><td>AUAV-30in</td></tr>
+<tr><td>20</td><td>Scripting</td></tr>
 <tr><td>100</td><td>SITL</td></tr>
 </table>
 </ul>
@@ -4575,6 +4578,7 @@ DO NOT EDIT
 <tr><td>17</td><td>AUAV-10in</td></tr>
 <tr><td>18</td><td>AUAV-5in</td></tr>
 <tr><td>19</td><td>AUAV-30in</td></tr>
+<tr><td>20</td><td>Scripting</td></tr>
 <tr><td>100</td><td>SITL</td></tr>
 </table>
 </ul>
@@ -4713,6 +4717,7 @@ DO NOT EDIT
 <tr><td>17</td><td>AUAV-10in</td></tr>
 <tr><td>18</td><td>AUAV-5in</td></tr>
 <tr><td>19</td><td>AUAV-30in</td></tr>
+<tr><td>20</td><td>Scripting</td></tr>
 <tr><td>100</td><td>SITL</td></tr>
 </table>
 </ul>
@@ -4851,6 +4856,7 @@ DO NOT EDIT
 <tr><td>17</td><td>AUAV-10in</td></tr>
 <tr><td>18</td><td>AUAV-5in</td></tr>
 <tr><td>19</td><td>AUAV-30in</td></tr>
+<tr><td>20</td><td>Scripting</td></tr>
 <tr><td>100</td><td>SITL</td></tr>
 </table>
 </ul>
@@ -37176,9 +37182,9 @@ DO NOT EDIT
 
 <h2>MSP OSD Options (MSP_OPTIONS)</h2>
 
-<p>A bitmask to set some MSP specific options: EnableTelemetryMode-allows &quot;push&quot; mode telemetry when only rx line of OSD ic connected to autopilot,  EnableBTFLFonts-uses indexes corresponding to Betaflight fonts if OSD uses those instead of ArduPilot fonts. EnableINAVFonts uses INAV fonts and overrides EnableBTFLFonts if that option is enabled.</p>
+<p>A bitmask to set some MSP specific options: EnableTelemetryMode-allows &quot;push&quot; mode telemetry when only rx line of OSD ic connected to autopilot,  EnableBTFLFonts-uses indexes corresponding to Betaflight fonts if OSD uses those instead of ArduPilot fonts. EnableINAVFonts uses INAV fonts and overrides EnableBTFLFonts if that option is enabled. ForceVTXHighPower always reports the vehicle as armed so a VTX that drops to low power when disarmed stays at full power.</p>
 <ul>
-<li>Bitmask: 0:EnableTelemetryMode, 1: unused, 2:EnableBTFLFonts, 3:EnableINAVFonts</li>
+<li>Bitmask: 0:EnableTelemetryMode, 1: unused, 2:EnableBTFLFonts, 3:EnableINAVFonts, 4:ForceVTXHighPower</li>
 </ul>
 
 
@@ -47943,7 +47949,7 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Jerk limit for the horizontal kinematic input shaping (PSC_JERK_NE)</h2><em>Note: This parameter is for advanced users</em><br>
+<h2>Jerk limit for the horizontal kinematic input shaping (PSC_NE_JERK)</h2><em>Note: This parameter is for advanced users</em><br>
 
 <p>Jerk limit of the horizontal kinematic path generation used to determine how quickly the aircraft varies the acceleration target</p>
 <ul>
@@ -47953,7 +47959,7 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Jerk limit for the vertical kinematic input shaping (PSC_JERK_D)</h2><em>Note: This parameter is for advanced users</em><br>
+<h2>Jerk limit for the vertical kinematic input shaping (PSC_D_JERK)</h2><em>Note: This parameter is for advanced users</em><br>
 
 <p>Jerk limit of the vertical kinematic path generation used to determine how quickly the aircraft varies the acceleration target</p>
 <ul>
@@ -68895,6 +68901,14 @@ DO NOT EDIT
 <p>Video Transmitter Maximum Power Level. Different VTXs support different power levels, this prevents the power aux switch from requesting too high a power level. The switch supports 6 power levels and the selected power will be a subdivision between 0 and this setting.</p>
 <ul>
 <li>Range: 25 1000</li>
+</ul>
+
+
+<h2>Allowed VTX control transports (VTX_TYPES)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Bitmask of the control transports permitted to manage the VTX. AP_VideoTX represents a single VTX, so when more than one transport is present (for example a CRSF VTX on the receiver and an MSP VTX on the goggles) this selects which one owns it. Clear a transport&#x27;s bit to stop it taking control of the VTX.</p>
+<ul>
+<li>Bitmask: 0:CRSF,1:SmartAudio,2:Tramp,3:MSP</li>
 </ul>
 
 

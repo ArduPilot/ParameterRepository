@@ -3159,6 +3159,7 @@
           <value code="17">AUAV-10in</value>
           <value code="18">AUAV-5in</value>
           <value code="19">AUAV-30in</value>
+          <value code="20">Scripting</value>
           <value code="100">SITL</value>
         </values>
       </param>
@@ -3241,6 +3242,7 @@
           <value code="17">AUAV-10in</value>
           <value code="18">AUAV-5in</value>
           <value code="19">AUAV-30in</value>
+          <value code="20">Scripting</value>
           <value code="100">SITL</value>
         </values>
       </param>
@@ -3323,6 +3325,7 @@
           <value code="17">AUAV-10in</value>
           <value code="18">AUAV-5in</value>
           <value code="19">AUAV-30in</value>
+          <value code="20">Scripting</value>
           <value code="100">SITL</value>
         </values>
       </param>
@@ -3405,6 +3408,7 @@
           <value code="17">AUAV-10in</value>
           <value code="18">AUAV-5in</value>
           <value code="19">AUAV-30in</value>
+          <value code="20">Scripting</value>
           <value code="100">SITL</value>
         </values>
       </param>
@@ -3487,6 +3491,7 @@
           <value code="17">AUAV-10in</value>
           <value code="18">AUAV-5in</value>
           <value code="19">AUAV-30in</value>
+          <value code="20">Scripting</value>
           <value code="100">SITL</value>
         </values>
       </param>
@@ -3569,6 +3574,7 @@
           <value code="17">AUAV-10in</value>
           <value code="18">AUAV-5in</value>
           <value code="19">AUAV-30in</value>
+          <value code="20">Scripting</value>
           <value code="100">SITL</value>
         </values>
       </param>
@@ -21522,14 +21528,15 @@
           <value code="14">14</value>
         </values>
       </param>
-      <param humanName="MSP OSD Options" name="MSP_OPTIONS" documentation="A bitmask to set some MSP specific options: EnableTelemetryMode-allows &quot;push&quot; mode telemetry when only rx line of OSD ic connected to autopilot,  EnableBTFLFonts-uses indexes corresponding to Betaflight fonts if OSD uses those instead of ArduPilot fonts. EnableINAVFonts uses INAV fonts and overrides EnableBTFLFonts if that option is enabled." user="Standard">
+      <param humanName="MSP OSD Options" name="MSP_OPTIONS" documentation="A bitmask to set some MSP specific options: EnableTelemetryMode-allows &quot;push&quot; mode telemetry when only rx line of OSD ic connected to autopilot,  EnableBTFLFonts-uses indexes corresponding to Betaflight fonts if OSD uses those instead of ArduPilot fonts. EnableINAVFonts uses INAV fonts and overrides EnableBTFLFonts if that option is enabled. ForceVTXHighPower always reports the vehicle as armed so a VTX that drops to low power when disarmed stays at full power." user="Standard">
         <bitmask>
           <bit code="0">EnableTelemetryMode</bit>
           <bit code="1">unused</bit>
           <bit code="2">EnableBTFLFonts</bit>
           <bit code="3">EnableINAVFonts</bit>
+          <bit code="4">ForceVTXHighPower</bit>
         </bitmask>
-        <field name="Bitmask">0:EnableTelemetryMode, 1: unused, 2:EnableBTFLFonts, 3:EnableINAVFonts</field>
+        <field name="Bitmask">0:EnableTelemetryMode, 1: unused, 2:EnableBTFLFonts, 3:EnableINAVFonts, 4:ForceVTXHighPower</field>
       </param>
     </parameters>
     <parameters name="NET_">
@@ -26752,13 +26759,13 @@
         <field name="Range">0 45</field>
         <field name="Increment">1</field>
       </param>
-      <param humanName="Jerk limit for the horizontal kinematic input shaping" name="PSC_JERK_NE" documentation="Jerk limit of the horizontal kinematic path generation used to determine how quickly the aircraft varies the acceleration target" user="Advanced">
+      <param humanName="Jerk limit for the horizontal kinematic input shaping" name="PSC_NE_JERK" documentation="Jerk limit of the horizontal kinematic path generation used to determine how quickly the aircraft varies the acceleration target" user="Advanced">
         <field name="Units">m/s/s/s</field>
         <field name="UnitText">meters per cubic second</field>
         <field name="Range">1 50</field>
         <field name="Increment">1</field>
       </param>
-      <param humanName="Jerk limit for the vertical kinematic input shaping" name="PSC_JERK_D" documentation="Jerk limit of the vertical kinematic path generation used to determine how quickly the aircraft varies the acceleration target" user="Advanced">
+      <param humanName="Jerk limit for the vertical kinematic input shaping" name="PSC_D_JERK" documentation="Jerk limit of the vertical kinematic path generation used to determine how quickly the aircraft varies the acceleration target" user="Advanced">
         <field name="Units">m/s/s/s</field>
         <field name="UnitText">meters per cubic second</field>
         <field name="Range">1 50</field>
@@ -43927,6 +43934,15 @@
       </param>
       <param humanName="Video Transmitter Max Power Level" name="VTX_MAX_POWER" documentation="Video Transmitter Maximum Power Level. Different VTXs support different power levels, this prevents the power aux switch from requesting too high a power level. The switch supports 6 power levels and the selected power will be a subdivision between 0 and this setting.">
         <field name="Range">25 1000</field>
+      </param>
+      <param humanName="Allowed VTX control transports" name="VTX_TYPES" documentation="Bitmask of the control transports permitted to manage the VTX. AP_VideoTX represents a single VTX, so when more than one transport is present (for example a CRSF VTX on the receiver and an MSP VTX on the goggles) this selects which one owns it. Clear a transport's bit to stop it taking control of the VTX." user="Advanced">
+        <bitmask>
+          <bit code="0">CRSF</bit>
+          <bit code="1">SmartAudio</bit>
+          <bit code="2">Tramp</bit>
+          <bit code="3">MSP</bit>
+        </bitmask>
+        <field name="Bitmask">0:CRSF,1:SmartAudio,2:Tramp,3:MSP</field>
       </param>
     </parameters>
     <parameters name="WINCH">

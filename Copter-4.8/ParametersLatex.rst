@@ -11045,6 +11045,8 @@ Type of airspeed sensor
 +-------+-------------------+
 | 19    | AUAV-30in         |
 +-------+-------------------+
+| 20    | Scripting         |
++-------+-------------------+
 | 100   | SITL              |
 +-------+-------------------+
 
@@ -11320,6 +11322,8 @@ Type of airspeed sensor
 | 18    | AUAV-5in          |
 +-------+-------------------+
 | 19    | AUAV-30in         |
++-------+-------------------+
+| 20    | Scripting         |
 +-------+-------------------+
 | 100   | SITL              |
 +-------+-------------------+
@@ -11597,6 +11601,8 @@ Type of airspeed sensor
 +-------+-------------------+
 | 19    | AUAV-30in         |
 +-------+-------------------+
+| 20    | Scripting         |
++-------+-------------------+
 | 100   | SITL              |
 +-------+-------------------+
 
@@ -11872,6 +11878,8 @@ Type of airspeed sensor
 | 18    | AUAV-5in          |
 +-------+-------------------+
 | 19    | AUAV-30in         |
++-------+-------------------+
+| 20    | Scripting         |
 +-------+-------------------+
 | 100   | SITL              |
 +-------+-------------------+
@@ -12149,6 +12157,8 @@ Type of airspeed sensor
 +-------+-------------------+
 | 19    | AUAV-30in         |
 +-------+-------------------+
+| 20    | Scripting         |
++-------+-------------------+
 | 100   | SITL              |
 +-------+-------------------+
 
@@ -12424,6 +12434,8 @@ Type of airspeed sensor
 | 18    | AUAV-5in          |
 +-------+-------------------+
 | 19    | AUAV-30in         |
++-------+-------------------+
+| 20    | Scripting         |
 +-------+-------------------+
 | 100   | SITL              |
 +-------+-------------------+
@@ -70821,7 +70833,7 @@ MSP\_OPTIONS: MSP OSD Options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-A bitmask to set some MSP specific options\: EnableTelemetryMode\-allows \"push\" mode telemetry when only rx line of OSD ic connected to autopilot\,  EnableBTFLFonts\-uses indexes corresponding to Betaflight fonts if OSD uses those instead of ArduPilot fonts\. EnableINAVFonts uses INAV fonts and overrides EnableBTFLFonts if that option is enabled\.
+A bitmask to set some MSP specific options\: EnableTelemetryMode\-allows \"push\" mode telemetry when only rx line of OSD ic connected to autopilot\,  EnableBTFLFonts\-uses indexes corresponding to Betaflight fonts if OSD uses those instead of ArduPilot fonts\. EnableINAVFonts uses INAV fonts and overrides EnableBTFLFonts if that option is enabled\. ForceVTXHighPower always reports the vehicle as armed so a VTX that drops to low power when disarmed stays at full power\.
 
 
 +-----+---------------------+
@@ -70834,6 +70846,8 @@ A bitmask to set some MSP specific options\: EnableTelemetryMode\-allows \"push\
 | 2   | EnableBTFLFonts     |
 +-----+---------------------+
 | 3   | EnableINAVFonts     |
++-----+---------------------+
+| 4   | ForceVTXHighPower   |
 +-----+---------------------+
 
 
@@ -93302,9 +93316,9 @@ Maximum lean angle autopilot can request\. Set to zero to use ANGLE\_MAX paramet
 
 
 
-.. _PSC_JERK_NE:
+.. _PSC_NE_JERK:
 
-PSC\_JERK\_NE: Jerk limit for the horizontal kinematic input shaping
+PSC\_NE\_JERK: Jerk limit for the horizontal kinematic input shaping
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
@@ -93321,9 +93335,9 @@ Jerk limit of the horizontal kinematic path generation used to determine how qui
 
 
 
-.. _PSC_JERK_D:
+.. _PSC_D_JERK:
 
-PSC\_JERK\_D: Jerk limit for the vertical kinematic input shaping
+PSC\_D\_JERK: Jerk limit for the vertical kinematic input shaping
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
@@ -141685,6 +141699,31 @@ Video Transmitter Maximum Power Level\. Different VTXs support different power l
 +============+
 | 25 to 1000 |
 +------------+
+
+
+
+
+.. _VTX_TYPES:
+
+VTX\_TYPES: Allowed VTX control transports
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Bitmask of the control transports permitted to manage the VTX\. AP\_VideoTX represents a single VTX\, so when more than one transport is present \(for example a CRSF VTX on the receiver and an MSP VTX on the goggles\) this selects which one owns it\. Clear a transport\'s bit to stop it taking control of the VTX\.
+
+
++-----+------------+
+| Bit | Meaning    |
++=====+============+
+| 0   | CRSF       |
++-----+------------+
+| 1   | SmartAudio |
++-----+------------+
+| 2   | Tramp      |
++-----+------------+
+| 3   | MSP        |
++-----+------------+
 
 
 
