@@ -13408,6 +13408,7 @@
           <value code="6">Trimble GSOF</value>
           <value code="7">MicroStrain7</value>
           <value code="8">SBG</value>
+          <value code="10">Aeron</value>
           <value code="11">SensAItion</value>
         </values>
       </param>
@@ -14882,7 +14883,7 @@
         </values>
       </param>
       <param humanName="Acceleration limit for the horizontal kinematic input shaping" name="FOLL_ACCEL_NE" documentation="Acceleration limit of the horizontal kinematic path generation used to determine how quickly the estimate varies in velocity" user="Advanced">
-        <field name="Range">0 5</field>
+        <field name="Range">0 10</field>
         <field name="Units">m/s/s</field>
         <field name="UnitText">meters per square second</field>
       </param>
@@ -14892,22 +14893,22 @@
         <field name="UnitText">meters per cubic second</field>
       </param>
       <param humanName="Acceleration limit for the vertical kinematic input shaping" name="FOLL_ACCEL_D" documentation="Acceleration limit of the vertical kinematic path generation used to determine how quickly the estimate varies in velocity" user="Advanced">
-        <field name="Range">0 2.5</field>
+        <field name="Range">0 10</field>
         <field name="Units">m/s/s</field>
         <field name="UnitText">meters per square second</field>
       </param>
       <param humanName="Jerk limit for the vertical kinematic input shaping" name="FOLL_JERK_D" documentation="Jerk limit of the vertical kinematic path generation used to determine how quickly the estimate varies in acceleration" user="Advanced">
-        <field name="Range">0 5</field>
+        <field name="Range">0 20</field>
         <field name="Units">m/s/s/s</field>
         <field name="UnitText">meters per cubic second</field>
       </param>
       <param humanName="Angular acceleration limit for the heading kinematic input shaping" name="FOLL_ACCEL_H" documentation="Angular acceleration limit of the heading kinematic path generation used to determine how quickly the estimate varies in angular velocity" user="Advanced">
-        <field name="Range">0 90</field>
+        <field name="Range">0 720</field>
         <field name="Units">deg/s/s</field>
         <field name="UnitText">degrees per square second</field>
       </param>
       <param humanName="Angular jerk limit for the heading kinematic input shaping" name="FOLL_JERK_H" documentation="Angular jerk limit of the heading kinematic path generation used to determine how quickly the estimate varies in angular acceleration" user="Advanced">
-        <field name="Range">0 360</field>
+        <field name="Range">0 1440</field>
         <field name="Units">deg/s/s/s</field>
         <field name="UnitText">degrees per cube second</field>
       </param>

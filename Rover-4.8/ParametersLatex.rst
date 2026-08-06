@@ -43144,6 +43144,8 @@ Type of AHRS device
 +-------+--------------+
 | 8     | SBG          |
 +-------+--------------+
+| 10    | Aeron        |
++-------+--------------+
 | 11    | SensAItion   |
 +-------+--------------+
 
@@ -48097,11 +48099,11 @@ FOLL\_ACCEL\_NE: Acceleration limit for the horizontal kinematic input shaping
 Acceleration limit of the horizontal kinematic path generation used to determine how quickly the estimate varies in velocity
 
 
-+--------+--------------------------+
-| Range  | Units                    |
-+========+==========================+
-| 0 to 5 | meters per square second |
-+--------+--------------------------+
++---------+--------------------------+
+| Range   | Units                    |
++=========+==========================+
+| 0 to 10 | meters per square second |
++---------+--------------------------+
 
 
 
@@ -48135,11 +48137,11 @@ FOLL\_ACCEL\_D: Acceleration limit for the vertical kinematic input shaping
 Acceleration limit of the vertical kinematic path generation used to determine how quickly the estimate varies in velocity
 
 
-+----------+--------------------------+
-| Range    | Units                    |
-+==========+==========================+
-| 0 to 2.5 | meters per square second |
-+----------+--------------------------+
++---------+--------------------------+
+| Range   | Units                    |
++=========+==========================+
+| 0 to 10 | meters per square second |
++---------+--------------------------+
 
 
 
@@ -48154,11 +48156,11 @@ FOLL\_JERK\_D: Jerk limit for the vertical kinematic input shaping
 Jerk limit of the vertical kinematic path generation used to determine how quickly the estimate varies in acceleration
 
 
-+--------+-------------------------+
-| Range  | Units                   |
-+========+=========================+
-| 0 to 5 | meters per cubic second |
-+--------+-------------------------+
++---------+-------------------------+
+| Range   | Units                   |
++=========+=========================+
+| 0 to 20 | meters per cubic second |
++---------+-------------------------+
 
 
 
@@ -48173,11 +48175,11 @@ FOLL\_ACCEL\_H: Angular acceleration limit for the heading kinematic input shapi
 Angular acceleration limit of the heading kinematic path generation used to determine how quickly the estimate varies in angular velocity
 
 
-+---------+---------------------------+
-| Range   | Units                     |
-+=========+===========================+
-| 0 to 90 | degrees per square second |
-+---------+---------------------------+
++----------+---------------------------+
+| Range    | Units                     |
++==========+===========================+
+| 0 to 720 | degrees per square second |
++----------+---------------------------+
 
 
 
@@ -48192,11 +48194,11 @@ FOLL\_JERK\_H: Angular jerk limit for the heading kinematic input shaping
 Angular jerk limit of the heading kinematic path generation used to determine how quickly the estimate varies in angular acceleration
 
 
-+----------+-------------------------+
-| Range    | Units                   |
-+==========+=========================+
-| 0 to 360 | degrees per cube second |
-+----------+-------------------------+
++-----------+-------------------------+
+| Range     | Units                   |
++===========+=========================+
+| 0 to 1440 | degrees per cube second |
++-----------+-------------------------+
 
 
 

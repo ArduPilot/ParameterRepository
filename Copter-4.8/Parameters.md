@@ -46,8 +46,8 @@ Defines a cone above home which determines maximum climb
 |Value|Meaning|
 |:---:|:---:|
 |0|Disabled|
-|1|Shallow|
-|3|Steep|
+|1|Shallow (45deg)|
+|3|Steep (72deg)|
 
 ## RTL_LOIT_TIME: RTL loiter time
 
@@ -20758,6 +20758,7 @@ Type of AHRS device
 |6|Trimble GSOF|
 |7|MicroStrain7|
 |8|SBG|
+|10|Aeron|
 |11|SensAItion|
 
 ## EAHRS_RATE: AHRS data rate
@@ -23364,7 +23365,7 @@ Follow options bitmask
 
 Acceleration limit of the horizontal kinematic path generation used to determine how quickly the estimate varies in velocity
 
-- Range: 0 5
+- Range: 0 10
 
 - Units: m/s/s
 
@@ -23384,7 +23385,7 @@ Jerk limit of the horizontal kinematic path generation used to determine how qui
 
 Acceleration limit of the vertical kinematic path generation used to determine how quickly the estimate varies in velocity
 
-- Range: 0 2.5
+- Range: 0 10
 
 - Units: m/s/s
 
@@ -23394,7 +23395,7 @@ Acceleration limit of the vertical kinematic path generation used to determine h
 
 Jerk limit of the vertical kinematic path generation used to determine how quickly the estimate varies in acceleration
 
-- Range: 0 5
+- Range: 0 20
 
 - Units: m/s/s/s
 
@@ -23404,7 +23405,7 @@ Jerk limit of the vertical kinematic path generation used to determine how quick
 
 Angular acceleration limit of the heading kinematic path generation used to determine how quickly the estimate varies in angular velocity
 
-- Range: 0 90
+- Range: 0 720
 
 - Units: deg/s/s
 
@@ -23414,7 +23415,7 @@ Angular acceleration limit of the heading kinematic path generation used to dete
 
 Angular jerk limit of the heading kinematic path generation used to determine how quickly the estimate varies in angular acceleration
 
-- Range: 0 360
+- Range: 0 1440
 
 - Units: deg/s/s/s
 

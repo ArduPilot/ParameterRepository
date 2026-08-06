@@ -12716,6 +12716,7 @@
       "Values": {
         "0": "None",
         "1": "VectorNav",
+        "10": "Aeron",
         "11": "SensAItion",
         "2": "MicroStrain5",
         "5": "InertialLabs",

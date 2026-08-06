@@ -16312,6 +16312,7 @@ Type of AHRS device
 |6|Trimble GSOF|
 |7|MicroStrain7|
 |8|SBG|
+|10|Aeron|
 |11|SensAItion|
 
 ## EAHRS_RATE: AHRS data rate

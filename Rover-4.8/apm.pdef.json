@@ -14619,6 +14619,7 @@
       "Values": {
         "0": "None",
         "1": "VectorNav",
+        "10": "Aeron",
         "11": "SensAItion",
         "2": "MicroStrain5",
         "5": "InertialLabs",
@@ -16971,7 +16972,7 @@
       "Description": "Acceleration limit of the vertical kinematic path generation used to determine how quickly the estimate varies in velocity",
       "DisplayName": "Acceleration limit for the vertical kinematic input shaping",
       "Range": {
-        "high": "2.5",
+        "high": "10",
         "low": "0"
       },
       "Units": "m/s/s",
@@ -16981,7 +16982,7 @@
       "Description": "Angular acceleration limit of the heading kinematic path generation used to determine how quickly the estimate varies in angular velocity",
       "DisplayName": "Angular acceleration limit for the heading kinematic input shaping",
       "Range": {
-        "high": "90",
+        "high": "720",
         "low": "0"
       },
       "Units": "deg/s/s",
@@ -16991,7 +16992,7 @@
       "Description": "Acceleration limit of the horizontal kinematic path generation used to determine how quickly the estimate varies in velocity",
       "DisplayName": "Acceleration limit for the horizontal kinematic input shaping",
       "Range": {
-        "high": "5",
+        "high": "10",
         "low": "0"
       },
       "Units": "m/s/s",
@@ -17030,7 +17031,7 @@
       "Description": "Jerk limit of the vertical kinematic path generation used to determine how quickly the estimate varies in acceleration",
       "DisplayName": "Jerk limit for the vertical kinematic input shaping",
       "Range": {
-        "high": "5",
+        "high": "20",
         "low": "0"
       },
       "Units": "m/s/s/s",
@@ -17040,7 +17041,7 @@
       "Description": "Angular jerk limit of the heading kinematic path generation used to determine how quickly the estimate varies in angular acceleration",
       "DisplayName": "Angular jerk limit for the heading kinematic input shaping",
       "Range": {
-        "high": "360",
+        "high": "1440",
         "low": "0"
       },
       "Units": "deg/s/s/s",

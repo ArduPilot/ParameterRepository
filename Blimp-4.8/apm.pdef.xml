@@ -11132,6 +11132,7 @@
           <value code="6">Trimble GSOF</value>
           <value code="7">MicroStrain7</value>
           <value code="8">SBG</value>
+          <value code="10">Aeron</value>
           <value code="11">SensAItion</value>
         </values>
       </param>
