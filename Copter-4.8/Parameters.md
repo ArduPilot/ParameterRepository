@@ -23270,7 +23270,7 @@ Enabled/disable following a target
 
 ## FOLL_SYSID: Follow target's mavlink system id
 
-Follow target's mavlink system id
+Follow target's mavlink system id. Zero means no target has been selected and following is inactive.
 
 - Range: 0 255
 
@@ -52801,6 +52801,128 @@ Allows you to enable (1) or disable (0) the simulated buzzer
 The pin number that the Buzzer is connected to (start at 1)
 
 - Range: 0 15
+
+# SIMFRM Parameters
+
+## SIM_FRM_MASS: model mass
+
+mass of the multicopter model
+
+- Units: kg
+
+## SIM_FRM_DIAG_SZ: model diagonal size
+
+diagonal motor to motor distance of the model
+
+- Units: m
+
+## SIM_FRM_REF_SPD: reference speed
+
+airspeed in the drag reference test, at a fixed lean angle
+
+- Units: m/s
+
+## SIM_FRM_REF_ANG: reference angle
+
+lean angle in the drag reference test
+
+- Units: deg
+
+## SIM_FRM_REF_VOLT: reference voltage
+
+battery voltage in the drag reference test
+
+- Units: V
+
+## SIM_FRM_REF_AMP: reference current
+
+battery current in the drag reference test
+
+- Units: A
+
+## SIM_FRM_REF_ALT: reference altitude
+
+altitude AMSL of the drag reference test
+
+- Units: m
+
+## SIM_FRM_BAT_RES: battery resistance
+
+battery resistance
+
+- Units: Ohm
+
+## SIM_FRM_BAT_VOLT: battery full voltage
+
+full pack battery voltage
+
+- Units: V
+
+## SIM_FRM_BAT_CAP: battery capacity
+
+battery capacity, zero for unlimited
+
+- Units: Ah
+
+## SIM_FRM_HOVR_THR: hover throttle
+
+throttle output (CTUN.ThO) at hover at the reference altitude
+
+- Range: 0.05 1
+
+## SIM_FRM_EXPO: thrust expo
+
+motor thrust expo, matching MOT_THST_EXPO
+
+## SIM_FRM_ROT_RATE: rotation rate
+
+terminal yaw rotation rate
+
+- Units: deg/s
+
+## SIM_FRM_PWM_MIN: minimum PWM
+
+minimum motor PWM in the reference test, matching MOT_PWM_MIN
+
+- Units: PWM
+
+## SIM_FRM_PWM_MAX: maximum PWM
+
+maximum motor PWM in the reference test, matching MOT_PWM_MAX
+
+- Units: PWM
+
+## SIM_FRM_SPIN_MIN: motor spin minimum
+
+minimum motor spin fraction, matching MOT_SPIN_MIN
+
+- Range: 0 1
+
+## SIM_FRM_SPIN_MAX: motor spin maximum
+
+maximum motor spin fraction, matching MOT_SPIN_MAX
+
+- Range: 0 1
+
+## SIM_FRM_SLEW_MAX: motor slew rate
+
+maximum motor slew rate in throttle fraction per second
+
+- Units: 1/s
+
+## SIM_FRM_DISCAREA: rotor disc area
+
+total rotor disc area. Coaxial rotors count as one rotor only
+
+- Units: m.m
+
+## SIM_FRM_MDRAG: momentum drag coefficient
+
+momentum drag coefficient of the rotors. Defaults to zero on planes where the plane model handles drag
+
+## SIM_FRM_BBDRAG: bluff body drag coefficient
+
+scaling of the bluff body drag derived from the reference test, zero for no bluff body drag. Defaults to zero on planes where the plane model handles drag
 
 # SIMFTOWESC Parameters
 

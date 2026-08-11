@@ -47705,7 +47705,7 @@ FOLL\_SYSID: Follow target\'s mavlink system id
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Follow target\'s mavlink system id
+Follow target\'s mavlink system id\. Zero means no target has been selected and following is inactive\.
 
 
 +----------+
@@ -127660,6 +127660,357 @@ Optical Flow sensor measurement noise
 +====================+
 | radians per second |
 +--------------------+
+
+
+
+
+.. _SIM_FRM_BAT_CAP:
+
+SIM\_FRM\_BAT\_CAP: battery capacity
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+battery capacity\, zero for unlimited
+
+
++-------------+
+| Units       |
++=============+
+| ampere hour |
++-------------+
+
+
+
+
+.. _SIM_FRM_BAT_RES:
+
+SIM\_FRM\_BAT\_RES: battery resistance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+battery resistance
+
+
++-------+
+| Units |
++=======+
+| Ohm   |
++-------+
+
+
+
+
+.. _SIM_FRM_BAT_VOLT:
+
+SIM\_FRM\_BAT\_VOLT: battery full voltage
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+full pack battery voltage
+
+
++-------+
+| Units |
++=======+
+| volt  |
++-------+
+
+
+
+
+.. _SIM_FRM_BBDRAG:
+
+SIM\_FRM\_BBDRAG: bluff body drag coefficient
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+scaling of the bluff body drag derived from the reference test\, zero for no bluff body drag\. Defaults to zero on planes where the plane model handles drag
+
+
+.. _SIM_FRM_DIAG_SZ:
+
+SIM\_FRM\_DIAG\_SZ: model diagonal size
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+diagonal motor to motor distance of the model
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
+.. _SIM_FRM_DISCAREA:
+
+SIM\_FRM\_DISCAREA: rotor disc area
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+total rotor disc area\. Coaxial rotors count as one rotor only
+
+
++--------------+
+| Units        |
++==============+
+| square meter |
++--------------+
+
+
+
+
+.. _SIM_FRM_EXPO:
+
+SIM\_FRM\_EXPO: thrust expo
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+motor thrust expo\, matching MOT\_THST\_EXPO
+
+
+.. _SIM_FRM_HOVR_THR:
+
+SIM\_FRM\_HOVR\_THR: hover throttle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+throttle output \(CTUN\.ThO\) at hover at the reference altitude
+
+
++-----------+
+| Range     |
++===========+
+| 0.05 to 1 |
++-----------+
+
+
+
+
+.. _SIM_FRM_MASS:
+
+SIM\_FRM\_MASS: model mass
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+mass of the multicopter model
+
+
++-----------+
+| Units     |
++===========+
+| kilograms |
++-----------+
+
+
+
+
+.. _SIM_FRM_MDRAG:
+
+SIM\_FRM\_MDRAG: momentum drag coefficient
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+momentum drag coefficient of the rotors\. Defaults to zero on planes where the plane model handles drag
+
+
+.. _SIM_FRM_PWM_MAX:
+
+SIM\_FRM\_PWM\_MAX: maximum PWM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+maximum motor PWM in the reference test\, matching MOT\_PWM\_MAX
+
+
++---------------------+
+| Units               |
++=====================+
+| PWM in microseconds |
++---------------------+
+
+
+
+
+.. _SIM_FRM_PWM_MIN:
+
+SIM\_FRM\_PWM\_MIN: minimum PWM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+minimum motor PWM in the reference test\, matching MOT\_PWM\_MIN
+
+
++---------------------+
+| Units               |
++=====================+
+| PWM in microseconds |
++---------------------+
+
+
+
+
+.. _SIM_FRM_REF_ALT:
+
+SIM\_FRM\_REF\_ALT: reference altitude
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+altitude AMSL of the drag reference test
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
+.. _SIM_FRM_REF_AMP:
+
+SIM\_FRM\_REF\_AMP: reference current
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+battery current in the drag reference test
+
+
++--------+
+| Units  |
++========+
+| ampere |
++--------+
+
+
+
+
+.. _SIM_FRM_REF_ANG:
+
+SIM\_FRM\_REF\_ANG: reference angle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+lean angle in the drag reference test
+
+
++---------+
+| Units   |
++=========+
+| degrees |
++---------+
+
+
+
+
+.. _SIM_FRM_REF_SPD:
+
+SIM\_FRM\_REF\_SPD: reference speed
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+airspeed in the drag reference test\, at a fixed lean angle
+
+
++-------------------+
+| Units             |
++===================+
+| meters per second |
++-------------------+
+
+
+
+
+.. _SIM_FRM_REF_VOLT:
+
+SIM\_FRM\_REF\_VOLT: reference voltage
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+battery voltage in the drag reference test
+
+
++-------+
+| Units |
++=======+
+| volt  |
++-------+
+
+
+
+
+.. _SIM_FRM_ROT_RATE:
+
+SIM\_FRM\_ROT\_RATE: rotation rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+terminal yaw rotation rate
+
+
++--------------------+
+| Units              |
++====================+
+| degrees per second |
++--------------------+
+
+
+
+
+.. _SIM_FRM_SLEW_MAX:
+
+SIM\_FRM\_SLEW\_MAX: motor slew rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+maximum motor slew rate in throttle fraction per second
+
+
++------------+
+| Units      |
++============+
+| per second |
++------------+
+
+
+
+
+.. _SIM_FRM_SPIN_MAX:
+
+SIM\_FRM\_SPIN\_MAX: motor spin maximum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+maximum motor spin fraction\, matching MOT\_SPIN\_MAX
+
+
++--------+
+| Range  |
++========+
+| 0 to 1 |
++--------+
+
+
+
+
+.. _SIM_FRM_SPIN_MIN:
+
+SIM\_FRM\_SPIN\_MIN: motor spin minimum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+minimum motor spin fraction\, matching MOT\_SPIN\_MIN
+
+
++--------+
+| Range  |
++========+
+| 0 to 1 |
++--------+
 
 
 

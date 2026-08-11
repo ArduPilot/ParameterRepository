@@ -21790,7 +21790,7 @@ DO NOT EDIT
 
 <h2>Follow target's mavlink system id (FOLL_SYSID)</h2>
 
-<p>Follow target&#x27;s mavlink system id</p>
+<p>Follow target&#x27;s mavlink system id. Zero means no target has been selected and following is inactive.</p>
 <ul>
 <li>Range: 0 255</li>
 </ul>
@@ -58770,6 +58770,174 @@ DO NOT EDIT
 <p>The pin number that the Buzzer is connected to (start at 1)</p>
 <ul>
 <li>Range: 0 15</li>
+</ul>
+
+
+<h1>SIM_FRM_ Parameters</h1>
+
+
+<h2>model mass (SIM_FRM_MASS)</h2>
+
+<p>mass of the multicopter model</p>
+<ul>
+<li>Units: kilograms</li>
+</ul>
+
+
+<h2>model diagonal size (SIM_FRM_DIAG_SZ)</h2>
+
+<p>diagonal motor to motor distance of the model</p>
+<ul>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>reference speed (SIM_FRM_REF_SPD)</h2>
+
+<p>airspeed in the drag reference test, at a fixed lean angle</p>
+<ul>
+<li>Units: meters per second</li>
+</ul>
+
+
+<h2>reference angle (SIM_FRM_REF_ANG)</h2>
+
+<p>lean angle in the drag reference test</p>
+<ul>
+<li>Units: degrees</li>
+</ul>
+
+
+<h2>reference voltage (SIM_FRM_REF_VOLT)</h2>
+
+<p>battery voltage in the drag reference test</p>
+<ul>
+<li>Units: volt</li>
+</ul>
+
+
+<h2>reference current (SIM_FRM_REF_AMP)</h2>
+
+<p>battery current in the drag reference test</p>
+<ul>
+<li>Units: ampere</li>
+</ul>
+
+
+<h2>reference altitude (SIM_FRM_REF_ALT)</h2>
+
+<p>altitude AMSL of the drag reference test</p>
+<ul>
+<li>Units: meters</li>
+</ul>
+
+
+<h2>battery resistance (SIM_FRM_BAT_RES)</h2>
+
+<p>battery resistance</p>
+<ul>
+<li>Units: Ohm</li>
+</ul>
+
+
+<h2>battery full voltage (SIM_FRM_BAT_VOLT)</h2>
+
+<p>full pack battery voltage</p>
+<ul>
+<li>Units: volt</li>
+</ul>
+
+
+<h2>battery capacity (SIM_FRM_BAT_CAP)</h2>
+
+<p>battery capacity, zero for unlimited</p>
+<ul>
+<li>Units: ampere hour</li>
+</ul>
+
+
+<h2>hover throttle (SIM_FRM_HOVR_THR)</h2>
+
+<p>throttle output (CTUN.ThO) at hover at the reference altitude</p>
+<ul>
+<li>Range: 0.05 1</li>
+</ul>
+
+
+<h2>thrust expo (SIM_FRM_EXPO)</h2>
+
+<p>motor thrust expo, matching MOT_THST_EXPO</p>
+<ul>
+</ul>
+
+
+<h2>rotation rate (SIM_FRM_ROT_RATE)</h2>
+
+<p>terminal yaw rotation rate</p>
+<ul>
+<li>Units: degrees per second</li>
+</ul>
+
+
+<h2>minimum PWM (SIM_FRM_PWM_MIN)</h2>
+
+<p>minimum motor PWM in the reference test, matching MOT_PWM_MIN</p>
+<ul>
+<li>Units: PWM in microseconds</li>
+</ul>
+
+
+<h2>maximum PWM (SIM_FRM_PWM_MAX)</h2>
+
+<p>maximum motor PWM in the reference test, matching MOT_PWM_MAX</p>
+<ul>
+<li>Units: PWM in microseconds</li>
+</ul>
+
+
+<h2>motor spin minimum (SIM_FRM_SPIN_MIN)</h2>
+
+<p>minimum motor spin fraction, matching MOT_SPIN_MIN</p>
+<ul>
+<li>Range: 0 1</li>
+</ul>
+
+
+<h2>motor spin maximum (SIM_FRM_SPIN_MAX)</h2>
+
+<p>maximum motor spin fraction, matching MOT_SPIN_MAX</p>
+<ul>
+<li>Range: 0 1</li>
+</ul>
+
+
+<h2>motor slew rate (SIM_FRM_SLEW_MAX)</h2>
+
+<p>maximum motor slew rate in throttle fraction per second</p>
+<ul>
+<li>Units: per second</li>
+</ul>
+
+
+<h2>rotor disc area (SIM_FRM_DISCAREA)</h2>
+
+<p>total rotor disc area. Coaxial rotors count as one rotor only</p>
+<ul>
+<li>Units: square meter</li>
+</ul>
+
+
+<h2>momentum drag coefficient (SIM_FRM_MDRAG)</h2>
+
+<p>momentum drag coefficient of the rotors. Defaults to zero on planes where the plane model handles drag</p>
+<ul>
+</ul>
+
+
+<h2>bluff body drag coefficient (SIM_FRM_BBDRAG)</h2>
+
+<p>scaling of the bluff body drag derived from the reference test, zero for no bluff body drag. Defaults to zero on planes where the plane model handles drag</p>
+<ul>
 </ul>
 
 

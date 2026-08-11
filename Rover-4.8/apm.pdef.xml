@@ -14281,7 +14281,7 @@
           <value code="1">Enabled</value>
         </values>
       </param>
-      <param humanName="Follow target's mavlink system id" name="FOLL_SYSID" documentation="Follow target's mavlink system id" user="Standard">
+      <param humanName="Follow target's mavlink system id" name="FOLL_SYSID" documentation="Follow target's mavlink system id. Zero means no target has been selected and following is inactive." user="Standard">
         <field name="Range">0 255</field>
       </param>
       <param humanName="Follow distance maximum" name="FOLL_DIST_MAX" documentation="Follow distance maximum. If exceeded, the follow estimate will be considered invalid. If zero there is no maximum." user="Standard">
@@ -37422,6 +37422,83 @@
       <param humanName="buzzer pin" name="SIM_BZ_PIN" documentation="The pin number that the Buzzer is connected to (start at 1)" user="Advanced">
         <field name="Range">0 15</field>
       </param>
+    </parameters>
+    <parameters name="SIM_FRM_">
+      <param humanName="model mass" name="SIM_FRM_MASS" documentation="mass of the multicopter model">
+        <field name="Units">kg</field>
+        <field name="UnitText">kilograms</field>
+      </param>
+      <param humanName="model diagonal size" name="SIM_FRM_DIAG_SZ" documentation="diagonal motor to motor distance of the model">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="reference speed" name="SIM_FRM_REF_SPD" documentation="airspeed in the drag reference test, at a fixed lean angle">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+      </param>
+      <param humanName="reference angle" name="SIM_FRM_REF_ANG" documentation="lean angle in the drag reference test">
+        <field name="Units">deg</field>
+        <field name="UnitText">degrees</field>
+      </param>
+      <param humanName="reference voltage" name="SIM_FRM_REF_VOLT" documentation="battery voltage in the drag reference test">
+        <field name="Units">V</field>
+        <field name="UnitText">volt</field>
+      </param>
+      <param humanName="reference current" name="SIM_FRM_REF_AMP" documentation="battery current in the drag reference test">
+        <field name="Units">A</field>
+        <field name="UnitText">ampere</field>
+      </param>
+      <param humanName="reference altitude" name="SIM_FRM_REF_ALT" documentation="altitude AMSL of the drag reference test">
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
+      </param>
+      <param humanName="battery resistance" name="SIM_FRM_BAT_RES" documentation="battery resistance">
+        <field name="Units">Ohm</field>
+        <field name="UnitText">Ohm</field>
+      </param>
+      <param humanName="battery full voltage" name="SIM_FRM_BAT_VOLT" documentation="full pack battery voltage">
+        <field name="Units">V</field>
+        <field name="UnitText">volt</field>
+      </param>
+      <param humanName="battery capacity" name="SIM_FRM_BAT_CAP" documentation="battery capacity, zero for unlimited">
+        <field name="Units">Ah</field>
+        <field name="UnitText">ampere hour</field>
+      </param>
+      <param humanName="hover throttle" name="SIM_FRM_HOVR_THR" documentation="throttle output (CTUN.ThO) at hover at the reference altitude">
+        <field name="Range">0.05 1</field>
+      </param>
+      <param humanName="thrust expo" name="SIM_FRM_EXPO" documentation="motor thrust expo, matching MOT_THST_EXPO">
+</param>
+      <param humanName="rotation rate" name="SIM_FRM_ROT_RATE" documentation="terminal yaw rotation rate">
+        <field name="Units">deg/s</field>
+        <field name="UnitText">degrees per second</field>
+      </param>
+      <param humanName="minimum PWM" name="SIM_FRM_PWM_MIN" documentation="minimum motor PWM in the reference test, matching MOT_PWM_MIN">
+        <field name="Units">PWM</field>
+        <field name="UnitText">PWM in microseconds</field>
+      </param>
+      <param humanName="maximum PWM" name="SIM_FRM_PWM_MAX" documentation="maximum motor PWM in the reference test, matching MOT_PWM_MAX">
+        <field name="Units">PWM</field>
+        <field name="UnitText">PWM in microseconds</field>
+      </param>
+      <param humanName="motor spin minimum" name="SIM_FRM_SPIN_MIN" documentation="minimum motor spin fraction, matching MOT_SPIN_MIN">
+        <field name="Range">0 1</field>
+      </param>
+      <param humanName="motor spin maximum" name="SIM_FRM_SPIN_MAX" documentation="maximum motor spin fraction, matching MOT_SPIN_MAX">
+        <field name="Range">0 1</field>
+      </param>
+      <param humanName="motor slew rate" name="SIM_FRM_SLEW_MAX" documentation="maximum motor slew rate in throttle fraction per second">
+        <field name="Units">1/s</field>
+        <field name="UnitText">per second</field>
+      </param>
+      <param humanName="rotor disc area" name="SIM_FRM_DISCAREA" documentation="total rotor disc area. Coaxial rotors count as one rotor only">
+        <field name="Units">m.m</field>
+        <field name="UnitText">square meter</field>
+      </param>
+      <param humanName="momentum drag coefficient" name="SIM_FRM_MDRAG" documentation="momentum drag coefficient of the rotors. Defaults to zero on planes where the plane model handles drag">
+</param>
+      <param humanName="bluff body drag coefficient" name="SIM_FRM_BBDRAG" documentation="scaling of the bluff body drag derived from the reference test, zero for no bluff body drag. Defaults to zero on planes where the plane model handles drag">
+</param>
     </parameters>
     <parameters name="SIM_FTOWESC_">
       <param humanName="FETtec OneWire ESC simulator enable/disable" name="SIM_FTOWESC_ENA" documentation="Allows you to enable (1) or disable (0) the FETtecOneWireESC simulator" user="Advanced">

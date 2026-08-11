@@ -19632,7 +19632,7 @@
       "User": "Standard"
     },
     "FOLL_SYSID": {
-      "Description": "Follow target's mavlink system id",
+      "Description": "Follow target's mavlink system id. Zero means no target has been selected and following is inactive.",
       "DisplayName": "Follow target's mavlink system id",
       "Range": {
         "high": "255",
@@ -61034,6 +61034,119 @@
         "low": "0"
       },
       "User": "Advanced"
+    }
+  },
+  "SIM_FRM_": {
+    "SIM_FRM_BAT_CAP": {
+      "Description": "battery capacity, zero for unlimited",
+      "DisplayName": "battery capacity",
+      "Units": "Ah"
+    },
+    "SIM_FRM_BAT_RES": {
+      "Description": "battery resistance",
+      "DisplayName": "battery resistance",
+      "Units": "Ohm"
+    },
+    "SIM_FRM_BAT_VOLT": {
+      "Description": "full pack battery voltage",
+      "DisplayName": "battery full voltage",
+      "Units": "V"
+    },
+    "SIM_FRM_BBDRAG": {
+      "Description": "scaling of the bluff body drag derived from the reference test, zero for no bluff body drag. Defaults to zero on planes where the plane model handles drag",
+      "DisplayName": "bluff body drag coefficient"
+    },
+    "SIM_FRM_DIAG_SZ": {
+      "Description": "diagonal motor to motor distance of the model",
+      "DisplayName": "model diagonal size",
+      "Units": "m"
+    },
+    "SIM_FRM_DISCAREA": {
+      "Description": "total rotor disc area. Coaxial rotors count as one rotor only",
+      "DisplayName": "rotor disc area",
+      "Units": "m.m"
+    },
+    "SIM_FRM_EXPO": {
+      "Description": "motor thrust expo, matching MOT_THST_EXPO",
+      "DisplayName": "thrust expo"
+    },
+    "SIM_FRM_HOVR_THR": {
+      "Description": "throttle output (CTUN.ThO) at hover at the reference altitude",
+      "DisplayName": "hover throttle",
+      "Range": {
+        "high": "1",
+        "low": "0.05"
+      }
+    },
+    "SIM_FRM_MASS": {
+      "Description": "mass of the multicopter model",
+      "DisplayName": "model mass",
+      "Units": "kg"
+    },
+    "SIM_FRM_MDRAG": {
+      "Description": "momentum drag coefficient of the rotors. Defaults to zero on planes where the plane model handles drag",
+      "DisplayName": "momentum drag coefficient"
+    },
+    "SIM_FRM_PWM_MAX": {
+      "Description": "maximum motor PWM in the reference test, matching MOT_PWM_MAX",
+      "DisplayName": "maximum PWM",
+      "Units": "PWM"
+    },
+    "SIM_FRM_PWM_MIN": {
+      "Description": "minimum motor PWM in the reference test, matching MOT_PWM_MIN",
+      "DisplayName": "minimum PWM",
+      "Units": "PWM"
+    },
+    "SIM_FRM_REF_ALT": {
+      "Description": "altitude AMSL of the drag reference test",
+      "DisplayName": "reference altitude",
+      "Units": "m"
+    },
+    "SIM_FRM_REF_AMP": {
+      "Description": "battery current in the drag reference test",
+      "DisplayName": "reference current",
+      "Units": "A"
+    },
+    "SIM_FRM_REF_ANG": {
+      "Description": "lean angle in the drag reference test",
+      "DisplayName": "reference angle",
+      "Units": "deg"
+    },
+    "SIM_FRM_REF_SPD": {
+      "Description": "airspeed in the drag reference test, at a fixed lean angle",
+      "DisplayName": "reference speed",
+      "Units": "m/s"
+    },
+    "SIM_FRM_REF_VOLT": {
+      "Description": "battery voltage in the drag reference test",
+      "DisplayName": "reference voltage",
+      "Units": "V"
+    },
+    "SIM_FRM_ROT_RATE": {
+      "Description": "terminal yaw rotation rate",
+      "DisplayName": "rotation rate",
+      "Units": "deg/s"
+    },
+    "SIM_FRM_SLEW_MAX": {
+      "Description": "maximum motor slew rate in throttle fraction per second",
+      "DisplayName": "motor slew rate",
+      "Units": "1/s"
+    },
+    "SIM_FRM_SPIN_MAX": {
+      "Description": "maximum motor spin fraction, matching MOT_SPIN_MAX",
+      "DisplayName": "motor spin maximum",
+      "Range": {
+        "high": "1",
+        "low": "0"
+      }
+    },
+    "SIM_FRM_SPIN_MIN": {
+      "Description": "minimum motor spin fraction, matching MOT_SPIN_MIN",
+      "DisplayName": "motor spin minimum",
+      "Range": {
+        "high": "1",
+        "low": "0"
+      }
     }
   },
   "SIM_FTOWESC_": {
