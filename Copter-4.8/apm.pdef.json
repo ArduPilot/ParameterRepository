@@ -21185,6 +21185,16 @@
         "5": "H4_45"
       }
     },
+    "H_TAIL_RAMP_TIME": {
+      "Description": "Time in seconds for throttle output (TailHeliRSC servo) to ramp from ground idle (RSC_IDLE) to flight idle throttle setting when motor interlock is enabled (throttle hold off).",
+      "DisplayName": "Tail RSC Throttle Ramp Time",
+      "Range": {
+        "high": "60",
+        "low": "0"
+      },
+      "Units": "s",
+      "User": "Standard"
+    },
     "H_TAIL_SPEED": {
       "Description": "Direct drive, variable pitch tail ESC speed in percent output to the tail motor esc (HeliTailRSC Servo) when motor interlock enabled (throttle hold off) and speed fully ramped up after spoolup.",
       "DisplayName": "DDVP Tail ESC speed",
@@ -21345,7 +21355,8 @@
         "1": "RC Passthrough",
         "2": "External Gov SetPoint",
         "3": "Throttle Curve",
-        "4": "AutoThrottle"
+        "4": "AutoThrottle",
+        "5": "Direct Drive Fixed Pitch (Tail RSC only)"
       }
     },
     "H_RSC_RAMP_TIME": {
@@ -23809,6 +23820,7 @@
       },
       "Description": "Bitmap of what Logger backend types to enable. Block-based logging is available on SITL and boards with dataflash chips. Multiple backends can be selected.",
       "DisplayName": "AP_Logger Backend Storage type",
+      "RebootRequired": "True",
       "User": "Standard"
     },
     "LOG_BLK_RATEMAX": {

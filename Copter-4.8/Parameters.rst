@@ -50342,6 +50342,24 @@ Fixed offset applied to yaw output to minimize yaw I\-term contribution needed t
 
 
 
+.. _H_TAIL_RAMP_TIME:
+
+H\_TAIL\_RAMP\_TIME: Tail RSC Throttle Ramp Time
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Time in seconds for throttle output \(TailHeliRSC servo\) to ramp from ground idle \(RSC\_IDLE\) to flight idle throttle setting when motor interlock is enabled \(throttle hold off\)\.
+
+
++---------+---------+
+| Range   | Units   |
++=========+=========+
+| 0 to 60 | seconds |
++---------+---------+
+
+
+
+
 .. _H_DUAL_MODE:
 
 H\_DUAL\_MODE: Dual Mode
@@ -51144,22 +51162,24 @@ H\_RSC\_MODE: Rotor Speed Control Mode
 Selects the type of rotor speed control used to determine throttle output to the HeliRSC servo channel when motor interlock is enabled \(throttle hold off\)\. RC Passthrough sends the input from the RC Motor Interlock channel as throttle output\.  External Gov SetPoint sends the RSC SetPoint parameter value as throttle output\.  Throttle Curve uses the 5 point throttle curve to determine throttle output based on the collective output\.  AutoThrottle requires a rotor speed sensor\, contains an advanced autothrottle governor and is primarily for piston and turbine engines\. WARNING\: Throttle ramp time and throttle curve MUST be tuned properly using Throttle Curve mode before using AutoThrottle
 
 
-+-----------------------------------+
-| Values                            |
-+===================================+
-| +-------+-----------------------+ |
-| | Value | Meaning               | |
-| +=======+=======================+ |
-| | 1     | RC Passthrough        | |
-| +-------+-----------------------+ |
-| | 2     | External Gov SetPoint | |
-| +-------+-----------------------+ |
-| | 3     | Throttle Curve        | |
-| +-------+-----------------------+ |
-| | 4     | AutoThrottle          | |
-| +-------+-----------------------+ |
-|                                   |
-+-----------------------------------+
++------------------------------------------------------+
+| Values                                               |
++======================================================+
+| +-------+------------------------------------------+ |
+| | Value | Meaning                                  | |
+| +=======+==========================================+ |
+| | 1     | RC Passthrough                           | |
+| +-------+------------------------------------------+ |
+| | 2     | External Gov SetPoint                    | |
+| +-------+------------------------------------------+ |
+| | 3     | Throttle Curve                           | |
+| +-------+------------------------------------------+ |
+| | 4     | AutoThrottle                             | |
+| +-------+------------------------------------------+ |
+| | 5     | Direct Drive Fixed Pitch (Tail RSC only) | |
+| +-------+------------------------------------------+ |
+|                                                      |
++------------------------------------------------------+
 
 
 
@@ -57182,6 +57202,7 @@ LOG Parameters
 LOG\_BACKEND\_TYPE: AP\_Logger Backend Storage type
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+| *Note: Reboot required after change*
 
 Bitmap of what Logger backend types to enable\. Block\-based logging is available on SITL and boards with dataflash chips\. Multiple backends can be selected\.
 

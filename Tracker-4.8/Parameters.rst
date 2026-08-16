@@ -44498,6 +44498,7 @@ LOG Parameters
 LOG\_BACKEND\_TYPE: AP\_Logger Backend Storage type
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+| *Note: Reboot required after change*
 
 Bitmap of what Logger backend types to enable\. Block\-based logging is available on SITL and boards with dataflash chips\. Multiple backends can be selected\.
 
