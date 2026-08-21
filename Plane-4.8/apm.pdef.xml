@@ -680,7 +680,7 @@
       <param humanName="speed used for speed scaling calculations" name="ArduPlane:SCALING_SPEED" documentation="Airspeed in m/s to use when calculating surface speed scaling. Note that changing this value will affect all PID values" user="Advanced">
         <field name="Units">m/s</field>
         <field name="UnitText">meters per second</field>
-        <field name="Range">0 50</field>
+        <field name="Range">0.1 50</field>
         <field name="Increment">0.1</field>
       </param>
       <param humanName="Minimum ground speed" name="ArduPlane:MIN_GROUNDSPEED" documentation="Minimum ground speed when under airspeed control" user="Advanced">
@@ -2167,6 +2167,16 @@
         <field name="Units">litres</field>
         <field name="UnitText">litres</field>
       </param>
+      <param humanName="Number of CircuitStatus monitors" name="DCS_NUM_CIRCUITS" documentation="Number of DroneCAN CircuitStatus battery monitor instances. The per-instance DCSx_ parameters are created based on this value." user="Standard">
+        <field name="Range">0 9</field>
+        <field name="RebootRequired">True</field>
+      </param>
+      <param humanName="CircuitStatus circuit ID" name="DCS1_CIRCUIT_ID" documentation="circuit_id of the CircuitStatus message to use for this instance. Set to -1 to disable." user="Standard">
+        <field name="Range">-1 65535</field>
+      </param>
+      <param humanName="CircuitStatus battery index" name="DCS1_BATT_IDX" documentation="Battery monitor instance to feed with this circuit. Set to 1 for BATT, 2 for BATT2 etc. The corresponding BATTn_MONITOR must be 29 (scripting). Set to 0 to disable." user="Standard">
+        <field name="Range">0 9</field>
+      </param>
       <param humanName="DJIRS2 debug" name="DJIR_DEBUG" documentation="Enable DJIRS2 debug" user="Advanced">
         <values>
           <value code="0">Disabled</value>
@@ -2616,10 +2626,10 @@
       </param>
     </parameters>
     <parameters name="ADSB_">
-      <param humanName="ADSB Type" name="ADSB_TYPE" documentation="Type of ADS-B hardware for ADSB-in and ADSB-out configuration and operation. If any type is selected then MAVLink based ADSB-in messages will always be enabled" user="Standard">
+      <param humanName="ADSB Type" name="ADSB_TYPE" documentation="Type of ADS-B hardware for ADSB-in and ADSB-out configuration and operation. Incoming MAVLink ADSB_VEHICLE messages are processed for any non-zero type. Select 1 (MAVLink) either for a MAVLink-connected transceiver such as the uAvionix ping, or to process ADSB_VEHICLE messages forwarded from a companion computer with no ADS-B hardware attached. ADSB-out is only sent once a transceiver reports its health, so with no hardware attached this type is receive-only." user="Standard">
         <values>
           <value code="0">Disabled</value>
-          <value code="1">uAvionix-MAVLink</value>
+          <value code="1">MAVLink</value>
           <value code="2">Sagetech</value>
           <value code="3">uAvionix-UCP</value>
           <value code="4">Sagetech MX Series</value>
@@ -30340,7 +30350,7 @@
         <field name="Range">0.05 1.5</field>
         <field name="Increment">0.01</field>
       </param>
-      <param humanName="Bus address of sensor" name="RNGFND1_ADDR" documentation="This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses." user="Standard">
+      <param humanName="Bus address of sensor" name="RNGFND1_ADDR" documentation="This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id." user="Standard">
         <field name="Range">0 127</field>
         <field name="Increment">1</field>
       </param>
@@ -30556,7 +30566,7 @@
         <field name="Range">0.05 1.5</field>
         <field name="Increment">0.01</field>
       </param>
-      <param humanName="Bus address of sensor" name="RNGFND2_ADDR" documentation="This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses." user="Standard">
+      <param humanName="Bus address of sensor" name="RNGFND2_ADDR" documentation="This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id." user="Standard">
         <field name="Range">0 127</field>
         <field name="Increment">1</field>
       </param>
@@ -30772,7 +30782,7 @@
         <field name="Range">0.05 1.5</field>
         <field name="Increment">0.01</field>
       </param>
-      <param humanName="Bus address of sensor" name="RNGFND3_ADDR" documentation="This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses." user="Standard">
+      <param humanName="Bus address of sensor" name="RNGFND3_ADDR" documentation="This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id." user="Standard">
         <field name="Range">0 127</field>
         <field name="Increment">1</field>
       </param>
@@ -30988,7 +30998,7 @@
         <field name="Range">0.05 1.5</field>
         <field name="Increment">0.01</field>
       </param>
-      <param humanName="Bus address of sensor" name="RNGFND4_ADDR" documentation="This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses." user="Standard">
+      <param humanName="Bus address of sensor" name="RNGFND4_ADDR" documentation="This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id." user="Standard">
         <field name="Range">0 127</field>
         <field name="Increment">1</field>
       </param>
@@ -31204,7 +31214,7 @@
         <field name="Range">0.05 1.5</field>
         <field name="Increment">0.01</field>
       </param>
-      <param humanName="Bus address of sensor" name="RNGFND5_ADDR" documentation="This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses." user="Standard">
+      <param humanName="Bus address of sensor" name="RNGFND5_ADDR" documentation="This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id." user="Standard">
         <field name="Range">0 127</field>
         <field name="Increment">1</field>
       </param>
@@ -31420,7 +31430,7 @@
         <field name="Range">0.05 1.5</field>
         <field name="Increment">0.01</field>
       </param>
-      <param humanName="Bus address of sensor" name="RNGFND6_ADDR" documentation="This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses." user="Standard">
+      <param humanName="Bus address of sensor" name="RNGFND6_ADDR" documentation="This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id." user="Standard">
         <field name="Range">0 127</field>
         <field name="Increment">1</field>
       </param>
@@ -31636,7 +31646,7 @@
         <field name="Range">0.05 1.5</field>
         <field name="Increment">0.01</field>
       </param>
-      <param humanName="Bus address of sensor" name="RNGFND7_ADDR" documentation="This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses." user="Standard">
+      <param humanName="Bus address of sensor" name="RNGFND7_ADDR" documentation="This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id." user="Standard">
         <field name="Range">0 127</field>
         <field name="Increment">1</field>
       </param>
@@ -31852,7 +31862,7 @@
         <field name="Range">0.05 1.5</field>
         <field name="Increment">0.01</field>
       </param>
-      <param humanName="Bus address of sensor" name="RNGFND8_ADDR" documentation="This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses." user="Standard">
+      <param humanName="Bus address of sensor" name="RNGFND8_ADDR" documentation="This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id." user="Standard">
         <field name="Range">0 127</field>
         <field name="Increment">1</field>
       </param>
@@ -32068,7 +32078,7 @@
         <field name="Range">0.05 1.5</field>
         <field name="Increment">0.01</field>
       </param>
-      <param humanName="Bus address of sensor" name="RNGFND9_ADDR" documentation="This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses." user="Standard">
+      <param humanName="Bus address of sensor" name="RNGFND9_ADDR" documentation="This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id." user="Standard">
         <field name="Range">0 127</field>
         <field name="Increment">1</field>
       </param>
@@ -32284,7 +32294,7 @@
         <field name="Range">0.05 1.5</field>
         <field name="Increment">0.01</field>
       </param>
-      <param humanName="Bus address of sensor" name="RNGFNDA_ADDR" documentation="This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses." user="Standard">
+      <param humanName="Bus address of sensor" name="RNGFNDA_ADDR" documentation="This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id." user="Standard">
         <field name="Range">0 127</field>
         <field name="Increment">1</field>
       </param>

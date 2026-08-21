@@ -2156,6 +2156,26 @@ EFI DLA litres of fuel per second of injection time
 
 - Units: litres
 
+## DCS_NUM_CIRCUITS: Number of CircuitStatus monitors
+
+Number of DroneCAN CircuitStatus battery monitor instances. The per-instance DCSx_ parameters are created based on this value.
+
+- Range: 0 9
+
+- RebootRequired: True
+
+## DCS1_CIRCUIT_ID: CircuitStatus circuit ID
+
+circuit_id of the CircuitStatus message to use for this instance. Set to -1 to disable.
+
+- Range: -1 65535
+
+## DCS1_BATT_IDX: CircuitStatus battery index
+
+Battery monitor instance to feed with this circuit. Set to 1 for BATT, 2 for BATT2 etc. The corresponding BATTn_MONITOR must be 29 (scripting). Set to 0 to disable.
+
+- Range: 0 9
+
 ## DJIR_DEBUG: DJIRS2 debug
 
 *Note: This parameter is for advanced users*

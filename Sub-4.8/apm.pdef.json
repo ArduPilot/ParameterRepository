@@ -28230,6 +28230,34 @@
       },
       "User": "Advanced"
     },
+    "DCS1_BATT_IDX": {
+      "Description": "Battery monitor instance to feed with this circuit. Set to 1 for BATT, 2 for BATT2 etc. The corresponding BATTn_MONITOR must be 29 (scripting). Set to 0 to disable.",
+      "DisplayName": "CircuitStatus battery index",
+      "Range": {
+        "high": "9",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "DCS1_CIRCUIT_ID": {
+      "Description": "circuit_id of the CircuitStatus message to use for this instance. Set to -1 to disable.",
+      "DisplayName": "CircuitStatus circuit ID",
+      "Range": {
+        "high": "65535",
+        "low": "-1"
+      },
+      "User": "Standard"
+    },
+    "DCS_NUM_CIRCUITS": {
+      "Description": "Number of DroneCAN CircuitStatus battery monitor instances. The per-instance DCSx_ parameters are created based on this value.",
+      "DisplayName": "Number of CircuitStatus monitors",
+      "Range": {
+        "high": "9",
+        "low": "0"
+      },
+      "RebootRequired": "True",
+      "User": "Standard"
+    },
     "DIST_CUTOFF": {
       "Description": "The distance from target beyond which the target is ignored",
       "DisplayName": "Precland distance cutoff",
@@ -49029,7 +49057,7 @@
   },
   "RNGFND1_": {
     "RNGFND1_ADDR": {
-      "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.",
+      "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id.",
       "DisplayName": "Bus address of sensor",
       "Increment": "1",
       "Range": {
@@ -49368,7 +49396,7 @@
   },
   "RNGFND2_": {
     "RNGFND2_ADDR": {
-      "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.",
+      "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id.",
       "DisplayName": "Bus address of sensor",
       "Increment": "1",
       "Range": {
@@ -49707,7 +49735,7 @@
   },
   "RNGFND3_": {
     "RNGFND3_ADDR": {
-      "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.",
+      "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id.",
       "DisplayName": "Bus address of sensor",
       "Increment": "1",
       "Range": {
@@ -50046,7 +50074,7 @@
   },
   "RNGFND4_": {
     "RNGFND4_ADDR": {
-      "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.",
+      "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id.",
       "DisplayName": "Bus address of sensor",
       "Increment": "1",
       "Range": {
@@ -50385,7 +50413,7 @@
   },
   "RNGFND5_": {
     "RNGFND5_ADDR": {
-      "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.",
+      "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id.",
       "DisplayName": "Bus address of sensor",
       "Increment": "1",
       "Range": {
@@ -50724,7 +50752,7 @@
   },
   "RNGFND6_": {
     "RNGFND6_ADDR": {
-      "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.",
+      "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id.",
       "DisplayName": "Bus address of sensor",
       "Increment": "1",
       "Range": {
@@ -51063,7 +51091,7 @@
   },
   "RNGFND7_": {
     "RNGFND7_ADDR": {
-      "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.",
+      "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id.",
       "DisplayName": "Bus address of sensor",
       "Increment": "1",
       "Range": {
@@ -51402,7 +51430,7 @@
   },
   "RNGFND8_": {
     "RNGFND8_ADDR": {
-      "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.",
+      "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id.",
       "DisplayName": "Bus address of sensor",
       "Increment": "1",
       "Range": {
@@ -51741,7 +51769,7 @@
   },
   "RNGFND9_": {
     "RNGFND9_ADDR": {
-      "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.",
+      "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id.",
       "DisplayName": "Bus address of sensor",
       "Increment": "1",
       "Range": {
@@ -52080,7 +52108,7 @@
   },
   "RNGFNDA_": {
     "RNGFNDA_ADDR": {
-      "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.",
+      "Description": "This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id.",
       "DisplayName": "Bus address of sensor",
       "Increment": "1",
       "Range": {

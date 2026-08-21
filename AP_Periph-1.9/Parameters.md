@@ -2533,6 +2533,26 @@ EFI DLA litres of fuel per second of injection time
 
 - Units: litres
 
+## DCS_NUM_CIRCUITS: Number of CircuitStatus monitors
+
+Number of DroneCAN CircuitStatus battery monitor instances. The per-instance DCSx_ parameters are created based on this value.
+
+- Range: 0 9
+
+- RebootRequired: True
+
+## DCS1_CIRCUIT_ID: CircuitStatus circuit ID
+
+circuit_id of the CircuitStatus message to use for this instance. Set to -1 to disable.
+
+- Range: -1 65535
+
+## DCS1_BATT_IDX: CircuitStatus battery index
+
+Battery monitor instance to feed with this circuit. Set to 1 for BATT, 2 for BATT2 etc. The corresponding BATTn_MONITOR must be 29 (scripting). Set to 0 to disable.
+
+- Range: 0 9
+
 ## DJIR_DEBUG: DJIRS2 debug
 
 *Note: This parameter is for advanced users*
@@ -33840,7 +33860,7 @@ This parameter sets the expected range measurement that the range finder should 
 
 ## RNGFND1_ADDR: Bus address of sensor
 
-This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.
+This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id.
 
 - Range: 0 127
 
@@ -34175,7 +34195,7 @@ This parameter sets the expected range measurement that the range finder should 
 
 ## RNGFND2_ADDR: Bus address of sensor
 
-This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.
+This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id.
 
 - Range: 0 127
 
@@ -34510,7 +34530,7 @@ This parameter sets the expected range measurement that the range finder should 
 
 ## RNGFND3_ADDR: Bus address of sensor
 
-This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.
+This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id.
 
 - Range: 0 127
 
@@ -34845,7 +34865,7 @@ This parameter sets the expected range measurement that the range finder should 
 
 ## RNGFND4_ADDR: Bus address of sensor
 
-This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.
+This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id.
 
 - Range: 0 127
 
@@ -35180,7 +35200,7 @@ This parameter sets the expected range measurement that the range finder should 
 
 ## RNGFND5_ADDR: Bus address of sensor
 
-This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.
+This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id.
 
 - Range: 0 127
 
@@ -35515,7 +35535,7 @@ This parameter sets the expected range measurement that the range finder should 
 
 ## RNGFND6_ADDR: Bus address of sensor
 
-This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.
+This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id.
 
 - Range: 0 127
 
@@ -35850,7 +35870,7 @@ This parameter sets the expected range measurement that the range finder should 
 
 ## RNGFND7_ADDR: Bus address of sensor
 
-This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.
+This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id.
 
 - Range: 0 127
 
@@ -36185,7 +36205,7 @@ This parameter sets the expected range measurement that the range finder should 
 
 ## RNGFND8_ADDR: Bus address of sensor
 
-This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.
+This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id.
 
 - Range: 0 127
 
@@ -36520,7 +36540,7 @@ This parameter sets the expected range measurement that the range finder should 
 
 ## RNGFND9_ADDR: Bus address of sensor
 
-This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.
+This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id.
 
 - Range: 0 127
 
@@ -36855,7 +36875,7 @@ This parameter sets the expected range measurement that the range finder should 
 
 ## RNGFNDA_ADDR: Bus address of sensor
 
-This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses.
+This sets the bus address of the sensor, where applicable. Used for the I2C and DroneCAN sensors to allow for multiple sensors on different addresses. For MAVLink rangefinders, this sets the DISTANCE_SENSOR message id to accept. A value of zero accepts any id.
 
 - Range: 0 127
 

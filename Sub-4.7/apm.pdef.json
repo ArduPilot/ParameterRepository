@@ -45129,6 +45129,17 @@
       },
       "User": "Advanced"
     },
+    "PSC_D_JERK": {
+      "Description": "Jerk limit of the vertical kinematic path generation used to determine how quickly the aircraft varies the acceleration target",
+      "DisplayName": "Jerk limit for the vertical kinematic input shaping",
+      "Increment": "1",
+      "Range": {
+        "high": "50",
+        "low": "1"
+      },
+      "Units": "m/s/s/s",
+      "User": "Advanced"
+    },
     "PSC_D_POS_P": {
       "Description": "Position (vertical) controller P gain. Converts the difference between the desired altitude and actual altitude into a climb or descent rate which is passed to the throttle rate controller. Previously _POSZ_P.",
       "DisplayName": "Position (vertical) controller P gain",
@@ -45211,18 +45222,7 @@
       },
       "User": "Standard"
     },
-    "PSC_JERK_D": {
-      "Description": "Jerk limit of the vertical kinematic path generation used to determine how quickly the aircraft varies the acceleration target",
-      "DisplayName": "Jerk limit for the vertical kinematic input shaping",
-      "Increment": "1",
-      "Range": {
-        "high": "50",
-        "low": "1"
-      },
-      "Units": "m/s/s/s",
-      "User": "Advanced"
-    },
-    "PSC_JERK_NE": {
+    "PSC_NE_JERK": {
       "Description": "Jerk limit of the horizontal kinematic path generation used to determine how quickly the aircraft varies the acceleration target",
       "DisplayName": "Jerk limit for the horizontal kinematic input shaping",
       "Increment": "1",
