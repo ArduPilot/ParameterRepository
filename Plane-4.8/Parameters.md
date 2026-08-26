@@ -67,7 +67,7 @@ Degrees of down pitch added when throttle is below TRIM_THROTTLE in FBWA and AUT
 
 *Note: This parameter is for advanced users*
 
-This controls the minimum altitude change for a waypoint before an altitude slope will be used instead of an immediate altitude change. The default value is 15 meters, which helps to smooth out waypoint missions where small altitude changes happen near waypoints. If you don't want altitude slopes to be used in missions then you can set this to zero, which will disable altitude slope calculations. Otherwise you can set it to a minimum number of meters of altitude error to the destination waypoint before an altitude slope will be used to change altitude.
+This controls the minimum altitude change for a waypoint before an altitude slope will be used instead of an immediate altitude change. The default value is 15 meters, which helps to smooth out waypoint missions where small altitude changes happen near waypoints. If you don't want altitude slopes to be used in missions then you can set this to zero, which will disable altitude slope calculations. Otherwise you can set it to a minimum number of meters of altitude error to the destination waypoint before an altitude slope will be used to change altitude. This also gates the gradual altitude ramp used during the approach leg of QRTL.
 
 - Range: 0 1000
 
@@ -4350,42 +4350,6 @@ This controls which NavEKF Kalman filter version is used for attitude and positi
 |3|Enable EKF3|
 |10|Sim|
 |11|ExternalAHRS|
-
-## AHRS_CUSTOM_ROLL: Board orientation roll offset
-
-*Note: This parameter is for advanced users*
-
-Autopilot mounting position roll offset. Positive values = roll right, negative values = roll left. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM.
-
-- Range: -180 180
-
-- Units: deg
-
-- Increment: 1
-
-## AHRS_CUSTOM_PIT: Board orientation pitch offset
-
-*Note: This parameter is for advanced users*
-
-Autopilot mounting position pitch offset. Positive values = pitch up, negative values = pitch down. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM.
-
-- Range: -180 180
-
-- Units: deg
-
-- Increment: 1
-
-## AHRS_CUSTOM_YAW: Board orientation yaw offset
-
-*Note: This parameter is for advanced users*
-
-Autopilot mounting position yaw offset. Positive values = yaw right, negative values = yaw left. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM.
-
-- Range: -180 180
-
-- Units: deg
-
-- Increment: 1
 
 ## AHRS_OPTIONS: Optional AHRS behaviour
 
@@ -18923,48 +18887,6 @@ Extra 8th compass's device id.  Automatically detected, do not set manually
 
 - ReadOnly: True
 
-## COMPASS_CUS_ROLL: Custom orientation roll offset
-
-*Note: This parameter is for advanced users*
-
-Compass mounting position roll offset. Positive values = roll right, negative values = roll left. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM.
-
-- Range: -180 180
-
-- Units: deg
-
-- Increment: 1
-
-- RebootRequired: True
-
-## COMPASS_CUS_PIT: Custom orientation pitch offset
-
-*Note: This parameter is for advanced users*
-
-Compass mounting position pitch offset. Positive values = pitch up, negative values = pitch down. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM.
-
-- Range: -180 180
-
-- Units: deg
-
-- Increment: 1
-
-- RebootRequired: True
-
-## COMPASS_CUS_YAW: Custom orientation yaw offset
-
-*Note: This parameter is for advanced users*
-
-Compass mounting position yaw offset. Positive values = yaw right, negative values = yaw left. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM.
-
-- Range: -180 180
-
-- Units: deg
-
-- Increment: 1
-
-- RebootRequired: True
-
 # COMPASSPMOT Parameters
 
 ## COMPASS_PMOT_EN: per-motor compass correction enable
@@ -23140,7 +23062,7 @@ FF D Gain which produces an output that is proportional to the rate of change of
 
 *Note: This parameter is for advanced users*
 
-PID Target notch filter index
+PID Target notch filter index, zero disables
 
 - Range: 0 8
 
@@ -23148,7 +23070,7 @@ PID Target notch filter index
 
 *Note: This parameter is for advanced users*
 
-PID Error notch filter index
+PID Error notch filter index, zero disables
 
 - Range: 0 8
 
@@ -39623,17 +39545,17 @@ FF D Gain which produces an output that is proportional to the rate of change of
 
 *Note: This parameter is for advanced users*
 
-Pitch Target notch filter index
+Pitch Target notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## PTCH_RATE_NEF: Pitch Error notch filter index
 
 *Note: This parameter is for advanced users*
 
-Pitch Error notch filter index
+Pitch Error notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## PTCH2SRV_ACCEL: Pitch max acceleration
 
@@ -40760,17 +40682,17 @@ FF D Gain which produces an output that is proportional to the rate of change of
 
 *Note: This parameter is for advanced users*
 
-Roll Target notch filter index
+Roll Target notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## Q_A_RAT_RLL_NEF: Roll Error notch filter index
 
 *Note: This parameter is for advanced users*
 
-Roll Error notch filter index
+Roll Error notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## Q_A_RAT_PIT_P: Pitch axis rate controller P gain
 
@@ -40884,17 +40806,17 @@ FF D Gain which produces an output that is proportional to the rate of change of
 
 *Note: This parameter is for advanced users*
 
-Pitch Target notch filter index
+Pitch Target notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## Q_A_RAT_PIT_NEF: Pitch Error notch filter index
 
 *Note: This parameter is for advanced users*
 
-Pitch Error notch filter index
+Pitch Error notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## Q_A_RAT_YAW_P: Yaw axis rate controller P gain
 
@@ -41008,19 +40930,17 @@ FF D Gain which produces an output that is proportional to the rate of change of
 
 *Note: This parameter is for advanced users*
 
-Yaw Target notch filter index
+Yaw Target notch filter index, zero disables
 
-- Range: 1 8
-
-- Units: Hz
+- Range: 0 8
 
 ## Q_A_RAT_YAW_NEF: Yaw Error notch filter index
 
 *Note: This parameter is for advanced users*
 
-Yaw Error notch filter index
+Yaw Error notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## Q_A_THR_MIX_MIN: Throttle Mix Minimum
 
@@ -41669,17 +41589,17 @@ FF D Gain which produces an output that is proportional to the rate of change of
 
 *Note: This parameter is for advanced users*
 
-Accel (vertical) Target notch filter index. If upgrading from 4.6 this is Previously _ACCZ_NTF.
+Accel (vertical) Target notch filter index, zero disables. If upgrading from 4.6 this is Previously _ACCZ_NTF.
 
-- Range: 1 8
+- Range: 0 8
 
 ## Q_P_D_ACC_NEF: Accel (vertical) Error notch filter index
 
 *Note: This parameter is for advanced users*
 
-Accel (vertical) Error notch filter index. If upgrading from 4.6 this is Previously _ACCZ_NEF.
+Accel (vertical) Error notch filter index, zero disables. If upgrading from 4.6 this is Previously _ACCZ_NEF.
 
-- Range: 1 8
+- Range: 0 8
 
 ## Q_P_NE_VEL_P: Velocity (horizontal) P gain
 
@@ -43881,17 +43801,17 @@ FF D Gain which produces an output that is proportional to the rate of change of
 
 *Note: This parameter is for advanced users*
 
-Roll Target notch filter index
+Roll Target notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## RLL_RATE_NEF: Roll Error notch filter index
 
 *Note: This parameter is for advanced users*
 
-Roll Error notch filter index
+Roll Error notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## RLL2SRV_ACCEL: Roll max acceleration
 
@@ -57118,14 +57038,14 @@ FF D Gain which produces an output that is proportional to the rate of change of
 
 *Note: This parameter is for advanced users*
 
-Yaw Target notch filter index
+Yaw Target notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## YAW_RATE_NEF: Yaw Error notch filter index
 
 *Note: This parameter is for advanced users*
 
-Yaw Error notch filter index
+Yaw Error notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8

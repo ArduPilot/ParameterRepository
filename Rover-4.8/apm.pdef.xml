@@ -2302,24 +2302,6 @@
           <value code="11">ExternalAHRS</value>
         </values>
       </param>
-      <param humanName="Board orientation roll offset" name="AHRS_CUSTOM_ROLL" documentation="Autopilot mounting position roll offset. Positive values = roll right, negative values = roll left. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM." user="Advanced">
-        <field name="Range">-180 180</field>
-        <field name="Units">deg</field>
-        <field name="UnitText">degrees</field>
-        <field name="Increment">1</field>
-      </param>
-      <param humanName="Board orientation pitch offset" name="AHRS_CUSTOM_PIT" documentation="Autopilot mounting position pitch offset. Positive values = pitch up, negative values = pitch down. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM." user="Advanced">
-        <field name="Range">-180 180</field>
-        <field name="Units">deg</field>
-        <field name="UnitText">degrees</field>
-        <field name="Increment">1</field>
-      </param>
-      <param humanName="Board orientation yaw offset" name="AHRS_CUSTOM_YAW" documentation="Autopilot mounting position yaw offset. Positive values = yaw right, negative values = yaw left. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM." user="Advanced">
-        <field name="Range">-180 180</field>
-        <field name="Units">deg</field>
-        <field name="UnitText">degrees</field>
-        <field name="Increment">1</field>
-      </param>
       <param humanName="Optional AHRS behaviour" name="AHRS_OPTIONS" documentation="This controls optional AHRS behaviour. Setting DisableDCMFallbackFW will change the AHRS behaviour for fixed wing aircraft in fly-forward flight to not fall back to DCM when the EKF stops navigating. Setting DisableDCMFallbackVTOL will change the AHRS behaviour for fixed wing aircraft in non fly-forward (VTOL) flight to not fall back to DCM when the EKF stops navigating. Setting DontDisableAirspeedUsingEKF disables the EKF based innovation check for airspeed consistency. Setting AutoRecordOrigin will auto-save the EKF origin to parameters when it becomes valid." user="Advanced">
         <bitmask>
           <bit code="0">DisableDCMFallbackFW</bit>
@@ -3048,11 +3030,11 @@
         <field name="Range">0 0.03</field>
         <field name="Increment">0.001</field>
       </param>
-      <param humanName="Steering control Target notch filter index" name="ATC_STR_RAT_NTF" documentation="Steering control Target notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Steering control Target notch filter index" name="ATC_STR_RAT_NTF" documentation="Steering control Target notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
-      <param humanName="Steering control Error notch filter index" name="ATC_STR_RAT_NEF" documentation="Steering control Error notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Steering control Error notch filter index" name="ATC_STR_RAT_NEF" documentation="Steering control Error notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
       <param humanName="Speed control P gain" name="ATC_SPEED_P" documentation="Speed control P gain.  Converts the error between the desired speed (in m/s) and actual speed to a motor output (in the range -1 to +1)" user="Standard">
         <field name="Range">0.010 2.000</field>
@@ -3110,11 +3092,11 @@
         <field name="Range">0 0.03</field>
         <field name="Increment">0.001</field>
       </param>
-      <param humanName="Speed control Target notch filter index" name="ATC_SPEED_NTF" documentation="Speed control Target notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Speed control Target notch filter index" name="ATC_SPEED_NTF" documentation="Speed control Target notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
-      <param humanName="Speed control Error notch filter index" name="ATC_SPEED_NEF" documentation="Speed control Error notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Speed control Error notch filter index" name="ATC_SPEED_NEF" documentation="Speed control Error notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
       <param humanName="Speed control acceleration (and deceleration) maximum in m/s/s" name="ATC_ACCEL_MAX" documentation="Speed control acceleration (and deceleration) maximum in m/s/s.  0 to disable acceleration limiting" user="Standard">
         <field name="Range">0.0 10.0</field>
@@ -3212,11 +3194,11 @@
         <field name="Range">0 0.03</field>
         <field name="Increment">0.001</field>
       </param>
-      <param humanName="Pitch control Target notch filter index" name="ATC_BAL_NTF" documentation="Pitch control Target notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Pitch control Target notch filter index" name="ATC_BAL_NTF" documentation="Pitch control Target notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
-      <param humanName="Pitch control Error notch filter index" name="ATC_BAL_NEF" documentation="Pitch control Error notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Pitch control Error notch filter index" name="ATC_BAL_NEF" documentation="Pitch control Error notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
       <param humanName="Pitch control feed forward from current pitch angle" name="ATC_BAL_PIT_FF" documentation="Pitch control feed forward from current pitch angle" user="Standard">
         <field name="Range">0.0 1.0</field>
@@ -3278,11 +3260,11 @@
         <field name="Range">0 0.03</field>
         <field name="Increment">0.001</field>
       </param>
-      <param humanName="Sail Heel Target notch filter index" name="ATC_SAIL_NTF" documentation="Sail Heel Target notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Sail Heel Target notch filter index" name="ATC_SAIL_NTF" documentation="Sail Heel Target notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
-      <param humanName="Sail Heel Error notch filter index" name="ATC_SAIL_NEF" documentation="Sail Heel Error notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Sail Heel Error notch filter index" name="ATC_SAIL_NEF" documentation="Sail Heel Error notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
       <param humanName="Turning maximum G force" name="ATC_TURN_MAX_G" documentation="The maximum turning acceleration (in units of gravities) that the rover can handle while remaining stable. The navigation code will keep the lateral acceleration below this level to avoid rolling over or slipping the wheels in turns" user="Standard">
         <field name="Units">gravities</field>
@@ -12674,27 +12656,6 @@
       </param>
       <param humanName="Compass8 device id" name="COMPASS_DEV_ID8" documentation="Extra 8th compass's device id.  Automatically detected, do not set manually" user="Advanced">
         <field name="ReadOnly">True</field>
-      </param>
-      <param humanName="Custom orientation roll offset" name="COMPASS_CUS_ROLL" documentation="Compass mounting position roll offset. Positive values = roll right, negative values = roll left. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM." user="Advanced">
-        <field name="Range">-180 180</field>
-        <field name="Units">deg</field>
-        <field name="UnitText">degrees</field>
-        <field name="Increment">1</field>
-        <field name="RebootRequired">True</field>
-      </param>
-      <param humanName="Custom orientation pitch offset" name="COMPASS_CUS_PIT" documentation="Compass mounting position pitch offset. Positive values = pitch up, negative values = pitch down. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM." user="Advanced">
-        <field name="Range">-180 180</field>
-        <field name="Units">deg</field>
-        <field name="UnitText">degrees</field>
-        <field name="Increment">1</field>
-        <field name="RebootRequired">True</field>
-      </param>
-      <param humanName="Custom orientation yaw offset" name="COMPASS_CUS_YAW" documentation="Compass mounting position yaw offset. Positive values = yaw right, negative values = yaw left. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM." user="Advanced">
-        <field name="Range">-180 180</field>
-        <field name="Units">deg</field>
-        <field name="UnitText">degrees</field>
-        <field name="Increment">1</field>
-        <field name="RebootRequired">True</field>
       </param>
     </parameters>
     <parameters name="COMPASS_PMOT">
@@ -40227,11 +40188,11 @@
         <field name="Range">0.000 0.400</field>
         <field name="Increment">0.001</field>
       </param>
-      <param humanName="Wheel rate Target notch filter index" name="WRC_RATE_NTF" documentation="Wheel rate Target notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Wheel rate Target notch filter index" name="WRC_RATE_NTF" documentation="Wheel rate Target notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
-      <param humanName="Wheel rate Error notch filter index" name="WRC_RATE_NEF" documentation="Wheel rate Error notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Wheel rate Error notch filter index" name="WRC_RATE_NEF" documentation="Wheel rate Error notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
       <param humanName="Wheel rate control feed forward gain" name="WRC2_RATE_FF" documentation="Wheel rate control feed forward gain.  Desired rate (in radians/sec) is multiplied by this constant and output to output (in the range -1 to +1)" user="Standard">
         <field name="Range">0.100 2.000</field>
@@ -40282,11 +40243,11 @@
         <field name="Range">0.000 0.400</field>
         <field name="Increment">0.001</field>
       </param>
-      <param humanName="Wheel rate Target notch filter index" name="WRC2_RATE_NTF" documentation="Wheel rate Target notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Wheel rate Target notch filter index" name="WRC2_RATE_NTF" documentation="Wheel rate Target notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
-      <param humanName="Wheel rate Error notch filter index" name="WRC2_RATE_NEF" documentation="Wheel rate Error notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Wheel rate Error notch filter index" name="WRC2_RATE_NEF" documentation="Wheel rate Error notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
     </parameters>
   </libraries>

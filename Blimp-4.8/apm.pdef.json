@@ -10,39 +10,6 @@
       },
       "User": "Advanced"
     },
-    "AHRS_CUSTOM_PIT": {
-      "Description": "Autopilot mounting position pitch offset. Positive values = pitch up, negative values = pitch down. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM.",
-      "DisplayName": "Board orientation pitch offset",
-      "Increment": "1",
-      "Range": {
-        "high": "180",
-        "low": "-180"
-      },
-      "Units": "deg",
-      "User": "Advanced"
-    },
-    "AHRS_CUSTOM_ROLL": {
-      "Description": "Autopilot mounting position roll offset. Positive values = roll right, negative values = roll left. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM.",
-      "DisplayName": "Board orientation roll offset",
-      "Increment": "1",
-      "Range": {
-        "high": "180",
-        "low": "-180"
-      },
-      "Units": "deg",
-      "User": "Advanced"
-    },
-    "AHRS_CUSTOM_YAW": {
-      "Description": "Autopilot mounting position yaw offset. Positive values = yaw right, negative values = yaw left. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM.",
-      "DisplayName": "Board orientation yaw offset",
-      "Increment": "1",
-      "Range": {
-        "high": "180",
-        "low": "-180"
-      },
-      "Units": "deg",
-      "User": "Advanced"
-    },
     "AHRS_EKF_TYPE": {
       "Description": "This controls which NavEKF Kalman filter version is used for attitude and position estimation",
       "DisplayName": "Use NavEKF Kalman filter for attitude and position estimation",
@@ -11622,42 +11589,6 @@
         "8": "Strict"
       }
     },
-    "COMPASS_CUS_PIT": {
-      "Description": "Compass mounting position pitch offset. Positive values = pitch up, negative values = pitch down. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM.",
-      "DisplayName": "Custom orientation pitch offset",
-      "Increment": "1",
-      "Range": {
-        "high": "180",
-        "low": "-180"
-      },
-      "RebootRequired": "True",
-      "Units": "deg",
-      "User": "Advanced"
-    },
-    "COMPASS_CUS_ROLL": {
-      "Description": "Compass mounting position roll offset. Positive values = roll right, negative values = roll left. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM.",
-      "DisplayName": "Custom orientation roll offset",
-      "Increment": "1",
-      "Range": {
-        "high": "180",
-        "low": "-180"
-      },
-      "RebootRequired": "True",
-      "Units": "deg",
-      "User": "Advanced"
-    },
-    "COMPASS_CUS_YAW": {
-      "Description": "Compass mounting position yaw offset. Positive values = yaw right, negative values = yaw left. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM.",
-      "DisplayName": "Custom orientation yaw offset",
-      "Increment": "1",
-      "Range": {
-        "high": "180",
-        "low": "-180"
-      },
-      "RebootRequired": "True",
-      "Units": "deg",
-      "User": "Advanced"
-    },
     "COMPASS_DEC": {
       "Description": "An angle to compensate between the true north and magnetic north",
       "DisplayName": "Compass declination",
@@ -18477,20 +18408,20 @@
       "User": "Standard"
     },
     "LOIT_POSX_NEF": {
-      "Description": "X axis position error notch filter index",
+      "Description": "X axis position error notch filter index, zero disables",
       "DisplayName": "X axis position error notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
     "LOIT_POSX_NTF": {
-      "Description": "X axis position target notch filter index",
+      "Description": "X axis position target notch filter index, zero disables",
       "DisplayName": "X axis position target notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
@@ -18608,20 +18539,20 @@
       "User": "Standard"
     },
     "LOIT_POSYAW_NEF": {
-      "Description": "Yaw axis position error notch filter index",
+      "Description": "Yaw axis position error notch filter index, zero disables",
       "DisplayName": "Yaw axis position error notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
     "LOIT_POSYAW_NTF": {
-      "Description": "Yaw axis position target notch filter index",
+      "Description": "Yaw axis position target notch filter index, zero disables",
       "DisplayName": "Yaw axis position target notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
@@ -18739,20 +18670,20 @@
       "User": "Standard"
     },
     "LOIT_POSY_NEF": {
-      "Description": "Y axis position error notch filter index",
+      "Description": "Y axis position error notch filter index, zero disables",
       "DisplayName": "Y axis position error notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
     "LOIT_POSY_NTF": {
-      "Description": "Y axis position target notch filter index",
+      "Description": "Y axis position target notch filter index, zero disables",
       "DisplayName": "Y axis position target notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
@@ -18870,20 +18801,20 @@
       "User": "Standard"
     },
     "LOIT_POSZ_NEF": {
-      "Description": "Z axis position error notch filter index",
+      "Description": "Z axis position error notch filter index, zero disables",
       "DisplayName": "Z axis position error notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
     "LOIT_POSZ_NTF": {
-      "Description": "Z axis position target notch filter index",
+      "Description": "Z axis position target notch filter index, zero disables",
       "DisplayName": "Z axis position target notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
@@ -19020,20 +18951,20 @@
       "User": "Standard"
     },
     "LOIT_VELX_NEF": {
-      "Description": "X axis velocity error notch filter index",
+      "Description": "X axis velocity error notch filter index, zero disables",
       "DisplayName": "X axis velocity error notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
     "LOIT_VELX_NTF": {
-      "Description": "X axis velocity target notch filter index",
+      "Description": "X axis velocity target notch filter index, zero disables",
       "DisplayName": "X axis velocity target notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
@@ -19151,20 +19082,20 @@
       "User": "Standard"
     },
     "LOIT_VELYAW_NEF": {
-      "Description": "Yaw axis velocity error notch filter index",
+      "Description": "Yaw axis velocity error notch filter index, zero disables",
       "DisplayName": "Yaw axis velocity error notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
     "LOIT_VELYAW_NTF": {
-      "Description": "Yaw axis velocity target notch filter index",
+      "Description": "Yaw axis velocity target notch filter index, zero disables",
       "DisplayName": "Yaw axis velocity target notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
@@ -19282,20 +19213,20 @@
       "User": "Standard"
     },
     "LOIT_VELY_NEF": {
-      "Description": "Y axis velocity error notch filter index",
+      "Description": "Y axis velocity error notch filter index, zero disables",
       "DisplayName": "Y axis velocity error notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
     "LOIT_VELY_NTF": {
-      "Description": "Y axis velocity target notch filter index",
+      "Description": "Y axis velocity target notch filter index, zero disables",
       "DisplayName": "Y axis velocity target notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
@@ -19413,20 +19344,20 @@
       "User": "Standard"
     },
     "LOIT_VELZ_NEF": {
-      "Description": "Z axis velocity error notch filter index",
+      "Description": "Z axis velocity error notch filter index, zero disables",
       "DisplayName": "Z axis velocity error notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
     "LOIT_VELZ_NTF": {
-      "Description": "Z axis velocity target notch filter index",
+      "Description": "Z axis velocity target notch filter index, zero disables",
       "DisplayName": "Z axis velocity target notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },

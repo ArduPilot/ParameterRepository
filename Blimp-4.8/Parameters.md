@@ -3008,42 +3008,6 @@ This controls which NavEKF Kalman filter version is used for attitude and positi
 |10|Sim|
 |11|ExternalAHRS|
 
-## AHRS_CUSTOM_ROLL: Board orientation roll offset
-
-*Note: This parameter is for advanced users*
-
-Autopilot mounting position roll offset. Positive values = roll right, negative values = roll left. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM.
-
-- Range: -180 180
-
-- Units: deg
-
-- Increment: 1
-
-## AHRS_CUSTOM_PIT: Board orientation pitch offset
-
-*Note: This parameter is for advanced users*
-
-Autopilot mounting position pitch offset. Positive values = pitch up, negative values = pitch down. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM.
-
-- Range: -180 180
-
-- Units: deg
-
-- Increment: 1
-
-## AHRS_CUSTOM_YAW: Board orientation yaw offset
-
-*Note: This parameter is for advanced users*
-
-Autopilot mounting position yaw offset. Positive values = yaw right, negative values = yaw left. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM.
-
-- Range: -180 180
-
-- Units: deg
-
-- Increment: 1
-
 ## AHRS_OPTIONS: Optional AHRS behaviour
 
 *Note: This parameter is for advanced users*
@@ -15967,48 +15931,6 @@ Extra 8th compass's device id.  Automatically detected, do not set manually
 
 - ReadOnly: True
 
-## COMPASS_CUS_ROLL: Custom orientation roll offset
-
-*Note: This parameter is for advanced users*
-
-Compass mounting position roll offset. Positive values = roll right, negative values = roll left. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM.
-
-- Range: -180 180
-
-- Units: deg
-
-- Increment: 1
-
-- RebootRequired: True
-
-## COMPASS_CUS_PIT: Custom orientation pitch offset
-
-*Note: This parameter is for advanced users*
-
-Compass mounting position pitch offset. Positive values = pitch up, negative values = pitch down. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM.
-
-- Range: -180 180
-
-- Units: deg
-
-- Increment: 1
-
-- RebootRequired: True
-
-## COMPASS_CUS_YAW: Custom orientation yaw offset
-
-*Note: This parameter is for advanced users*
-
-Compass mounting position yaw offset. Positive values = yaw right, negative values = yaw left. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM.
-
-- Range: -180 180
-
-- Units: deg
-
-- Increment: 1
-
-- RebootRequired: True
-
 # COMPASSPMOT Parameters
 
 ## COMPASS_PMOT_EN: per-motor compass correction enable
@@ -22400,17 +22322,17 @@ FF D Gain which produces an output that is proportional to the rate of change of
 
 *Note: This parameter is for advanced users*
 
-X axis velocity target notch filter index
+X axis velocity target notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## LOIT_VELX_NEF: X axis velocity error notch filter index
 
 *Note: This parameter is for advanced users*
 
-X axis velocity error notch filter index
+X axis velocity error notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## LOIT_VELY_P: Y axis velocity controller P gain
 
@@ -22516,17 +22438,17 @@ FF D Gain which produces an output that is proportional to the rate of change of
 
 *Note: This parameter is for advanced users*
 
-Y axis velocity target notch filter index
+Y axis velocity target notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## LOIT_VELY_NEF: Y axis velocity error notch filter index
 
 *Note: This parameter is for advanced users*
 
-Y axis velocity error notch filter index
+Y axis velocity error notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## LOIT_VELZ_P: Z axis velocity controller P gain
 
@@ -22632,17 +22554,17 @@ FF D Gain which produces an output that is proportional to the rate of change of
 
 *Note: This parameter is for advanced users*
 
-Z axis velocity target notch filter index
+Z axis velocity target notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## LOIT_VELZ_NEF: Z axis velocity error notch filter index
 
 *Note: This parameter is for advanced users*
 
-Z axis velocity error notch filter index
+Z axis velocity error notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## LOIT_VELYAW_P: Yaw axis velocity controller P gain
 
@@ -22748,17 +22670,17 @@ FF D Gain which produces an output that is proportional to the rate of change of
 
 *Note: This parameter is for advanced users*
 
-Yaw axis velocity target notch filter index
+Yaw axis velocity target notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## LOIT_VELYAW_NEF: Yaw axis velocity error notch filter index
 
 *Note: This parameter is for advanced users*
 
-Yaw axis velocity error notch filter index
+Yaw axis velocity error notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## LOIT_POSX_P: X axis position controller P gain
 
@@ -22864,17 +22786,17 @@ FF D Gain which produces an output that is proportional to the rate of change of
 
 *Note: This parameter is for advanced users*
 
-X axis position target notch filter index
+X axis position target notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## LOIT_POSX_NEF: X axis position error notch filter index
 
 *Note: This parameter is for advanced users*
 
-X axis position error notch filter index
+X axis position error notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## LOIT_POSY_P: Y axis position controller P gain
 
@@ -22980,17 +22902,17 @@ FF D Gain which produces an output that is proportional to the rate of change of
 
 *Note: This parameter is for advanced users*
 
-Y axis position target notch filter index
+Y axis position target notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## LOIT_POSY_NEF: Y axis position error notch filter index
 
 *Note: This parameter is for advanced users*
 
-Y axis position error notch filter index
+Y axis position error notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## LOIT_POSZ_P: Z axis position controller P gain
 
@@ -23096,17 +23018,17 @@ FF D Gain which produces an output that is proportional to the rate of change of
 
 *Note: This parameter is for advanced users*
 
-Z axis position target notch filter index
+Z axis position target notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## LOIT_POSZ_NEF: Z axis position error notch filter index
 
 *Note: This parameter is for advanced users*
 
-Z axis position error notch filter index
+Z axis position error notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## LOIT_POSYAW_P: Yaw axis position controller P gain
 
@@ -23212,17 +23134,17 @@ FF D Gain which produces an output that is proportional to the rate of change of
 
 *Note: This parameter is for advanced users*
 
-Yaw axis position target notch filter index
+Yaw axis position target notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## LOIT_POSYAW_NEF: Yaw axis position error notch filter index
 
 *Note: This parameter is for advanced users*
 
-Yaw axis position error notch filter index
+Yaw axis position error notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## LOIT_MAX_VELX: Max X Velocity
 

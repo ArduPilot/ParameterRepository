@@ -41,7 +41,7 @@
         <field name="Units">deg</field>
         <field name="UnitText">degrees</field>
       </param>
-      <param humanName="Altitude slope minimum" name="ArduPlane:ALT_SLOPE_MIN" documentation="This controls the minimum altitude change for a waypoint before an altitude slope will be used instead of an immediate altitude change. The default value is 15 meters, which helps to smooth out waypoint missions where small altitude changes happen near waypoints. If you don't want altitude slopes to be used in missions then you can set this to zero, which will disable altitude slope calculations. Otherwise you can set it to a minimum number of meters of altitude error to the destination waypoint before an altitude slope will be used to change altitude." user="Advanced">
+      <param humanName="Altitude slope minimum" name="ArduPlane:ALT_SLOPE_MIN" documentation="This controls the minimum altitude change for a waypoint before an altitude slope will be used instead of an immediate altitude change. The default value is 15 meters, which helps to smooth out waypoint missions where small altitude changes happen near waypoints. If you don't want altitude slopes to be used in missions then you can set this to zero, which will disable altitude slope calculations. Otherwise you can set it to a minimum number of meters of altitude error to the destination waypoint before an altitude slope will be used to change altitude. This also gates the gradual altitude ramp used during the approach leg of QRTL." user="Advanced">
         <field name="Range">0 1000</field>
         <field name="Increment">1</field>
         <field name="Units">m</field>
@@ -2956,24 +2956,6 @@
           <value code="10">Sim</value>
           <value code="11">ExternalAHRS</value>
         </values>
-      </param>
-      <param humanName="Board orientation roll offset" name="AHRS_CUSTOM_ROLL" documentation="Autopilot mounting position roll offset. Positive values = roll right, negative values = roll left. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM." user="Advanced">
-        <field name="Range">-180 180</field>
-        <field name="Units">deg</field>
-        <field name="UnitText">degrees</field>
-        <field name="Increment">1</field>
-      </param>
-      <param humanName="Board orientation pitch offset" name="AHRS_CUSTOM_PIT" documentation="Autopilot mounting position pitch offset. Positive values = pitch up, negative values = pitch down. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM." user="Advanced">
-        <field name="Range">-180 180</field>
-        <field name="Units">deg</field>
-        <field name="UnitText">degrees</field>
-        <field name="Increment">1</field>
-      </param>
-      <param humanName="Board orientation yaw offset" name="AHRS_CUSTOM_YAW" documentation="Autopilot mounting position yaw offset. Positive values = yaw right, negative values = yaw left. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM." user="Advanced">
-        <field name="Range">-180 180</field>
-        <field name="Units">deg</field>
-        <field name="UnitText">degrees</field>
-        <field name="Increment">1</field>
       </param>
       <param humanName="Optional AHRS behaviour" name="AHRS_OPTIONS" documentation="This controls optional AHRS behaviour. Setting DisableDCMFallbackFW will change the AHRS behaviour for fixed wing aircraft in fly-forward flight to not fall back to DCM when the EKF stops navigating. Setting DisableDCMFallbackVTOL will change the AHRS behaviour for fixed wing aircraft in non fly-forward (VTOL) flight to not fall back to DCM when the EKF stops navigating. Setting DontDisableAirspeedUsingEKF disables the EKF based innovation check for airspeed consistency. Setting AutoRecordOrigin will auto-save the EKF origin to parameters when it becomes valid." user="Advanced">
         <bitmask>
@@ -13214,27 +13196,6 @@
       <param humanName="Compass8 device id" name="COMPASS_DEV_ID8" documentation="Extra 8th compass's device id.  Automatically detected, do not set manually" user="Advanced">
         <field name="ReadOnly">True</field>
       </param>
-      <param humanName="Custom orientation roll offset" name="COMPASS_CUS_ROLL" documentation="Compass mounting position roll offset. Positive values = roll right, negative values = roll left. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM." user="Advanced">
-        <field name="Range">-180 180</field>
-        <field name="Units">deg</field>
-        <field name="UnitText">degrees</field>
-        <field name="Increment">1</field>
-        <field name="RebootRequired">True</field>
-      </param>
-      <param humanName="Custom orientation pitch offset" name="COMPASS_CUS_PIT" documentation="Compass mounting position pitch offset. Positive values = pitch up, negative values = pitch down. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM." user="Advanced">
-        <field name="Range">-180 180</field>
-        <field name="Units">deg</field>
-        <field name="UnitText">degrees</field>
-        <field name="Increment">1</field>
-        <field name="RebootRequired">True</field>
-      </param>
-      <param humanName="Custom orientation yaw offset" name="COMPASS_CUS_YAW" documentation="Compass mounting position yaw offset. Positive values = yaw right, negative values = yaw left. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM." user="Advanced">
-        <field name="Range">-180 180</field>
-        <field name="Units">deg</field>
-        <field name="UnitText">degrees</field>
-        <field name="Increment">1</field>
-        <field name="RebootRequired">True</field>
-      </param>
     </parameters>
     <parameters name="COMPASS_PMOT">
       <param humanName="per-motor compass correction enable" name="COMPASS_PMOT_EN" documentation="This enables per-motor compass corrections" user="Advanced">
@@ -15712,10 +15673,10 @@
         <field name="Range">0 0.02</field>
         <field name="Increment">0.0001</field>
       </param>
-      <param humanName="PID Target notch filter index" name="GUIDED_NTF" documentation="PID Target notch filter index" user="Advanced">
+      <param humanName="PID Target notch filter index" name="GUIDED_NTF" documentation="PID Target notch filter index, zero disables" user="Advanced">
         <field name="Range">0 8</field>
       </param>
-      <param humanName="PID Error notch filter index" name="GUIDED_NEF" documentation="PID Error notch filter index" user="Advanced">
+      <param humanName="PID Error notch filter index" name="GUIDED_NEF" documentation="PID Error notch filter index, zero disables" user="Advanced">
         <field name="Range">0 8</field>
       </param>
     </parameters>
@@ -24993,11 +24954,11 @@
         <field name="Range">0 0.03</field>
         <field name="Increment">0.001</field>
       </param>
-      <param humanName="Pitch Target notch filter index" name="PTCH_RATE_NTF" documentation="Pitch Target notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Pitch Target notch filter index" name="PTCH_RATE_NTF" documentation="Pitch Target notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
-      <param humanName="Pitch Error notch filter index" name="PTCH_RATE_NEF" documentation="Pitch Error notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Pitch Error notch filter index" name="PTCH_RATE_NEF" documentation="Pitch Error notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
       <param humanName="Pitch max acceleration" name="PTCH2SRV_ACCEL" documentation="Pitch acceleration limit. Setting to zero disables input shaping." user="Advanced">
         <field name="Range">0 2500</field>
@@ -25707,11 +25668,11 @@
         <field name="Range">0 0.02</field>
         <field name="Increment">0.0001</field>
       </param>
-      <param humanName="Roll Target notch filter index" name="Q_A_RAT_RLL_NTF" documentation="Roll Target notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Roll Target notch filter index" name="Q_A_RAT_RLL_NTF" documentation="Roll Target notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
-      <param humanName="Roll Error notch filter index" name="Q_A_RAT_RLL_NEF" documentation="Roll Error notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Roll Error notch filter index" name="Q_A_RAT_RLL_NEF" documentation="Roll Error notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
       <param humanName="Pitch axis rate controller P gain" name="Q_A_RAT_PIT_P" documentation="Pitch axis rate controller P gain.  Corrects in proportion to the difference between the desired pitch rate vs actual pitch rate output" user="Standard">
         <field name="Units">s/rad</field>
@@ -25773,11 +25734,11 @@
         <field name="Range">0 0.02</field>
         <field name="Increment">0.0001</field>
       </param>
-      <param humanName="Pitch Target notch filter index" name="Q_A_RAT_PIT_NTF" documentation="Pitch Target notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Pitch Target notch filter index" name="Q_A_RAT_PIT_NTF" documentation="Pitch Target notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
-      <param humanName="Pitch Error notch filter index" name="Q_A_RAT_PIT_NEF" documentation="Pitch Error notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Pitch Error notch filter index" name="Q_A_RAT_PIT_NEF" documentation="Pitch Error notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
       <param humanName="Yaw axis rate controller P gain" name="Q_A_RAT_YAW_P" documentation="Yaw axis rate controller P gain.  Corrects in proportion to the difference between the desired yaw rate vs actual yaw rate" user="Standard">
         <field name="Units">s/rad</field>
@@ -25839,13 +25800,11 @@
         <field name="Range">0 0.02</field>
         <field name="Increment">0.0001</field>
       </param>
-      <param humanName="Yaw Target notch filter index" name="Q_A_RAT_YAW_NTF" documentation="Yaw Target notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
-        <field name="Units">Hz</field>
-        <field name="UnitText">hertz</field>
+      <param humanName="Yaw Target notch filter index" name="Q_A_RAT_YAW_NTF" documentation="Yaw Target notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
-      <param humanName="Yaw Error notch filter index" name="Q_A_RAT_YAW_NEF" documentation="Yaw Error notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Yaw Error notch filter index" name="Q_A_RAT_YAW_NEF" documentation="Yaw Error notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
       <param humanName="Throttle Mix Minimum" name="Q_A_THR_MIX_MIN" documentation="Throttle vs attitude control prioritisation used when landing (higher values mean we prioritise attitude control over throttle)" user="Advanced">
         <field name="Range">0.1 0.25</field>
@@ -26181,11 +26140,11 @@
         <field name="Range">0.000 0.050</field>
         <field name="Increment">0.001</field>
       </param>
-      <param humanName="Accel (vertical) Target notch filter index" name="Q_P_D_ACC_NTF" documentation="Accel (vertical) Target notch filter index. If upgrading from 4.6 this is Previously _ACCZ_NTF." user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Accel (vertical) Target notch filter index" name="Q_P_D_ACC_NTF" documentation="Accel (vertical) Target notch filter index, zero disables. If upgrading from 4.6 this is Previously _ACCZ_NTF." user="Advanced">
+        <field name="Range">0 8</field>
       </param>
-      <param humanName="Accel (vertical) Error notch filter index" name="Q_P_D_ACC_NEF" documentation="Accel (vertical) Error notch filter index. If upgrading from 4.6 this is Previously _ACCZ_NEF." user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Accel (vertical) Error notch filter index" name="Q_P_D_ACC_NEF" documentation="Accel (vertical) Error notch filter index, zero disables. If upgrading from 4.6 this is Previously _ACCZ_NEF." user="Advanced">
+        <field name="Range">0 8</field>
       </param>
       <param humanName="Velocity (horizontal) P gain" name="Q_P_NE_VEL_P" documentation="Velocity (horizontal) P gain. Converts the difference between desired and actual velocity to a target acceleration. Previously _VELXY_P." user="Advanced">
         <field name="Range">0.10 10.00</field>
@@ -30200,11 +30159,11 @@
         <field name="Range">0 0.03</field>
         <field name="Increment">0.001</field>
       </param>
-      <param humanName="Roll Target notch filter index" name="RLL_RATE_NTF" documentation="Roll Target notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Roll Target notch filter index" name="RLL_RATE_NTF" documentation="Roll Target notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
-      <param humanName="Roll Error notch filter index" name="RLL_RATE_NEF" documentation="Roll Error notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Roll Error notch filter index" name="RLL_RATE_NEF" documentation="Roll Error notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
       <param humanName="Roll max acceleration" name="RLL2SRV_ACCEL" documentation="Roll acceleration limit. Setting to zero disables input shaping." user="Advanced">
         <field name="Range">0 2500</field>
@@ -44152,11 +44111,11 @@
         <field name="Range">0 0.03</field>
         <field name="Increment">0.001</field>
       </param>
-      <param humanName="Yaw Target notch filter index" name="YAW_RATE_NTF" documentation="Yaw Target notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Yaw Target notch filter index" name="YAW_RATE_NTF" documentation="Yaw Target notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
-      <param humanName="Yaw Error notch filter index" name="YAW_RATE_NEF" documentation="Yaw Error notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Yaw Error notch filter index" name="YAW_RATE_NEF" documentation="Yaw Error notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
     </parameters>
   </libraries>

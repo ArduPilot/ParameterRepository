@@ -52,39 +52,6 @@
       },
       "User": "Advanced"
     },
-    "AHRS_CUSTOM_PIT": {
-      "Description": "Autopilot mounting position pitch offset. Positive values = pitch up, negative values = pitch down. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM.",
-      "DisplayName": "Board orientation pitch offset",
-      "Increment": "1",
-      "Range": {
-        "high": "180",
-        "low": "-180"
-      },
-      "Units": "deg",
-      "User": "Advanced"
-    },
-    "AHRS_CUSTOM_ROLL": {
-      "Description": "Autopilot mounting position roll offset. Positive values = roll right, negative values = roll left. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM.",
-      "DisplayName": "Board orientation roll offset",
-      "Increment": "1",
-      "Range": {
-        "high": "180",
-        "low": "-180"
-      },
-      "Units": "deg",
-      "User": "Advanced"
-    },
-    "AHRS_CUSTOM_YAW": {
-      "Description": "Autopilot mounting position yaw offset. Positive values = yaw right, negative values = yaw left. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM.",
-      "DisplayName": "Board orientation yaw offset",
-      "Increment": "1",
-      "Range": {
-        "high": "180",
-        "low": "-180"
-      },
-      "Units": "deg",
-      "User": "Advanced"
-    },
     "AHRS_EKF_TYPE": {
       "Description": "This controls which NavEKF Kalman filter version is used for attitude and position estimation",
       "DisplayName": "Use NavEKF Kalman filter for attitude and position estimation",
@@ -8756,42 +8723,6 @@
         "4": "Very Strict",
         "8": "Strict"
       }
-    },
-    "COMPASS_CUS_PIT": {
-      "Description": "Compass mounting position pitch offset. Positive values = pitch up, negative values = pitch down. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM.",
-      "DisplayName": "Custom orientation pitch offset",
-      "Increment": "1",
-      "Range": {
-        "high": "180",
-        "low": "-180"
-      },
-      "RebootRequired": "True",
-      "Units": "deg",
-      "User": "Advanced"
-    },
-    "COMPASS_CUS_ROLL": {
-      "Description": "Compass mounting position roll offset. Positive values = roll right, negative values = roll left. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM.",
-      "DisplayName": "Custom orientation roll offset",
-      "Increment": "1",
-      "Range": {
-        "high": "180",
-        "low": "-180"
-      },
-      "RebootRequired": "True",
-      "Units": "deg",
-      "User": "Advanced"
-    },
-    "COMPASS_CUS_YAW": {
-      "Description": "Compass mounting position yaw offset. Positive values = yaw right, negative values = yaw left. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM.",
-      "DisplayName": "Custom orientation yaw offset",
-      "Increment": "1",
-      "Range": {
-        "high": "180",
-        "low": "-180"
-      },
-      "RebootRequired": "True",
-      "Units": "deg",
-      "User": "Advanced"
     },
     "COMPASS_DEC": {
       "Description": "An angle to compensate between the true north and magnetic north",

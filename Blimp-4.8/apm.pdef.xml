@@ -1969,24 +1969,6 @@
           <value code="11">ExternalAHRS</value>
         </values>
       </param>
-      <param humanName="Board orientation roll offset" name="AHRS_CUSTOM_ROLL" documentation="Autopilot mounting position roll offset. Positive values = roll right, negative values = roll left. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM." user="Advanced">
-        <field name="Range">-180 180</field>
-        <field name="Units">deg</field>
-        <field name="UnitText">degrees</field>
-        <field name="Increment">1</field>
-      </param>
-      <param humanName="Board orientation pitch offset" name="AHRS_CUSTOM_PIT" documentation="Autopilot mounting position pitch offset. Positive values = pitch up, negative values = pitch down. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM." user="Advanced">
-        <field name="Range">-180 180</field>
-        <field name="Units">deg</field>
-        <field name="UnitText">degrees</field>
-        <field name="Increment">1</field>
-      </param>
-      <param humanName="Board orientation yaw offset" name="AHRS_CUSTOM_YAW" documentation="Autopilot mounting position yaw offset. Positive values = yaw right, negative values = yaw left. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM." user="Advanced">
-        <field name="Range">-180 180</field>
-        <field name="Units">deg</field>
-        <field name="UnitText">degrees</field>
-        <field name="Increment">1</field>
-      </param>
       <param humanName="Optional AHRS behaviour" name="AHRS_OPTIONS" documentation="This controls optional AHRS behaviour. Setting DisableDCMFallbackFW will change the AHRS behaviour for fixed wing aircraft in fly-forward flight to not fall back to DCM when the EKF stops navigating. Setting DisableDCMFallbackVTOL will change the AHRS behaviour for fixed wing aircraft in non fly-forward (VTOL) flight to not fall back to DCM when the EKF stops navigating. Setting DontDisableAirspeedUsingEKF disables the EKF based innovation check for airspeed consistency. Setting AutoRecordOrigin will auto-save the EKF origin to parameters when it becomes valid." user="Advanced">
         <bitmask>
           <bit code="0">DisableDCMFallbackFW</bit>
@@ -10938,27 +10920,6 @@
       <param humanName="Compass8 device id" name="COMPASS_DEV_ID8" documentation="Extra 8th compass's device id.  Automatically detected, do not set manually" user="Advanced">
         <field name="ReadOnly">True</field>
       </param>
-      <param humanName="Custom orientation roll offset" name="COMPASS_CUS_ROLL" documentation="Compass mounting position roll offset. Positive values = roll right, negative values = roll left. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM." user="Advanced">
-        <field name="Range">-180 180</field>
-        <field name="Units">deg</field>
-        <field name="UnitText">degrees</field>
-        <field name="Increment">1</field>
-        <field name="RebootRequired">True</field>
-      </param>
-      <param humanName="Custom orientation pitch offset" name="COMPASS_CUS_PIT" documentation="Compass mounting position pitch offset. Positive values = pitch up, negative values = pitch down. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM." user="Advanced">
-        <field name="Range">-180 180</field>
-        <field name="Units">deg</field>
-        <field name="UnitText">degrees</field>
-        <field name="Increment">1</field>
-        <field name="RebootRequired">True</field>
-      </param>
-      <param humanName="Custom orientation yaw offset" name="COMPASS_CUS_YAW" documentation="Compass mounting position yaw offset. Positive values = yaw right, negative values = yaw left. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM." user="Advanced">
-        <field name="Range">-180 180</field>
-        <field name="Units">deg</field>
-        <field name="UnitText">degrees</field>
-        <field name="Increment">1</field>
-        <field name="RebootRequired">True</field>
-      </param>
     </parameters>
     <parameters name="COMPASS_PMOT">
       <param humanName="per-motor compass correction enable" name="COMPASS_PMOT_EN" documentation="This enables per-motor compass corrections" user="Advanced">
@@ -14565,11 +14526,11 @@
         <field name="Range">0 0.02</field>
         <field name="Increment">0.0001</field>
       </param>
-      <param humanName="X axis velocity target notch filter index" name="LOIT_VELX_NTF" documentation="X axis velocity target notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="X axis velocity target notch filter index" name="LOIT_VELX_NTF" documentation="X axis velocity target notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
-      <param humanName="X axis velocity error notch filter index" name="LOIT_VELX_NEF" documentation="X axis velocity error notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="X axis velocity error notch filter index" name="LOIT_VELX_NEF" documentation="X axis velocity error notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
       <param humanName="Y axis velocity controller P gain" name="LOIT_VELY_P" documentation="Y axis velocity controller P gain.  Corrects in proportion to the difference between the desired Y velocity vs actual Y velocity" user="Standard">
         <field name="Range">0.01 0.5</field>
@@ -14621,11 +14582,11 @@
         <field name="Range">0 0.02</field>
         <field name="Increment">0.0001</field>
       </param>
-      <param humanName="Y axis velocity target notch filter index" name="LOIT_VELY_NTF" documentation="Y axis velocity target notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Y axis velocity target notch filter index" name="LOIT_VELY_NTF" documentation="Y axis velocity target notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
-      <param humanName="Y axis velocity error notch filter index" name="LOIT_VELY_NEF" documentation="Y axis velocity error notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Y axis velocity error notch filter index" name="LOIT_VELY_NEF" documentation="Y axis velocity error notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
       <param humanName="Z axis velocity controller P gain" name="LOIT_VELZ_P" documentation="Z axis velocity controller P gain.  Corrects in proportion to the difference between the desired Z velocity vs actual Z velocity" user="Standard">
         <field name="Range">0.01 0.5</field>
@@ -14677,11 +14638,11 @@
         <field name="Range">0 0.02</field>
         <field name="Increment">0.0001</field>
       </param>
-      <param humanName="Z axis velocity target notch filter index" name="LOIT_VELZ_NTF" documentation="Z axis velocity target notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Z axis velocity target notch filter index" name="LOIT_VELZ_NTF" documentation="Z axis velocity target notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
-      <param humanName="Z axis velocity error notch filter index" name="LOIT_VELZ_NEF" documentation="Z axis velocity error notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Z axis velocity error notch filter index" name="LOIT_VELZ_NEF" documentation="Z axis velocity error notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
       <param humanName="Yaw axis velocity controller P gain" name="LOIT_VELYAW_P" documentation="Yaw axis velocity controller P gain.  Corrects in proportion to the difference between the desired Yaw velocity vs actual Yaw velocity" user="Standard">
         <field name="Range">0.01 0.5</field>
@@ -14733,11 +14694,11 @@
         <field name="Range">0 0.02</field>
         <field name="Increment">0.0001</field>
       </param>
-      <param humanName="Yaw axis velocity target notch filter index" name="LOIT_VELYAW_NTF" documentation="Yaw axis velocity target notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Yaw axis velocity target notch filter index" name="LOIT_VELYAW_NTF" documentation="Yaw axis velocity target notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
-      <param humanName="Yaw axis velocity error notch filter index" name="LOIT_VELYAW_NEF" documentation="Yaw axis velocity error notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Yaw axis velocity error notch filter index" name="LOIT_VELYAW_NEF" documentation="Yaw axis velocity error notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
       <param humanName="X axis position controller P gain" name="LOIT_POSX_P" documentation="X axis position controller P gain.  Corrects in proportion to the difference between the desired X position vs actual X position" user="Standard">
         <field name="Range">0.01 0.5</field>
@@ -14789,11 +14750,11 @@
         <field name="Range">0 0.02</field>
         <field name="Increment">0.0001</field>
       </param>
-      <param humanName="X axis position target notch filter index" name="LOIT_POSX_NTF" documentation="X axis position target notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="X axis position target notch filter index" name="LOIT_POSX_NTF" documentation="X axis position target notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
-      <param humanName="X axis position error notch filter index" name="LOIT_POSX_NEF" documentation="X axis position error notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="X axis position error notch filter index" name="LOIT_POSX_NEF" documentation="X axis position error notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
       <param humanName="Y axis position controller P gain" name="LOIT_POSY_P" documentation="Y axis position controller P gain.  Corrects in proportion to the difference between the desired Y position vs actual Y position" user="Standard">
         <field name="Range">0.01 0.5</field>
@@ -14845,11 +14806,11 @@
         <field name="Range">0 0.02</field>
         <field name="Increment">0.0001</field>
       </param>
-      <param humanName="Y axis position target notch filter index" name="LOIT_POSY_NTF" documentation="Y axis position target notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Y axis position target notch filter index" name="LOIT_POSY_NTF" documentation="Y axis position target notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
-      <param humanName="Y axis position error notch filter index" name="LOIT_POSY_NEF" documentation="Y axis position error notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Y axis position error notch filter index" name="LOIT_POSY_NEF" documentation="Y axis position error notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
       <param humanName="Z axis position controller P gain" name="LOIT_POSZ_P" documentation="Z axis position controller P gain.  Corrects in proportion to the difference between the desired Z position vs actual Z position" user="Standard">
         <field name="Range">0.01 0.5</field>
@@ -14901,11 +14862,11 @@
         <field name="Range">0 0.02</field>
         <field name="Increment">0.0001</field>
       </param>
-      <param humanName="Z axis position target notch filter index" name="LOIT_POSZ_NTF" documentation="Z axis position target notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Z axis position target notch filter index" name="LOIT_POSZ_NTF" documentation="Z axis position target notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
-      <param humanName="Z axis position error notch filter index" name="LOIT_POSZ_NEF" documentation="Z axis position error notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Z axis position error notch filter index" name="LOIT_POSZ_NEF" documentation="Z axis position error notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
       <param humanName="Yaw axis position controller P gain" name="LOIT_POSYAW_P" documentation="Yaw axis position controller P gain.  Corrects in proportion to the difference between the desired Yaw position vs actual Yaw position" user="Standard">
         <field name="Range">0.01 0.5</field>
@@ -14957,11 +14918,11 @@
         <field name="Range">0 0.02</field>
         <field name="Increment">0.0001</field>
       </param>
-      <param humanName="Yaw axis position target notch filter index" name="LOIT_POSYAW_NTF" documentation="Yaw axis position target notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Yaw axis position target notch filter index" name="LOIT_POSYAW_NTF" documentation="Yaw axis position target notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
-      <param humanName="Yaw axis position error notch filter index" name="LOIT_POSYAW_NEF" documentation="Yaw axis position error notch filter index" user="Advanced">
-        <field name="Range">1 8</field>
+      <param humanName="Yaw axis position error notch filter index" name="LOIT_POSYAW_NEF" documentation="Yaw axis position error notch filter index, zero disables" user="Advanced">
+        <field name="Range">0 8</field>
       </param>
       <param humanName="Max X Velocity" name="LOIT_MAX_VELX" documentation="Sets the maximum X velocity, in m/s" user="Standard">
         <field name="Range">0.2 5</field>

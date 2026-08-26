@@ -7463,63 +7463,6 @@ This controls which NavEKF Kalman filter version is used for attitude and positi
 
 
 
-.. _AHRS_CUSTOM_ROLL:
-
-AHRS\_CUSTOM\_ROLL: Board orientation roll offset
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Autopilot mounting position roll offset\. Positive values \= roll right\, negative values \= roll left\. This parameter is only used when AHRS\_ORIENTATION is set to CUSTOM\.
-
-
-+-----------+-------------+---------+
-| Increment | Range       | Units   |
-+===========+=============+=========+
-| 1         | -180 to 180 | degrees |
-+-----------+-------------+---------+
-
-
-
-
-.. _AHRS_CUSTOM_PIT:
-
-AHRS\_CUSTOM\_PIT: Board orientation pitch offset
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Autopilot mounting position pitch offset\. Positive values \= pitch up\, negative values \= pitch down\. This parameter is only used when AHRS\_ORIENTATION is set to CUSTOM\.
-
-
-+-----------+-------------+---------+
-| Increment | Range       | Units   |
-+===========+=============+=========+
-| 1         | -180 to 180 | degrees |
-+-----------+-------------+---------+
-
-
-
-
-.. _AHRS_CUSTOM_YAW:
-
-AHRS\_CUSTOM\_YAW: Board orientation yaw offset
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Autopilot mounting position yaw offset\. Positive values \= yaw right\, negative values \= yaw left\. This parameter is only used when AHRS\_ORIENTATION is set to CUSTOM\.
-
-
-+-----------+-------------+---------+
-| Increment | Range       | Units   |
-+===========+=============+=========+
-| 1         | -180 to 180 | degrees |
-+-----------+-------------+---------+
-
-
-
-
 .. _AHRS_OPTIONS:
 
 AHRS\_OPTIONS: Optional AHRS behaviour
@@ -37257,66 +37200,6 @@ Extra 8th compass\'s device id\.  Automatically detected\, do not set manually
 
 
 
-.. _COMPASS_CUS_ROLL:
-
-COMPASS\_CUS\_ROLL: Custom orientation roll offset
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-| *Note: Reboot required after change*
-
-Compass mounting position roll offset\. Positive values \= roll right\, negative values \= roll left\. This parameter is only used when COMPASS\_ORIENT\/2\/3 is set to CUSTOM\.
-
-
-+-----------+-------------+---------+
-| Increment | Range       | Units   |
-+===========+=============+=========+
-| 1         | -180 to 180 | degrees |
-+-----------+-------------+---------+
-
-
-
-
-.. _COMPASS_CUS_PIT:
-
-COMPASS\_CUS\_PIT: Custom orientation pitch offset
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-| *Note: Reboot required after change*
-
-Compass mounting position pitch offset\. Positive values \= pitch up\, negative values \= pitch down\. This parameter is only used when COMPASS\_ORIENT\/2\/3 is set to CUSTOM\.
-
-
-+-----------+-------------+---------+
-| Increment | Range       | Units   |
-+===========+=============+=========+
-| 1         | -180 to 180 | degrees |
-+-----------+-------------+---------+
-
-
-
-
-.. _COMPASS_CUS_YAW:
-
-COMPASS\_CUS\_YAW: Custom orientation yaw offset
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-| *Note: Reboot required after change*
-
-Compass mounting position yaw offset\. Positive values \= yaw right\, negative values \= yaw left\. This parameter is only used when COMPASS\_ORIENT\/2\/3 is set to CUSTOM\.
-
-
-+-----------+-------------+---------+
-| Increment | Range       | Units   |
-+===========+=============+=========+
-| 1         | -180 to 180 | degrees |
-+-----------+-------------+---------+
-
-
-
-
 
 .. _parameters_COMPASS_PMOT:
 
@@ -49849,13 +49732,13 @@ LOIT\_VELX\_NTF: X axis velocity target notch filter index
 
 | *Note: This parameter is for advanced users*
 
-X axis velocity target notch filter index
+X axis velocity target notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -49868,13 +49751,13 @@ LOIT\_VELX\_NEF: X axis velocity error notch filter index
 
 | *Note: This parameter is for advanced users*
 
-X axis velocity error notch filter index
+X axis velocity error notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -50088,13 +49971,13 @@ LOIT\_VELY\_NTF: Y axis velocity target notch filter index
 
 | *Note: This parameter is for advanced users*
 
-Y axis velocity target notch filter index
+Y axis velocity target notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -50107,13 +49990,13 @@ LOIT\_VELY\_NEF: Y axis velocity error notch filter index
 
 | *Note: This parameter is for advanced users*
 
-Y axis velocity error notch filter index
+Y axis velocity error notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -50327,13 +50210,13 @@ LOIT\_VELZ\_NTF: Z axis velocity target notch filter index
 
 | *Note: This parameter is for advanced users*
 
-Z axis velocity target notch filter index
+Z axis velocity target notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -50346,13 +50229,13 @@ LOIT\_VELZ\_NEF: Z axis velocity error notch filter index
 
 | *Note: This parameter is for advanced users*
 
-Z axis velocity error notch filter index
+Z axis velocity error notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -50566,13 +50449,13 @@ LOIT\_VELYAW\_NTF: Yaw axis velocity target notch filter index
 
 | *Note: This parameter is for advanced users*
 
-Yaw axis velocity target notch filter index
+Yaw axis velocity target notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -50585,13 +50468,13 @@ LOIT\_VELYAW\_NEF: Yaw axis velocity error notch filter index
 
 | *Note: This parameter is for advanced users*
 
-Yaw axis velocity error notch filter index
+Yaw axis velocity error notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -50805,13 +50688,13 @@ LOIT\_POSX\_NTF: X axis position target notch filter index
 
 | *Note: This parameter is for advanced users*
 
-X axis position target notch filter index
+X axis position target notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -50824,13 +50707,13 @@ LOIT\_POSX\_NEF: X axis position error notch filter index
 
 | *Note: This parameter is for advanced users*
 
-X axis position error notch filter index
+X axis position error notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -51044,13 +50927,13 @@ LOIT\_POSY\_NTF: Y axis position target notch filter index
 
 | *Note: This parameter is for advanced users*
 
-Y axis position target notch filter index
+Y axis position target notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -51063,13 +50946,13 @@ LOIT\_POSY\_NEF: Y axis position error notch filter index
 
 | *Note: This parameter is for advanced users*
 
-Y axis position error notch filter index
+Y axis position error notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -51283,13 +51166,13 @@ LOIT\_POSZ\_NTF: Z axis position target notch filter index
 
 | *Note: This parameter is for advanced users*
 
-Z axis position target notch filter index
+Z axis position target notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -51302,13 +51185,13 @@ LOIT\_POSZ\_NEF: Z axis position error notch filter index
 
 | *Note: This parameter is for advanced users*
 
-Z axis position error notch filter index
+Z axis position error notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -51522,13 +51405,13 @@ LOIT\_POSYAW\_NTF: Yaw axis position target notch filter index
 
 | *Note: This parameter is for advanced users*
 
-Yaw axis position target notch filter index
+Yaw axis position target notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -51541,13 +51424,13 @@ LOIT\_POSYAW\_NEF: Yaw axis position error notch filter index
 
 | *Note: This parameter is for advanced users*
 
-Yaw axis position error notch filter index
+Yaw axis position error notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 

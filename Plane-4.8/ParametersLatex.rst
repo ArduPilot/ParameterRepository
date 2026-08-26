@@ -163,7 +163,7 @@ ALT\_SLOPE\_MIN: Altitude slope minimum
 
 | *Note: This parameter is for advanced users*
 
-This controls the minimum altitude change for a waypoint before an altitude slope will be used instead of an immediate altitude change\. The default value is 15 meters\, which helps to smooth out waypoint missions where small altitude changes happen near waypoints\. If you don\'t want altitude slopes to be used in missions then you can set this to zero\, which will disable altitude slope calculations\. Otherwise you can set it to a minimum number of meters of altitude error to the destination waypoint before an altitude slope will be used to change altitude\.
+This controls the minimum altitude change for a waypoint before an altitude slope will be used instead of an immediate altitude change\. The default value is 15 meters\, which helps to smooth out waypoint missions where small altitude changes happen near waypoints\. If you don\'t want altitude slopes to be used in missions then you can set this to zero\, which will disable altitude slope calculations\. Otherwise you can set it to a minimum number of meters of altitude error to the destination waypoint before an altitude slope will be used to change altitude\. This also gates the gradual altitude ramp used during the approach leg of QRTL\.
 
 
 +-----------+-----------+--------+
@@ -10344,63 +10344,6 @@ This controls which NavEKF Kalman filter version is used for attitude and positi
 +-------+--------------+
 | 11    | ExternalAHRS |
 +-------+--------------+
-
-
-
-
-.. _AHRS_CUSTOM_ROLL:
-
-AHRS\_CUSTOM\_ROLL: Board orientation roll offset
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Autopilot mounting position roll offset\. Positive values \= roll right\, negative values \= roll left\. This parameter is only used when AHRS\_ORIENTATION is set to CUSTOM\.
-
-
-+-----------+-------------+---------+
-| Increment | Range       | Units   |
-+===========+=============+=========+
-| 1         | -180 to 180 | degrees |
-+-----------+-------------+---------+
-
-
-
-
-.. _AHRS_CUSTOM_PIT:
-
-AHRS\_CUSTOM\_PIT: Board orientation pitch offset
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Autopilot mounting position pitch offset\. Positive values \= pitch up\, negative values \= pitch down\. This parameter is only used when AHRS\_ORIENTATION is set to CUSTOM\.
-
-
-+-----------+-------------+---------+
-| Increment | Range       | Units   |
-+===========+=============+=========+
-| 1         | -180 to 180 | degrees |
-+-----------+-------------+---------+
-
-
-
-
-.. _AHRS_CUSTOM_YAW:
-
-AHRS\_CUSTOM\_YAW: Board orientation yaw offset
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Autopilot mounting position yaw offset\. Positive values \= yaw right\, negative values \= yaw left\. This parameter is only used when AHRS\_ORIENTATION is set to CUSTOM\.
-
-
-+-----------+-------------+---------+
-| Increment | Range       | Units   |
-+===========+=============+=========+
-| 1         | -180 to 180 | degrees |
-+-----------+-------------+---------+
 
 
 
@@ -43572,66 +43515,6 @@ Extra 8th compass\'s device id\.  Automatically detected\, do not set manually
 
 
 
-.. _COMPASS_CUS_ROLL:
-
-COMPASS\_CUS\_ROLL: Custom orientation roll offset
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-| *Note: Reboot required after change*
-
-Compass mounting position roll offset\. Positive values \= roll right\, negative values \= roll left\. This parameter is only used when COMPASS\_ORIENT\/2\/3 is set to CUSTOM\.
-
-
-+-----------+-------------+---------+
-| Increment | Range       | Units   |
-+===========+=============+=========+
-| 1         | -180 to 180 | degrees |
-+-----------+-------------+---------+
-
-
-
-
-.. _COMPASS_CUS_PIT:
-
-COMPASS\_CUS\_PIT: Custom orientation pitch offset
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-| *Note: Reboot required after change*
-
-Compass mounting position pitch offset\. Positive values \= pitch up\, negative values \= pitch down\. This parameter is only used when COMPASS\_ORIENT\/2\/3 is set to CUSTOM\.
-
-
-+-----------+-------------+---------+
-| Increment | Range       | Units   |
-+===========+=============+=========+
-| 1         | -180 to 180 | degrees |
-+-----------+-------------+---------+
-
-
-
-
-.. _COMPASS_CUS_YAW:
-
-COMPASS\_CUS\_YAW: Custom orientation yaw offset
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-| *Note: Reboot required after change*
-
-Compass mounting position yaw offset\. Positive values \= yaw right\, negative values \= yaw left\. This parameter is only used when COMPASS\_ORIENT\/2\/3 is set to CUSTOM\.
-
-
-+-----------+-------------+---------+
-| Increment | Range       | Units   |
-+===========+=============+=========+
-| 1         | -180 to 180 | degrees |
-+-----------+-------------+---------+
-
-
-
-
 
 .. _parameters_COMPASS_PMOT:
 
@@ -51428,7 +51311,7 @@ GUIDED\_NTF: PID Target notch filter index
 
 | *Note: This parameter is for advanced users*
 
-PID Target notch filter index
+PID Target notch filter index\, zero disables
 
 
 +--------+
@@ -51447,7 +51330,7 @@ GUIDED\_NEF: PID Error notch filter index
 
 | *Note: This parameter is for advanced users*
 
-PID Error notch filter index
+PID Error notch filter index\, zero disables
 
 
 +--------+
@@ -87104,13 +86987,13 @@ PTCH\_RATE\_NTF: Pitch Target notch filter index
 
 | *Note: This parameter is for advanced users*
 
-Pitch Target notch filter index
+Pitch Target notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -87123,13 +87006,13 @@ PTCH\_RATE\_NEF: Pitch Error notch filter index
 
 | *Note: This parameter is for advanced users*
 
-Pitch Error notch filter index
+Pitch Error notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -89497,13 +89380,13 @@ Q\_A\_RAT\_RLL\_NTF: Roll Target notch filter index
 
 | *Note: This parameter is for advanced users*
 
-Roll Target notch filter index
+Roll Target notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -89516,13 +89399,13 @@ Q\_A\_RAT\_RLL\_NEF: Roll Error notch filter index
 
 | *Note: This parameter is for advanced users*
 
-Roll Error notch filter index
+Roll Error notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -89735,13 +89618,13 @@ Q\_A\_RAT\_PIT\_NTF: Pitch Target notch filter index
 
 | *Note: This parameter is for advanced users*
 
-Pitch Target notch filter index
+Pitch Target notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -89754,13 +89637,13 @@ Q\_A\_RAT\_PIT\_NEF: Pitch Error notch filter index
 
 | *Note: This parameter is for advanced users*
 
-Pitch Error notch filter index
+Pitch Error notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -89973,14 +89856,14 @@ Q\_A\_RAT\_YAW\_NTF: Yaw Target notch filter index
 
 | *Note: This parameter is for advanced users*
 
-Yaw Target notch filter index
+Yaw Target notch filter index\, zero disables
 
 
-+--------+-------+
-| Range  | Units |
-+========+=======+
-| 1 to 8 | hertz |
-+--------+-------+
++--------+
+| Range  |
++========+
+| 0 to 8 |
++--------+
 
 
 
@@ -89992,13 +89875,13 @@ Q\_A\_RAT\_YAW\_NEF: Yaw Error notch filter index
 
 | *Note: This parameter is for advanced users*
 
-Yaw Error notch filter index
+Yaw Error notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -91212,13 +91095,13 @@ Q\_P\_D\_ACC\_NTF: Accel \(vertical\) Target notch filter index
 
 | *Note: This parameter is for advanced users*
 
-Accel \(vertical\) Target notch filter index\. If upgrading from 4\.6 this is Previously \_ACCZ\_NTF\.
+Accel \(vertical\) Target notch filter index\, zero disables\. If upgrading from 4\.6 this is Previously \_ACCZ\_NTF\.
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -91231,13 +91114,13 @@ Q\_P\_D\_ACC\_NEF: Accel \(vertical\) Error notch filter index
 
 | *Note: This parameter is for advanced users*
 
-Accel \(vertical\) Error notch filter index\. If upgrading from 4\.6 this is Previously \_ACCZ\_NEF\.
+Accel \(vertical\) Error notch filter index\, zero disables\. If upgrading from 4\.6 this is Previously \_ACCZ\_NEF\.
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -101437,13 +101320,13 @@ RLL\_RATE\_NTF: Roll Target notch filter index
 
 | *Note: This parameter is for advanced users*
 
-Roll Target notch filter index
+Roll Target notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -101456,13 +101339,13 @@ RLL\_RATE\_NEF: Roll Error notch filter index
 
 | *Note: This parameter is for advanced users*
 
-Roll Error notch filter index
+Roll Error notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -142412,13 +142295,13 @@ YAW\_RATE\_NTF: Yaw Target notch filter index
 
 | *Note: This parameter is for advanced users*
 
-Yaw Target notch filter index
+Yaw Target notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 
@@ -142431,13 +142314,13 @@ YAW\_RATE\_NEF: Yaw Error notch filter index
 
 | *Note: This parameter is for advanced users*
 
-Yaw Error notch filter index
+Yaw Error notch filter index\, zero disables
 
 
 +--------+
 | Range  |
 +========+
-| 1 to 8 |
+| 0 to 8 |
 +--------+
 
 

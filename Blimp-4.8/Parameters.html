@@ -3636,36 +3636,6 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Board orientation roll offset (AHRS_CUSTOM_ROLL)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>Autopilot mounting position roll offset. Positive values = roll right, negative values = roll left. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM.</p>
-<ul>
-<li>Range: -180 180</li>
-<li>Units: degrees</li>
-<li>Increment: 1</li>
-</ul>
-
-
-<h2>Board orientation pitch offset (AHRS_CUSTOM_PIT)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>Autopilot mounting position pitch offset. Positive values = pitch up, negative values = pitch down. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM.</p>
-<ul>
-<li>Range: -180 180</li>
-<li>Units: degrees</li>
-<li>Increment: 1</li>
-</ul>
-
-
-<h2>Board orientation yaw offset (AHRS_CUSTOM_YAW)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>Autopilot mounting position yaw offset. Positive values = yaw right, negative values = yaw left. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM.</p>
-<ul>
-<li>Range: -180 180</li>
-<li>Units: degrees</li>
-<li>Increment: 1</li>
-</ul>
-
-
 <h2>Optional AHRS behaviour (AHRS_OPTIONS)</h2><em>Note: This parameter is for advanced users</em><br>
 
 <p>This controls optional AHRS behaviour. Setting DisableDCMFallbackFW will change the AHRS behaviour for fixed wing aircraft in fly-forward flight to not fall back to DCM when the EKF stops navigating. Setting DisableDCMFallbackVTOL will change the AHRS behaviour for fixed wing aircraft in non fly-forward (VTOL) flight to not fall back to DCM when the EKF stops navigating. Setting DontDisableAirspeedUsingEKF disables the EKF based innovation check for airspeed consistency. Setting AutoRecordOrigin will auto-save the EKF origin to parameters when it becomes valid.</p>
@@ -16568,39 +16538,6 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Custom orientation roll offset (COMPASS_CUS_ROLL)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>Compass mounting position roll offset. Positive values = roll right, negative values = roll left. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM.</p>
-<ul>
-<li>Range: -180 180</li>
-<li>Units: degrees</li>
-<li>Increment: 1</li>
-<li>RebootRequired: True</li>
-</ul>
-
-
-<h2>Custom orientation pitch offset (COMPASS_CUS_PIT)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>Compass mounting position pitch offset. Positive values = pitch up, negative values = pitch down. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM.</p>
-<ul>
-<li>Range: -180 180</li>
-<li>Units: degrees</li>
-<li>Increment: 1</li>
-<li>RebootRequired: True</li>
-</ul>
-
-
-<h2>Custom orientation yaw offset (COMPASS_CUS_YAW)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>Compass mounting position yaw offset. Positive values = yaw right, negative values = yaw left. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM.</p>
-<ul>
-<li>Range: -180 180</li>
-<li>Units: degrees</li>
-<li>Increment: 1</li>
-<li>RebootRequired: True</li>
-</ul>
-
-
 <h1>COMPASS_PMOT Parameters</h1>
 
 
@@ -22695,17 +22632,17 @@ DO NOT EDIT
 
 <h2>X axis velocity target notch filter index (LOIT_VELX_NTF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>X axis velocity target notch filter index</p>
+<p>X axis velocity target notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
 <h2>X axis velocity error notch filter index (LOIT_VELX_NEF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>X axis velocity error notch filter index</p>
+<p>X axis velocity error notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
@@ -22813,17 +22750,17 @@ DO NOT EDIT
 
 <h2>Y axis velocity target notch filter index (LOIT_VELY_NTF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Y axis velocity target notch filter index</p>
+<p>Y axis velocity target notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
 <h2>Y axis velocity error notch filter index (LOIT_VELY_NEF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Y axis velocity error notch filter index</p>
+<p>Y axis velocity error notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
@@ -22931,17 +22868,17 @@ DO NOT EDIT
 
 <h2>Z axis velocity target notch filter index (LOIT_VELZ_NTF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Z axis velocity target notch filter index</p>
+<p>Z axis velocity target notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
 <h2>Z axis velocity error notch filter index (LOIT_VELZ_NEF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Z axis velocity error notch filter index</p>
+<p>Z axis velocity error notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
@@ -23049,17 +22986,17 @@ DO NOT EDIT
 
 <h2>Yaw axis velocity target notch filter index (LOIT_VELYAW_NTF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Yaw axis velocity target notch filter index</p>
+<p>Yaw axis velocity target notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
 <h2>Yaw axis velocity error notch filter index (LOIT_VELYAW_NEF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Yaw axis velocity error notch filter index</p>
+<p>Yaw axis velocity error notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
@@ -23167,17 +23104,17 @@ DO NOT EDIT
 
 <h2>X axis position target notch filter index (LOIT_POSX_NTF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>X axis position target notch filter index</p>
+<p>X axis position target notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
 <h2>X axis position error notch filter index (LOIT_POSX_NEF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>X axis position error notch filter index</p>
+<p>X axis position error notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
@@ -23285,17 +23222,17 @@ DO NOT EDIT
 
 <h2>Y axis position target notch filter index (LOIT_POSY_NTF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Y axis position target notch filter index</p>
+<p>Y axis position target notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
 <h2>Y axis position error notch filter index (LOIT_POSY_NEF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Y axis position error notch filter index</p>
+<p>Y axis position error notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
@@ -23403,17 +23340,17 @@ DO NOT EDIT
 
 <h2>Z axis position target notch filter index (LOIT_POSZ_NTF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Z axis position target notch filter index</p>
+<p>Z axis position target notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
 <h2>Z axis position error notch filter index (LOIT_POSZ_NEF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Z axis position error notch filter index</p>
+<p>Z axis position error notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
@@ -23521,17 +23458,17 @@ DO NOT EDIT
 
 <h2>Yaw axis position target notch filter index (LOIT_POSYAW_NTF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Yaw axis position target notch filter index</p>
+<p>Yaw axis position target notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
 <h2>Yaw axis position error notch filter index (LOIT_POSYAW_NEF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Yaw axis position error notch filter index</p>
+<p>Yaw axis position error notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 

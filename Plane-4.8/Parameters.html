@@ -80,7 +80,7 @@ DO NOT EDIT
 
 <h2>Altitude slope minimum (ArduPlane:ALT_SLOPE_MIN)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>This controls the minimum altitude change for a waypoint before an altitude slope will be used instead of an immediate altitude change. The default value is 15 meters, which helps to smooth out waypoint missions where small altitude changes happen near waypoints. If you don&#x27;t want altitude slopes to be used in missions then you can set this to zero, which will disable altitude slope calculations. Otherwise you can set it to a minimum number of meters of altitude error to the destination waypoint before an altitude slope will be used to change altitude.</p>
+<p>This controls the minimum altitude change for a waypoint before an altitude slope will be used instead of an immediate altitude change. The default value is 15 meters, which helps to smooth out waypoint missions where small altitude changes happen near waypoints. If you don&#x27;t want altitude slopes to be used in missions then you can set this to zero, which will disable altitude slope calculations. Otherwise you can set it to a minimum number of meters of altitude error to the destination waypoint before an altitude slope will be used to change altitude. This also gates the gradual altitude ramp used during the approach leg of QRTL.</p>
 <ul>
 <li>Range: 0 1000</li>
 <li>Increment: 1</li>
@@ -4974,36 +4974,6 @@ DO NOT EDIT
 <tr><td>10</td><td>Sim</td></tr>
 <tr><td>11</td><td>ExternalAHRS</td></tr>
 </table>
-</ul>
-
-
-<h2>Board orientation roll offset (AHRS_CUSTOM_ROLL)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>Autopilot mounting position roll offset. Positive values = roll right, negative values = roll left. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM.</p>
-<ul>
-<li>Range: -180 180</li>
-<li>Units: degrees</li>
-<li>Increment: 1</li>
-</ul>
-
-
-<h2>Board orientation pitch offset (AHRS_CUSTOM_PIT)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>Autopilot mounting position pitch offset. Positive values = pitch up, negative values = pitch down. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM.</p>
-<ul>
-<li>Range: -180 180</li>
-<li>Units: degrees</li>
-<li>Increment: 1</li>
-</ul>
-
-
-<h2>Board orientation yaw offset (AHRS_CUSTOM_YAW)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>Autopilot mounting position yaw offset. Positive values = yaw right, negative values = yaw left. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM.</p>
-<ul>
-<li>Range: -180 180</li>
-<li>Units: degrees</li>
-<li>Increment: 1</li>
 </ul>
 
 
@@ -19590,39 +19560,6 @@ DO NOT EDIT
 </ul>
 
 
-<h2>Custom orientation roll offset (COMPASS_CUS_ROLL)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>Compass mounting position roll offset. Positive values = roll right, negative values = roll left. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM.</p>
-<ul>
-<li>Range: -180 180</li>
-<li>Units: degrees</li>
-<li>Increment: 1</li>
-<li>RebootRequired: True</li>
-</ul>
-
-
-<h2>Custom orientation pitch offset (COMPASS_CUS_PIT)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>Compass mounting position pitch offset. Positive values = pitch up, negative values = pitch down. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM.</p>
-<ul>
-<li>Range: -180 180</li>
-<li>Units: degrees</li>
-<li>Increment: 1</li>
-<li>RebootRequired: True</li>
-</ul>
-
-
-<h2>Custom orientation yaw offset (COMPASS_CUS_YAW)</h2><em>Note: This parameter is for advanced users</em><br>
-
-<p>Compass mounting position yaw offset. Positive values = yaw right, negative values = yaw left. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM.</p>
-<ul>
-<li>Range: -180 180</li>
-<li>Units: degrees</li>
-<li>Increment: 1</li>
-<li>RebootRequired: True</li>
-</ul>
-
-
 <h1>COMPASS_PMOT Parameters</h1>
 
 
@@ -23652,7 +23589,7 @@ DO NOT EDIT
 
 <h2>PID Target notch filter index (GUIDED_NTF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>PID Target notch filter index</p>
+<p>PID Target notch filter index, zero disables</p>
 <ul>
 <li>Range: 0 8</li>
 </ul>
@@ -23660,7 +23597,7 @@ DO NOT EDIT
 
 <h2>PID Error notch filter index (GUIDED_NEF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>PID Error notch filter index</p>
+<p>PID Error notch filter index, zero disables</p>
 <ul>
 <li>Range: 0 8</li>
 </ul>
@@ -41382,17 +41319,17 @@ DO NOT EDIT
 
 <h2>Pitch Target notch filter index (PTCH_RATE_NTF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Pitch Target notch filter index</p>
+<p>Pitch Target notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
 <h2>Pitch Error notch filter index (PTCH_RATE_NEF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Pitch Error notch filter index</p>
+<p>Pitch Error notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
@@ -42551,17 +42488,17 @@ DO NOT EDIT
 
 <h2>Roll Target notch filter index (Q_A_RAT_RLL_NTF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Roll Target notch filter index</p>
+<p>Roll Target notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
 <h2>Roll Error notch filter index (Q_A_RAT_RLL_NEF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Roll Error notch filter index</p>
+<p>Roll Error notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
@@ -42674,17 +42611,17 @@ DO NOT EDIT
 
 <h2>Pitch Target notch filter index (Q_A_RAT_PIT_NTF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Pitch Target notch filter index</p>
+<p>Pitch Target notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
 <h2>Pitch Error notch filter index (Q_A_RAT_PIT_NEF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Pitch Error notch filter index</p>
+<p>Pitch Error notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
@@ -42797,18 +42734,17 @@ DO NOT EDIT
 
 <h2>Yaw Target notch filter index (Q_A_RAT_YAW_NTF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Yaw Target notch filter index</p>
+<p>Yaw Target notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
-<li>Units: hertz</li>
+<li>Range: 0 8</li>
 </ul>
 
 
 <h2>Yaw Error notch filter index (Q_A_RAT_YAW_NEF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Yaw Error notch filter index</p>
+<p>Yaw Error notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
@@ -43410,17 +43346,17 @@ DO NOT EDIT
 
 <h2>Accel (vertical) Target notch filter index (Q_P_D_ACC_NTF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Accel (vertical) Target notch filter index. If upgrading from 4.6 this is Previously _ACCZ_NTF.</p>
+<p>Accel (vertical) Target notch filter index, zero disables. If upgrading from 4.6 this is Previously _ACCZ_NTF.</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
 <h2>Accel (vertical) Error notch filter index (Q_P_D_ACC_NEF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Accel (vertical) Error notch filter index. If upgrading from 4.6 this is Previously _ACCZ_NEF.</p>
+<p>Accel (vertical) Error notch filter index, zero disables. If upgrading from 4.6 this is Previously _ACCZ_NEF.</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
@@ -48501,17 +48437,17 @@ DO NOT EDIT
 
 <h2>Roll Target notch filter index (RLL_RATE_NTF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Roll Target notch filter index</p>
+<p>Roll Target notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
 <h2>Roll Error notch filter index (RLL_RATE_NEF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Roll Error notch filter index</p>
+<p>Roll Error notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
@@ -69234,15 +69170,15 @@ DO NOT EDIT
 
 <h2>Yaw Target notch filter index (YAW_RATE_NTF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Yaw Target notch filter index</p>
+<p>Yaw Target notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>
 
 
 <h2>Yaw Error notch filter index (YAW_RATE_NEF)</h2><em>Note: This parameter is for advanced users</em><br>
 
-<p>Yaw Error notch filter index</p>
+<p>Yaw Error notch filter index, zero disables</p>
 <ul>
-<li>Range: 1 8</li>
+<li>Range: 0 8</li>
 </ul>

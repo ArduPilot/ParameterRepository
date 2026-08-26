@@ -346,39 +346,6 @@
       },
       "User": "Advanced"
     },
-    "AHRS_CUSTOM_PIT": {
-      "Description": "Autopilot mounting position pitch offset. Positive values = pitch up, negative values = pitch down. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM.",
-      "DisplayName": "Board orientation pitch offset",
-      "Increment": "1",
-      "Range": {
-        "high": "180",
-        "low": "-180"
-      },
-      "Units": "deg",
-      "User": "Advanced"
-    },
-    "AHRS_CUSTOM_ROLL": {
-      "Description": "Autopilot mounting position roll offset. Positive values = roll right, negative values = roll left. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM.",
-      "DisplayName": "Board orientation roll offset",
-      "Increment": "1",
-      "Range": {
-        "high": "180",
-        "low": "-180"
-      },
-      "Units": "deg",
-      "User": "Advanced"
-    },
-    "AHRS_CUSTOM_YAW": {
-      "Description": "Autopilot mounting position yaw offset. Positive values = yaw right, negative values = yaw left. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM.",
-      "DisplayName": "Board orientation yaw offset",
-      "Increment": "1",
-      "Range": {
-        "high": "180",
-        "low": "-180"
-      },
-      "Units": "deg",
-      "User": "Advanced"
-    },
     "AHRS_EKF_TYPE": {
       "Description": "This controls which NavEKF Kalman filter version is used for attitude and position estimation",
       "DisplayName": "Use NavEKF Kalman filter for attitude and position estimation",
@@ -2002,20 +1969,20 @@
       "User": "Standard"
     },
     "ATC_RAT_PIT_NEF": {
-      "Description": "Pitch Error notch filter index",
+      "Description": "Pitch Error notch filter index, zero disables",
       "DisplayName": "Pitch Error notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
     "ATC_RAT_PIT_NTF": {
-      "Description": "Pitch Target notch filter index",
+      "Description": "Pitch Target notch filter index, zero disables",
       "DisplayName": "Pitch Target notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
@@ -2146,20 +2113,20 @@
       "User": "Standard"
     },
     "ATC_RAT_RLL_NEF": {
-      "Description": "Roll Error notch filter index",
+      "Description": "Roll Error notch filter index, zero disables",
       "DisplayName": "Roll Error notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
     "ATC_RAT_RLL_NTF": {
-      "Description": "Roll Target notch filter index",
+      "Description": "Roll Target notch filter index, zero disables",
       "DisplayName": "Roll Target notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
@@ -2290,22 +2257,21 @@
       "User": "Standard"
     },
     "ATC_RAT_YAW_NEF": {
-      "Description": "Yaw Error notch filter index",
+      "Description": "Yaw Error notch filter index, zero disables",
       "DisplayName": "Yaw Error notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
     "ATC_RAT_YAW_NTF": {
-      "Description": "Yaw Target notch filter index",
+      "Description": "Yaw Target notch filter index, zero disables",
       "DisplayName": "Yaw Target notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
-      "Units": "Hz",
       "User": "Advanced"
     },
     "ATC_RAT_YAW_P": {
@@ -14196,20 +14162,20 @@
       "User": "Standard"
     },
     "CC2_RAT_PIT_NEF": {
-      "Description": "Pitch Error notch filter index",
+      "Description": "Pitch Error notch filter index, zero disables",
       "DisplayName": "Pitch Error notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
     "CC2_RAT_PIT_NTF": {
-      "Description": "Pitch Target notch filter index",
+      "Description": "Pitch Target notch filter index, zero disables",
       "DisplayName": "Pitch Target notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
@@ -14327,20 +14293,20 @@
       "User": "Standard"
     },
     "CC2_RAT_RLL_NEF": {
-      "Description": "Roll Error notch filter index",
+      "Description": "Roll Error notch filter index, zero disables",
       "DisplayName": "Roll Error notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
     "CC2_RAT_RLL_NTF": {
-      "Description": "Roll Target notch filter index",
+      "Description": "Roll Target notch filter index, zero disables",
       "DisplayName": "Roll Target notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
@@ -14458,20 +14424,20 @@
       "User": "Standard"
     },
     "CC2_RAT_YAW_NEF": {
-      "Description": "Yaw Error notch filter index",
+      "Description": "Yaw Error notch filter index, zero disables",
       "DisplayName": "Yaw Error notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
     "CC2_RAT_YAW_NTF": {
-      "Description": "Yaw Target notch filter index",
+      "Description": "Yaw Target notch filter index, zero disables",
       "DisplayName": "Yaw Target notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
@@ -14659,42 +14625,6 @@
         "4": "Very Strict",
         "8": "Strict"
       }
-    },
-    "COMPASS_CUS_PIT": {
-      "Description": "Compass mounting position pitch offset. Positive values = pitch up, negative values = pitch down. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM.",
-      "DisplayName": "Custom orientation pitch offset",
-      "Increment": "1",
-      "Range": {
-        "high": "180",
-        "low": "-180"
-      },
-      "RebootRequired": "True",
-      "Units": "deg",
-      "User": "Advanced"
-    },
-    "COMPASS_CUS_ROLL": {
-      "Description": "Compass mounting position roll offset. Positive values = roll right, negative values = roll left. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM.",
-      "DisplayName": "Custom orientation roll offset",
-      "Increment": "1",
-      "Range": {
-        "high": "180",
-        "low": "-180"
-      },
-      "RebootRequired": "True",
-      "Units": "deg",
-      "User": "Advanced"
-    },
-    "COMPASS_CUS_YAW": {
-      "Description": "Compass mounting position yaw offset. Positive values = yaw right, negative values = yaw left. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM.",
-      "DisplayName": "Custom orientation yaw offset",
-      "Increment": "1",
-      "Range": {
-        "high": "180",
-        "low": "-180"
-      },
-      "RebootRequired": "True",
-      "Units": "deg",
-      "User": "Advanced"
     },
     "COMPASS_DEC": {
       "Description": "An angle to compensate between the true north and magnetic north",
@@ -42267,20 +42197,20 @@
       "User": "Standard"
     },
     "PSC_D_ACC_NEF": {
-      "Description": "Accel (vertical) Error notch filter index. If upgrading from 4.6 this is Previously _ACCZ_NEF.",
+      "Description": "Accel (vertical) Error notch filter index, zero disables. If upgrading from 4.6 this is Previously _ACCZ_NEF.",
       "DisplayName": "Accel (vertical) Error notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },
     "PSC_D_ACC_NTF": {
-      "Description": "Accel (vertical) Target notch filter index. If upgrading from 4.6 this is Previously _ACCZ_NTF.",
+      "Description": "Accel (vertical) Target notch filter index, zero disables. If upgrading from 4.6 this is Previously _ACCZ_NTF.",
       "DisplayName": "Accel (vertical) Target notch filter index",
       "Range": {
         "high": "8",
-        "low": "1"
+        "low": "0"
       },
       "User": "Advanced"
     },

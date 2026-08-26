@@ -3260,42 +3260,6 @@ This controls which NavEKF Kalman filter version is used for attitude and positi
 |10|Sim|
 |11|ExternalAHRS|
 
-## AHRS_CUSTOM_ROLL: Board orientation roll offset
-
-*Note: This parameter is for advanced users*
-
-Autopilot mounting position roll offset. Positive values = roll right, negative values = roll left. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM.
-
-- Range: -180 180
-
-- Units: deg
-
-- Increment: 1
-
-## AHRS_CUSTOM_PIT: Board orientation pitch offset
-
-*Note: This parameter is for advanced users*
-
-Autopilot mounting position pitch offset. Positive values = pitch up, negative values = pitch down. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM.
-
-- Range: -180 180
-
-- Units: deg
-
-- Increment: 1
-
-## AHRS_CUSTOM_YAW: Board orientation yaw offset
-
-*Note: This parameter is for advanced users*
-
-Autopilot mounting position yaw offset. Positive values = yaw right, negative values = yaw left. This parameter is only used when AHRS_ORIENTATION is set to CUSTOM.
-
-- Range: -180 180
-
-- Units: deg
-
-- Increment: 1
-
 ## AHRS_OPTIONS: Optional AHRS behaviour
 
 *Note: This parameter is for advanced users*
@@ -4637,17 +4601,17 @@ FF D Gain which produces an output that is proportional to the rate of change of
 
 *Note: This parameter is for advanced users*
 
-Roll Target notch filter index
+Roll Target notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## ATC_RAT_RLL_NEF: Roll Error notch filter index
 
 *Note: This parameter is for advanced users*
 
-Roll Error notch filter index
+Roll Error notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## ATC_RAT_PIT_P: Pitch axis rate controller P gain
 
@@ -4751,17 +4715,17 @@ FF D Gain which produces an output that is proportional to the rate of change of
 
 *Note: This parameter is for advanced users*
 
-Pitch Target notch filter index
+Pitch Target notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## ATC_RAT_PIT_NEF: Pitch Error notch filter index
 
 *Note: This parameter is for advanced users*
 
-Pitch Error notch filter index
+Pitch Error notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## ATC_RAT_YAW_P: Yaw axis rate controller P gain
 
@@ -4865,17 +4829,17 @@ FF D Gain which produces an output that is proportional to the rate of change of
 
 *Note: This parameter is for advanced users*
 
-Yaw Target notch filter index
+Yaw Target notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## ATC_RAT_YAW_NEF: Yaw Error notch filter index
 
 *Note: This parameter is for advanced users*
 
-Yaw Error notch filter index
+Yaw Error notch filter index, zero disables
 
-- Range: 1 8
+- Range: 0 8
 
 ## ATC_THR_MIX_MIN: Throttle Mix Minimum
 
@@ -17475,48 +17439,6 @@ Extra 7th compass's device id.  Automatically detected, do not set manually
 Extra 8th compass's device id.  Automatically detected, do not set manually
 
 - ReadOnly: True
-
-## COMPASS_CUS_ROLL: Custom orientation roll offset
-
-*Note: This parameter is for advanced users*
-
-Compass mounting position roll offset. Positive values = roll right, negative values = roll left. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM.
-
-- Range: -180 180
-
-- Units: deg
-
-- Increment: 1
-
-- RebootRequired: True
-
-## COMPASS_CUS_PIT: Custom orientation pitch offset
-
-*Note: This parameter is for advanced users*
-
-Compass mounting position pitch offset. Positive values = pitch up, negative values = pitch down. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM.
-
-- Range: -180 180
-
-- Units: deg
-
-- Increment: 1
-
-- RebootRequired: True
-
-## COMPASS_CUS_YAW: Custom orientation yaw offset
-
-*Note: This parameter is for advanced users*
-
-Compass mounting position yaw offset. Positive values = yaw right, negative values = yaw left. This parameter is only used when COMPASS_ORIENT/2/3 is set to CUSTOM.
-
-- Range: -180 180
-
-- Units: deg
-
-- Increment: 1
-
-- RebootRequired: True
 
 # COMPASSPMOT Parameters
 
@@ -38296,17 +38218,17 @@ FF D Gain which produces an output that is proportional to the rate of change of
 
 *Note: This parameter is for advanced users*
 
-Accel (vertical) Target notch filter index. If upgrading from 4.6 this is Previously _ACCZ_NTF.
+Accel (vertical) Target notch filter index, zero disables. If upgrading from 4.6 this is Previously _ACCZ_NTF.
 
-- Range: 1 8
+- Range: 0 8
 
 ## PSC_D_ACC_NEF: Accel (vertical) Error notch filter index
 
 *Note: This parameter is for advanced users*
 
-Accel (vertical) Error notch filter index. If upgrading from 4.6 this is Previously _ACCZ_NEF.
+Accel (vertical) Error notch filter index, zero disables. If upgrading from 4.6 this is Previously _ACCZ_NEF.
 
-- Range: 1 8
+- Range: 0 8
 
 ## PSC_NE_VEL_P: Velocity (horizontal) P gain
 
