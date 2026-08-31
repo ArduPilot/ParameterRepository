@@ -4635,6 +4635,8 @@ Type of airspeed sensor
 |20|Scripting|
 |100|SITL|
 
+- RebootRequired: True
+
 ## ARSPD2_USE: Airspeed use
 
 This parameter is not used by this vehicle. Always set to 0.
@@ -4768,6 +4770,8 @@ Type of airspeed sensor
 |19|AUAV-30in|
 |20|Scripting|
 |100|SITL|
+
+- RebootRequired: True
 
 ## ARSPD3_USE: Airspeed use
 
@@ -4903,6 +4907,8 @@ Type of airspeed sensor
 |20|Scripting|
 |100|SITL|
 
+- RebootRequired: True
+
 ## ARSPD4_USE: Airspeed use
 
 This parameter is not used by this vehicle. Always set to 0.
@@ -5036,6 +5042,8 @@ Type of airspeed sensor
 |19|AUAV-30in|
 |20|Scripting|
 |100|SITL|
+
+- RebootRequired: True
 
 ## ARSPD5_USE: Airspeed use
 
@@ -5171,6 +5179,8 @@ Type of airspeed sensor
 |20|Scripting|
 |100|SITL|
 
+- RebootRequired: True
+
 ## ARSPD6_USE: Airspeed use
 
 This parameter is not used by this vehicle. Always set to 0.
@@ -5304,6 +5314,8 @@ Type of airspeed sensor
 |19|AUAV-30in|
 |20|Scripting|
 |100|SITL|
+
+- RebootRequired: True
 
 ## ARSPD_USE: Airspeed use
 
@@ -16832,6 +16844,8 @@ how to trigger the camera to take a picture
 |7|Scripting|
 |8|RunCam|
 
+- RebootRequired: True
+
 ## CAM1_DURATION: Camera shutter duration held open
 
 Duration in seconds that the camera shutter is held open
@@ -17000,6 +17014,8 @@ how to trigger the camera to take a picture
 |6|MAVLinkCamV2 (Gremsy/AVT)|
 |7|Scripting|
 |8|RunCam|
+
+- RebootRequired: True
 
 ## CAM2_DURATION: Camera shutter duration held open
 
@@ -20249,7 +20265,7 @@ This sets the maximum allowed compass offset in calibration and arming checks
 
 This is a bitmask of driver types to disable. If a driver type is set in this mask then that driver will not try to find a sensor at startup
 
-- Bitmask: 0:HMC5883,1:LSM303D,2:AK8963,3:BMM150,4:LSM9DS1,5:LIS3MDL,6:AK0991x,7:IST8310,8:ICM20948,9:MMC3416,11:DroneCAN,12:QMC5883,14:MAG3110,15:IST8308,16:RM3100,17:MSP,18:ExternalAHRS,19:MMC5XX3,20:QMC5883P,21:BMM350,22:IIS2MDC or LIS2MDL
+- Bitmask: 0:HMC5883,1:LSM303D,2:AK8963,3:BMM150,4:LSM9DS1,5:LIS3MDL,6:AK0991x,7:IST8310,8:ICM20948,9:MMC3416,11:DroneCAN,12:QMC5883,14:MAG3110,15:IST8308,16:RM3100,17:MSP,18:ExternalAHRS,19:MMC5XX3,20:QMC5883P,21:BMM350,22:IIS2MDC or LIS2MDL,24:AF9838
 
 ## COMPASS_FLTR_RNG: Range in which sample is accepted
 
@@ -28267,6 +28283,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
 
+## MAV1_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
+
 # MAV2 Parameters
 
 ## MAV2_RAW_SENS: Raw sensor stream rate
@@ -28414,6 +28465,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 - RebootRequired: True
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
+
+## MAV2_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
 
 # MAV3 Parameters
 
@@ -28563,6 +28649,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
 
+## MAV3_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
+
 # MAV4 Parameters
 
 ## MAV4_RAW_SENS: Raw sensor stream rate
@@ -28710,6 +28831,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 - RebootRequired: True
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
+
+## MAV4_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
 
 # MAV5 Parameters
 
@@ -28859,6 +29015,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
 
+## MAV5_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
+
 # MAV6 Parameters
 
 ## MAV6_RAW_SENS: Raw sensor stream rate
@@ -29006,6 +29197,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 - RebootRequired: True
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
+
+## MAV6_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
 
 # MAV7 Parameters
 
@@ -29155,6 +29381,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
 
+## MAV7_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
+
 # MAV8 Parameters
 
 ## MAV8_RAW_SENS: Raw sensor stream rate
@@ -29302,6 +29563,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 - RebootRequired: True
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
+
+## MAV8_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
 
 # MAV9 Parameters
 
@@ -29451,6 +29747,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
 
+## MAV9_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
+
 # MAV10 Parameters
 
 ## MAV10_RAW_SENS: Raw sensor stream rate
@@ -29598,6 +29929,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 - RebootRequired: True
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
+
+## MAV10_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
 
 # MAV11 Parameters
 
@@ -29747,6 +30113,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
 
+## MAV11_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
+
 # MAV12 Parameters
 
 ## MAV12_RAW_SENS: Raw sensor stream rate
@@ -29894,6 +30295,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 - RebootRequired: True
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
+
+## MAV12_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
 
 # MAV13 Parameters
 
@@ -30043,6 +30479,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
 
+## MAV13_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
+
 # MAV14 Parameters
 
 ## MAV14_RAW_SENS: Raw sensor stream rate
@@ -30190,6 +30661,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 - RebootRequired: True
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
+
+## MAV14_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
 
 # MAV15 Parameters
 
@@ -30339,6 +30845,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
 
+## MAV15_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
+
 # MAV16 Parameters
 
 ## MAV16_RAW_SENS: Raw sensor stream rate
@@ -30486,6 +31027,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 - RebootRequired: True
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
+
+## MAV16_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
 
 # MAV17 Parameters
 
@@ -30635,6 +31211,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
 
+## MAV17_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
+
 # MAV18 Parameters
 
 ## MAV18_RAW_SENS: Raw sensor stream rate
@@ -30782,6 +31393,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 - RebootRequired: True
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
+
+## MAV18_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
 
 # MAV19 Parameters
 
@@ -30931,6 +31577,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
 
+## MAV19_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
+
 # MAV20 Parameters
 
 ## MAV20_RAW_SENS: Raw sensor stream rate
@@ -31078,6 +31759,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 - RebootRequired: True
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
+
+## MAV20_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
 
 # MAV21 Parameters
 
@@ -31227,6 +31943,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
 
+## MAV21_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
+
 # MAV22 Parameters
 
 ## MAV22_RAW_SENS: Raw sensor stream rate
@@ -31374,6 +32125,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 - RebootRequired: True
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
+
+## MAV22_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
 
 # MAV23 Parameters
 
@@ -31523,6 +32309,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
 
+## MAV23_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
+
 # MAV24 Parameters
 
 ## MAV24_RAW_SENS: Raw sensor stream rate
@@ -31670,6 +32491,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 - RebootRequired: True
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
+
+## MAV24_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
 
 # MAV25 Parameters
 
@@ -31819,6 +32675,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
 
+## MAV25_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
+
 # MAV26 Parameters
 
 ## MAV26_RAW_SENS: Raw sensor stream rate
@@ -31966,6 +32857,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 - RebootRequired: True
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
+
+## MAV26_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
 
 # MAV27 Parameters
 
@@ -32115,6 +33041,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
 
+## MAV27_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
+
 # MAV28 Parameters
 
 ## MAV28_RAW_SENS: Raw sensor stream rate
@@ -32262,6 +33223,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 - RebootRequired: True
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
+
+## MAV28_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
 
 # MAV29 Parameters
 
@@ -32411,6 +33407,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
 
+## MAV29_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
+
 # MAV30 Parameters
 
 ## MAV30_RAW_SENS: Raw sensor stream rate
@@ -32558,6 +33589,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 - RebootRequired: True
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
+
+## MAV30_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
 
 # MAV31 Parameters
 
@@ -32707,6 +33773,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
 
+## MAV31_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
+
 # MAV32 Parameters
 
 ## MAV32_RAW_SENS: Raw sensor stream rate
@@ -32854,6 +33955,41 @@ Bitmask for configuring this telemetry channel. For having effect on all channel
 - RebootRequired: True
 
 - Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC
+
+## MAV32_DEVID: DeviceID
+
+*Note: This parameter is for advanced users*
+
+ID of device using this MAVLink channel
+
+- ReadOnly: True
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Unknown|
+|65542|SERIAL0 (USB on ChibiOS)|
+|65798|SERIAL1|
+|66054|SERIAL2|
+|66310|SERIAL3|
+|66566|SERIAL4|
+|66822|SERIAL5|
+|67078|SERIAL6|
+|67334|SERIAL7|
+|67590|SERIAL8|
+|67846|SERIAL9|
+|131078|NET_P1|
+|131334|NET_P2|
+|131590|NET_P3|
+|131846|NET_P4|
+|196614|CAN_D1_UC_S1|
+|196870|CAN_D1_UC_S2|
+|197126|CAN_D1_UC_S3|
+|196622|CAN_D2_UC_S1|
+|196878|CAN_D2_UC_S2|
+|197134|CAN_D2_UC_S3|
+|262150|SCR_SDEV1|
+|262406|SCR_SDEV2|
+|262662|SCR_SDEV3|
 
 # MIS Parameters
 
@@ -34522,7 +35658,7 @@ Enabled/disable path planning around obstacles
 
 ## OA_MARGIN_MAX: Object Avoidance wide margin distance
 
-Object Avoidance will ignore objects more than this many meters from vehicle
+Minimum distance in meters that the vehicle will try to stay away from obstacles and fences. BendyRuler only accepts a candidate path whose clearance exceeds this, and Dijkstra uses it as the margin held from fences. This is not a detection range: use OA_BR_LOOKAHEAD to limit how far ahead BendyRuler looks for obstacles.
 
 - Units: m
 
@@ -41534,6 +42670,8 @@ Precision Land enabled/disabled
 |0|Disabled|
 |1|Enabled|
 
+- RebootRequired: True
+
 ## PLND_TYPE: Precision Land Type
 
 *Note: This parameter is for advanced users*
@@ -41547,6 +42685,8 @@ Precision Land Type
 |2|IRLock|
 |3|SITL_Gazebo|
 |4|SITL|
+
+- RebootRequired: True
 
 ## PLND_YAW_ALIGN: Sensor yaw alignment
 
@@ -44377,6 +45517,8 @@ Should the relay output signal be inverted. If enabled, relay on would be pin lo
 
 Type of connected rangefinder
 
+- RebootRequired: True
+
 |Value|Meaning|
 |:---:|:---:|
 |0|None|
@@ -44711,6 +45853,8 @@ The update rate of the sensor in Hz.
 ## RNGFND2_TYPE: Rangefinder type
 
 Type of connected rangefinder
+
+- RebootRequired: True
 
 |Value|Meaning|
 |:---:|:---:|
@@ -45047,6 +46191,8 @@ The update rate of the sensor in Hz.
 
 Type of connected rangefinder
 
+- RebootRequired: True
+
 |Value|Meaning|
 |:---:|:---:|
 |0|None|
@@ -45381,6 +46527,8 @@ The update rate of the sensor in Hz.
 ## RNGFND4_TYPE: Rangefinder type
 
 Type of connected rangefinder
+
+- RebootRequired: True
 
 |Value|Meaning|
 |:---:|:---:|
@@ -45717,6 +46865,8 @@ The update rate of the sensor in Hz.
 
 Type of connected rangefinder
 
+- RebootRequired: True
+
 |Value|Meaning|
 |:---:|:---:|
 |0|None|
@@ -46051,6 +47201,8 @@ The update rate of the sensor in Hz.
 ## RNGFND6_TYPE: Rangefinder type
 
 Type of connected rangefinder
+
+- RebootRequired: True
 
 |Value|Meaning|
 |:---:|:---:|
@@ -46387,6 +47539,8 @@ The update rate of the sensor in Hz.
 
 Type of connected rangefinder
 
+- RebootRequired: True
+
 |Value|Meaning|
 |:---:|:---:|
 |0|None|
@@ -46721,6 +47875,8 @@ The update rate of the sensor in Hz.
 ## RNGFND8_TYPE: Rangefinder type
 
 Type of connected rangefinder
+
+- RebootRequired: True
 
 |Value|Meaning|
 |:---:|:---:|
@@ -47057,6 +48213,8 @@ The update rate of the sensor in Hz.
 
 Type of connected rangefinder
 
+- RebootRequired: True
+
 |Value|Meaning|
 |:---:|:---:|
 |0|None|
@@ -47391,6 +48549,8 @@ The update rate of the sensor in Hz.
 ## RNGFNDA_TYPE: Rangefinder type
 
 Type of connected rangefinder
+
+- RebootRequired: True
 
 |Value|Meaning|
 |:---:|:---:|
@@ -47727,6 +48887,8 @@ The update rate of the sensor in Hz.
 
 What type of RPM sensor is connected
 
+- RebootRequired: True
+
 |Value|Meaning|
 |:---:|:---:|
 |0|None|
@@ -47813,6 +48975,8 @@ DroneCAN sensor ID to assign to this backend
 ## RPM2_TYPE: RPM type
 
 What type of RPM sensor is connected
+
+- RebootRequired: True
 
 |Value|Meaning|
 |:---:|:---:|
@@ -47901,6 +49065,8 @@ DroneCAN sensor ID to assign to this backend
 
 What type of RPM sensor is connected
 
+- RebootRequired: True
+
 |Value|Meaning|
 |:---:|:---:|
 |0|None|
@@ -47987,6 +49153,8 @@ DroneCAN sensor ID to assign to this backend
 ## RPM4_TYPE: RPM type
 
 What type of RPM sensor is connected
+
+- RebootRequired: True
 
 |Value|Meaning|
 |:---:|:---:|

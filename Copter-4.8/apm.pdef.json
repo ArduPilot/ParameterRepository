@@ -990,6 +990,7 @@
     "ARSPD2_TYPE": {
       "Description": "Type of airspeed sensor",
       "DisplayName": "Airspeed type",
+      "RebootRequired": "True",
       "User": "Standard",
       "Values": {
         "0": "None",
@@ -1109,6 +1110,7 @@
     "ARSPD3_TYPE": {
       "Description": "Type of airspeed sensor",
       "DisplayName": "Airspeed type",
+      "RebootRequired": "True",
       "User": "Standard",
       "Values": {
         "0": "None",
@@ -1228,6 +1230,7 @@
     "ARSPD4_TYPE": {
       "Description": "Type of airspeed sensor",
       "DisplayName": "Airspeed type",
+      "RebootRequired": "True",
       "User": "Standard",
       "Values": {
         "0": "None",
@@ -1347,6 +1350,7 @@
     "ARSPD5_TYPE": {
       "Description": "Type of airspeed sensor",
       "DisplayName": "Airspeed type",
+      "RebootRequired": "True",
       "User": "Standard",
       "Values": {
         "0": "None",
@@ -1466,6 +1470,7 @@
     "ARSPD6_TYPE": {
       "Description": "Type of airspeed sensor",
       "DisplayName": "Airspeed type",
+      "RebootRequired": "True",
       "User": "Standard",
       "Values": {
         "0": "None",
@@ -1585,6 +1590,7 @@
     "ARSPD_TYPE": {
       "Description": "Type of airspeed sensor",
       "DisplayName": "Airspeed type",
+      "RebootRequired": "True",
       "User": "Standard",
       "Values": {
         "0": "None",
@@ -11499,6 +11505,7 @@
     "CAM1_TYPE": {
       "Description": "how to trigger the camera to take a picture",
       "DisplayName": "Camera shutter (trigger) type",
+      "RebootRequired": "True",
       "User": "Standard",
       "Values": {
         "0": "None",
@@ -11693,6 +11700,7 @@
     "CAM2_TYPE": {
       "Description": "how to trigger the camera to take a picture",
       "DisplayName": "Camera shutter (trigger) type",
+      "RebootRequired": "True",
       "User": "Standard",
       "Values": {
         "0": "None",
@@ -14755,6 +14763,7 @@
         "20": "QMC5883P",
         "21": "BMM350",
         "22": "IIS2MDC or LIS2MDL",
+        "24": "AF9838",
         "3": "BMM150",
         "4": "LSM9DS1",
         "5": "LIS3MDL",
@@ -26944,6 +26953,38 @@
       "Units": "Hz",
       "User": "Advanced"
     },
+    "MAV1_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
+    },
     "MAV1_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
       "DisplayName": "Extra data type 1 stream rate",
@@ -27076,6 +27117,38 @@
       "RebootRequired": "True",
       "Units": "Hz",
       "User": "Advanced"
+    },
+    "MAV10_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
     },
     "MAV10_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
@@ -27210,6 +27283,38 @@
       "Units": "Hz",
       "User": "Advanced"
     },
+    "MAV11_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
+    },
     "MAV11_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
       "DisplayName": "Extra data type 1 stream rate",
@@ -27342,6 +27447,38 @@
       "RebootRequired": "True",
       "Units": "Hz",
       "User": "Advanced"
+    },
+    "MAV12_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
     },
     "MAV12_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
@@ -27476,6 +27613,38 @@
       "Units": "Hz",
       "User": "Advanced"
     },
+    "MAV13_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
+    },
     "MAV13_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
       "DisplayName": "Extra data type 1 stream rate",
@@ -27608,6 +27777,38 @@
       "RebootRequired": "True",
       "Units": "Hz",
       "User": "Advanced"
+    },
+    "MAV14_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
     },
     "MAV14_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
@@ -27742,6 +27943,38 @@
       "Units": "Hz",
       "User": "Advanced"
     },
+    "MAV15_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
+    },
     "MAV15_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
       "DisplayName": "Extra data type 1 stream rate",
@@ -27874,6 +28107,38 @@
       "RebootRequired": "True",
       "Units": "Hz",
       "User": "Advanced"
+    },
+    "MAV16_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
     },
     "MAV16_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
@@ -28008,6 +28273,38 @@
       "Units": "Hz",
       "User": "Advanced"
     },
+    "MAV17_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
+    },
     "MAV17_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
       "DisplayName": "Extra data type 1 stream rate",
@@ -28140,6 +28437,38 @@
       "RebootRequired": "True",
       "Units": "Hz",
       "User": "Advanced"
+    },
+    "MAV18_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
     },
     "MAV18_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
@@ -28274,6 +28603,38 @@
       "Units": "Hz",
       "User": "Advanced"
     },
+    "MAV19_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
+    },
     "MAV19_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
       "DisplayName": "Extra data type 1 stream rate",
@@ -28406,6 +28767,38 @@
       "RebootRequired": "True",
       "Units": "Hz",
       "User": "Advanced"
+    },
+    "MAV2_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
     },
     "MAV2_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
@@ -28540,6 +28933,38 @@
       "Units": "Hz",
       "User": "Advanced"
     },
+    "MAV20_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
+    },
     "MAV20_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
       "DisplayName": "Extra data type 1 stream rate",
@@ -28672,6 +29097,38 @@
       "RebootRequired": "True",
       "Units": "Hz",
       "User": "Advanced"
+    },
+    "MAV21_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
     },
     "MAV21_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
@@ -28806,6 +29263,38 @@
       "Units": "Hz",
       "User": "Advanced"
     },
+    "MAV22_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
+    },
     "MAV22_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
       "DisplayName": "Extra data type 1 stream rate",
@@ -28938,6 +29427,38 @@
       "RebootRequired": "True",
       "Units": "Hz",
       "User": "Advanced"
+    },
+    "MAV23_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
     },
     "MAV23_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
@@ -29072,6 +29593,38 @@
       "Units": "Hz",
       "User": "Advanced"
     },
+    "MAV24_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
+    },
     "MAV24_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
       "DisplayName": "Extra data type 1 stream rate",
@@ -29204,6 +29757,38 @@
       "RebootRequired": "True",
       "Units": "Hz",
       "User": "Advanced"
+    },
+    "MAV25_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
     },
     "MAV25_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
@@ -29338,6 +29923,38 @@
       "Units": "Hz",
       "User": "Advanced"
     },
+    "MAV26_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
+    },
     "MAV26_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
       "DisplayName": "Extra data type 1 stream rate",
@@ -29470,6 +30087,38 @@
       "RebootRequired": "True",
       "Units": "Hz",
       "User": "Advanced"
+    },
+    "MAV27_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
     },
     "MAV27_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
@@ -29604,6 +30253,38 @@
       "Units": "Hz",
       "User": "Advanced"
     },
+    "MAV28_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
+    },
     "MAV28_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
       "DisplayName": "Extra data type 1 stream rate",
@@ -29736,6 +30417,38 @@
       "RebootRequired": "True",
       "Units": "Hz",
       "User": "Advanced"
+    },
+    "MAV29_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
     },
     "MAV29_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
@@ -29870,6 +30583,38 @@
       "Units": "Hz",
       "User": "Advanced"
     },
+    "MAV3_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
+    },
     "MAV3_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
       "DisplayName": "Extra data type 1 stream rate",
@@ -30002,6 +30747,38 @@
       "RebootRequired": "True",
       "Units": "Hz",
       "User": "Advanced"
+    },
+    "MAV30_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
     },
     "MAV30_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
@@ -30136,6 +30913,38 @@
       "Units": "Hz",
       "User": "Advanced"
     },
+    "MAV31_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
+    },
     "MAV31_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
       "DisplayName": "Extra data type 1 stream rate",
@@ -30268,6 +31077,38 @@
       "RebootRequired": "True",
       "Units": "Hz",
       "User": "Advanced"
+    },
+    "MAV32_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
     },
     "MAV32_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
@@ -30402,6 +31243,38 @@
       "Units": "Hz",
       "User": "Advanced"
     },
+    "MAV4_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
+    },
     "MAV4_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
       "DisplayName": "Extra data type 1 stream rate",
@@ -30534,6 +31407,38 @@
       "RebootRequired": "True",
       "Units": "Hz",
       "User": "Advanced"
+    },
+    "MAV5_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
     },
     "MAV5_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
@@ -30668,6 +31573,38 @@
       "Units": "Hz",
       "User": "Advanced"
     },
+    "MAV6_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
+    },
     "MAV6_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
       "DisplayName": "Extra data type 1 stream rate",
@@ -30800,6 +31737,38 @@
       "RebootRequired": "True",
       "Units": "Hz",
       "User": "Advanced"
+    },
+    "MAV7_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
     },
     "MAV7_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
@@ -30934,6 +31903,38 @@
       "Units": "Hz",
       "User": "Advanced"
     },
+    "MAV8_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
+    },
     "MAV8_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
       "DisplayName": "Extra data type 1 stream rate",
@@ -31066,6 +32067,38 @@
       "RebootRequired": "True",
       "Units": "Hz",
       "User": "Advanced"
+    },
+    "MAV9_DEVID": {
+      "Description": "ID of device using this MAVLink channel",
+      "DisplayName": "DeviceID",
+      "ReadOnly": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "Unknown",
+        "131078": "NET_P1",
+        "131334": "NET_P2",
+        "131590": "NET_P3",
+        "131846": "NET_P4",
+        "196614": "CAN_D1_UC_S1",
+        "196622": "CAN_D2_UC_S1",
+        "196870": "CAN_D1_UC_S2",
+        "196878": "CAN_D2_UC_S2",
+        "197126": "CAN_D1_UC_S3",
+        "197134": "CAN_D2_UC_S3",
+        "262150": "SCR_SDEV1",
+        "262406": "SCR_SDEV2",
+        "262662": "SCR_SDEV3",
+        "65542": "SERIAL0 (USB on ChibiOS)",
+        "65798": "SERIAL1",
+        "66054": "SERIAL2",
+        "66310": "SERIAL3",
+        "66566": "SERIAL4",
+        "66822": "SERIAL5",
+        "67078": "SERIAL6",
+        "67334": "SERIAL7",
+        "67590": "SERIAL8",
+        "67846": "SERIAL9"
+      }
     },
     "MAV9_EXTRA1": {
       "Description": "MAVLink Stream rate of ATTITUDE, SIMSTATE (SIM only), AHRS2, RPM, AOA_SSA, LANDING,ESC_TELEMETRY,EFI_STATUS, and PID_TUNING",
@@ -32884,7 +33917,7 @@
   },
   "OA_": {
     "OA_MARGIN_MAX": {
-      "Description": "Object Avoidance will ignore objects more than this many meters from vehicle",
+      "Description": "Minimum distance in meters that the vehicle will try to stay away from obstacles and fences. BendyRuler only accepts a candidate path whose clearance exceeds this, and Dijkstra uses it as the margin held from fences. This is not a detection range: use OA_BR_LOOKAHEAD to limit how far ahead BendyRuler looks for obstacles.",
       "DisplayName": "Object Avoidance wide margin distance",
       "Increment": "1",
       "Range": {
@@ -41102,6 +42135,7 @@
     "PLND_ENABLED": {
       "Description": "Precision Land enabled/disabled",
       "DisplayName": "Precision Land enabled/disabled",
+      "RebootRequired": "True",
       "User": "Advanced",
       "Values": {
         "0": "Disabled",
@@ -41199,6 +42233,7 @@
     "PLND_TYPE": {
       "Description": "Precision Land Type",
       "DisplayName": "Precision Land Type",
+      "RebootRequired": "True",
       "User": "Advanced",
       "Values": {
         "0": "None",
@@ -47167,6 +48202,7 @@
     "RNGFND1_TYPE": {
       "Description": "Type of connected rangefinder",
       "DisplayName": "Rangefinder type",
+      "RebootRequired": "True",
       "User": "Standard",
       "Values": {
         "0": "None",
@@ -47506,6 +48542,7 @@
     "RNGFND2_TYPE": {
       "Description": "Type of connected rangefinder",
       "DisplayName": "Rangefinder type",
+      "RebootRequired": "True",
       "User": "Standard",
       "Values": {
         "0": "None",
@@ -47845,6 +48882,7 @@
     "RNGFND3_TYPE": {
       "Description": "Type of connected rangefinder",
       "DisplayName": "Rangefinder type",
+      "RebootRequired": "True",
       "User": "Standard",
       "Values": {
         "0": "None",
@@ -48184,6 +49222,7 @@
     "RNGFND4_TYPE": {
       "Description": "Type of connected rangefinder",
       "DisplayName": "Rangefinder type",
+      "RebootRequired": "True",
       "User": "Standard",
       "Values": {
         "0": "None",
@@ -48523,6 +49562,7 @@
     "RNGFND5_TYPE": {
       "Description": "Type of connected rangefinder",
       "DisplayName": "Rangefinder type",
+      "RebootRequired": "True",
       "User": "Standard",
       "Values": {
         "0": "None",
@@ -48862,6 +49902,7 @@
     "RNGFND6_TYPE": {
       "Description": "Type of connected rangefinder",
       "DisplayName": "Rangefinder type",
+      "RebootRequired": "True",
       "User": "Standard",
       "Values": {
         "0": "None",
@@ -49201,6 +50242,7 @@
     "RNGFND7_TYPE": {
       "Description": "Type of connected rangefinder",
       "DisplayName": "Rangefinder type",
+      "RebootRequired": "True",
       "User": "Standard",
       "Values": {
         "0": "None",
@@ -49540,6 +50582,7 @@
     "RNGFND8_TYPE": {
       "Description": "Type of connected rangefinder",
       "DisplayName": "Rangefinder type",
+      "RebootRequired": "True",
       "User": "Standard",
       "Values": {
         "0": "None",
@@ -49879,6 +50922,7 @@
     "RNGFND9_TYPE": {
       "Description": "Type of connected rangefinder",
       "DisplayName": "Rangefinder type",
+      "RebootRequired": "True",
       "User": "Standard",
       "Values": {
         "0": "None",
@@ -50218,6 +51262,7 @@
     "RNGFNDA_TYPE": {
       "Description": "Type of connected rangefinder",
       "DisplayName": "Rangefinder type",
+      "RebootRequired": "True",
       "User": "Standard",
       "Values": {
         "0": "None",
@@ -50449,6 +51494,7 @@
     "RPM1_TYPE": {
       "Description": "What type of RPM sensor is connected",
       "DisplayName": "RPM type",
+      "RebootRequired": "True",
       "User": "Standard",
       "Values": {
         "0": "None",
@@ -50551,6 +51597,7 @@
     "RPM2_TYPE": {
       "Description": "What type of RPM sensor is connected",
       "DisplayName": "RPM type",
+      "RebootRequired": "True",
       "User": "Standard",
       "Values": {
         "0": "None",
@@ -50653,6 +51700,7 @@
     "RPM3_TYPE": {
       "Description": "What type of RPM sensor is connected",
       "DisplayName": "RPM type",
+      "RebootRequired": "True",
       "User": "Standard",
       "Values": {
         "0": "None",
@@ -50755,6 +51803,7 @@
     "RPM4_TYPE": {
       "Description": "What type of RPM sensor is connected",
       "DisplayName": "RPM type",
+      "RebootRequired": "True",
       "User": "Standard",
       "Values": {
         "0": "None",

@@ -3978,6 +3978,7 @@ DO NOT EDIT
 <tr><td>20</td><td>Scripting</td></tr>
 <tr><td>100</td><td>SITL</td></tr>
 </table>
+<li>RebootRequired: True</li>
 </ul>
 
 
@@ -4117,6 +4118,7 @@ DO NOT EDIT
 <tr><td>20</td><td>Scripting</td></tr>
 <tr><td>100</td><td>SITL</td></tr>
 </table>
+<li>RebootRequired: True</li>
 </ul>
 
 
@@ -4256,6 +4258,7 @@ DO NOT EDIT
 <tr><td>20</td><td>Scripting</td></tr>
 <tr><td>100</td><td>SITL</td></tr>
 </table>
+<li>RebootRequired: True</li>
 </ul>
 
 
@@ -4395,6 +4398,7 @@ DO NOT EDIT
 <tr><td>20</td><td>Scripting</td></tr>
 <tr><td>100</td><td>SITL</td></tr>
 </table>
+<li>RebootRequired: True</li>
 </ul>
 
 
@@ -4534,6 +4538,7 @@ DO NOT EDIT
 <tr><td>20</td><td>Scripting</td></tr>
 <tr><td>100</td><td>SITL</td></tr>
 </table>
+<li>RebootRequired: True</li>
 </ul>
 
 
@@ -4673,6 +4678,7 @@ DO NOT EDIT
 <tr><td>20</td><td>Scripting</td></tr>
 <tr><td>100</td><td>SITL</td></tr>
 </table>
+<li>RebootRequired: True</li>
 </ul>
 
 
@@ -16468,7 +16474,7 @@ DO NOT EDIT
 
 <p>This is a bitmask of driver types to disable. If a driver type is set in this mask then that driver will not try to find a sensor at startup</p>
 <ul>
-<li>Bitmask: 0:HMC5883,1:LSM303D,2:AK8963,3:BMM150,4:LSM9DS1,5:LIS3MDL,6:AK0991x,7:IST8310,8:ICM20948,9:MMC3416,11:DroneCAN,12:QMC5883,14:MAG3110,15:IST8308,16:RM3100,17:MSP,18:ExternalAHRS,19:MMC5XX3,20:QMC5883P,21:BMM350,22:IIS2MDC or LIS2MDL</li>
+<li>Bitmask: 0:HMC5883,1:LSM303D,2:AK8963,3:BMM150,4:LSM9DS1,5:LIS3MDL,6:AK0991x,7:IST8310,8:ICM20948,9:MMC3416,11:DroneCAN,12:QMC5883,14:MAG3110,15:IST8308,16:RM3100,17:MSP,18:ExternalAHRS,19:MMC5XX3,20:QMC5883P,21:BMM350,22:IIS2MDC or LIS2MDL,24:AF9838</li>
 </ul>
 
 
@@ -22731,6 +22737,40 @@ DO NOT EDIT
 </ul>
 
 
+<h2>DeviceID (MAV1_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
+</ul>
+
+
 <h1>MAV2 Parameters</h1>
 
 
@@ -22849,6 +22889,40 @@ DO NOT EDIT
 <ul>
 <li>RebootRequired: True</li>
 <li>Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don&#x27;t forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don&#x27;t pass CRC</li>
+</ul>
+
+
+<h2>DeviceID (MAV2_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
 </ul>
 
 
@@ -22973,6 +23047,40 @@ DO NOT EDIT
 </ul>
 
 
+<h2>DeviceID (MAV3_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
+</ul>
+
+
 <h1>MAV4 Parameters</h1>
 
 
@@ -23091,6 +23199,40 @@ DO NOT EDIT
 <ul>
 <li>RebootRequired: True</li>
 <li>Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don&#x27;t forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don&#x27;t pass CRC</li>
+</ul>
+
+
+<h2>DeviceID (MAV4_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
 </ul>
 
 
@@ -23215,6 +23357,40 @@ DO NOT EDIT
 </ul>
 
 
+<h2>DeviceID (MAV5_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
+</ul>
+
+
 <h1>MAV6 Parameters</h1>
 
 
@@ -23333,6 +23509,40 @@ DO NOT EDIT
 <ul>
 <li>RebootRequired: True</li>
 <li>Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don&#x27;t forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don&#x27;t pass CRC</li>
+</ul>
+
+
+<h2>DeviceID (MAV6_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
 </ul>
 
 
@@ -23457,6 +23667,40 @@ DO NOT EDIT
 </ul>
 
 
+<h2>DeviceID (MAV7_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
+</ul>
+
+
 <h1>MAV8 Parameters</h1>
 
 
@@ -23575,6 +23819,40 @@ DO NOT EDIT
 <ul>
 <li>RebootRequired: True</li>
 <li>Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don&#x27;t forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don&#x27;t pass CRC</li>
+</ul>
+
+
+<h2>DeviceID (MAV8_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
 </ul>
 
 
@@ -23699,6 +23977,40 @@ DO NOT EDIT
 </ul>
 
 
+<h2>DeviceID (MAV9_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
+</ul>
+
+
 <h1>MAV10 Parameters</h1>
 
 
@@ -23817,6 +24129,40 @@ DO NOT EDIT
 <ul>
 <li>RebootRequired: True</li>
 <li>Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don&#x27;t forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don&#x27;t pass CRC</li>
+</ul>
+
+
+<h2>DeviceID (MAV10_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
 </ul>
 
 
@@ -23941,6 +24287,40 @@ DO NOT EDIT
 </ul>
 
 
+<h2>DeviceID (MAV11_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
+</ul>
+
+
 <h1>MAV12 Parameters</h1>
 
 
@@ -24059,6 +24439,40 @@ DO NOT EDIT
 <ul>
 <li>RebootRequired: True</li>
 <li>Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don&#x27;t forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don&#x27;t pass CRC</li>
+</ul>
+
+
+<h2>DeviceID (MAV12_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
 </ul>
 
 
@@ -24183,6 +24597,40 @@ DO NOT EDIT
 </ul>
 
 
+<h2>DeviceID (MAV13_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
+</ul>
+
+
 <h1>MAV14 Parameters</h1>
 
 
@@ -24301,6 +24749,40 @@ DO NOT EDIT
 <ul>
 <li>RebootRequired: True</li>
 <li>Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don&#x27;t forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don&#x27;t pass CRC</li>
+</ul>
+
+
+<h2>DeviceID (MAV14_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
 </ul>
 
 
@@ -24425,6 +24907,40 @@ DO NOT EDIT
 </ul>
 
 
+<h2>DeviceID (MAV15_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
+</ul>
+
+
 <h1>MAV16 Parameters</h1>
 
 
@@ -24543,6 +25059,40 @@ DO NOT EDIT
 <ul>
 <li>RebootRequired: True</li>
 <li>Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don&#x27;t forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don&#x27;t pass CRC</li>
+</ul>
+
+
+<h2>DeviceID (MAV16_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
 </ul>
 
 
@@ -24667,6 +25217,40 @@ DO NOT EDIT
 </ul>
 
 
+<h2>DeviceID (MAV17_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
+</ul>
+
+
 <h1>MAV18 Parameters</h1>
 
 
@@ -24785,6 +25369,40 @@ DO NOT EDIT
 <ul>
 <li>RebootRequired: True</li>
 <li>Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don&#x27;t forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don&#x27;t pass CRC</li>
+</ul>
+
+
+<h2>DeviceID (MAV18_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
 </ul>
 
 
@@ -24909,6 +25527,40 @@ DO NOT EDIT
 </ul>
 
 
+<h2>DeviceID (MAV19_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
+</ul>
+
+
 <h1>MAV20 Parameters</h1>
 
 
@@ -25027,6 +25679,40 @@ DO NOT EDIT
 <ul>
 <li>RebootRequired: True</li>
 <li>Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don&#x27;t forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don&#x27;t pass CRC</li>
+</ul>
+
+
+<h2>DeviceID (MAV20_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
 </ul>
 
 
@@ -25151,6 +25837,40 @@ DO NOT EDIT
 </ul>
 
 
+<h2>DeviceID (MAV21_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
+</ul>
+
+
 <h1>MAV22 Parameters</h1>
 
 
@@ -25269,6 +25989,40 @@ DO NOT EDIT
 <ul>
 <li>RebootRequired: True</li>
 <li>Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don&#x27;t forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don&#x27;t pass CRC</li>
+</ul>
+
+
+<h2>DeviceID (MAV22_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
 </ul>
 
 
@@ -25393,6 +26147,40 @@ DO NOT EDIT
 </ul>
 
 
+<h2>DeviceID (MAV23_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
+</ul>
+
+
 <h1>MAV24 Parameters</h1>
 
 
@@ -25511,6 +26299,40 @@ DO NOT EDIT
 <ul>
 <li>RebootRequired: True</li>
 <li>Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don&#x27;t forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don&#x27;t pass CRC</li>
+</ul>
+
+
+<h2>DeviceID (MAV24_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
 </ul>
 
 
@@ -25635,6 +26457,40 @@ DO NOT EDIT
 </ul>
 
 
+<h2>DeviceID (MAV25_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
+</ul>
+
+
 <h1>MAV26 Parameters</h1>
 
 
@@ -25753,6 +26609,40 @@ DO NOT EDIT
 <ul>
 <li>RebootRequired: True</li>
 <li>Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don&#x27;t forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don&#x27;t pass CRC</li>
+</ul>
+
+
+<h2>DeviceID (MAV26_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
 </ul>
 
 
@@ -25877,6 +26767,40 @@ DO NOT EDIT
 </ul>
 
 
+<h2>DeviceID (MAV27_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
+</ul>
+
+
 <h1>MAV28 Parameters</h1>
 
 
@@ -25995,6 +26919,40 @@ DO NOT EDIT
 <ul>
 <li>RebootRequired: True</li>
 <li>Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don&#x27;t forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don&#x27;t pass CRC</li>
+</ul>
+
+
+<h2>DeviceID (MAV28_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
 </ul>
 
 
@@ -26119,6 +27077,40 @@ DO NOT EDIT
 </ul>
 
 
+<h2>DeviceID (MAV29_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
+</ul>
+
+
 <h1>MAV30 Parameters</h1>
 
 
@@ -26237,6 +27229,40 @@ DO NOT EDIT
 <ul>
 <li>RebootRequired: True</li>
 <li>Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don&#x27;t forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don&#x27;t pass CRC</li>
+</ul>
+
+
+<h2>DeviceID (MAV30_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
 </ul>
 
 
@@ -26361,6 +27387,40 @@ DO NOT EDIT
 </ul>
 
 
+<h2>DeviceID (MAV31_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
+</ul>
+
+
 <h1>MAV32 Parameters</h1>
 
 
@@ -26479,6 +27539,40 @@ DO NOT EDIT
 <ul>
 <li>RebootRequired: True</li>
 <li>Bitmask: 0:Accept unsigned MAVLink2 messages, 1:Don&#x27;t forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don&#x27;t pass CRC</li>
+</ul>
+
+
+<h2>DeviceID (MAV32_DEVID)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>ID of device using this MAVLink channel</p>
+<ul>
+<li>ReadOnly: True</li>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Unknown</td></tr>
+<tr><td>65542</td><td>SERIAL0 (USB on ChibiOS)</td></tr>
+<tr><td>65798</td><td>SERIAL1</td></tr>
+<tr><td>66054</td><td>SERIAL2</td></tr>
+<tr><td>66310</td><td>SERIAL3</td></tr>
+<tr><td>66566</td><td>SERIAL4</td></tr>
+<tr><td>66822</td><td>SERIAL5</td></tr>
+<tr><td>67078</td><td>SERIAL6</td></tr>
+<tr><td>67334</td><td>SERIAL7</td></tr>
+<tr><td>67590</td><td>SERIAL8</td></tr>
+<tr><td>67846</td><td>SERIAL9</td></tr>
+<tr><td>131078</td><td>NET_P1</td></tr>
+<tr><td>131334</td><td>NET_P2</td></tr>
+<tr><td>131590</td><td>NET_P3</td></tr>
+<tr><td>131846</td><td>NET_P4</td></tr>
+<tr><td>196614</td><td>CAN_D1_UC_S1</td></tr>
+<tr><td>196870</td><td>CAN_D1_UC_S2</td></tr>
+<tr><td>197126</td><td>CAN_D1_UC_S3</td></tr>
+<tr><td>196622</td><td>CAN_D2_UC_S1</td></tr>
+<tr><td>196878</td><td>CAN_D2_UC_S2</td></tr>
+<tr><td>197134</td><td>CAN_D2_UC_S3</td></tr>
+<tr><td>262150</td><td>SCR_SDEV1</td></tr>
+<tr><td>262406</td><td>SCR_SDEV2</td></tr>
+<tr><td>262662</td><td>SCR_SDEV3</td></tr>
+</table>
 </ul>
 
 
@@ -28766,6 +29860,7 @@ DO NOT EDIT
 
 <p>What type of RPM sensor is connected</p>
 <ul>
+<li>RebootRequired: True</li>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>None</td></tr>
 <tr><td>1</td><td>Not Used</td></tr>
@@ -28861,6 +29956,7 @@ DO NOT EDIT
 
 <p>What type of RPM sensor is connected</p>
 <ul>
+<li>RebootRequired: True</li>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>None</td></tr>
 <tr><td>1</td><td>Not Used</td></tr>
@@ -28956,6 +30052,7 @@ DO NOT EDIT
 
 <p>What type of RPM sensor is connected</p>
 <ul>
+<li>RebootRequired: True</li>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>None</td></tr>
 <tr><td>1</td><td>Not Used</td></tr>
@@ -29051,6 +30148,7 @@ DO NOT EDIT
 
 <p>What type of RPM sensor is connected</p>
 <ul>
+<li>RebootRequired: True</li>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>None</td></tr>
 <tr><td>1</td><td>Not Used</td></tr>

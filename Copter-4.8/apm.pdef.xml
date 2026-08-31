@@ -3154,6 +3154,7 @@
           <value code="20">Scripting</value>
           <value code="100">SITL</value>
         </values>
+        <field name="RebootRequired">True</field>
       </param>
       <param humanName="Airspeed use" name="ARSPD2_USE" documentation="This parameter is not used by this vehicle. Always set to 0." user="Standard">
         <values>
@@ -3237,6 +3238,7 @@
           <value code="20">Scripting</value>
           <value code="100">SITL</value>
         </values>
+        <field name="RebootRequired">True</field>
       </param>
       <param humanName="Airspeed use" name="ARSPD3_USE" documentation="This parameter is not used by this vehicle. Always set to 0." user="Standard">
         <values>
@@ -3320,6 +3322,7 @@
           <value code="20">Scripting</value>
           <value code="100">SITL</value>
         </values>
+        <field name="RebootRequired">True</field>
       </param>
       <param humanName="Airspeed use" name="ARSPD4_USE" documentation="This parameter is not used by this vehicle. Always set to 0." user="Standard">
         <values>
@@ -3403,6 +3406,7 @@
           <value code="20">Scripting</value>
           <value code="100">SITL</value>
         </values>
+        <field name="RebootRequired">True</field>
       </param>
       <param humanName="Airspeed use" name="ARSPD5_USE" documentation="This parameter is not used by this vehicle. Always set to 0." user="Standard">
         <values>
@@ -3486,6 +3490,7 @@
           <value code="20">Scripting</value>
           <value code="100">SITL</value>
         </values>
+        <field name="RebootRequired">True</field>
       </param>
       <param humanName="Airspeed use" name="ARSPD6_USE" documentation="This parameter is not used by this vehicle. Always set to 0." user="Standard">
         <values>
@@ -3569,6 +3574,7 @@
           <value code="20">Scripting</value>
           <value code="100">SITL</value>
         </values>
+        <field name="RebootRequired">True</field>
       </param>
       <param humanName="Airspeed use" name="ARSPD_USE" documentation="This parameter is not used by this vehicle. Always set to 0." user="Standard">
         <values>
@@ -11247,6 +11253,7 @@
           <value code="7">Scripting</value>
           <value code="8">RunCam</value>
         </values>
+        <field name="RebootRequired">True</field>
       </param>
       <param humanName="Camera shutter duration held open" name="CAM1_DURATION" documentation="Duration in seconds that the camera shutter is held open" user="Standard">
         <field name="Units">s</field>
@@ -11371,6 +11378,7 @@
           <value code="7">Scripting</value>
           <value code="8">RunCam</value>
         </values>
+        <field name="RebootRequired">True</field>
       </param>
       <param humanName="Camera shutter duration held open" name="CAM2_DURATION" documentation="Duration in seconds that the camera shutter is held open" user="Standard">
         <field name="Units">s</field>
@@ -13973,8 +13981,9 @@
           <bit code="20">QMC5883P</bit>
           <bit code="21">BMM350</bit>
           <bit code="22">IIS2MDC or LIS2MDL</bit>
+          <bit code="24">AF9838</bit>
         </bitmask>
-        <field name="Bitmask">0:HMC5883,1:LSM303D,2:AK8963,3:BMM150,4:LSM9DS1,5:LIS3MDL,6:AK0991x,7:IST8310,8:ICM20948,9:MMC3416,11:DroneCAN,12:QMC5883,14:MAG3110,15:IST8308,16:RM3100,17:MSP,18:ExternalAHRS,19:MMC5XX3,20:QMC5883P,21:BMM350,22:IIS2MDC or LIS2MDL</field>
+        <field name="Bitmask">0:HMC5883,1:LSM303D,2:AK8963,3:BMM150,4:LSM9DS1,5:LIS3MDL,6:AK0991x,7:IST8310,8:ICM20948,9:MMC3416,11:DroneCAN,12:QMC5883,14:MAG3110,15:IST8308,16:RM3100,17:MSP,18:ExternalAHRS,19:MMC5XX3,20:QMC5883P,21:BMM350,22:IIS2MDC or LIS2MDL,24:AF9838</field>
       </param>
       <param humanName="Range in which sample is accepted" name="COMPASS_FLTR_RNG" documentation="This sets the range around the average value that new samples must be within to be accepted. This can help reduce the impact of noise on sensors that are on long I2C cables. The value is a percentage from the average value. A value of zero disables this filter.">
         <field name="Units">%</field>
@@ -18554,6 +18563,35 @@
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
       </param>
+      <param humanName="DeviceID" name="MAV1_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
+      </param>
     </parameters>
     <parameters name="MAV2">
       <param humanName="Raw sensor stream rate" name="MAV2_RAW_SENS" documentation="MAVLink Stream rate of RAW_IMU, SCALED_IMU2, SCALED_IMU3, SCALED_PRESSURE, SCALED_PRESSURE2, SCALED_PRESSURE3 and AIRSPEED" user="Advanced">
@@ -18633,6 +18671,35 @@
           <bit code="3">forward mavlink packets that don't pass CRC</bit>
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
+      </param>
+      <param humanName="DeviceID" name="MAV2_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
       </param>
     </parameters>
     <parameters name="MAV3">
@@ -18714,6 +18781,35 @@
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
       </param>
+      <param humanName="DeviceID" name="MAV3_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
+      </param>
     </parameters>
     <parameters name="MAV4">
       <param humanName="Raw sensor stream rate" name="MAV4_RAW_SENS" documentation="MAVLink Stream rate of RAW_IMU, SCALED_IMU2, SCALED_IMU3, SCALED_PRESSURE, SCALED_PRESSURE2, SCALED_PRESSURE3 and AIRSPEED" user="Advanced">
@@ -18793,6 +18889,35 @@
           <bit code="3">forward mavlink packets that don't pass CRC</bit>
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
+      </param>
+      <param humanName="DeviceID" name="MAV4_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
       </param>
     </parameters>
     <parameters name="MAV5">
@@ -18874,6 +18999,35 @@
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
       </param>
+      <param humanName="DeviceID" name="MAV5_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
+      </param>
     </parameters>
     <parameters name="MAV6">
       <param humanName="Raw sensor stream rate" name="MAV6_RAW_SENS" documentation="MAVLink Stream rate of RAW_IMU, SCALED_IMU2, SCALED_IMU3, SCALED_PRESSURE, SCALED_PRESSURE2, SCALED_PRESSURE3 and AIRSPEED" user="Advanced">
@@ -18953,6 +19107,35 @@
           <bit code="3">forward mavlink packets that don't pass CRC</bit>
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
+      </param>
+      <param humanName="DeviceID" name="MAV6_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
       </param>
     </parameters>
     <parameters name="MAV7">
@@ -19034,6 +19217,35 @@
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
       </param>
+      <param humanName="DeviceID" name="MAV7_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
+      </param>
     </parameters>
     <parameters name="MAV8">
       <param humanName="Raw sensor stream rate" name="MAV8_RAW_SENS" documentation="MAVLink Stream rate of RAW_IMU, SCALED_IMU2, SCALED_IMU3, SCALED_PRESSURE, SCALED_PRESSURE2, SCALED_PRESSURE3 and AIRSPEED" user="Advanced">
@@ -19113,6 +19325,35 @@
           <bit code="3">forward mavlink packets that don't pass CRC</bit>
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
+      </param>
+      <param humanName="DeviceID" name="MAV8_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
       </param>
     </parameters>
     <parameters name="MAV9">
@@ -19194,6 +19435,35 @@
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
       </param>
+      <param humanName="DeviceID" name="MAV9_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
+      </param>
     </parameters>
     <parameters name="MAV10">
       <param humanName="Raw sensor stream rate" name="MAV10_RAW_SENS" documentation="MAVLink Stream rate of RAW_IMU, SCALED_IMU2, SCALED_IMU3, SCALED_PRESSURE, SCALED_PRESSURE2, SCALED_PRESSURE3 and AIRSPEED" user="Advanced">
@@ -19273,6 +19543,35 @@
           <bit code="3">forward mavlink packets that don't pass CRC</bit>
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
+      </param>
+      <param humanName="DeviceID" name="MAV10_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
       </param>
     </parameters>
     <parameters name="MAV11">
@@ -19354,6 +19653,35 @@
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
       </param>
+      <param humanName="DeviceID" name="MAV11_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
+      </param>
     </parameters>
     <parameters name="MAV12">
       <param humanName="Raw sensor stream rate" name="MAV12_RAW_SENS" documentation="MAVLink Stream rate of RAW_IMU, SCALED_IMU2, SCALED_IMU3, SCALED_PRESSURE, SCALED_PRESSURE2, SCALED_PRESSURE3 and AIRSPEED" user="Advanced">
@@ -19433,6 +19761,35 @@
           <bit code="3">forward mavlink packets that don't pass CRC</bit>
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
+      </param>
+      <param humanName="DeviceID" name="MAV12_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
       </param>
     </parameters>
     <parameters name="MAV13">
@@ -19514,6 +19871,35 @@
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
       </param>
+      <param humanName="DeviceID" name="MAV13_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
+      </param>
     </parameters>
     <parameters name="MAV14">
       <param humanName="Raw sensor stream rate" name="MAV14_RAW_SENS" documentation="MAVLink Stream rate of RAW_IMU, SCALED_IMU2, SCALED_IMU3, SCALED_PRESSURE, SCALED_PRESSURE2, SCALED_PRESSURE3 and AIRSPEED" user="Advanced">
@@ -19593,6 +19979,35 @@
           <bit code="3">forward mavlink packets that don't pass CRC</bit>
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
+      </param>
+      <param humanName="DeviceID" name="MAV14_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
       </param>
     </parameters>
     <parameters name="MAV15">
@@ -19674,6 +20089,35 @@
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
       </param>
+      <param humanName="DeviceID" name="MAV15_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
+      </param>
     </parameters>
     <parameters name="MAV16">
       <param humanName="Raw sensor stream rate" name="MAV16_RAW_SENS" documentation="MAVLink Stream rate of RAW_IMU, SCALED_IMU2, SCALED_IMU3, SCALED_PRESSURE, SCALED_PRESSURE2, SCALED_PRESSURE3 and AIRSPEED" user="Advanced">
@@ -19753,6 +20197,35 @@
           <bit code="3">forward mavlink packets that don't pass CRC</bit>
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
+      </param>
+      <param humanName="DeviceID" name="MAV16_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
       </param>
     </parameters>
     <parameters name="MAV17">
@@ -19834,6 +20307,35 @@
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
       </param>
+      <param humanName="DeviceID" name="MAV17_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
+      </param>
     </parameters>
     <parameters name="MAV18">
       <param humanName="Raw sensor stream rate" name="MAV18_RAW_SENS" documentation="MAVLink Stream rate of RAW_IMU, SCALED_IMU2, SCALED_IMU3, SCALED_PRESSURE, SCALED_PRESSURE2, SCALED_PRESSURE3 and AIRSPEED" user="Advanced">
@@ -19913,6 +20415,35 @@
           <bit code="3">forward mavlink packets that don't pass CRC</bit>
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
+      </param>
+      <param humanName="DeviceID" name="MAV18_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
       </param>
     </parameters>
     <parameters name="MAV19">
@@ -19994,6 +20525,35 @@
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
       </param>
+      <param humanName="DeviceID" name="MAV19_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
+      </param>
     </parameters>
     <parameters name="MAV20">
       <param humanName="Raw sensor stream rate" name="MAV20_RAW_SENS" documentation="MAVLink Stream rate of RAW_IMU, SCALED_IMU2, SCALED_IMU3, SCALED_PRESSURE, SCALED_PRESSURE2, SCALED_PRESSURE3 and AIRSPEED" user="Advanced">
@@ -20073,6 +20633,35 @@
           <bit code="3">forward mavlink packets that don't pass CRC</bit>
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
+      </param>
+      <param humanName="DeviceID" name="MAV20_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
       </param>
     </parameters>
     <parameters name="MAV21">
@@ -20154,6 +20743,35 @@
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
       </param>
+      <param humanName="DeviceID" name="MAV21_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
+      </param>
     </parameters>
     <parameters name="MAV22">
       <param humanName="Raw sensor stream rate" name="MAV22_RAW_SENS" documentation="MAVLink Stream rate of RAW_IMU, SCALED_IMU2, SCALED_IMU3, SCALED_PRESSURE, SCALED_PRESSURE2, SCALED_PRESSURE3 and AIRSPEED" user="Advanced">
@@ -20233,6 +20851,35 @@
           <bit code="3">forward mavlink packets that don't pass CRC</bit>
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
+      </param>
+      <param humanName="DeviceID" name="MAV22_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
       </param>
     </parameters>
     <parameters name="MAV23">
@@ -20314,6 +20961,35 @@
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
       </param>
+      <param humanName="DeviceID" name="MAV23_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
+      </param>
     </parameters>
     <parameters name="MAV24">
       <param humanName="Raw sensor stream rate" name="MAV24_RAW_SENS" documentation="MAVLink Stream rate of RAW_IMU, SCALED_IMU2, SCALED_IMU3, SCALED_PRESSURE, SCALED_PRESSURE2, SCALED_PRESSURE3 and AIRSPEED" user="Advanced">
@@ -20393,6 +21069,35 @@
           <bit code="3">forward mavlink packets that don't pass CRC</bit>
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
+      </param>
+      <param humanName="DeviceID" name="MAV24_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
       </param>
     </parameters>
     <parameters name="MAV25">
@@ -20474,6 +21179,35 @@
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
       </param>
+      <param humanName="DeviceID" name="MAV25_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
+      </param>
     </parameters>
     <parameters name="MAV26">
       <param humanName="Raw sensor stream rate" name="MAV26_RAW_SENS" documentation="MAVLink Stream rate of RAW_IMU, SCALED_IMU2, SCALED_IMU3, SCALED_PRESSURE, SCALED_PRESSURE2, SCALED_PRESSURE3 and AIRSPEED" user="Advanced">
@@ -20553,6 +21287,35 @@
           <bit code="3">forward mavlink packets that don't pass CRC</bit>
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
+      </param>
+      <param humanName="DeviceID" name="MAV26_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
       </param>
     </parameters>
     <parameters name="MAV27">
@@ -20634,6 +21397,35 @@
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
       </param>
+      <param humanName="DeviceID" name="MAV27_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
+      </param>
     </parameters>
     <parameters name="MAV28">
       <param humanName="Raw sensor stream rate" name="MAV28_RAW_SENS" documentation="MAVLink Stream rate of RAW_IMU, SCALED_IMU2, SCALED_IMU3, SCALED_PRESSURE, SCALED_PRESSURE2, SCALED_PRESSURE3 and AIRSPEED" user="Advanced">
@@ -20713,6 +21505,35 @@
           <bit code="3">forward mavlink packets that don't pass CRC</bit>
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
+      </param>
+      <param humanName="DeviceID" name="MAV28_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
       </param>
     </parameters>
     <parameters name="MAV29">
@@ -20794,6 +21615,35 @@
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
       </param>
+      <param humanName="DeviceID" name="MAV29_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
+      </param>
     </parameters>
     <parameters name="MAV30">
       <param humanName="Raw sensor stream rate" name="MAV30_RAW_SENS" documentation="MAVLink Stream rate of RAW_IMU, SCALED_IMU2, SCALED_IMU3, SCALED_PRESSURE, SCALED_PRESSURE2, SCALED_PRESSURE3 and AIRSPEED" user="Advanced">
@@ -20873,6 +21723,35 @@
           <bit code="3">forward mavlink packets that don't pass CRC</bit>
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
+      </param>
+      <param humanName="DeviceID" name="MAV30_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
       </param>
     </parameters>
     <parameters name="MAV31">
@@ -20954,6 +21833,35 @@
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
       </param>
+      <param humanName="DeviceID" name="MAV31_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
+      </param>
     </parameters>
     <parameters name="MAV32">
       <param humanName="Raw sensor stream rate" name="MAV32_RAW_SENS" documentation="MAVLink Stream rate of RAW_IMU, SCALED_IMU2, SCALED_IMU3, SCALED_PRESSURE, SCALED_PRESSURE2, SCALED_PRESSURE3 and AIRSPEED" user="Advanced">
@@ -21033,6 +21941,35 @@
           <bit code="3">forward mavlink packets that don't pass CRC</bit>
         </bitmask>
         <field name="Bitmask">0:Accept unsigned MAVLink2 messages, 1:Don't forward mavlink to/from, 2:Ignore Streamrate, 3:forward mavlink packets that don't pass CRC</field>
+      </param>
+      <param humanName="DeviceID" name="MAV32_DEVID" documentation="ID of device using this MAVLink channel" user="Advanced">
+        <field name="ReadOnly">True</field>
+        <values>
+          <value code="0">Unknown</value>
+          <value code="65542">SERIAL0 (USB on ChibiOS)</value>
+          <value code="65798">SERIAL1</value>
+          <value code="66054">SERIAL2</value>
+          <value code="66310">SERIAL3</value>
+          <value code="66566">SERIAL4</value>
+          <value code="66822">SERIAL5</value>
+          <value code="67078">SERIAL6</value>
+          <value code="67334">SERIAL7</value>
+          <value code="67590">SERIAL8</value>
+          <value code="67846">SERIAL9</value>
+          <value code="131078">NET_P1</value>
+          <value code="131334">NET_P2</value>
+          <value code="131590">NET_P3</value>
+          <value code="131846">NET_P4</value>
+          <value code="196614">CAN_D1_UC_S1</value>
+          <value code="196870">CAN_D1_UC_S2</value>
+          <value code="197126">CAN_D1_UC_S3</value>
+          <value code="196622">CAN_D2_UC_S1</value>
+          <value code="196878">CAN_D2_UC_S2</value>
+          <value code="197134">CAN_D2_UC_S3</value>
+          <value code="262150">SCR_SDEV1</value>
+          <value code="262406">SCR_SDEV2</value>
+          <value code="262662">SCR_SDEV3</value>
+        </values>
       </param>
     </parameters>
     <parameters name="MIS_">
@@ -22123,7 +23060,7 @@
           <value code="3">Dijkstra with BendyRuler</value>
         </values>
       </param>
-      <param humanName="Object Avoidance wide margin distance" name="OA_MARGIN_MAX" documentation="Object Avoidance will ignore objects more than this many meters from vehicle" user="Standard">
+      <param humanName="Object Avoidance wide margin distance" name="OA_MARGIN_MAX" documentation="Minimum distance in meters that the vehicle will try to stay away from obstacles and fences. BendyRuler only accepts a candidate path whose clearance exceeds this, and Dijkstra uses it as the margin held from fences. This is not a detection range: use OA_BR_LOOKAHEAD to limit how far ahead BendyRuler looks for obstacles." user="Standard">
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
         <field name="Range">0.1 100</field>
@@ -26123,6 +27060,7 @@
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
         </values>
+        <field name="RebootRequired">True</field>
       </param>
       <param humanName="Precision Land Type" name="PLND_TYPE" documentation="Precision Land Type" user="Advanced">
         <values>
@@ -26132,6 +27070,7 @@
           <value code="3">SITL_Gazebo</value>
           <value code="4">SITL</value>
         </values>
+        <field name="RebootRequired">True</field>
       </param>
       <param humanName="Sensor yaw alignment" name="PLND_YAW_ALIGN" documentation="Yaw angle from body x-axis to sensor x-axis." user="Advanced">
         <field name="Range">0 36000</field>
@@ -30735,6 +31674,7 @@
     </parameters>
     <parameters name="RNGFND1_">
       <param humanName="Rangefinder type" name="RNGFND1_TYPE" documentation="Type of connected rangefinder" user="Standard">
+        <field name="RebootRequired">True</field>
         <values>
           <value code="0">None</value>
           <value code="42">Ainstein_LR_D1</value>
@@ -30951,6 +31891,7 @@
     </parameters>
     <parameters name="RNGFND2_">
       <param humanName="Rangefinder type" name="RNGFND2_TYPE" documentation="Type of connected rangefinder" user="Standard">
+        <field name="RebootRequired">True</field>
         <values>
           <value code="0">None</value>
           <value code="42">Ainstein_LR_D1</value>
@@ -31167,6 +32108,7 @@
     </parameters>
     <parameters name="RNGFND3_">
       <param humanName="Rangefinder type" name="RNGFND3_TYPE" documentation="Type of connected rangefinder" user="Standard">
+        <field name="RebootRequired">True</field>
         <values>
           <value code="0">None</value>
           <value code="42">Ainstein_LR_D1</value>
@@ -31383,6 +32325,7 @@
     </parameters>
     <parameters name="RNGFND4_">
       <param humanName="Rangefinder type" name="RNGFND4_TYPE" documentation="Type of connected rangefinder" user="Standard">
+        <field name="RebootRequired">True</field>
         <values>
           <value code="0">None</value>
           <value code="42">Ainstein_LR_D1</value>
@@ -31599,6 +32542,7 @@
     </parameters>
     <parameters name="RNGFND5_">
       <param humanName="Rangefinder type" name="RNGFND5_TYPE" documentation="Type of connected rangefinder" user="Standard">
+        <field name="RebootRequired">True</field>
         <values>
           <value code="0">None</value>
           <value code="42">Ainstein_LR_D1</value>
@@ -31815,6 +32759,7 @@
     </parameters>
     <parameters name="RNGFND6_">
       <param humanName="Rangefinder type" name="RNGFND6_TYPE" documentation="Type of connected rangefinder" user="Standard">
+        <field name="RebootRequired">True</field>
         <values>
           <value code="0">None</value>
           <value code="42">Ainstein_LR_D1</value>
@@ -32031,6 +32976,7 @@
     </parameters>
     <parameters name="RNGFND7_">
       <param humanName="Rangefinder type" name="RNGFND7_TYPE" documentation="Type of connected rangefinder" user="Standard">
+        <field name="RebootRequired">True</field>
         <values>
           <value code="0">None</value>
           <value code="42">Ainstein_LR_D1</value>
@@ -32247,6 +33193,7 @@
     </parameters>
     <parameters name="RNGFND8_">
       <param humanName="Rangefinder type" name="RNGFND8_TYPE" documentation="Type of connected rangefinder" user="Standard">
+        <field name="RebootRequired">True</field>
         <values>
           <value code="0">None</value>
           <value code="42">Ainstein_LR_D1</value>
@@ -32463,6 +33410,7 @@
     </parameters>
     <parameters name="RNGFND9_">
       <param humanName="Rangefinder type" name="RNGFND9_TYPE" documentation="Type of connected rangefinder" user="Standard">
+        <field name="RebootRequired">True</field>
         <values>
           <value code="0">None</value>
           <value code="42">Ainstein_LR_D1</value>
@@ -32679,6 +33627,7 @@
     </parameters>
     <parameters name="RNGFNDA_">
       <param humanName="Rangefinder type" name="RNGFNDA_TYPE" documentation="Type of connected rangefinder" user="Standard">
+        <field name="RebootRequired">True</field>
         <values>
           <value code="0">None</value>
           <value code="42">Ainstein_LR_D1</value>
@@ -32895,6 +33844,7 @@
     </parameters>
     <parameters name="RPM1_">
       <param humanName="RPM type" name="RPM1_TYPE" documentation="What type of RPM sensor is connected" user="Standard">
+        <field name="RebootRequired">True</field>
         <values>
           <value code="0">None</value>
           <value code="1">Not Used</value>
@@ -32962,6 +33912,7 @@
     </parameters>
     <parameters name="RPM2_">
       <param humanName="RPM type" name="RPM2_TYPE" documentation="What type of RPM sensor is connected" user="Standard">
+        <field name="RebootRequired">True</field>
         <values>
           <value code="0">None</value>
           <value code="1">Not Used</value>
@@ -33029,6 +33980,7 @@
     </parameters>
     <parameters name="RPM3_">
       <param humanName="RPM type" name="RPM3_TYPE" documentation="What type of RPM sensor is connected" user="Standard">
+        <field name="RebootRequired">True</field>
         <values>
           <value code="0">None</value>
           <value code="1">Not Used</value>
@@ -33096,6 +34048,7 @@
     </parameters>
     <parameters name="RPM4_">
       <param humanName="RPM type" name="RPM4_TYPE" documentation="What type of RPM sensor is connected" user="Standard">
+        <field name="RebootRequired">True</field>
         <values>
           <value code="0">None</value>
           <value code="1">Not Used</value>
