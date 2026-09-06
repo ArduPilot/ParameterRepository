@@ -49638,7 +49638,7 @@ COMPASS\_LEARN: Learn compass offsets automatically
 
 | *Note: This parameter is for advanced users*
 
-Enable or disable the automatic learning of compass offsets\. You can enable learning either using a compass\-only method that is suitable only for fixed wing aircraft or using the offsets learnt by the active EKF state estimator\. If this option is enabled then the learnt offsets are saved when you disarm the vehicle\. If InFlight learning is enabled then the compass with automatically start learning once a flight starts \(must be armed\)\. While InFlight learning is running you cannot use position control modes\.
+Enable or disable the automatic learning of compass offsets\. EKF\-Learning uses the offsets learnt by the active EKF state estimator\; those offsets are saved when you disarm the vehicle\, and it does nothing on firmware built without the CompassLearnCopyFromEKF feature\. If InFlight learning is enabled then the compass will automatically start learning once a flight starts \(must be armed\)\. While InFlight learning is running you cannot use position control modes\.
 
 
 +-------------------------------+
@@ -108024,7 +108024,7 @@ Type of connected rangefinder
 | +-------+------------------------+ |
 | | 45    | LightWare-GRF          | |
 | +-------+------------------------+ |
-| | 46    | BenewakeTFS20L         | |
+| | 46    | BenewakeTFS20L-I2C     | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
 | +-------+------------------------+ |
@@ -108756,7 +108756,7 @@ Type of connected rangefinder
 | +-------+------------------------+ |
 | | 45    | LightWare-GRF          | |
 | +-------+------------------------+ |
-| | 46    | BenewakeTFS20L         | |
+| | 46    | BenewakeTFS20L-I2C     | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
 | +-------+------------------------+ |
@@ -109488,7 +109488,7 @@ Type of connected rangefinder
 | +-------+------------------------+ |
 | | 45    | LightWare-GRF          | |
 | +-------+------------------------+ |
-| | 46    | BenewakeTFS20L         | |
+| | 46    | BenewakeTFS20L-I2C     | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
 | +-------+------------------------+ |
@@ -110220,7 +110220,7 @@ Type of connected rangefinder
 | +-------+------------------------+ |
 | | 45    | LightWare-GRF          | |
 | +-------+------------------------+ |
-| | 46    | BenewakeTFS20L         | |
+| | 46    | BenewakeTFS20L-I2C     | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
 | +-------+------------------------+ |
@@ -110952,7 +110952,7 @@ Type of connected rangefinder
 | +-------+------------------------+ |
 | | 45    | LightWare-GRF          | |
 | +-------+------------------------+ |
-| | 46    | BenewakeTFS20L         | |
+| | 46    | BenewakeTFS20L-I2C     | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
 | +-------+------------------------+ |
@@ -111684,7 +111684,7 @@ Type of connected rangefinder
 | +-------+------------------------+ |
 | | 45    | LightWare-GRF          | |
 | +-------+------------------------+ |
-| | 46    | BenewakeTFS20L         | |
+| | 46    | BenewakeTFS20L-I2C     | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
 | +-------+------------------------+ |
@@ -112416,7 +112416,7 @@ Type of connected rangefinder
 | +-------+------------------------+ |
 | | 45    | LightWare-GRF          | |
 | +-------+------------------------+ |
-| | 46    | BenewakeTFS20L         | |
+| | 46    | BenewakeTFS20L-I2C     | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
 | +-------+------------------------+ |
@@ -113148,7 +113148,7 @@ Type of connected rangefinder
 | +-------+------------------------+ |
 | | 45    | LightWare-GRF          | |
 | +-------+------------------------+ |
-| | 46    | BenewakeTFS20L         | |
+| | 46    | BenewakeTFS20L-I2C     | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
 | +-------+------------------------+ |
@@ -113880,7 +113880,7 @@ Type of connected rangefinder
 | +-------+------------------------+ |
 | | 45    | LightWare-GRF          | |
 | +-------+------------------------+ |
-| | 46    | BenewakeTFS20L         | |
+| | 46    | BenewakeTFS20L-I2C     | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
 | +-------+------------------------+ |
@@ -114612,7 +114612,7 @@ Type of connected rangefinder
 | +-------+------------------------+ |
 | | 45    | LightWare-GRF          | |
 | +-------+------------------------+ |
-| | 46    | BenewakeTFS20L         | |
+| | 46    | BenewakeTFS20L-I2C     | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
 | +-------+------------------------+ |
@@ -129603,6 +129603,25 @@ SIM\_BAR2\_FREEZE: Barometer freeze
 Freeze barometer to last recorded altitude
 
 
+.. _SIM_BAR2_GEFF_M:
+
+SIM\_BAR2\_GEFF\_M: Barometer ground effect altitude error
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Maximum simulated barometer altitude error from rotor\-downwash ground effect\, applied when motors are running\. Decays linearly to zero at 2m AGL\. Set to 0 to disable\.
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
 .. _SIM_BAR2_GLITCH:
 
 SIM\_BAR2\_GLITCH: Barometer glitch
@@ -129773,6 +129792,25 @@ SIM\_BAR3\_FREEZE: Barometer freeze
 | *Note: This parameter is for advanced users*
 
 Freeze barometer to last recorded altitude
+
+
+.. _SIM_BAR3_GEFF_M:
+
+SIM\_BAR3\_GEFF\_M: Barometer ground effect altitude error
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Maximum simulated barometer altitude error from rotor\-downwash ground effect\, applied when motors are running\. Decays linearly to zero at 2m AGL\. Set to 0 to disable\.
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
 
 
 .. _SIM_BAR3_GLITCH:
@@ -129963,6 +130001,25 @@ SIM\_BARO\_FREEZE: Barometer freeze
 | *Note: This parameter is for advanced users*
 
 Freeze barometer to last recorded altitude
+
+
+.. _SIM_BARO_GEFF_M:
+
+SIM\_BARO\_GEFF\_M: Barometer ground effect altitude error
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Maximum simulated barometer altitude error from rotor\-downwash ground effect\, applied when motors are running\. Decays linearly to zero at 2m AGL\. Set to 0 to disable\.
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
 
 
 .. _SIM_BARO_GLITCH:

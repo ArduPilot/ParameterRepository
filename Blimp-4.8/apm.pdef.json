@@ -11788,7 +11788,7 @@
       "Units": "%"
     },
     "COMPASS_LEARN": {
-      "Description": "Enable or disable the automatic learning of compass offsets. You can enable learning either using a compass-only method that is suitable only for fixed wing aircraft or using the offsets learnt by the active EKF state estimator. If this option is enabled then the learnt offsets are saved when you disarm the vehicle. If InFlight learning is enabled then the compass with automatically start learning once a flight starts (must be armed). While InFlight learning is running you cannot use position control modes.",
+      "Description": "Enable or disable the automatic learning of compass offsets. EKF-Learning uses the offsets learnt by the active EKF state estimator; those offsets are saved when you disarm the vehicle, and it does nothing on firmware built without the CompassLearnCopyFromEKF feature. If InFlight learning is enabled then the compass will automatically start learning once a flight starts (must be armed). While InFlight learning is running you cannot use position control modes.",
       "DisplayName": "Learn compass offsets automatically",
       "User": "Advanced",
       "Values": {
@@ -19910,14 +19910,6 @@
       },
       "User": "Standard"
     },
-    "BATT_ANX_OPTIONS": {
-      "Bitmask": {
-        "0": "LogAllFrames"
-      },
-      "Description": "ANX CAN battery options",
-      "DisplayName": "ANX CAN battery options",
-      "User": "Advanced"
-    },
     "BATT_IDX": {
       "Description": "Ensure this battery is configured with `BATT*_MONITOR=29`.",
       "DisplayName": "Index of assigned battery.",
@@ -20389,14 +20381,6 @@
         "1": "Enabled"
       }
     },
-    "EFI_2K_OPTIONS": {
-      "Bitmask": {
-        "0": "EnableLogging"
-      },
-      "Description": "NMEA 2000 driver options",
-      "DisplayName": "NMEA 2000 options",
-      "User": "Standard"
-    },
     "EFI_DLA64_ENABLE": {
       "Description": "Enable EFI DLA64 driver",
       "DisplayName": "EFI DLA64 enable",
@@ -20448,14 +20432,6 @@
       "Description": "The capacity of the tank in litres",
       "DisplayName": "Halo6000 total fuel capacity",
       "Units": "litres",
-      "User": "Standard"
-    },
-    "EFI_H6K_OPTIONS": {
-      "Bitmask": {
-        "0": "LogAllCanPackets"
-      },
-      "Description": "Halo6000 options",
-      "DisplayName": "Halo6000 options",
       "User": "Standard"
     },
     "EFI_H6K_START_FN": {
@@ -20515,14 +20491,6 @@
         "high": "2000",
         "low": "0"
       },
-      "User": "Standard"
-    },
-    "EFI_HFE_OPTIONS": {
-      "Bitmask": {
-        "1": "EnableCANLogging"
-      },
-      "Description": "HFI EFI options",
-      "DisplayName": "HFI EFI options",
       "User": "Standard"
     },
     "EFI_HFE_RATE_HZ": {
@@ -22044,7 +22012,6 @@
     },
     "UM_OPTIONS": {
       "Bitmask": {
-        "0": "LogAllFrames",
         "1": "ParseTelemetry",
         "2": "SendPosAsNamedValueFloat"
       },

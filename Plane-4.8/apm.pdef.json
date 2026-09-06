@@ -13384,7 +13384,7 @@
       "Units": "%"
     },
     "COMPASS_LEARN": {
-      "Description": "Enable or disable the automatic learning of compass offsets. You can enable learning either using a compass-only method that is suitable only for fixed wing aircraft or using the offsets learnt by the active EKF state estimator. If this option is enabled then the learnt offsets are saved when you disarm the vehicle. If InFlight learning is enabled then the compass with automatically start learning once a flight starts (must be armed). While InFlight learning is running you cannot use position control modes.",
+      "Description": "Enable or disable the automatic learning of compass offsets. EKF-Learning uses the offsets learnt by the active EKF state estimator; those offsets are saved when you disarm the vehicle, and it does nothing on firmware built without the CompassLearnCopyFromEKF feature. If InFlight learning is enabled then the compass will automatically start learning once a flight starts (must be armed). While InFlight learning is running you cannot use position control modes.",
       "DisplayName": "Learn compass offsets automatically",
       "User": "Advanced",
       "Values": {
@@ -21381,14 +21381,6 @@
       },
       "User": "Standard"
     },
-    "BATT_ANX_OPTIONS": {
-      "Bitmask": {
-        "0": "LogAllFrames"
-      },
-      "Description": "ANX CAN battery options",
-      "DisplayName": "ANX CAN battery options",
-      "User": "Advanced"
-    },
     "BATT_IDX": {
       "Description": "Ensure this battery is configured with `BATT*_MONITOR=29`.",
       "DisplayName": "Index of assigned battery.",
@@ -21860,14 +21852,6 @@
         "1": "Enabled"
       }
     },
-    "EFI_2K_OPTIONS": {
-      "Bitmask": {
-        "0": "EnableLogging"
-      },
-      "Description": "NMEA 2000 driver options",
-      "DisplayName": "NMEA 2000 options",
-      "User": "Standard"
-    },
     "EFI_DLA64_ENABLE": {
       "Description": "Enable EFI DLA64 driver",
       "DisplayName": "EFI DLA64 enable",
@@ -21919,14 +21903,6 @@
       "Description": "The capacity of the tank in litres",
       "DisplayName": "Halo6000 total fuel capacity",
       "Units": "litres",
-      "User": "Standard"
-    },
-    "EFI_H6K_OPTIONS": {
-      "Bitmask": {
-        "0": "LogAllCanPackets"
-      },
-      "Description": "Halo6000 options",
-      "DisplayName": "Halo6000 options",
       "User": "Standard"
     },
     "EFI_H6K_START_FN": {
@@ -21986,14 +21962,6 @@
         "high": "2000",
         "low": "0"
       },
-      "User": "Standard"
-    },
-    "EFI_HFE_OPTIONS": {
-      "Bitmask": {
-        "1": "EnableCANLogging"
-      },
-      "Description": "HFI EFI options",
-      "DisplayName": "HFI EFI options",
       "User": "Standard"
     },
     "EFI_HFE_RATE_HZ": {
@@ -23515,7 +23483,6 @@
     },
     "UM_OPTIONS": {
       "Bitmask": {
-        "0": "LogAllFrames",
         "1": "ParseTelemetry",
         "2": "SendPosAsNamedValueFloat"
       },
@@ -39100,7 +39067,7 @@
       "User": "Standard"
     },
     "ALT_OFFSET": {
-      "Description": "This is added to the target altitude in automatic flight. It can be used to add a global altitude offset to a mission",
+      "Description": "This is added to the target altitude in automatic flight. It can be used to add a global altitude offset to a mission. The offset resets to zero on reboot",
       "DisplayName": "Altitude offset",
       "Increment": "1",
       "Range": {
@@ -39108,7 +39075,8 @@
         "low": "-32767"
       },
       "Units": "m",
-      "User": "Advanced"
+      "User": "Advanced",
+      "Volatile": "True"
     },
     "ALT_SLOPE_MAXHGT": {
       "Description": "This controls the height above the altitude slope the plane may be before rebuilding it. This is useful for smoothing out an auto-takeoff.",
@@ -39336,6 +39304,7 @@
         "14": "In AUTO - climb to next waypoint altitude immediately instead of linear climb",
         "15": "Enable autoflap in manual modes and use minimum of target and actual speed for flap setting",
         "16": "Enable full aerodynamic load factor-based roll limits when an airspeed sensor is enabled and AIRSPEED_STALL is set",
+        "17": "Reset ALT_OFFSET on flight mode or AUTO waypoint changes",
         "2": "Disable attitude check for takeoff arming",
         "3": "Force target airspeed to trim airspeed in Cruise or FBWB",
         "4": "Climb to RTL_ALTITUDE before turning for RTL",
@@ -47859,7 +47828,7 @@
         "43": "RDS02UF",
         "44": "HexsoonRadar",
         "45": "LightWare-GRF",
-        "46": "BenewakeTFS20L",
+        "46": "BenewakeTFS20L-I2C",
         "47": "DTS6012M-Serial",
         "48": "LightWare-GRF-I2C",
         "5": "PWM",
@@ -48199,7 +48168,7 @@
         "43": "RDS02UF",
         "44": "HexsoonRadar",
         "45": "LightWare-GRF",
-        "46": "BenewakeTFS20L",
+        "46": "BenewakeTFS20L-I2C",
         "47": "DTS6012M-Serial",
         "48": "LightWare-GRF-I2C",
         "5": "PWM",
@@ -48539,7 +48508,7 @@
         "43": "RDS02UF",
         "44": "HexsoonRadar",
         "45": "LightWare-GRF",
-        "46": "BenewakeTFS20L",
+        "46": "BenewakeTFS20L-I2C",
         "47": "DTS6012M-Serial",
         "48": "LightWare-GRF-I2C",
         "5": "PWM",
@@ -48879,7 +48848,7 @@
         "43": "RDS02UF",
         "44": "HexsoonRadar",
         "45": "LightWare-GRF",
-        "46": "BenewakeTFS20L",
+        "46": "BenewakeTFS20L-I2C",
         "47": "DTS6012M-Serial",
         "48": "LightWare-GRF-I2C",
         "5": "PWM",
@@ -49219,7 +49188,7 @@
         "43": "RDS02UF",
         "44": "HexsoonRadar",
         "45": "LightWare-GRF",
-        "46": "BenewakeTFS20L",
+        "46": "BenewakeTFS20L-I2C",
         "47": "DTS6012M-Serial",
         "48": "LightWare-GRF-I2C",
         "5": "PWM",
@@ -49559,7 +49528,7 @@
         "43": "RDS02UF",
         "44": "HexsoonRadar",
         "45": "LightWare-GRF",
-        "46": "BenewakeTFS20L",
+        "46": "BenewakeTFS20L-I2C",
         "47": "DTS6012M-Serial",
         "48": "LightWare-GRF-I2C",
         "5": "PWM",
@@ -49899,7 +49868,7 @@
         "43": "RDS02UF",
         "44": "HexsoonRadar",
         "45": "LightWare-GRF",
-        "46": "BenewakeTFS20L",
+        "46": "BenewakeTFS20L-I2C",
         "47": "DTS6012M-Serial",
         "48": "LightWare-GRF-I2C",
         "5": "PWM",
@@ -50239,7 +50208,7 @@
         "43": "RDS02UF",
         "44": "HexsoonRadar",
         "45": "LightWare-GRF",
-        "46": "BenewakeTFS20L",
+        "46": "BenewakeTFS20L-I2C",
         "47": "DTS6012M-Serial",
         "48": "LightWare-GRF-I2C",
         "5": "PWM",
@@ -50579,7 +50548,7 @@
         "43": "RDS02UF",
         "44": "HexsoonRadar",
         "45": "LightWare-GRF",
-        "46": "BenewakeTFS20L",
+        "46": "BenewakeTFS20L-I2C",
         "47": "DTS6012M-Serial",
         "48": "LightWare-GRF-I2C",
         "5": "PWM",
@@ -50919,7 +50888,7 @@
         "43": "RDS02UF",
         "44": "HexsoonRadar",
         "45": "LightWare-GRF",
-        "46": "BenewakeTFS20L",
+        "46": "BenewakeTFS20L-I2C",
         "47": "DTS6012M-Serial",
         "48": "LightWare-GRF-I2C",
         "5": "PWM",
@@ -62056,6 +62025,12 @@
       "DisplayName": "Barometer freeze",
       "User": "Advanced"
     },
+    "SIM_BAR2_GEFF_M": {
+      "Description": "Maximum simulated barometer altitude error from rotor-downwash ground effect, applied when motors are running. Decays linearly to zero at 2m AGL. Set to 0 to disable.",
+      "DisplayName": "Barometer ground effect altitude error",
+      "Units": "m",
+      "User": "Advanced"
+    },
     "SIM_BAR2_GLITCH": {
       "Description": "Barometer glitch height in SITL",
       "DisplayName": "Barometer glitch",
@@ -62126,6 +62101,12 @@
       "DisplayName": "Barometer freeze",
       "User": "Advanced"
     },
+    "SIM_BAR3_GEFF_M": {
+      "Description": "Maximum simulated barometer altitude error from rotor-downwash ground effect, applied when motors are running. Decays linearly to zero at 2m AGL. Set to 0 to disable.",
+      "DisplayName": "Barometer ground effect altitude error",
+      "Units": "m",
+      "User": "Advanced"
+    },
     "SIM_BAR3_GLITCH": {
       "Description": "Barometer glitch height in SITL",
       "DisplayName": "Barometer glitch",
@@ -62194,6 +62175,12 @@
     "SIM_BARO_FREEZE": {
       "Description": "Freeze barometer to last recorded altitude",
       "DisplayName": "Barometer freeze",
+      "User": "Advanced"
+    },
+    "SIM_BARO_GEFF_M": {
+      "Description": "Maximum simulated barometer altitude error from rotor-downwash ground effect, applied when motors are running. Decays linearly to zero at 2m AGL. Set to 0 to disable.",
+      "DisplayName": "Barometer ground effect altitude error",
+      "Units": "m",
       "User": "Advanced"
     },
     "SIM_BARO_GLITCH": {

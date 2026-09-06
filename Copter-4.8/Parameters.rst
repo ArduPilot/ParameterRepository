@@ -1609,32 +1609,6 @@ Used by Throw mode\. Specifies whether Copter is thrown upward or dropped\.
 
 
 
-.. _GND_EFFECT_COMP:
-
-GND\_EFFECT\_COMP: Ground Effect Compensation Enable\/Disable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Ground Effect Compensation Enable\/Disable
-
-
-+----------------------+
-| Values               |
-+======================+
-| +-------+----------+ |
-| | Value | Meaning  | |
-| +=======+==========+ |
-| | 0     | Disabled | |
-| +-------+----------+ |
-| | 1     | Enabled  | |
-| +-------+----------+ |
-|                      |
-+----------------------+
-
-
-
-
 .. _DEV_OPTIONS:
 
 DEV\_OPTIONS: Development options
@@ -39927,7 +39901,7 @@ COMPASS\_LEARN: Learn compass offsets automatically
 
 | *Note: This parameter is for advanced users*
 
-Enable or disable the automatic learning of compass offsets\. You can enable learning either using a compass\-only method that is suitable only for fixed wing aircraft or using the offsets learnt by the active EKF state estimator\. If this option is enabled then the learnt offsets are saved when you disarm the vehicle\. If InFlight learning is enabled then the compass with automatically start learning once a flight starts \(must be armed\)\. While InFlight learning is running you cannot use position control modes\.
+Enable or disable the automatic learning of compass offsets\. EKF\-Learning uses the offsets learnt by the active EKF state estimator\; those offsets are saved when you disarm the vehicle\, and it does nothing on firmware built without the CompassLearnCopyFromEKF feature\. If InFlight learning is enabled then the compass will automatically start learning once a flight starts \(must be armed\)\. While InFlight learning is running you cannot use position control modes\.
 
 
 +-------------------------------+
@@ -48397,6 +48371,51 @@ threshold temperature for the cylinder head above which the mavlink over tempera
 +=================+
 | degrees Celsius |
 +-----------------+
+
+
+
+
+
+.. _parameters_GNDEFF_:
+
+GNDEFF\_ Parameters
+-------------------
+
+
+.. _GNDEFF_ALT:
+
+GNDEFF\_ALT: Ground effect altitude threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Ground effect compensation altitude threshold\. Compensation is turned off once the vehicle climbs this many meters above the takeoff location\. Positive values cause compensation to be applied both during takeoff and landing\. Zero keeps compensation enabled but removes the altitude gating\: the takeoff window is released once GNDEFF\_TMO has elapsed and the vehicle has climbed at all\, and any gentle descent counts as a landing \(the legacy behaviour\)\. Negative values disable the feature\. Altitude of the vehicle is derived from a downward facing rangefinder \(if present\) or using the height\-change\-since\-takeoff assuming flat ground and no baro drift\. More than 20m from the takeoff location \(when a horizontal position is available\) the landing altitude gate is dropped and any gentle descent counts as a landing\.
+
+
++----------+--------+
+| Range    | Units  |
++==========+========+
+| -1 to 10 | meters |
++----------+--------+
+
+
+
+
+.. _GNDEFF_TMO:
+
+GNDEFF\_TMO: Ground Effect Takeoff Timeout
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Ground effect compensation timeout after takeoff\. Compensation is turned off this many seconds after takeoff AND the vehicle has climbed at least GNDEFF\_ALT\. Compensation is also disabled after 5sec regardless of this timeout or the vehicle\'s altitude\. Zero disables this timeout and only the altitude check is applied\. Vehicles with strong baro disturbance from propwash should use values of 2 to 5 sec\. This does not affect the compensation during touchdown\.
+
+
++--------+---------+
+| Range  | Units   |
++========+=========+
+| 0 to 5 | seconds |
++--------+---------+
 
 
 
@@ -103448,7 +103467,7 @@ Type of connected rangefinder
 | +-------+------------------------+ |
 | | 45    | LightWare-GRF          | |
 | +-------+------------------------+ |
-| | 46    | BenewakeTFS20L         | |
+| | 46    | BenewakeTFS20L-I2C     | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
 | +-------+------------------------+ |
@@ -104180,7 +104199,7 @@ Type of connected rangefinder
 | +-------+------------------------+ |
 | | 45    | LightWare-GRF          | |
 | +-------+------------------------+ |
-| | 46    | BenewakeTFS20L         | |
+| | 46    | BenewakeTFS20L-I2C     | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
 | +-------+------------------------+ |
@@ -104912,7 +104931,7 @@ Type of connected rangefinder
 | +-------+------------------------+ |
 | | 45    | LightWare-GRF          | |
 | +-------+------------------------+ |
-| | 46    | BenewakeTFS20L         | |
+| | 46    | BenewakeTFS20L-I2C     | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
 | +-------+------------------------+ |
@@ -105644,7 +105663,7 @@ Type of connected rangefinder
 | +-------+------------------------+ |
 | | 45    | LightWare-GRF          | |
 | +-------+------------------------+ |
-| | 46    | BenewakeTFS20L         | |
+| | 46    | BenewakeTFS20L-I2C     | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
 | +-------+------------------------+ |
@@ -106376,7 +106395,7 @@ Type of connected rangefinder
 | +-------+------------------------+ |
 | | 45    | LightWare-GRF          | |
 | +-------+------------------------+ |
-| | 46    | BenewakeTFS20L         | |
+| | 46    | BenewakeTFS20L-I2C     | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
 | +-------+------------------------+ |
@@ -107108,7 +107127,7 @@ Type of connected rangefinder
 | +-------+------------------------+ |
 | | 45    | LightWare-GRF          | |
 | +-------+------------------------+ |
-| | 46    | BenewakeTFS20L         | |
+| | 46    | BenewakeTFS20L-I2C     | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
 | +-------+------------------------+ |
@@ -107840,7 +107859,7 @@ Type of connected rangefinder
 | +-------+------------------------+ |
 | | 45    | LightWare-GRF          | |
 | +-------+------------------------+ |
-| | 46    | BenewakeTFS20L         | |
+| | 46    | BenewakeTFS20L-I2C     | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
 | +-------+------------------------+ |
@@ -108572,7 +108591,7 @@ Type of connected rangefinder
 | +-------+------------------------+ |
 | | 45    | LightWare-GRF          | |
 | +-------+------------------------+ |
-| | 46    | BenewakeTFS20L         | |
+| | 46    | BenewakeTFS20L-I2C     | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
 | +-------+------------------------+ |
@@ -109304,7 +109323,7 @@ Type of connected rangefinder
 | +-------+------------------------+ |
 | | 45    | LightWare-GRF          | |
 | +-------+------------------------+ |
-| | 46    | BenewakeTFS20L         | |
+| | 46    | BenewakeTFS20L-I2C     | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
 | +-------+------------------------+ |
@@ -110036,7 +110055,7 @@ Type of connected rangefinder
 | +-------+------------------------+ |
 | | 45    | LightWare-GRF          | |
 | +-------+------------------------+ |
-| | 46    | BenewakeTFS20L         | |
+| | 46    | BenewakeTFS20L-I2C     | |
 | +-------+------------------------+ |
 | | 47    | DTS6012M-Serial        | |
 | +-------+------------------------+ |
@@ -128793,6 +128812,25 @@ SIM\_BAR2\_FREEZE: Barometer freeze
 Freeze barometer to last recorded altitude
 
 
+.. _SIM_BAR2_GEFF_M:
+
+SIM\_BAR2\_GEFF\_M: Barometer ground effect altitude error
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Maximum simulated barometer altitude error from rotor\-downwash ground effect\, applied when motors are running\. Decays linearly to zero at 2m AGL\. Set to 0 to disable\.
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
 .. _SIM_BAR2_GLITCH:
 
 SIM\_BAR2\_GLITCH: Barometer glitch
@@ -128963,6 +129001,25 @@ SIM\_BAR3\_FREEZE: Barometer freeze
 | *Note: This parameter is for advanced users*
 
 Freeze barometer to last recorded altitude
+
+
+.. _SIM_BAR3_GEFF_M:
+
+SIM\_BAR3\_GEFF\_M: Barometer ground effect altitude error
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Maximum simulated barometer altitude error from rotor\-downwash ground effect\, applied when motors are running\. Decays linearly to zero at 2m AGL\. Set to 0 to disable\.
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
 
 
 .. _SIM_BAR3_GLITCH:
@@ -129153,6 +129210,25 @@ SIM\_BARO\_FREEZE: Barometer freeze
 | *Note: This parameter is for advanced users*
 
 Freeze barometer to last recorded altitude
+
+
+.. _SIM_BARO_GEFF_M:
+
+SIM\_BARO\_GEFF\_M: Barometer ground effect altitude error
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Maximum simulated barometer altitude error from rotor\-downwash ground effect\, applied when motors are running\. Decays linearly to zero at 2m AGL\. Set to 0 to disable\.
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
 
 
 .. _SIM_BARO_GLITCH:
