@@ -21748,10 +21748,7 @@ Follow altitude type
 
 Follow options bitmask
 
-|Value|Meaning|
-|:---:|:---:|
-|0|None|
-|1|Mount Follows lead vehicle on mode enter|
+- Bitmask: 0:Mount follows lead vehicle on mode enter
 
 ## FOLL_ACCEL_NE: Acceleration limit for the horizontal kinematic input shaping
 
@@ -41422,6 +41419,14 @@ Auto takeoff (in Auto or Guided) is not permitted until motors report no more th
 Configuration for thrust loss detection detection, this results in "Potential VTOL Thrust Loss" warnings. This detection also allows the motor mixer to ignore the failed motor allowing better use of the remaining motors.
 
 - Bitmask: 0: Disable thrust loss detection., 1: Disable thrust loss detection in transtions and fixed wing modes. Thrust loss detection will only run in VTOL modes.
+
+## Q_RTL_PAUSE_TIME: Q RTL pause time.
+
+Time (in seconds) to pause in a VTOL loiter above landing point before starting final descent. Zero disables. This applies in VTOL landing in auto mode and QRTL mode.
+
+- Units: s
+
+- Range: 0 10
 
 # QAUTOTUNE Parameters
 

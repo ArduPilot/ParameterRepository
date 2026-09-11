@@ -14260,10 +14260,10 @@
         </values>
       </param>
       <param humanName="Follow options" name="FOLL_OPTIONS" documentation="Follow options bitmask" user="Standard">
-        <values>
-          <value code="0">None</value>
-          <value code="1">Mount Follows lead vehicle on mode enter</value>
-        </values>
+        <bitmask>
+          <bit code="0">Mount follows lead vehicle on mode enter</bit>
+        </bitmask>
+        <field name="Bitmask">0:Mount follows lead vehicle on mode enter</field>
       </param>
       <param humanName="Acceleration limit for the horizontal kinematic input shaping" name="FOLL_ACCEL_NE" documentation="Acceleration limit of the horizontal kinematic path generation used to determine how quickly the estimate varies in velocity" user="Advanced">
         <field name="Range">0 10</field>

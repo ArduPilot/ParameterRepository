@@ -22304,10 +22304,7 @@ DO NOT EDIT
 
 <p>Follow options bitmask</p>
 <ul>
-<table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>None</td></tr>
-<tr><td>1</td><td>Mount Follows lead vehicle on mode enter</td></tr>
-</table>
+<li>Bitmask: 0:Mount follows lead vehicle on mode enter</li>
 </ul>
 
 
@@ -43188,6 +43185,15 @@ DO NOT EDIT
 <p>Configuration for thrust loss detection detection, this results in &quot;Potential VTOL Thrust Loss&quot; warnings. This detection also allows the motor mixer to ignore the failed motor allowing better use of the remaining motors.</p>
 <ul>
 <li>Bitmask: 0: Disable thrust loss detection., 1: Disable thrust loss detection in transtions and fixed wing modes. Thrust loss detection will only run in VTOL modes.</li>
+</ul>
+
+
+<h2>Q RTL pause time. (Q_RTL_PAUSE_TIME)</h2>
+
+<p>Time (in seconds) to pause in a VTOL loiter above landing point before starting final descent. Zero disables. This applies in VTOL landing in auto mode and QRTL mode.</p>
+<ul>
+<li>Units: seconds</li>
+<li>Range: 0 10</li>
 </ul>
 
 

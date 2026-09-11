@@ -16783,13 +16783,12 @@
       "User": "Standard"
     },
     "FOLL_OPTIONS": {
+      "Bitmask": {
+        "0": "Mount follows lead vehicle on mode enter"
+      },
       "Description": "Follow options bitmask",
       "DisplayName": "Follow options",
-      "User": "Standard",
-      "Values": {
-        "0": "None",
-        "1": "Mount Follows lead vehicle on mode enter"
-      }
+      "User": "Standard"
     },
     "FOLL_POS_P": {
       "Description": "Follow position error P gain. Converts the difference between desired vertical speed and actual speed into a desired acceleration that is passed to the throttle acceleration controller",
@@ -41036,6 +41035,15 @@
         "2": "VTOL approach",
         "3": "QRTL Always"
       }
+    },
+    "Q_RTL_PAUSE_TIME": {
+      "Description": "Time (in seconds) to pause in a VTOL loiter above landing point before starting final descent. Zero disables. This applies in VTOL landing in auto mode and QRTL mode.",
+      "DisplayName": "Q RTL pause time.",
+      "Range": {
+        "high": "10",
+        "low": "0"
+      },
+      "Units": "s"
     },
     "Q_THROTTLE_EXPO": {
       "Description": "Amount of curvature in throttle curve: 0 is linear, 1 is cubic",

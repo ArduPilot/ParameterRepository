@@ -49170,13 +49170,11 @@ FOLL\_OPTIONS: Follow options
 Follow options bitmask
 
 
-+-------+------------------------------------------+
-| Value | Meaning                                  |
-+=======+==========================================+
-| 0     | None                                     |
-+-------+------------------------------------------+
-| 1     | Mount Follows lead vehicle on mode enter |
-+-------+------------------------------------------+
++-----+------------------------------------------+
+| Bit | Meaning                                  |
++=====+==========================================+
+| 0   | Mount follows lead vehicle on mode enter |
++-----+------------------------------------------+
 
 
 
@@ -90930,6 +90928,24 @@ Configuration for thrust loss detection detection\, this results in \"Potential 
 +-----+----------------------------------------------------------------------------------------------------------------------+
 | 1   | Disable thrust loss detection in transtions and fixed wing modes. Thrust loss detection will only run in VTOL modes. |
 +-----+----------------------------------------------------------------------------------------------------------------------+
+
+
+
+
+.. _Q_RTL_PAUSE_TIME:
+
+Q\_RTL\_PAUSE\_TIME: Q RTL pause time\.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Time \(in seconds\) to pause in a VTOL loiter above landing point before starting final descent\. Zero disables\. This applies in VTOL landing in auto mode and QRTL mode\.
+
+
++---------+---------+
+| Range   | Units   |
++=========+=========+
+| 0 to 10 | seconds |
++---------+---------+
 
 
 

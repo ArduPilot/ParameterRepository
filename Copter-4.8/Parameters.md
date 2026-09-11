@@ -23283,10 +23283,7 @@ Follow altitude type
 
 Follow options bitmask
 
-|Value|Meaning|
-|:---:|:---:|
-|0|None|
-|1|Mount Follows lead vehicle on mode enter|
+- Bitmask: 0:Mount follows lead vehicle on mode enter
 
 ## FOLL_ACCEL_NE: Acceleration limit for the horizontal kinematic input shaping
 
