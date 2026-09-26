@@ -23,16 +23,23 @@ Messages the autopilot handles when received.
   :header: ID, MAVLink Message, Code Source, MAVLink Dialect
 
 
-  #246, `ADSB_VEHICLE <https://mavlink.io/en/messages/common.html#ADSB_VEHICLE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
+  #246, `ADSB_VEHICLE <https://mavlink.io/en/messages/common.html#ADSB_VEHICLE>`_, `AP_ADSB/AP_ADSB.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_ADSB/AP_ADSB.cpp>`_, common
   #138, `ATT_POS_MOCAP <https://mavlink.io/en/messages/common.html#ATT_POS_MOCAP>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #183, `AUTOPILOT_VERSION_REQUEST <https://mavlink.io/en/messages/ardupilotmega.html#AUTOPILOT_VERSION_REQUEST>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
-  #259, `CAMERA_INFORMATION <https://mavlink.io/en/messages/common.html#CAMERA_INFORMATION>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #387, `CANFD_FRAME <https://mavlink.io/en/messages/common.html#CANFD_FRAME>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
+  #262, `CAMERA_CAPTURE_STATUS <https://mavlink.io/en/messages/common.html#CAMERA_CAPTURE_STATUS>`_, `AP_Camera/AP_Camera_MAVLinkCamV2.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera_MAVLinkCamV2.cpp>`_, common
+  #271, `CAMERA_FOV_STATUS <https://mavlink.io/en/messages/common.html#CAMERA_FOV_STATUS>`_, `AP_Camera/AP_Camera_MAVLinkCamV2.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera_MAVLinkCamV2.cpp>`_, common
+  #263, `CAMERA_IMAGE_CAPTURED <https://mavlink.io/en/messages/common.html#CAMERA_IMAGE_CAPTURED>`_, `AP_Camera/AP_Camera_MAVLinkCamV2.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera_MAVLinkCamV2.cpp>`_, common
+  #259, `CAMERA_INFORMATION <https://mavlink.io/en/messages/common.html#CAMERA_INFORMATION>`_, `AP_Camera/AP_Camera_MAVLinkCamV2.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera_MAVLinkCamV2.cpp>`_, common
+  #260, `CAMERA_SETTINGS <https://mavlink.io/en/messages/common.html#CAMERA_SETTINGS>`_, `AP_Camera/AP_Camera_MAVLinkCamV2.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera_MAVLinkCamV2.cpp>`_, common
+  #277, `CAMERA_THERMAL_RANGE <https://mavlink.io/en/messages/common.html#CAMERA_THERMAL_RANGE>`_, `AP_Camera/AP_Camera_MAVLinkCamV2.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera_MAVLinkCamV2.cpp>`_, common
+  #276, `CAMERA_TRACKING_GEO_STATUS <https://mavlink.io/en/messages/common.html#CAMERA_TRACKING_GEO_STATUS>`_, `AP_Camera/AP_Camera_MAVLinkCamV2.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera_MAVLinkCamV2.cpp>`_, common
+  #275, `CAMERA_TRACKING_IMAGE_STATUS <https://mavlink.io/en/messages/common.html#CAMERA_TRACKING_IMAGE_STATUS>`_, `AP_Camera/AP_Camera_MAVLinkCamV2.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera_MAVLinkCamV2.cpp>`_, common
+  #387, `CANFD_FRAME <https://mavlink.io/en/messages/common.html#CANFD_FRAME>`_, `AP_CANManager/AP_MAVLinkCAN.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_CANManager/AP_MAVLinkCAN.cpp>`_, common
   #388, `CAN_FILTER_MODIFY <https://mavlink.io/en/messages/common.html#CAN_FILTER_MODIFY>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #386, `CAN_FRAME <https://mavlink.io/en/messages/common.html#CAN_FRAME>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
+  #386, `CAN_FRAME <https://mavlink.io/en/messages/common.html#CAN_FRAME>`_, `AP_CANManager/AP_MAVLinkCAN.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_CANManager/AP_MAVLinkCAN.cpp>`_, common
   #77, `COMMAND_ACK <https://mavlink.io/en/messages/common.html#COMMAND_ACK>`_, `AP_Generator/AP_Generator_Loweheiser.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Generator/AP_Generator_Loweheiser.cpp>`_, common
   #75, `COMMAND_INT <https://mavlink.io/en/messages/common.html#COMMAND_INT>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #76, `COMMAND_LONG <https://mavlink.io/en/messages/common.html#COMMAND_LONG>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
+  #76, `COMMAND_LONG <https://mavlink.io/en/messages/common.html#COMMAND_LONG>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
   #172, `DATA96 <https://mavlink.io/en/messages/ardupilotmega.html#DATA96>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
   #11000, `DEVICE_OP_READ <https://mavlink.io/en/messages/ardupilotmega.html#DEVICE_OP_READ>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
   #11002, `DEVICE_OP_WRITE <https://mavlink.io/en/messages/ardupilotmega.html#DEVICE_OP_WRITE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
@@ -41,24 +48,24 @@ Messages the autopilot handles when received.
   #225, `EFI_STATUS <https://mavlink.io/en/messages/common.html#EFI_STATUS>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #110, `FILE_TRANSFER_PROTOCOL <https://mavlink.io/en/messages/common.html#FILE_TRANSFER_PROTOCOL>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #144, `FOLLOW_TARGET <https://mavlink.io/en/messages/common.html#FOLLOW_TARGET>`_, `AP_Follow/AP_Follow.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Follow/AP_Follow.cpp>`_, common
-  #285, `GIMBAL_DEVICE_ATTITUDE_STATUS <https://mavlink.io/en/messages/common.html#GIMBAL_DEVICE_ATTITUDE_STATUS>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #283, `GIMBAL_DEVICE_INFORMATION <https://mavlink.io/en/messages/common.html#GIMBAL_DEVICE_INFORMATION>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #282, `GIMBAL_MANAGER_SET_ATTITUDE <https://mavlink.io/en/messages/common.html#GIMBAL_MANAGER_SET_ATTITUDE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #287, `GIMBAL_MANAGER_SET_PITCHYAW <https://mavlink.io/en/messages/common.html#GIMBAL_MANAGER_SET_PITCHYAW>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #200, `GIMBAL_REPORT <https://mavlink.io/en/messages/ardupilotmega.html#GIMBAL_REPORT>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
-  #33, `GLOBAL_POSITION_INT <https://mavlink.io/en/messages/common.html#GLOBAL_POSITION_INT>`_, `AP_Follow/AP_Follow.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Follow/AP_Follow.cpp>`_, common
+  #285, `GIMBAL_DEVICE_ATTITUDE_STATUS <https://mavlink.io/en/messages/common.html#GIMBAL_DEVICE_ATTITUDE_STATUS>`_, `AP_Mount/AP_Mount.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mount/AP_Mount.cpp>`_, common
+  #283, `GIMBAL_DEVICE_INFORMATION <https://mavlink.io/en/messages/common.html#GIMBAL_DEVICE_INFORMATION>`_, `AP_Mount/AP_Mount.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mount/AP_Mount.cpp>`_, common
+  #282, `GIMBAL_MANAGER_SET_ATTITUDE <https://mavlink.io/en/messages/common.html#GIMBAL_MANAGER_SET_ATTITUDE>`_, `AP_Mount/AP_Mount.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mount/AP_Mount.cpp>`_, common
+  #287, `GIMBAL_MANAGER_SET_PITCHYAW <https://mavlink.io/en/messages/common.html#GIMBAL_MANAGER_SET_PITCHYAW>`_, `AP_Mount/AP_Mount.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mount/AP_Mount.cpp>`_, common
+  #200, `GIMBAL_REPORT <https://mavlink.io/en/messages/ardupilotmega.html#GIMBAL_REPORT>`_, `AP_Mount/AP_Mount.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mount/AP_Mount.cpp>`_, ardupilotmega
+  #33, `GLOBAL_POSITION_INT <https://mavlink.io/en/messages/standard.html#GLOBAL_POSITION_INT>`_, `AP_Mount/AP_Mount.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mount/AP_Mount.cpp>`_, standard
   #101, `GLOBAL_VISION_POSITION_ESTIMATE <https://mavlink.io/en/messages/common.html#GLOBAL_VISION_POSITION_ESTIMATE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #215, `GOPRO_HEARTBEAT <https://mavlink.io/en/messages/ardupilotmega.html#GOPRO_HEARTBEAT>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
-  #123, `GPS_INJECT_DATA <https://mavlink.io/en/messages/common.html#GPS_INJECT_DATA>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #232, `GPS_INPUT <https://mavlink.io/en/messages/common.html#GPS_INPUT>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #233, `GPS_RTCM_DATA <https://mavlink.io/en/messages/common.html#GPS_RTCM_DATA>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #0, `HEARTBEAT <https://mavlink.io/en/messages/minimal.html#HEARTBEAT>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, minimal
+  #123, `GPS_INJECT_DATA <https://mavlink.io/en/messages/common.html#GPS_INJECT_DATA>`_, `AP_GPS/AP_GPS.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_GPS/AP_GPS.cpp>`_, common
+  #232, `GPS_INPUT <https://mavlink.io/en/messages/common.html#GPS_INPUT>`_, `AP_GPS/AP_GPS_MAV.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_GPS/AP_GPS_MAV.cpp>`_, common
+  #233, `GPS_RTCM_DATA <https://mavlink.io/en/messages/common.html#GPS_RTCM_DATA>`_, `AP_GPS/AP_GPS.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_GPS/AP_GPS.cpp>`_, common
+  #0, `HEARTBEAT <https://mavlink.io/en/messages/minimal.html#HEARTBEAT>`_, `AP_Camera/AP_Camera_MAVLinkCamV2.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera_MAVLinkCamV2.cpp>`_, minimal
   #149, `LANDING_TARGET <https://mavlink.io/en/messages/common.html#LANDING_TARGET>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #186, `LED_CONTROL <https://mavlink.io/en/messages/ardupilotmega.html#LED_CONTROL>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
-  #121, `LOG_ERASE <https://mavlink.io/en/messages/common.html#LOG_ERASE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #119, `LOG_REQUEST_DATA <https://mavlink.io/en/messages/common.html#LOG_REQUEST_DATA>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #122, `LOG_REQUEST_END <https://mavlink.io/en/messages/common.html#LOG_REQUEST_END>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #117, `LOG_REQUEST_LIST <https://mavlink.io/en/messages/common.html#LOG_REQUEST_LIST>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
+  #121, `LOG_ERASE <https://mavlink.io/en/messages/common.html#LOG_ERASE>`_, `AP_Logger/AP_Logger.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Logger/AP_Logger.cpp>`_, common
+  #119, `LOG_REQUEST_DATA <https://mavlink.io/en/messages/common.html#LOG_REQUEST_DATA>`_, `AP_Logger/AP_Logger.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Logger/AP_Logger.cpp>`_, common
+  #122, `LOG_REQUEST_END <https://mavlink.io/en/messages/common.html#LOG_REQUEST_END>`_, `AP_Logger/AP_Logger.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Logger/AP_Logger.cpp>`_, common
+  #117, `LOG_REQUEST_LIST <https://mavlink.io/en/messages/common.html#LOG_REQUEST_LIST>`_, `AP_Logger/AP_Logger.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Logger/AP_Logger.cpp>`_, common
   #10151, `LOWEHEISER_GOV_EFI <https://mavlink.io/en/messages/loweheiser.html#LOWEHEISER_GOV_EFI>`_, `AP_Generator/AP_Generator_Loweheiser.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Generator/AP_Generator_Loweheiser.cpp>`_, loweheiser
   #69, `MANUAL_CONTROL <https://mavlink.io/en/messages/common.html#MANUAL_CONTROL>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #47, `MISSION_ACK <https://mavlink.io/en/messages/common.html#MISSION_ACK>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
@@ -75,25 +82,27 @@ Messages the autopilot handles when received.
   #330, `OBSTACLE_DISTANCE <https://mavlink.io/en/messages/common.html#OBSTACLE_DISTANCE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #11037, `OBSTACLE_DISTANCE_3D <https://mavlink.io/en/messages/ardupilotmega.html#OBSTACLE_DISTANCE_3D>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
   #331, `ODOMETRY <https://mavlink.io/en/messages/common.html#ODOMETRY>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #12918, `OPEN_DRONE_ID_ARM_STATUS <https://mavlink.io/en/messages/common.html#OPEN_DRONE_ID_ARM_STATUS>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #12900, `OPEN_DRONE_ID_BASIC_ID <https://mavlink.io/en/messages/common.html#OPEN_DRONE_ID_BASIC_ID>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #12905, `OPEN_DRONE_ID_OPERATOR_ID <https://mavlink.io/en/messages/common.html#OPEN_DRONE_ID_OPERATOR_ID>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #12903, `OPEN_DRONE_ID_SELF_ID <https://mavlink.io/en/messages/common.html#OPEN_DRONE_ID_SELF_ID>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #12904, `OPEN_DRONE_ID_SYSTEM <https://mavlink.io/en/messages/common.html#OPEN_DRONE_ID_SYSTEM>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #12919, `OPEN_DRONE_ID_SYSTEM_UPDATE <https://mavlink.io/en/messages/common.html#OPEN_DRONE_ID_SYSTEM_UPDATE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
+  #12918, `OPEN_DRONE_ID_ARM_STATUS <https://mavlink.io/en/messages/common.html#OPEN_DRONE_ID_ARM_STATUS>`_, `AP_OpenDroneID/AP_OpenDroneID.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_OpenDroneID/AP_OpenDroneID.cpp>`_, common
+  #12900, `OPEN_DRONE_ID_BASIC_ID <https://mavlink.io/en/messages/common.html#OPEN_DRONE_ID_BASIC_ID>`_, `AP_OpenDroneID/AP_OpenDroneID.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_OpenDroneID/AP_OpenDroneID.cpp>`_, common
+  #12905, `OPEN_DRONE_ID_OPERATOR_ID <https://mavlink.io/en/messages/common.html#OPEN_DRONE_ID_OPERATOR_ID>`_, `AP_OpenDroneID/AP_OpenDroneID.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_OpenDroneID/AP_OpenDroneID.cpp>`_, common
+  #12903, `OPEN_DRONE_ID_SELF_ID <https://mavlink.io/en/messages/common.html#OPEN_DRONE_ID_SELF_ID>`_, `AP_OpenDroneID/AP_OpenDroneID.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_OpenDroneID/AP_OpenDroneID.cpp>`_, common
+  #12904, `OPEN_DRONE_ID_SYSTEM <https://mavlink.io/en/messages/common.html#OPEN_DRONE_ID_SYSTEM>`_, `AP_OpenDroneID/AP_OpenDroneID.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_OpenDroneID/AP_OpenDroneID.cpp>`_, common
+  #12919, `OPEN_DRONE_ID_SYSTEM_UPDATE <https://mavlink.io/en/messages/common.html#OPEN_DRONE_ID_SYSTEM_UPDATE>`_, `AP_OpenDroneID/AP_OpenDroneID.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_OpenDroneID/AP_OpenDroneID.cpp>`_, common
   #100, `OPTICAL_FLOW <https://mavlink.io/en/messages/common.html#OPTICAL_FLOW>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #11033, `OSD_PARAM_CONFIG <https://mavlink.io/en/messages/ardupilotmega.html#OSD_PARAM_CONFIG>`_, `AP_OSD/AP_OSD.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_OSD/AP_OSD.cpp>`_, ardupilotmega
   #11035, `OSD_PARAM_SHOW_CONFIG <https://mavlink.io/en/messages/ardupilotmega.html#OSD_PARAM_SHOW_CONFIG>`_, `AP_OSD/AP_OSD.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_OSD/AP_OSD.cpp>`_, ardupilotmega
-  #21, `PARAM_REQUEST_LIST <https://mavlink.io/en/messages/common.html#PARAM_REQUEST_LIST>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #20, `PARAM_REQUEST_READ <https://mavlink.io/en/messages/common.html#PARAM_REQUEST_READ>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #23, `PARAM_SET <https://mavlink.io/en/messages/common.html#PARAM_SET>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
+  #324, `PARAM_EXT_ACK <https://mavlink.io/en/messages/common.html#PARAM_EXT_ACK>`_, `AP_Camera/AP_Camera_MAVLinkCamV2.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera_MAVLinkCamV2.cpp>`_, common
+  #322, `PARAM_EXT_VALUE <https://mavlink.io/en/messages/common.html#PARAM_EXT_VALUE>`_, `AP_Camera/AP_Camera_MAVLinkCamV2.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera_MAVLinkCamV2.cpp>`_, common
+  #21, `PARAM_REQUEST_LIST <https://mavlink.io/en/messages/common.html#PARAM_REQUEST_LIST>`_, `GCS_MAVLink/GCS_Param.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Param.cpp>`_, common
+  #20, `PARAM_REQUEST_READ <https://mavlink.io/en/messages/common.html#PARAM_REQUEST_READ>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
+  #23, `PARAM_SET <https://mavlink.io/en/messages/common.html#PARAM_SET>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
   #22, `PARAM_VALUE <https://mavlink.io/en/messages/common.html#PARAM_VALUE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #258, `PLAY_TUNE <https://mavlink.io/en/messages/common.html#PLAY_TUNE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #166, `RADIO <https://mavlink.io/en/messages/ardupilotmega.html#RADIO>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
   #420, `RADIO_RC_CHANNELS <https://mavlink.io/en/messages/development.html#RADIO_RC_CHANNELS>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, development
   #109, `RADIO_STATUS <https://mavlink.io/en/messages/common.html#RADIO_STATUS>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #70, `RC_CHANNELS_OVERRIDE <https://mavlink.io/en/messages/common.html#RC_CHANNELS_OVERRIDE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #185, `REMOTE_LOG_BLOCK_STATUS <https://mavlink.io/en/messages/ardupilotmega.html#REMOTE_LOG_BLOCK_STATUS>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
+  #185, `REMOTE_LOG_BLOCK_STATUS <https://mavlink.io/en/messages/ardupilotmega.html#REMOTE_LOG_BLOCK_STATUS>`_, `AP_Logger/AP_Logger.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Logger/AP_Logger.cpp>`_, ardupilotmega
   #66, `REQUEST_DATA_STREAM <https://mavlink.io/en/messages/common.html#REQUEST_DATA_STREAM>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #11004, `SECURE_COMMAND <https://mavlink.io/en/messages/ardupilotmega.html#SECURE_COMMAND>`_, `AP_CheckFirmware/AP_CheckFirmware_secure_command.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_CheckFirmware/AP_CheckFirmware_secure_command.cpp>`_, ardupilotmega
   #11005, `SECURE_COMMAND_REPLY <https://mavlink.io/en/messages/ardupilotmega.html#SECURE_COMMAND_REPLY>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
@@ -105,15 +114,18 @@ Messages the autopilot handles when received.
   #86, `SET_POSITION_TARGET_GLOBAL_INT <https://mavlink.io/en/messages/common.html#SET_POSITION_TARGET_GLOBAL_INT>`_, `Rover/GCS_MAVLink_Rover.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/Rover/GCS_MAVLink_Rover.cpp>`_, common
   #84, `SET_POSITION_TARGET_LOCAL_NED <https://mavlink.io/en/messages/common.html#SET_POSITION_TARGET_LOCAL_NED>`_, `Rover/GCS_MAVLink_Rover.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/Rover/GCS_MAVLink_Rover.cpp>`_, common
   #253, `STATUSTEXT <https://mavlink.io/en/messages/common.html#STATUSTEXT>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
+  #261, `STORAGE_INFORMATION <https://mavlink.io/en/messages/common.html#STORAGE_INFORMATION>`_, `AP_Camera/AP_Camera_MAVLinkCamV2.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera_MAVLinkCamV2.cpp>`_, common
   #2, `SYSTEM_TIME <https://mavlink.io/en/messages/common.html#SYSTEM_TIME>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #135, `TERRAIN_CHECK <https://mavlink.io/en/messages/common.html#TERRAIN_CHECK>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #134, `TERRAIN_DATA <https://mavlink.io/en/messages/common.html#TERRAIN_DATA>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
+  #135, `TERRAIN_CHECK <https://mavlink.io/en/messages/common.html#TERRAIN_CHECK>`_, `AP_Terrain/TerrainGCS.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Terrain/TerrainGCS.cpp>`_, common
+  #134, `TERRAIN_DATA <https://mavlink.io/en/messages/common.html#TERRAIN_DATA>`_, `AP_Terrain/TerrainGCS.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Terrain/TerrainGCS.cpp>`_, common
   #111, `TIMESYNC <https://mavlink.io/en/messages/common.html#TIMESYNC>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #10001, `UAVIONIX_ADSB_OUT_CFG <https://mavlink.io/en/messages/uAvionix.html#UAVIONIX_ADSB_OUT_CFG>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, uAvionix
-  #10007, `UAVIONIX_ADSB_OUT_CONTROL <https://mavlink.io/en/messages/uAvionix.html#UAVIONIX_ADSB_OUT_CONTROL>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, uAvionix
-  #10002, `UAVIONIX_ADSB_OUT_DYNAMIC <https://mavlink.io/en/messages/uAvionix.html#UAVIONIX_ADSB_OUT_DYNAMIC>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, uAvionix
-  #10003, `UAVIONIX_ADSB_TRANSCEIVER_HEALTH_REPORT <https://mavlink.io/en/messages/uAvionix.html#UAVIONIX_ADSB_TRANSCEIVER_HEALTH_REPORT>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, uAvionix
+  #10001, `UAVIONIX_ADSB_OUT_CFG <https://mavlink.io/en/messages/uAvionix.html#UAVIONIX_ADSB_OUT_CFG>`_, `AP_ADSB/AP_ADSB.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_ADSB/AP_ADSB.cpp>`_, uAvionix
+  #10007, `UAVIONIX_ADSB_OUT_CONTROL <https://mavlink.io/en/messages/uAvionix.html#UAVIONIX_ADSB_OUT_CONTROL>`_, `AP_ADSB/AP_ADSB.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_ADSB/AP_ADSB.cpp>`_, uAvionix
+  #10002, `UAVIONIX_ADSB_OUT_DYNAMIC <https://mavlink.io/en/messages/uAvionix.html#UAVIONIX_ADSB_OUT_DYNAMIC>`_, `AP_ADSB/AP_ADSB.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_ADSB/AP_ADSB.cpp>`_, uAvionix
+  #10003, `UAVIONIX_ADSB_TRANSCEIVER_HEALTH_REPORT <https://mavlink.io/en/messages/uAvionix.html#UAVIONIX_ADSB_TRANSCEIVER_HEALTH_REPORT>`_, `AP_ADSB/AP_ADSB.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_ADSB/AP_ADSB.cpp>`_, uAvionix
   #104, `VICON_POSITION_ESTIMATE <https://mavlink.io/en/messages/common.html#VICON_POSITION_ESTIMATE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
+  #269, `VIDEO_STREAM_INFORMATION <https://mavlink.io/en/messages/common.html#VIDEO_STREAM_INFORMATION>`_, `AP_Camera/AP_Camera_MAVLinkCamV2.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera_MAVLinkCamV2.cpp>`_, common
+  #270, `VIDEO_STREAM_STATUS <https://mavlink.io/en/messages/common.html#VIDEO_STREAM_STATUS>`_, `AP_Camera/AP_Camera_MAVLinkCamV2.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera_MAVLinkCamV2.cpp>`_, common
   #11011, `VISION_POSITION_DELTA <https://mavlink.io/en/messages/ardupilotmega.html#VISION_POSITION_DELTA>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
   #102, `VISION_POSITION_ESTIMATE <https://mavlink.io/en/messages/common.html#VISION_POSITION_ESTIMATE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #103, `VISION_SPEED_ESTIMATE <https://mavlink.io/en/messages/common.html#VISION_SPEED_ESTIMATE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
@@ -129,47 +141,47 @@ Commands the autopilot handles when received.
   :header: ID, MAVLink Message, Code Source, MAVLink Dialect
 
 
-  #42429, `MAV_CMD_ACCELCAL_VEHICLE_POS <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_ACCELCAL_VEHICLE_POS>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
+  #42429, `MAV_CMD_ACCELCAL_VEHICLE_POS <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_ACCELCAL_VEHICLE_POS>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, ardupilotmega
   #2520, `MAV_CMD_AIRFRAME_CONFIGURATION <https://mavlink.io/en/messages/common.html#MAV_CMD_AIRFRAME_CONFIGURATION>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #42651, `MAV_CMD_BATTERY_RESET <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_BATTERY_RESET>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
+  #42651, `MAV_CMD_BATTERY_RESET <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_BATTERY_RESET>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, ardupilotmega
   #2010, `MAV_CMD_CAMERA_STOP_TRACKING <https://mavlink.io/en/messages/common.html#MAV_CMD_CAMERA_STOP_TRACKING>`_, `AP_Camera/AP_Camera.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera.cpp>`_, common
   #2004, `MAV_CMD_CAMERA_TRACK_POINT <https://mavlink.io/en/messages/common.html#MAV_CMD_CAMERA_TRACK_POINT>`_, `AP_Camera/AP_Camera.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera.cpp>`_, common
   #2005, `MAV_CMD_CAMERA_TRACK_RECTANGLE <https://mavlink.io/en/messages/common.html#MAV_CMD_CAMERA_TRACK_RECTANGLE>`_, `AP_Camera/AP_Camera.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera.cpp>`_, common
   #32000, `MAV_CMD_CAN_FORWARD <https://mavlink.io/en/messages/common.html#MAV_CMD_CAN_FORWARD>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #400, `MAV_CMD_COMPONENT_ARM_DISARM <https://mavlink.io/en/messages/common.html#MAV_CMD_COMPONENT_ARM_DISARM>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
+  #400, `MAV_CMD_COMPONENT_ARM_DISARM <https://mavlink.io/en/messages/common.html#MAV_CMD_COMPONENT_ARM_DISARM>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
   #112, `MAV_CMD_CONDITION_DELAY <https://mavlink.io/en/messages/common.html#MAV_CMD_CONDITION_DELAY>`_, `Rover/mode_auto.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/Rover/mode_auto.cpp>`_, common
   #114, `MAV_CMD_CONDITION_DISTANCE <https://mavlink.io/en/messages/common.html#MAV_CMD_CONDITION_DISTANCE>`_, `Rover/mode_auto.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/Rover/mode_auto.cpp>`_, common
   #115, `MAV_CMD_CONDITION_YAW <https://mavlink.io/en/messages/common.html#MAV_CMD_CONDITION_YAW>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #2600, `MAV_CMD_CONTROL_HIGH_LATENCY <https://mavlink.io/en/messages/common.html#MAV_CMD_CONTROL_HIGH_LATENCY>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #42700, `MAV_CMD_DEBUG_TRAP <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_DEBUG_TRAP>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
-  #42425, `MAV_CMD_DO_ACCEPT_MAG_CAL <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_DO_ACCEPT_MAG_CAL>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
+  #42425, `MAV_CMD_DO_ACCEPT_MAG_CAL <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_DO_ACCEPT_MAG_CAL>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, ardupilotmega
   #10001, `MAV_CMD_DO_ADSB_OUT_IDENT <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_ADSB_OUT_IDENT>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #212, `MAV_CMD_DO_AUTOTUNE_ENABLE <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_AUTOTUNE_ENABLE>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #218, `MAV_CMD_DO_AUX_FUNCTION <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_DO_AUX_FUNCTION>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, ardupilotmega
-  #42426, `MAV_CMD_DO_CANCEL_MAG_CAL <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_DO_CANCEL_MAG_CAL>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
+  #42426, `MAV_CMD_DO_CANCEL_MAG_CAL <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_DO_CANCEL_MAG_CAL>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, ardupilotmega
   #178, `MAV_CMD_DO_CHANGE_SPEED <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_CHANGE_SPEED>`_, `Rover/mode_auto.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/Rover/mode_auto.cpp>`_, common
   #202, `MAV_CMD_DO_DIGICAM_CONFIGURE <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_DIGICAM_CONFIGURE>`_, `AP_Camera/AP_Camera.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera.cpp>`_, common
   #203, `MAV_CMD_DO_DIGICAM_CONTROL <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_DIGICAM_CONTROL>`_, `AP_Camera/AP_Camera.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera.cpp>`_, common
   #223, `MAV_CMD_DO_ENGINE_CONTROL <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_ENGINE_CONTROL>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #207, `MAV_CMD_DO_FENCE_ENABLE <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_FENCE_ENABLE>`_, `Rover/mode_auto.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/Rover/mode_auto.cpp>`_, common
-  #185, `MAV_CMD_DO_FLIGHTTERMINATION <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_FLIGHTTERMINATION>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
+  #185, `MAV_CMD_DO_FLIGHTTERMINATION <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_FLIGHTTERMINATION>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
   #32, `MAV_CMD_DO_FOLLOW <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_FOLLOW>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #1001, `MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #1000, `MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
+  #1001, `MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_GIMBAL_MANAGER_CONFIGURE>`_, `AP_Mount/AP_Mount.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mount/AP_Mount.cpp>`_, common
+  #1000, `MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_GIMBAL_MANAGER_PITCHYAW>`_, `AP_Mount/AP_Mount.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mount/AP_Mount.cpp>`_, common
   #191, `MAV_CMD_DO_GO_AROUND <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_GO_AROUND>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
-  #211, `MAV_CMD_DO_GRIPPER <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_GRIPPER>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
+  #211, `MAV_CMD_DO_GRIPPER <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_GRIPPER>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
   #222, `MAV_CMD_DO_GUIDED_LIMITS <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_GUIDED_LIMITS>`_, `Rover/mode_auto.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/Rover/mode_auto.cpp>`_, common
   #210, `MAV_CMD_DO_INVERTED_FLIGHT <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_INVERTED_FLIGHT>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #177, `MAV_CMD_DO_JUMP <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_JUMP>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #601, `MAV_CMD_DO_JUMP_TAG <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_JUMP_TAG>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #189, `MAV_CMD_DO_LAND_START <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_LAND_START>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #209, `MAV_CMD_DO_MOTOR_TEST <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_MOTOR_TEST>`_, `Rover/GCS_MAVLink_Rover.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/Rover/GCS_MAVLink_Rover.cpp>`_, common
-  #204, `MAV_CMD_DO_MOUNT_CONFIGURE <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_MOUNT_CONFIGURE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #205, `MAV_CMD_DO_MOUNT_CONTROL <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_MOUNT_CONTROL>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
+  #204, `MAV_CMD_DO_MOUNT_CONFIGURE <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_MOUNT_CONFIGURE>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
+  #205, `MAV_CMD_DO_MOUNT_CONTROL <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_MOUNT_CONTROL>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
   #208, `MAV_CMD_DO_PARACHUTE <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_PARACHUTE>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #193, `MAV_CMD_DO_PAUSE_CONTINUE <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_PAUSE_CONTINUE>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
-  #182, `MAV_CMD_DO_REPEAT_RELAY <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_REPEAT_RELAY>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
-  #184, `MAV_CMD_DO_REPEAT_SERVO <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_REPEAT_SERVO>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
+  #182, `MAV_CMD_DO_REPEAT_RELAY <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_REPEAT_RELAY>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
+  #184, `MAV_CMD_DO_REPEAT_SERVO <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_REPEAT_SERVO>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
   #192, `MAV_CMD_DO_REPOSITION <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_REPOSITION>`_, `Rover/GCS_MAVLink_Rover.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/Rover/GCS_MAVLink_Rover.cpp>`_, common
   #188, `MAV_CMD_DO_RETURN_PATH_START <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_RETURN_PATH_START>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #42428, `MAV_CMD_DO_SEND_BANNER <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_DO_SEND_BANNER>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
@@ -178,39 +190,39 @@ Commands the autopilot handles when received.
   #611, `MAV_CMD_DO_SET_GLOBAL_ORIGIN <https://mavlink.io/en/messages/development.html#MAV_CMD_DO_SET_GLOBAL_ORIGIN>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, development
   #179, `MAV_CMD_DO_SET_HOME <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_HOME>`_, `Rover/mode_auto.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/Rover/mode_auto.cpp>`_, common
   #224, `MAV_CMD_DO_SET_MISSION_CURRENT <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_MISSION_CURRENT>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #176, `MAV_CMD_DO_SET_MODE <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_MODE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #181, `MAV_CMD_DO_SET_RELAY <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_RELAY>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
+  #176, `MAV_CMD_DO_SET_MODE <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_MODE>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
+  #181, `MAV_CMD_DO_SET_RELAY <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_RELAY>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
   #215, `MAV_CMD_DO_SET_RESUME_REPEAT_DIST <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_DO_SET_RESUME_REPEAT_DIST>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, ardupilotmega
   #194, `MAV_CMD_DO_SET_REVERSE <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_REVERSE>`_, `Rover/mode_auto.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/Rover/mode_auto.cpp>`_, common
   #201, `MAV_CMD_DO_SET_ROI <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_ROI>`_, `Rover/mode_auto.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/Rover/mode_auto.cpp>`_, common
   #195, `MAV_CMD_DO_SET_ROI_LOCATION <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_ROI_LOCATION>`_, `Rover/mode_auto.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/Rover/mode_auto.cpp>`_, common
   #197, `MAV_CMD_DO_SET_ROI_NONE <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_ROI_NONE>`_, `Rover/mode_auto.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/Rover/mode_auto.cpp>`_, common
-  #198, `MAV_CMD_DO_SET_ROI_SYSID <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_ROI_SYSID>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
+  #198, `MAV_CMD_DO_SET_ROI_SYSID <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_ROI_SYSID>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
   #196, `MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_ROI_WPNEXT_OFFSET>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #5300, `MAV_CMD_DO_SET_SAFETY_SWITCH_STATE <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_SAFETY_SWITCH_STATE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #183, `MAV_CMD_DO_SET_SERVO <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_SERVO>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
+  #183, `MAV_CMD_DO_SET_SERVO <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_SERVO>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
   #216, `MAV_CMD_DO_SPRAYER <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_DO_SPRAYER>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, ardupilotmega
-  #42424, `MAV_CMD_DO_START_MAG_CAL <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_DO_START_MAG_CAL>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
+  #42424, `MAV_CMD_DO_START_MAG_CAL <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_DO_START_MAG_CAL>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, ardupilotmega
   #3000, `MAV_CMD_DO_VTOL_TRANSITION <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_VTOL_TRANSITION>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #42600, `MAV_CMD_DO_WINCH <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_WINCH>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #43003, `MAV_CMD_EXTERNAL_POSITION_ESTIMATE <https://mavlink.io/en/messages/common.html#MAV_CMD_EXTERNAL_POSITION_ESTIMATE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #43004, `MAV_CMD_EXTERNAL_WIND_ESTIMATE <https://mavlink.io/en/messages/development.html#MAV_CMD_EXTERNAL_WIND_ESTIMATE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, development
-  #42006, `MAV_CMD_FIXED_MAG_CAL_YAW <https://mavlink.io/en/messages/common.html#MAV_CMD_FIXED_MAG_CAL_YAW>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #42650, `MAV_CMD_FLASH_BOOTLOADER <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_FLASH_BOOTLOADER>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
-  #410, `MAV_CMD_GET_HOME_POSITION <https://mavlink.io/en/messages/common.html#MAV_CMD_GET_HOME_POSITION>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #510, `MAV_CMD_GET_MESSAGE_INTERVAL <https://mavlink.io/en/messages/common.html#MAV_CMD_GET_MESSAGE_INTERVAL>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
+  #42006, `MAV_CMD_FIXED_MAG_CAL_YAW <https://mavlink.io/en/messages/common.html#MAV_CMD_FIXED_MAG_CAL_YAW>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
+  #42650, `MAV_CMD_FLASH_BOOTLOADER <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_FLASH_BOOTLOADER>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, ardupilotmega
+  #410, `MAV_CMD_GET_HOME_POSITION <https://mavlink.io/en/messages/common.html#MAV_CMD_GET_HOME_POSITION>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
+  #510, `MAV_CMD_GET_MESSAGE_INTERVAL <https://mavlink.io/en/messages/common.html#MAV_CMD_GET_MESSAGE_INTERVAL>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
   #2000, `MAV_CMD_IMAGE_START_CAPTURE <https://mavlink.io/en/messages/common.html#MAV_CMD_IMAGE_START_CAPTURE>`_, `AP_Camera/AP_Camera.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera.cpp>`_, common
   #2001, `MAV_CMD_IMAGE_STOP_CAPTURE <https://mavlink.io/en/messages/common.html#MAV_CMD_IMAGE_STOP_CAPTURE>`_, `AP_Camera/AP_Camera.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera.cpp>`_, common
   #600, `MAV_CMD_JUMP_TAG <https://mavlink.io/en/messages/common.html#MAV_CMD_JUMP_TAG>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #300, `MAV_CMD_MISSION_START <https://mavlink.io/en/messages/common.html#MAV_CMD_MISSION_START>`_, `Rover/GCS_MAVLink_Rover.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/Rover/GCS_MAVLink_Rover.cpp>`_, common
   #83, `MAV_CMD_NAV_ALTITUDE_WAIT <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_NAV_ALTITUDE_WAIT>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, ardupilotmega
-  #??, MAV_CMD_NAV_ARC_WAYPOINT, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, UNKNOWN
+  #36, `MAV_CMD_NAV_ARC_WAYPOINT <https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_ARC_WAYPOINT>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #42703, `MAV_CMD_NAV_ATTITUDE_TIME <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_NAV_ATTITUDE_TIME>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, ardupilotmega
   #30, `MAV_CMD_NAV_CONTINUE_AND_CHANGE_ALT <https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_CONTINUE_AND_CHANGE_ALT>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #93, `MAV_CMD_NAV_DELAY <https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_DELAY>`_, `Rover/mode_auto.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/Rover/mode_auto.cpp>`_, common
   #5004, `MAV_CMD_NAV_FENCE_CIRCLE_EXCLUSION <https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_FENCE_CIRCLE_EXCLUSION>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #5003, `MAV_CMD_NAV_FENCE_CIRCLE_INCLUSION <https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_FENCE_CIRCLE_INCLUSION>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
-  #??, MAV_CMD_NAV_FENCE_HOME_CIRCLE_INCLUSION, `GCS_MAVLink/MissionItemProtocol_Fence.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/MissionItemProtocol_Fence.cpp>`_, UNKNOWN
+  #5005, `MAV_CMD_NAV_FENCE_HOME_CIRCLE_INCLUSION <https://mavlink.io/en/messages/development.html#MAV_CMD_NAV_FENCE_HOME_CIRCLE_INCLUSION>`_, `GCS_MAVLink/MissionItemProtocol_Fence.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/MissionItemProtocol_Fence.cpp>`_, development
   #5002, `MAV_CMD_NAV_FENCE_POLYGON_VERTEX_EXCLUSION <https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_FENCE_POLYGON_VERTEX_EXCLUSION>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #5001, `MAV_CMD_NAV_FENCE_POLYGON_VERTEX_INCLUSION <https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_FENCE_POLYGON_VERTEX_INCLUSION>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #5000, `MAV_CMD_NAV_FENCE_RETURN_POINT <https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_FENCE_RETURN_POINT>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
@@ -231,21 +243,21 @@ Commands the autopilot handles when received.
   #85, `MAV_CMD_NAV_VTOL_LAND <https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_VTOL_LAND>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #84, `MAV_CMD_NAV_VTOL_TAKEOFF <https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_VTOL_TAKEOFF>`_, `AP_Mission/AP_Mission.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mission/AP_Mission.cpp>`_, common
   #16, `MAV_CMD_NAV_WAYPOINT <https://mavlink.io/en/messages/common.html#MAV_CMD_NAV_WAYPOINT>`_, `Rover/mode_auto.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/Rover/mode_auto.cpp>`_, common
-  #241, `MAV_CMD_PREFLIGHT_CALIBRATION <https://mavlink.io/en/messages/common.html#MAV_CMD_PREFLIGHT_CALIBRATION>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #246, `MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN <https://mavlink.io/en/messages/common.html#MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
+  #241, `MAV_CMD_PREFLIGHT_CALIBRATION <https://mavlink.io/en/messages/common.html#MAV_CMD_PREFLIGHT_CALIBRATION>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
+  #246, `MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN <https://mavlink.io/en/messages/common.html#MAV_CMD_PREFLIGHT_REBOOT_SHUTDOWN>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
   #242, `MAV_CMD_PREFLIGHT_SET_SENSOR_OFFSETS <https://mavlink.io/en/messages/common.html#MAV_CMD_PREFLIGHT_SET_SENSOR_OFFSETS>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
-  #245, `MAV_CMD_PREFLIGHT_STORAGE <https://mavlink.io/en/messages/common.html#MAV_CMD_PREFLIGHT_STORAGE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
+  #245, `MAV_CMD_PREFLIGHT_STORAGE <https://mavlink.io/en/messages/common.html#MAV_CMD_PREFLIGHT_STORAGE>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
   #243, `MAV_CMD_PREFLIGHT_UAVCAN <https://mavlink.io/en/messages/common.html#MAV_CMD_PREFLIGHT_UAVCAN>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
-  #520, `MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES <https://mavlink.io/en/messages/common.html#MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #512, `MAV_CMD_REQUEST_MESSAGE <https://mavlink.io/en/messages/common.html#MAV_CMD_REQUEST_MESSAGE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
+  #520, `MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES <https://mavlink.io/en/messages/common.html#MAV_CMD_REQUEST_AUTOPILOT_CAPABILITIES>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
+  #512, `MAV_CMD_REQUEST_MESSAGE <https://mavlink.io/en/messages/common.html#MAV_CMD_REQUEST_MESSAGE>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
   #401, `MAV_CMD_RUN_PREARM_CHECKS <https://mavlink.io/en/messages/common.html#MAV_CMD_RUN_PREARM_CHECKS>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #42701, `MAV_CMD_SCRIPTING <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_SCRIPTING>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
   #532, `MAV_CMD_SET_CAMERA_FOCUS <https://mavlink.io/en/messages/common.html#MAV_CMD_SET_CAMERA_FOCUS>`_, `AP_Camera/AP_Camera.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera.cpp>`_, common
   #534, `MAV_CMD_SET_CAMERA_SOURCE <https://mavlink.io/en/messages/common.html#MAV_CMD_SET_CAMERA_SOURCE>`_, `AP_Camera/AP_Camera.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera.cpp>`_, common
   #531, `MAV_CMD_SET_CAMERA_ZOOM <https://mavlink.io/en/messages/common.html#MAV_CMD_SET_CAMERA_ZOOM>`_, `AP_Camera/AP_Camera.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera.cpp>`_, common
   #42007, `MAV_CMD_SET_EKF_SOURCE_SET <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_SET_EKF_SOURCE_SET>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
-  #511, `MAV_CMD_SET_MESSAGE_INTERVAL <https://mavlink.io/en/messages/common.html#MAV_CMD_SET_MESSAGE_INTERVAL>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #500, `MAV_CMD_START_RX_PAIR <https://mavlink.io/en/messages/common.html#MAV_CMD_START_RX_PAIR>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
+  #511, `MAV_CMD_SET_MESSAGE_INTERVAL <https://mavlink.io/en/messages/common.html#MAV_CMD_SET_MESSAGE_INTERVAL>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
+  #500, `MAV_CMD_START_RX_PAIR <https://mavlink.io/en/messages/common.html#MAV_CMD_START_RX_PAIR>`_, `AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Frsky_Telem/AP_Frsky_MAVliteMsgHandler.cpp>`_, common
   #526, `MAV_CMD_STORAGE_FORMAT <https://mavlink.io/en/messages/common.html#MAV_CMD_STORAGE_FORMAT>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #2500, `MAV_CMD_VIDEO_START_CAPTURE <https://mavlink.io/en/messages/common.html#MAV_CMD_VIDEO_START_CAPTURE>`_, `AP_Camera/AP_Camera.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera.cpp>`_, common
   #2501, `MAV_CMD_VIDEO_STOP_CAPTURE <https://mavlink.io/en/messages/common.html#MAV_CMD_VIDEO_STOP_CAPTURE>`_, `AP_Camera/AP_Camera.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera.cpp>`_, common
@@ -264,14 +276,14 @@ Messages that can be requested/streamed from the autopilot.
   #246, `ADSB_VEHICLE <https://mavlink.io/en/messages/common.html#ADSB_VEHICLE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #163, `AHRS <https://mavlink.io/en/messages/ardupilotmega.html#AHRS>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
   #178, `AHRS2 <https://mavlink.io/en/messages/ardupilotmega.html#AHRS2>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
-  #295, `AIRSPEED <https://mavlink.io/en/messages/development.html#AIRSPEED>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, development
+  #295, `AIRSPEED <https://mavlink.io/en/messages/common.html#AIRSPEED>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #301, `AIS_VESSEL <https://mavlink.io/en/messages/common.html#AIS_VESSEL>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #11020, `AOA_SSA <https://mavlink.io/en/messages/ardupilotmega.html#AOA_SSA>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, ardupilotmega
   #30, `ATTITUDE <https://mavlink.io/en/messages/common.html#ATTITUDE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #31, `ATTITUDE_QUATERNION <https://mavlink.io/en/messages/common.html#ATTITUDE_QUATERNION>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #83, `ATTITUDE_TARGET <https://mavlink.io/en/messages/common.html#ATTITUDE_TARGET>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #286, `AUTOPILOT_STATE_FOR_GIMBAL_DEVICE <https://mavlink.io/en/messages/common.html#AUTOPILOT_STATE_FOR_GIMBAL_DEVICE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #148, `AUTOPILOT_VERSION <https://mavlink.io/en/messages/common.html#AUTOPILOT_VERSION>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
+  #148, `AUTOPILOT_VERSION <https://mavlink.io/en/messages/standard.html#AUTOPILOT_VERSION>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, standard
   #435, `AVAILABLE_MODES <https://mavlink.io/en/messages/development.html#AVAILABLE_MODES>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, development
   #437, `AVAILABLE_MODES_MONITOR <https://mavlink.io/en/messages/development.html#AVAILABLE_MODES_MONITOR>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, development
   #147, `BATTERY_STATUS <https://mavlink.io/en/messages/common.html#BATTERY_STATUS>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
@@ -293,7 +305,7 @@ Messages that can be requested/streamed from the autopilot.
   #285, `GIMBAL_DEVICE_ATTITUDE_STATUS <https://mavlink.io/en/messages/common.html#GIMBAL_DEVICE_ATTITUDE_STATUS>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #280, `GIMBAL_MANAGER_INFORMATION <https://mavlink.io/en/messages/common.html#GIMBAL_MANAGER_INFORMATION>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #281, `GIMBAL_MANAGER_STATUS <https://mavlink.io/en/messages/common.html#GIMBAL_MANAGER_STATUS>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #33, `GLOBAL_POSITION_INT <https://mavlink.io/en/messages/common.html#GLOBAL_POSITION_INT>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
+  #33, `GLOBAL_POSITION_INT <https://mavlink.io/en/messages/standard.html#GLOBAL_POSITION_INT>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, standard
   #124, `GPS2_RAW <https://mavlink.io/en/messages/common.html#GPS2_RAW>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #128, `GPS2_RTK <https://mavlink.io/en/messages/common.html#GPS2_RTK>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #49, `GPS_GLOBAL_ORIGIN <https://mavlink.io/en/messages/common.html#GPS_GLOBAL_ORIGIN>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
@@ -363,7 +375,7 @@ Messages the autopilot will send automatically (unrequested).
   #30, `ATTITUDE <https://mavlink.io/en/messages/common.html#ATTITUDE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #31, `ATTITUDE_QUATERNION <https://mavlink.io/en/messages/common.html#ATTITUDE_QUATERNION>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #286, `AUTOPILOT_STATE_FOR_GIMBAL_DEVICE <https://mavlink.io/en/messages/common.html#AUTOPILOT_STATE_FOR_GIMBAL_DEVICE>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
-  #148, `AUTOPILOT_VERSION <https://mavlink.io/en/messages/common.html#AUTOPILOT_VERSION>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
+  #148, `AUTOPILOT_VERSION <https://mavlink.io/en/messages/standard.html#AUTOPILOT_VERSION>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, standard
   #435, `AVAILABLE_MODES <https://mavlink.io/en/messages/development.html#AVAILABLE_MODES>`_, `Rover/GCS_MAVLink_Rover.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/Rover/GCS_MAVLink_Rover.cpp>`_, development
   #437, `AVAILABLE_MODES_MONITOR <https://mavlink.io/en/messages/development.html#AVAILABLE_MODES_MONITOR>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, development
   #147, `BATTERY_STATUS <https://mavlink.io/en/messages/common.html#BATTERY_STATUS>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
@@ -377,7 +389,7 @@ Messages the autopilot will send automatically (unrequested).
   #386, `CAN_FRAME <https://mavlink.io/en/messages/common.html#CAN_FRAME>`_, `AP_CANManager/AP_MAVLinkCAN.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_CANManager/AP_MAVLinkCAN.cpp>`_, common
   #77, `COMMAND_ACK <https://mavlink.io/en/messages/common.html#COMMAND_ACK>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #76, `COMMAND_LONG <https://mavlink.io/en/messages/common.html#COMMAND_LONG>`_, `AP_Generator/AP_Generator_Loweheiser.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Generator/AP_Generator_Loweheiser.cpp>`_, common
-  #169, `DATA16 <https://mavlink.io/en/messages/ardupilotmega.html#DATA16>`_, `AP_Radio/AP_Radio_bk2425.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Radio/AP_Radio_bk2425.cpp>`_, ardupilotmega
+  #169, `DATA16 <https://mavlink.io/en/messages/ardupilotmega.html#DATA16>`_, `AP_Radio/AP_Radio_cypress.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Radio/AP_Radio_cypress.cpp>`_, ardupilotmega
   #195, `DEEPSTALL <https://mavlink.io/en/messages/ardupilotmega.html#DEEPSTALL>`_, `AP_Landing/AP_Landing_Deepstall.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Landing/AP_Landing_Deepstall.cpp>`_, ardupilotmega
   #11001, `DEVICE_OP_READ_REPLY <https://mavlink.io/en/messages/ardupilotmega.html#DEVICE_OP_READ_REPLY>`_, `GCS_MAVLink/GCS_DeviceOp.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_DeviceOp.cpp>`_, ardupilotmega
   #11003, `DEVICE_OP_WRITE_REPLY <https://mavlink.io/en/messages/ardupilotmega.html#DEVICE_OP_WRITE_REPLY>`_, `GCS_MAVLink/GCS_DeviceOp.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_DeviceOp.cpp>`_, ardupilotmega
@@ -391,7 +403,7 @@ Messages the autopilot will send automatically (unrequested).
   #285, `GIMBAL_DEVICE_ATTITUDE_STATUS <https://mavlink.io/en/messages/common.html#GIMBAL_DEVICE_ATTITUDE_STATUS>`_, `AP_Mount/AP_Mount_Backend.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mount/AP_Mount_Backend.cpp>`_, common
   #280, `GIMBAL_MANAGER_INFORMATION <https://mavlink.io/en/messages/common.html#GIMBAL_MANAGER_INFORMATION>`_, `AP_Mount/AP_Mount_Backend.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mount/AP_Mount_Backend.cpp>`_, common
   #281, `GIMBAL_MANAGER_STATUS <https://mavlink.io/en/messages/common.html#GIMBAL_MANAGER_STATUS>`_, `AP_Mount/AP_Mount_Backend.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mount/AP_Mount_Backend.cpp>`_, common
-  #33, `GLOBAL_POSITION_INT <https://mavlink.io/en/messages/common.html#GLOBAL_POSITION_INT>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
+  #33, `GLOBAL_POSITION_INT <https://mavlink.io/en/messages/standard.html#GLOBAL_POSITION_INT>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, standard
   #218, `GOPRO_SET_REQUEST <https://mavlink.io/en/messages/ardupilotmega.html#GOPRO_SET_REQUEST>`_, `AP_Camera/AP_Camera_SoloGimbal.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Camera/AP_Camera_SoloGimbal.cpp>`_, ardupilotmega
   #124, `GPS2_RAW <https://mavlink.io/en/messages/common.html#GPS2_RAW>`_, `AP_GPS/AP_GPS.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_GPS/AP_GPS.cpp>`_, common
   #128, `GPS2_RTK <https://mavlink.io/en/messages/common.html#GPS2_RTK>`_, `AP_GPS/GPS_Backend.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_GPS/GPS_Backend.cpp>`_, common
@@ -419,7 +431,7 @@ Messages the autopilot will send automatically (unrequested).
   #100, `OPTICAL_FLOW <https://mavlink.io/en/messages/common.html#OPTICAL_FLOW>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #11034, `OSD_PARAM_CONFIG_REPLY <https://mavlink.io/en/messages/ardupilotmega.html#OSD_PARAM_CONFIG_REPLY>`_, `AP_OSD/AP_OSD.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_OSD/AP_OSD.cpp>`_, ardupilotmega
   #11036, `OSD_PARAM_SHOW_CONFIG_REPLY <https://mavlink.io/en/messages/ardupilotmega.html#OSD_PARAM_SHOW_CONFIG_REPLY>`_, `AP_OSD/AP_OSD.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_OSD/AP_OSD.cpp>`_, ardupilotmega
-  #??, PARAM_ERROR, `GCS_MAVLink/GCS_Param.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Param.cpp>`_, UNKNOWN
+  #345, `PARAM_ERROR <https://mavlink.io/en/messages/common.html#PARAM_ERROR>`_, `GCS_MAVLink/GCS_Param.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Param.cpp>`_, common
   #21, `PARAM_REQUEST_LIST <https://mavlink.io/en/messages/common.html#PARAM_REQUEST_LIST>`_, `AP_Mount/SoloGimbal_Parameters.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mount/SoloGimbal_Parameters.cpp>`_, common
   #23, `PARAM_SET <https://mavlink.io/en/messages/common.html#PARAM_SET>`_, `AP_Mount/SoloGimbal_Parameters.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Mount/SoloGimbal_Parameters.cpp>`_, common
   #22, `PARAM_VALUE <https://mavlink.io/en/messages/common.html#PARAM_VALUE>`_, `GCS_MAVLink/GCS_Param.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Param.cpp>`_, common
@@ -444,7 +456,7 @@ Messages the autopilot will send automatically (unrequested).
   #241, `VIBRATION <https://mavlink.io/en/messages/common.html#VIBRATION>`_, `GCS_MAVLink/GCS_Common.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/GCS_MAVLink/GCS_Common.cpp>`_, common
   #11038, `WATER_DEPTH <https://mavlink.io/en/messages/ardupilotmega.html#WATER_DEPTH>`_, `Rover/GCS_MAVLink_Rover.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/Rover/GCS_MAVLink_Rover.cpp>`_, ardupilotmega
   #9000, `WHEEL_DISTANCE <https://mavlink.io/en/messages/common.html#WHEEL_DISTANCE>`_, `Rover/GCS_MAVLink_Rover.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/Rover/GCS_MAVLink_Rover.cpp>`_, common
-  #9005, `WINCH_STATUS <https://mavlink.io/en/messages/common.html#WINCH_STATUS>`_, `AP_Winch/AP_Winch_PWM.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Winch/AP_Winch_PWM.cpp>`_, common
+  #9005, `WINCH_STATUS <https://mavlink.io/en/messages/common.html#WINCH_STATUS>`_, `AP_Winch/AP_Winch_Daiwa.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_Winch/AP_Winch_Daiwa.cpp>`_, common
   #168, `WIND <https://mavlink.io/en/messages/ardupilotmega.html#WIND>`_, `AP_WindVane/AP_WindVane.cpp <https://github.com/ArduPilot/ardupilot/tree/Rover-4.8/libraries/AP_WindVane/AP_WindVane.cpp>`_, ardupilotmega
 
 .. _mavlink_missing_messages:
@@ -488,10 +500,7 @@ Unsupported / unhandled messages.
   #-1, `BAD_DATA <https://mavlink.io/en/messages/minimal.html#BAD_DATA>`_, UNSUPPORTED, minimal
   #181, `BATTERY2 <https://mavlink.io/en/messages/ardupilotmega.html#BATTERY2>`_, UNSUPPORTED, ardupilotmega
   #257, `BUTTON_CHANGE <https://mavlink.io/en/messages/common.html#BUTTON_CHANGE>`_, UNSUPPORTED, common
-  #263, `CAMERA_IMAGE_CAPTURED <https://mavlink.io/en/messages/common.html#CAMERA_IMAGE_CAPTURED>`_, UNSUPPORTED, common
   #179, `CAMERA_STATUS <https://mavlink.io/en/messages/ardupilotmega.html#CAMERA_STATUS>`_, UNSUPPORTED, ardupilotmega
-  #276, `CAMERA_TRACKING_GEO_STATUS <https://mavlink.io/en/messages/common.html#CAMERA_TRACKING_GEO_STATUS>`_, UNSUPPORTED, common
-  #275, `CAMERA_TRACKING_IMAGE_STATUS <https://mavlink.io/en/messages/common.html#CAMERA_TRACKING_IMAGE_STATUS>`_, UNSUPPORTED, common
   #112, `CAMERA_TRIGGER <https://mavlink.io/en/messages/common.html#CAMERA_TRIGGER>`_, UNSUPPORTED, common
   #5, `CHANGE_OPERATOR_CONTROL <https://mavlink.io/en/messages/common.html#CHANGE_OPERATOR_CONTROL>`_, UNSUPPORTED, common
   #6, `CHANGE_OPERATOR_CONTROL_ACK <https://mavlink.io/en/messages/common.html#CHANGE_OPERATOR_CONTROL_ACK>`_, UNSUPPORTED, common
@@ -530,6 +539,7 @@ Unsupported / unhandled messages.
   #288, `GIMBAL_MANAGER_SET_MANUAL_CONTROL <https://mavlink.io/en/messages/common.html#GIMBAL_MANAGER_SET_MANUAL_CONTROL>`_, UNSUPPORTED, common
   #214, `GIMBAL_TORQUE_CMD_REPORT <https://mavlink.io/en/messages/ardupilotmega.html#GIMBAL_TORQUE_CMD_REPORT>`_, UNSUPPORTED, ardupilotmega
   #63, `GLOBAL_POSITION_INT_COV <https://mavlink.io/en/messages/common.html#GLOBAL_POSITION_INT_COV>`_, UNSUPPORTED, common
+  #296, `GLOBAL_POSITION_SENSOR <https://mavlink.io/en/messages/common.html#GLOBAL_POSITION_SENSOR>`_, UNSUPPORTED, common
   #441, `GNSS_INTEGRITY <https://mavlink.io/en/messages/development.html#GNSS_INTEGRITY>`_, UNSUPPORTED, development
   #216, `GOPRO_GET_REQUEST <https://mavlink.io/en/messages/ardupilotmega.html#GOPRO_GET_REQUEST>`_, UNSUPPORTED, ardupilotmega
   #217, `GOPRO_GET_RESPONSE <https://mavlink.io/en/messages/ardupilotmega.html#GOPRO_GET_RESPONSE>`_, UNSUPPORTED, ardupilotmega
@@ -570,16 +580,17 @@ Unsupported / unhandled messages.
   #157, `MOUNT_CONTROL <https://mavlink.io/en/messages/ardupilotmega.html#MOUNT_CONTROL>`_, UNSUPPORTED, ardupilotmega
   #265, `MOUNT_ORIENTATION <https://mavlink.io/en/messages/common.html#MOUNT_ORIENTATION>`_, UNSUPPORTED, common
   #158, `MOUNT_STATUS <https://mavlink.io/en/messages/ardupilotmega.html#MOUNT_STATUS>`_, UNSUPPORTED, ardupilotmega
+  #11060, `NAMED_VALUE_STRING <https://mavlink.io/en/messages/ardupilotmega.html#NAMED_VALUE_STRING>`_, UNSUPPORTED, ardupilotmega
   #220, `NAV_FILTER_BIAS <https://mavlink.io/en/messages/all.html#NAV_FILTER_BIAS>`_, UNSUPPORTED, all
+  #390, `ONBOARD_COMPUTER_STATUS <https://mavlink.io/en/messages/common.html#ONBOARD_COMPUTER_STATUS>`_, UNSUPPORTED, common
   #12902, `OPEN_DRONE_ID_AUTHENTICATION <https://mavlink.io/en/messages/common.html#OPEN_DRONE_ID_AUTHENTICATION>`_, UNSUPPORTED, common
   #12901, `OPEN_DRONE_ID_LOCATION <https://mavlink.io/en/messages/common.html#OPEN_DRONE_ID_LOCATION>`_, UNSUPPORTED, common
   #12915, `OPEN_DRONE_ID_MESSAGE_PACK <https://mavlink.io/en/messages/common.html#OPEN_DRONE_ID_MESSAGE_PACK>`_, UNSUPPORTED, common
   #106, `OPTICAL_FLOW_RAD <https://mavlink.io/en/messages/common.html#OPTICAL_FLOW_RAD>`_, UNSUPPORTED, common
-  #324, `PARAM_EXT_ACK <https://mavlink.io/en/messages/common.html#PARAM_EXT_ACK>`_, UNSUPPORTED, common
+  #360, `ORBIT_EXECUTION_STATUS <https://mavlink.io/en/messages/common.html#ORBIT_EXECUTION_STATUS>`_, UNSUPPORTED, common
   #321, `PARAM_EXT_REQUEST_LIST <https://mavlink.io/en/messages/common.html#PARAM_EXT_REQUEST_LIST>`_, UNSUPPORTED, common
   #320, `PARAM_EXT_REQUEST_READ <https://mavlink.io/en/messages/common.html#PARAM_EXT_REQUEST_READ>`_, UNSUPPORTED, common
   #323, `PARAM_EXT_SET <https://mavlink.io/en/messages/common.html#PARAM_EXT_SET>`_, UNSUPPORTED, common
-  #322, `PARAM_EXT_VALUE <https://mavlink.io/en/messages/common.html#PARAM_EXT_VALUE>`_, UNSUPPORTED, common
   #50, `PARAM_MAP_RC <https://mavlink.io/en/messages/common.html#PARAM_MAP_RC>`_, UNSUPPORTED, common
   #60041, `PARAM_VALUE_ARRAY <https://mavlink.io/en/messages/all.html#PARAM_VALUE_ARRAY>`_, UNSUPPORTED, all
   #4, `PING <https://mavlink.io/en/messages/common.html#PING>`_, UNSUPPORTED, common
@@ -587,6 +598,7 @@ Unsupported / unhandled messages.
   #221, `RADIO_CALIBRATION <https://mavlink.io/en/messages/all.html#RADIO_CALIBRATION>`_, UNSUPPORTED, all
   #176, `RALLY_FETCH_POINT <https://mavlink.io/en/messages/ardupilotmega.html#RALLY_FETCH_POINT>`_, UNSUPPORTED, ardupilotmega
   #175, `RALLY_POINT <https://mavlink.io/en/messages/ardupilotmega.html#RALLY_POINT>`_, UNSUPPORTED, ardupilotmega
+  #513, `RANGING_BEACON <https://mavlink.io/en/messages/development.html#RANGING_BEACON>`_, UNSUPPORTED, development
   #28, `RAW_PRESSURE <https://mavlink.io/en/messages/common.html#RAW_PRESSURE>`_, UNSUPPORTED, common
   #339, `RAW_RPM <https://mavlink.io/en/messages/common.html#RAW_RPM>`_, UNSUPPORTED, common
   #34, `RC_CHANNELS_SCALED <https://mavlink.io/en/messages/common.html#RC_CHANNELS_SCALED>`_, UNSUPPORTED, common
@@ -607,7 +619,6 @@ Unsupported / unhandled messages.
   #243, `SET_HOME_POSITION <https://mavlink.io/en/messages/common.html#SET_HOME_POSITION>`_, UNSUPPORTED, common
   #151, `SET_MAG_OFFSETS <https://mavlink.io/en/messages/ardupilotmega.html#SET_MAG_OFFSETS>`_, UNSUPPORTED, ardupilotmega
   #370, `SMART_BATTERY_INFO <https://mavlink.io/en/messages/common.html#SMART_BATTERY_INFO>`_, UNSUPPORTED, common
-  #261, `STORAGE_INFORMATION <https://mavlink.io/en/messages/common.html#STORAGE_INFORMATION>`_, UNSUPPORTED, common
   #60012, `STORM32_GIMBAL_MANAGER_CONTROL <https://mavlink.io/en/messages/all.html#STORM32_GIMBAL_MANAGER_CONTROL>`_, UNSUPPORTED, all
   #60013, `STORM32_GIMBAL_MANAGER_CONTROL_PITCHYAW <https://mavlink.io/en/messages/all.html#STORM32_GIMBAL_MANAGER_CONTROL_PITCHYAW>`_, UNSUPPORTED, all
   #60014, `STORM32_GIMBAL_MANAGER_CORRECT_ROLL <https://mavlink.io/en/messages/all.html#STORM32_GIMBAL_MANAGER_CORRECT_ROLL>`_, UNSUPPORTED, all
@@ -625,7 +636,6 @@ Unsupported / unhandled messages.
   #10004, `UAVIONIX_ADSB_OUT_CFG_REGISTRATION <https://mavlink.io/en/messages/uAvionix.html#UAVIONIX_ADSB_OUT_CFG_REGISTRATION>`_, UNSUPPORTED, uAvionix
   #-2, `UNKNOWN <https://mavlink.io/en/messages/minimal.html#UNKNOWN>`_, UNSUPPORTED, minimal
   #248, `V2_EXTENSION <https://mavlink.io/en/messages/common.html#V2_EXTENSION>`_, UNSUPPORTED, common
-  #270, `VIDEO_STREAM_STATUS <https://mavlink.io/en/messages/common.html#VIDEO_STREAM_STATUS>`_, UNSUPPORTED, common
   #299, `WIFI_CONFIG_AP <https://mavlink.io/en/messages/common.html#WIFI_CONFIG_AP>`_, UNSUPPORTED, common
   #231, `WIND_COV <https://mavlink.io/en/messages/common.html#WIND_COV>`_, UNSUPPORTED, common
 
@@ -640,19 +650,28 @@ Unsupported / unhandled commands.
   :header: ID, MAVLink Message, Code Source, MAVLink Dialect
 
 
+  #310, `MAV_CMD_ACTUATOR_TEST <https://mavlink.io/en/messages/common.html#MAV_CMD_ACTUATOR_TEST>`_, UNSUPPORTED, common
   #3001, `MAV_CMD_ARM_AUTHORIZATION_REQUEST <https://mavlink.io/en/messages/common.html#MAV_CMD_ARM_AUTHORIZATION_REQUEST>`_, UNSUPPORTED, common
+  #2020, `MAV_CMD_CAMERA_START_MTI <https://mavlink.io/en/messages/development.html#MAV_CMD_CAMERA_START_MTI>`_, UNSUPPORTED, development
+  #2021, `MAV_CMD_CAMERA_STOP_MTI <https://mavlink.io/en/messages/development.html#MAV_CMD_CAMERA_STOP_MTI>`_, UNSUPPORTED, development
   #113, `MAV_CMD_CONDITION_CHANGE_ALT <https://mavlink.io/en/messages/common.html#MAV_CMD_CONDITION_CHANGE_ALT>`_, UNSUPPORTED, common
+  #4501, `MAV_CMD_CONDITION_GATE <https://mavlink.io/en/messages/common.html#MAV_CMD_CONDITION_GATE>`_, UNSUPPORTED, common
   #159, `MAV_CMD_CONDITION_LAST <https://mavlink.io/en/messages/common.html#MAV_CMD_CONDITION_LAST>`_, UNSUPPORTED, common
+  #311, `MAV_CMD_CONFIGURE_ACTUATOR <https://mavlink.io/en/messages/common.html#MAV_CMD_CONFIGURE_ACTUATOR>`_, UNSUPPORTED, common
   #186, `MAV_CMD_DO_CHANGE_ALTITUDE <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_CHANGE_ALTITUDE>`_, UNSUPPORTED, common
   #200, `MAV_CMD_DO_CONTROL_VIDEO <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_CONTROL_VIDEO>`_, UNSUPPORTED, common
+  #35, `MAV_CMD_DO_FIGURE_EIGHT <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_FIGURE_EIGHT>`_, UNSUPPORTED, common
   #33, `MAV_CMD_DO_FOLLOW_REPOSITION <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_FOLLOW_REPOSITION>`_, UNSUPPORTED, common
   #221, `MAV_CMD_DO_GUIDED_MASTER <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_GUIDED_MASTER>`_, UNSUPPORTED, common
+  #406, `MAV_CMD_DO_ILLUMINATOR_CONFIGURE <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_ILLUMINATOR_CONFIGURE>`_, UNSUPPORTED, common
   #240, `MAV_CMD_DO_LAST <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_LAST>`_, UNSUPPORTED, common
   #220, `MAV_CMD_DO_MOUNT_CONTROL_QUAT <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_MOUNT_CONTROL_QUAT>`_, UNSUPPORTED, common
+  #34, `MAV_CMD_DO_ORBIT <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_ORBIT>`_, UNSUPPORTED, common
   #190, `MAV_CMD_DO_RALLY_LAND <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_RALLY_LAND>`_, UNSUPPORTED, common
+  #187, `MAV_CMD_DO_SET_ACTUATOR <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_ACTUATOR>`_, UNSUPPORTED, common
   #214, `MAV_CMD_DO_SET_CAM_TRIGG_INTERVAL <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_CAM_TRIGG_INTERVAL>`_, UNSUPPORTED, common
   #180, `MAV_CMD_DO_SET_PARAMETER <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_PARAMETER>`_, UNSUPPORTED, common
-  #262, `MAV_CMD_DO_SET_STANDARD_MODE <https://mavlink.io/en/messages/development.html#MAV_CMD_DO_SET_STANDARD_MODE>`_, UNSUPPORTED, development
+  #262, `MAV_CMD_DO_SET_STANDARD_MODE <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_SET_STANDARD_MODE>`_, UNSUPPORTED, common
   #610, `MAV_CMD_DO_SET_SYS_CMP_ID <https://mavlink.io/en/messages/development.html#MAV_CMD_DO_SET_SYS_CMP_ID>`_, UNSUPPORTED, development
   #2003, `MAV_CMD_DO_TRIGGER_CONTROL <https://mavlink.io/en/messages/common.html#MAV_CMD_DO_TRIGGER_CONTROL>`_, UNSUPPORTED, common
   #10152, `MAV_CMD_ENUM_END <https://mavlink.io/en/messages/loweheiser.html#MAV_CMD_ENUM_END>`_, UNSUPPORTED, loweheiser
@@ -662,9 +681,11 @@ Unsupported / unhandled commands.
   #42505, `MAV_CMD_GIMBAL_FULL_RESET <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_GIMBAL_FULL_RESET>`_, UNSUPPORTED, ardupilotmega
   #42503, `MAV_CMD_GIMBAL_REQUEST_AXIS_CALIBRATION <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_GIMBAL_REQUEST_AXIS_CALIBRATION>`_, UNSUPPORTED, ardupilotmega
   #42501, `MAV_CMD_GIMBAL_RESET <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_GIMBAL_RESET>`_, UNSUPPORTED, ardupilotmega
-  #43001, `MAV_CMD_GUIDED_CHANGE_ALTITUDE <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_GUIDED_CHANGE_ALTITUDE>`_, UNSUPPORTED, ardupilotmega
-  #43002, `MAV_CMD_GUIDED_CHANGE_HEADING <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_GUIDED_CHANGE_HEADING>`_, UNSUPPORTED, ardupilotmega
-  #43000, `MAV_CMD_GUIDED_CHANGE_SPEED <https://mavlink.io/en/messages/ardupilotmega.html#MAV_CMD_GUIDED_CHANGE_SPEED>`_, UNSUPPORTED, ardupilotmega
+  #43001, `MAV_CMD_GUIDED_CHANGE_ALTITUDE <https://mavlink.io/en/messages/common.html#MAV_CMD_GUIDED_CHANGE_ALTITUDE>`_, UNSUPPORTED, common
+  #43002, `MAV_CMD_GUIDED_CHANGE_HEADING <https://mavlink.io/en/messages/common.html#MAV_CMD_GUIDED_CHANGE_HEADING>`_, UNSUPPORTED, common
+  #43000, `MAV_CMD_GUIDED_CHANGE_SPEED <https://mavlink.io/en/messages/common.html#MAV_CMD_GUIDED_CHANGE_SPEED>`_, UNSUPPORTED, common
+  #405, `MAV_CMD_ILLUMINATOR_ON_OFF <https://mavlink.io/en/messages/common.html#MAV_CMD_ILLUMINATOR_ON_OFF>`_, UNSUPPORTED, common
+  #420, `MAV_CMD_INJECT_FAILURE <https://mavlink.io/en/messages/common.html#MAV_CMD_INJECT_FAILURE>`_, UNSUPPORTED, common
   #2510, `MAV_CMD_LOGGING_START <https://mavlink.io/en/messages/common.html#MAV_CMD_LOGGING_START>`_, UNSUPPORTED, common
   #2511, `MAV_CMD_LOGGING_STOP <https://mavlink.io/en/messages/common.html#MAV_CMD_LOGGING_STOP>`_, UNSUPPORTED, common
   #10151, `MAV_CMD_LOWEHEISER_SET_STATE <https://mavlink.io/en/messages/loweheiser.html#MAV_CMD_LOWEHEISER_SET_STATE>`_, UNSUPPORTED, loweheiser
@@ -689,6 +710,7 @@ Unsupported / unhandled commands.
   #60072, `MAV_CMD_PRS_SHUTDOWN <https://mavlink.io/en/messages/all.html#MAV_CMD_PRS_SHUTDOWN>`_, UNSUPPORTED, all
   #60020, `MAV_CMD_QSHOT_DO_CONFIGURE <https://mavlink.io/en/messages/all.html#MAV_CMD_QSHOT_DO_CONFIGURE>`_, UNSUPPORTED, all
   #527, `MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS <https://mavlink.io/en/messages/common.html#MAV_CMD_REQUEST_CAMERA_CAPTURE_STATUS>`_, UNSUPPORTED, common
+  #2002, `MAV_CMD_REQUEST_CAMERA_IMAGE_CAPTURE <https://mavlink.io/en/messages/common.html#MAV_CMD_REQUEST_CAMERA_IMAGE_CAPTURE>`_, UNSUPPORTED, common
   #521, `MAV_CMD_REQUEST_CAMERA_INFORMATION <https://mavlink.io/en/messages/common.html#MAV_CMD_REQUEST_CAMERA_INFORMATION>`_, UNSUPPORTED, common
   #522, `MAV_CMD_REQUEST_CAMERA_SETTINGS <https://mavlink.io/en/messages/common.html#MAV_CMD_REQUEST_CAMERA_SETTINGS>`_, UNSUPPORTED, common
   #528, `MAV_CMD_REQUEST_FLIGHT_INFORMATION <https://mavlink.io/en/messages/common.html#MAV_CMD_REQUEST_FLIGHT_INFORMATION>`_, UNSUPPORTED, common

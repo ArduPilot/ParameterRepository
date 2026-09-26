@@ -11392,6 +11392,17 @@
     }
   },
   "CAM1": {
+    "CAM1_COMPID": {
+      "Description": "Component ID of the camera when using MAVLinkCamV2 (CAMn_TYPE=6). Zero selects MAV_COMP_ID_CAMERA plus the zero-based camera instance (100 for camera 1, 101 for camera 2). Values 7 to 255 select the specified component ID. IDs 1 to 6 are reserved for autopilot-connected cameras.",
+      "DisplayName": "MAVLink camera component ID",
+      "Increment": "1",
+      "Range": {
+        "high": "255",
+        "low": "0"
+      },
+      "RebootRequired": "True",
+      "User": "Advanced"
+    },
     "CAM1_DURATION": {
       "Description": "Duration in seconds that the camera shutter is held open",
       "DisplayName": "Camera shutter duration held open",
@@ -11587,6 +11598,17 @@
     }
   },
   "CAM2": {
+    "CAM2_COMPID": {
+      "Description": "Component ID of the camera when using MAVLinkCamV2 (CAMn_TYPE=6). Zero selects MAV_COMP_ID_CAMERA plus the zero-based camera instance (100 for camera 1, 101 for camera 2). Values 7 to 255 select the specified component ID. IDs 1 to 6 are reserved for autopilot-connected cameras.",
+      "DisplayName": "MAVLink camera component ID",
+      "Increment": "1",
+      "Range": {
+        "high": "255",
+        "low": "0"
+      },
+      "RebootRequired": "True",
+      "User": "Advanced"
+    },
     "CAM2_DURATION": {
       "Description": "Duration in seconds that the camera shutter is held open",
       "DisplayName": "Camera shutter duration held open",
@@ -27016,9 +27038,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -27181,9 +27204,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -27346,9 +27370,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -27511,9 +27536,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -27676,9 +27702,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -27841,9 +27868,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -28006,9 +28034,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -28171,9 +28200,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -28336,9 +28366,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -28501,9 +28532,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -28666,9 +28698,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -28831,9 +28864,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -28996,9 +29030,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -29161,9 +29196,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -29326,9 +29362,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -29491,9 +29528,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -29656,9 +29694,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -29821,9 +29860,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -29986,9 +30026,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -30151,9 +30192,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -30316,9 +30358,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -30481,9 +30524,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -30646,9 +30690,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -30811,9 +30856,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -30976,9 +31022,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -31141,9 +31188,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -31306,9 +31354,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -31471,9 +31520,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -31636,9 +31686,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -31801,9 +31852,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -31966,9 +32018,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -32131,9 +32184,10 @@
         "0": "Accept unsigned MAVLink2 messages",
         "1": "Don't forward mavlink to/from",
         "2": "Ignore Streamrate",
-        "3": "forward mavlink packets that don't pass CRC"
+        "3": "forward mavlink packets that don't pass CRC",
+        "4": "Unicast"
       },
-      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action.",
+      "Description": "Bitmask for configuring this telemetry channel. For having effect on all channels, set the relevant mask in all MAVx_OPTIONS parameters. Keep in mind that part of the flags may require a reboot to take action. Unicast blocks forwarding of broadcasts to/from this link, but allows packets addressed to a learned system/component pair. A missing or zero target system or component is a broadcast. Unicast sends heartbeat but does not start the normal telemetry streams; devices can request messages with MAV_CMD_SET_MESSAGE_INTERVAL or MAV_CMD_REQUEST_MESSAGE. Local processing is unaffected.",
       "DisplayName": "Bitmask for configuring this telemetry channel",
       "RebootRequired": "True",
       "User": "Standard"
@@ -32231,6 +32285,18 @@
     }
   },
   "MNT1": {
+    "MNT1_ATT_RATE": {
+      "Description": "Rate at which AUTOPILOT_STATE_FOR_GIMBAL_DEVICE messages are sent to a MAVLink gimbal. Zero disables these messages",
+      "DisplayName": "Vehicle attitude send rate to MAVLink gimbal",
+      "Increment": "1",
+      "Range": {
+        "high": "50",
+        "low": "0"
+      },
+      "RebootRequired": "True",
+      "Units": "Hz",
+      "User": "Advanced"
+    },
     "MNT1_DEFLT_MODE": {
       "Description": "Mount default operating mode on startup and after control is returned from autopilot",
       "DisplayName": "Mount default operating mode",
@@ -32409,6 +32475,17 @@
       "RebootRequired": "True",
       "User": "Standard"
     },
+    "MNT1_TARG_RATE": {
+      "Description": "Refresh rate for unchanged MAVLink gimbal targets. Changed targets are sent immediately. Zero disables target transmission",
+      "DisplayName": "MAVLink gimbal target refresh rate",
+      "Increment": "1",
+      "Range": {
+        "high": "50",
+        "low": "0"
+      },
+      "Units": "Hz",
+      "User": "Advanced"
+    },
     "MNT1_TYPE": {
       "Description": "Mount Type",
       "DisplayName": "Mount Type",
@@ -32456,6 +32533,18 @@
     }
   },
   "MNT2": {
+    "MNT2_ATT_RATE": {
+      "Description": "Rate at which AUTOPILOT_STATE_FOR_GIMBAL_DEVICE messages are sent to a MAVLink gimbal. Zero disables these messages",
+      "DisplayName": "Vehicle attitude send rate to MAVLink gimbal",
+      "Increment": "1",
+      "Range": {
+        "high": "50",
+        "low": "0"
+      },
+      "RebootRequired": "True",
+      "Units": "Hz",
+      "User": "Advanced"
+    },
     "MNT2_DEFLT_MODE": {
       "Description": "Mount default operating mode on startup and after control is returned from autopilot",
       "DisplayName": "Mount default operating mode",
@@ -32633,6 +32722,17 @@
       "DisplayName": "Mount Target sysID",
       "RebootRequired": "True",
       "User": "Standard"
+    },
+    "MNT2_TARG_RATE": {
+      "Description": "Refresh rate for unchanged MAVLink gimbal targets. Changed targets are sent immediately. Zero disables target transmission",
+      "DisplayName": "MAVLink gimbal target refresh rate",
+      "Increment": "1",
+      "Range": {
+        "high": "50",
+        "low": "0"
+      },
+      "Units": "Hz",
+      "User": "Advanced"
     },
     "MNT2_TYPE": {
       "Description": "Mount Type",
@@ -65643,7 +65743,7 @@
       "DisplayName": "Terrain cache size",
       "Range": {
         "high": "128",
-        "low": "0"
+        "low": "1"
       },
       "User": "Advanced"
     },

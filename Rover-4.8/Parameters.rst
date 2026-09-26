@@ -29749,6 +29749,26 @@ Camera vertical field of view\. 0 if unknown
 
 
 
+.. _CAM1_COMPID:
+
+CAM1\_COMPID: MAVLink camera component ID
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+Component ID of the camera when using MAVLinkCamV2 \(CAMn\_TYPE\=6\)\. Zero selects MAV\_COMP\_ID\_CAMERA plus the zero\-based camera instance \(100 for camera 1\, 101 for camera 2\)\. Values 7 to 255 select the specified component ID\. IDs 1 to 6 are reserved for autopilot\-connected cameras\.
+
+
++-----------+----------+
+| Increment | Range    |
++===========+==========+
+| 1         | 0 to 255 |
++-----------+----------+
+
+
+
+
 
 .. _parameters_CAM1_RC_:
 
@@ -30176,6 +30196,26 @@ Camera vertical field of view\. 0 if unknown
 +==========+=========+
 | 0 to 180 | degrees |
 +----------+---------+
+
+
+
+
+.. _CAM2_COMPID:
+
+CAM2\_COMPID: MAVLink camera component ID
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+Component ID of the camera when using MAVLinkCamV2 \(CAMn\_TYPE\=6\)\. Zero selects MAV\_COMP\_ID\_CAMERA plus the zero\-based camera instance \(100 for camera 1\, 101 for camera 2\)\. Values 7 to 255 select the specified component ID\. IDs 1 to 6 are reserved for autopilot\-connected cameras\.
+
+
++-----------+----------+
+| Increment | Range    |
++===========+==========+
+| 1         | 0 to 255 |
++-----------+----------+
 
 
 
@@ -50957,7 +50997,7 @@ MAV1\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -50973,6 +51013,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -51264,7 +51306,7 @@ MAV2\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -51280,6 +51322,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -51571,7 +51615,7 @@ MAV3\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -51587,6 +51631,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -51878,7 +51924,7 @@ MAV4\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -51894,6 +51940,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -52185,7 +52233,7 @@ MAV5\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -52201,6 +52249,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -52492,7 +52542,7 @@ MAV6\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -52508,6 +52558,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -52799,7 +52851,7 @@ MAV7\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -52815,6 +52867,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -53106,7 +53160,7 @@ MAV8\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -53122,6 +53176,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -53413,7 +53469,7 @@ MAV9\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -53429,6 +53485,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -53720,7 +53778,7 @@ MAV10\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -53736,6 +53794,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -54027,7 +54087,7 @@ MAV11\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -54043,6 +54103,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -54334,7 +54396,7 @@ MAV12\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -54350,6 +54412,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -54641,7 +54705,7 @@ MAV13\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -54657,6 +54721,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -54948,7 +55014,7 @@ MAV14\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -54964,6 +55030,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -55255,7 +55323,7 @@ MAV15\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -55271,6 +55339,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -55562,7 +55632,7 @@ MAV16\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -55578,6 +55648,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -55869,7 +55941,7 @@ MAV17\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -55885,6 +55957,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -56176,7 +56250,7 @@ MAV18\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -56192,6 +56266,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -56483,7 +56559,7 @@ MAV19\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -56499,6 +56575,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -56790,7 +56868,7 @@ MAV20\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -56806,6 +56884,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -57097,7 +57177,7 @@ MAV21\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -57113,6 +57193,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -57404,7 +57486,7 @@ MAV22\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -57420,6 +57502,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -57711,7 +57795,7 @@ MAV23\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -57727,6 +57811,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -58018,7 +58104,7 @@ MAV24\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -58034,6 +58120,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -58325,7 +58413,7 @@ MAV25\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -58341,6 +58429,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -58632,7 +58722,7 @@ MAV26\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -58648,6 +58738,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -58939,7 +59031,7 @@ MAV27\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -58955,6 +59047,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -59246,7 +59340,7 @@ MAV28\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -59262,6 +59356,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -59553,7 +59649,7 @@ MAV29\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -59569,6 +59665,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -59860,7 +59958,7 @@ MAV30\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -59876,6 +59974,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -60167,7 +60267,7 @@ MAV31\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -60183,6 +60283,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -60474,7 +60576,7 @@ MAV32\_OPTIONS: Bitmask for configuring this telemetry channel
 
 | *Note: Reboot required after change*
 
-Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\.
+Bitmask for configuring this telemetry channel\. For having effect on all channels\, set the relevant mask in all MAVx\_OPTIONS parameters\. Keep in mind that part of the flags may require a reboot to take action\. Unicast blocks forwarding of broadcasts to\/from this link\, but allows packets addressed to a learned system\/component pair\. A missing or zero target system or component is a broadcast\. Unicast sends heartbeat but does not start the normal telemetry streams\; devices can request messages with MAV\_CMD\_SET\_MESSAGE\_INTERVAL or MAV\_CMD\_REQUEST\_MESSAGE\. Local processing is unaffected\.
 
 
 +-------------------------------------------------------+
@@ -60490,6 +60592,8 @@ Bitmask for configuring this telemetry channel\. For having effect on all channe
 | | 2   | Ignore Streamrate                           | |
 | +-----+---------------------------------------------+ |
 | | 3   | forward mavlink packets that don't pass CRC | |
+| +-----+---------------------------------------------+ |
+| | 4   | Unicast                                     | |
 | +-----+---------------------------------------------+ |
 |                                                       |
 +-------------------------------------------------------+
@@ -61054,6 +61158,45 @@ Mount options bitmask\, note bit 2 only impacts RC targetting mode
 
 
 
+.. _MNT1_ATT_RATE:
+
+MNT1\_ATT\_RATE: Vehicle attitude send rate to MAVLink gimbal
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+Rate at which AUTOPILOT\_STATE\_FOR\_GIMBAL\_DEVICE messages are sent to a MAVLink gimbal\. Zero disables these messages
+
+
++-----------+---------+-------+
+| Increment | Range   | Units |
++===========+=========+=======+
+| 1         | 0 to 50 | hertz |
++-----------+---------+-------+
+
+
+
+
+.. _MNT1_TARG_RATE:
+
+MNT1\_TARG\_RATE: MAVLink gimbal target refresh rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Refresh rate for unchanged MAVLink gimbal targets\. Changed targets are sent immediately\. Zero disables target transmission
+
+
++-----------+---------+-------+
+| Increment | Range   | Units |
++===========+=========+=======+
+| 1         | 0 to 50 | hertz |
++-----------+---------+-------+
+
+
+
+
 
 .. _parameters_MNT2:
 
@@ -61461,6 +61604,45 @@ Mount options bitmask\, note bit 2 only impacts RC targetting mode
 | +-----+-----------------------------------------+ |
 |                                                   |
 +---------------------------------------------------+
+
+
+
+
+.. _MNT2_ATT_RATE:
+
+MNT2\_ATT\_RATE: Vehicle attitude send rate to MAVLink gimbal
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+Rate at which AUTOPILOT\_STATE\_FOR\_GIMBAL\_DEVICE messages are sent to a MAVLink gimbal\. Zero disables these messages
+
+
++-----------+---------+-------+
+| Increment | Range   | Units |
++===========+=========+=======+
+| 1         | 0 to 50 | hertz |
++-----------+---------+-------+
+
+
+
+
+.. _MNT2_TARG_RATE:
+
+MNT2\_TARG\_RATE: MAVLink gimbal target refresh rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Refresh rate for unchanged MAVLink gimbal targets\. Changed targets are sent immediately\. Zero disables target transmission
+
+
++-----------+---------+-------+
+| Increment | Range   | Units |
++===========+=========+=======+
+| 1         | 0 to 50 | hertz |
++-----------+---------+-------+
 
 
 
