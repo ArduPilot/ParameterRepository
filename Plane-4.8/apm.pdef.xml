@@ -798,9 +798,9 @@
       <param humanName="Flight mode options" name="ArduPlane:FLIGHT_OPTIONS" documentation="Flight mode specific options" user="Advanced">
         <bitmask>
           <bit code="0">Rudder mixing in direct flight modes only (Manual/Stabilize/Acro)</bit>
-          <bit code="1">Use centered throttle in Cruise or FBWB to indicate trim airspeed</bit>
+          <bit code="1">Use centered throttle in Cruise or FBWB to indicate AIRSPEED_CRUISE</bit>
           <bit code="2">Disable attitude check for takeoff arming</bit>
-          <bit code="3">Force target airspeed to trim airspeed in Cruise or FBWB</bit>
+          <bit code="3">Force target airspeed to AIRSPEED_CRUISE in Cruise or FBWB</bit>
           <bit code="4">Climb to RTL_ALTITUDE before turning for RTL</bit>
           <bit code="5">Enable yaw damper in acro mode</bit>
           <bit code="6">Suppress speed scaling during auto takeoffs to be 1 or less to prevent oscillations without airspeed sensor.</bit>
@@ -816,7 +816,7 @@
           <bit code="16">Enable full aerodynamic load factor-based roll limits when an airspeed sensor is enabled and AIRSPEED_STALL is set</bit>
           <bit code="17">Reset ALT_OFFSET on flight mode or AUTO waypoint changes</bit>
         </bitmask>
-        <field name="Bitmask">0: Rudder mixing in direct flight modes only (Manual/Stabilize/Acro), 1: Use centered throttle in Cruise or FBWB to indicate trim airspeed, 2: Disable attitude check for takeoff arming, 3: Force target airspeed to trim airspeed in Cruise or FBWB, 4: Climb to RTL_ALTITUDE before turning for RTL, 5: Enable yaw damper in acro mode, 6: Suppress speed scaling during auto takeoffs to be 1 or less to prevent oscillations without airspeed sensor., 7: EnableDefaultAirspeed for takeoff, 8: Remove the PTCH_TRIM_DEG on the GCS horizon, 9: Remove the PTCH_TRIM_DEG on the OSD horizon, 10: Adjust mid-throttle to be TRIM_THROTTLE in non-auto throttle modes except MANUAL, 11: Disable suppression of fixed wing rate gains in ground mode, 12: Enable FBWB style loiter altitude control, 13: Indicate takeoff waiting for neutral rudder with flight control surfaces, 14: In AUTO - climb to next waypoint altitude immediately instead of linear climb, 15: Enable autoflap in manual modes and use minimum of target and actual speed for flap setting, 16: Enable full aerodynamic load factor-based roll limits when an airspeed sensor is enabled and AIRSPEED_STALL is set, 17: Reset ALT_OFFSET on flight mode or AUTO waypoint changes</field>
+        <field name="Bitmask">0: Rudder mixing in direct flight modes only (Manual/Stabilize/Acro), 1: Use centered throttle in Cruise or FBWB to indicate AIRSPEED_CRUISE, 2: Disable attitude check for takeoff arming, 3: Force target airspeed to AIRSPEED_CRUISE in Cruise or FBWB, 4: Climb to RTL_ALTITUDE before turning for RTL, 5: Enable yaw damper in acro mode, 6: Suppress speed scaling during auto takeoffs to be 1 or less to prevent oscillations without airspeed sensor., 7: EnableDefaultAirspeed for takeoff, 8: Remove the PTCH_TRIM_DEG on the GCS horizon, 9: Remove the PTCH_TRIM_DEG on the OSD horizon, 10: Adjust mid-throttle to be TRIM_THROTTLE in non-auto throttle modes except MANUAL, 11: Disable suppression of fixed wing rate gains in ground mode, 12: Enable FBWB style loiter altitude control, 13: Indicate takeoff waiting for neutral rudder with flight control surfaces, 14: In AUTO - climb to next waypoint altitude immediately instead of linear climb, 15: Enable autoflap in manual modes and use minimum of target and actual speed for flap setting, 16: Enable full aerodynamic load factor-based roll limits when an airspeed sensor is enabled and AIRSPEED_STALL is set, 17: Reset ALT_OFFSET on flight mode or AUTO waypoint changes</field>
       </param>
       <param humanName="Takeoff throttle acceleration count" name="ArduPlane:TKOFF_ACCEL_CNT" documentation="This is the number of acceleration events to require for arming with TKOFF_THR_MINACC. The default is 1, which means a single forward acceleration above TKOFF_THR_MINACC will arm. By setting this higher than 1 you can require more forward/backward movements to arm." user="Standard">
         <field name="Range">1 10</field>
@@ -10684,6 +10684,16 @@
         <field name="Increment">1</field>
         <field name="RebootRequired">True</field>
       </param>
+      <param humanName="Camera zoom speed" name="CAM1_ZOM_RAT_MAX" documentation="Speed at which the zoom output moves for continuous (rate) zoom commands. Only used by the Servo camera type. The default of 5%/s moves across the full range in 20 seconds" user="Standard">
+        <field name="Units">%/s</field>
+        <field name="UnitText">percent per second</field>
+        <field name="Range">0 100</field>
+      </param>
+      <param humanName="Camera focus speed" name="CAM1_FOC_RAT_MAX" documentation="Speed at which the focus output moves for continuous (rate) focus commands. Only used by the Servo camera type. The default of 5%/s moves across the full range in 20 seconds" user="Standard">
+        <field name="Units">%/s</field>
+        <field name="UnitText">percent per second</field>
+        <field name="Range">0 100</field>
+      </param>
     </parameters>
     <parameters name="CAM1_RC_">
       <param humanName="RunCam device type" name="CAM1_RC_TYPE" documentation="RunCam device type used to determine OSD menu structure and shutter options.">
@@ -10813,6 +10823,16 @@
         <field name="Range">0 255</field>
         <field name="Increment">1</field>
         <field name="RebootRequired">True</field>
+      </param>
+      <param humanName="Camera zoom speed" name="CAM2_ZOM_RAT_MAX" documentation="Speed at which the zoom output moves for continuous (rate) zoom commands. Only used by the Servo camera type. The default of 5%/s moves across the full range in 20 seconds" user="Standard">
+        <field name="Units">%/s</field>
+        <field name="UnitText">percent per second</field>
+        <field name="Range">0 100</field>
+      </param>
+      <param humanName="Camera focus speed" name="CAM2_FOC_RAT_MAX" documentation="Speed at which the focus output moves for continuous (rate) focus commands. Only used by the Servo camera type. The default of 5%/s moves across the full range in 20 seconds" user="Standard">
+        <field name="Units">%/s</field>
+        <field name="UnitText">percent per second</field>
+        <field name="Range">0 100</field>
       </param>
     </parameters>
     <parameters name="CAM2_RC_">
@@ -13229,6 +13249,173 @@
       <param humanName="Compass per-motor4 Z" name="COMPASS_PMOT4_Z" documentation="Compensation for Z axis of motor4" user="Advanced">
 </param>
     </parameters>
+    <parameters name="CP">
+      <param humanName="Custom control type" name="CP_TYPE" documentation="Custom control type to be used" user="Advanced">
+        <values>
+          <value code="0">None</value>
+          <value code="1">Empty</value>
+          <value code="2">PID</value>
+        </values>
+        <field name="RebootRequired">True</field>
+      </param>
+      <param humanName="Custom Controller bitmask" name="CP_MASK" documentation="Custom Controller bitmask to chose which controllers to run or outputs to write." user="Advanced">
+        <bitmask>
+          <bit code="0">Output 1</bit>
+          <bit code="1">Output 2</bit>
+          <bit code="2">Output 3</bit>
+          <bit code="3">Output 4</bit>
+          <bit code="4">Output 5</bit>
+          <bit code="5">Output 6</bit>
+          <bit code="6">Output 7</bit>
+          <bit code="7">Output 8</bit>
+          <bit code="8">Output 9</bit>
+          <bit code="9">Output 10</bit>
+          <bit code="10">Output 11</bit>
+          <bit code="11">Output 12</bit>
+          <bit code="12">Output 13</bit>
+          <bit code="13">Output 14</bit>
+          <bit code="14">Output 15</bit>
+          <bit code="15">Output 16</bit>
+          <bit code="16">Output 17</bit>
+          <bit code="17">Output 18</bit>
+          <bit code="18">Output 19</bit>
+          <bit code="19">Output 20</bit>
+          <bit code="20">Output 21</bit>
+          <bit code="21">Output 22</bit>
+          <bit code="22">Output 23</bit>
+          <bit code="23">Output 24</bit>
+          <bit code="24">Output 25</bit>
+          <bit code="25">Output 26</bit>
+          <bit code="26">Output 27</bit>
+          <bit code="27">Output 28</bit>
+          <bit code="28">Output 29</bit>
+          <bit code="29">Output 30</bit>
+          <bit code="30">Output 31</bit>
+          <bit code="31">Output 32</bit>
+        </bitmask>
+        <field name="Bitmask">0:Output 1,1:Output 2,2:Output 3,3:Output 4,4:Output 5,5:Output 6,6:Output 7,7:Output 8,8:Output 9,9:Output 10,10:Output 11,11:Output 12,12:Output 13,13:Output 14,14:Output 15,15:Output 16, 16:Output 17, 17: Output 18, 18: Output 19, 19: Output 20, 20: Output 21, 21: Output 22, 22: Output 23, 23: Output 24, 24: Output 25, 25: Output 26, 26: Output 27, 27: Output 28, 28: Output 29, 29: Output 30, 30: Output 31, 31: Output 32</field>
+      </param>
+    </parameters>
+    <parameters name="CP2_">
+      <param humanName="Roll axis angle controller P gain" name="CP2_ANG_RLL_P" documentation="Roll axis angle controller P gain.  Converts the error between the desired roll angle and actual angle to a desired roll rate" user="Standard">
+        <field name="Range">3.000 12.000</field>
+      </param>
+      <param humanName="Pitch axis angle controller P gain" name="CP2_ANG_PIT_P" documentation="Pitch axis angle controller P gain.  Converts the error between the desired pitch angle and actual angle to a desired pitch rate" user="Standard">
+        <field name="Range">3.000 12.000</field>
+      </param>
+      <param humanName="Roll axis rate controller P gain" name="CP2_RAT_RLL_P" documentation="Roll axis rate controller P gain. Corrects in proportion to the difference between the desired roll rate vs actual roll rate" user="Standard">
+        <field name="Range">0.01 0.5</field>
+        <field name="Increment">0.005</field>
+      </param>
+      <param humanName="Roll axis rate controller I gain" name="CP2_RAT_RLL_I" documentation="Roll axis rate controller I gain.  Corrects long-term difference in desired roll rate vs actual roll rate" user="Standard">
+        <field name="Range">0.01 2.0</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Roll axis rate controller I gain maximum" name="CP2_RAT_RLL_IMAX" documentation="Roll axis rate controller I gain maximum.  Constrains the maximum that the I term will output" user="Standard">
+        <field name="Range">0 1</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Roll axis rate controller D gain" name="CP2_RAT_RLL_D" documentation="Roll axis rate controller D gain.  Compensates for short-term change in desired roll rate vs actual roll rate" user="Standard">
+        <field name="Range">0.0 0.05</field>
+        <field name="Increment">0.001</field>
+      </param>
+      <param humanName="Roll axis rate controller feed forward" name="CP2_RAT_RLL_FF" documentation="Roll axis rate controller feed forward" user="Standard">
+        <field name="Range">0 0.5</field>
+        <field name="Increment">0.001</field>
+      </param>
+      <param humanName="Roll axis rate controller target frequency in Hz" name="CP2_RAT_RLL_FLTT" documentation="Roll axis rate controller target frequency in Hz" user="Standard">
+        <field name="Range">5 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Roll axis rate controller error frequency in Hz" name="CP2_RAT_RLL_FLTE" documentation="Roll axis rate controller error frequency in Hz" user="Standard">
+        <field name="Range">0 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Roll axis rate controller derivative frequency in Hz" name="CP2_RAT_RLL_FLTD" documentation="Roll axis rate controller derivative frequency in Hz" user="Standard">
+        <field name="Range">5 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Roll slew rate limit" name="CP2_RAT_RLL_SMAX" documentation="Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature." user="Advanced">
+        <field name="Range">0 200</field>
+        <field name="Increment">0.5</field>
+      </param>
+      <param humanName="Roll axis rate controller PD sum maximum" name="CP2_RAT_RLL_PDMX" documentation="Roll axis rate controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output" user="Advanced">
+        <field name="Range">0 1</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Roll Derivative FeedForward Gain" name="CP2_RAT_RLL_D_FF" documentation="FF D Gain which produces an output that is proportional to the rate of change of the target" user="Advanced">
+        <field name="Range">0 0.02</field>
+        <field name="Increment">0.0001</field>
+      </param>
+      <param humanName="Roll Target notch filter index" name="CP2_RAT_RLL_NTF" documentation="Roll Target notch filter index" user="Advanced">
+        <field name="Range">1 8</field>
+      </param>
+      <param humanName="Roll Error notch filter index" name="CP2_RAT_RLL_NEF" documentation="Roll Error notch filter index" user="Advanced">
+        <field name="Range">1 8</field>
+      </param>
+      <param humanName="Pitch axis rate controller P gain" name="CP2_RAT_PIT_P" documentation="Pitch axis rate controller P gain.  Corrects in proportion to the difference between the desired pitch rate vs actual pitch rate" user="Standard">
+        <field name="Range">0.01 0.50</field>
+        <field name="Increment">0.005</field>
+      </param>
+      <param humanName="Pitch axis rate controller I gain" name="CP2_RAT_PIT_I" documentation="Pitch axis rate controller I gain.  Corrects long-term difference in desired pitch rate vs actual pitch rate" user="Standard">
+        <field name="Range">0.01 2.0</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Pitch axis rate controller I gain maximum" name="CP2_RAT_PIT_IMAX" documentation="Pitch axis rate controller I gain maximum.  Constrains the maximum that the I term will output" user="Standard">
+        <field name="Range">0 1</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Pitch axis rate controller D gain" name="CP2_RAT_PIT_D" documentation="Pitch axis rate controller D gain.  Compensates for short-term change in desired pitch rate vs actual pitch rate" user="Standard">
+        <field name="Range">0.0 0.05</field>
+        <field name="Increment">0.001</field>
+      </param>
+      <param humanName="Pitch axis rate controller feed forward" name="CP2_RAT_PIT_FF" documentation="Pitch axis rate controller feed forward" user="Standard">
+        <field name="Range">0 0.5</field>
+        <field name="Increment">0.001</field>
+      </param>
+      <param humanName="Pitch axis rate controller target frequency in Hz" name="CP2_RAT_PIT_FLTT" documentation="Pitch axis rate controller target frequency in Hz" user="Standard">
+        <field name="Range">5 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Pitch axis rate controller error frequency in Hz" name="CP2_RAT_PIT_FLTE" documentation="Pitch axis rate controller error frequency in Hz" user="Standard">
+        <field name="Range">0 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Pitch axis rate controller derivative frequency in Hz" name="CP2_RAT_PIT_FLTD" documentation="Pitch axis rate controller derivative frequency in Hz" user="Standard">
+        <field name="Range">5 100</field>
+        <field name="Increment">1</field>
+        <field name="Units">Hz</field>
+        <field name="UnitText">hertz</field>
+      </param>
+      <param humanName="Pitch slew rate limit" name="CP2_RAT_PIT_SMAX" documentation="Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature." user="Advanced">
+        <field name="Range">0 200</field>
+        <field name="Increment">0.5</field>
+      </param>
+      <param humanName="Pitch axis rate controller PD sum maximum" name="CP2_RAT_PIT_PDMX" documentation="Pitch axis rate controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output" user="Advanced">
+        <field name="Range">0 1</field>
+        <field name="Increment">0.01</field>
+      </param>
+      <param humanName="Pitch Derivative FeedForward Gain" name="CP2_RAT_PIT_D_FF" documentation="FF D Gain which produces an output that is proportional to the rate of change of the target" user="Advanced">
+        <field name="Range">0 0.02</field>
+        <field name="Increment">0.0001</field>
+      </param>
+      <param humanName="Pitch Target notch filter index" name="CP2_RAT_PIT_NTF" documentation="Pitch Target notch filter index" user="Advanced">
+        <field name="Range">1 8</field>
+      </param>
+      <param humanName="Pitch Error notch filter index" name="CP2_RAT_PIT_NEF" documentation="Pitch Error notch filter index" user="Advanced">
+        <field name="Range">1 8</field>
+      </param>
+    </parameters>
     <parameters name="CUST_ROT">
       <param humanName="Enable Custom rotations" name="CUST_ROT_ENABLE" documentation="This enables custom rotations" user="Standard">
         <values>
@@ -14142,6 +14329,12 @@
         </bitmask>
         <field name="Bitmask">0:FirstEKF,1:SecondEKF,2:ThirdEKF,3:FourthEKF,4:FifthEKF,5:SixthEKF</field>
         <field name="RebootRequired">True</field>
+      </param>
+      <param humanName="Optical flow nav gain full-scale height" name="EK3_FLOW_GAIN_H" documentation="Height below which the navigation velocity gain is left at full scale while navigating on optical flow. Above it the gain falls as this value divided by the height above ground, to allow for flow velocity noise that grows with height. Larger values keep position hold more responsive at height, at more risk of a flow-driven oscillation. Values below 1 are treated as 1. Takes effect immediately." user="Advanced">
+        <field name="Range">1 40</field>
+        <field name="Increment">1</field>
+        <field name="Units">m</field>
+        <field name="UnitText">meters</field>
       </param>
       <param humanName="Maximum number of resets to the EKF-GSF yaw estimate allowed" name="EK3_GSF_RST_MAX" documentation="Sets the maximum number of times the EKF3 will be allowed to reset its yaw to the estimate from the EKF-GSF yaw estimator. No resets will be allowed unless the use of the EKF-GSF yaw estimate is enabled via the EK3_GSF_USE_MASK parameter." user="Advanced">
         <field name="Range">1 10</field>
@@ -16505,6 +16698,43 @@
       <param humanName="Throttle notch min frequency ratio" name="INS_HNTC2_FM_RAT" documentation="The minimum ratio below the configured frequency to take throttle based notch filters when flying at a throttle level below the reference throttle. Note that lower frequency notch filters will have more phase lag. If you want throttle based notch filtering to be effective at a throttle up to 30% below the configured notch frequency then set this parameter to 0.7. The default of 1.0 means the notch will not go below the frequency in the FREQ parameter." user="Advanced">
         <field name="Range">0.1 1.0</field>
       </param>
+      <param humanName="Harmonic Notch Filter ESC mask" name="INS_HNTC2_ESCMSK" documentation="Bitmask of ESC channels to use in ESC Telemetry mode. 0 uses all available ESCs." user="Advanced">
+        <bitmask>
+          <bit code="0">ESC 1</bit>
+          <bit code="1">ESC 2</bit>
+          <bit code="2">ESC 3</bit>
+          <bit code="3">ESC 4</bit>
+          <bit code="4">ESC 5</bit>
+          <bit code="5">ESC 6</bit>
+          <bit code="6">ESC 7</bit>
+          <bit code="7">ESC 8</bit>
+          <bit code="8">ESC 9</bit>
+          <bit code="9">ESC 10</bit>
+          <bit code="10">ESC 11</bit>
+          <bit code="11">ESC 12</bit>
+          <bit code="12">ESC 13</bit>
+          <bit code="13">ESC 14</bit>
+          <bit code="14">ESC 15</bit>
+          <bit code="15">ESC 16</bit>
+          <bit code="16">ESC 17</bit>
+          <bit code="17">ESC 18</bit>
+          <bit code="18">ESC 19</bit>
+          <bit code="19">ESC 20</bit>
+          <bit code="20">ESC 21</bit>
+          <bit code="21">ESC 22</bit>
+          <bit code="22">ESC 23</bit>
+          <bit code="23">ESC 24</bit>
+          <bit code="24">ESC 25</bit>
+          <bit code="25">ESC 26</bit>
+          <bit code="26">ESC 27</bit>
+          <bit code="27">ESC 28</bit>
+          <bit code="28">ESC 29</bit>
+          <bit code="29">ESC 30</bit>
+          <bit code="30">ESC 31</bit>
+          <bit code="31">ESC 32</bit>
+        </bitmask>
+        <field name="Bitmask">0:  ESC 1, 1:  ESC 2, 2:  ESC 3, 3:  ESC 4, 4:  ESC 5, 5:  ESC 6, 6:  ESC 7, 7:  ESC 8, 8:  ESC 9, 9:  ESC 10, 10: ESC 11, 11: ESC 12, 12: ESC 13, 13: ESC 14, 14: ESC 15, 15: ESC 16, 16: ESC 17, 17: ESC 18, 18: ESC 19, 19: ESC 20, 20: ESC 21, 21: ESC 22, 22: ESC 23, 23: ESC 24, 24: ESC 25, 25: ESC 26, 26: ESC 27, 27: ESC 28, 28: ESC 29, 29: ESC 30, 30: ESC 31, 31: ESC 32</field>
+      </param>
     </parameters>
     <parameters name="INS_HNTC3_">
       <param humanName="Harmonic Notch Filter enable" name="INS_HNTC3_ENABLE" documentation="Harmonic Notch Filter enable" user="Advanced">
@@ -16580,6 +16810,43 @@
       </param>
       <param humanName="Throttle notch min frequency ratio" name="INS_HNTC3_FM_RAT" documentation="The minimum ratio below the configured frequency to take throttle based notch filters when flying at a throttle level below the reference throttle. Note that lower frequency notch filters will have more phase lag. If you want throttle based notch filtering to be effective at a throttle up to 30% below the configured notch frequency then set this parameter to 0.7. The default of 1.0 means the notch will not go below the frequency in the FREQ parameter." user="Advanced">
         <field name="Range">0.1 1.0</field>
+      </param>
+      <param humanName="Harmonic Notch Filter ESC mask" name="INS_HNTC3_ESCMSK" documentation="Bitmask of ESC channels to use in ESC Telemetry mode. 0 uses all available ESCs." user="Advanced">
+        <bitmask>
+          <bit code="0">ESC 1</bit>
+          <bit code="1">ESC 2</bit>
+          <bit code="2">ESC 3</bit>
+          <bit code="3">ESC 4</bit>
+          <bit code="4">ESC 5</bit>
+          <bit code="5">ESC 6</bit>
+          <bit code="6">ESC 7</bit>
+          <bit code="7">ESC 8</bit>
+          <bit code="8">ESC 9</bit>
+          <bit code="9">ESC 10</bit>
+          <bit code="10">ESC 11</bit>
+          <bit code="11">ESC 12</bit>
+          <bit code="12">ESC 13</bit>
+          <bit code="13">ESC 14</bit>
+          <bit code="14">ESC 15</bit>
+          <bit code="15">ESC 16</bit>
+          <bit code="16">ESC 17</bit>
+          <bit code="17">ESC 18</bit>
+          <bit code="18">ESC 19</bit>
+          <bit code="19">ESC 20</bit>
+          <bit code="20">ESC 21</bit>
+          <bit code="21">ESC 22</bit>
+          <bit code="22">ESC 23</bit>
+          <bit code="23">ESC 24</bit>
+          <bit code="24">ESC 25</bit>
+          <bit code="25">ESC 26</bit>
+          <bit code="26">ESC 27</bit>
+          <bit code="27">ESC 28</bit>
+          <bit code="28">ESC 29</bit>
+          <bit code="29">ESC 30</bit>
+          <bit code="30">ESC 31</bit>
+          <bit code="31">ESC 32</bit>
+        </bitmask>
+        <field name="Bitmask">0:  ESC 1, 1:  ESC 2, 2:  ESC 3, 3:  ESC 4, 4:  ESC 5, 5:  ESC 6, 6:  ESC 7, 7:  ESC 8, 8:  ESC 9, 9:  ESC 10, 10: ESC 11, 11: ESC 12, 12: ESC 13, 13: ESC 14, 14: ESC 15, 15: ESC 16, 16: ESC 17, 17: ESC 18, 18: ESC 19, 19: ESC 20, 20: ESC 21, 21: ESC 22, 22: ESC 23, 23: ESC 24, 24: ESC 25, 25: ESC 26, 26: ESC 27, 27: ESC 28, 28: ESC 29, 29: ESC 30, 30: ESC 31, 31: ESC 32</field>
       </param>
     </parameters>
     <parameters name="INS_HNTC4_">
@@ -16657,6 +16924,43 @@
       <param humanName="Throttle notch min frequency ratio" name="INS_HNTC4_FM_RAT" documentation="The minimum ratio below the configured frequency to take throttle based notch filters when flying at a throttle level below the reference throttle. Note that lower frequency notch filters will have more phase lag. If you want throttle based notch filtering to be effective at a throttle up to 30% below the configured notch frequency then set this parameter to 0.7. The default of 1.0 means the notch will not go below the frequency in the FREQ parameter." user="Advanced">
         <field name="Range">0.1 1.0</field>
       </param>
+      <param humanName="Harmonic Notch Filter ESC mask" name="INS_HNTC4_ESCMSK" documentation="Bitmask of ESC channels to use in ESC Telemetry mode. 0 uses all available ESCs." user="Advanced">
+        <bitmask>
+          <bit code="0">ESC 1</bit>
+          <bit code="1">ESC 2</bit>
+          <bit code="2">ESC 3</bit>
+          <bit code="3">ESC 4</bit>
+          <bit code="4">ESC 5</bit>
+          <bit code="5">ESC 6</bit>
+          <bit code="6">ESC 7</bit>
+          <bit code="7">ESC 8</bit>
+          <bit code="8">ESC 9</bit>
+          <bit code="9">ESC 10</bit>
+          <bit code="10">ESC 11</bit>
+          <bit code="11">ESC 12</bit>
+          <bit code="12">ESC 13</bit>
+          <bit code="13">ESC 14</bit>
+          <bit code="14">ESC 15</bit>
+          <bit code="15">ESC 16</bit>
+          <bit code="16">ESC 17</bit>
+          <bit code="17">ESC 18</bit>
+          <bit code="18">ESC 19</bit>
+          <bit code="19">ESC 20</bit>
+          <bit code="20">ESC 21</bit>
+          <bit code="21">ESC 22</bit>
+          <bit code="22">ESC 23</bit>
+          <bit code="23">ESC 24</bit>
+          <bit code="24">ESC 25</bit>
+          <bit code="25">ESC 26</bit>
+          <bit code="26">ESC 27</bit>
+          <bit code="27">ESC 28</bit>
+          <bit code="28">ESC 29</bit>
+          <bit code="29">ESC 30</bit>
+          <bit code="30">ESC 31</bit>
+          <bit code="31">ESC 32</bit>
+        </bitmask>
+        <field name="Bitmask">0:  ESC 1, 1:  ESC 2, 2:  ESC 3, 3:  ESC 4, 4:  ESC 5, 5:  ESC 6, 6:  ESC 7, 7:  ESC 8, 8:  ESC 9, 9:  ESC 10, 10: ESC 11, 11: ESC 12, 12: ESC 13, 13: ESC 14, 14: ESC 15, 15: ESC 16, 16: ESC 17, 17: ESC 18, 18: ESC 19, 19: ESC 20, 20: ESC 21, 21: ESC 22, 22: ESC 23, 23: ESC 24, 24: ESC 25, 25: ESC 26, 26: ESC 27, 27: ESC 28, 28: ESC 29, 29: ESC 30, 30: ESC 31, 31: ESC 32</field>
+      </param>
     </parameters>
     <parameters name="INS_HNTCH_">
       <param humanName="Harmonic Notch Filter enable" name="INS_HNTCH_ENABLE" documentation="Harmonic Notch Filter enable" user="Advanced">
@@ -16732,6 +17036,43 @@
       </param>
       <param humanName="Throttle notch min frequency ratio" name="INS_HNTCH_FM_RAT" documentation="The minimum ratio below the configured frequency to take throttle based notch filters when flying at a throttle level below the reference throttle. Note that lower frequency notch filters will have more phase lag. If you want throttle based notch filtering to be effective at a throttle up to 30% below the configured notch frequency then set this parameter to 0.7. The default of 1.0 means the notch will not go below the frequency in the FREQ parameter." user="Advanced">
         <field name="Range">0.1 1.0</field>
+      </param>
+      <param humanName="Harmonic Notch Filter ESC mask" name="INS_HNTCH_ESCMSK" documentation="Bitmask of ESC channels to use in ESC Telemetry mode. 0 uses all available ESCs." user="Advanced">
+        <bitmask>
+          <bit code="0">ESC 1</bit>
+          <bit code="1">ESC 2</bit>
+          <bit code="2">ESC 3</bit>
+          <bit code="3">ESC 4</bit>
+          <bit code="4">ESC 5</bit>
+          <bit code="5">ESC 6</bit>
+          <bit code="6">ESC 7</bit>
+          <bit code="7">ESC 8</bit>
+          <bit code="8">ESC 9</bit>
+          <bit code="9">ESC 10</bit>
+          <bit code="10">ESC 11</bit>
+          <bit code="11">ESC 12</bit>
+          <bit code="12">ESC 13</bit>
+          <bit code="13">ESC 14</bit>
+          <bit code="14">ESC 15</bit>
+          <bit code="15">ESC 16</bit>
+          <bit code="16">ESC 17</bit>
+          <bit code="17">ESC 18</bit>
+          <bit code="18">ESC 19</bit>
+          <bit code="19">ESC 20</bit>
+          <bit code="20">ESC 21</bit>
+          <bit code="21">ESC 22</bit>
+          <bit code="22">ESC 23</bit>
+          <bit code="23">ESC 24</bit>
+          <bit code="24">ESC 25</bit>
+          <bit code="25">ESC 26</bit>
+          <bit code="26">ESC 27</bit>
+          <bit code="27">ESC 28</bit>
+          <bit code="28">ESC 29</bit>
+          <bit code="29">ESC 30</bit>
+          <bit code="30">ESC 31</bit>
+          <bit code="31">ESC 32</bit>
+        </bitmask>
+        <field name="Bitmask">0:  ESC 1, 1:  ESC 2, 2:  ESC 3, 3:  ESC 4, 4:  ESC 5, 5:  ESC 6, 6:  ESC 7, 7:  ESC 8, 8:  ESC 9, 9:  ESC 10, 10: ESC 11, 11: ESC 12, 12: ESC 13, 13: ESC 14, 14: ESC 15, 15: ESC 16, 16: ESC 17, 17: ESC 18, 18: ESC 19, 19: ESC 20, 20: ESC 21, 21: ESC 22, 22: ESC 23, 23: ESC 24, 24: ESC 25, 25: ESC 26, 26: ESC 27, 27: ESC 28, 28: ESC 29, 29: ESC 30, 30: ESC 31, 31: ESC 32</field>
       </param>
     </parameters>
     <parameters name="INS_LOG_">
@@ -17080,9 +17421,9 @@
       <param humanName="Landing options bitmask" name="LAND_OPTIONS" documentation="Bitmask of options to use with landing." user="Advanced">
         <bitmask>
           <bit code="0">honor min throttle during landing flare</bit>
-          <bit code="1">Increase Target landing airspeed constraint From Trim Airspeed to AIRSPEED_MAX</bit>
+          <bit code="1">Increase Target landing airspeed constraint From AIRSPEED_CRUISE to AIRSPEED_MAX</bit>
         </bitmask>
-        <field name="Bitmask">0: honor min throttle during landing flare,1: Increase Target landing airspeed constraint From Trim Airspeed to AIRSPEED_MAX</field>
+        <field name="Bitmask">0: honor min throttle during landing flare,1: Increase Target landing airspeed constraint From AIRSPEED_CRUISE to AIRSPEED_MAX</field>
       </param>
       <param humanName="Flare aim point adjustment percentage." name="LAND_FLARE_AIM" documentation="This parameter controls how much the aim point is moved to allow for the time spent in the flare manoeuvre. When set to 100% the aim point is adjusted on the assumption that the flare sink rate controller instantly achieves the sink rate set by TECS_LAND_SINK. when set to 0%, no aim point adjustment is made. If the plane consistently touches down short of the aim point reduce the parameter and vice verse." user="Advanced">
         <field name="Range">0 100</field>
@@ -43549,7 +43890,7 @@
         <field name="Increment">0.1</field>
         <field name="Range">0.0 20.0</field>
       </param>
-      <param humanName="Airspeed during landing approach (m/s)" name="TECS_LAND_ARSPD" documentation="When performing an autonomous landing, this value is used as the goal airspeed during approach.  Max airspeed allowed is Trim Airspeed or AIRSPEED_MAX as defined by LAND_OPTIONS bitmask.  Note that this parameter is not useful if your platform does not have an airspeed sensor (use TECS_LAND_THR instead).  If negative then this value is halfway between AIRSPEED_MIN and AIRSPEED_CRUISE speed for fixed wing autolandings." user="Standard">
+      <param humanName="Airspeed during landing approach (m/s)" name="TECS_LAND_ARSPD" documentation="When performing an autonomous landing, this value is used as the goal airspeed during approach.  Max airspeed allowed is AIRSPEED_CRUISE or AIRSPEED_MAX as defined by LAND_OPTIONS bitmask.  Note that this parameter is not useful if your platform does not have an airspeed sensor (use TECS_LAND_THR instead).  If negative then this value is halfway between AIRSPEED_MIN and AIRSPEED_CRUISE speed for fixed wing autolandings." user="Standard">
         <field name="Range">-1 127</field>
         <field name="Increment">1</field>
       </param>

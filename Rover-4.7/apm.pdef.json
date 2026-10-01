@@ -16929,7 +16929,7 @@
       "User": "Standard"
     },
     "FOLL_SYSID": {
-      "Description": "Follow target's mavlink system id",
+      "Description": "Follow target's mavlink system id. Zero means no target has been selected and following is inactive.",
       "DisplayName": "Follow target's mavlink system id",
       "Range": {
         "high": "255",

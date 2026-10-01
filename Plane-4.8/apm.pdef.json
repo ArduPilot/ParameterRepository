@@ -10478,6 +10478,16 @@
         "1": "TriggerHigh"
       }
     },
+    "CAM1_FOC_RAT_MAX": {
+      "Description": "Speed at which the focus output moves for continuous (rate) focus commands. Only used by the Servo camera type. The default of 5%/s moves across the full range in 20 seconds",
+      "DisplayName": "Camera focus speed",
+      "Range": {
+        "high": "100",
+        "low": "0"
+      },
+      "Units": "%/s",
+      "User": "Standard"
+    },
     "CAM1_HFOV": {
       "Description": "Camera horizontal field of view. 0 if unknown",
       "DisplayName": "Camera horizontal field of view",
@@ -10575,6 +10585,16 @@
         "low": "0"
       },
       "Units": "deg",
+      "User": "Standard"
+    },
+    "CAM1_ZOM_RAT_MAX": {
+      "Description": "Speed at which the zoom output moves for continuous (rate) zoom commands. Only used by the Servo camera type. The default of 5%/s moves across the full range in 20 seconds",
+      "DisplayName": "Camera zoom speed",
+      "Range": {
+        "high": "100",
+        "low": "0"
+      },
+      "Units": "%/s",
       "User": "Standard"
     }
   },
@@ -10684,6 +10704,16 @@
         "1": "TriggerHigh"
       }
     },
+    "CAM2_FOC_RAT_MAX": {
+      "Description": "Speed at which the focus output moves for continuous (rate) focus commands. Only used by the Servo camera type. The default of 5%/s moves across the full range in 20 seconds",
+      "DisplayName": "Camera focus speed",
+      "Range": {
+        "high": "100",
+        "low": "0"
+      },
+      "Units": "%/s",
+      "User": "Standard"
+    },
     "CAM2_HFOV": {
       "Description": "Camera horizontal field of view. 0 if unknown",
       "DisplayName": "Camera horizontal field of view",
@@ -10781,6 +10811,16 @@
         "low": "0"
       },
       "Units": "deg",
+      "User": "Standard"
+    },
+    "CAM2_ZOM_RAT_MAX": {
+      "Description": "Speed at which the zoom output moves for continuous (rate) zoom commands. Only used by the Servo camera type. The default of 5%/s moves across the full range in 20 seconds",
+      "DisplayName": "Camera zoom speed",
+      "Range": {
+        "high": "100",
+        "low": "0"
+      },
+      "Units": "%/s",
       "User": "Standard"
     }
   },
@@ -14028,6 +14068,340 @@
       "User": "Advanced"
     }
   },
+  "CP": {
+    "CP_MASK": {
+      "Bitmask": {
+        "0": "Output 1",
+        "1": "Output 2",
+        "10": "Output 11",
+        "11": "Output 12",
+        "12": "Output 13",
+        "13": "Output 14",
+        "14": "Output 15",
+        "15": "Output 16",
+        "16": "Output 17",
+        "17": "Output 18",
+        "18": "Output 19",
+        "19": "Output 20",
+        "2": "Output 3",
+        "20": "Output 21",
+        "21": "Output 22",
+        "22": "Output 23",
+        "23": "Output 24",
+        "24": "Output 25",
+        "25": "Output 26",
+        "26": "Output 27",
+        "27": "Output 28",
+        "28": "Output 29",
+        "29": "Output 30",
+        "3": "Output 4",
+        "30": "Output 31",
+        "31": "Output 32",
+        "4": "Output 5",
+        "5": "Output 6",
+        "6": "Output 7",
+        "7": "Output 8",
+        "8": "Output 9",
+        "9": "Output 10"
+      },
+      "Description": "Custom Controller bitmask to chose which controllers to run or outputs to write.",
+      "DisplayName": "Custom Controller bitmask",
+      "User": "Advanced"
+    },
+    "CP_TYPE": {
+      "Description": "Custom control type to be used",
+      "DisplayName": "Custom control type",
+      "RebootRequired": "True",
+      "User": "Advanced",
+      "Values": {
+        "0": "None",
+        "1": "Empty",
+        "2": "PID"
+      }
+    }
+  },
+  "CP2_": {
+    "CP2_ANG_PIT_P": {
+      "Description": "Pitch axis angle controller P gain.  Converts the error between the desired pitch angle and actual angle to a desired pitch rate",
+      "DisplayName": "Pitch axis angle controller P gain",
+      "Range": {
+        "high": "12.000",
+        "low": "3.000"
+      },
+      "User": "Standard"
+    },
+    "CP2_ANG_RLL_P": {
+      "Description": "Roll axis angle controller P gain.  Converts the error between the desired roll angle and actual angle to a desired roll rate",
+      "DisplayName": "Roll axis angle controller P gain",
+      "Range": {
+        "high": "12.000",
+        "low": "3.000"
+      },
+      "User": "Standard"
+    },
+    "CP2_RAT_PIT_D": {
+      "Description": "Pitch axis rate controller D gain.  Compensates for short-term change in desired pitch rate vs actual pitch rate",
+      "DisplayName": "Pitch axis rate controller D gain",
+      "Increment": "0.001",
+      "Range": {
+        "high": "0.05",
+        "low": "0.0"
+      },
+      "User": "Standard"
+    },
+    "CP2_RAT_PIT_D_FF": {
+      "Description": "FF D Gain which produces an output that is proportional to the rate of change of the target",
+      "DisplayName": "Pitch Derivative FeedForward Gain",
+      "Increment": "0.0001",
+      "Range": {
+        "high": "0.02",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
+    "CP2_RAT_PIT_FF": {
+      "Description": "Pitch axis rate controller feed forward",
+      "DisplayName": "Pitch axis rate controller feed forward",
+      "Increment": "0.001",
+      "Range": {
+        "high": "0.5",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "CP2_RAT_PIT_FLTD": {
+      "Description": "Pitch axis rate controller derivative frequency in Hz",
+      "DisplayName": "Pitch axis rate controller derivative frequency in Hz",
+      "Increment": "1",
+      "Range": {
+        "high": "100",
+        "low": "5"
+      },
+      "Units": "Hz",
+      "User": "Standard"
+    },
+    "CP2_RAT_PIT_FLTE": {
+      "Description": "Pitch axis rate controller error frequency in Hz",
+      "DisplayName": "Pitch axis rate controller error frequency in Hz",
+      "Increment": "1",
+      "Range": {
+        "high": "100",
+        "low": "0"
+      },
+      "Units": "Hz",
+      "User": "Standard"
+    },
+    "CP2_RAT_PIT_FLTT": {
+      "Description": "Pitch axis rate controller target frequency in Hz",
+      "DisplayName": "Pitch axis rate controller target frequency in Hz",
+      "Increment": "1",
+      "Range": {
+        "high": "100",
+        "low": "5"
+      },
+      "Units": "Hz",
+      "User": "Standard"
+    },
+    "CP2_RAT_PIT_I": {
+      "Description": "Pitch axis rate controller I gain.  Corrects long-term difference in desired pitch rate vs actual pitch rate",
+      "DisplayName": "Pitch axis rate controller I gain",
+      "Increment": "0.01",
+      "Range": {
+        "high": "2.0",
+        "low": "0.01"
+      },
+      "User": "Standard"
+    },
+    "CP2_RAT_PIT_IMAX": {
+      "Description": "Pitch axis rate controller I gain maximum.  Constrains the maximum that the I term will output",
+      "DisplayName": "Pitch axis rate controller I gain maximum",
+      "Increment": "0.01",
+      "Range": {
+        "high": "1",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "CP2_RAT_PIT_NEF": {
+      "Description": "Pitch Error notch filter index",
+      "DisplayName": "Pitch Error notch filter index",
+      "Range": {
+        "high": "8",
+        "low": "1"
+      },
+      "User": "Advanced"
+    },
+    "CP2_RAT_PIT_NTF": {
+      "Description": "Pitch Target notch filter index",
+      "DisplayName": "Pitch Target notch filter index",
+      "Range": {
+        "high": "8",
+        "low": "1"
+      },
+      "User": "Advanced"
+    },
+    "CP2_RAT_PIT_P": {
+      "Description": "Pitch axis rate controller P gain.  Corrects in proportion to the difference between the desired pitch rate vs actual pitch rate",
+      "DisplayName": "Pitch axis rate controller P gain",
+      "Increment": "0.005",
+      "Range": {
+        "high": "0.50",
+        "low": "0.01"
+      },
+      "User": "Standard"
+    },
+    "CP2_RAT_PIT_PDMX": {
+      "Description": "Pitch axis rate controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output",
+      "DisplayName": "Pitch axis rate controller PD sum maximum",
+      "Increment": "0.01",
+      "Range": {
+        "high": "1",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
+    "CP2_RAT_PIT_SMAX": {
+      "Description": "Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature.",
+      "DisplayName": "Pitch slew rate limit",
+      "Increment": "0.5",
+      "Range": {
+        "high": "200",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
+    "CP2_RAT_RLL_D": {
+      "Description": "Roll axis rate controller D gain.  Compensates for short-term change in desired roll rate vs actual roll rate",
+      "DisplayName": "Roll axis rate controller D gain",
+      "Increment": "0.001",
+      "Range": {
+        "high": "0.05",
+        "low": "0.0"
+      },
+      "User": "Standard"
+    },
+    "CP2_RAT_RLL_D_FF": {
+      "Description": "FF D Gain which produces an output that is proportional to the rate of change of the target",
+      "DisplayName": "Roll Derivative FeedForward Gain",
+      "Increment": "0.0001",
+      "Range": {
+        "high": "0.02",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
+    "CP2_RAT_RLL_FF": {
+      "Description": "Roll axis rate controller feed forward",
+      "DisplayName": "Roll axis rate controller feed forward",
+      "Increment": "0.001",
+      "Range": {
+        "high": "0.5",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "CP2_RAT_RLL_FLTD": {
+      "Description": "Roll axis rate controller derivative frequency in Hz",
+      "DisplayName": "Roll axis rate controller derivative frequency in Hz",
+      "Increment": "1",
+      "Range": {
+        "high": "100",
+        "low": "5"
+      },
+      "Units": "Hz",
+      "User": "Standard"
+    },
+    "CP2_RAT_RLL_FLTE": {
+      "Description": "Roll axis rate controller error frequency in Hz",
+      "DisplayName": "Roll axis rate controller error frequency in Hz",
+      "Increment": "1",
+      "Range": {
+        "high": "100",
+        "low": "0"
+      },
+      "Units": "Hz",
+      "User": "Standard"
+    },
+    "CP2_RAT_RLL_FLTT": {
+      "Description": "Roll axis rate controller target frequency in Hz",
+      "DisplayName": "Roll axis rate controller target frequency in Hz",
+      "Increment": "1",
+      "Range": {
+        "high": "100",
+        "low": "5"
+      },
+      "Units": "Hz",
+      "User": "Standard"
+    },
+    "CP2_RAT_RLL_I": {
+      "Description": "Roll axis rate controller I gain.  Corrects long-term difference in desired roll rate vs actual roll rate",
+      "DisplayName": "Roll axis rate controller I gain",
+      "Increment": "0.01",
+      "Range": {
+        "high": "2.0",
+        "low": "0.01"
+      },
+      "User": "Standard"
+    },
+    "CP2_RAT_RLL_IMAX": {
+      "Description": "Roll axis rate controller I gain maximum.  Constrains the maximum that the I term will output",
+      "DisplayName": "Roll axis rate controller I gain maximum",
+      "Increment": "0.01",
+      "Range": {
+        "high": "1",
+        "low": "0"
+      },
+      "User": "Standard"
+    },
+    "CP2_RAT_RLL_NEF": {
+      "Description": "Roll Error notch filter index",
+      "DisplayName": "Roll Error notch filter index",
+      "Range": {
+        "high": "8",
+        "low": "1"
+      },
+      "User": "Advanced"
+    },
+    "CP2_RAT_RLL_NTF": {
+      "Description": "Roll Target notch filter index",
+      "DisplayName": "Roll Target notch filter index",
+      "Range": {
+        "high": "8",
+        "low": "1"
+      },
+      "User": "Advanced"
+    },
+    "CP2_RAT_RLL_P": {
+      "Description": "Roll axis rate controller P gain. Corrects in proportion to the difference between the desired roll rate vs actual roll rate",
+      "DisplayName": "Roll axis rate controller P gain",
+      "Increment": "0.005",
+      "Range": {
+        "high": "0.5",
+        "low": "0.01"
+      },
+      "User": "Standard"
+    },
+    "CP2_RAT_RLL_PDMX": {
+      "Description": "Roll axis rate controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output",
+      "DisplayName": "Roll axis rate controller PD sum maximum",
+      "Increment": "0.01",
+      "Range": {
+        "high": "1",
+        "low": "0"
+      },
+      "User": "Advanced"
+    },
+    "CP2_RAT_RLL_SMAX": {
+      "Description": "Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature.",
+      "DisplayName": "Roll slew rate limit",
+      "Increment": "0.5",
+      "Range": {
+        "high": "200",
+        "low": "0"
+      },
+      "User": "Advanced"
+    }
+  },
   "CUST_ROT": {
     "CUST_ROT_ENABLE": {
       "Description": "This enables custom rotations",
@@ -15175,6 +15549,17 @@
       },
       "RebootRequired": "True",
       "Units": "ms",
+      "User": "Advanced"
+    },
+    "EK3_FLOW_GAIN_H": {
+      "Description": "Height below which the navigation velocity gain is left at full scale while navigating on optical flow. Above it the gain falls as this value divided by the height above ground, to allow for flow velocity noise that grows with height. Larger values keep position hold more responsive at height, at more risk of a flow-driven oscillation. Values below 1 are treated as 1. Takes effect immediately.",
+      "DisplayName": "Optical flow nav gain full-scale height",
+      "Increment": "1",
+      "Range": {
+        "high": "40",
+        "low": "1"
+      },
+      "Units": "m",
       "User": "Advanced"
     },
     "EK3_FLOW_I_GATE": {
@@ -19402,6 +19787,45 @@
         "1": "Enabled"
       }
     },
+    "INS_HNTC2_ESCMSK": {
+      "Bitmask": {
+        "0": "ESC 1",
+        "1": "ESC 2",
+        "10": "ESC 11",
+        "11": "ESC 12",
+        "12": "ESC 13",
+        "13": "ESC 14",
+        "14": "ESC 15",
+        "15": "ESC 16",
+        "16": "ESC 17",
+        "17": "ESC 18",
+        "18": "ESC 19",
+        "19": "ESC 20",
+        "2": "ESC 3",
+        "20": "ESC 21",
+        "21": "ESC 22",
+        "22": "ESC 23",
+        "23": "ESC 24",
+        "24": "ESC 25",
+        "25": "ESC 26",
+        "26": "ESC 27",
+        "27": "ESC 28",
+        "28": "ESC 29",
+        "29": "ESC 30",
+        "3": "ESC 4",
+        "30": "ESC 31",
+        "31": "ESC 32",
+        "4": "ESC 5",
+        "5": "ESC 6",
+        "6": "ESC 7",
+        "7": "ESC 8",
+        "8": "ESC 9",
+        "9": "ESC 10"
+      },
+      "Description": "Bitmask of ESC channels to use in ESC Telemetry mode. 0 uses all available ESCs.",
+      "DisplayName": "Harmonic Notch Filter ESC mask",
+      "User": "Advanced"
+    },
     "INS_HNTC2_FM_RAT": {
       "Description": "The minimum ratio below the configured frequency to take throttle based notch filters when flying at a throttle level below the reference throttle. Note that lower frequency notch filters will have more phase lag. If you want throttle based notch filtering to be effective at a throttle up to 30% below the configured notch frequency then set this parameter to 0.7. The default of 1.0 means the notch will not go below the frequency in the FREQ parameter.",
       "DisplayName": "Throttle notch min frequency ratio",
@@ -19517,6 +19941,45 @@
         "0": "Disabled",
         "1": "Enabled"
       }
+    },
+    "INS_HNTC3_ESCMSK": {
+      "Bitmask": {
+        "0": "ESC 1",
+        "1": "ESC 2",
+        "10": "ESC 11",
+        "11": "ESC 12",
+        "12": "ESC 13",
+        "13": "ESC 14",
+        "14": "ESC 15",
+        "15": "ESC 16",
+        "16": "ESC 17",
+        "17": "ESC 18",
+        "18": "ESC 19",
+        "19": "ESC 20",
+        "2": "ESC 3",
+        "20": "ESC 21",
+        "21": "ESC 22",
+        "22": "ESC 23",
+        "23": "ESC 24",
+        "24": "ESC 25",
+        "25": "ESC 26",
+        "26": "ESC 27",
+        "27": "ESC 28",
+        "28": "ESC 29",
+        "29": "ESC 30",
+        "3": "ESC 4",
+        "30": "ESC 31",
+        "31": "ESC 32",
+        "4": "ESC 5",
+        "5": "ESC 6",
+        "6": "ESC 7",
+        "7": "ESC 8",
+        "8": "ESC 9",
+        "9": "ESC 10"
+      },
+      "Description": "Bitmask of ESC channels to use in ESC Telemetry mode. 0 uses all available ESCs.",
+      "DisplayName": "Harmonic Notch Filter ESC mask",
+      "User": "Advanced"
     },
     "INS_HNTC3_FM_RAT": {
       "Description": "The minimum ratio below the configured frequency to take throttle based notch filters when flying at a throttle level below the reference throttle. Note that lower frequency notch filters will have more phase lag. If you want throttle based notch filtering to be effective at a throttle up to 30% below the configured notch frequency then set this parameter to 0.7. The default of 1.0 means the notch will not go below the frequency in the FREQ parameter.",
@@ -19634,6 +20097,45 @@
         "1": "Enabled"
       }
     },
+    "INS_HNTC4_ESCMSK": {
+      "Bitmask": {
+        "0": "ESC 1",
+        "1": "ESC 2",
+        "10": "ESC 11",
+        "11": "ESC 12",
+        "12": "ESC 13",
+        "13": "ESC 14",
+        "14": "ESC 15",
+        "15": "ESC 16",
+        "16": "ESC 17",
+        "17": "ESC 18",
+        "18": "ESC 19",
+        "19": "ESC 20",
+        "2": "ESC 3",
+        "20": "ESC 21",
+        "21": "ESC 22",
+        "22": "ESC 23",
+        "23": "ESC 24",
+        "24": "ESC 25",
+        "25": "ESC 26",
+        "26": "ESC 27",
+        "27": "ESC 28",
+        "28": "ESC 29",
+        "29": "ESC 30",
+        "3": "ESC 4",
+        "30": "ESC 31",
+        "31": "ESC 32",
+        "4": "ESC 5",
+        "5": "ESC 6",
+        "6": "ESC 7",
+        "7": "ESC 8",
+        "8": "ESC 9",
+        "9": "ESC 10"
+      },
+      "Description": "Bitmask of ESC channels to use in ESC Telemetry mode. 0 uses all available ESCs.",
+      "DisplayName": "Harmonic Notch Filter ESC mask",
+      "User": "Advanced"
+    },
     "INS_HNTC4_FM_RAT": {
       "Description": "The minimum ratio below the configured frequency to take throttle based notch filters when flying at a throttle level below the reference throttle. Note that lower frequency notch filters will have more phase lag. If you want throttle based notch filtering to be effective at a throttle up to 30% below the configured notch frequency then set this parameter to 0.7. The default of 1.0 means the notch will not go below the frequency in the FREQ parameter.",
       "DisplayName": "Throttle notch min frequency ratio",
@@ -19749,6 +20251,45 @@
         "0": "Disabled",
         "1": "Enabled"
       }
+    },
+    "INS_HNTCH_ESCMSK": {
+      "Bitmask": {
+        "0": "ESC 1",
+        "1": "ESC 2",
+        "10": "ESC 11",
+        "11": "ESC 12",
+        "12": "ESC 13",
+        "13": "ESC 14",
+        "14": "ESC 15",
+        "15": "ESC 16",
+        "16": "ESC 17",
+        "17": "ESC 18",
+        "18": "ESC 19",
+        "19": "ESC 20",
+        "2": "ESC 3",
+        "20": "ESC 21",
+        "21": "ESC 22",
+        "22": "ESC 23",
+        "23": "ESC 24",
+        "24": "ESC 25",
+        "25": "ESC 26",
+        "26": "ESC 27",
+        "27": "ESC 28",
+        "28": "ESC 29",
+        "29": "ESC 30",
+        "3": "ESC 4",
+        "30": "ESC 31",
+        "31": "ESC 32",
+        "4": "ESC 5",
+        "5": "ESC 6",
+        "6": "ESC 7",
+        "7": "ESC 8",
+        "8": "ESC 9",
+        "9": "ESC 10"
+      },
+      "Description": "Bitmask of ESC channels to use in ESC Telemetry mode. 0 uses all available ESCs.",
+      "DisplayName": "Harmonic Notch Filter ESC mask",
+      "User": "Advanced"
     },
     "INS_HNTCH_FM_RAT": {
       "Description": "The minimum ratio below the configured frequency to take throttle based notch filters when flying at a throttle level below the reference throttle. Note that lower frequency notch filters will have more phase lag. If you want throttle based notch filtering to be effective at a throttle up to 30% below the configured notch frequency then set this parameter to 0.7. The default of 1.0 means the notch will not go below the frequency in the FREQ parameter.",
@@ -20391,7 +20932,7 @@
     "LAND_OPTIONS": {
       "Bitmask": {
         "0": "honor min throttle during landing flare",
-        "1": "Increase Target landing airspeed constraint From Trim Airspeed to AIRSPEED_MAX"
+        "1": "Increase Target landing airspeed constraint From AIRSPEED_CRUISE to AIRSPEED_MAX"
       },
       "Description": "Bitmask of options to use with landing.",
       "DisplayName": "Landing options bitmask",
@@ -39395,7 +39936,7 @@
     "FLIGHT_OPTIONS": {
       "Bitmask": {
         "0": "Rudder mixing in direct flight modes only (Manual/Stabilize/Acro)",
-        "1": "Use centered throttle in Cruise or FBWB to indicate trim airspeed",
+        "1": "Use centered throttle in Cruise or FBWB to indicate AIRSPEED_CRUISE",
         "10": "Adjust mid-throttle to be TRIM_THROTTLE in non-auto throttle modes except MANUAL",
         "11": "Disable suppression of fixed wing rate gains in ground mode",
         "12": "Enable FBWB style loiter altitude control",
@@ -39405,7 +39946,7 @@
         "16": "Enable full aerodynamic load factor-based roll limits when an airspeed sensor is enabled and AIRSPEED_STALL is set",
         "17": "Reset ALT_OFFSET on flight mode or AUTO waypoint changes",
         "2": "Disable attitude check for takeoff arming",
-        "3": "Force target airspeed to trim airspeed in Cruise or FBWB",
+        "3": "Force target airspeed to AIRSPEED_CRUISE in Cruise or FBWB",
         "4": "Climb to RTL_ALTITUDE before turning for RTL",
         "5": "Enable yaw damper in acro mode",
         "6": "Suppress speed scaling during auto takeoffs to be 1 or less to prevent oscillations without airspeed sensor.",
@@ -64331,7 +64872,7 @@
       "User": "Advanced"
     },
     "TECS_LAND_ARSPD": {
-      "Description": "When performing an autonomous landing, this value is used as the goal airspeed during approach.  Max airspeed allowed is Trim Airspeed or AIRSPEED_MAX as defined by LAND_OPTIONS bitmask.  Note that this parameter is not useful if your platform does not have an airspeed sensor (use TECS_LAND_THR instead).  If negative then this value is halfway between AIRSPEED_MIN and AIRSPEED_CRUISE speed for fixed wing autolandings.",
+      "Description": "When performing an autonomous landing, this value is used as the goal airspeed during approach.  Max airspeed allowed is AIRSPEED_CRUISE or AIRSPEED_MAX as defined by LAND_OPTIONS bitmask.  Note that this parameter is not useful if your platform does not have an airspeed sensor (use TECS_LAND_THR instead).  If negative then this value is halfway between AIRSPEED_MIN and AIRSPEED_CRUISE speed for fixed wing autolandings.",
       "DisplayName": "Airspeed during landing approach (m/s)",
       "Increment": "1",
       "Range": {

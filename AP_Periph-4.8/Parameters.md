@@ -16105,6 +16105,14 @@ The minimum ratio below the configured frequency to take throttle based notch fi
 
 - Range: 0.1 1.0
 
+## INS_HNTC2_ESCMSK: Harmonic Notch Filter ESC mask
+
+*Note: This parameter is for advanced users*
+
+Bitmask of ESC channels to use in ESC Telemetry mode. 0 uses all available ESCs.
+
+- Bitmask: 0:  ESC 1, 1:  ESC 2, 2:  ESC 3, 3:  ESC 4, 4:  ESC 5, 5:  ESC 6, 6:  ESC 7, 7:  ESC 8, 8:  ESC 9, 9:  ESC 10, 10: ESC 11, 11: ESC 12, 12: ESC 13, 13: ESC 14, 14: ESC 15, 15: ESC 16, 16: ESC 17, 17: ESC 18, 18: ESC 19, 19: ESC 20, 20: ESC 21, 21: ESC 22, 22: ESC 23, 23: ESC 24, 24: ESC 25, 25: ESC 26, 26: ESC 27, 27: ESC 28, 28: ESC 29, 29: ESC 30, 30: ESC 31, 31: ESC 32
+
 # INSHNTC3 Parameters
 
 ## INS_HNTC3_ENABLE: Harmonic Notch Filter enable
@@ -16202,6 +16210,14 @@ Harmonic Notch Filter options. Triple and double-notches can provide deeper atte
 The minimum ratio below the configured frequency to take throttle based notch filters when flying at a throttle level below the reference throttle. Note that lower frequency notch filters will have more phase lag. If you want throttle based notch filtering to be effective at a throttle up to 30% below the configured notch frequency then set this parameter to 0.7. The default of 1.0 means the notch will not go below the frequency in the FREQ parameter.
 
 - Range: 0.1 1.0
+
+## INS_HNTC3_ESCMSK: Harmonic Notch Filter ESC mask
+
+*Note: This parameter is for advanced users*
+
+Bitmask of ESC channels to use in ESC Telemetry mode. 0 uses all available ESCs.
+
+- Bitmask: 0:  ESC 1, 1:  ESC 2, 2:  ESC 3, 3:  ESC 4, 4:  ESC 5, 5:  ESC 6, 6:  ESC 7, 7:  ESC 8, 8:  ESC 9, 9:  ESC 10, 10: ESC 11, 11: ESC 12, 12: ESC 13, 13: ESC 14, 14: ESC 15, 15: ESC 16, 16: ESC 17, 17: ESC 18, 18: ESC 19, 19: ESC 20, 20: ESC 21, 21: ESC 22, 22: ESC 23, 23: ESC 24, 24: ESC 25, 25: ESC 26, 26: ESC 27, 27: ESC 28, 28: ESC 29, 29: ESC 30, 30: ESC 31, 31: ESC 32
 
 # INSHNTC4 Parameters
 
@@ -16301,6 +16317,14 @@ The minimum ratio below the configured frequency to take throttle based notch fi
 
 - Range: 0.1 1.0
 
+## INS_HNTC4_ESCMSK: Harmonic Notch Filter ESC mask
+
+*Note: This parameter is for advanced users*
+
+Bitmask of ESC channels to use in ESC Telemetry mode. 0 uses all available ESCs.
+
+- Bitmask: 0:  ESC 1, 1:  ESC 2, 2:  ESC 3, 3:  ESC 4, 4:  ESC 5, 5:  ESC 6, 6:  ESC 7, 7:  ESC 8, 8:  ESC 9, 9:  ESC 10, 10: ESC 11, 11: ESC 12, 12: ESC 13, 13: ESC 14, 14: ESC 15, 15: ESC 16, 16: ESC 17, 17: ESC 18, 18: ESC 19, 19: ESC 20, 20: ESC 21, 21: ESC 22, 22: ESC 23, 23: ESC 24, 24: ESC 25, 25: ESC 26, 26: ESC 27, 27: ESC 28, 28: ESC 29, 29: ESC 30, 30: ESC 31, 31: ESC 32
+
 # INSHNTCH Parameters
 
 ## INS_HNTCH_ENABLE: Harmonic Notch Filter enable
@@ -16398,6 +16422,14 @@ Harmonic Notch Filter options. Triple and double-notches can provide deeper atte
 The minimum ratio below the configured frequency to take throttle based notch filters when flying at a throttle level below the reference throttle. Note that lower frequency notch filters will have more phase lag. If you want throttle based notch filtering to be effective at a throttle up to 30% below the configured notch frequency then set this parameter to 0.7. The default of 1.0 means the notch will not go below the frequency in the FREQ parameter.
 
 - Range: 0.1 1.0
+
+## INS_HNTCH_ESCMSK: Harmonic Notch Filter ESC mask
+
+*Note: This parameter is for advanced users*
+
+Bitmask of ESC channels to use in ESC Telemetry mode. 0 uses all available ESCs.
+
+- Bitmask: 0:  ESC 1, 1:  ESC 2, 2:  ESC 3, 3:  ESC 4, 4:  ESC 5, 5:  ESC 6, 6:  ESC 7, 7:  ESC 8, 8:  ESC 9, 9:  ESC 10, 10: ESC 11, 11: ESC 12, 12: ESC 13, 13: ESC 14, 14: ESC 15, 15: ESC 16, 16: ESC 17, 17: ESC 18, 18: ESC 19, 19: ESC 20, 20: ESC 21, 21: ESC 22, 22: ESC 23, 23: ESC 24, 24: ESC 25, 25: ESC 26, 26: ESC 27, 27: ESC 28, 28: ESC 29, 29: ESC 30, 30: ESC 31, 31: ESC 32
 
 # INSLOG Parameters
 

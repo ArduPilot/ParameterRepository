@@ -42648,7 +42648,7 @@ FOLL\_SYSID: Follow target\'s mavlink system id
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Follow target\'s mavlink system id
+Follow target\'s mavlink system id\. Zero means no target has been selected and following is inactive\.
 
 
 +----------+

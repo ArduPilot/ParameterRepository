@@ -2307,11 +2307,11 @@ Flight mode specific options
 +=====+====================================================================================================================+
 | 0   | Rudder mixing in direct flight modes only (Manual/Stabilize/Acro)                                                  |
 +-----+--------------------------------------------------------------------------------------------------------------------+
-| 1   | Use centered throttle in Cruise or FBWB to indicate trim airspeed                                                  |
+| 1   | Use centered throttle in Cruise or FBWB to indicate AIRSPEED_CRUISE                                                |
 +-----+--------------------------------------------------------------------------------------------------------------------+
 | 2   | Disable attitude check for takeoff arming                                                                          |
 +-----+--------------------------------------------------------------------------------------------------------------------+
-| 3   | Force target airspeed to trim airspeed in Cruise or FBWB                                                           |
+| 3   | Force target airspeed to AIRSPEED_CRUISE in Cruise or FBWB                                                         |
 +-----+--------------------------------------------------------------------------------------------------------------------+
 | 4   | Climb to RTL_ALTITUDE before turning for RTL                                                                       |
 +-----+--------------------------------------------------------------------------------------------------------------------+
@@ -36387,6 +36387,42 @@ Component ID of the camera when using MAVLinkCamV2 \(CAMn\_TYPE\=6\)\. Zero sele
 
 
 
+.. _CAM1_ZOM_RAT_MAX:
+
+CAM1\_ZOM\_RAT\_MAX: Camera zoom speed
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Speed at which the zoom output moves for continuous \(rate\) zoom commands\. Only used by the Servo camera type\. The default of 5\%\/s moves across the full range in 20 seconds
+
+
++----------+--------------------+
+| Range    | Units              |
++==========+====================+
+| 0 to 100 | percent per second |
++----------+--------------------+
+
+
+
+
+.. _CAM1_FOC_RAT_MAX:
+
+CAM1\_FOC\_RAT\_MAX: Camera focus speed
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Speed at which the focus output moves for continuous \(rate\) focus commands\. Only used by the Servo camera type\. The default of 5\%\/s moves across the full range in 20 seconds
+
+
++----------+--------------------+
+| Range    | Units              |
++==========+====================+
+| 0 to 100 | percent per second |
++----------+--------------------+
+
+
+
+
 
 .. _parameters_CAM1_RC_:
 
@@ -36803,6 +36839,42 @@ Component ID of the camera when using MAVLinkCamV2 \(CAMn\_TYPE\=6\)\. Zero sele
 +===========+==========+
 | 1         | 0 to 255 |
 +-----------+----------+
+
+
+
+
+.. _CAM2_ZOM_RAT_MAX:
+
+CAM2\_ZOM\_RAT\_MAX: Camera zoom speed
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Speed at which the zoom output moves for continuous \(rate\) zoom commands\. Only used by the Servo camera type\. The default of 5\%\/s moves across the full range in 20 seconds
+
+
++----------+--------------------+
+| Range    | Units              |
++==========+====================+
+| 0 to 100 | percent per second |
++----------+--------------------+
+
+
+
+
+.. _CAM2_FOC_RAT_MAX:
+
+CAM2\_FOC\_RAT\_MAX: Camera focus speed
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Speed at which the focus output moves for continuous \(rate\) focus commands\. Only used by the Servo camera type\. The default of 5\%\/s moves across the full range in 20 seconds
+
+
++----------+--------------------+
+| Range    | Units              |
++==========+====================+
+| 0 to 100 | percent per second |
++----------+--------------------+
 
 
 
@@ -43660,6 +43732,639 @@ Compensation for Z axis of motor4
 
 
 
+.. _parameters_CP:
+
+CP Parameters
+-------------
+
+
+.. _CP_TYPE:
+
+CP\_TYPE: Custom control type
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+| *Note: Reboot required after change*
+
+Custom control type to be used
+
+
++-------+---------+
+| Value | Meaning |
++=======+=========+
+| 0     | None    |
++-------+---------+
+| 1     | Empty   |
++-------+---------+
+| 2     | PID     |
++-------+---------+
+
+
+
+
+.. _CP_MASK:
+
+CP\_MASK: Custom Controller bitmask
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Custom Controller bitmask to chose which controllers to run or outputs to write\.
+
+
++-----+-----------+
+| Bit | Meaning   |
++=====+===========+
+| 0   | Output 1  |
++-----+-----------+
+| 1   | Output 2  |
++-----+-----------+
+| 2   | Output 3  |
++-----+-----------+
+| 3   | Output 4  |
++-----+-----------+
+| 4   | Output 5  |
++-----+-----------+
+| 5   | Output 6  |
++-----+-----------+
+| 6   | Output 7  |
++-----+-----------+
+| 7   | Output 8  |
++-----+-----------+
+| 8   | Output 9  |
++-----+-----------+
+| 9   | Output 10 |
++-----+-----------+
+| 10  | Output 11 |
++-----+-----------+
+| 11  | Output 12 |
++-----+-----------+
+| 12  | Output 13 |
++-----+-----------+
+| 13  | Output 14 |
++-----+-----------+
+| 14  | Output 15 |
++-----+-----------+
+| 15  | Output 16 |
++-----+-----------+
+| 16  | Output 17 |
++-----+-----------+
+| 17  | Output 18 |
++-----+-----------+
+| 18  | Output 19 |
++-----+-----------+
+| 19  | Output 20 |
++-----+-----------+
+| 20  | Output 21 |
++-----+-----------+
+| 21  | Output 22 |
++-----+-----------+
+| 22  | Output 23 |
++-----+-----------+
+| 23  | Output 24 |
++-----+-----------+
+| 24  | Output 25 |
++-----+-----------+
+| 25  | Output 26 |
++-----+-----------+
+| 26  | Output 27 |
++-----+-----------+
+| 27  | Output 28 |
++-----+-----------+
+| 28  | Output 29 |
++-----+-----------+
+| 29  | Output 30 |
++-----+-----------+
+| 30  | Output 31 |
++-----+-----------+
+| 31  | Output 32 |
++-----+-----------+
+
+
+
+
+
+.. _parameters_CP2_:
+
+CP2\_ Parameters
+----------------
+
+
+.. _CP2_ANG_RLL_P:
+
+CP2\_ANG\_RLL\_P: Roll axis angle controller P gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Roll axis angle controller P gain\.  Converts the error between the desired roll angle and actual angle to a desired roll rate
+
+
++-----------------+
+| Range           |
++=================+
+| 3.000 to 12.000 |
++-----------------+
+
+
+
+
+.. _CP2_ANG_PIT_P:
+
+CP2\_ANG\_PIT\_P: Pitch axis angle controller P gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Pitch axis angle controller P gain\.  Converts the error between the desired pitch angle and actual angle to a desired pitch rate
+
+
++-----------------+
+| Range           |
++=================+
+| 3.000 to 12.000 |
++-----------------+
+
+
+
+
+.. _CP2_RAT_RLL_P:
+
+CP2\_RAT\_RLL\_P: Roll axis rate controller P gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Roll axis rate controller P gain\. Corrects in proportion to the difference between the desired roll rate vs actual roll rate
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.005     | 0.01 to 0.5 |
++-----------+-------------+
+
+
+
+
+.. _CP2_RAT_RLL_I:
+
+CP2\_RAT\_RLL\_I: Roll axis rate controller I gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Roll axis rate controller I gain\.  Corrects long\-term difference in desired roll rate vs actual roll rate
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.01      | 0.01 to 2.0 |
++-----------+-------------+
+
+
+
+
+.. _CP2_RAT_RLL_IMAX:
+
+CP2\_RAT\_RLL\_IMAX: Roll axis rate controller I gain maximum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Roll axis rate controller I gain maximum\.  Constrains the maximum that the I term will output
+
+
++-----------+--------+
+| Increment | Range  |
++===========+========+
+| 0.01      | 0 to 1 |
++-----------+--------+
+
+
+
+
+.. _CP2_RAT_RLL_D:
+
+CP2\_RAT\_RLL\_D: Roll axis rate controller D gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Roll axis rate controller D gain\.  Compensates for short\-term change in desired roll rate vs actual roll rate
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.001     | 0.0 to 0.05 |
++-----------+-------------+
+
+
+
+
+.. _CP2_RAT_RLL_FF:
+
+CP2\_RAT\_RLL\_FF: Roll axis rate controller feed forward
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Roll axis rate controller feed forward
+
+
++-----------+----------+
+| Increment | Range    |
++===========+==========+
+| 0.001     | 0 to 0.5 |
++-----------+----------+
+
+
+
+
+.. _CP2_RAT_RLL_FLTT:
+
+CP2\_RAT\_RLL\_FLTT: Roll axis rate controller target frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Roll axis rate controller target frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 5 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _CP2_RAT_RLL_FLTE:
+
+CP2\_RAT\_RLL\_FLTE: Roll axis rate controller error frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Roll axis rate controller error frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 0 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _CP2_RAT_RLL_FLTD:
+
+CP2\_RAT\_RLL\_FLTD: Roll axis rate controller derivative frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Roll axis rate controller derivative frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 5 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _CP2_RAT_RLL_SMAX:
+
+CP2\_RAT\_RLL\_SMAX: Roll slew rate limit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Sets an upper limit on the slew rate produced by the combined P and D gains\. If the amplitude of the control action produced by the rate feedback exceeds this value\, then the D\+P gain is reduced to respect the limit\. This limits the amplitude of high frequency oscillations caused by an excessive gain\. The limit should be set to no more than 25\% of the actuators maximum slew rate to allow for load effects\. Note\: The gain will not be reduced to less than 10\% of the nominal value\. A value of zero will disable this feature\.
+
+
++-----------+----------+
+| Increment | Range    |
++===========+==========+
+| 0.5       | 0 to 200 |
++-----------+----------+
+
+
+
+
+.. _CP2_RAT_RLL_PDMX:
+
+CP2\_RAT\_RLL\_PDMX: Roll axis rate controller PD sum maximum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Roll axis rate controller PD sum maximum\.  The maximum\/minimum value that the sum of the P and D term can output
+
+
++-----------+--------+
+| Increment | Range  |
++===========+========+
+| 0.01      | 0 to 1 |
++-----------+--------+
+
+
+
+
+.. _CP2_RAT_RLL_D_FF:
+
+CP2\_RAT\_RLL\_D\_FF: Roll Derivative FeedForward Gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+FF D Gain which produces an output that is proportional to the rate of change of the target
+
+
++-----------+-----------+
+| Increment | Range     |
++===========+===========+
+| 0.0001    | 0 to 0.02 |
++-----------+-----------+
+
+
+
+
+.. _CP2_RAT_RLL_NTF:
+
+CP2\_RAT\_RLL\_NTF: Roll Target notch filter index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Roll Target notch filter index
+
+
++--------+
+| Range  |
++========+
+| 1 to 8 |
++--------+
+
+
+
+
+.. _CP2_RAT_RLL_NEF:
+
+CP2\_RAT\_RLL\_NEF: Roll Error notch filter index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Roll Error notch filter index
+
+
++--------+
+| Range  |
++========+
+| 1 to 8 |
++--------+
+
+
+
+
+.. _CP2_RAT_PIT_P:
+
+CP2\_RAT\_PIT\_P: Pitch axis rate controller P gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Pitch axis rate controller P gain\.  Corrects in proportion to the difference between the desired pitch rate vs actual pitch rate
+
+
++-----------+--------------+
+| Increment | Range        |
++===========+==============+
+| 0.005     | 0.01 to 0.50 |
++-----------+--------------+
+
+
+
+
+.. _CP2_RAT_PIT_I:
+
+CP2\_RAT\_PIT\_I: Pitch axis rate controller I gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Pitch axis rate controller I gain\.  Corrects long\-term difference in desired pitch rate vs actual pitch rate
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.01      | 0.01 to 2.0 |
++-----------+-------------+
+
+
+
+
+.. _CP2_RAT_PIT_IMAX:
+
+CP2\_RAT\_PIT\_IMAX: Pitch axis rate controller I gain maximum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Pitch axis rate controller I gain maximum\.  Constrains the maximum that the I term will output
+
+
++-----------+--------+
+| Increment | Range  |
++===========+========+
+| 0.01      | 0 to 1 |
++-----------+--------+
+
+
+
+
+.. _CP2_RAT_PIT_D:
+
+CP2\_RAT\_PIT\_D: Pitch axis rate controller D gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Pitch axis rate controller D gain\.  Compensates for short\-term change in desired pitch rate vs actual pitch rate
+
+
++-----------+-------------+
+| Increment | Range       |
++===========+=============+
+| 0.001     | 0.0 to 0.05 |
++-----------+-------------+
+
+
+
+
+.. _CP2_RAT_PIT_FF:
+
+CP2\_RAT\_PIT\_FF: Pitch axis rate controller feed forward
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Pitch axis rate controller feed forward
+
+
++-----------+----------+
+| Increment | Range    |
++===========+==========+
+| 0.001     | 0 to 0.5 |
++-----------+----------+
+
+
+
+
+.. _CP2_RAT_PIT_FLTT:
+
+CP2\_RAT\_PIT\_FLTT: Pitch axis rate controller target frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Pitch axis rate controller target frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 5 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _CP2_RAT_PIT_FLTE:
+
+CP2\_RAT\_PIT\_FLTE: Pitch axis rate controller error frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Pitch axis rate controller error frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 0 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _CP2_RAT_PIT_FLTD:
+
+CP2\_RAT\_PIT\_FLTD: Pitch axis rate controller derivative frequency in Hz
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Pitch axis rate controller derivative frequency in Hz
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 5 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
+.. _CP2_RAT_PIT_SMAX:
+
+CP2\_RAT\_PIT\_SMAX: Pitch slew rate limit
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Sets an upper limit on the slew rate produced by the combined P and D gains\. If the amplitude of the control action produced by the rate feedback exceeds this value\, then the D\+P gain is reduced to respect the limit\. This limits the amplitude of high frequency oscillations caused by an excessive gain\. The limit should be set to no more than 25\% of the actuators maximum slew rate to allow for load effects\. Note\: The gain will not be reduced to less than 10\% of the nominal value\. A value of zero will disable this feature\.
+
+
++-----------+----------+
+| Increment | Range    |
++===========+==========+
+| 0.5       | 0 to 200 |
++-----------+----------+
+
+
+
+
+.. _CP2_RAT_PIT_PDMX:
+
+CP2\_RAT\_PIT\_PDMX: Pitch axis rate controller PD sum maximum
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Pitch axis rate controller PD sum maximum\.  The maximum\/minimum value that the sum of the P and D term can output
+
+
++-----------+--------+
+| Increment | Range  |
++===========+========+
+| 0.01      | 0 to 1 |
++-----------+--------+
+
+
+
+
+.. _CP2_RAT_PIT_D_FF:
+
+CP2\_RAT\_PIT\_D\_FF: Pitch Derivative FeedForward Gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+FF D Gain which produces an output that is proportional to the rate of change of the target
+
+
++-----------+-----------+
+| Increment | Range     |
++===========+===========+
+| 0.0001    | 0 to 0.02 |
++-----------+-----------+
+
+
+
+
+.. _CP2_RAT_PIT_NTF:
+
+CP2\_RAT\_PIT\_NTF: Pitch Target notch filter index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Pitch Target notch filter index
+
+
++--------+
+| Range  |
++========+
+| 1 to 8 |
++--------+
+
+
+
+
+.. _CP2_RAT_PIT_NEF:
+
+CP2\_RAT\_PIT\_NEF: Pitch Error notch filter index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Pitch Error notch filter index
+
+
++--------+
+| Range  |
++========+
+| 1 to 8 |
++--------+
+
+
+
+
+
 .. _parameters_CUST_ROT:
 
 CUST\_ROT Parameters
@@ -46728,6 +47433,25 @@ A bitmask of which EKF3 instances will use the output from the EKF\-GSF yaw esti
 +-----+-----------+
 | 5   | SixthEKF  |
 +-----+-----------+
+
+
+
+
+.. _EK3_FLOW_GAIN_H:
+
+EK3\_FLOW\_GAIN\_H: Optical flow nav gain full\-scale height
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Height below which the navigation velocity gain is left at full scale while navigating on optical flow\. Above it the gain falls as this value divided by the height above ground\, to allow for flow velocity noise that grows with height\. Larger values keep position hold more responsive at height\, at more risk of a flow\-driven oscillation\. Values below 1 are treated as 1\. Takes effect immediately\.
+
+
++-----------+---------+--------+
+| Increment | Range   | Units  |
++===========+=========+========+
+| 1         | 1 to 40 | meters |
++-----------+---------+--------+
 
 
 
@@ -54528,6 +55252,87 @@ The minimum ratio below the configured frequency to take throttle based notch fi
 
 
 
+.. _INS_HNTC2_ESCMSK:
+
+INS\_HNTC2\_ESCMSK: Harmonic Notch Filter ESC mask
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Bitmask of ESC channels to use in ESC Telemetry mode\. 0 uses all available ESCs\.
+
+
++-----+---------+
+| Bit | Meaning |
++=====+=========+
+| 0   | ESC 1   |
++-----+---------+
+| 1   | ESC 2   |
++-----+---------+
+| 2   | ESC 3   |
++-----+---------+
+| 3   | ESC 4   |
++-----+---------+
+| 4   | ESC 5   |
++-----+---------+
+| 5   | ESC 6   |
++-----+---------+
+| 6   | ESC 7   |
++-----+---------+
+| 7   | ESC 8   |
++-----+---------+
+| 8   | ESC 9   |
++-----+---------+
+| 9   | ESC 10  |
++-----+---------+
+| 10  | ESC 11  |
++-----+---------+
+| 11  | ESC 12  |
++-----+---------+
+| 12  | ESC 13  |
++-----+---------+
+| 13  | ESC 14  |
++-----+---------+
+| 14  | ESC 15  |
++-----+---------+
+| 15  | ESC 16  |
++-----+---------+
+| 16  | ESC 17  |
++-----+---------+
+| 17  | ESC 18  |
++-----+---------+
+| 18  | ESC 19  |
++-----+---------+
+| 19  | ESC 20  |
++-----+---------+
+| 20  | ESC 21  |
++-----+---------+
+| 21  | ESC 22  |
++-----+---------+
+| 22  | ESC 23  |
++-----+---------+
+| 23  | ESC 24  |
++-----+---------+
+| 24  | ESC 25  |
++-----+---------+
+| 25  | ESC 26  |
++-----+---------+
+| 26  | ESC 27  |
++-----+---------+
+| 27  | ESC 28  |
++-----+---------+
+| 28  | ESC 29  |
++-----+---------+
+| 29  | ESC 30  |
++-----+---------+
+| 30  | ESC 31  |
++-----+---------+
+| 31  | ESC 32  |
++-----+---------+
+
+
+
+
 
 .. _parameters_INS_HNTC3_:
 
@@ -54768,6 +55573,87 @@ The minimum ratio below the configured frequency to take throttle based notch fi
 +============+
 | 0.1 to 1.0 |
 +------------+
+
+
+
+
+.. _INS_HNTC3_ESCMSK:
+
+INS\_HNTC3\_ESCMSK: Harmonic Notch Filter ESC mask
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Bitmask of ESC channels to use in ESC Telemetry mode\. 0 uses all available ESCs\.
+
+
++-----+---------+
+| Bit | Meaning |
++=====+=========+
+| 0   | ESC 1   |
++-----+---------+
+| 1   | ESC 2   |
++-----+---------+
+| 2   | ESC 3   |
++-----+---------+
+| 3   | ESC 4   |
++-----+---------+
+| 4   | ESC 5   |
++-----+---------+
+| 5   | ESC 6   |
++-----+---------+
+| 6   | ESC 7   |
++-----+---------+
+| 7   | ESC 8   |
++-----+---------+
+| 8   | ESC 9   |
++-----+---------+
+| 9   | ESC 10  |
++-----+---------+
+| 10  | ESC 11  |
++-----+---------+
+| 11  | ESC 12  |
++-----+---------+
+| 12  | ESC 13  |
++-----+---------+
+| 13  | ESC 14  |
++-----+---------+
+| 14  | ESC 15  |
++-----+---------+
+| 15  | ESC 16  |
++-----+---------+
+| 16  | ESC 17  |
++-----+---------+
+| 17  | ESC 18  |
++-----+---------+
+| 18  | ESC 19  |
++-----+---------+
+| 19  | ESC 20  |
++-----+---------+
+| 20  | ESC 21  |
++-----+---------+
+| 21  | ESC 22  |
++-----+---------+
+| 22  | ESC 23  |
++-----+---------+
+| 23  | ESC 24  |
++-----+---------+
+| 24  | ESC 25  |
++-----+---------+
+| 25  | ESC 26  |
++-----+---------+
+| 26  | ESC 27  |
++-----+---------+
+| 27  | ESC 28  |
++-----+---------+
+| 28  | ESC 29  |
++-----+---------+
+| 29  | ESC 30  |
++-----+---------+
+| 30  | ESC 31  |
++-----+---------+
+| 31  | ESC 32  |
++-----+---------+
 
 
 
@@ -55016,6 +55902,87 @@ The minimum ratio below the configured frequency to take throttle based notch fi
 
 
 
+.. _INS_HNTC4_ESCMSK:
+
+INS\_HNTC4\_ESCMSK: Harmonic Notch Filter ESC mask
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Bitmask of ESC channels to use in ESC Telemetry mode\. 0 uses all available ESCs\.
+
+
++-----+---------+
+| Bit | Meaning |
++=====+=========+
+| 0   | ESC 1   |
++-----+---------+
+| 1   | ESC 2   |
++-----+---------+
+| 2   | ESC 3   |
++-----+---------+
+| 3   | ESC 4   |
++-----+---------+
+| 4   | ESC 5   |
++-----+---------+
+| 5   | ESC 6   |
++-----+---------+
+| 6   | ESC 7   |
++-----+---------+
+| 7   | ESC 8   |
++-----+---------+
+| 8   | ESC 9   |
++-----+---------+
+| 9   | ESC 10  |
++-----+---------+
+| 10  | ESC 11  |
++-----+---------+
+| 11  | ESC 12  |
++-----+---------+
+| 12  | ESC 13  |
++-----+---------+
+| 13  | ESC 14  |
++-----+---------+
+| 14  | ESC 15  |
++-----+---------+
+| 15  | ESC 16  |
++-----+---------+
+| 16  | ESC 17  |
++-----+---------+
+| 17  | ESC 18  |
++-----+---------+
+| 18  | ESC 19  |
++-----+---------+
+| 19  | ESC 20  |
++-----+---------+
+| 20  | ESC 21  |
++-----+---------+
+| 21  | ESC 22  |
++-----+---------+
+| 22  | ESC 23  |
++-----+---------+
+| 23  | ESC 24  |
++-----+---------+
+| 24  | ESC 25  |
++-----+---------+
+| 25  | ESC 26  |
++-----+---------+
+| 26  | ESC 27  |
++-----+---------+
+| 27  | ESC 28  |
++-----+---------+
+| 28  | ESC 29  |
++-----+---------+
+| 29  | ESC 30  |
++-----+---------+
+| 30  | ESC 31  |
++-----+---------+
+| 31  | ESC 32  |
++-----+---------+
+
+
+
+
 
 .. _parameters_INS_HNTCH_:
 
@@ -55256,6 +56223,87 @@ The minimum ratio below the configured frequency to take throttle based notch fi
 +============+
 | 0.1 to 1.0 |
 +------------+
+
+
+
+
+.. _INS_HNTCH_ESCMSK:
+
+INS\_HNTCH\_ESCMSK: Harmonic Notch Filter ESC mask
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Bitmask of ESC channels to use in ESC Telemetry mode\. 0 uses all available ESCs\.
+
+
++-----+---------+
+| Bit | Meaning |
++=====+=========+
+| 0   | ESC 1   |
++-----+---------+
+| 1   | ESC 2   |
++-----+---------+
+| 2   | ESC 3   |
++-----+---------+
+| 3   | ESC 4   |
++-----+---------+
+| 4   | ESC 5   |
++-----+---------+
+| 5   | ESC 6   |
++-----+---------+
+| 6   | ESC 7   |
++-----+---------+
+| 7   | ESC 8   |
++-----+---------+
+| 8   | ESC 9   |
++-----+---------+
+| 9   | ESC 10  |
++-----+---------+
+| 10  | ESC 11  |
++-----+---------+
+| 11  | ESC 12  |
++-----+---------+
+| 12  | ESC 13  |
++-----+---------+
+| 13  | ESC 14  |
++-----+---------+
+| 14  | ESC 15  |
++-----+---------+
+| 15  | ESC 16  |
++-----+---------+
+| 16  | ESC 17  |
++-----+---------+
+| 17  | ESC 18  |
++-----+---------+
+| 18  | ESC 19  |
++-----+---------+
+| 19  | ESC 20  |
++-----+---------+
+| 20  | ESC 21  |
++-----+---------+
+| 21  | ESC 22  |
++-----+---------+
+| 22  | ESC 23  |
++-----+---------+
+| 23  | ESC 24  |
++-----+---------+
+| 24  | ESC 25  |
++-----+---------+
+| 25  | ESC 26  |
++-----+---------+
+| 26  | ESC 27  |
++-----+---------+
+| 27  | ESC 28  |
++-----+---------+
+| 28  | ESC 29  |
++-----+---------+
+| 29  | ESC 30  |
++-----+---------+
+| 30  | ESC 31  |
++-----+---------+
+| 31  | ESC 32  |
++-----+---------+
 
 
 
@@ -56888,13 +57936,13 @@ LAND\_OPTIONS: Landing options bitmask
 Bitmask of options to use with landing\.
 
 
-+-----+--------------------------------------------------------------------------------+
-| Bit | Meaning                                                                        |
-+=====+================================================================================+
-| 0   | honor min throttle during landing flare                                        |
-+-----+--------------------------------------------------------------------------------+
-| 1   | Increase Target landing airspeed constraint From Trim Airspeed to AIRSPEED_MAX |
-+-----+--------------------------------------------------------------------------------+
++-----+----------------------------------------------------------------------------------+
+| Bit | Meaning                                                                          |
++=====+==================================================================================+
+| 0   | honor min throttle during landing flare                                          |
++-----+----------------------------------------------------------------------------------+
+| 1   | Increase Target landing airspeed constraint From AIRSPEED_CRUISE to AIRSPEED_MAX |
++-----+----------------------------------------------------------------------------------+
 
 
 
@@ -139267,7 +140315,7 @@ TECS\_LAND\_ARSPD: Airspeed during landing approach \(m\/s\)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-When performing an autonomous landing\, this value is used as the goal airspeed during approach\.  Max airspeed allowed is Trim Airspeed or AIRSPEED\_MAX as defined by LAND\_OPTIONS bitmask\.  Note that this parameter is not useful if your platform does not have an airspeed sensor \(use TECS\_LAND\_THR instead\)\.  If negative then this value is halfway between AIRSPEED\_MIN and AIRSPEED\_CRUISE speed for fixed wing autolandings\.
+When performing an autonomous landing\, this value is used as the goal airspeed during approach\.  Max airspeed allowed is AIRSPEED\_CRUISE or AIRSPEED\_MAX as defined by LAND\_OPTIONS bitmask\.  Note that this parameter is not useful if your platform does not have an airspeed sensor \(use TECS\_LAND\_THR instead\)\.  If negative then this value is halfway between AIRSPEED\_MIN and AIRSPEED\_CRUISE speed for fixed wing autolandings\.
 
 
 +-----------+-----------+

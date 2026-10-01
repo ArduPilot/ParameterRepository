@@ -38585,6 +38585,42 @@ Component ID of the camera when using MAVLinkCamV2 \(CAMn\_TYPE\=6\)\. Zero sele
 
 
 
+.. _CAM1_ZOM_RAT_MAX:
+
+CAM1\_ZOM\_RAT\_MAX: Camera zoom speed
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Speed at which the zoom output moves for continuous \(rate\) zoom commands\. Only used by the Servo camera type\. The default of 5\%\/s moves across the full range in 20 seconds
+
+
++----------+--------------------+
+| Range    | Units              |
++==========+====================+
+| 0 to 100 | percent per second |
++----------+--------------------+
+
+
+
+
+.. _CAM1_FOC_RAT_MAX:
+
+CAM1\_FOC\_RAT\_MAX: Camera focus speed
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Speed at which the focus output moves for continuous \(rate\) focus commands\. Only used by the Servo camera type\. The default of 5\%\/s moves across the full range in 20 seconds
+
+
++----------+--------------------+
+| Range    | Units              |
++==========+====================+
+| 0 to 100 | percent per second |
++----------+--------------------+
+
+
+
+
 
 .. _parameters_CAM1_RC_:
 
@@ -39001,6 +39037,42 @@ Component ID of the camera when using MAVLinkCamV2 \(CAMn\_TYPE\=6\)\. Zero sele
 +===========+==========+
 | 1         | 0 to 255 |
 +-----------+----------+
+
+
+
+
+.. _CAM2_ZOM_RAT_MAX:
+
+CAM2\_ZOM\_RAT\_MAX: Camera zoom speed
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Speed at which the zoom output moves for continuous \(rate\) zoom commands\. Only used by the Servo camera type\. The default of 5\%\/s moves across the full range in 20 seconds
+
+
++----------+--------------------+
+| Range    | Units              |
++==========+====================+
+| 0 to 100 | percent per second |
++----------+--------------------+
+
+
+
+
+.. _CAM2_FOC_RAT_MAX:
+
+CAM2\_FOC\_RAT\_MAX: Camera focus speed
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Speed at which the focus output moves for continuous \(rate\) focus commands\. Only used by the Servo camera type\. The default of 5\%\/s moves across the full range in 20 seconds
+
+
++----------+--------------------+
+| Range    | Units              |
++==========+====================+
+| 0 to 100 | percent per second |
++----------+--------------------+
 
 
 
@@ -49829,6 +49901,25 @@ A bitmask of which EKF3 instances will use the output from the EKF\-GSF yaw esti
 
 
 
+.. _EK3_FLOW_GAIN_H:
+
+EK3\_FLOW\_GAIN\_H: Optical flow nav gain full\-scale height
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Height below which the navigation velocity gain is left at full scale while navigating on optical flow\. Above it the gain falls as this value divided by the height above ground\, to allow for flow velocity noise that grows with height\. Larger values keep position hold more responsive at height\, at more risk of a flow\-driven oscillation\. Values below 1 are treated as 1\. Takes effect immediately\.
+
+
++-----------+---------+--------+
+| Increment | Range   | Units  |
++===========+=========+========+
+| 1         | 1 to 40 | meters |
++-----------+---------+--------+
+
+
+
+
 .. _EK3_GSF_RST_MAX:
 
 EK3\_GSF\_RST\_MAX: Maximum number of resets to the EKF\-GSF yaw estimate allowed
@@ -59040,6 +59131,87 @@ The minimum ratio below the configured frequency to take throttle based notch fi
 
 
 
+.. _INS_HNTC2_ESCMSK:
+
+INS\_HNTC2\_ESCMSK: Harmonic Notch Filter ESC mask
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Bitmask of ESC channels to use in ESC Telemetry mode\. 0 uses all available ESCs\.
+
+
++-----+---------+
+| Bit | Meaning |
++=====+=========+
+| 0   | ESC 1   |
++-----+---------+
+| 1   | ESC 2   |
++-----+---------+
+| 2   | ESC 3   |
++-----+---------+
+| 3   | ESC 4   |
++-----+---------+
+| 4   | ESC 5   |
++-----+---------+
+| 5   | ESC 6   |
++-----+---------+
+| 6   | ESC 7   |
++-----+---------+
+| 7   | ESC 8   |
++-----+---------+
+| 8   | ESC 9   |
++-----+---------+
+| 9   | ESC 10  |
++-----+---------+
+| 10  | ESC 11  |
++-----+---------+
+| 11  | ESC 12  |
++-----+---------+
+| 12  | ESC 13  |
++-----+---------+
+| 13  | ESC 14  |
++-----+---------+
+| 14  | ESC 15  |
++-----+---------+
+| 15  | ESC 16  |
++-----+---------+
+| 16  | ESC 17  |
++-----+---------+
+| 17  | ESC 18  |
++-----+---------+
+| 18  | ESC 19  |
++-----+---------+
+| 19  | ESC 20  |
++-----+---------+
+| 20  | ESC 21  |
++-----+---------+
+| 21  | ESC 22  |
++-----+---------+
+| 22  | ESC 23  |
++-----+---------+
+| 23  | ESC 24  |
++-----+---------+
+| 24  | ESC 25  |
++-----+---------+
+| 25  | ESC 26  |
++-----+---------+
+| 26  | ESC 27  |
++-----+---------+
+| 27  | ESC 28  |
++-----+---------+
+| 28  | ESC 29  |
++-----+---------+
+| 29  | ESC 30  |
++-----+---------+
+| 30  | ESC 31  |
++-----+---------+
+| 31  | ESC 32  |
++-----+---------+
+
+
+
+
 
 .. _parameters_INS_HNTC3_:
 
@@ -59280,6 +59452,87 @@ The minimum ratio below the configured frequency to take throttle based notch fi
 +============+
 | 0.1 to 1.0 |
 +------------+
+
+
+
+
+.. _INS_HNTC3_ESCMSK:
+
+INS\_HNTC3\_ESCMSK: Harmonic Notch Filter ESC mask
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Bitmask of ESC channels to use in ESC Telemetry mode\. 0 uses all available ESCs\.
+
+
++-----+---------+
+| Bit | Meaning |
++=====+=========+
+| 0   | ESC 1   |
++-----+---------+
+| 1   | ESC 2   |
++-----+---------+
+| 2   | ESC 3   |
++-----+---------+
+| 3   | ESC 4   |
++-----+---------+
+| 4   | ESC 5   |
++-----+---------+
+| 5   | ESC 6   |
++-----+---------+
+| 6   | ESC 7   |
++-----+---------+
+| 7   | ESC 8   |
++-----+---------+
+| 8   | ESC 9   |
++-----+---------+
+| 9   | ESC 10  |
++-----+---------+
+| 10  | ESC 11  |
++-----+---------+
+| 11  | ESC 12  |
++-----+---------+
+| 12  | ESC 13  |
++-----+---------+
+| 13  | ESC 14  |
++-----+---------+
+| 14  | ESC 15  |
++-----+---------+
+| 15  | ESC 16  |
++-----+---------+
+| 16  | ESC 17  |
++-----+---------+
+| 17  | ESC 18  |
++-----+---------+
+| 18  | ESC 19  |
++-----+---------+
+| 19  | ESC 20  |
++-----+---------+
+| 20  | ESC 21  |
++-----+---------+
+| 21  | ESC 22  |
++-----+---------+
+| 22  | ESC 23  |
++-----+---------+
+| 23  | ESC 24  |
++-----+---------+
+| 24  | ESC 25  |
++-----+---------+
+| 25  | ESC 26  |
++-----+---------+
+| 26  | ESC 27  |
++-----+---------+
+| 27  | ESC 28  |
++-----+---------+
+| 28  | ESC 29  |
++-----+---------+
+| 29  | ESC 30  |
++-----+---------+
+| 30  | ESC 31  |
++-----+---------+
+| 31  | ESC 32  |
++-----+---------+
 
 
 
@@ -59528,6 +59781,87 @@ The minimum ratio below the configured frequency to take throttle based notch fi
 
 
 
+.. _INS_HNTC4_ESCMSK:
+
+INS\_HNTC4\_ESCMSK: Harmonic Notch Filter ESC mask
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Bitmask of ESC channels to use in ESC Telemetry mode\. 0 uses all available ESCs\.
+
+
++-----+---------+
+| Bit | Meaning |
++=====+=========+
+| 0   | ESC 1   |
++-----+---------+
+| 1   | ESC 2   |
++-----+---------+
+| 2   | ESC 3   |
++-----+---------+
+| 3   | ESC 4   |
++-----+---------+
+| 4   | ESC 5   |
++-----+---------+
+| 5   | ESC 6   |
++-----+---------+
+| 6   | ESC 7   |
++-----+---------+
+| 7   | ESC 8   |
++-----+---------+
+| 8   | ESC 9   |
++-----+---------+
+| 9   | ESC 10  |
++-----+---------+
+| 10  | ESC 11  |
++-----+---------+
+| 11  | ESC 12  |
++-----+---------+
+| 12  | ESC 13  |
++-----+---------+
+| 13  | ESC 14  |
++-----+---------+
+| 14  | ESC 15  |
++-----+---------+
+| 15  | ESC 16  |
++-----+---------+
+| 16  | ESC 17  |
++-----+---------+
+| 17  | ESC 18  |
++-----+---------+
+| 18  | ESC 19  |
++-----+---------+
+| 19  | ESC 20  |
++-----+---------+
+| 20  | ESC 21  |
++-----+---------+
+| 21  | ESC 22  |
++-----+---------+
+| 22  | ESC 23  |
++-----+---------+
+| 23  | ESC 24  |
++-----+---------+
+| 24  | ESC 25  |
++-----+---------+
+| 25  | ESC 26  |
++-----+---------+
+| 26  | ESC 27  |
++-----+---------+
+| 27  | ESC 28  |
++-----+---------+
+| 28  | ESC 29  |
++-----+---------+
+| 29  | ESC 30  |
++-----+---------+
+| 30  | ESC 31  |
++-----+---------+
+| 31  | ESC 32  |
++-----+---------+
+
+
+
+
 
 .. _parameters_INS_HNTCH_:
 
@@ -59768,6 +60102,87 @@ The minimum ratio below the configured frequency to take throttle based notch fi
 +============+
 | 0.1 to 1.0 |
 +------------+
+
+
+
+
+.. _INS_HNTCH_ESCMSK:
+
+INS\_HNTCH\_ESCMSK: Harmonic Notch Filter ESC mask
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Bitmask of ESC channels to use in ESC Telemetry mode\. 0 uses all available ESCs\.
+
+
++-----+---------+
+| Bit | Meaning |
++=====+=========+
+| 0   | ESC 1   |
++-----+---------+
+| 1   | ESC 2   |
++-----+---------+
+| 2   | ESC 3   |
++-----+---------+
+| 3   | ESC 4   |
++-----+---------+
+| 4   | ESC 5   |
++-----+---------+
+| 5   | ESC 6   |
++-----+---------+
+| 6   | ESC 7   |
++-----+---------+
+| 7   | ESC 8   |
++-----+---------+
+| 8   | ESC 9   |
++-----+---------+
+| 9   | ESC 10  |
++-----+---------+
+| 10  | ESC 11  |
++-----+---------+
+| 11  | ESC 12  |
++-----+---------+
+| 12  | ESC 13  |
++-----+---------+
+| 13  | ESC 14  |
++-----+---------+
+| 14  | ESC 15  |
++-----+---------+
+| 15  | ESC 16  |
++-----+---------+
+| 16  | ESC 17  |
++-----+---------+
+| 17  | ESC 18  |
++-----+---------+
+| 18  | ESC 19  |
++-----+---------+
+| 19  | ESC 20  |
++-----+---------+
+| 20  | ESC 21  |
++-----+---------+
+| 21  | ESC 22  |
++-----+---------+
+| 22  | ESC 23  |
++-----+---------+
+| 23  | ESC 24  |
++-----+---------+
+| 24  | ESC 25  |
++-----+---------+
+| 25  | ESC 26  |
++-----+---------+
+| 26  | ESC 27  |
++-----+---------+
+| 27  | ESC 28  |
++-----+---------+
+| 28  | ESC 29  |
++-----+---------+
+| 29  | ESC 30  |
++-----+---------+
+| 30  | ESC 31  |
++-----+---------+
+| 31  | ESC 32  |
++-----+---------+
 
 
 

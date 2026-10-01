@@ -43782,7 +43782,7 @@ FOLL\_SYSID: Follow target\'s mavlink system id
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Follow target\'s mavlink system id
+Follow target\'s mavlink system id\. Zero means no target has been selected and following is inactive\.
 
 
 +----------+
@@ -86789,11 +86789,11 @@ Q\_A\_RAT\_YAW\_NTF: Yaw Target notch filter index
 Yaw Target notch filter index
 
 
-+--------+-------+
-| Range  | Units |
-+========+=======+
-| 1 to 8 | hertz |
-+--------+-------+
++--------+
+| Range  |
++========+
+| 1 to 8 |
++--------+
 
 
 

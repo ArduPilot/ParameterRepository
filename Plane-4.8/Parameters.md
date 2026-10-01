@@ -1097,7 +1097,7 @@ When the aircraft is within this altitude of the home waypoint, while disarmed i
 
 Flight mode specific options
 
-- Bitmask: 0: Rudder mixing in direct flight modes only (Manual/Stabilize/Acro), 1: Use centered throttle in Cruise or FBWB to indicate trim airspeed, 2: Disable attitude check for takeoff arming, 3: Force target airspeed to trim airspeed in Cruise or FBWB, 4: Climb to RTL_ALTITUDE before turning for RTL, 5: Enable yaw damper in acro mode, 6: Suppress speed scaling during auto takeoffs to be 1 or less to prevent oscillations without airspeed sensor., 7: EnableDefaultAirspeed for takeoff, 8: Remove the PTCH_TRIM_DEG on the GCS horizon, 9: Remove the PTCH_TRIM_DEG on the OSD horizon, 10: Adjust mid-throttle to be TRIM_THROTTLE in non-auto throttle modes except MANUAL, 11: Disable suppression of fixed wing rate gains in ground mode, 12: Enable FBWB style loiter altitude control, 13: Indicate takeoff waiting for neutral rudder with flight control surfaces, 14: In AUTO - climb to next waypoint altitude immediately instead of linear climb, 15: Enable autoflap in manual modes and use minimum of target and actual speed for flap setting, 16: Enable full aerodynamic load factor-based roll limits when an airspeed sensor is enabled and AIRSPEED_STALL is set, 17: Reset ALT_OFFSET on flight mode or AUTO waypoint changes
+- Bitmask: 0: Rudder mixing in direct flight modes only (Manual/Stabilize/Acro), 1: Use centered throttle in Cruise or FBWB to indicate AIRSPEED_CRUISE, 2: Disable attitude check for takeoff arming, 3: Force target airspeed to AIRSPEED_CRUISE in Cruise or FBWB, 4: Climb to RTL_ALTITUDE before turning for RTL, 5: Enable yaw damper in acro mode, 6: Suppress speed scaling during auto takeoffs to be 1 or less to prevent oscillations without airspeed sensor., 7: EnableDefaultAirspeed for takeoff, 8: Remove the PTCH_TRIM_DEG on the GCS horizon, 9: Remove the PTCH_TRIM_DEG on the OSD horizon, 10: Adjust mid-throttle to be TRIM_THROTTLE in non-auto throttle modes except MANUAL, 11: Disable suppression of fixed wing rate gains in ground mode, 12: Enable FBWB style loiter altitude control, 13: Indicate takeoff waiting for neutral rudder with flight control surfaces, 14: In AUTO - climb to next waypoint altitude immediately instead of linear climb, 15: Enable autoflap in manual modes and use minimum of target and actual speed for flap setting, 16: Enable full aerodynamic load factor-based roll limits when an airspeed sensor is enabled and AIRSPEED_STALL is set, 17: Reset ALT_OFFSET on flight mode or AUTO waypoint changes
 
 ## TKOFF_ACCEL_CNT: Takeoff throttle acceleration count
 
@@ -15870,6 +15870,22 @@ Component ID of the camera when using MAVLinkCamV2 (CAMn_TYPE=6). Zero selects M
 
 - RebootRequired: True
 
+## CAM1_ZOM_RAT_MAX: Camera zoom speed
+
+Speed at which the zoom output moves for continuous (rate) zoom commands. Only used by the Servo camera type. The default of 5%/s moves across the full range in 20 seconds
+
+- Units: %/s
+
+- Range: 0 100
+
+## CAM1_FOC_RAT_MAX: Camera focus speed
+
+Speed at which the focus output moves for continuous (rate) focus commands. Only used by the Servo camera type. The default of 5%/s moves across the full range in 20 seconds
+
+- Units: %/s
+
+- Range: 0 100
+
 # CAM1RC Parameters
 
 ## CAM1_RC_TYPE: RunCam device type
@@ -16052,6 +16068,22 @@ Component ID of the camera when using MAVLinkCamV2 (CAMn_TYPE=6). Zero selects M
 - Increment: 1
 
 - RebootRequired: True
+
+## CAM2_ZOM_RAT_MAX: Camera zoom speed
+
+Speed at which the zoom output moves for continuous (rate) zoom commands. Only used by the Servo camera type. The default of 5%/s moves across the full range in 20 seconds
+
+- Units: %/s
+
+- Range: 0 100
+
+## CAM2_FOC_RAT_MAX: Camera focus speed
+
+Speed at which the focus output moves for continuous (rate) focus commands. Only used by the Servo camera type. The default of 5%/s moves across the full range in 20 seconds
+
+- Units: %/s
+
+- Range: 0 100
 
 # CAM2RC Parameters
 
@@ -18998,6 +19030,276 @@ Compensation for Y axis of motor4
 
 Compensation for Z axis of motor4
 
+# CP Parameters
+
+## CP_TYPE: Custom control type
+
+*Note: This parameter is for advanced users*
+
+Custom control type to be used
+
+|Value|Meaning|
+|:---:|:---:|
+|0|None|
+|1|Empty|
+|2|PID|
+
+- RebootRequired: True
+
+## CP_MASK: Custom Controller bitmask
+
+*Note: This parameter is for advanced users*
+
+Custom Controller bitmask to chose which controllers to run or outputs to write.
+
+- Bitmask: 0:Output 1,1:Output 2,2:Output 3,3:Output 4,4:Output 5,5:Output 6,6:Output 7,7:Output 8,8:Output 9,9:Output 10,10:Output 11,11:Output 12,12:Output 13,13:Output 14,14:Output 15,15:Output 16, 16:Output 17, 17: Output 18, 18: Output 19, 19: Output 20, 20: Output 21, 21: Output 22, 22: Output 23, 23: Output 24, 24: Output 25, 25: Output 26, 26: Output 27, 27: Output 28, 28: Output 29, 29: Output 30, 30: Output 31, 31: Output 32
+
+# CP2 Parameters
+
+## CP2_ANG_RLL_P: Roll axis angle controller P gain
+
+Roll axis angle controller P gain.  Converts the error between the desired roll angle and actual angle to a desired roll rate
+
+- Range: 3.000 12.000
+
+## CP2_ANG_PIT_P: Pitch axis angle controller P gain
+
+Pitch axis angle controller P gain.  Converts the error between the desired pitch angle and actual angle to a desired pitch rate
+
+- Range: 3.000 12.000
+
+## CP2_RAT_RLL_P: Roll axis rate controller P gain
+
+Roll axis rate controller P gain. Corrects in proportion to the difference between the desired roll rate vs actual roll rate
+
+- Range: 0.01 0.5
+
+- Increment: 0.005
+
+## CP2_RAT_RLL_I: Roll axis rate controller I gain
+
+Roll axis rate controller I gain.  Corrects long-term difference in desired roll rate vs actual roll rate
+
+- Range: 0.01 2.0
+
+- Increment: 0.01
+
+## CP2_RAT_RLL_IMAX: Roll axis rate controller I gain maximum
+
+Roll axis rate controller I gain maximum.  Constrains the maximum that the I term will output
+
+- Range: 0 1
+
+- Increment: 0.01
+
+## CP2_RAT_RLL_D: Roll axis rate controller D gain
+
+Roll axis rate controller D gain.  Compensates for short-term change in desired roll rate vs actual roll rate
+
+- Range: 0.0 0.05
+
+- Increment: 0.001
+
+## CP2_RAT_RLL_FF: Roll axis rate controller feed forward
+
+Roll axis rate controller feed forward
+
+- Range: 0 0.5
+
+- Increment: 0.001
+
+## CP2_RAT_RLL_FLTT: Roll axis rate controller target frequency in Hz
+
+Roll axis rate controller target frequency in Hz
+
+- Range: 5 100
+
+- Increment: 1
+
+- Units: Hz
+
+## CP2_RAT_RLL_FLTE: Roll axis rate controller error frequency in Hz
+
+Roll axis rate controller error frequency in Hz
+
+- Range: 0 100
+
+- Increment: 1
+
+- Units: Hz
+
+## CP2_RAT_RLL_FLTD: Roll axis rate controller derivative frequency in Hz
+
+Roll axis rate controller derivative frequency in Hz
+
+- Range: 5 100
+
+- Increment: 1
+
+- Units: Hz
+
+## CP2_RAT_RLL_SMAX: Roll slew rate limit
+
+*Note: This parameter is for advanced users*
+
+Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature.
+
+- Range: 0 200
+
+- Increment: 0.5
+
+## CP2_RAT_RLL_PDMX: Roll axis rate controller PD sum maximum
+
+*Note: This parameter is for advanced users*
+
+Roll axis rate controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output
+
+- Range: 0 1
+
+- Increment: 0.01
+
+## CP2_RAT_RLL_D_FF: Roll Derivative FeedForward Gain
+
+*Note: This parameter is for advanced users*
+
+FF D Gain which produces an output that is proportional to the rate of change of the target
+
+- Range: 0 0.02
+
+- Increment: 0.0001
+
+## CP2_RAT_RLL_NTF: Roll Target notch filter index
+
+*Note: This parameter is for advanced users*
+
+Roll Target notch filter index
+
+- Range: 1 8
+
+## CP2_RAT_RLL_NEF: Roll Error notch filter index
+
+*Note: This parameter is for advanced users*
+
+Roll Error notch filter index
+
+- Range: 1 8
+
+## CP2_RAT_PIT_P: Pitch axis rate controller P gain
+
+Pitch axis rate controller P gain.  Corrects in proportion to the difference between the desired pitch rate vs actual pitch rate
+
+- Range: 0.01 0.50
+
+- Increment: 0.005
+
+## CP2_RAT_PIT_I: Pitch axis rate controller I gain
+
+Pitch axis rate controller I gain.  Corrects long-term difference in desired pitch rate vs actual pitch rate
+
+- Range: 0.01 2.0
+
+- Increment: 0.01
+
+## CP2_RAT_PIT_IMAX: Pitch axis rate controller I gain maximum
+
+Pitch axis rate controller I gain maximum.  Constrains the maximum that the I term will output
+
+- Range: 0 1
+
+- Increment: 0.01
+
+## CP2_RAT_PIT_D: Pitch axis rate controller D gain
+
+Pitch axis rate controller D gain.  Compensates for short-term change in desired pitch rate vs actual pitch rate
+
+- Range: 0.0 0.05
+
+- Increment: 0.001
+
+## CP2_RAT_PIT_FF: Pitch axis rate controller feed forward
+
+Pitch axis rate controller feed forward
+
+- Range: 0 0.5
+
+- Increment: 0.001
+
+## CP2_RAT_PIT_FLTT: Pitch axis rate controller target frequency in Hz
+
+Pitch axis rate controller target frequency in Hz
+
+- Range: 5 100
+
+- Increment: 1
+
+- Units: Hz
+
+## CP2_RAT_PIT_FLTE: Pitch axis rate controller error frequency in Hz
+
+Pitch axis rate controller error frequency in Hz
+
+- Range: 0 100
+
+- Increment: 1
+
+- Units: Hz
+
+## CP2_RAT_PIT_FLTD: Pitch axis rate controller derivative frequency in Hz
+
+Pitch axis rate controller derivative frequency in Hz
+
+- Range: 5 100
+
+- Increment: 1
+
+- Units: Hz
+
+## CP2_RAT_PIT_SMAX: Pitch slew rate limit
+
+*Note: This parameter is for advanced users*
+
+Sets an upper limit on the slew rate produced by the combined P and D gains. If the amplitude of the control action produced by the rate feedback exceeds this value, then the D+P gain is reduced to respect the limit. This limits the amplitude of high frequency oscillations caused by an excessive gain. The limit should be set to no more than 25% of the actuators maximum slew rate to allow for load effects. Note: The gain will not be reduced to less than 10% of the nominal value. A value of zero will disable this feature.
+
+- Range: 0 200
+
+- Increment: 0.5
+
+## CP2_RAT_PIT_PDMX: Pitch axis rate controller PD sum maximum
+
+*Note: This parameter is for advanced users*
+
+Pitch axis rate controller PD sum maximum.  The maximum/minimum value that the sum of the P and D term can output
+
+- Range: 0 1
+
+- Increment: 0.01
+
+## CP2_RAT_PIT_D_FF: Pitch Derivative FeedForward Gain
+
+*Note: This parameter is for advanced users*
+
+FF D Gain which produces an output that is proportional to the rate of change of the target
+
+- Range: 0 0.02
+
+- Increment: 0.0001
+
+## CP2_RAT_PIT_NTF: Pitch Target notch filter index
+
+*Note: This parameter is for advanced users*
+
+Pitch Target notch filter index
+
+- Range: 1 8
+
+## CP2_RAT_PIT_NEF: Pitch Error notch filter index
+
+*Note: This parameter is for advanced users*
+
+Pitch Error notch filter index
+
+- Range: 1 8
+
 # CUSTROT Parameters
 
 ## CUST_ROT_ENABLE: Enable Custom rotations
@@ -20571,6 +20873,18 @@ A bitmask of which EKF3 instances will use the output from the EKF-GSF yaw estim
 - Bitmask: 0:FirstEKF,1:SecondEKF,2:ThirdEKF,3:FourthEKF,4:FifthEKF,5:SixthEKF
 
 - RebootRequired: True
+
+## EK3_FLOW_GAIN_H: Optical flow nav gain full-scale height
+
+*Note: This parameter is for advanced users*
+
+Height below which the navigation velocity gain is left at full scale while navigating on optical flow. Above it the gain falls as this value divided by the height above ground, to allow for flow velocity noise that grows with height. Larger values keep position hold more responsive at height, at more risk of a flow-driven oscillation. Values below 1 are treated as 1. Takes effect immediately.
+
+- Range: 1 40
+
+- Increment: 1
+
+- Units: m
 
 ## EK3_GSF_RST_MAX: Maximum number of resets to the EKF-GSF yaw estimate allowed
 
@@ -24709,6 +25023,14 @@ The minimum ratio below the configured frequency to take throttle based notch fi
 
 - Range: 0.1 1.0
 
+## INS_HNTC2_ESCMSK: Harmonic Notch Filter ESC mask
+
+*Note: This parameter is for advanced users*
+
+Bitmask of ESC channels to use in ESC Telemetry mode. 0 uses all available ESCs.
+
+- Bitmask: 0:  ESC 1, 1:  ESC 2, 2:  ESC 3, 3:  ESC 4, 4:  ESC 5, 5:  ESC 6, 6:  ESC 7, 7:  ESC 8, 8:  ESC 9, 9:  ESC 10, 10: ESC 11, 11: ESC 12, 12: ESC 13, 13: ESC 14, 14: ESC 15, 15: ESC 16, 16: ESC 17, 17: ESC 18, 18: ESC 19, 19: ESC 20, 20: ESC 21, 21: ESC 22, 22: ESC 23, 23: ESC 24, 24: ESC 25, 25: ESC 26, 26: ESC 27, 27: ESC 28, 28: ESC 29, 29: ESC 30, 30: ESC 31, 31: ESC 32
+
 # INSHNTC3 Parameters
 
 ## INS_HNTC3_ENABLE: Harmonic Notch Filter enable
@@ -24806,6 +25128,14 @@ Harmonic Notch Filter options. Triple and double-notches can provide deeper atte
 The minimum ratio below the configured frequency to take throttle based notch filters when flying at a throttle level below the reference throttle. Note that lower frequency notch filters will have more phase lag. If you want throttle based notch filtering to be effective at a throttle up to 30% below the configured notch frequency then set this parameter to 0.7. The default of 1.0 means the notch will not go below the frequency in the FREQ parameter.
 
 - Range: 0.1 1.0
+
+## INS_HNTC3_ESCMSK: Harmonic Notch Filter ESC mask
+
+*Note: This parameter is for advanced users*
+
+Bitmask of ESC channels to use in ESC Telemetry mode. 0 uses all available ESCs.
+
+- Bitmask: 0:  ESC 1, 1:  ESC 2, 2:  ESC 3, 3:  ESC 4, 4:  ESC 5, 5:  ESC 6, 6:  ESC 7, 7:  ESC 8, 8:  ESC 9, 9:  ESC 10, 10: ESC 11, 11: ESC 12, 12: ESC 13, 13: ESC 14, 14: ESC 15, 15: ESC 16, 16: ESC 17, 17: ESC 18, 18: ESC 19, 19: ESC 20, 20: ESC 21, 21: ESC 22, 22: ESC 23, 23: ESC 24, 24: ESC 25, 25: ESC 26, 26: ESC 27, 27: ESC 28, 28: ESC 29, 29: ESC 30, 30: ESC 31, 31: ESC 32
 
 # INSHNTC4 Parameters
 
@@ -24905,6 +25235,14 @@ The minimum ratio below the configured frequency to take throttle based notch fi
 
 - Range: 0.1 1.0
 
+## INS_HNTC4_ESCMSK: Harmonic Notch Filter ESC mask
+
+*Note: This parameter is for advanced users*
+
+Bitmask of ESC channels to use in ESC Telemetry mode. 0 uses all available ESCs.
+
+- Bitmask: 0:  ESC 1, 1:  ESC 2, 2:  ESC 3, 3:  ESC 4, 4:  ESC 5, 5:  ESC 6, 6:  ESC 7, 7:  ESC 8, 8:  ESC 9, 9:  ESC 10, 10: ESC 11, 11: ESC 12, 12: ESC 13, 13: ESC 14, 14: ESC 15, 15: ESC 16, 16: ESC 17, 17: ESC 18, 18: ESC 19, 19: ESC 20, 20: ESC 21, 21: ESC 22, 22: ESC 23, 23: ESC 24, 24: ESC 25, 25: ESC 26, 26: ESC 27, 27: ESC 28, 28: ESC 29, 29: ESC 30, 30: ESC 31, 31: ESC 32
+
 # INSHNTCH Parameters
 
 ## INS_HNTCH_ENABLE: Harmonic Notch Filter enable
@@ -25002,6 +25340,14 @@ Harmonic Notch Filter options. Triple and double-notches can provide deeper atte
 The minimum ratio below the configured frequency to take throttle based notch filters when flying at a throttle level below the reference throttle. Note that lower frequency notch filters will have more phase lag. If you want throttle based notch filtering to be effective at a throttle up to 30% below the configured notch frequency then set this parameter to 0.7. The default of 1.0 means the notch will not go below the frequency in the FREQ parameter.
 
 - Range: 0.1 1.0
+
+## INS_HNTCH_ESCMSK: Harmonic Notch Filter ESC mask
+
+*Note: This parameter is for advanced users*
+
+Bitmask of ESC channels to use in ESC Telemetry mode. 0 uses all available ESCs.
+
+- Bitmask: 0:  ESC 1, 1:  ESC 2, 2:  ESC 3, 3:  ESC 4, 4:  ESC 5, 5:  ESC 6, 6:  ESC 7, 7:  ESC 8, 8:  ESC 9, 9:  ESC 10, 10: ESC 11, 11: ESC 12, 12: ESC 13, 13: ESC 14, 14: ESC 15, 15: ESC 16, 16: ESC 17, 17: ESC 18, 18: ESC 19, 19: ESC 20, 20: ESC 21, 21: ESC 22, 22: ESC 23, 23: ESC 24, 24: ESC 25, 25: ESC 26, 26: ESC 27, 27: ESC 28, 28: ESC 29, 29: ESC 30, 30: ESC 31, 31: ESC 32
 
 # INSLOG Parameters
 
@@ -25766,7 +26112,7 @@ The amount of flaps (as a percentage) to apply in the landing approach and flare
 
 Bitmask of options to use with landing.
 
-- Bitmask: 0: honor min throttle during landing flare,1: Increase Target landing airspeed constraint From Trim Airspeed to AIRSPEED_MAX
+- Bitmask: 0: honor min throttle during landing flare,1: Increase Target landing airspeed constraint From AIRSPEED_CRUISE to AIRSPEED_MAX
 
 ## LAND_FLARE_AIM: Flare aim point adjustment percentage.
 
@@ -55705,7 +56051,7 @@ Maximum demanded descent rate. Do not set higher than the vertical speed the air
 
 ## TECS_LAND_ARSPD: Airspeed during landing approach (m/s)
 
-When performing an autonomous landing, this value is used as the goal airspeed during approach.  Max airspeed allowed is Trim Airspeed or AIRSPEED_MAX as defined by LAND_OPTIONS bitmask.  Note that this parameter is not useful if your platform does not have an airspeed sensor (use TECS_LAND_THR instead).  If negative then this value is halfway between AIRSPEED_MIN and AIRSPEED_CRUISE speed for fixed wing autolandings.
+When performing an autonomous landing, this value is used as the goal airspeed during approach.  Max airspeed allowed is AIRSPEED_CRUISE or AIRSPEED_MAX as defined by LAND_OPTIONS bitmask.  Note that this parameter is not useful if your platform does not have an airspeed sensor (use TECS_LAND_THR instead).  If negative then this value is halfway between AIRSPEED_MIN and AIRSPEED_CRUISE speed for fixed wing autolandings.
 
 - Range: -1 127
 
