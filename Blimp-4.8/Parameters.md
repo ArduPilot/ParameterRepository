@@ -15793,7 +15793,7 @@ This sets the maximum allowed compass offset in calibration and arming checks
 
 This is a bitmask of driver types to disable. If a driver type is set in this mask then that driver will not try to find a sensor at startup
 
-- Bitmask: 0:HMC5883,1:LSM303D,2:AK8963,3:BMM150,4:LSM9DS1,5:LIS3MDL,6:AK0991x,7:IST8310,8:ICM20948,9:MMC3416,11:DroneCAN,12:QMC5883,14:MAG3110,15:IST8308,16:RM3100,17:MSP,18:ExternalAHRS,19:MMC5XX3,20:QMC5883P,21:BMM350,22:IIS2MDC or LIS2MDL,24:AF9838
+- Bitmask: 0:HMC5883,1:LSM303D,2:AK8963,3:BMM150,4:LSM9DS1,5:LIS3MDL,6:AK0991x,7:IST8310,8:ICM20948,9:MMC3416,11:DroneCAN,12:QMC5883,14:MAG3110,15:IST8308,16:RM3100,17:MSP,18:ExternalAHRS,19:MMC5XX3,20:QMC5883P,21:BMM350,22:IIS2MDC or LIS2MDL,24:AF9838,25:AK09940A
 
 ## COMPASS_FLTR_RNG: Range in which sample is accepted
 
@@ -23260,17 +23260,17 @@ Number of seconds' worth of travel that the actual position can be behind the ta
 
 *Note: This parameter is for advanced users*
 
-Allows setting an individual MAVLink system id for this vehicle to distinguish it from others on the same network.
+Allows setting an individual MAVLink system id for this vehicle to distinguish it from others on the same network. IDs above 255 require MAVLink2 with 32-bit system ID support on every communicating device. MAVLink1 ports cannot transmit with these IDs.
 
-- Range: 1 255
+- Range: 1 4294967295
 
 ## MAV_GCS_SYSID: My ground station number
 
 *Note: This parameter is for advanced users*
 
-This sets what MAVLink source system IDs are accepted for GCS failsafe handling, RC overrides and manual control. When MAV_GCS_SYSID_HI is less than MAV_GCS_SYSID then only this value is considered to be a GCS. When MAV_GCS_SYSID_HI is greater than or equal to MAV_GCS_SYSID then the range of values between MAV_GCS_SYSID and MAV_GCS_SYSID_HI (inclusive) are all treated as valid GCS MAVLink system IDs
+This sets what MAVLink source system IDs are accepted for GCS failsafe handling, RC overrides and manual control. When MAV_GCS_SYSID_HI is less than MAV_GCS_SYSID then only this value is considered to be a GCS. When MAV_GCS_SYSID_HI is greater than or equal to MAV_GCS_SYSID then the range of values between MAV_GCS_SYSID and MAV_GCS_SYSID_HI (inclusive) are all treated as valid GCS MAVLink system IDs.
 
-- Range: 1 255
+- Range: 1 4294967295
 
 - Increment: 1
 
@@ -23280,7 +23280,7 @@ This sets what MAVLink source system IDs are accepted for GCS failsafe handling,
 
 Upper limit of MAVLink source system IDs considered to be from the GCS. When this is less than MAV_GCS_SYSID then only MAV_GCS_SYSID is used as GCS ID. When this is greater than or equal to MAV_GCS_SYSID then the range of values from MAV_GCS_SYSID to MAV_GCS_SYSID_HI (inclusive) is treated as a GCS ID.
 
-- Range: 0 255
+- Range: 0 4294967295
 
 - Increment: 1
 

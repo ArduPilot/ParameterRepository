@@ -13638,6 +13638,7 @@
         "21": "BMM350",
         "22": "IIS2MDC or LIS2MDL",
         "24": "AF9838",
+        "25": "AK09940A",
         "3": "BMM150",
         "4": "LSM9DS1",
         "5": "LIS3MDL",
@@ -17134,7 +17135,7 @@
       "Description": "Follow target's mavlink system id. Zero means no target has been selected and following is inactive.",
       "DisplayName": "Follow target's mavlink system id",
       "Range": {
-        "high": "255",
+        "high": "4294967295",
         "low": "0"
       },
       "User": "Standard"
@@ -23536,11 +23537,11 @@
   },
   "MAV": {
     "MAV_GCS_SYSID": {
-      "Description": "This sets what MAVLink source system IDs are accepted for GCS failsafe handling, RC overrides and manual control. When MAV_GCS_SYSID_HI is less than MAV_GCS_SYSID then only this value is considered to be a GCS. When MAV_GCS_SYSID_HI is greater than or equal to MAV_GCS_SYSID then the range of values between MAV_GCS_SYSID and MAV_GCS_SYSID_HI (inclusive) are all treated as valid GCS MAVLink system IDs",
+      "Description": "This sets what MAVLink source system IDs are accepted for GCS failsafe handling, RC overrides and manual control. When MAV_GCS_SYSID_HI is less than MAV_GCS_SYSID then only this value is considered to be a GCS. When MAV_GCS_SYSID_HI is greater than or equal to MAV_GCS_SYSID then the range of values between MAV_GCS_SYSID and MAV_GCS_SYSID_HI (inclusive) are all treated as valid GCS MAVLink system IDs.",
       "DisplayName": "My ground station number",
       "Increment": "1",
       "Range": {
-        "high": "255",
+        "high": "4294967295",
         "low": "1"
       },
       "User": "Advanced"
@@ -23550,7 +23551,7 @@
       "DisplayName": "ground station system ID, maximum",
       "Increment": "1",
       "Range": {
-        "high": "255",
+        "high": "4294967295",
         "low": "0"
       },
       "User": "Advanced"
@@ -23564,10 +23565,10 @@
       "User": "Advanced"
     },
     "MAV_SYSID": {
-      "Description": "Allows setting an individual MAVLink system id for this vehicle to distinguish it from others on the same network.",
+      "Description": "Allows setting an individual MAVLink system id for this vehicle to distinguish it from others on the same network. IDs above 255 require MAVLink2 with 32-bit system ID support on every communicating device. MAVLink1 ports cannot transmit with these IDs.",
       "DisplayName": "MAVLink system ID of this vehicle",
       "Range": {
-        "high": "255",
+        "high": "4294967295",
         "low": "1"
       },
       "User": "Advanced"
@@ -29112,8 +29113,12 @@
       "User": "Standard"
     },
     "MNT1_SYSID_DFLT": {
-      "Description": "Default Target sysID for the mount to point to",
+      "Description": "Default Target sysID for the mount to point to.",
       "DisplayName": "Mount Target sysID",
+      "Range": {
+        "high": "4294967295",
+        "low": "0"
+      },
       "RebootRequired": "True",
       "User": "Standard"
     },
@@ -29360,8 +29365,12 @@
       "User": "Standard"
     },
     "MNT2_SYSID_DFLT": {
-      "Description": "Default Target sysID for the mount to point to",
+      "Description": "Default Target sysID for the mount to point to.",
       "DisplayName": "Mount Target sysID",
+      "Range": {
+        "high": "4294967295",
+        "low": "0"
+      },
       "RebootRequired": "True",
       "User": "Standard"
     },
@@ -58613,7 +58622,7 @@
       "Description": "System ID of the ship",
       "DisplayName": "System ID",
       "Range": {
-        "high": "255",
+        "high": "4294967295",
         "low": "1"
       }
     }
@@ -58652,7 +58661,7 @@
       "Description": "Slung Payload MAVLink system id to distinguish it from others on the same network",
       "DisplayName": "Slung Payload MAVLink system ID",
       "Range": {
-        "high": "255",
+        "high": "4294967295",
         "low": "0"
       },
       "User": "Advanced"
@@ -58768,7 +58777,7 @@
       "Description": "MAVLink system ID for the tether simulation, used to distinguish it from other systems on the network",
       "DisplayName": "Tether Simulation MAVLink System ID",
       "Range": {
-        "high": "255",
+        "high": "4294967295",
         "low": "0"
       },
       "User": "Advanced"

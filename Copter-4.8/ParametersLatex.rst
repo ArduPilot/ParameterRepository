@@ -46391,6 +46391,8 @@ This is a bitmask of driver types to disable\. If a driver type is set in this m
 +-----+--------------------+
 | 24  | AF9838             |
 +-----+--------------------+
+| 25  | AK09940A           |
++-----+--------------------+
 
 
 
@@ -52359,11 +52361,11 @@ FOLL\_SYSID: Follow target\'s mavlink system id
 Follow target\'s mavlink system id\. Zero means no target has been selected and following is inactive\.
 
 
-+----------+
-| Range    |
-+==========+
-| 0 to 255 |
-+----------+
++-----------------+
+| Range           |
++=================+
+| 0 to 4294967295 |
++-----------------+
 
 
 
@@ -62244,14 +62246,14 @@ MAV\_SYSID: MAVLink system ID of this vehicle
 
 | *Note: This parameter is for advanced users*
 
-Allows setting an individual MAVLink system id for this vehicle to distinguish it from others on the same network\.
+Allows setting an individual MAVLink system id for this vehicle to distinguish it from others on the same network\. IDs above 255 require MAVLink2 with 32\-bit system ID support on every communicating device\. MAVLink1 ports cannot transmit with these IDs\.
 
 
-+----------+
-| Range    |
-+==========+
-| 1 to 255 |
-+----------+
++-----------------+
+| Range           |
++=================+
+| 1 to 4294967295 |
++-----------------+
 
 
 
@@ -62263,14 +62265,14 @@ MAV\_GCS\_SYSID: My ground station number
 
 | *Note: This parameter is for advanced users*
 
-This sets what MAVLink source system IDs are accepted for GCS failsafe handling\, RC overrides and manual control\. When MAV\_GCS\_SYSID\_HI is less than MAV\_GCS\_SYSID then only this value is considered to be a GCS\. When MAV\_GCS\_SYSID\_HI is greater than or equal to MAV\_GCS\_SYSID then the range of values between MAV\_GCS\_SYSID and MAV\_GCS\_SYSID\_HI \(inclusive\) are all treated as valid GCS MAVLink system IDs
+This sets what MAVLink source system IDs are accepted for GCS failsafe handling\, RC overrides and manual control\. When MAV\_GCS\_SYSID\_HI is less than MAV\_GCS\_SYSID then only this value is considered to be a GCS\. When MAV\_GCS\_SYSID\_HI is greater than or equal to MAV\_GCS\_SYSID then the range of values between MAV\_GCS\_SYSID and MAV\_GCS\_SYSID\_HI \(inclusive\) are all treated as valid GCS MAVLink system IDs\.
 
 
-+-----------+----------+
-| Increment | Range    |
-+===========+==========+
-| 1         | 1 to 255 |
-+-----------+----------+
++-----------+-----------------+
+| Increment | Range           |
++===========+=================+
+| 1         | 1 to 4294967295 |
++-----------+-----------------+
 
 
 
@@ -62285,11 +62287,11 @@ MAV\_GCS\_SYSID\_HI: ground station system ID\, maximum
 Upper limit of MAVLink source system IDs considered to be from the GCS\. When this is less than MAV\_GCS\_SYSID then only MAV\_GCS\_SYSID is used as GCS ID\. When this is greater than or equal to MAV\_GCS\_SYSID then the range of values from MAV\_GCS\_SYSID to MAV\_GCS\_SYSID\_HI \(inclusive\) is treated as a GCS ID\.
 
 
-+-----------+----------+
-| Increment | Range    |
-+===========+==========+
-| 1         | 0 to 255 |
-+-----------+----------+
++-----------+-----------------+
+| Increment | Range           |
++===========+=================+
+| 1         | 0 to 4294967295 |
++-----------+-----------------+
 
 
 
@@ -72617,7 +72619,16 @@ MNT1\_SYSID\_DFLT: Mount Target sysID
 
 | *Note: Reboot required after change*
 
-Default Target sysID for the mount to point to
+Default Target sysID for the mount to point to\.
+
+
++-----------------+
+| Range           |
++=================+
+| 0 to 4294967295 |
++-----------------+
+
+
 
 
 .. _MNT1_DEVID:
@@ -73052,7 +73063,16 @@ MNT2\_SYSID\_DFLT: Mount Target sysID
 
 | *Note: Reboot required after change*
 
-Default Target sysID for the mount to point to
+Default Target sysID for the mount to point to\.
+
+
++-----------------+
+| Range           |
++=================+
+| 0 to 4294967295 |
++-----------------+
+
+
 
 
 .. _MNT2_DEVID:
@@ -138537,11 +138557,11 @@ SIM\_SHIP\_SYSID: System ID
 System ID of the ship
 
 
-+----------+
-| Range    |
-+==========+
-| 1 to 255 |
-+----------+
++-----------------+
+| Range           |
++=================+
+| 1 to 4294967295 |
++-----------------+
 
 
 
@@ -138707,11 +138727,11 @@ SIM\_SLUP\_SYSID: Slung Payload MAVLink system ID
 Slung Payload MAVLink system id to distinguish it from others on the same network
 
 
-+----------+
-| Range    |
-+==========+
-| 0 to 255 |
-+----------+
++-----------------+
+| Range           |
++=================+
+| 0 to 4294967295 |
++-----------------+
 
 
 
@@ -138868,11 +138888,11 @@ SIM\_TETH\_SYSID: Tether Simulation MAVLink System ID
 MAVLink system ID for the tether simulation\, used to distinguish it from other systems on the network
 
 
-+----------+
-| Range    |
-+==========+
-| 0 to 255 |
-+----------+
++-----------------+
+| Range           |
++=================+
+| 0 to 4294967295 |
++-----------------+
 
 
 
