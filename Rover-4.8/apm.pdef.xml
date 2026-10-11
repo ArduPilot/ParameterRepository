@@ -9309,7 +9309,6 @@
           <value code="3">Cube/Pixhawk2</value>
           <value code="5">PixhawkMini</value>
           <value code="6">Pixhawk2Slim</value>
-          <value code="13">Intel Aero FC</value>
           <value code="14">Pixhawk Pro</value>
           <value code="20">AUAV2.1</value>
           <value code="39">PX4 FMUV6</value>
@@ -38763,6 +38762,18 @@
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
       </param>
+      <param humanName="GPS velocity glitch" name="SIM_GPS1_GLTV_X" documentation="Glitch offsets of simulated GPS velocity in NED. The reported position also moves continuously with this velocity, so position and velocity stay consistent (e.g. to simulate GPS spoofing that drifts the position). The accumulated position offset is cleared when all three components are zero at a GPS update, so when changing axes set the new component before zeroing the old one (X-axis)" user="Advanced">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+      </param>
+      <param humanName="GPS velocity glitch" name="SIM_GPS1_GLTV_Y" documentation="Glitch offsets of simulated GPS velocity in NED. The reported position also moves continuously with this velocity, so position and velocity stay consistent (e.g. to simulate GPS spoofing that drifts the position). The accumulated position offset is cleared when all three components are zero at a GPS update, so when changing axes set the new component before zeroing the old one (Y-axis)" user="Advanced">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+      </param>
+      <param humanName="GPS velocity glitch" name="SIM_GPS1_GLTV_Z" documentation="Glitch offsets of simulated GPS velocity in NED. The reported position also moves continuously with this velocity, so position and velocity stay consistent (e.g. to simulate GPS spoofing that drifts the position). The accumulated position offset is cleared when all three components are zero at a GPS update, so when changing axes set the new component before zeroing the old one (Z-axis)" user="Advanced">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+      </param>
     </parameters>
     <parameters name="SIM_GPS2_">
       <param humanName="GPS enable" name="SIM_GPS2_ENABLE" documentation="Enable simulated GPS" user="Advanced">
@@ -38877,6 +38888,18 @@
       <param humanName="GPS horizontal noise" name="SIM_GPS2_HNSE" documentation="Radius of the GPS horizontal position error in meters" user="Advanced">
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
+      </param>
+      <param humanName="GPS velocity glitch" name="SIM_GPS2_GLTV_X" documentation="Glitch offsets of simulated GPS velocity in NED. The reported position also moves continuously with this velocity, so position and velocity stay consistent (e.g. to simulate GPS spoofing that drifts the position). The accumulated position offset is cleared when all three components are zero at a GPS update, so when changing axes set the new component before zeroing the old one (X-axis)" user="Advanced">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+      </param>
+      <param humanName="GPS velocity glitch" name="SIM_GPS2_GLTV_Y" documentation="Glitch offsets of simulated GPS velocity in NED. The reported position also moves continuously with this velocity, so position and velocity stay consistent (e.g. to simulate GPS spoofing that drifts the position). The accumulated position offset is cleared when all three components are zero at a GPS update, so when changing axes set the new component before zeroing the old one (Y-axis)" user="Advanced">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+      </param>
+      <param humanName="GPS velocity glitch" name="SIM_GPS2_GLTV_Z" documentation="Glitch offsets of simulated GPS velocity in NED. The reported position also moves continuously with this velocity, so position and velocity stay consistent (e.g. to simulate GPS spoofing that drifts the position). The accumulated position offset is cleared when all three components are zero at a GPS update, so when changing axes set the new component before zeroing the old one (Z-axis)" user="Advanced">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
       </param>
     </parameters>
     <parameters name="SIM_GPS3_">
@@ -38993,6 +39016,18 @@
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
       </param>
+      <param humanName="GPS velocity glitch" name="SIM_GPS3_GLTV_X" documentation="Glitch offsets of simulated GPS velocity in NED. The reported position also moves continuously with this velocity, so position and velocity stay consistent (e.g. to simulate GPS spoofing that drifts the position). The accumulated position offset is cleared when all three components are zero at a GPS update, so when changing axes set the new component before zeroing the old one (X-axis)" user="Advanced">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+      </param>
+      <param humanName="GPS velocity glitch" name="SIM_GPS3_GLTV_Y" documentation="Glitch offsets of simulated GPS velocity in NED. The reported position also moves continuously with this velocity, so position and velocity stay consistent (e.g. to simulate GPS spoofing that drifts the position). The accumulated position offset is cleared when all three components are zero at a GPS update, so when changing axes set the new component before zeroing the old one (Y-axis)" user="Advanced">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+      </param>
+      <param humanName="GPS velocity glitch" name="SIM_GPS3_GLTV_Z" documentation="Glitch offsets of simulated GPS velocity in NED. The reported position also moves continuously with this velocity, so position and velocity stay consistent (e.g. to simulate GPS spoofing that drifts the position). The accumulated position offset is cleared when all three components are zero at a GPS update, so when changing axes set the new component before zeroing the old one (Z-axis)" user="Advanced">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+      </param>
     </parameters>
     <parameters name="SIM_GPS4_">
       <param humanName="GPS enable" name="SIM_GPS4_ENABLE" documentation="Enable simulated GPS" user="Advanced">
@@ -39107,6 +39142,18 @@
       <param humanName="GPS horizontal noise" name="SIM_GPS4_HNSE" documentation="Radius of the GPS horizontal position error in meters" user="Advanced">
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
+      </param>
+      <param humanName="GPS velocity glitch" name="SIM_GPS4_GLTV_X" documentation="Glitch offsets of simulated GPS velocity in NED. The reported position also moves continuously with this velocity, so position and velocity stay consistent (e.g. to simulate GPS spoofing that drifts the position). The accumulated position offset is cleared when all three components are zero at a GPS update, so when changing axes set the new component before zeroing the old one (X-axis)" user="Advanced">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+      </param>
+      <param humanName="GPS velocity glitch" name="SIM_GPS4_GLTV_Y" documentation="Glitch offsets of simulated GPS velocity in NED. The reported position also moves continuously with this velocity, so position and velocity stay consistent (e.g. to simulate GPS spoofing that drifts the position). The accumulated position offset is cleared when all three components are zero at a GPS update, so when changing axes set the new component before zeroing the old one (Y-axis)" user="Advanced">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
+      </param>
+      <param humanName="GPS velocity glitch" name="SIM_GPS4_GLTV_Z" documentation="Glitch offsets of simulated GPS velocity in NED. The reported position also moves continuously with this velocity, so position and velocity stay consistent (e.g. to simulate GPS spoofing that drifts the position). The accumulated position offset is cleared when all three components are zero at a GPS update, so when changing axes set the new component before zeroing the old one (Z-axis)" user="Advanced">
+        <field name="Units">m/s</field>
+        <field name="UnitText">meters per second</field>
       </param>
     </parameters>
     <parameters name="SIM_GRPE_">

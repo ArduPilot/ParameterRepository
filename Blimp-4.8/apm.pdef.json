@@ -8715,7 +8715,6 @@
         "0": "AUTO",
         "1": "PX4V1",
         "100": "PX4 OLDDRIVERS",
-        "13": "Intel Aero FC",
         "14": "Pixhawk Pro",
         "2": "Pixhawk",
         "20": "AUAV2.1",
@@ -8967,7 +8966,10 @@
         "0": "LAND",
         "1": "MANUAL",
         "2": "VELOCITY",
-        "3": "LOITER"
+        "3": "LOITER",
+        "4": "RTL",
+        "5": "AUTO",
+        "6": "HOLD"
       }
     },
     "FLTMODE2": {
@@ -8978,7 +8980,10 @@
         "0": "LAND",
         "1": "MANUAL",
         "2": "VELOCITY",
-        "3": "LOITER"
+        "3": "LOITER",
+        "4": "RTL",
+        "5": "AUTO",
+        "6": "HOLD"
       }
     },
     "FLTMODE3": {
@@ -8989,7 +8994,10 @@
         "0": "LAND",
         "1": "MANUAL",
         "2": "VELOCITY",
-        "3": "LOITER"
+        "3": "LOITER",
+        "4": "RTL",
+        "5": "AUTO",
+        "6": "HOLD"
       }
     },
     "FLTMODE4": {
@@ -9000,7 +9008,10 @@
         "0": "LAND",
         "1": "MANUAL",
         "2": "VELOCITY",
-        "3": "LOITER"
+        "3": "LOITER",
+        "4": "RTL",
+        "5": "AUTO",
+        "6": "HOLD"
       }
     },
     "FLTMODE5": {
@@ -9011,7 +9022,10 @@
         "0": "LAND",
         "1": "MANUAL",
         "2": "VELOCITY",
-        "3": "LOITER"
+        "3": "LOITER",
+        "4": "RTL",
+        "5": "AUTO",
+        "6": "HOLD"
       }
     },
     "FLTMODE6": {
@@ -9022,7 +9036,10 @@
         "0": "LAND",
         "1": "MANUAL",
         "2": "VELOCITY",
-        "3": "LOITER"
+        "3": "LOITER",
+        "4": "RTL",
+        "5": "AUTO",
+        "6": "HOLD"
       }
     },
     "FLTMODE_CH": {
@@ -9048,7 +9065,9 @@
       "RebootRequired": "True",
       "User": "Standard",
       "Values": {
-        "0": "Finnedblimp"
+        "0": "Undefined",
+        "1": "FinnedBlimp",
+        "2": "FourMotorBlimp"
       }
     },
     "FS_CRASH_CHECK": {
@@ -9172,7 +9191,10 @@
         "0": "LAND",
         "1": "MANUAL",
         "2": "VELOCITY",
-        "3": "LOITER"
+        "3": "LOITER",
+        "4": "RTL",
+        "5": "AUTO",
+        "6": "HOLD"
       }
     },
     "LOG_BITMASK": {
@@ -18490,7 +18512,7 @@
       "User": "Standard"
     },
     "LOIT_PID_DZ": {
-      "Description": "Output 0 thrust signal when blimp is within this distance (in meters) of the target position. Warning: If this param is greater than LOIT_MAX_POS_X multiplied by LOIT_LAG then the blimp won't move at all in the X axis in Loiter mode. Same for the other axes.",
+      "Description": "Output 0 thrust signal when blimp is within this distance (in meters) of the target position. Warning: If this param is greater than LOIT_MAX_POSX multiplied by LOIT_POS_LAG then the blimp won't move at all in the X axis in Loiter mode. Same for the other axes.",
       "DisplayName": "Deadzone for the position PIDs",
       "Range": {
         "high": "1",

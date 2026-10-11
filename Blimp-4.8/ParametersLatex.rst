@@ -221,6 +221,12 @@ Flight mode when Channel 5 pwm is \<\= 1230
 +-------+----------+
 | 3     | LOITER   |
 +-------+----------+
+| 4     | RTL      |
++-------+----------+
+| 5     | AUTO     |
++-------+----------+
+| 6     | HOLD     |
++-------+----------+
 
 
 
@@ -244,6 +250,12 @@ Flight mode when Channel 5 pwm is \>1230\, \<\= 1360
 | 2     | VELOCITY |
 +-------+----------+
 | 3     | LOITER   |
++-------+----------+
+| 4     | RTL      |
++-------+----------+
+| 5     | AUTO     |
++-------+----------+
+| 6     | HOLD     |
 +-------+----------+
 
 
@@ -269,6 +281,12 @@ Flight mode when Channel 5 pwm is \>1360\, \<\= 1490
 +-------+----------+
 | 3     | LOITER   |
 +-------+----------+
+| 4     | RTL      |
++-------+----------+
+| 5     | AUTO     |
++-------+----------+
+| 6     | HOLD     |
++-------+----------+
 
 
 
@@ -292,6 +310,12 @@ Flight mode when Channel 5 pwm is \>1490\, \<\= 1620
 | 2     | VELOCITY |
 +-------+----------+
 | 3     | LOITER   |
++-------+----------+
+| 4     | RTL      |
++-------+----------+
+| 5     | AUTO     |
++-------+----------+
+| 6     | HOLD     |
 +-------+----------+
 
 
@@ -317,6 +341,12 @@ Flight mode when Channel 5 pwm is \>1620\, \<\= 1749
 +-------+----------+
 | 3     | LOITER   |
 +-------+----------+
+| 4     | RTL      |
++-------+----------+
+| 5     | AUTO     |
++-------+----------+
+| 6     | HOLD     |
++-------+----------+
 
 
 
@@ -340,6 +370,12 @@ Flight mode when Channel 5 pwm is \>\=1750
 | 2     | VELOCITY |
 +-------+----------+
 | 3     | LOITER   |
++-------+----------+
+| 4     | RTL      |
++-------+----------+
+| 5     | AUTO     |
++-------+----------+
+| 6     | HOLD     |
 +-------+----------+
 
 
@@ -392,6 +428,12 @@ This selects the mode to start in on boot\.
 | 2     | VELOCITY |
 +-------+----------+
 | 3     | LOITER   |
++-------+----------+
+| 4     | RTL      |
++-------+----------+
+| 5     | AUTO     |
++-------+----------+
+| 6     | HOLD     |
 +-------+----------+
 
 
@@ -685,11 +727,15 @@ FRAME\_CLASS: Frame class
 Controls frame for blimp\.
 
 
-+-------+-------------+
-| Value | Meaning     |
-+=======+=============+
-| 0     | Finnedblimp |
-+-------+-------------+
++-------+----------------+
+| Value | Meaning        |
++=======+================+
+| 0     | Undefined      |
++-------+----------------+
+| 1     | FinnedBlimp    |
++-------+----------------+
+| 2     | FourMotorBlimp |
++-------+----------------+
 
 
 
@@ -29928,8 +29974,6 @@ This allows selection of a PX4 or VRBRAIN board type\. If set to zero then the b
 +-------+----------------+
 | 6     | Pixhawk2Slim   |
 +-------+----------------+
-| 13    | Intel Aero FC  |
-+-------+----------------+
 | 14    | Pixhawk Pro    |
 +-------+----------------+
 | 20    | AUAV2.1        |
@@ -51888,7 +51932,7 @@ LOIT\_PID\_DZ: Deadzone for the position PIDs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Output 0 thrust signal when blimp is within this distance \(in meters\) of the target position\. Warning\: If this param is greater than LOIT\_MAX\_POS\_X multiplied by LOIT\_LAG then the blimp won\'t move at all in the X axis in Loiter mode\. Same for the other axes\.
+Output 0 thrust signal when blimp is within this distance \(in meters\) of the target position\. Warning\: If this param is greater than LOIT\_MAX\_POSX multiplied by LOIT\_POS\_LAG then the blimp won\'t move at all in the X axis in Loiter mode\. Same for the other axes\.
 
 
 +----------+--------+

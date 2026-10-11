@@ -110,6 +110,9 @@ DO NOT EDIT
 <tr><td>1</td><td>MANUAL</td></tr>
 <tr><td>2</td><td>VELOCITY</td></tr>
 <tr><td>3</td><td>LOITER</td></tr>
+<tr><td>4</td><td>RTL</td></tr>
+<tr><td>5</td><td>AUTO</td></tr>
+<tr><td>6</td><td>HOLD</td></tr>
 </table>
 </ul>
 
@@ -123,6 +126,9 @@ DO NOT EDIT
 <tr><td>1</td><td>MANUAL</td></tr>
 <tr><td>2</td><td>VELOCITY</td></tr>
 <tr><td>3</td><td>LOITER</td></tr>
+<tr><td>4</td><td>RTL</td></tr>
+<tr><td>5</td><td>AUTO</td></tr>
+<tr><td>6</td><td>HOLD</td></tr>
 </table>
 </ul>
 
@@ -136,6 +142,9 @@ DO NOT EDIT
 <tr><td>1</td><td>MANUAL</td></tr>
 <tr><td>2</td><td>VELOCITY</td></tr>
 <tr><td>3</td><td>LOITER</td></tr>
+<tr><td>4</td><td>RTL</td></tr>
+<tr><td>5</td><td>AUTO</td></tr>
+<tr><td>6</td><td>HOLD</td></tr>
 </table>
 </ul>
 
@@ -149,6 +158,9 @@ DO NOT EDIT
 <tr><td>1</td><td>MANUAL</td></tr>
 <tr><td>2</td><td>VELOCITY</td></tr>
 <tr><td>3</td><td>LOITER</td></tr>
+<tr><td>4</td><td>RTL</td></tr>
+<tr><td>5</td><td>AUTO</td></tr>
+<tr><td>6</td><td>HOLD</td></tr>
 </table>
 </ul>
 
@@ -162,6 +174,9 @@ DO NOT EDIT
 <tr><td>1</td><td>MANUAL</td></tr>
 <tr><td>2</td><td>VELOCITY</td></tr>
 <tr><td>3</td><td>LOITER</td></tr>
+<tr><td>4</td><td>RTL</td></tr>
+<tr><td>5</td><td>AUTO</td></tr>
+<tr><td>6</td><td>HOLD</td></tr>
 </table>
 </ul>
 
@@ -175,6 +190,9 @@ DO NOT EDIT
 <tr><td>1</td><td>MANUAL</td></tr>
 <tr><td>2</td><td>VELOCITY</td></tr>
 <tr><td>3</td><td>LOITER</td></tr>
+<tr><td>4</td><td>RTL</td></tr>
+<tr><td>5</td><td>AUTO</td></tr>
+<tr><td>6</td><td>HOLD</td></tr>
 </table>
 </ul>
 
@@ -202,6 +220,9 @@ DO NOT EDIT
 <tr><td>1</td><td>MANUAL</td></tr>
 <tr><td>2</td><td>VELOCITY</td></tr>
 <tr><td>3</td><td>LOITER</td></tr>
+<tr><td>4</td><td>RTL</td></tr>
+<tr><td>5</td><td>AUTO</td></tr>
+<tr><td>6</td><td>HOLD</td></tr>
 </table>
 </ul>
 
@@ -335,7 +356,9 @@ DO NOT EDIT
 <p>Controls frame for blimp.</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
-<tr><td>0</td><td>Finnedblimp</td></tr>
+<tr><td>0</td><td>Undefined</td></tr>
+<tr><td>1</td><td>FinnedBlimp</td></tr>
+<tr><td>2</td><td>FourMotorBlimp</td></tr>
 </table>
 <li>RebootRequired: True</li>
 </ul>
@@ -13515,7 +13538,6 @@ DO NOT EDIT
 <tr><td>3</td><td>Cube/Pixhawk2</td></tr>
 <tr><td>5</td><td>PixhawkMini</td></tr>
 <tr><td>6</td><td>Pixhawk2Slim</td></tr>
-<tr><td>13</td><td>Intel Aero FC</td></tr>
 <tr><td>14</td><td>Pixhawk Pro</td></tr>
 <tr><td>20</td><td>AUAV2.1</td></tr>
 <tr><td>39</td><td>PX4 FMUV6</td></tr>
@@ -23562,7 +23584,7 @@ DO NOT EDIT
 
 <h2>Deadzone for the position PIDs (LOIT_PID_DZ)</h2>
 
-<p>Output 0 thrust signal when blimp is within this distance (in meters) of the target position. Warning: If this param is greater than LOIT_MAX_POS_X multiplied by LOIT_LAG then the blimp won&#x27;t move at all in the X axis in Loiter mode. Same for the other axes.</p>
+<p>Output 0 thrust signal when blimp is within this distance (in meters) of the target position. Warning: If this param is greater than LOIT_MAX_POSX multiplied by LOIT_POS_LAG then the blimp won&#x27;t move at all in the X axis in Loiter mode. Same for the other axes.</p>
 <ul>
 <li>Units: meters</li>
 <li>Range: 0.1 1</li>

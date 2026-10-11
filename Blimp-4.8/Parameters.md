@@ -91,6 +91,9 @@ Flight mode when Channel 5 pwm is <= 1230
 |1|MANUAL|
 |2|VELOCITY|
 |3|LOITER|
+|4|RTL|
+|5|AUTO|
+|6|HOLD|
 
 ## FLTMODE2: Flight Mode 2
 
@@ -102,6 +105,9 @@ Flight mode when Channel 5 pwm is >1230, <= 1360
 |1|MANUAL|
 |2|VELOCITY|
 |3|LOITER|
+|4|RTL|
+|5|AUTO|
+|6|HOLD|
 
 ## FLTMODE3: Flight Mode 3
 
@@ -113,6 +119,9 @@ Flight mode when Channel 5 pwm is >1360, <= 1490
 |1|MANUAL|
 |2|VELOCITY|
 |3|LOITER|
+|4|RTL|
+|5|AUTO|
+|6|HOLD|
 
 ## FLTMODE4: Flight Mode 4
 
@@ -124,6 +133,9 @@ Flight mode when Channel 5 pwm is >1490, <= 1620
 |1|MANUAL|
 |2|VELOCITY|
 |3|LOITER|
+|4|RTL|
+|5|AUTO|
+|6|HOLD|
 
 ## FLTMODE5: Flight Mode 5
 
@@ -135,6 +147,9 @@ Flight mode when Channel 5 pwm is >1620, <= 1749
 |1|MANUAL|
 |2|VELOCITY|
 |3|LOITER|
+|4|RTL|
+|5|AUTO|
+|6|HOLD|
 
 ## FLTMODE6: Flight Mode 6
 
@@ -146,6 +161,9 @@ Flight mode when Channel 5 pwm is >=1750
 |1|MANUAL|
 |2|VELOCITY|
 |3|LOITER|
+|4|RTL|
+|5|AUTO|
+|6|HOLD|
 
 ## FLTMODE_CH: Flightmode channel
 
@@ -173,6 +191,9 @@ This selects the mode to start in on boot.
 |1|MANUAL|
 |2|VELOCITY|
 |3|LOITER|
+|4|RTL|
+|5|AUTO|
+|6|HOLD|
 
 ## LOG_BITMASK: Log bitmask
 
@@ -295,7 +316,9 @@ Controls frame for blimp.
 
 |Value|Meaning|
 |:---:|:---:|
-|0|Finnedblimp|
+|0|Undefined|
+|1|FinnedBlimp|
+|2|FourMotorBlimp|
 
 - RebootRequired: True
 
@@ -12811,7 +12834,6 @@ This allows selection of a PX4 or VRBRAIN board type. If set to zero then the bo
 |3|Cube/Pixhawk2|
 |5|PixhawkMini|
 |6|Pixhawk2Slim|
-|13|Intel Aero FC|
 |14|Pixhawk Pro|
 |20|AUAV2.1|
 |39|PX4 FMUV6|
@@ -23232,7 +23254,7 @@ Mask for disabling (setting to zero) one or more of the 4 output axis in Velocit
 
 ## LOIT_PID_DZ: Deadzone for the position PIDs
 
-Output 0 thrust signal when blimp is within this distance (in meters) of the target position. Warning: If this param is greater than LOIT_MAX_POS_X multiplied by LOIT_LAG then the blimp won't move at all in the X axis in Loiter mode. Same for the other axes.
+Output 0 thrust signal when blimp is within this distance (in meters) of the target position. Warning: If this param is greater than LOIT_MAX_POSX multiplied by LOIT_POS_LAG then the blimp won't move at all in the X axis in Loiter mode. Same for the other axes.
 
 - Units: m
 

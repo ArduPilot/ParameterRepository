@@ -90778,6 +90778,63 @@ Radius of the GPS horizontal position error in meters
 
 
 
+.. _SIM_GPS1_GLTV_X:
+
+SIM\_GPS1\_GLTV\_X: GPS velocity glitch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Glitch offsets of simulated GPS velocity in NED\. The reported position also moves continuously with this velocity\, so position and velocity stay consistent \(e\.g\. to simulate GPS spoofing that drifts the position\)\. The accumulated position offset is cleared when all three components are zero at a GPS update\, so when changing axes set the new component before zeroing the old one \(X\-axis\)
+
+
++-------------------+
+| Units             |
++===================+
+| meters per second |
++-------------------+
+
+
+
+
+.. _SIM_GPS1_GLTV_Y:
+
+SIM\_GPS1\_GLTV\_Y: GPS velocity glitch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Glitch offsets of simulated GPS velocity in NED\. The reported position also moves continuously with this velocity\, so position and velocity stay consistent \(e\.g\. to simulate GPS spoofing that drifts the position\)\. The accumulated position offset is cleared when all three components are zero at a GPS update\, so when changing axes set the new component before zeroing the old one \(Y\-axis\)
+
+
++-------------------+
+| Units             |
++===================+
+| meters per second |
++-------------------+
+
+
+
+
+.. _SIM_GPS1_GLTV_Z:
+
+SIM\_GPS1\_GLTV\_Z: GPS velocity glitch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Glitch offsets of simulated GPS velocity in NED\. The reported position also moves continuously with this velocity\, so position and velocity stay consistent \(e\.g\. to simulate GPS spoofing that drifts the position\)\. The accumulated position offset is cleared when all three components are zero at a GPS update\, so when changing axes set the new component before zeroing the old one \(Z\-axis\)
+
+
++-------------------+
+| Units             |
++===================+
+| meters per second |
++-------------------+
+
+
+
+
 
 .. _SIM_GPS2_ENABLE:
 
@@ -91222,6 +91279,63 @@ Radius of the GPS horizontal position error in meters
 +========+
 | meters |
 +--------+
+
+
+
+
+.. _SIM_GPS2_GLTV_X:
+
+SIM\_GPS2\_GLTV\_X: GPS velocity glitch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Glitch offsets of simulated GPS velocity in NED\. The reported position also moves continuously with this velocity\, so position and velocity stay consistent \(e\.g\. to simulate GPS spoofing that drifts the position\)\. The accumulated position offset is cleared when all three components are zero at a GPS update\, so when changing axes set the new component before zeroing the old one \(X\-axis\)
+
+
++-------------------+
+| Units             |
++===================+
+| meters per second |
++-------------------+
+
+
+
+
+.. _SIM_GPS2_GLTV_Y:
+
+SIM\_GPS2\_GLTV\_Y: GPS velocity glitch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Glitch offsets of simulated GPS velocity in NED\. The reported position also moves continuously with this velocity\, so position and velocity stay consistent \(e\.g\. to simulate GPS spoofing that drifts the position\)\. The accumulated position offset is cleared when all three components are zero at a GPS update\, so when changing axes set the new component before zeroing the old one \(Y\-axis\)
+
+
++-------------------+
+| Units             |
++===================+
+| meters per second |
++-------------------+
+
+
+
+
+.. _SIM_GPS2_GLTV_Z:
+
+SIM\_GPS2\_GLTV\_Z: GPS velocity glitch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Glitch offsets of simulated GPS velocity in NED\. The reported position also moves continuously with this velocity\, so position and velocity stay consistent \(e\.g\. to simulate GPS spoofing that drifts the position\)\. The accumulated position offset is cleared when all three components are zero at a GPS update\, so when changing axes set the new component before zeroing the old one \(Z\-axis\)
+
+
++-------------------+
+| Units             |
++===================+
+| meters per second |
++-------------------+
 
 
 
@@ -91674,6 +91788,63 @@ Radius of the GPS horizontal position error in meters
 
 
 
+.. _SIM_GPS3_GLTV_X:
+
+SIM\_GPS3\_GLTV\_X: GPS velocity glitch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Glitch offsets of simulated GPS velocity in NED\. The reported position also moves continuously with this velocity\, so position and velocity stay consistent \(e\.g\. to simulate GPS spoofing that drifts the position\)\. The accumulated position offset is cleared when all three components are zero at a GPS update\, so when changing axes set the new component before zeroing the old one \(X\-axis\)
+
+
++-------------------+
+| Units             |
++===================+
+| meters per second |
++-------------------+
+
+
+
+
+.. _SIM_GPS3_GLTV_Y:
+
+SIM\_GPS3\_GLTV\_Y: GPS velocity glitch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Glitch offsets of simulated GPS velocity in NED\. The reported position also moves continuously with this velocity\, so position and velocity stay consistent \(e\.g\. to simulate GPS spoofing that drifts the position\)\. The accumulated position offset is cleared when all three components are zero at a GPS update\, so when changing axes set the new component before zeroing the old one \(Y\-axis\)
+
+
++-------------------+
+| Units             |
++===================+
+| meters per second |
++-------------------+
+
+
+
+
+.. _SIM_GPS3_GLTV_Z:
+
+SIM\_GPS3\_GLTV\_Z: GPS velocity glitch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Glitch offsets of simulated GPS velocity in NED\. The reported position also moves continuously with this velocity\, so position and velocity stay consistent \(e\.g\. to simulate GPS spoofing that drifts the position\)\. The accumulated position offset is cleared when all three components are zero at a GPS update\, so when changing axes set the new component before zeroing the old one \(Z\-axis\)
+
+
++-------------------+
+| Units             |
++===================+
+| meters per second |
++-------------------+
+
+
+
+
 
 .. _SIM_GPS4_ENABLE:
 
@@ -92118,6 +92289,63 @@ Radius of the GPS horizontal position error in meters
 +========+
 | meters |
 +--------+
+
+
+
+
+.. _SIM_GPS4_GLTV_X:
+
+SIM\_GPS4\_GLTV\_X: GPS velocity glitch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Glitch offsets of simulated GPS velocity in NED\. The reported position also moves continuously with this velocity\, so position and velocity stay consistent \(e\.g\. to simulate GPS spoofing that drifts the position\)\. The accumulated position offset is cleared when all three components are zero at a GPS update\, so when changing axes set the new component before zeroing the old one \(X\-axis\)
+
+
++-------------------+
+| Units             |
++===================+
+| meters per second |
++-------------------+
+
+
+
+
+.. _SIM_GPS4_GLTV_Y:
+
+SIM\_GPS4\_GLTV\_Y: GPS velocity glitch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Glitch offsets of simulated GPS velocity in NED\. The reported position also moves continuously with this velocity\, so position and velocity stay consistent \(e\.g\. to simulate GPS spoofing that drifts the position\)\. The accumulated position offset is cleared when all three components are zero at a GPS update\, so when changing axes set the new component before zeroing the old one \(Y\-axis\)
+
+
++-------------------+
+| Units             |
++===================+
+| meters per second |
++-------------------+
+
+
+
+
+.. _SIM_GPS4_GLTV_Z:
+
+SIM\_GPS4\_GLTV\_Z: GPS velocity glitch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Glitch offsets of simulated GPS velocity in NED\. The reported position also moves continuously with this velocity\, so position and velocity stay consistent \(e\.g\. to simulate GPS spoofing that drifts the position\)\. The accumulated position offset is cleared when all three components are zero at a GPS update\, so when changing axes set the new component before zeroing the old one \(Z\-axis\)
+
+
++-------------------+
+| Units             |
++===================+
+| meters per second |
++-------------------+
 
 
 

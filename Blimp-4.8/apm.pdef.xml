@@ -65,6 +65,9 @@
           <value code="1">MANUAL</value>
           <value code="2">VELOCITY</value>
           <value code="3">LOITER</value>
+          <value code="4">RTL</value>
+          <value code="5">AUTO</value>
+          <value code="6">HOLD</value>
         </values>
       </param>
       <param humanName="Flight Mode 2" name="Blimp:FLTMODE2" documentation="Flight mode when Channel 5 pwm is &gt;1230, &lt;= 1360" user="Standard">
@@ -73,6 +76,9 @@
           <value code="1">MANUAL</value>
           <value code="2">VELOCITY</value>
           <value code="3">LOITER</value>
+          <value code="4">RTL</value>
+          <value code="5">AUTO</value>
+          <value code="6">HOLD</value>
         </values>
       </param>
       <param humanName="Flight Mode 3" name="Blimp:FLTMODE3" documentation="Flight mode when Channel 5 pwm is &gt;1360, &lt;= 1490" user="Standard">
@@ -81,6 +87,9 @@
           <value code="1">MANUAL</value>
           <value code="2">VELOCITY</value>
           <value code="3">LOITER</value>
+          <value code="4">RTL</value>
+          <value code="5">AUTO</value>
+          <value code="6">HOLD</value>
         </values>
       </param>
       <param humanName="Flight Mode 4" name="Blimp:FLTMODE4" documentation="Flight mode when Channel 5 pwm is &gt;1490, &lt;= 1620" user="Standard">
@@ -89,6 +98,9 @@
           <value code="1">MANUAL</value>
           <value code="2">VELOCITY</value>
           <value code="3">LOITER</value>
+          <value code="4">RTL</value>
+          <value code="5">AUTO</value>
+          <value code="6">HOLD</value>
         </values>
       </param>
       <param humanName="Flight Mode 5" name="Blimp:FLTMODE5" documentation="Flight mode when Channel 5 pwm is &gt;1620, &lt;= 1749" user="Standard">
@@ -97,6 +109,9 @@
           <value code="1">MANUAL</value>
           <value code="2">VELOCITY</value>
           <value code="3">LOITER</value>
+          <value code="4">RTL</value>
+          <value code="5">AUTO</value>
+          <value code="6">HOLD</value>
         </values>
       </param>
       <param humanName="Flight Mode 6" name="Blimp:FLTMODE6" documentation="Flight mode when Channel 5 pwm is &gt;=1750" user="Standard">
@@ -105,6 +120,9 @@
           <value code="1">MANUAL</value>
           <value code="2">VELOCITY</value>
           <value code="3">LOITER</value>
+          <value code="4">RTL</value>
+          <value code="5">AUTO</value>
+          <value code="6">HOLD</value>
         </values>
       </param>
       <param humanName="Flightmode channel" name="Blimp:FLTMODE_CH" documentation="RC Channel to use for flight mode control" user="Advanced">
@@ -122,6 +140,9 @@
           <value code="1">MANUAL</value>
           <value code="2">VELOCITY</value>
           <value code="3">LOITER</value>
+          <value code="4">RTL</value>
+          <value code="5">AUTO</value>
+          <value code="6">HOLD</value>
         </values>
       </param>
       <param humanName="Log bitmask" name="Blimp:LOG_BITMASK" documentation="Bitmap of what log types to enable in on-board logger. This value is made up of the sum of each of the log types you want to be saved. On boards supporting microSD cards or other large block-storage devices it is usually best just to enable all basic log types by setting this to 65535." user="Standard">
@@ -207,7 +228,9 @@
       </param>
       <param humanName="Frame class" name="Blimp:FRAME_CLASS" documentation="Controls frame for blimp." user="Standard">
         <values>
-          <value code="0">Finnedblimp</value>
+          <value code="0">Undefined</value>
+          <value code="1">FinnedBlimp</value>
+          <value code="2">FourMotorBlimp</value>
         </values>
         <field name="RebootRequired">True</field>
       </param>
@@ -8401,7 +8424,6 @@
           <value code="3">Cube/Pixhawk2</value>
           <value code="5">PixhawkMini</value>
           <value code="6">Pixhawk2Slim</value>
-          <value code="13">Intel Aero FC</value>
           <value code="14">Pixhawk Pro</value>
           <value code="20">AUAV2.1</value>
           <value code="39">PX4 FMUV6</value>
@@ -15094,7 +15116,7 @@
         </bitmask>
         <field name="Bitmask">0:Right,1:Front,2:Down,3:Yaw</field>
       </param>
-      <param humanName="Deadzone for the position PIDs" name="LOIT_PID_DZ" documentation="Output 0 thrust signal when blimp is within this distance (in meters) of the target position. Warning: If this param is greater than LOIT_MAX_POS_X multiplied by LOIT_LAG then the blimp won't move at all in the X axis in Loiter mode. Same for the other axes." user="Standard">
+      <param humanName="Deadzone for the position PIDs" name="LOIT_PID_DZ" documentation="Output 0 thrust signal when blimp is within this distance (in meters) of the target position. Warning: If this param is greater than LOIT_MAX_POSX multiplied by LOIT_POS_LAG then the blimp won't move at all in the X axis in Loiter mode. Same for the other axes." user="Standard">
         <field name="Units">m</field>
         <field name="UnitText">meters</field>
         <field name="Range">0.1 1</field>
