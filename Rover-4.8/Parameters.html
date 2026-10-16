@@ -160,7 +160,7 @@ DO NOT EDIT
 
 <h2>Throttle Failsafe Enable (Rover:FS_THR_ENABLE)</h2>
 
-<p>The throttle failsafe allows you to configure a software failsafe activated by a setting on the throttle input channel to a low value. This can be used to detect the RC transmitter going out of range. Failsafe will be triggered when the throttle channel goes below the FS_THR_VALUE for FS_TIMEOUT seconds.</p>
+<p>The throttle failsafe allows you to configure a software failsafe activated by a setting on the throttle input channel to a low value. This can be used to detect the RC transmitter going out of range. Failsafe will be triggered when the throttle channel reaches the FS_THR_VALUE, or goes below it, for FS_TIMEOUT seconds.</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Disabled</td></tr>
@@ -172,7 +172,7 @@ DO NOT EDIT
 
 <h2>Throttle Failsafe Value (Rover:FS_THR_VALUE)</h2>
 
-<p>The PWM level on the throttle channel below which throttle failsafe triggers.</p>
+<p>The PWM level on the throttle channel at or below which throttle failsafe triggers.</p>
 <ul>
 <li>Range: 910 1100</li>
 <li>Increment: 1</li>
@@ -14987,9 +14987,7 @@ DO NOT EDIT
 <tr><td>3</td><td>Cube/Pixhawk2</td></tr>
 <tr><td>5</td><td>PixhawkMini</td></tr>
 <tr><td>6</td><td>Pixhawk2Slim</td></tr>
-<tr><td>14</td><td>Pixhawk Pro</td></tr>
 <tr><td>20</td><td>AUAV2.1</td></tr>
-<tr><td>39</td><td>PX4 FMUV6</td></tr>
 <tr><td>100</td><td>PX4 OLDDRIVERS</td></tr>
 </table>
 <li>RebootRequired: True</li>
@@ -15487,7 +15485,6 @@ DO NOT EDIT
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Do Nothing</td></tr>
 <tr><td>4</td><td>RTL</td></tr>
-<tr><td>5</td><td>Save Trim (4.1 and lower)</td></tr>
 <tr><td>7</td><td>Save WP</td></tr>
 <tr><td>9</td><td>Camera Trigger</td></tr>
 <tr><td>11</td><td>Fence Enable</td></tr>
@@ -15502,7 +15499,6 @@ DO NOT EDIT
 <tr><td>35</td><td>Relay3 On/Off</td></tr>
 <tr><td>36</td><td>Relay4 On/Off</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>46</td><td>RC Override Enable</td></tr>
 <tr><td>50</td><td>LearnCruise Speed</td></tr>
@@ -15540,7 +15536,7 @@ DO NOT EDIT
 <tr><td>111</td><td>Loweheiser starter</td></tr>
 <tr><td>112</td><td>SwitchExternalAHRS</td></tr>
 <tr><td>113</td><td>Retract Mount2</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
 <tr><td>155</td><td>Set steering trim to current servo and RC</td></tr>
 <tr><td>156</td><td>Torqeedo Clear Err</td></tr>
 <tr><td>162</td><td>FFT Tune</td></tr>
@@ -15599,7 +15595,6 @@ DO NOT EDIT
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Do Nothing</td></tr>
 <tr><td>4</td><td>RTL</td></tr>
-<tr><td>5</td><td>Save Trim (4.1 and lower)</td></tr>
 <tr><td>7</td><td>Save WP</td></tr>
 <tr><td>9</td><td>Camera Trigger</td></tr>
 <tr><td>11</td><td>Fence Enable</td></tr>
@@ -15614,7 +15609,6 @@ DO NOT EDIT
 <tr><td>35</td><td>Relay3 On/Off</td></tr>
 <tr><td>36</td><td>Relay4 On/Off</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>46</td><td>RC Override Enable</td></tr>
 <tr><td>50</td><td>LearnCruise Speed</td></tr>
@@ -15652,7 +15646,7 @@ DO NOT EDIT
 <tr><td>111</td><td>Loweheiser starter</td></tr>
 <tr><td>112</td><td>SwitchExternalAHRS</td></tr>
 <tr><td>113</td><td>Retract Mount2</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
 <tr><td>155</td><td>Set steering trim to current servo and RC</td></tr>
 <tr><td>156</td><td>Torqeedo Clear Err</td></tr>
 <tr><td>162</td><td>FFT Tune</td></tr>
@@ -15711,7 +15705,6 @@ DO NOT EDIT
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Do Nothing</td></tr>
 <tr><td>4</td><td>RTL</td></tr>
-<tr><td>5</td><td>Save Trim (4.1 and lower)</td></tr>
 <tr><td>7</td><td>Save WP</td></tr>
 <tr><td>9</td><td>Camera Trigger</td></tr>
 <tr><td>11</td><td>Fence Enable</td></tr>
@@ -15726,7 +15719,6 @@ DO NOT EDIT
 <tr><td>35</td><td>Relay3 On/Off</td></tr>
 <tr><td>36</td><td>Relay4 On/Off</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>46</td><td>RC Override Enable</td></tr>
 <tr><td>50</td><td>LearnCruise Speed</td></tr>
@@ -15764,7 +15756,7 @@ DO NOT EDIT
 <tr><td>111</td><td>Loweheiser starter</td></tr>
 <tr><td>112</td><td>SwitchExternalAHRS</td></tr>
 <tr><td>113</td><td>Retract Mount2</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
 <tr><td>155</td><td>Set steering trim to current servo and RC</td></tr>
 <tr><td>156</td><td>Torqeedo Clear Err</td></tr>
 <tr><td>162</td><td>FFT Tune</td></tr>
@@ -15823,7 +15815,6 @@ DO NOT EDIT
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Do Nothing</td></tr>
 <tr><td>4</td><td>RTL</td></tr>
-<tr><td>5</td><td>Save Trim (4.1 and lower)</td></tr>
 <tr><td>7</td><td>Save WP</td></tr>
 <tr><td>9</td><td>Camera Trigger</td></tr>
 <tr><td>11</td><td>Fence Enable</td></tr>
@@ -15838,7 +15829,6 @@ DO NOT EDIT
 <tr><td>35</td><td>Relay3 On/Off</td></tr>
 <tr><td>36</td><td>Relay4 On/Off</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>46</td><td>RC Override Enable</td></tr>
 <tr><td>50</td><td>LearnCruise Speed</td></tr>
@@ -15876,7 +15866,7 @@ DO NOT EDIT
 <tr><td>111</td><td>Loweheiser starter</td></tr>
 <tr><td>112</td><td>SwitchExternalAHRS</td></tr>
 <tr><td>113</td><td>Retract Mount2</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
 <tr><td>155</td><td>Set steering trim to current servo and RC</td></tr>
 <tr><td>156</td><td>Torqeedo Clear Err</td></tr>
 <tr><td>162</td><td>FFT Tune</td></tr>
@@ -34029,12 +34019,13 @@ DO NOT EDIT
 
 <h2>Sets the overlay text resolution (MSP DisplayPort only) (OSD1_TXT_RES)</h2>
 
-<p>Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22 (MSP DisplayPort only)</p>
+<p>Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22/53x20 (MSP DisplayPort only)</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>30x16</td></tr>
 <tr><td>1</td><td>50x18</td></tr>
 <tr><td>2</td><td>60x22</td></tr>
+<tr><td>3</td><td>53x20</td></tr>
 </table>
 </ul>
 
@@ -35842,12 +35833,13 @@ DO NOT EDIT
 
 <h2>Sets the overlay text resolution (MSP DisplayPort only) (OSD2_TXT_RES)</h2>
 
-<p>Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22 (MSP DisplayPort only)</p>
+<p>Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22/53x20 (MSP DisplayPort only)</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>30x16</td></tr>
 <tr><td>1</td><td>50x18</td></tr>
 <tr><td>2</td><td>60x22</td></tr>
+<tr><td>3</td><td>53x20</td></tr>
 </table>
 </ul>
 
@@ -37655,12 +37647,13 @@ DO NOT EDIT
 
 <h2>Sets the overlay text resolution (MSP DisplayPort only) (OSD3_TXT_RES)</h2>
 
-<p>Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22 (MSP DisplayPort only)</p>
+<p>Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22/53x20 (MSP DisplayPort only)</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>30x16</td></tr>
 <tr><td>1</td><td>50x18</td></tr>
 <tr><td>2</td><td>60x22</td></tr>
+<tr><td>3</td><td>53x20</td></tr>
 </table>
 </ul>
 
@@ -39468,12 +39461,13 @@ DO NOT EDIT
 
 <h2>Sets the overlay text resolution (MSP DisplayPort only) (OSD4_TXT_RES)</h2>
 
-<p>Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22 (MSP DisplayPort only)</p>
+<p>Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22/53x20 (MSP DisplayPort only)</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>30x16</td></tr>
 <tr><td>1</td><td>50x18</td></tr>
 <tr><td>2</td><td>60x22</td></tr>
+<tr><td>3</td><td>53x20</td></tr>
 </table>
 </ul>
 
@@ -42384,7 +42378,6 @@ DO NOT EDIT
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Do Nothing</td></tr>
 <tr><td>4</td><td>RTL</td></tr>
-<tr><td>5</td><td>Save Trim (4.1 and lower)</td></tr>
 <tr><td>7</td><td>Save WP</td></tr>
 <tr><td>9</td><td>Camera Trigger</td></tr>
 <tr><td>11</td><td>Fence Enable</td></tr>
@@ -42399,7 +42392,6 @@ DO NOT EDIT
 <tr><td>35</td><td>Relay3 On/Off</td></tr>
 <tr><td>36</td><td>Relay4 On/Off</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>46</td><td>RC Override Enable</td></tr>
 <tr><td>50</td><td>LearnCruise Speed</td></tr>
@@ -42437,7 +42429,7 @@ DO NOT EDIT
 <tr><td>111</td><td>Loweheiser starter</td></tr>
 <tr><td>112</td><td>SwitchExternalAHRS</td></tr>
 <tr><td>113</td><td>Retract Mount2</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
 <tr><td>155</td><td>Set steering trim to current servo and RC</td></tr>
 <tr><td>156</td><td>Torqeedo Clear Err</td></tr>
 <tr><td>162</td><td>FFT Tune</td></tr>
@@ -42549,7 +42541,6 @@ DO NOT EDIT
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Do Nothing</td></tr>
 <tr><td>4</td><td>RTL</td></tr>
-<tr><td>5</td><td>Save Trim (4.1 and lower)</td></tr>
 <tr><td>7</td><td>Save WP</td></tr>
 <tr><td>9</td><td>Camera Trigger</td></tr>
 <tr><td>11</td><td>Fence Enable</td></tr>
@@ -42564,7 +42555,6 @@ DO NOT EDIT
 <tr><td>35</td><td>Relay3 On/Off</td></tr>
 <tr><td>36</td><td>Relay4 On/Off</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>46</td><td>RC Override Enable</td></tr>
 <tr><td>50</td><td>LearnCruise Speed</td></tr>
@@ -42602,7 +42592,7 @@ DO NOT EDIT
 <tr><td>111</td><td>Loweheiser starter</td></tr>
 <tr><td>112</td><td>SwitchExternalAHRS</td></tr>
 <tr><td>113</td><td>Retract Mount2</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
 <tr><td>155</td><td>Set steering trim to current servo and RC</td></tr>
 <tr><td>156</td><td>Torqeedo Clear Err</td></tr>
 <tr><td>162</td><td>FFT Tune</td></tr>
@@ -42714,7 +42704,6 @@ DO NOT EDIT
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Do Nothing</td></tr>
 <tr><td>4</td><td>RTL</td></tr>
-<tr><td>5</td><td>Save Trim (4.1 and lower)</td></tr>
 <tr><td>7</td><td>Save WP</td></tr>
 <tr><td>9</td><td>Camera Trigger</td></tr>
 <tr><td>11</td><td>Fence Enable</td></tr>
@@ -42729,7 +42718,6 @@ DO NOT EDIT
 <tr><td>35</td><td>Relay3 On/Off</td></tr>
 <tr><td>36</td><td>Relay4 On/Off</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>46</td><td>RC Override Enable</td></tr>
 <tr><td>50</td><td>LearnCruise Speed</td></tr>
@@ -42767,7 +42755,7 @@ DO NOT EDIT
 <tr><td>111</td><td>Loweheiser starter</td></tr>
 <tr><td>112</td><td>SwitchExternalAHRS</td></tr>
 <tr><td>113</td><td>Retract Mount2</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
 <tr><td>155</td><td>Set steering trim to current servo and RC</td></tr>
 <tr><td>156</td><td>Torqeedo Clear Err</td></tr>
 <tr><td>162</td><td>FFT Tune</td></tr>
@@ -42879,7 +42867,6 @@ DO NOT EDIT
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Do Nothing</td></tr>
 <tr><td>4</td><td>RTL</td></tr>
-<tr><td>5</td><td>Save Trim (4.1 and lower)</td></tr>
 <tr><td>7</td><td>Save WP</td></tr>
 <tr><td>9</td><td>Camera Trigger</td></tr>
 <tr><td>11</td><td>Fence Enable</td></tr>
@@ -42894,7 +42881,6 @@ DO NOT EDIT
 <tr><td>35</td><td>Relay3 On/Off</td></tr>
 <tr><td>36</td><td>Relay4 On/Off</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>46</td><td>RC Override Enable</td></tr>
 <tr><td>50</td><td>LearnCruise Speed</td></tr>
@@ -42932,7 +42918,7 @@ DO NOT EDIT
 <tr><td>111</td><td>Loweheiser starter</td></tr>
 <tr><td>112</td><td>SwitchExternalAHRS</td></tr>
 <tr><td>113</td><td>Retract Mount2</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
 <tr><td>155</td><td>Set steering trim to current servo and RC</td></tr>
 <tr><td>156</td><td>Torqeedo Clear Err</td></tr>
 <tr><td>162</td><td>FFT Tune</td></tr>
@@ -43044,7 +43030,6 @@ DO NOT EDIT
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Do Nothing</td></tr>
 <tr><td>4</td><td>RTL</td></tr>
-<tr><td>5</td><td>Save Trim (4.1 and lower)</td></tr>
 <tr><td>7</td><td>Save WP</td></tr>
 <tr><td>9</td><td>Camera Trigger</td></tr>
 <tr><td>11</td><td>Fence Enable</td></tr>
@@ -43059,7 +43044,6 @@ DO NOT EDIT
 <tr><td>35</td><td>Relay3 On/Off</td></tr>
 <tr><td>36</td><td>Relay4 On/Off</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>46</td><td>RC Override Enable</td></tr>
 <tr><td>50</td><td>LearnCruise Speed</td></tr>
@@ -43097,7 +43081,7 @@ DO NOT EDIT
 <tr><td>111</td><td>Loweheiser starter</td></tr>
 <tr><td>112</td><td>SwitchExternalAHRS</td></tr>
 <tr><td>113</td><td>Retract Mount2</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
 <tr><td>155</td><td>Set steering trim to current servo and RC</td></tr>
 <tr><td>156</td><td>Torqeedo Clear Err</td></tr>
 <tr><td>162</td><td>FFT Tune</td></tr>
@@ -43209,7 +43193,6 @@ DO NOT EDIT
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Do Nothing</td></tr>
 <tr><td>4</td><td>RTL</td></tr>
-<tr><td>5</td><td>Save Trim (4.1 and lower)</td></tr>
 <tr><td>7</td><td>Save WP</td></tr>
 <tr><td>9</td><td>Camera Trigger</td></tr>
 <tr><td>11</td><td>Fence Enable</td></tr>
@@ -43224,7 +43207,6 @@ DO NOT EDIT
 <tr><td>35</td><td>Relay3 On/Off</td></tr>
 <tr><td>36</td><td>Relay4 On/Off</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>46</td><td>RC Override Enable</td></tr>
 <tr><td>50</td><td>LearnCruise Speed</td></tr>
@@ -43262,7 +43244,7 @@ DO NOT EDIT
 <tr><td>111</td><td>Loweheiser starter</td></tr>
 <tr><td>112</td><td>SwitchExternalAHRS</td></tr>
 <tr><td>113</td><td>Retract Mount2</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
 <tr><td>155</td><td>Set steering trim to current servo and RC</td></tr>
 <tr><td>156</td><td>Torqeedo Clear Err</td></tr>
 <tr><td>162</td><td>FFT Tune</td></tr>
@@ -43374,7 +43356,6 @@ DO NOT EDIT
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Do Nothing</td></tr>
 <tr><td>4</td><td>RTL</td></tr>
-<tr><td>5</td><td>Save Trim (4.1 and lower)</td></tr>
 <tr><td>7</td><td>Save WP</td></tr>
 <tr><td>9</td><td>Camera Trigger</td></tr>
 <tr><td>11</td><td>Fence Enable</td></tr>
@@ -43389,7 +43370,6 @@ DO NOT EDIT
 <tr><td>35</td><td>Relay3 On/Off</td></tr>
 <tr><td>36</td><td>Relay4 On/Off</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>46</td><td>RC Override Enable</td></tr>
 <tr><td>50</td><td>LearnCruise Speed</td></tr>
@@ -43427,7 +43407,7 @@ DO NOT EDIT
 <tr><td>111</td><td>Loweheiser starter</td></tr>
 <tr><td>112</td><td>SwitchExternalAHRS</td></tr>
 <tr><td>113</td><td>Retract Mount2</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
 <tr><td>155</td><td>Set steering trim to current servo and RC</td></tr>
 <tr><td>156</td><td>Torqeedo Clear Err</td></tr>
 <tr><td>162</td><td>FFT Tune</td></tr>
@@ -43539,7 +43519,6 @@ DO NOT EDIT
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Do Nothing</td></tr>
 <tr><td>4</td><td>RTL</td></tr>
-<tr><td>5</td><td>Save Trim (4.1 and lower)</td></tr>
 <tr><td>7</td><td>Save WP</td></tr>
 <tr><td>9</td><td>Camera Trigger</td></tr>
 <tr><td>11</td><td>Fence Enable</td></tr>
@@ -43554,7 +43533,6 @@ DO NOT EDIT
 <tr><td>35</td><td>Relay3 On/Off</td></tr>
 <tr><td>36</td><td>Relay4 On/Off</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>46</td><td>RC Override Enable</td></tr>
 <tr><td>50</td><td>LearnCruise Speed</td></tr>
@@ -43592,7 +43570,7 @@ DO NOT EDIT
 <tr><td>111</td><td>Loweheiser starter</td></tr>
 <tr><td>112</td><td>SwitchExternalAHRS</td></tr>
 <tr><td>113</td><td>Retract Mount2</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
 <tr><td>155</td><td>Set steering trim to current servo and RC</td></tr>
 <tr><td>156</td><td>Torqeedo Clear Err</td></tr>
 <tr><td>162</td><td>FFT Tune</td></tr>
@@ -43704,7 +43682,6 @@ DO NOT EDIT
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Do Nothing</td></tr>
 <tr><td>4</td><td>RTL</td></tr>
-<tr><td>5</td><td>Save Trim (4.1 and lower)</td></tr>
 <tr><td>7</td><td>Save WP</td></tr>
 <tr><td>9</td><td>Camera Trigger</td></tr>
 <tr><td>11</td><td>Fence Enable</td></tr>
@@ -43719,7 +43696,6 @@ DO NOT EDIT
 <tr><td>35</td><td>Relay3 On/Off</td></tr>
 <tr><td>36</td><td>Relay4 On/Off</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>46</td><td>RC Override Enable</td></tr>
 <tr><td>50</td><td>LearnCruise Speed</td></tr>
@@ -43757,7 +43733,7 @@ DO NOT EDIT
 <tr><td>111</td><td>Loweheiser starter</td></tr>
 <tr><td>112</td><td>SwitchExternalAHRS</td></tr>
 <tr><td>113</td><td>Retract Mount2</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
 <tr><td>155</td><td>Set steering trim to current servo and RC</td></tr>
 <tr><td>156</td><td>Torqeedo Clear Err</td></tr>
 <tr><td>162</td><td>FFT Tune</td></tr>
@@ -43869,7 +43845,6 @@ DO NOT EDIT
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Do Nothing</td></tr>
 <tr><td>4</td><td>RTL</td></tr>
-<tr><td>5</td><td>Save Trim (4.1 and lower)</td></tr>
 <tr><td>7</td><td>Save WP</td></tr>
 <tr><td>9</td><td>Camera Trigger</td></tr>
 <tr><td>11</td><td>Fence Enable</td></tr>
@@ -43884,7 +43859,6 @@ DO NOT EDIT
 <tr><td>35</td><td>Relay3 On/Off</td></tr>
 <tr><td>36</td><td>Relay4 On/Off</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>46</td><td>RC Override Enable</td></tr>
 <tr><td>50</td><td>LearnCruise Speed</td></tr>
@@ -43922,7 +43896,7 @@ DO NOT EDIT
 <tr><td>111</td><td>Loweheiser starter</td></tr>
 <tr><td>112</td><td>SwitchExternalAHRS</td></tr>
 <tr><td>113</td><td>Retract Mount2</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
 <tr><td>155</td><td>Set steering trim to current servo and RC</td></tr>
 <tr><td>156</td><td>Torqeedo Clear Err</td></tr>
 <tr><td>162</td><td>FFT Tune</td></tr>
@@ -44034,7 +44008,6 @@ DO NOT EDIT
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Do Nothing</td></tr>
 <tr><td>4</td><td>RTL</td></tr>
-<tr><td>5</td><td>Save Trim (4.1 and lower)</td></tr>
 <tr><td>7</td><td>Save WP</td></tr>
 <tr><td>9</td><td>Camera Trigger</td></tr>
 <tr><td>11</td><td>Fence Enable</td></tr>
@@ -44049,7 +44022,6 @@ DO NOT EDIT
 <tr><td>35</td><td>Relay3 On/Off</td></tr>
 <tr><td>36</td><td>Relay4 On/Off</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>46</td><td>RC Override Enable</td></tr>
 <tr><td>50</td><td>LearnCruise Speed</td></tr>
@@ -44087,7 +44059,7 @@ DO NOT EDIT
 <tr><td>111</td><td>Loweheiser starter</td></tr>
 <tr><td>112</td><td>SwitchExternalAHRS</td></tr>
 <tr><td>113</td><td>Retract Mount2</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
 <tr><td>155</td><td>Set steering trim to current servo and RC</td></tr>
 <tr><td>156</td><td>Torqeedo Clear Err</td></tr>
 <tr><td>162</td><td>FFT Tune</td></tr>
@@ -44199,7 +44171,6 @@ DO NOT EDIT
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Do Nothing</td></tr>
 <tr><td>4</td><td>RTL</td></tr>
-<tr><td>5</td><td>Save Trim (4.1 and lower)</td></tr>
 <tr><td>7</td><td>Save WP</td></tr>
 <tr><td>9</td><td>Camera Trigger</td></tr>
 <tr><td>11</td><td>Fence Enable</td></tr>
@@ -44214,7 +44185,6 @@ DO NOT EDIT
 <tr><td>35</td><td>Relay3 On/Off</td></tr>
 <tr><td>36</td><td>Relay4 On/Off</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>46</td><td>RC Override Enable</td></tr>
 <tr><td>50</td><td>LearnCruise Speed</td></tr>
@@ -44252,7 +44222,7 @@ DO NOT EDIT
 <tr><td>111</td><td>Loweheiser starter</td></tr>
 <tr><td>112</td><td>SwitchExternalAHRS</td></tr>
 <tr><td>113</td><td>Retract Mount2</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
 <tr><td>155</td><td>Set steering trim to current servo and RC</td></tr>
 <tr><td>156</td><td>Torqeedo Clear Err</td></tr>
 <tr><td>162</td><td>FFT Tune</td></tr>
@@ -44364,7 +44334,6 @@ DO NOT EDIT
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Do Nothing</td></tr>
 <tr><td>4</td><td>RTL</td></tr>
-<tr><td>5</td><td>Save Trim (4.1 and lower)</td></tr>
 <tr><td>7</td><td>Save WP</td></tr>
 <tr><td>9</td><td>Camera Trigger</td></tr>
 <tr><td>11</td><td>Fence Enable</td></tr>
@@ -44379,7 +44348,6 @@ DO NOT EDIT
 <tr><td>35</td><td>Relay3 On/Off</td></tr>
 <tr><td>36</td><td>Relay4 On/Off</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>46</td><td>RC Override Enable</td></tr>
 <tr><td>50</td><td>LearnCruise Speed</td></tr>
@@ -44417,7 +44385,7 @@ DO NOT EDIT
 <tr><td>111</td><td>Loweheiser starter</td></tr>
 <tr><td>112</td><td>SwitchExternalAHRS</td></tr>
 <tr><td>113</td><td>Retract Mount2</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
 <tr><td>155</td><td>Set steering trim to current servo and RC</td></tr>
 <tr><td>156</td><td>Torqeedo Clear Err</td></tr>
 <tr><td>162</td><td>FFT Tune</td></tr>
@@ -44529,7 +44497,6 @@ DO NOT EDIT
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Do Nothing</td></tr>
 <tr><td>4</td><td>RTL</td></tr>
-<tr><td>5</td><td>Save Trim (4.1 and lower)</td></tr>
 <tr><td>7</td><td>Save WP</td></tr>
 <tr><td>9</td><td>Camera Trigger</td></tr>
 <tr><td>11</td><td>Fence Enable</td></tr>
@@ -44544,7 +44511,6 @@ DO NOT EDIT
 <tr><td>35</td><td>Relay3 On/Off</td></tr>
 <tr><td>36</td><td>Relay4 On/Off</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>46</td><td>RC Override Enable</td></tr>
 <tr><td>50</td><td>LearnCruise Speed</td></tr>
@@ -44582,7 +44548,7 @@ DO NOT EDIT
 <tr><td>111</td><td>Loweheiser starter</td></tr>
 <tr><td>112</td><td>SwitchExternalAHRS</td></tr>
 <tr><td>113</td><td>Retract Mount2</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
 <tr><td>155</td><td>Set steering trim to current servo and RC</td></tr>
 <tr><td>156</td><td>Torqeedo Clear Err</td></tr>
 <tr><td>162</td><td>FFT Tune</td></tr>
@@ -44694,7 +44660,6 @@ DO NOT EDIT
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Do Nothing</td></tr>
 <tr><td>4</td><td>RTL</td></tr>
-<tr><td>5</td><td>Save Trim (4.1 and lower)</td></tr>
 <tr><td>7</td><td>Save WP</td></tr>
 <tr><td>9</td><td>Camera Trigger</td></tr>
 <tr><td>11</td><td>Fence Enable</td></tr>
@@ -44709,7 +44674,6 @@ DO NOT EDIT
 <tr><td>35</td><td>Relay3 On/Off</td></tr>
 <tr><td>36</td><td>Relay4 On/Off</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>46</td><td>RC Override Enable</td></tr>
 <tr><td>50</td><td>LearnCruise Speed</td></tr>
@@ -44747,7 +44711,7 @@ DO NOT EDIT
 <tr><td>111</td><td>Loweheiser starter</td></tr>
 <tr><td>112</td><td>SwitchExternalAHRS</td></tr>
 <tr><td>113</td><td>Retract Mount2</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
 <tr><td>155</td><td>Set steering trim to current servo and RC</td></tr>
 <tr><td>156</td><td>Torqeedo Clear Err</td></tr>
 <tr><td>162</td><td>FFT Tune</td></tr>
@@ -44859,7 +44823,6 @@ DO NOT EDIT
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>Do Nothing</td></tr>
 <tr><td>4</td><td>RTL</td></tr>
-<tr><td>5</td><td>Save Trim (4.1 and lower)</td></tr>
 <tr><td>7</td><td>Save WP</td></tr>
 <tr><td>9</td><td>Camera Trigger</td></tr>
 <tr><td>11</td><td>Fence Enable</td></tr>
@@ -44874,7 +44837,6 @@ DO NOT EDIT
 <tr><td>35</td><td>Relay3 On/Off</td></tr>
 <tr><td>36</td><td>Relay4 On/Off</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>46</td><td>RC Override Enable</td></tr>
 <tr><td>50</td><td>LearnCruise Speed</td></tr>
@@ -44912,7 +44874,7 @@ DO NOT EDIT
 <tr><td>111</td><td>Loweheiser starter</td></tr>
 <tr><td>112</td><td>SwitchExternalAHRS</td></tr>
 <tr><td>113</td><td>Retract Mount2</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
 <tr><td>155</td><td>Set steering trim to current servo and RC</td></tr>
 <tr><td>156</td><td>Torqeedo Clear Err</td></tr>
 <tr><td>162</td><td>FFT Tune</td></tr>

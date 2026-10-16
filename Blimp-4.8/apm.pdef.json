@@ -8715,11 +8715,9 @@
         "0": "AUTO",
         "1": "PX4V1",
         "100": "PX4 OLDDRIVERS",
-        "14": "Pixhawk Pro",
         "2": "Pixhawk",
         "20": "AUAV2.1",
         "3": "Cube/Pixhawk2",
-        "39": "PX4 FMUV6",
         "5": "PixhawkMini",
         "6": "Pixhawk2Slim"
       }
@@ -9140,7 +9138,7 @@
       }
     },
     "FS_THR_VALUE": {
-      "Description": "The PWM level in microseconds on channel 3 below which throttle failsafe triggers",
+      "Description": "The PWM level in microseconds on the throttle input channel at or below which throttle failsafe triggers",
       "DisplayName": "Throttle Failsafe Value",
       "Increment": "1",
       "Range": {

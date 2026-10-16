@@ -47,7 +47,7 @@
           <value code="3">Enabled always Land</value>
         </values>
       </param>
-      <param humanName="Throttle Failsafe Value" name="Blimp:FS_THR_VALUE" documentation="The PWM level in microseconds on channel 3 below which throttle failsafe triggers" user="Standard">
+      <param humanName="Throttle Failsafe Value" name="Blimp:FS_THR_VALUE" documentation="The PWM level in microseconds on the throttle input channel at or below which throttle failsafe triggers" user="Standard">
         <field name="Range">910 1100</field>
         <field name="Units">PWM</field>
         <field name="UnitText">PWM in microseconds</field>
@@ -8424,9 +8424,7 @@
           <value code="3">Cube/Pixhawk2</value>
           <value code="5">PixhawkMini</value>
           <value code="6">Pixhawk2Slim</value>
-          <value code="14">Pixhawk Pro</value>
           <value code="20">AUAV2.1</value>
-          <value code="39">PX4 FMUV6</value>
           <value code="100">PX4 OLDDRIVERS</value>
         </values>
         <field name="RebootRequired">True</field>

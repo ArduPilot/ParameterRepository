@@ -24273,11 +24273,7 @@ This allows selection of a PX4 or VRBRAIN board type\. If set to zero then the b
 | +-------+----------------+ |
 | | 6     | Pixhawk2Slim   | |
 | +-------+----------------+ |
-| | 14    | Pixhawk Pro    | |
-| +-------+----------------+ |
 | | 20    | AUAV2.1        | |
-| +-------+----------------+ |
-| | 39    | PX4 FMUV6      | |
 | +-------+----------------+ |
 | | 100   | PX4 OLDDRIVERS | |
 | +-------+----------------+ |

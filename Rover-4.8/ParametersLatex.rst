@@ -348,7 +348,7 @@ FS\_THR\_ENABLE: Throttle Failsafe Enable
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-The throttle failsafe allows you to configure a software failsafe activated by a setting on the throttle input channel to a low value\. This can be used to detect the RC transmitter going out of range\. Failsafe will be triggered when the throttle channel goes below the FS\_THR\_VALUE for FS\_TIMEOUT seconds\.
+The throttle failsafe allows you to configure a software failsafe activated by a setting on the throttle input channel to a low value\. This can be used to detect the RC transmitter going out of range\. Failsafe will be triggered when the throttle channel reaches the FS\_THR\_VALUE\, or goes below it\, for FS\_TIMEOUT seconds\.
 
 
 +-------+---------------------------------------+
@@ -370,7 +370,7 @@ FS\_THR\_VALUE: Throttle Failsafe Value
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-The PWM level on the throttle channel below which throttle failsafe triggers\.
+The PWM level on the throttle channel at or below which throttle failsafe triggers\.
 
 
 +-----------+-------------+
@@ -32866,11 +32866,7 @@ This allows selection of a PX4 or VRBRAIN board type\. If set to zero then the b
 +-------+----------------+
 | 6     | Pixhawk2Slim   |
 +-------+----------------+
-| 14    | Pixhawk Pro    |
-+-------+----------------+
 | 20    | AUAV2.1        |
-+-------+----------------+
-| 39    | PX4 FMUV6      |
 +-------+----------------+
 | 100   | PX4 OLDDRIVERS |
 +-------+----------------+
@@ -33964,8 +33960,6 @@ Auxiliary RC Options function executed on pin change
 +-------+-------------------------------------------+
 | 4     | RTL                                       |
 +-------+-------------------------------------------+
-| 5     | Save Trim (4.1 and lower)                 |
-+-------+-------------------------------------------+
 | 7     | Save WP                                   |
 +-------+-------------------------------------------+
 | 9     | Camera Trigger                            |
@@ -33993,8 +33987,6 @@ Auxiliary RC Options function executed on pin change
 | 36    | Relay4 On/Off                             |
 +-------+-------------------------------------------+
 | 40    | Proximity Avoidance Enable                |
-+-------+-------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                 |
 +-------+-------------------------------------------+
 | 42    | SMARTRTL Mode                             |
 +-------+-------------------------------------------+
@@ -34070,7 +34062,7 @@ Auxiliary RC Options function executed on pin change
 +-------+-------------------------------------------+
 | 113   | Retract Mount2                            |
 +-------+-------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                |
+| 153   | ArmDisarm                                 |
 +-------+-------------------------------------------+
 | 155   | Set steering trim to current servo and RC |
 +-------+-------------------------------------------+
@@ -34186,8 +34178,6 @@ Auxiliary RC Options function executed on pin change
 +-------+-------------------------------------------+
 | 4     | RTL                                       |
 +-------+-------------------------------------------+
-| 5     | Save Trim (4.1 and lower)                 |
-+-------+-------------------------------------------+
 | 7     | Save WP                                   |
 +-------+-------------------------------------------+
 | 9     | Camera Trigger                            |
@@ -34215,8 +34205,6 @@ Auxiliary RC Options function executed on pin change
 | 36    | Relay4 On/Off                             |
 +-------+-------------------------------------------+
 | 40    | Proximity Avoidance Enable                |
-+-------+-------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                 |
 +-------+-------------------------------------------+
 | 42    | SMARTRTL Mode                             |
 +-------+-------------------------------------------+
@@ -34292,7 +34280,7 @@ Auxiliary RC Options function executed on pin change
 +-------+-------------------------------------------+
 | 113   | Retract Mount2                            |
 +-------+-------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                |
+| 153   | ArmDisarm                                 |
 +-------+-------------------------------------------+
 | 155   | Set steering trim to current servo and RC |
 +-------+-------------------------------------------+
@@ -34408,8 +34396,6 @@ Auxiliary RC Options function executed on pin change
 +-------+-------------------------------------------+
 | 4     | RTL                                       |
 +-------+-------------------------------------------+
-| 5     | Save Trim (4.1 and lower)                 |
-+-------+-------------------------------------------+
 | 7     | Save WP                                   |
 +-------+-------------------------------------------+
 | 9     | Camera Trigger                            |
@@ -34437,8 +34423,6 @@ Auxiliary RC Options function executed on pin change
 | 36    | Relay4 On/Off                             |
 +-------+-------------------------------------------+
 | 40    | Proximity Avoidance Enable                |
-+-------+-------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                 |
 +-------+-------------------------------------------+
 | 42    | SMARTRTL Mode                             |
 +-------+-------------------------------------------+
@@ -34514,7 +34498,7 @@ Auxiliary RC Options function executed on pin change
 +-------+-------------------------------------------+
 | 113   | Retract Mount2                            |
 +-------+-------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                |
+| 153   | ArmDisarm                                 |
 +-------+-------------------------------------------+
 | 155   | Set steering trim to current servo and RC |
 +-------+-------------------------------------------+
@@ -34630,8 +34614,6 @@ Auxiliary RC Options function executed on pin change
 +-------+-------------------------------------------+
 | 4     | RTL                                       |
 +-------+-------------------------------------------+
-| 5     | Save Trim (4.1 and lower)                 |
-+-------+-------------------------------------------+
 | 7     | Save WP                                   |
 +-------+-------------------------------------------+
 | 9     | Camera Trigger                            |
@@ -34659,8 +34641,6 @@ Auxiliary RC Options function executed on pin change
 | 36    | Relay4 On/Off                             |
 +-------+-------------------------------------------+
 | 40    | Proximity Avoidance Enable                |
-+-------+-------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                 |
 +-------+-------------------------------------------+
 | 42    | SMARTRTL Mode                             |
 +-------+-------------------------------------------+
@@ -34736,7 +34716,7 @@ Auxiliary RC Options function executed on pin change
 +-------+-------------------------------------------+
 | 113   | Retract Mount2                            |
 +-------+-------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                |
+| 153   | ArmDisarm                                 |
 +-------+-------------------------------------------+
 | 155   | Set steering trim to current servo and RC |
 +-------+-------------------------------------------+
@@ -72971,7 +72951,7 @@ OSD1\_TXT\_RES: Sets the overlay text resolution \(MSP DisplayPort only\)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18\/60x22 \(MSP DisplayPort only\)
+Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18\/60x22\/53x20 \(MSP DisplayPort only\)
 
 
 +-------+---------+
@@ -72982,6 +72962,8 @@ Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18\
 | 1     | 50x18   |
 +-------+---------+
 | 2     | 60x22   |
++-------+---------+
+| 3     | 53x20   |
 +-------+---------+
 
 
@@ -76732,7 +76714,7 @@ OSD2\_TXT\_RES: Sets the overlay text resolution \(MSP DisplayPort only\)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18\/60x22 \(MSP DisplayPort only\)
+Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18\/60x22\/53x20 \(MSP DisplayPort only\)
 
 
 +-------+---------+
@@ -76743,6 +76725,8 @@ Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18\
 | 1     | 50x18   |
 +-------+---------+
 | 2     | 60x22   |
++-------+---------+
+| 3     | 53x20   |
 +-------+---------+
 
 
@@ -80493,7 +80477,7 @@ OSD3\_TXT\_RES: Sets the overlay text resolution \(MSP DisplayPort only\)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18\/60x22 \(MSP DisplayPort only\)
+Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18\/60x22\/53x20 \(MSP DisplayPort only\)
 
 
 +-------+---------+
@@ -80504,6 +80488,8 @@ Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18\
 | 1     | 50x18   |
 +-------+---------+
 | 2     | 60x22   |
++-------+---------+
+| 3     | 53x20   |
 +-------+---------+
 
 
@@ -84254,7 +84240,7 @@ OSD4\_TXT\_RES: Sets the overlay text resolution \(MSP DisplayPort only\)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18\/60x22 \(MSP DisplayPort only\)
+Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18\/60x22\/53x20 \(MSP DisplayPort only\)
 
 
 +-------+---------+
@@ -84265,6 +84251,8 @@ Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18\
 | 1     | 50x18   |
 +-------+---------+
 | 2     | 60x22   |
++-------+---------+
+| 3     | 53x20   |
 +-------+---------+
 
 
@@ -89615,8 +89603,6 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 4     | RTL                                       |
 +-------+-------------------------------------------+
-| 5     | Save Trim (4.1 and lower)                 |
-+-------+-------------------------------------------+
 | 7     | Save WP                                   |
 +-------+-------------------------------------------+
 | 9     | Camera Trigger                            |
@@ -89644,8 +89630,6 @@ Function assigned to this RC channel
 | 36    | Relay4 On/Off                             |
 +-------+-------------------------------------------+
 | 40    | Proximity Avoidance Enable                |
-+-------+-------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                 |
 +-------+-------------------------------------------+
 | 42    | SMARTRTL Mode                             |
 +-------+-------------------------------------------+
@@ -89721,7 +89705,7 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 113   | Retract Mount2                            |
 +-------+-------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                |
+| 153   | ArmDisarm                                 |
 +-------+-------------------------------------------+
 | 155   | Set steering trim to current servo and RC |
 +-------+-------------------------------------------+
@@ -89941,8 +89925,6 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 4     | RTL                                       |
 +-------+-------------------------------------------+
-| 5     | Save Trim (4.1 and lower)                 |
-+-------+-------------------------------------------+
 | 7     | Save WP                                   |
 +-------+-------------------------------------------+
 | 9     | Camera Trigger                            |
@@ -89970,8 +89952,6 @@ Function assigned to this RC channel
 | 36    | Relay4 On/Off                             |
 +-------+-------------------------------------------+
 | 40    | Proximity Avoidance Enable                |
-+-------+-------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                 |
 +-------+-------------------------------------------+
 | 42    | SMARTRTL Mode                             |
 +-------+-------------------------------------------+
@@ -90047,7 +90027,7 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 113   | Retract Mount2                            |
 +-------+-------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                |
+| 153   | ArmDisarm                                 |
 +-------+-------------------------------------------+
 | 155   | Set steering trim to current servo and RC |
 +-------+-------------------------------------------+
@@ -90267,8 +90247,6 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 4     | RTL                                       |
 +-------+-------------------------------------------+
-| 5     | Save Trim (4.1 and lower)                 |
-+-------+-------------------------------------------+
 | 7     | Save WP                                   |
 +-------+-------------------------------------------+
 | 9     | Camera Trigger                            |
@@ -90296,8 +90274,6 @@ Function assigned to this RC channel
 | 36    | Relay4 On/Off                             |
 +-------+-------------------------------------------+
 | 40    | Proximity Avoidance Enable                |
-+-------+-------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                 |
 +-------+-------------------------------------------+
 | 42    | SMARTRTL Mode                             |
 +-------+-------------------------------------------+
@@ -90373,7 +90349,7 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 113   | Retract Mount2                            |
 +-------+-------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                |
+| 153   | ArmDisarm                                 |
 +-------+-------------------------------------------+
 | 155   | Set steering trim to current servo and RC |
 +-------+-------------------------------------------+
@@ -90593,8 +90569,6 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 4     | RTL                                       |
 +-------+-------------------------------------------+
-| 5     | Save Trim (4.1 and lower)                 |
-+-------+-------------------------------------------+
 | 7     | Save WP                                   |
 +-------+-------------------------------------------+
 | 9     | Camera Trigger                            |
@@ -90622,8 +90596,6 @@ Function assigned to this RC channel
 | 36    | Relay4 On/Off                             |
 +-------+-------------------------------------------+
 | 40    | Proximity Avoidance Enable                |
-+-------+-------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                 |
 +-------+-------------------------------------------+
 | 42    | SMARTRTL Mode                             |
 +-------+-------------------------------------------+
@@ -90699,7 +90671,7 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 113   | Retract Mount2                            |
 +-------+-------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                |
+| 153   | ArmDisarm                                 |
 +-------+-------------------------------------------+
 | 155   | Set steering trim to current servo and RC |
 +-------+-------------------------------------------+
@@ -90919,8 +90891,6 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 4     | RTL                                       |
 +-------+-------------------------------------------+
-| 5     | Save Trim (4.1 and lower)                 |
-+-------+-------------------------------------------+
 | 7     | Save WP                                   |
 +-------+-------------------------------------------+
 | 9     | Camera Trigger                            |
@@ -90948,8 +90918,6 @@ Function assigned to this RC channel
 | 36    | Relay4 On/Off                             |
 +-------+-------------------------------------------+
 | 40    | Proximity Avoidance Enable                |
-+-------+-------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                 |
 +-------+-------------------------------------------+
 | 42    | SMARTRTL Mode                             |
 +-------+-------------------------------------------+
@@ -91025,7 +90993,7 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 113   | Retract Mount2                            |
 +-------+-------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                |
+| 153   | ArmDisarm                                 |
 +-------+-------------------------------------------+
 | 155   | Set steering trim to current servo and RC |
 +-------+-------------------------------------------+
@@ -91245,8 +91213,6 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 4     | RTL                                       |
 +-------+-------------------------------------------+
-| 5     | Save Trim (4.1 and lower)                 |
-+-------+-------------------------------------------+
 | 7     | Save WP                                   |
 +-------+-------------------------------------------+
 | 9     | Camera Trigger                            |
@@ -91274,8 +91240,6 @@ Function assigned to this RC channel
 | 36    | Relay4 On/Off                             |
 +-------+-------------------------------------------+
 | 40    | Proximity Avoidance Enable                |
-+-------+-------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                 |
 +-------+-------------------------------------------+
 | 42    | SMARTRTL Mode                             |
 +-------+-------------------------------------------+
@@ -91351,7 +91315,7 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 113   | Retract Mount2                            |
 +-------+-------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                |
+| 153   | ArmDisarm                                 |
 +-------+-------------------------------------------+
 | 155   | Set steering trim to current servo and RC |
 +-------+-------------------------------------------+
@@ -91571,8 +91535,6 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 4     | RTL                                       |
 +-------+-------------------------------------------+
-| 5     | Save Trim (4.1 and lower)                 |
-+-------+-------------------------------------------+
 | 7     | Save WP                                   |
 +-------+-------------------------------------------+
 | 9     | Camera Trigger                            |
@@ -91600,8 +91562,6 @@ Function assigned to this RC channel
 | 36    | Relay4 On/Off                             |
 +-------+-------------------------------------------+
 | 40    | Proximity Avoidance Enable                |
-+-------+-------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                 |
 +-------+-------------------------------------------+
 | 42    | SMARTRTL Mode                             |
 +-------+-------------------------------------------+
@@ -91677,7 +91637,7 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 113   | Retract Mount2                            |
 +-------+-------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                |
+| 153   | ArmDisarm                                 |
 +-------+-------------------------------------------+
 | 155   | Set steering trim to current servo and RC |
 +-------+-------------------------------------------+
@@ -91897,8 +91857,6 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 4     | RTL                                       |
 +-------+-------------------------------------------+
-| 5     | Save Trim (4.1 and lower)                 |
-+-------+-------------------------------------------+
 | 7     | Save WP                                   |
 +-------+-------------------------------------------+
 | 9     | Camera Trigger                            |
@@ -91926,8 +91884,6 @@ Function assigned to this RC channel
 | 36    | Relay4 On/Off                             |
 +-------+-------------------------------------------+
 | 40    | Proximity Avoidance Enable                |
-+-------+-------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                 |
 +-------+-------------------------------------------+
 | 42    | SMARTRTL Mode                             |
 +-------+-------------------------------------------+
@@ -92003,7 +91959,7 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 113   | Retract Mount2                            |
 +-------+-------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                |
+| 153   | ArmDisarm                                 |
 +-------+-------------------------------------------+
 | 155   | Set steering trim to current servo and RC |
 +-------+-------------------------------------------+
@@ -92223,8 +92179,6 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 4     | RTL                                       |
 +-------+-------------------------------------------+
-| 5     | Save Trim (4.1 and lower)                 |
-+-------+-------------------------------------------+
 | 7     | Save WP                                   |
 +-------+-------------------------------------------+
 | 9     | Camera Trigger                            |
@@ -92252,8 +92206,6 @@ Function assigned to this RC channel
 | 36    | Relay4 On/Off                             |
 +-------+-------------------------------------------+
 | 40    | Proximity Avoidance Enable                |
-+-------+-------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                 |
 +-------+-------------------------------------------+
 | 42    | SMARTRTL Mode                             |
 +-------+-------------------------------------------+
@@ -92329,7 +92281,7 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 113   | Retract Mount2                            |
 +-------+-------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                |
+| 153   | ArmDisarm                                 |
 +-------+-------------------------------------------+
 | 155   | Set steering trim to current servo and RC |
 +-------+-------------------------------------------+
@@ -92549,8 +92501,6 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 4     | RTL                                       |
 +-------+-------------------------------------------+
-| 5     | Save Trim (4.1 and lower)                 |
-+-------+-------------------------------------------+
 | 7     | Save WP                                   |
 +-------+-------------------------------------------+
 | 9     | Camera Trigger                            |
@@ -92578,8 +92528,6 @@ Function assigned to this RC channel
 | 36    | Relay4 On/Off                             |
 +-------+-------------------------------------------+
 | 40    | Proximity Avoidance Enable                |
-+-------+-------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                 |
 +-------+-------------------------------------------+
 | 42    | SMARTRTL Mode                             |
 +-------+-------------------------------------------+
@@ -92655,7 +92603,7 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 113   | Retract Mount2                            |
 +-------+-------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                |
+| 153   | ArmDisarm                                 |
 +-------+-------------------------------------------+
 | 155   | Set steering trim to current servo and RC |
 +-------+-------------------------------------------+
@@ -92875,8 +92823,6 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 4     | RTL                                       |
 +-------+-------------------------------------------+
-| 5     | Save Trim (4.1 and lower)                 |
-+-------+-------------------------------------------+
 | 7     | Save WP                                   |
 +-------+-------------------------------------------+
 | 9     | Camera Trigger                            |
@@ -92904,8 +92850,6 @@ Function assigned to this RC channel
 | 36    | Relay4 On/Off                             |
 +-------+-------------------------------------------+
 | 40    | Proximity Avoidance Enable                |
-+-------+-------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                 |
 +-------+-------------------------------------------+
 | 42    | SMARTRTL Mode                             |
 +-------+-------------------------------------------+
@@ -92981,7 +92925,7 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 113   | Retract Mount2                            |
 +-------+-------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                |
+| 153   | ArmDisarm                                 |
 +-------+-------------------------------------------+
 | 155   | Set steering trim to current servo and RC |
 +-------+-------------------------------------------+
@@ -93201,8 +93145,6 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 4     | RTL                                       |
 +-------+-------------------------------------------+
-| 5     | Save Trim (4.1 and lower)                 |
-+-------+-------------------------------------------+
 | 7     | Save WP                                   |
 +-------+-------------------------------------------+
 | 9     | Camera Trigger                            |
@@ -93230,8 +93172,6 @@ Function assigned to this RC channel
 | 36    | Relay4 On/Off                             |
 +-------+-------------------------------------------+
 | 40    | Proximity Avoidance Enable                |
-+-------+-------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                 |
 +-------+-------------------------------------------+
 | 42    | SMARTRTL Mode                             |
 +-------+-------------------------------------------+
@@ -93307,7 +93247,7 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 113   | Retract Mount2                            |
 +-------+-------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                |
+| 153   | ArmDisarm                                 |
 +-------+-------------------------------------------+
 | 155   | Set steering trim to current servo and RC |
 +-------+-------------------------------------------+
@@ -93527,8 +93467,6 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 4     | RTL                                       |
 +-------+-------------------------------------------+
-| 5     | Save Trim (4.1 and lower)                 |
-+-------+-------------------------------------------+
 | 7     | Save WP                                   |
 +-------+-------------------------------------------+
 | 9     | Camera Trigger                            |
@@ -93556,8 +93494,6 @@ Function assigned to this RC channel
 | 36    | Relay4 On/Off                             |
 +-------+-------------------------------------------+
 | 40    | Proximity Avoidance Enable                |
-+-------+-------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                 |
 +-------+-------------------------------------------+
 | 42    | SMARTRTL Mode                             |
 +-------+-------------------------------------------+
@@ -93633,7 +93569,7 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 113   | Retract Mount2                            |
 +-------+-------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                |
+| 153   | ArmDisarm                                 |
 +-------+-------------------------------------------+
 | 155   | Set steering trim to current servo and RC |
 +-------+-------------------------------------------+
@@ -93853,8 +93789,6 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 4     | RTL                                       |
 +-------+-------------------------------------------+
-| 5     | Save Trim (4.1 and lower)                 |
-+-------+-------------------------------------------+
 | 7     | Save WP                                   |
 +-------+-------------------------------------------+
 | 9     | Camera Trigger                            |
@@ -93882,8 +93816,6 @@ Function assigned to this RC channel
 | 36    | Relay4 On/Off                             |
 +-------+-------------------------------------------+
 | 40    | Proximity Avoidance Enable                |
-+-------+-------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                 |
 +-------+-------------------------------------------+
 | 42    | SMARTRTL Mode                             |
 +-------+-------------------------------------------+
@@ -93959,7 +93891,7 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 113   | Retract Mount2                            |
 +-------+-------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                |
+| 153   | ArmDisarm                                 |
 +-------+-------------------------------------------+
 | 155   | Set steering trim to current servo and RC |
 +-------+-------------------------------------------+
@@ -94179,8 +94111,6 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 4     | RTL                                       |
 +-------+-------------------------------------------+
-| 5     | Save Trim (4.1 and lower)                 |
-+-------+-------------------------------------------+
 | 7     | Save WP                                   |
 +-------+-------------------------------------------+
 | 9     | Camera Trigger                            |
@@ -94208,8 +94138,6 @@ Function assigned to this RC channel
 | 36    | Relay4 On/Off                             |
 +-------+-------------------------------------------+
 | 40    | Proximity Avoidance Enable                |
-+-------+-------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                 |
 +-------+-------------------------------------------+
 | 42    | SMARTRTL Mode                             |
 +-------+-------------------------------------------+
@@ -94285,7 +94213,7 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 113   | Retract Mount2                            |
 +-------+-------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                |
+| 153   | ArmDisarm                                 |
 +-------+-------------------------------------------+
 | 155   | Set steering trim to current servo and RC |
 +-------+-------------------------------------------+
@@ -94505,8 +94433,6 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 4     | RTL                                       |
 +-------+-------------------------------------------+
-| 5     | Save Trim (4.1 and lower)                 |
-+-------+-------------------------------------------+
 | 7     | Save WP                                   |
 +-------+-------------------------------------------+
 | 9     | Camera Trigger                            |
@@ -94534,8 +94460,6 @@ Function assigned to this RC channel
 | 36    | Relay4 On/Off                             |
 +-------+-------------------------------------------+
 | 40    | Proximity Avoidance Enable                |
-+-------+-------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                 |
 +-------+-------------------------------------------+
 | 42    | SMARTRTL Mode                             |
 +-------+-------------------------------------------+
@@ -94611,7 +94535,7 @@ Function assigned to this RC channel
 +-------+-------------------------------------------+
 | 113   | Retract Mount2                            |
 +-------+-------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                |
+| 153   | ArmDisarm                                 |
 +-------+-------------------------------------------+
 | 155   | Set steering trim to current servo and RC |
 +-------+-------------------------------------------+

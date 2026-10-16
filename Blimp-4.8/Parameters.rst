@@ -191,7 +191,7 @@ FS\_THR\_VALUE: Throttle Failsafe Value
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-The PWM level in microseconds on channel 3 below which throttle failsafe triggers
+The PWM level in microseconds on the throttle input channel at or below which throttle failsafe triggers
 
 
 +-----------+-------------+---------------------+
@@ -24395,11 +24395,7 @@ This allows selection of a PX4 or VRBRAIN board type\. If set to zero then the b
 | +-------+----------------+ |
 | | 6     | Pixhawk2Slim   | |
 | +-------+----------------+ |
-| | 14    | Pixhawk Pro    | |
-| +-------+----------------+ |
 | | 20    | AUAV2.1        | |
-| +-------+----------------+ |
-| | 39    | PX4 FMUV6      | |
 | +-------+----------------+ |
 | | 100   | PX4 OLDDRIVERS | |
 | +-------+----------------+ |

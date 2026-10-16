@@ -151,7 +151,7 @@ DO NOT EDIT
 
 <h2>Throttle Failsafe Value (ArduCopter:FS_THR_VALUE)</h2>
 
-<p>The PWM level in microseconds on channel 3 below which throttle failsafe triggers</p>
+<p>The PWM level in microseconds on the throttle input channel at or below which throttle failsafe triggers</p>
 <ul>
 <li>Range: 910 1100</li>
 <li>Units: PWM in microseconds</li>
@@ -16458,9 +16458,7 @@ DO NOT EDIT
 <tr><td>3</td><td>Cube/Pixhawk2</td></tr>
 <tr><td>5</td><td>PixhawkMini</td></tr>
 <tr><td>6</td><td>Pixhawk2Slim</td></tr>
-<tr><td>14</td><td>Pixhawk Pro</td></tr>
 <tr><td>20</td><td>AUAV2.1</td></tr>
-<tr><td>39</td><td>PX4 FMUV6</td></tr>
 <tr><td>100</td><td>PX4 OLDDRIVERS</td></tr>
 </table>
 <li>RebootRequired: True</li>
@@ -16992,7 +16990,6 @@ DO NOT EDIT
 <tr><td>38</td><td>ADSB Avoidance Enable</td></tr>
 <tr><td>39</td><td>PrecLoiter Enable</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>43</td><td>InvertedFlight Enable</td></tr>
 <tr><td>44</td><td>Winch Enable</td></tr>
@@ -17043,8 +17040,8 @@ DO NOT EDIT
 <tr><td>113</td><td>Retract Mount2</td></tr>
 <tr><td>151</td><td>TURTLE Mode</td></tr>
 <tr><td>152</td><td>SIMPLE heading reset</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
-<tr><td>154</td><td>ArmDisarm with AirMode  (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
+<tr><td>154</td><td>ArmDisarm with AirMode</td></tr>
 <tr><td>158</td><td>Optflow Calibration</td></tr>
 <tr><td>159</td><td>Force IS_Flying</td></tr>
 <tr><td>161</td><td>Turbine Start(heli)</td></tr>
@@ -17137,7 +17134,6 @@ DO NOT EDIT
 <tr><td>38</td><td>ADSB Avoidance Enable</td></tr>
 <tr><td>39</td><td>PrecLoiter Enable</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>43</td><td>InvertedFlight Enable</td></tr>
 <tr><td>44</td><td>Winch Enable</td></tr>
@@ -17188,8 +17184,8 @@ DO NOT EDIT
 <tr><td>113</td><td>Retract Mount2</td></tr>
 <tr><td>151</td><td>TURTLE Mode</td></tr>
 <tr><td>152</td><td>SIMPLE heading reset</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
-<tr><td>154</td><td>ArmDisarm with AirMode  (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
+<tr><td>154</td><td>ArmDisarm with AirMode</td></tr>
 <tr><td>158</td><td>Optflow Calibration</td></tr>
 <tr><td>159</td><td>Force IS_Flying</td></tr>
 <tr><td>161</td><td>Turbine Start(heli)</td></tr>
@@ -17282,7 +17278,6 @@ DO NOT EDIT
 <tr><td>38</td><td>ADSB Avoidance Enable</td></tr>
 <tr><td>39</td><td>PrecLoiter Enable</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>43</td><td>InvertedFlight Enable</td></tr>
 <tr><td>44</td><td>Winch Enable</td></tr>
@@ -17333,8 +17328,8 @@ DO NOT EDIT
 <tr><td>113</td><td>Retract Mount2</td></tr>
 <tr><td>151</td><td>TURTLE Mode</td></tr>
 <tr><td>152</td><td>SIMPLE heading reset</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
-<tr><td>154</td><td>ArmDisarm with AirMode  (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
+<tr><td>154</td><td>ArmDisarm with AirMode</td></tr>
 <tr><td>158</td><td>Optflow Calibration</td></tr>
 <tr><td>159</td><td>Force IS_Flying</td></tr>
 <tr><td>161</td><td>Turbine Start(heli)</td></tr>
@@ -17427,7 +17422,6 @@ DO NOT EDIT
 <tr><td>38</td><td>ADSB Avoidance Enable</td></tr>
 <tr><td>39</td><td>PrecLoiter Enable</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>43</td><td>InvertedFlight Enable</td></tr>
 <tr><td>44</td><td>Winch Enable</td></tr>
@@ -17478,8 +17472,8 @@ DO NOT EDIT
 <tr><td>113</td><td>Retract Mount2</td></tr>
 <tr><td>151</td><td>TURTLE Mode</td></tr>
 <tr><td>152</td><td>SIMPLE heading reset</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
-<tr><td>154</td><td>ArmDisarm with AirMode  (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
+<tr><td>154</td><td>ArmDisarm with AirMode</td></tr>
 <tr><td>158</td><td>Optflow Calibration</td></tr>
 <tr><td>159</td><td>Force IS_Flying</td></tr>
 <tr><td>161</td><td>Turbine Start(heli)</td></tr>
@@ -37444,12 +37438,13 @@ DO NOT EDIT
 
 <h2>Sets the overlay text resolution (MSP DisplayPort only) (OSD1_TXT_RES)</h2>
 
-<p>Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22 (MSP DisplayPort only)</p>
+<p>Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22/53x20 (MSP DisplayPort only)</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>30x16</td></tr>
 <tr><td>1</td><td>50x18</td></tr>
 <tr><td>2</td><td>60x22</td></tr>
+<tr><td>3</td><td>53x20</td></tr>
 </table>
 </ul>
 
@@ -39257,12 +39252,13 @@ DO NOT EDIT
 
 <h2>Sets the overlay text resolution (MSP DisplayPort only) (OSD2_TXT_RES)</h2>
 
-<p>Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22 (MSP DisplayPort only)</p>
+<p>Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22/53x20 (MSP DisplayPort only)</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>30x16</td></tr>
 <tr><td>1</td><td>50x18</td></tr>
 <tr><td>2</td><td>60x22</td></tr>
+<tr><td>3</td><td>53x20</td></tr>
 </table>
 </ul>
 
@@ -41070,12 +41066,13 @@ DO NOT EDIT
 
 <h2>Sets the overlay text resolution (MSP DisplayPort only) (OSD3_TXT_RES)</h2>
 
-<p>Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22 (MSP DisplayPort only)</p>
+<p>Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22/53x20 (MSP DisplayPort only)</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>30x16</td></tr>
 <tr><td>1</td><td>50x18</td></tr>
 <tr><td>2</td><td>60x22</td></tr>
+<tr><td>3</td><td>53x20</td></tr>
 </table>
 </ul>
 
@@ -42883,12 +42880,13 @@ DO NOT EDIT
 
 <h2>Sets the overlay text resolution (MSP DisplayPort only) (OSD4_TXT_RES)</h2>
 
-<p>Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22 (MSP DisplayPort only)</p>
+<p>Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22/53x20 (MSP DisplayPort only)</p>
 <ul>
 <table><th>Value</th><th>Meaning</th>
 <tr><td>0</td><td>30x16</td></tr>
 <tr><td>1</td><td>50x18</td></tr>
 <tr><td>2</td><td>60x22</td></tr>
+<tr><td>3</td><td>53x20</td></tr>
 </table>
 </ul>
 
@@ -46080,7 +46078,6 @@ DO NOT EDIT
 <tr><td>38</td><td>ADSB Avoidance Enable</td></tr>
 <tr><td>39</td><td>PrecLoiter Enable</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>43</td><td>InvertedFlight Enable</td></tr>
 <tr><td>44</td><td>Winch Enable</td></tr>
@@ -46131,8 +46128,8 @@ DO NOT EDIT
 <tr><td>113</td><td>Retract Mount2</td></tr>
 <tr><td>151</td><td>TURTLE Mode</td></tr>
 <tr><td>152</td><td>SIMPLE heading reset</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
-<tr><td>154</td><td>ArmDisarm with AirMode  (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
+<tr><td>154</td><td>ArmDisarm with AirMode</td></tr>
 <tr><td>158</td><td>Optflow Calibration</td></tr>
 <tr><td>159</td><td>Force IS_Flying</td></tr>
 <tr><td>161</td><td>Turbine Start(heli)</td></tr>
@@ -46278,7 +46275,6 @@ DO NOT EDIT
 <tr><td>38</td><td>ADSB Avoidance Enable</td></tr>
 <tr><td>39</td><td>PrecLoiter Enable</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>43</td><td>InvertedFlight Enable</td></tr>
 <tr><td>44</td><td>Winch Enable</td></tr>
@@ -46329,8 +46325,8 @@ DO NOT EDIT
 <tr><td>113</td><td>Retract Mount2</td></tr>
 <tr><td>151</td><td>TURTLE Mode</td></tr>
 <tr><td>152</td><td>SIMPLE heading reset</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
-<tr><td>154</td><td>ArmDisarm with AirMode  (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
+<tr><td>154</td><td>ArmDisarm with AirMode</td></tr>
 <tr><td>158</td><td>Optflow Calibration</td></tr>
 <tr><td>159</td><td>Force IS_Flying</td></tr>
 <tr><td>161</td><td>Turbine Start(heli)</td></tr>
@@ -46476,7 +46472,6 @@ DO NOT EDIT
 <tr><td>38</td><td>ADSB Avoidance Enable</td></tr>
 <tr><td>39</td><td>PrecLoiter Enable</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>43</td><td>InvertedFlight Enable</td></tr>
 <tr><td>44</td><td>Winch Enable</td></tr>
@@ -46527,8 +46522,8 @@ DO NOT EDIT
 <tr><td>113</td><td>Retract Mount2</td></tr>
 <tr><td>151</td><td>TURTLE Mode</td></tr>
 <tr><td>152</td><td>SIMPLE heading reset</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
-<tr><td>154</td><td>ArmDisarm with AirMode  (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
+<tr><td>154</td><td>ArmDisarm with AirMode</td></tr>
 <tr><td>158</td><td>Optflow Calibration</td></tr>
 <tr><td>159</td><td>Force IS_Flying</td></tr>
 <tr><td>161</td><td>Turbine Start(heli)</td></tr>
@@ -46674,7 +46669,6 @@ DO NOT EDIT
 <tr><td>38</td><td>ADSB Avoidance Enable</td></tr>
 <tr><td>39</td><td>PrecLoiter Enable</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>43</td><td>InvertedFlight Enable</td></tr>
 <tr><td>44</td><td>Winch Enable</td></tr>
@@ -46725,8 +46719,8 @@ DO NOT EDIT
 <tr><td>113</td><td>Retract Mount2</td></tr>
 <tr><td>151</td><td>TURTLE Mode</td></tr>
 <tr><td>152</td><td>SIMPLE heading reset</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
-<tr><td>154</td><td>ArmDisarm with AirMode  (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
+<tr><td>154</td><td>ArmDisarm with AirMode</td></tr>
 <tr><td>158</td><td>Optflow Calibration</td></tr>
 <tr><td>159</td><td>Force IS_Flying</td></tr>
 <tr><td>161</td><td>Turbine Start(heli)</td></tr>
@@ -46872,7 +46866,6 @@ DO NOT EDIT
 <tr><td>38</td><td>ADSB Avoidance Enable</td></tr>
 <tr><td>39</td><td>PrecLoiter Enable</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>43</td><td>InvertedFlight Enable</td></tr>
 <tr><td>44</td><td>Winch Enable</td></tr>
@@ -46923,8 +46916,8 @@ DO NOT EDIT
 <tr><td>113</td><td>Retract Mount2</td></tr>
 <tr><td>151</td><td>TURTLE Mode</td></tr>
 <tr><td>152</td><td>SIMPLE heading reset</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
-<tr><td>154</td><td>ArmDisarm with AirMode  (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
+<tr><td>154</td><td>ArmDisarm with AirMode</td></tr>
 <tr><td>158</td><td>Optflow Calibration</td></tr>
 <tr><td>159</td><td>Force IS_Flying</td></tr>
 <tr><td>161</td><td>Turbine Start(heli)</td></tr>
@@ -47070,7 +47063,6 @@ DO NOT EDIT
 <tr><td>38</td><td>ADSB Avoidance Enable</td></tr>
 <tr><td>39</td><td>PrecLoiter Enable</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>43</td><td>InvertedFlight Enable</td></tr>
 <tr><td>44</td><td>Winch Enable</td></tr>
@@ -47121,8 +47113,8 @@ DO NOT EDIT
 <tr><td>113</td><td>Retract Mount2</td></tr>
 <tr><td>151</td><td>TURTLE Mode</td></tr>
 <tr><td>152</td><td>SIMPLE heading reset</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
-<tr><td>154</td><td>ArmDisarm with AirMode  (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
+<tr><td>154</td><td>ArmDisarm with AirMode</td></tr>
 <tr><td>158</td><td>Optflow Calibration</td></tr>
 <tr><td>159</td><td>Force IS_Flying</td></tr>
 <tr><td>161</td><td>Turbine Start(heli)</td></tr>
@@ -47268,7 +47260,6 @@ DO NOT EDIT
 <tr><td>38</td><td>ADSB Avoidance Enable</td></tr>
 <tr><td>39</td><td>PrecLoiter Enable</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>43</td><td>InvertedFlight Enable</td></tr>
 <tr><td>44</td><td>Winch Enable</td></tr>
@@ -47319,8 +47310,8 @@ DO NOT EDIT
 <tr><td>113</td><td>Retract Mount2</td></tr>
 <tr><td>151</td><td>TURTLE Mode</td></tr>
 <tr><td>152</td><td>SIMPLE heading reset</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
-<tr><td>154</td><td>ArmDisarm with AirMode  (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
+<tr><td>154</td><td>ArmDisarm with AirMode</td></tr>
 <tr><td>158</td><td>Optflow Calibration</td></tr>
 <tr><td>159</td><td>Force IS_Flying</td></tr>
 <tr><td>161</td><td>Turbine Start(heli)</td></tr>
@@ -47466,7 +47457,6 @@ DO NOT EDIT
 <tr><td>38</td><td>ADSB Avoidance Enable</td></tr>
 <tr><td>39</td><td>PrecLoiter Enable</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>43</td><td>InvertedFlight Enable</td></tr>
 <tr><td>44</td><td>Winch Enable</td></tr>
@@ -47517,8 +47507,8 @@ DO NOT EDIT
 <tr><td>113</td><td>Retract Mount2</td></tr>
 <tr><td>151</td><td>TURTLE Mode</td></tr>
 <tr><td>152</td><td>SIMPLE heading reset</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
-<tr><td>154</td><td>ArmDisarm with AirMode  (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
+<tr><td>154</td><td>ArmDisarm with AirMode</td></tr>
 <tr><td>158</td><td>Optflow Calibration</td></tr>
 <tr><td>159</td><td>Force IS_Flying</td></tr>
 <tr><td>161</td><td>Turbine Start(heli)</td></tr>
@@ -47664,7 +47654,6 @@ DO NOT EDIT
 <tr><td>38</td><td>ADSB Avoidance Enable</td></tr>
 <tr><td>39</td><td>PrecLoiter Enable</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>43</td><td>InvertedFlight Enable</td></tr>
 <tr><td>44</td><td>Winch Enable</td></tr>
@@ -47715,8 +47704,8 @@ DO NOT EDIT
 <tr><td>113</td><td>Retract Mount2</td></tr>
 <tr><td>151</td><td>TURTLE Mode</td></tr>
 <tr><td>152</td><td>SIMPLE heading reset</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
-<tr><td>154</td><td>ArmDisarm with AirMode  (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
+<tr><td>154</td><td>ArmDisarm with AirMode</td></tr>
 <tr><td>158</td><td>Optflow Calibration</td></tr>
 <tr><td>159</td><td>Force IS_Flying</td></tr>
 <tr><td>161</td><td>Turbine Start(heli)</td></tr>
@@ -47862,7 +47851,6 @@ DO NOT EDIT
 <tr><td>38</td><td>ADSB Avoidance Enable</td></tr>
 <tr><td>39</td><td>PrecLoiter Enable</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>43</td><td>InvertedFlight Enable</td></tr>
 <tr><td>44</td><td>Winch Enable</td></tr>
@@ -47913,8 +47901,8 @@ DO NOT EDIT
 <tr><td>113</td><td>Retract Mount2</td></tr>
 <tr><td>151</td><td>TURTLE Mode</td></tr>
 <tr><td>152</td><td>SIMPLE heading reset</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
-<tr><td>154</td><td>ArmDisarm with AirMode  (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
+<tr><td>154</td><td>ArmDisarm with AirMode</td></tr>
 <tr><td>158</td><td>Optflow Calibration</td></tr>
 <tr><td>159</td><td>Force IS_Flying</td></tr>
 <tr><td>161</td><td>Turbine Start(heli)</td></tr>
@@ -48060,7 +48048,6 @@ DO NOT EDIT
 <tr><td>38</td><td>ADSB Avoidance Enable</td></tr>
 <tr><td>39</td><td>PrecLoiter Enable</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>43</td><td>InvertedFlight Enable</td></tr>
 <tr><td>44</td><td>Winch Enable</td></tr>
@@ -48111,8 +48098,8 @@ DO NOT EDIT
 <tr><td>113</td><td>Retract Mount2</td></tr>
 <tr><td>151</td><td>TURTLE Mode</td></tr>
 <tr><td>152</td><td>SIMPLE heading reset</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
-<tr><td>154</td><td>ArmDisarm with AirMode  (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
+<tr><td>154</td><td>ArmDisarm with AirMode</td></tr>
 <tr><td>158</td><td>Optflow Calibration</td></tr>
 <tr><td>159</td><td>Force IS_Flying</td></tr>
 <tr><td>161</td><td>Turbine Start(heli)</td></tr>
@@ -48258,7 +48245,6 @@ DO NOT EDIT
 <tr><td>38</td><td>ADSB Avoidance Enable</td></tr>
 <tr><td>39</td><td>PrecLoiter Enable</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>43</td><td>InvertedFlight Enable</td></tr>
 <tr><td>44</td><td>Winch Enable</td></tr>
@@ -48309,8 +48295,8 @@ DO NOT EDIT
 <tr><td>113</td><td>Retract Mount2</td></tr>
 <tr><td>151</td><td>TURTLE Mode</td></tr>
 <tr><td>152</td><td>SIMPLE heading reset</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
-<tr><td>154</td><td>ArmDisarm with AirMode  (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
+<tr><td>154</td><td>ArmDisarm with AirMode</td></tr>
 <tr><td>158</td><td>Optflow Calibration</td></tr>
 <tr><td>159</td><td>Force IS_Flying</td></tr>
 <tr><td>161</td><td>Turbine Start(heli)</td></tr>
@@ -48456,7 +48442,6 @@ DO NOT EDIT
 <tr><td>38</td><td>ADSB Avoidance Enable</td></tr>
 <tr><td>39</td><td>PrecLoiter Enable</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>43</td><td>InvertedFlight Enable</td></tr>
 <tr><td>44</td><td>Winch Enable</td></tr>
@@ -48507,8 +48492,8 @@ DO NOT EDIT
 <tr><td>113</td><td>Retract Mount2</td></tr>
 <tr><td>151</td><td>TURTLE Mode</td></tr>
 <tr><td>152</td><td>SIMPLE heading reset</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
-<tr><td>154</td><td>ArmDisarm with AirMode  (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
+<tr><td>154</td><td>ArmDisarm with AirMode</td></tr>
 <tr><td>158</td><td>Optflow Calibration</td></tr>
 <tr><td>159</td><td>Force IS_Flying</td></tr>
 <tr><td>161</td><td>Turbine Start(heli)</td></tr>
@@ -48654,7 +48639,6 @@ DO NOT EDIT
 <tr><td>38</td><td>ADSB Avoidance Enable</td></tr>
 <tr><td>39</td><td>PrecLoiter Enable</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>43</td><td>InvertedFlight Enable</td></tr>
 <tr><td>44</td><td>Winch Enable</td></tr>
@@ -48705,8 +48689,8 @@ DO NOT EDIT
 <tr><td>113</td><td>Retract Mount2</td></tr>
 <tr><td>151</td><td>TURTLE Mode</td></tr>
 <tr><td>152</td><td>SIMPLE heading reset</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
-<tr><td>154</td><td>ArmDisarm with AirMode  (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
+<tr><td>154</td><td>ArmDisarm with AirMode</td></tr>
 <tr><td>158</td><td>Optflow Calibration</td></tr>
 <tr><td>159</td><td>Force IS_Flying</td></tr>
 <tr><td>161</td><td>Turbine Start(heli)</td></tr>
@@ -48852,7 +48836,6 @@ DO NOT EDIT
 <tr><td>38</td><td>ADSB Avoidance Enable</td></tr>
 <tr><td>39</td><td>PrecLoiter Enable</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>43</td><td>InvertedFlight Enable</td></tr>
 <tr><td>44</td><td>Winch Enable</td></tr>
@@ -48903,8 +48886,8 @@ DO NOT EDIT
 <tr><td>113</td><td>Retract Mount2</td></tr>
 <tr><td>151</td><td>TURTLE Mode</td></tr>
 <tr><td>152</td><td>SIMPLE heading reset</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
-<tr><td>154</td><td>ArmDisarm with AirMode  (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
+<tr><td>154</td><td>ArmDisarm with AirMode</td></tr>
 <tr><td>158</td><td>Optflow Calibration</td></tr>
 <tr><td>159</td><td>Force IS_Flying</td></tr>
 <tr><td>161</td><td>Turbine Start(heli)</td></tr>
@@ -49050,7 +49033,6 @@ DO NOT EDIT
 <tr><td>38</td><td>ADSB Avoidance Enable</td></tr>
 <tr><td>39</td><td>PrecLoiter Enable</td></tr>
 <tr><td>40</td><td>Proximity Avoidance Enable</td></tr>
-<tr><td>41</td><td>ArmDisarm (4.1 and lower)</td></tr>
 <tr><td>42</td><td>SMARTRTL Mode</td></tr>
 <tr><td>43</td><td>InvertedFlight Enable</td></tr>
 <tr><td>44</td><td>Winch Enable</td></tr>
@@ -49101,8 +49083,8 @@ DO NOT EDIT
 <tr><td>113</td><td>Retract Mount2</td></tr>
 <tr><td>151</td><td>TURTLE Mode</td></tr>
 <tr><td>152</td><td>SIMPLE heading reset</td></tr>
-<tr><td>153</td><td>ArmDisarm (4.2 and higher)</td></tr>
-<tr><td>154</td><td>ArmDisarm with AirMode  (4.2 and higher)</td></tr>
+<tr><td>153</td><td>ArmDisarm</td></tr>
+<tr><td>154</td><td>ArmDisarm with AirMode</td></tr>
 <tr><td>158</td><td>Optflow Calibration</td></tr>
 <tr><td>159</td><td>Force IS_Flying</td></tr>
 <tr><td>161</td><td>Turbine Start(heli)</td></tr>

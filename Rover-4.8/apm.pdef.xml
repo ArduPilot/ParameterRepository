@@ -121,14 +121,14 @@
         <field name="Range">1 100</field>
         <field name="Increment">0.5</field>
       </param>
-      <param humanName="Throttle Failsafe Enable" name="Rover:FS_THR_ENABLE" documentation="The throttle failsafe allows you to configure a software failsafe activated by a setting on the throttle input channel to a low value. This can be used to detect the RC transmitter going out of range. Failsafe will be triggered when the throttle channel goes below the FS_THR_VALUE for FS_TIMEOUT seconds." user="Standard">
+      <param humanName="Throttle Failsafe Enable" name="Rover:FS_THR_ENABLE" documentation="The throttle failsafe allows you to configure a software failsafe activated by a setting on the throttle input channel to a low value. This can be used to detect the RC transmitter going out of range. Failsafe will be triggered when the throttle channel reaches the FS_THR_VALUE, or goes below it, for FS_TIMEOUT seconds." user="Standard">
         <values>
           <value code="0">Disabled</value>
           <value code="1">Enabled</value>
           <value code="2">Enabled Continue with Mission in Auto</value>
         </values>
       </param>
-      <param humanName="Throttle Failsafe Value" name="Rover:FS_THR_VALUE" documentation="The PWM level on the throttle channel below which throttle failsafe triggers." user="Standard">
+      <param humanName="Throttle Failsafe Value" name="Rover:FS_THR_VALUE" documentation="The PWM level on the throttle channel at or below which throttle failsafe triggers." user="Standard">
         <field name="Range">910 1100</field>
         <field name="Increment">1</field>
       </param>
@@ -9309,9 +9309,7 @@
           <value code="3">Cube/Pixhawk2</value>
           <value code="5">PixhawkMini</value>
           <value code="6">Pixhawk2Slim</value>
-          <value code="14">Pixhawk Pro</value>
           <value code="20">AUAV2.1</value>
-          <value code="39">PX4 FMUV6</value>
           <value code="100">PX4 OLDDRIVERS</value>
         </values>
         <field name="RebootRequired">True</field>
@@ -9616,8 +9614,7 @@
           <value code="52">ACRO Mode</value>
           <value code="16">AUTO Mode</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="41">ArmDisarm (4.1 and lower)</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="172">Battery MPPT Enable</value>
           <value code="72">CIRCLE Mode</value>
@@ -9688,7 +9685,6 @@
           <value code="53">STEERING Mode</value>
           <value code="63">Sailboat Tack</value>
           <value code="74">Sailboat motoring 3pos</value>
-          <value code="5">Save Trim (4.1 and lower)</value>
           <value code="7">Save WP</value>
           <value code="300">Scripting1</value>
           <value code="309">Scripting10</value>
@@ -9723,8 +9719,7 @@
           <value code="52">ACRO Mode</value>
           <value code="16">AUTO Mode</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="41">ArmDisarm (4.1 and lower)</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="172">Battery MPPT Enable</value>
           <value code="72">CIRCLE Mode</value>
@@ -9795,7 +9790,6 @@
           <value code="53">STEERING Mode</value>
           <value code="63">Sailboat Tack</value>
           <value code="74">Sailboat motoring 3pos</value>
-          <value code="5">Save Trim (4.1 and lower)</value>
           <value code="7">Save WP</value>
           <value code="300">Scripting1</value>
           <value code="309">Scripting10</value>
@@ -9830,8 +9824,7 @@
           <value code="52">ACRO Mode</value>
           <value code="16">AUTO Mode</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="41">ArmDisarm (4.1 and lower)</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="172">Battery MPPT Enable</value>
           <value code="72">CIRCLE Mode</value>
@@ -9902,7 +9895,6 @@
           <value code="53">STEERING Mode</value>
           <value code="63">Sailboat Tack</value>
           <value code="74">Sailboat motoring 3pos</value>
-          <value code="5">Save Trim (4.1 and lower)</value>
           <value code="7">Save WP</value>
           <value code="300">Scripting1</value>
           <value code="309">Scripting10</value>
@@ -9937,8 +9929,7 @@
           <value code="52">ACRO Mode</value>
           <value code="16">AUTO Mode</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="41">ArmDisarm (4.1 and lower)</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="172">Battery MPPT Enable</value>
           <value code="72">CIRCLE Mode</value>
@@ -10009,7 +10000,6 @@
           <value code="53">STEERING Mode</value>
           <value code="63">Sailboat Tack</value>
           <value code="74">Sailboat motoring 3pos</value>
-          <value code="5">Save Trim (4.1 and lower)</value>
           <value code="7">Save WP</value>
           <value code="300">Scripting1</value>
           <value code="309">Scripting10</value>
@@ -22050,11 +22040,12 @@
       <param humanName="LINK_Q_Y" name="OSD1_LINK_Q_Y" documentation="Vertical position on screen">
         <field name="Range">0 21</field>
       </param>
-      <param humanName="Sets the overlay text resolution (MSP DisplayPort only)" name="OSD1_TXT_RES" documentation="Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22 (MSP DisplayPort only)" user="Standard">
+      <param humanName="Sets the overlay text resolution (MSP DisplayPort only)" name="OSD1_TXT_RES" documentation="Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22/53x20 (MSP DisplayPort only)" user="Standard">
         <values>
           <value code="0">30x16</value>
           <value code="1">50x18</value>
           <value code="2">60x22</value>
+          <value code="3">53x20</value>
         </values>
       </param>
       <param humanName="Sets the font index for this screen (MSP DisplayPort only)" name="OSD1_FONT" documentation="Sets the font index for this screen (MSP DisplayPort only)" user="Standard">
@@ -22857,11 +22848,12 @@
       <param humanName="LINK_Q_Y" name="OSD2_LINK_Q_Y" documentation="Vertical position on screen">
         <field name="Range">0 21</field>
       </param>
-      <param humanName="Sets the overlay text resolution (MSP DisplayPort only)" name="OSD2_TXT_RES" documentation="Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22 (MSP DisplayPort only)" user="Standard">
+      <param humanName="Sets the overlay text resolution (MSP DisplayPort only)" name="OSD2_TXT_RES" documentation="Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22/53x20 (MSP DisplayPort only)" user="Standard">
         <values>
           <value code="0">30x16</value>
           <value code="1">50x18</value>
           <value code="2">60x22</value>
+          <value code="3">53x20</value>
         </values>
       </param>
       <param humanName="Sets the font index for this screen (MSP DisplayPort only)" name="OSD2_FONT" documentation="Sets the font index for this screen (MSP DisplayPort only)" user="Standard">
@@ -23664,11 +23656,12 @@
       <param humanName="LINK_Q_Y" name="OSD3_LINK_Q_Y" documentation="Vertical position on screen">
         <field name="Range">0 21</field>
       </param>
-      <param humanName="Sets the overlay text resolution (MSP DisplayPort only)" name="OSD3_TXT_RES" documentation="Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22 (MSP DisplayPort only)" user="Standard">
+      <param humanName="Sets the overlay text resolution (MSP DisplayPort only)" name="OSD3_TXT_RES" documentation="Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22/53x20 (MSP DisplayPort only)" user="Standard">
         <values>
           <value code="0">30x16</value>
           <value code="1">50x18</value>
           <value code="2">60x22</value>
+          <value code="3">53x20</value>
         </values>
       </param>
       <param humanName="Sets the font index for this screen (MSP DisplayPort only)" name="OSD3_FONT" documentation="Sets the font index for this screen (MSP DisplayPort only)" user="Standard">
@@ -24471,11 +24464,12 @@
       <param humanName="LINK_Q_Y" name="OSD4_LINK_Q_Y" documentation="Vertical position on screen">
         <field name="Range">0 21</field>
       </param>
-      <param humanName="Sets the overlay text resolution (MSP DisplayPort only)" name="OSD4_TXT_RES" documentation="Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22 (MSP DisplayPort only)" user="Standard">
+      <param humanName="Sets the overlay text resolution (MSP DisplayPort only)" name="OSD4_TXT_RES" documentation="Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22/53x20 (MSP DisplayPort only)" user="Standard">
         <values>
           <value code="0">30x16</value>
           <value code="1">50x18</value>
           <value code="2">60x22</value>
+          <value code="3">53x20</value>
         </values>
       </param>
       <param humanName="Sets the font index for this screen (MSP DisplayPort only)" name="OSD4_FONT" documentation="Sets the font index for this screen (MSP DisplayPort only)" user="Standard">
@@ -25841,8 +25835,7 @@
           <value code="52">ACRO Mode</value>
           <value code="16">AUTO Mode</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="41">ArmDisarm (4.1 and lower)</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="172">Battery MPPT Enable</value>
           <value code="72">CIRCLE Mode</value>
@@ -25913,7 +25906,6 @@
           <value code="53">STEERING Mode</value>
           <value code="63">Sailboat Tack</value>
           <value code="74">Sailboat motoring 3pos</value>
-          <value code="5">Save Trim (4.1 and lower)</value>
           <value code="7">Save WP</value>
           <value code="300">Scripting1</value>
           <value code="309">Scripting10</value>
@@ -25979,8 +25971,7 @@
           <value code="52">ACRO Mode</value>
           <value code="16">AUTO Mode</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="41">ArmDisarm (4.1 and lower)</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="172">Battery MPPT Enable</value>
           <value code="72">CIRCLE Mode</value>
@@ -26051,7 +26042,6 @@
           <value code="53">STEERING Mode</value>
           <value code="63">Sailboat Tack</value>
           <value code="74">Sailboat motoring 3pos</value>
-          <value code="5">Save Trim (4.1 and lower)</value>
           <value code="7">Save WP</value>
           <value code="300">Scripting1</value>
           <value code="309">Scripting10</value>
@@ -26117,8 +26107,7 @@
           <value code="52">ACRO Mode</value>
           <value code="16">AUTO Mode</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="41">ArmDisarm (4.1 and lower)</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="172">Battery MPPT Enable</value>
           <value code="72">CIRCLE Mode</value>
@@ -26189,7 +26178,6 @@
           <value code="53">STEERING Mode</value>
           <value code="63">Sailboat Tack</value>
           <value code="74">Sailboat motoring 3pos</value>
-          <value code="5">Save Trim (4.1 and lower)</value>
           <value code="7">Save WP</value>
           <value code="300">Scripting1</value>
           <value code="309">Scripting10</value>
@@ -26255,8 +26243,7 @@
           <value code="52">ACRO Mode</value>
           <value code="16">AUTO Mode</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="41">ArmDisarm (4.1 and lower)</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="172">Battery MPPT Enable</value>
           <value code="72">CIRCLE Mode</value>
@@ -26327,7 +26314,6 @@
           <value code="53">STEERING Mode</value>
           <value code="63">Sailboat Tack</value>
           <value code="74">Sailboat motoring 3pos</value>
-          <value code="5">Save Trim (4.1 and lower)</value>
           <value code="7">Save WP</value>
           <value code="300">Scripting1</value>
           <value code="309">Scripting10</value>
@@ -26393,8 +26379,7 @@
           <value code="52">ACRO Mode</value>
           <value code="16">AUTO Mode</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="41">ArmDisarm (4.1 and lower)</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="172">Battery MPPT Enable</value>
           <value code="72">CIRCLE Mode</value>
@@ -26465,7 +26450,6 @@
           <value code="53">STEERING Mode</value>
           <value code="63">Sailboat Tack</value>
           <value code="74">Sailboat motoring 3pos</value>
-          <value code="5">Save Trim (4.1 and lower)</value>
           <value code="7">Save WP</value>
           <value code="300">Scripting1</value>
           <value code="309">Scripting10</value>
@@ -26531,8 +26515,7 @@
           <value code="52">ACRO Mode</value>
           <value code="16">AUTO Mode</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="41">ArmDisarm (4.1 and lower)</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="172">Battery MPPT Enable</value>
           <value code="72">CIRCLE Mode</value>
@@ -26603,7 +26586,6 @@
           <value code="53">STEERING Mode</value>
           <value code="63">Sailboat Tack</value>
           <value code="74">Sailboat motoring 3pos</value>
-          <value code="5">Save Trim (4.1 and lower)</value>
           <value code="7">Save WP</value>
           <value code="300">Scripting1</value>
           <value code="309">Scripting10</value>
@@ -26669,8 +26651,7 @@
           <value code="52">ACRO Mode</value>
           <value code="16">AUTO Mode</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="41">ArmDisarm (4.1 and lower)</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="172">Battery MPPT Enable</value>
           <value code="72">CIRCLE Mode</value>
@@ -26741,7 +26722,6 @@
           <value code="53">STEERING Mode</value>
           <value code="63">Sailboat Tack</value>
           <value code="74">Sailboat motoring 3pos</value>
-          <value code="5">Save Trim (4.1 and lower)</value>
           <value code="7">Save WP</value>
           <value code="300">Scripting1</value>
           <value code="309">Scripting10</value>
@@ -26807,8 +26787,7 @@
           <value code="52">ACRO Mode</value>
           <value code="16">AUTO Mode</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="41">ArmDisarm (4.1 and lower)</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="172">Battery MPPT Enable</value>
           <value code="72">CIRCLE Mode</value>
@@ -26879,7 +26858,6 @@
           <value code="53">STEERING Mode</value>
           <value code="63">Sailboat Tack</value>
           <value code="74">Sailboat motoring 3pos</value>
-          <value code="5">Save Trim (4.1 and lower)</value>
           <value code="7">Save WP</value>
           <value code="300">Scripting1</value>
           <value code="309">Scripting10</value>
@@ -26945,8 +26923,7 @@
           <value code="52">ACRO Mode</value>
           <value code="16">AUTO Mode</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="41">ArmDisarm (4.1 and lower)</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="172">Battery MPPT Enable</value>
           <value code="72">CIRCLE Mode</value>
@@ -27017,7 +26994,6 @@
           <value code="53">STEERING Mode</value>
           <value code="63">Sailboat Tack</value>
           <value code="74">Sailboat motoring 3pos</value>
-          <value code="5">Save Trim (4.1 and lower)</value>
           <value code="7">Save WP</value>
           <value code="300">Scripting1</value>
           <value code="309">Scripting10</value>
@@ -27083,8 +27059,7 @@
           <value code="52">ACRO Mode</value>
           <value code="16">AUTO Mode</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="41">ArmDisarm (4.1 and lower)</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="172">Battery MPPT Enable</value>
           <value code="72">CIRCLE Mode</value>
@@ -27155,7 +27130,6 @@
           <value code="53">STEERING Mode</value>
           <value code="63">Sailboat Tack</value>
           <value code="74">Sailboat motoring 3pos</value>
-          <value code="5">Save Trim (4.1 and lower)</value>
           <value code="7">Save WP</value>
           <value code="300">Scripting1</value>
           <value code="309">Scripting10</value>
@@ -27221,8 +27195,7 @@
           <value code="52">ACRO Mode</value>
           <value code="16">AUTO Mode</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="41">ArmDisarm (4.1 and lower)</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="172">Battery MPPT Enable</value>
           <value code="72">CIRCLE Mode</value>
@@ -27293,7 +27266,6 @@
           <value code="53">STEERING Mode</value>
           <value code="63">Sailboat Tack</value>
           <value code="74">Sailboat motoring 3pos</value>
-          <value code="5">Save Trim (4.1 and lower)</value>
           <value code="7">Save WP</value>
           <value code="300">Scripting1</value>
           <value code="309">Scripting10</value>
@@ -27359,8 +27331,7 @@
           <value code="52">ACRO Mode</value>
           <value code="16">AUTO Mode</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="41">ArmDisarm (4.1 and lower)</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="172">Battery MPPT Enable</value>
           <value code="72">CIRCLE Mode</value>
@@ -27431,7 +27402,6 @@
           <value code="53">STEERING Mode</value>
           <value code="63">Sailboat Tack</value>
           <value code="74">Sailboat motoring 3pos</value>
-          <value code="5">Save Trim (4.1 and lower)</value>
           <value code="7">Save WP</value>
           <value code="300">Scripting1</value>
           <value code="309">Scripting10</value>
@@ -27497,8 +27467,7 @@
           <value code="52">ACRO Mode</value>
           <value code="16">AUTO Mode</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="41">ArmDisarm (4.1 and lower)</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="172">Battery MPPT Enable</value>
           <value code="72">CIRCLE Mode</value>
@@ -27569,7 +27538,6 @@
           <value code="53">STEERING Mode</value>
           <value code="63">Sailboat Tack</value>
           <value code="74">Sailboat motoring 3pos</value>
-          <value code="5">Save Trim (4.1 and lower)</value>
           <value code="7">Save WP</value>
           <value code="300">Scripting1</value>
           <value code="309">Scripting10</value>
@@ -27635,8 +27603,7 @@
           <value code="52">ACRO Mode</value>
           <value code="16">AUTO Mode</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="41">ArmDisarm (4.1 and lower)</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="172">Battery MPPT Enable</value>
           <value code="72">CIRCLE Mode</value>
@@ -27707,7 +27674,6 @@
           <value code="53">STEERING Mode</value>
           <value code="63">Sailboat Tack</value>
           <value code="74">Sailboat motoring 3pos</value>
-          <value code="5">Save Trim (4.1 and lower)</value>
           <value code="7">Save WP</value>
           <value code="300">Scripting1</value>
           <value code="309">Scripting10</value>
@@ -27773,8 +27739,7 @@
           <value code="52">ACRO Mode</value>
           <value code="16">AUTO Mode</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="41">ArmDisarm (4.1 and lower)</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="172">Battery MPPT Enable</value>
           <value code="72">CIRCLE Mode</value>
@@ -27845,7 +27810,6 @@
           <value code="53">STEERING Mode</value>
           <value code="63">Sailboat Tack</value>
           <value code="74">Sailboat motoring 3pos</value>
-          <value code="5">Save Trim (4.1 and lower)</value>
           <value code="7">Save WP</value>
           <value code="300">Scripting1</value>
           <value code="309">Scripting10</value>
@@ -27911,8 +27875,7 @@
           <value code="52">ACRO Mode</value>
           <value code="16">AUTO Mode</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="41">ArmDisarm (4.1 and lower)</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="172">Battery MPPT Enable</value>
           <value code="72">CIRCLE Mode</value>
@@ -27983,7 +27946,6 @@
           <value code="53">STEERING Mode</value>
           <value code="63">Sailboat Tack</value>
           <value code="74">Sailboat motoring 3pos</value>
-          <value code="5">Save Trim (4.1 and lower)</value>
           <value code="7">Save WP</value>
           <value code="300">Scripting1</value>
           <value code="309">Scripting10</value>

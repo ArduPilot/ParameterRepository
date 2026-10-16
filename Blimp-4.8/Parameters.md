@@ -63,7 +63,7 @@ The throttle failsafe allows you to configure a software failsafe activated by a
 
 ## FS_THR_VALUE: Throttle Failsafe Value
 
-The PWM level in microseconds on channel 3 below which throttle failsafe triggers
+The PWM level in microseconds on the throttle input channel at or below which throttle failsafe triggers
 
 - Range: 910 1100
 
@@ -12834,9 +12834,7 @@ This allows selection of a PX4 or VRBRAIN board type. If set to zero then the bo
 |3|Cube/Pixhawk2|
 |5|PixhawkMini|
 |6|Pixhawk2Slim|
-|14|Pixhawk Pro|
 |20|AUAV2.1|
-|39|PX4 FMUV6|
 |100|PX4 OLDDRIVERS|
 
 - RebootRequired: True

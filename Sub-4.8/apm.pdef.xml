@@ -64,7 +64,7 @@
           <value code="2">Surface and hold on surface on failsafe</value>
         </values>
       </param>
-      <param humanName="Throttle Failsafe Value" name="ArduSub:FS_THR_VALUE" documentation="The PWM level in microseconds on channel 3 below which throttle failsafe triggers" user="Standard">
+      <param humanName="Throttle Failsafe Value" name="ArduSub:FS_THR_VALUE" documentation="The PWM level in microseconds on the throttle input channel at or below which throttle failsafe triggers" user="Standard">
         <field name="Range">910 1100</field>
         <field name="Units">PWM</field>
         <field name="UnitText">PWM in microseconds</field>
@@ -8971,9 +8971,7 @@
           <value code="3">Cube/Pixhawk2</value>
           <value code="5">PixhawkMini</value>
           <value code="6">Pixhawk2Slim</value>
-          <value code="14">Pixhawk Pro</value>
           <value code="20">AUAV2.1</value>
-          <value code="39">PX4 FMUV6</value>
           <value code="100">PX4 OLDDRIVERS</value>
         </values>
         <field name="RebootRequired">True</field>
@@ -29009,11 +29007,12 @@
       <param humanName="LINK_Q_Y" name="OSD1_LINK_Q_Y" documentation="Vertical position on screen">
         <field name="Range">0 21</field>
       </param>
-      <param humanName="Sets the overlay text resolution (MSP DisplayPort only)" name="OSD1_TXT_RES" documentation="Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22 (MSP DisplayPort only)" user="Standard">
+      <param humanName="Sets the overlay text resolution (MSP DisplayPort only)" name="OSD1_TXT_RES" documentation="Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22/53x20 (MSP DisplayPort only)" user="Standard">
         <values>
           <value code="0">30x16</value>
           <value code="1">50x18</value>
           <value code="2">60x22</value>
+          <value code="3">53x20</value>
         </values>
       </param>
       <param humanName="Sets the font index for this screen (MSP DisplayPort only)" name="OSD1_FONT" documentation="Sets the font index for this screen (MSP DisplayPort only)" user="Standard">
@@ -29816,11 +29815,12 @@
       <param humanName="LINK_Q_Y" name="OSD2_LINK_Q_Y" documentation="Vertical position on screen">
         <field name="Range">0 21</field>
       </param>
-      <param humanName="Sets the overlay text resolution (MSP DisplayPort only)" name="OSD2_TXT_RES" documentation="Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22 (MSP DisplayPort only)" user="Standard">
+      <param humanName="Sets the overlay text resolution (MSP DisplayPort only)" name="OSD2_TXT_RES" documentation="Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22/53x20 (MSP DisplayPort only)" user="Standard">
         <values>
           <value code="0">30x16</value>
           <value code="1">50x18</value>
           <value code="2">60x22</value>
+          <value code="3">53x20</value>
         </values>
       </param>
       <param humanName="Sets the font index for this screen (MSP DisplayPort only)" name="OSD2_FONT" documentation="Sets the font index for this screen (MSP DisplayPort only)" user="Standard">
@@ -30623,11 +30623,12 @@
       <param humanName="LINK_Q_Y" name="OSD3_LINK_Q_Y" documentation="Vertical position on screen">
         <field name="Range">0 21</field>
       </param>
-      <param humanName="Sets the overlay text resolution (MSP DisplayPort only)" name="OSD3_TXT_RES" documentation="Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22 (MSP DisplayPort only)" user="Standard">
+      <param humanName="Sets the overlay text resolution (MSP DisplayPort only)" name="OSD3_TXT_RES" documentation="Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22/53x20 (MSP DisplayPort only)" user="Standard">
         <values>
           <value code="0">30x16</value>
           <value code="1">50x18</value>
           <value code="2">60x22</value>
+          <value code="3">53x20</value>
         </values>
       </param>
       <param humanName="Sets the font index for this screen (MSP DisplayPort only)" name="OSD3_FONT" documentation="Sets the font index for this screen (MSP DisplayPort only)" user="Standard">
@@ -31430,11 +31431,12 @@
       <param humanName="LINK_Q_Y" name="OSD4_LINK_Q_Y" documentation="Vertical position on screen">
         <field name="Range">0 21</field>
       </param>
-      <param humanName="Sets the overlay text resolution (MSP DisplayPort only)" name="OSD4_TXT_RES" documentation="Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22 (MSP DisplayPort only)" user="Standard">
+      <param humanName="Sets the overlay text resolution (MSP DisplayPort only)" name="OSD4_TXT_RES" documentation="Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22/53x20 (MSP DisplayPort only)" user="Standard">
         <values>
           <value code="0">30x16</value>
           <value code="1">50x18</value>
           <value code="2">60x22</value>
+          <value code="3">53x20</value>
         </values>
       </param>
       <param humanName="Sets the font index for this screen (MSP DisplayPort only)" name="OSD4_FONT" documentation="Sets the font index for this screen (MSP DisplayPort only)" user="Standard">
@@ -32784,7 +32786,7 @@
         <values>
           <value code="0">Do Nothing</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="169">Camera Auto Focus</value>
           <value code="174">Camera Image Tracking</value>
@@ -32888,7 +32890,7 @@
         <values>
           <value code="0">Do Nothing</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="169">Camera Auto Focus</value>
           <value code="174">Camera Image Tracking</value>
@@ -32992,7 +32994,7 @@
         <values>
           <value code="0">Do Nothing</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="169">Camera Auto Focus</value>
           <value code="174">Camera Image Tracking</value>
@@ -33096,7 +33098,7 @@
         <values>
           <value code="0">Do Nothing</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="169">Camera Auto Focus</value>
           <value code="174">Camera Image Tracking</value>
@@ -33200,7 +33202,7 @@
         <values>
           <value code="0">Do Nothing</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="169">Camera Auto Focus</value>
           <value code="174">Camera Image Tracking</value>
@@ -33304,7 +33306,7 @@
         <values>
           <value code="0">Do Nothing</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="169">Camera Auto Focus</value>
           <value code="174">Camera Image Tracking</value>
@@ -33408,7 +33410,7 @@
         <values>
           <value code="0">Do Nothing</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="169">Camera Auto Focus</value>
           <value code="174">Camera Image Tracking</value>
@@ -33512,7 +33514,7 @@
         <values>
           <value code="0">Do Nothing</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="169">Camera Auto Focus</value>
           <value code="174">Camera Image Tracking</value>
@@ -33616,7 +33618,7 @@
         <values>
           <value code="0">Do Nothing</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="169">Camera Auto Focus</value>
           <value code="174">Camera Image Tracking</value>
@@ -33720,7 +33722,7 @@
         <values>
           <value code="0">Do Nothing</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="169">Camera Auto Focus</value>
           <value code="174">Camera Image Tracking</value>
@@ -33824,7 +33826,7 @@
         <values>
           <value code="0">Do Nothing</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="169">Camera Auto Focus</value>
           <value code="174">Camera Image Tracking</value>
@@ -33928,7 +33930,7 @@
         <values>
           <value code="0">Do Nothing</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="169">Camera Auto Focus</value>
           <value code="174">Camera Image Tracking</value>
@@ -34032,7 +34034,7 @@
         <values>
           <value code="0">Do Nothing</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="169">Camera Auto Focus</value>
           <value code="174">Camera Image Tracking</value>
@@ -34136,7 +34138,7 @@
         <values>
           <value code="0">Do Nothing</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="169">Camera Auto Focus</value>
           <value code="174">Camera Image Tracking</value>
@@ -34240,7 +34242,7 @@
         <values>
           <value code="0">Do Nothing</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="169">Camera Auto Focus</value>
           <value code="174">Camera Image Tracking</value>
@@ -34344,7 +34346,7 @@
         <values>
           <value code="0">Do Nothing</value>
           <value code="165">Arm/Emergency Motor Stop</value>
-          <value code="153">ArmDisarm (4.2 and higher)</value>
+          <value code="153">ArmDisarm</value>
           <value code="24">Auto Mission Reset</value>
           <value code="169">Camera Auto Focus</value>
           <value code="174">Camera Image Tracking</value>

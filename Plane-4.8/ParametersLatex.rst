@@ -944,7 +944,7 @@ THR\_FAILSAFE: Throttle and RC Failsafe Enable
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-0 disables the failsafe\. 1 enables failsafe on loss of RC input\. This is detected either by throttle values below THR\_FS\_VALUE\, loss of receiver valid pulses\/data\, or by the FS bit in receivers that provide it\, like SBUS\. A programmable failsafe action will occur and RC inputs\, if present\, will be ignored\. A value of 2 means that the RC inputs won\'t be used when RC failsafe is detected by any of the above methods\, but it won\'t trigger an RC failsafe action\.
+0 disables the failsafe\. 1 enables failsafe on loss of RC input\. This is detected either by the throttle channel reaching THR\_FS\_VALUE \(at or below it\, or at or above it for a reversed throttle channel\)\, loss of receiver valid pulses\/data\, or by the FS bit in receivers that provide it\, like SBUS\. A programmable failsafe action will occur and RC inputs\, if present\, will be ignored\. A value of 2 means that the RC inputs won\'t be used when RC failsafe is detected by any of the above methods\, but it won\'t trigger an RC failsafe action\.
 
 
 +-------+-------------------+
@@ -966,7 +966,7 @@ THR\_FS\_VALUE: Throttle Failsafe Value
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-The PWM level on the throttle input channel below which throttle failsafe triggers\. Note that this should be well below the normal minimum for your throttle channel\.
+The PWM level on the throttle input channel at or below which throttle failsafe triggers\. Note that this should be well below the normal minimum for your throttle channel\.
 
 
 +-----------+-------------+
@@ -33947,11 +33947,7 @@ This allows selection of a PX4 or VRBRAIN board type\. If set to zero then the b
 +-------+----------------+
 | 6     | Pixhawk2Slim   |
 +-------+----------------+
-| 14    | Pixhawk Pro    |
-+-------+----------------+
 | 20    | AUAV2.1        |
-+-------+----------------+
-| 39    | PX4 FMUV6      |
 +-------+----------------+
 | 100   | PX4 OLDDRIVERS |
 +-------+----------------+
@@ -35073,8 +35069,6 @@ Auxiliary RC Options function executed on pin change
 +-------+-----------------------------------------------------+
 | 38    | ADSB Avoidance Enable                               |
 +-------+-----------------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                           |
-+-------+-----------------------------------------------------+
 | 43    | InvertedFlight Enable                               |
 +-------+-----------------------------------------------------+
 | 46    | RC Override Enable                                  |
@@ -35167,9 +35161,9 @@ Auxiliary RC Options function executed on pin change
 +-------+-----------------------------------------------------+
 | 150   | CRUISE Mode                                         |
 +-------+-----------------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                          |
+| 153   | ArmDisarm                                           |
 +-------+-----------------------------------------------------+
-| 154   | ArmDisarm with Quadplane AirMode (4.2 and higher)   |
+| 154   | ArmDisarm with Quadplane AirMode                    |
 +-------+-----------------------------------------------------+
 | 155   | Set roll pitch and yaw trim to current servo and RC |
 +-------+-----------------------------------------------------+
@@ -35329,8 +35323,6 @@ Auxiliary RC Options function executed on pin change
 +-------+-----------------------------------------------------+
 | 38    | ADSB Avoidance Enable                               |
 +-------+-----------------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                           |
-+-------+-----------------------------------------------------+
 | 43    | InvertedFlight Enable                               |
 +-------+-----------------------------------------------------+
 | 46    | RC Override Enable                                  |
@@ -35423,9 +35415,9 @@ Auxiliary RC Options function executed on pin change
 +-------+-----------------------------------------------------+
 | 150   | CRUISE Mode                                         |
 +-------+-----------------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                          |
+| 153   | ArmDisarm                                           |
 +-------+-----------------------------------------------------+
-| 154   | ArmDisarm with Quadplane AirMode (4.2 and higher)   |
+| 154   | ArmDisarm with Quadplane AirMode                    |
 +-------+-----------------------------------------------------+
 | 155   | Set roll pitch and yaw trim to current servo and RC |
 +-------+-----------------------------------------------------+
@@ -35585,8 +35577,6 @@ Auxiliary RC Options function executed on pin change
 +-------+-----------------------------------------------------+
 | 38    | ADSB Avoidance Enable                               |
 +-------+-----------------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                           |
-+-------+-----------------------------------------------------+
 | 43    | InvertedFlight Enable                               |
 +-------+-----------------------------------------------------+
 | 46    | RC Override Enable                                  |
@@ -35679,9 +35669,9 @@ Auxiliary RC Options function executed on pin change
 +-------+-----------------------------------------------------+
 | 150   | CRUISE Mode                                         |
 +-------+-----------------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                          |
+| 153   | ArmDisarm                                           |
 +-------+-----------------------------------------------------+
-| 154   | ArmDisarm with Quadplane AirMode (4.2 and higher)   |
+| 154   | ArmDisarm with Quadplane AirMode                    |
 +-------+-----------------------------------------------------+
 | 155   | Set roll pitch and yaw trim to current servo and RC |
 +-------+-----------------------------------------------------+
@@ -35841,8 +35831,6 @@ Auxiliary RC Options function executed on pin change
 +-------+-----------------------------------------------------+
 | 38    | ADSB Avoidance Enable                               |
 +-------+-----------------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                           |
-+-------+-----------------------------------------------------+
 | 43    | InvertedFlight Enable                               |
 +-------+-----------------------------------------------------+
 | 46    | RC Override Enable                                  |
@@ -35935,9 +35923,9 @@ Auxiliary RC Options function executed on pin change
 +-------+-----------------------------------------------------+
 | 150   | CRUISE Mode                                         |
 +-------+-----------------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                          |
+| 153   | ArmDisarm                                           |
 +-------+-----------------------------------------------------+
-| 154   | ArmDisarm with Quadplane AirMode (4.2 and higher)   |
+| 154   | ArmDisarm with Quadplane AirMode                    |
 +-------+-----------------------------------------------------+
 | 155   | Set roll pitch and yaw trim to current servo and RC |
 +-------+-----------------------------------------------------+
@@ -75764,7 +75752,7 @@ OSD1\_TXT\_RES: Sets the overlay text resolution \(MSP DisplayPort only\)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18\/60x22 \(MSP DisplayPort only\)
+Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18\/60x22\/53x20 \(MSP DisplayPort only\)
 
 
 +-------+---------+
@@ -75775,6 +75763,8 @@ Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18\
 | 1     | 50x18   |
 +-------+---------+
 | 2     | 60x22   |
++-------+---------+
+| 3     | 53x20   |
 +-------+---------+
 
 
@@ -79525,7 +79515,7 @@ OSD2\_TXT\_RES: Sets the overlay text resolution \(MSP DisplayPort only\)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18\/60x22 \(MSP DisplayPort only\)
+Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18\/60x22\/53x20 \(MSP DisplayPort only\)
 
 
 +-------+---------+
@@ -79536,6 +79526,8 @@ Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18\
 | 1     | 50x18   |
 +-------+---------+
 | 2     | 60x22   |
++-------+---------+
+| 3     | 53x20   |
 +-------+---------+
 
 
@@ -83286,7 +83278,7 @@ OSD3\_TXT\_RES: Sets the overlay text resolution \(MSP DisplayPort only\)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18\/60x22 \(MSP DisplayPort only\)
+Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18\/60x22\/53x20 \(MSP DisplayPort only\)
 
 
 +-------+---------+
@@ -83297,6 +83289,8 @@ Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18\
 | 1     | 50x18   |
 +-------+---------+
 | 2     | 60x22   |
++-------+---------+
+| 3     | 53x20   |
 +-------+---------+
 
 
@@ -87047,7 +87041,7 @@ OSD4\_TXT\_RES: Sets the overlay text resolution \(MSP DisplayPort only\)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18\/60x22 \(MSP DisplayPort only\)
+Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18\/60x22\/53x20 \(MSP DisplayPort only\)
 
 
 +-------+---------+
@@ -87058,6 +87052,8 @@ Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18\
 | 1     | 50x18   |
 +-------+---------+
 | 2     | 60x22   |
++-------+---------+
+| 3     | 53x20   |
 +-------+---------+
 
 
@@ -96196,8 +96192,6 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 38    | ADSB Avoidance Enable                               |
 +-------+-----------------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                           |
-+-------+-----------------------------------------------------+
 | 43    | InvertedFlight Enable                               |
 +-------+-----------------------------------------------------+
 | 46    | RC Override Enable                                  |
@@ -96290,9 +96284,9 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 150   | CRUISE Mode                                         |
 +-------+-----------------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                          |
+| 153   | ArmDisarm                                           |
 +-------+-----------------------------------------------------+
-| 154   | ArmDisarm with Quadplane AirMode (4.2 and higher)   |
+| 154   | ArmDisarm with Quadplane AirMode                    |
 +-------+-----------------------------------------------------+
 | 155   | Set roll pitch and yaw trim to current servo and RC |
 +-------+-----------------------------------------------------+
@@ -96556,8 +96550,6 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 38    | ADSB Avoidance Enable                               |
 +-------+-----------------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                           |
-+-------+-----------------------------------------------------+
 | 43    | InvertedFlight Enable                               |
 +-------+-----------------------------------------------------+
 | 46    | RC Override Enable                                  |
@@ -96650,9 +96642,9 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 150   | CRUISE Mode                                         |
 +-------+-----------------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                          |
+| 153   | ArmDisarm                                           |
 +-------+-----------------------------------------------------+
-| 154   | ArmDisarm with Quadplane AirMode (4.2 and higher)   |
+| 154   | ArmDisarm with Quadplane AirMode                    |
 +-------+-----------------------------------------------------+
 | 155   | Set roll pitch and yaw trim to current servo and RC |
 +-------+-----------------------------------------------------+
@@ -96916,8 +96908,6 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 38    | ADSB Avoidance Enable                               |
 +-------+-----------------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                           |
-+-------+-----------------------------------------------------+
 | 43    | InvertedFlight Enable                               |
 +-------+-----------------------------------------------------+
 | 46    | RC Override Enable                                  |
@@ -97010,9 +97000,9 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 150   | CRUISE Mode                                         |
 +-------+-----------------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                          |
+| 153   | ArmDisarm                                           |
 +-------+-----------------------------------------------------+
-| 154   | ArmDisarm with Quadplane AirMode (4.2 and higher)   |
+| 154   | ArmDisarm with Quadplane AirMode                    |
 +-------+-----------------------------------------------------+
 | 155   | Set roll pitch and yaw trim to current servo and RC |
 +-------+-----------------------------------------------------+
@@ -97276,8 +97266,6 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 38    | ADSB Avoidance Enable                               |
 +-------+-----------------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                           |
-+-------+-----------------------------------------------------+
 | 43    | InvertedFlight Enable                               |
 +-------+-----------------------------------------------------+
 | 46    | RC Override Enable                                  |
@@ -97370,9 +97358,9 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 150   | CRUISE Mode                                         |
 +-------+-----------------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                          |
+| 153   | ArmDisarm                                           |
 +-------+-----------------------------------------------------+
-| 154   | ArmDisarm with Quadplane AirMode (4.2 and higher)   |
+| 154   | ArmDisarm with Quadplane AirMode                    |
 +-------+-----------------------------------------------------+
 | 155   | Set roll pitch and yaw trim to current servo and RC |
 +-------+-----------------------------------------------------+
@@ -97636,8 +97624,6 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 38    | ADSB Avoidance Enable                               |
 +-------+-----------------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                           |
-+-------+-----------------------------------------------------+
 | 43    | InvertedFlight Enable                               |
 +-------+-----------------------------------------------------+
 | 46    | RC Override Enable                                  |
@@ -97730,9 +97716,9 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 150   | CRUISE Mode                                         |
 +-------+-----------------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                          |
+| 153   | ArmDisarm                                           |
 +-------+-----------------------------------------------------+
-| 154   | ArmDisarm with Quadplane AirMode (4.2 and higher)   |
+| 154   | ArmDisarm with Quadplane AirMode                    |
 +-------+-----------------------------------------------------+
 | 155   | Set roll pitch and yaw trim to current servo and RC |
 +-------+-----------------------------------------------------+
@@ -97996,8 +97982,6 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 38    | ADSB Avoidance Enable                               |
 +-------+-----------------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                           |
-+-------+-----------------------------------------------------+
 | 43    | InvertedFlight Enable                               |
 +-------+-----------------------------------------------------+
 | 46    | RC Override Enable                                  |
@@ -98090,9 +98074,9 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 150   | CRUISE Mode                                         |
 +-------+-----------------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                          |
+| 153   | ArmDisarm                                           |
 +-------+-----------------------------------------------------+
-| 154   | ArmDisarm with Quadplane AirMode (4.2 and higher)   |
+| 154   | ArmDisarm with Quadplane AirMode                    |
 +-------+-----------------------------------------------------+
 | 155   | Set roll pitch and yaw trim to current servo and RC |
 +-------+-----------------------------------------------------+
@@ -98356,8 +98340,6 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 38    | ADSB Avoidance Enable                               |
 +-------+-----------------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                           |
-+-------+-----------------------------------------------------+
 | 43    | InvertedFlight Enable                               |
 +-------+-----------------------------------------------------+
 | 46    | RC Override Enable                                  |
@@ -98450,9 +98432,9 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 150   | CRUISE Mode                                         |
 +-------+-----------------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                          |
+| 153   | ArmDisarm                                           |
 +-------+-----------------------------------------------------+
-| 154   | ArmDisarm with Quadplane AirMode (4.2 and higher)   |
+| 154   | ArmDisarm with Quadplane AirMode                    |
 +-------+-----------------------------------------------------+
 | 155   | Set roll pitch and yaw trim to current servo and RC |
 +-------+-----------------------------------------------------+
@@ -98716,8 +98698,6 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 38    | ADSB Avoidance Enable                               |
 +-------+-----------------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                           |
-+-------+-----------------------------------------------------+
 | 43    | InvertedFlight Enable                               |
 +-------+-----------------------------------------------------+
 | 46    | RC Override Enable                                  |
@@ -98810,9 +98790,9 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 150   | CRUISE Mode                                         |
 +-------+-----------------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                          |
+| 153   | ArmDisarm                                           |
 +-------+-----------------------------------------------------+
-| 154   | ArmDisarm with Quadplane AirMode (4.2 and higher)   |
+| 154   | ArmDisarm with Quadplane AirMode                    |
 +-------+-----------------------------------------------------+
 | 155   | Set roll pitch and yaw trim to current servo and RC |
 +-------+-----------------------------------------------------+
@@ -99076,8 +99056,6 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 38    | ADSB Avoidance Enable                               |
 +-------+-----------------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                           |
-+-------+-----------------------------------------------------+
 | 43    | InvertedFlight Enable                               |
 +-------+-----------------------------------------------------+
 | 46    | RC Override Enable                                  |
@@ -99170,9 +99148,9 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 150   | CRUISE Mode                                         |
 +-------+-----------------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                          |
+| 153   | ArmDisarm                                           |
 +-------+-----------------------------------------------------+
-| 154   | ArmDisarm with Quadplane AirMode (4.2 and higher)   |
+| 154   | ArmDisarm with Quadplane AirMode                    |
 +-------+-----------------------------------------------------+
 | 155   | Set roll pitch and yaw trim to current servo and RC |
 +-------+-----------------------------------------------------+
@@ -99436,8 +99414,6 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 38    | ADSB Avoidance Enable                               |
 +-------+-----------------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                           |
-+-------+-----------------------------------------------------+
 | 43    | InvertedFlight Enable                               |
 +-------+-----------------------------------------------------+
 | 46    | RC Override Enable                                  |
@@ -99530,9 +99506,9 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 150   | CRUISE Mode                                         |
 +-------+-----------------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                          |
+| 153   | ArmDisarm                                           |
 +-------+-----------------------------------------------------+
-| 154   | ArmDisarm with Quadplane AirMode (4.2 and higher)   |
+| 154   | ArmDisarm with Quadplane AirMode                    |
 +-------+-----------------------------------------------------+
 | 155   | Set roll pitch and yaw trim to current servo and RC |
 +-------+-----------------------------------------------------+
@@ -99796,8 +99772,6 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 38    | ADSB Avoidance Enable                               |
 +-------+-----------------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                           |
-+-------+-----------------------------------------------------+
 | 43    | InvertedFlight Enable                               |
 +-------+-----------------------------------------------------+
 | 46    | RC Override Enable                                  |
@@ -99890,9 +99864,9 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 150   | CRUISE Mode                                         |
 +-------+-----------------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                          |
+| 153   | ArmDisarm                                           |
 +-------+-----------------------------------------------------+
-| 154   | ArmDisarm with Quadplane AirMode (4.2 and higher)   |
+| 154   | ArmDisarm with Quadplane AirMode                    |
 +-------+-----------------------------------------------------+
 | 155   | Set roll pitch and yaw trim to current servo and RC |
 +-------+-----------------------------------------------------+
@@ -100156,8 +100130,6 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 38    | ADSB Avoidance Enable                               |
 +-------+-----------------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                           |
-+-------+-----------------------------------------------------+
 | 43    | InvertedFlight Enable                               |
 +-------+-----------------------------------------------------+
 | 46    | RC Override Enable                                  |
@@ -100250,9 +100222,9 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 150   | CRUISE Mode                                         |
 +-------+-----------------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                          |
+| 153   | ArmDisarm                                           |
 +-------+-----------------------------------------------------+
-| 154   | ArmDisarm with Quadplane AirMode (4.2 and higher)   |
+| 154   | ArmDisarm with Quadplane AirMode                    |
 +-------+-----------------------------------------------------+
 | 155   | Set roll pitch and yaw trim to current servo and RC |
 +-------+-----------------------------------------------------+
@@ -100516,8 +100488,6 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 38    | ADSB Avoidance Enable                               |
 +-------+-----------------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                           |
-+-------+-----------------------------------------------------+
 | 43    | InvertedFlight Enable                               |
 +-------+-----------------------------------------------------+
 | 46    | RC Override Enable                                  |
@@ -100610,9 +100580,9 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 150   | CRUISE Mode                                         |
 +-------+-----------------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                          |
+| 153   | ArmDisarm                                           |
 +-------+-----------------------------------------------------+
-| 154   | ArmDisarm with Quadplane AirMode (4.2 and higher)   |
+| 154   | ArmDisarm with Quadplane AirMode                    |
 +-------+-----------------------------------------------------+
 | 155   | Set roll pitch and yaw trim to current servo and RC |
 +-------+-----------------------------------------------------+
@@ -100876,8 +100846,6 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 38    | ADSB Avoidance Enable                               |
 +-------+-----------------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                           |
-+-------+-----------------------------------------------------+
 | 43    | InvertedFlight Enable                               |
 +-------+-----------------------------------------------------+
 | 46    | RC Override Enable                                  |
@@ -100970,9 +100938,9 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 150   | CRUISE Mode                                         |
 +-------+-----------------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                          |
+| 153   | ArmDisarm                                           |
 +-------+-----------------------------------------------------+
-| 154   | ArmDisarm with Quadplane AirMode (4.2 and higher)   |
+| 154   | ArmDisarm with Quadplane AirMode                    |
 +-------+-----------------------------------------------------+
 | 155   | Set roll pitch and yaw trim to current servo and RC |
 +-------+-----------------------------------------------------+
@@ -101236,8 +101204,6 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 38    | ADSB Avoidance Enable                               |
 +-------+-----------------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                           |
-+-------+-----------------------------------------------------+
 | 43    | InvertedFlight Enable                               |
 +-------+-----------------------------------------------------+
 | 46    | RC Override Enable                                  |
@@ -101330,9 +101296,9 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 150   | CRUISE Mode                                         |
 +-------+-----------------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                          |
+| 153   | ArmDisarm                                           |
 +-------+-----------------------------------------------------+
-| 154   | ArmDisarm with Quadplane AirMode (4.2 and higher)   |
+| 154   | ArmDisarm with Quadplane AirMode                    |
 +-------+-----------------------------------------------------+
 | 155   | Set roll pitch and yaw trim to current servo and RC |
 +-------+-----------------------------------------------------+
@@ -101596,8 +101562,6 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 38    | ADSB Avoidance Enable                               |
 +-------+-----------------------------------------------------+
-| 41    | ArmDisarm (4.1 and lower)                           |
-+-------+-----------------------------------------------------+
 | 43    | InvertedFlight Enable                               |
 +-------+-----------------------------------------------------+
 | 46    | RC Override Enable                                  |
@@ -101690,9 +101654,9 @@ Function assigned to this RC channel
 +-------+-----------------------------------------------------+
 | 150   | CRUISE Mode                                         |
 +-------+-----------------------------------------------------+
-| 153   | ArmDisarm (4.2 and higher)                          |
+| 153   | ArmDisarm                                           |
 +-------+-----------------------------------------------------+
-| 154   | ArmDisarm with Quadplane AirMode (4.2 and higher)   |
+| 154   | ArmDisarm with Quadplane AirMode                    |
 +-------+-----------------------------------------------------+
 | 155   | Set roll pitch and yaw trim to current servo and RC |
 +-------+-----------------------------------------------------+

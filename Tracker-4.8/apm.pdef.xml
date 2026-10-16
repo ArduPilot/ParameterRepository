@@ -8361,9 +8361,7 @@
           <value code="3">Cube/Pixhawk2</value>
           <value code="5">PixhawkMini</value>
           <value code="6">Pixhawk2Slim</value>
-          <value code="14">Pixhawk Pro</value>
           <value code="20">AUAV2.1</value>
-          <value code="39">PX4 FMUV6</value>
           <value code="100">PX4 OLDDRIVERS</value>
         </values>
         <field name="RebootRequired">True</field>

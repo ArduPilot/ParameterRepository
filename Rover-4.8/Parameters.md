@@ -139,7 +139,7 @@ The time in seconds that a failsafe condition must persist before the failsafe a
 
 ## FS_THR_ENABLE: Throttle Failsafe Enable
 
-The throttle failsafe allows you to configure a software failsafe activated by a setting on the throttle input channel to a low value. This can be used to detect the RC transmitter going out of range. Failsafe will be triggered when the throttle channel goes below the FS_THR_VALUE for FS_TIMEOUT seconds.
+The throttle failsafe allows you to configure a software failsafe activated by a setting on the throttle input channel to a low value. This can be used to detect the RC transmitter going out of range. Failsafe will be triggered when the throttle channel reaches the FS_THR_VALUE, or goes below it, for FS_TIMEOUT seconds.
 
 |Value|Meaning|
 |:---:|:---:|
@@ -149,7 +149,7 @@ The throttle failsafe allows you to configure a software failsafe activated by a
 
 ## FS_THR_VALUE: Throttle Failsafe Value
 
-The PWM level on the throttle channel below which throttle failsafe triggers.
+The PWM level on the throttle channel at or below which throttle failsafe triggers.
 
 - Range: 910 1100
 
@@ -14258,9 +14258,7 @@ This allows selection of a PX4 or VRBRAIN board type. If set to zero then the bo
 |3|Cube/Pixhawk2|
 |5|PixhawkMini|
 |6|Pixhawk2Slim|
-|14|Pixhawk Pro|
 |20|AUAV2.1|
-|39|PX4 FMUV6|
 |100|PX4 OLDDRIVERS|
 
 - RebootRequired: True
@@ -14753,7 +14751,6 @@ Auxiliary RC Options function executed on pin change
 |:---:|:---:|
 |0|Do Nothing|
 |4|RTL|
-|5|Save Trim (4.1 and lower)|
 |7|Save WP|
 |9|Camera Trigger|
 |11|Fence Enable|
@@ -14768,7 +14765,6 @@ Auxiliary RC Options function executed on pin change
 |35|Relay3 On/Off|
 |36|Relay4 On/Off|
 |40|Proximity Avoidance Enable|
-|41|ArmDisarm (4.1 and lower)|
 |42|SMARTRTL Mode|
 |46|RC Override Enable|
 |50|LearnCruise Speed|
@@ -14806,7 +14802,7 @@ Auxiliary RC Options function executed on pin change
 |111|Loweheiser starter|
 |112|SwitchExternalAHRS|
 |113|Retract Mount2|
-|153|ArmDisarm (4.2 and higher)|
+|153|ArmDisarm|
 |155|Set steering trim to current servo and RC|
 |156|Torqeedo Clear Err|
 |162|FFT Tune|
@@ -14863,7 +14859,6 @@ Auxiliary RC Options function executed on pin change
 |:---:|:---:|
 |0|Do Nothing|
 |4|RTL|
-|5|Save Trim (4.1 and lower)|
 |7|Save WP|
 |9|Camera Trigger|
 |11|Fence Enable|
@@ -14878,7 +14873,6 @@ Auxiliary RC Options function executed on pin change
 |35|Relay3 On/Off|
 |36|Relay4 On/Off|
 |40|Proximity Avoidance Enable|
-|41|ArmDisarm (4.1 and lower)|
 |42|SMARTRTL Mode|
 |46|RC Override Enable|
 |50|LearnCruise Speed|
@@ -14916,7 +14910,7 @@ Auxiliary RC Options function executed on pin change
 |111|Loweheiser starter|
 |112|SwitchExternalAHRS|
 |113|Retract Mount2|
-|153|ArmDisarm (4.2 and higher)|
+|153|ArmDisarm|
 |155|Set steering trim to current servo and RC|
 |156|Torqeedo Clear Err|
 |162|FFT Tune|
@@ -14973,7 +14967,6 @@ Auxiliary RC Options function executed on pin change
 |:---:|:---:|
 |0|Do Nothing|
 |4|RTL|
-|5|Save Trim (4.1 and lower)|
 |7|Save WP|
 |9|Camera Trigger|
 |11|Fence Enable|
@@ -14988,7 +14981,6 @@ Auxiliary RC Options function executed on pin change
 |35|Relay3 On/Off|
 |36|Relay4 On/Off|
 |40|Proximity Avoidance Enable|
-|41|ArmDisarm (4.1 and lower)|
 |42|SMARTRTL Mode|
 |46|RC Override Enable|
 |50|LearnCruise Speed|
@@ -15026,7 +15018,7 @@ Auxiliary RC Options function executed on pin change
 |111|Loweheiser starter|
 |112|SwitchExternalAHRS|
 |113|Retract Mount2|
-|153|ArmDisarm (4.2 and higher)|
+|153|ArmDisarm|
 |155|Set steering trim to current servo and RC|
 |156|Torqeedo Clear Err|
 |162|FFT Tune|
@@ -15083,7 +15075,6 @@ Auxiliary RC Options function executed on pin change
 |:---:|:---:|
 |0|Do Nothing|
 |4|RTL|
-|5|Save Trim (4.1 and lower)|
 |7|Save WP|
 |9|Camera Trigger|
 |11|Fence Enable|
@@ -15098,7 +15089,6 @@ Auxiliary RC Options function executed on pin change
 |35|Relay3 On/Off|
 |36|Relay4 On/Off|
 |40|Proximity Avoidance Enable|
-|41|ArmDisarm (4.1 and lower)|
 |42|SMARTRTL Mode|
 |46|RC Override Enable|
 |50|LearnCruise Speed|
@@ -15136,7 +15126,7 @@ Auxiliary RC Options function executed on pin change
 |111|Loweheiser starter|
 |112|SwitchExternalAHRS|
 |113|Retract Mount2|
-|153|ArmDisarm (4.2 and higher)|
+|153|ArmDisarm|
 |155|Set steering trim to current servo and RC|
 |156|Torqeedo Clear Err|
 |162|FFT Tune|
@@ -34083,13 +34073,14 @@ Vertical position on screen
 
 ## OSD1_TXT_RES: Sets the overlay text resolution (MSP DisplayPort only)
 
-Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22 (MSP DisplayPort only)
+Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22/53x20 (MSP DisplayPort only)
 
 |Value|Meaning|
 |:---:|:---:|
 |0|30x16|
 |1|50x18|
 |2|60x22|
+|3|53x20|
 
 ## OSD1_FONT: Sets the font index for this screen (MSP DisplayPort only)
 
@@ -35493,13 +35484,14 @@ Vertical position on screen
 
 ## OSD2_TXT_RES: Sets the overlay text resolution (MSP DisplayPort only)
 
-Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22 (MSP DisplayPort only)
+Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22/53x20 (MSP DisplayPort only)
 
 |Value|Meaning|
 |:---:|:---:|
 |0|30x16|
 |1|50x18|
 |2|60x22|
+|3|53x20|
 
 ## OSD2_FONT: Sets the font index for this screen (MSP DisplayPort only)
 
@@ -36903,13 +36895,14 @@ Vertical position on screen
 
 ## OSD3_TXT_RES: Sets the overlay text resolution (MSP DisplayPort only)
 
-Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22 (MSP DisplayPort only)
+Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22/53x20 (MSP DisplayPort only)
 
 |Value|Meaning|
 |:---:|:---:|
 |0|30x16|
 |1|50x18|
 |2|60x22|
+|3|53x20|
 
 ## OSD3_FONT: Sets the font index for this screen (MSP DisplayPort only)
 
@@ -38313,13 +38306,14 @@ Vertical position on screen
 
 ## OSD4_TXT_RES: Sets the overlay text resolution (MSP DisplayPort only)
 
-Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22 (MSP DisplayPort only)
+Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22/53x20 (MSP DisplayPort only)
 
 |Value|Meaning|
 |:---:|:---:|
 |0|30x16|
 |1|50x18|
 |2|60x22|
+|3|53x20|
 
 ## OSD4_FONT: Sets the font index for this screen (MSP DisplayPort only)
 
@@ -40628,7 +40622,6 @@ Function assigned to this RC channel
 |:---:|:---:|
 |0|Do Nothing|
 |4|RTL|
-|5|Save Trim (4.1 and lower)|
 |7|Save WP|
 |9|Camera Trigger|
 |11|Fence Enable|
@@ -40643,7 +40636,6 @@ Function assigned to this RC channel
 |35|Relay3 On/Off|
 |36|Relay4 On/Off|
 |40|Proximity Avoidance Enable|
-|41|ArmDisarm (4.1 and lower)|
 |42|SMARTRTL Mode|
 |46|RC Override Enable|
 |50|LearnCruise Speed|
@@ -40681,7 +40673,7 @@ Function assigned to this RC channel
 |111|Loweheiser starter|
 |112|SwitchExternalAHRS|
 |113|Retract Mount2|
-|153|ArmDisarm (4.2 and higher)|
+|153|ArmDisarm|
 |155|Set steering trim to current servo and RC|
 |156|Torqeedo Clear Err|
 |162|FFT Tune|

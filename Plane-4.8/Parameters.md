@@ -458,7 +458,7 @@ If this is set then when in STABILIZE, FBWA or ACRO modes the throttle is a dire
 
 ## THR_FAILSAFE: Throttle and RC Failsafe Enable
 
-0 disables the failsafe. 1 enables failsafe on loss of RC input. This is detected either by throttle values below THR_FS_VALUE, loss of receiver valid pulses/data, or by the FS bit in receivers that provide it, like SBUS. A programmable failsafe action will occur and RC inputs, if present, will be ignored. A value of 2 means that the RC inputs won't be used when RC failsafe is detected by any of the above methods, but it won't trigger an RC failsafe action.
+0 disables the failsafe. 1 enables failsafe on loss of RC input. This is detected either by the throttle channel reaching THR_FS_VALUE (at or below it, or at or above it for a reversed throttle channel), loss of receiver valid pulses/data, or by the FS bit in receivers that provide it, like SBUS. A programmable failsafe action will occur and RC inputs, if present, will be ignored. A value of 2 means that the RC inputs won't be used when RC failsafe is detected by any of the above methods, but it won't trigger an RC failsafe action.
 
 |Value|Meaning|
 |:---:|:---:|
@@ -468,7 +468,7 @@ If this is set then when in STABILIZE, FBWA or ACRO modes the throttle is a dire
 
 ## THR_FS_VALUE: Throttle Failsafe Value
 
-The PWM level on the throttle input channel below which throttle failsafe triggers. Note that this should be well below the normal minimum for your throttle channel.
+The PWM level on the throttle input channel at or below which throttle failsafe triggers. Note that this should be well below the normal minimum for your throttle channel.
 
 - Range: 925 2200
 
@@ -14725,9 +14725,7 @@ This allows selection of a PX4 or VRBRAIN board type. If set to zero then the bo
 |3|Cube/Pixhawk2|
 |5|PixhawkMini|
 |6|Pixhawk2Slim|
-|14|Pixhawk Pro|
 |20|AUAV2.1|
-|39|PX4 FMUV6|
 |100|PX4 OLDDRIVERS|
 
 - RebootRequired: True
@@ -15234,7 +15232,6 @@ Auxiliary RC Options function executed on pin change
 |35|Relay3 On/Off|
 |36|Relay4 On/Off|
 |38|ADSB Avoidance Enable|
-|41|ArmDisarm (4.1 and lower)|
 |43|InvertedFlight Enable|
 |46|RC Override Enable|
 |51|MANUAL Mode|
@@ -15281,8 +15278,8 @@ Auxiliary RC Options function executed on pin change
 |112|SwitchExternalAHRS|
 |113|Retract Mount2|
 |150|CRUISE Mode|
-|153|ArmDisarm (4.2 and higher)|
-|154|ArmDisarm with Quadplane AirMode (4.2 and higher)|
+|153|ArmDisarm|
+|154|ArmDisarm with Quadplane AirMode|
 |155|Set roll pitch and yaw trim to current servo and RC|
 |157|Force FS Action to FBWA|
 |158|Optflow Calibration|
@@ -15361,7 +15358,6 @@ Auxiliary RC Options function executed on pin change
 |35|Relay3 On/Off|
 |36|Relay4 On/Off|
 |38|ADSB Avoidance Enable|
-|41|ArmDisarm (4.1 and lower)|
 |43|InvertedFlight Enable|
 |46|RC Override Enable|
 |51|MANUAL Mode|
@@ -15408,8 +15404,8 @@ Auxiliary RC Options function executed on pin change
 |112|SwitchExternalAHRS|
 |113|Retract Mount2|
 |150|CRUISE Mode|
-|153|ArmDisarm (4.2 and higher)|
-|154|ArmDisarm with Quadplane AirMode (4.2 and higher)|
+|153|ArmDisarm|
+|154|ArmDisarm with Quadplane AirMode|
 |155|Set roll pitch and yaw trim to current servo and RC|
 |157|Force FS Action to FBWA|
 |158|Optflow Calibration|
@@ -15488,7 +15484,6 @@ Auxiliary RC Options function executed on pin change
 |35|Relay3 On/Off|
 |36|Relay4 On/Off|
 |38|ADSB Avoidance Enable|
-|41|ArmDisarm (4.1 and lower)|
 |43|InvertedFlight Enable|
 |46|RC Override Enable|
 |51|MANUAL Mode|
@@ -15535,8 +15530,8 @@ Auxiliary RC Options function executed on pin change
 |112|SwitchExternalAHRS|
 |113|Retract Mount2|
 |150|CRUISE Mode|
-|153|ArmDisarm (4.2 and higher)|
-|154|ArmDisarm with Quadplane AirMode (4.2 and higher)|
+|153|ArmDisarm|
+|154|ArmDisarm with Quadplane AirMode|
 |155|Set roll pitch and yaw trim to current servo and RC|
 |157|Force FS Action to FBWA|
 |158|Optflow Calibration|
@@ -15615,7 +15610,6 @@ Auxiliary RC Options function executed on pin change
 |35|Relay3 On/Off|
 |36|Relay4 On/Off|
 |38|ADSB Avoidance Enable|
-|41|ArmDisarm (4.1 and lower)|
 |43|InvertedFlight Enable|
 |46|RC Override Enable|
 |51|MANUAL Mode|
@@ -15662,8 +15656,8 @@ Auxiliary RC Options function executed on pin change
 |112|SwitchExternalAHRS|
 |113|Retract Mount2|
 |150|CRUISE Mode|
-|153|ArmDisarm (4.2 and higher)|
-|154|ArmDisarm with Quadplane AirMode (4.2 and higher)|
+|153|ArmDisarm|
+|154|ArmDisarm with Quadplane AirMode|
 |155|Set roll pitch and yaw trim to current servo and RC|
 |157|Force FS Action to FBWA|
 |158|Optflow Calibration|
@@ -35371,13 +35365,14 @@ Vertical position on screen
 
 ## OSD1_TXT_RES: Sets the overlay text resolution (MSP DisplayPort only)
 
-Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22 (MSP DisplayPort only)
+Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22/53x20 (MSP DisplayPort only)
 
 |Value|Meaning|
 |:---:|:---:|
 |0|30x16|
 |1|50x18|
 |2|60x22|
+|3|53x20|
 
 ## OSD1_FONT: Sets the font index for this screen (MSP DisplayPort only)
 
@@ -36781,13 +36776,14 @@ Vertical position on screen
 
 ## OSD2_TXT_RES: Sets the overlay text resolution (MSP DisplayPort only)
 
-Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22 (MSP DisplayPort only)
+Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22/53x20 (MSP DisplayPort only)
 
 |Value|Meaning|
 |:---:|:---:|
 |0|30x16|
 |1|50x18|
 |2|60x22|
+|3|53x20|
 
 ## OSD2_FONT: Sets the font index for this screen (MSP DisplayPort only)
 
@@ -38191,13 +38187,14 @@ Vertical position on screen
 
 ## OSD3_TXT_RES: Sets the overlay text resolution (MSP DisplayPort only)
 
-Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22 (MSP DisplayPort only)
+Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22/53x20 (MSP DisplayPort only)
 
 |Value|Meaning|
 |:---:|:---:|
 |0|30x16|
 |1|50x18|
 |2|60x22|
+|3|53x20|
 
 ## OSD3_FONT: Sets the font index for this screen (MSP DisplayPort only)
 
@@ -39601,13 +39598,14 @@ Vertical position on screen
 
 ## OSD4_TXT_RES: Sets the overlay text resolution (MSP DisplayPort only)
 
-Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22 (MSP DisplayPort only)
+Sets the overlay text resolution for this screen to either SD 30x16 or HD 50x18/60x22/53x20 (MSP DisplayPort only)
 
 |Value|Meaning|
 |:---:|:---:|
 |0|30x16|
 |1|50x18|
 |2|60x22|
+|3|53x20|
 
 ## OSD4_FONT: Sets the font index for this screen (MSP DisplayPort only)
 
@@ -43805,7 +43803,6 @@ Function assigned to this RC channel
 |35|Relay3 On/Off|
 |36|Relay4 On/Off|
 |38|ADSB Avoidance Enable|
-|41|ArmDisarm (4.1 and lower)|
 |43|InvertedFlight Enable|
 |46|RC Override Enable|
 |51|MANUAL Mode|
@@ -43852,8 +43849,8 @@ Function assigned to this RC channel
 |112|SwitchExternalAHRS|
 |113|Retract Mount2|
 |150|CRUISE Mode|
-|153|ArmDisarm (4.2 and higher)|
-|154|ArmDisarm with Quadplane AirMode (4.2 and higher)|
+|153|ArmDisarm|
+|154|ArmDisarm with Quadplane AirMode|
 |155|Set roll pitch and yaw trim to current servo and RC|
 |157|Force FS Action to FBWA|
 |158|Optflow Calibration|
