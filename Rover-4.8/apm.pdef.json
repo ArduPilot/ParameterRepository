@@ -1340,17 +1340,6 @@
       },
       "User": "Standard"
     },
-    "ATC_BAL_FILT": {
-      "Description": "Pitch control input filter.  Lower values reduce noise but add delay.",
-      "DisplayName": "Pitch control filter frequency",
-      "Increment": "0.1",
-      "Range": {
-        "high": "100.000",
-        "low": "0.000"
-      },
-      "Units": "Hz",
-      "User": "Standard"
-    },
     "ATC_BAL_FLTD": {
       "Description": "Pitch control Derivative filter frequency in Hz",
       "DisplayName": "Pitch control Derivative term filter frequency in Hz",
@@ -1531,17 +1520,6 @@
       },
       "User": "Standard"
     },
-    "ATC_SAIL_FILT": {
-      "Description": "Sail Heel control input filter.  Lower values reduce noise but add delay.",
-      "DisplayName": "Sail Heel control filter frequency",
-      "Increment": "0.1",
-      "Range": {
-        "high": "100.000",
-        "low": "0.000"
-      },
-      "Units": "Hz",
-      "User": "Standard"
-    },
     "ATC_SAIL_FLTD": {
       "Description": "Derivative filter frequency in Hz",
       "DisplayName": "Sail Heel Derivative term filter frequency in Hz",
@@ -1670,17 +1648,6 @@
         "high": "0.500",
         "low": "0.000"
       },
-      "User": "Standard"
-    },
-    "ATC_SPEED_FILT": {
-      "Description": "Speed control input filter.  Lower values reduce noise but add delay.",
-      "DisplayName": "Speed control filter frequency",
-      "Increment": "0.1",
-      "Range": {
-        "high": "100.000",
-        "low": "0.000"
-      },
-      "Units": "Hz",
       "User": "Standard"
     },
     "ATC_SPEED_FLTD": {
@@ -1854,17 +1821,6 @@
         "high": "3.000",
         "low": "0.000"
       },
-      "User": "Standard"
-    },
-    "ATC_STR_RAT_FILT": {
-      "Description": "Steering control input filter.  Lower values reduce noise but add delay.",
-      "DisplayName": "Steering control filter frequency",
-      "Increment": "0.1",
-      "Range": {
-        "high": "100.000",
-        "low": "0.000"
-      },
-      "Units": "Hz",
       "User": "Standard"
     },
     "ATC_STR_RAT_FLTD": {
@@ -20615,7 +20571,7 @@
       "User": "Standard"
     },
     "LOG_MAX_FILES": {
-      "Description": "This sets the maximum number of log file that will be written on dataflash or sd card before starting to rotate log number. Limit is capped at 500 logs.",
+      "Description": "This sets the maximum number of log file that will be written on dataflash or sd card before starting to rotate log number. The value is capped at a board-dependent maximum.",
       "DisplayName": "Maximum number of log files",
       "Increment": "1",
       "Range": {
@@ -61862,16 +61818,6 @@
       },
       "User": "Standard"
     },
-    "WRC2_RATE_FILT": {
-      "Description": "Wheel rate control input filter.  Lower values reduce noise but add delay.",
-      "DisplayName": "Wheel rate control filter frequency",
-      "Range": {
-        "high": "100.000",
-        "low": "1.000"
-      },
-      "Units": "Hz",
-      "User": "Standard"
-    },
     "WRC2_RATE_FLTD": {
       "Description": "Wheel rate control derivative frequency in Hz",
       "DisplayName": "Wheel rate control derivative frequency in Hz",
@@ -62003,16 +61949,6 @@
         "high": "2.000",
         "low": "0.100"
       },
-      "User": "Standard"
-    },
-    "WRC_RATE_FILT": {
-      "Description": "Wheel rate control input filter.  Lower values reduce noise but add delay.",
-      "DisplayName": "Wheel rate control filter frequency",
-      "Range": {
-        "high": "100.000",
-        "low": "1.000"
-      },
-      "Units": "Hz",
       "User": "Standard"
     },
     "WRC_RATE_FLTD": {

@@ -4662,24 +4662,6 @@ Steering control feed forward
 
 
 
-.. _ATC_STR_RAT_FILT:
-
-ATC\_STR\_RAT\_FILT: Steering control filter frequency
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Steering control input filter\.  Lower values reduce noise but add delay\.
-
-
-+-----------+------------------+-------+
-| Increment | Range            | Units |
-+===========+==================+=======+
-| 0.1       | 0.000 to 100.000 | hertz |
-+-----------+------------------+-------+
-
-
-
-
 .. _ATC_STR_RAT_FLTT:
 
 ATC\_STR\_RAT\_FLTT: Steering control Target filter frequency in Hz
@@ -4914,24 +4896,6 @@ Speed control feed forward
 +===========+================+
 | 0.001     | 0.000 to 0.500 |
 +-----------+----------------+
-
-
-
-
-.. _ATC_SPEED_FILT:
-
-ATC\_SPEED\_FILT: Speed control filter frequency
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Speed control input filter\.  Lower values reduce noise but add delay\.
-
-
-+-----------+------------------+-------+
-| Increment | Range            | Units |
-+===========+==================+=======+
-| 0.1       | 0.000 to 100.000 | hertz |
-+-----------+------------------+-------+
 
 
 
@@ -5307,24 +5271,6 @@ Pitch control feed forward
 
 
 
-.. _ATC_BAL_FILT:
-
-ATC\_BAL\_FILT: Pitch control filter frequency
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Pitch control input filter\.  Lower values reduce noise but add delay\.
-
-
-+-----------+------------------+-------+
-| Increment | Range            | Units |
-+===========+==================+=======+
-| 0.1       | 0.000 to 100.000 | hertz |
-+-----------+------------------+-------+
-
-
-
-
 .. _ATC_BAL_FLTT:
 
 ATC\_BAL\_FLTT: Pitch control Target filter frequency in Hz
@@ -5577,24 +5523,6 @@ Sail Heel control feed forward
 +===========+================+
 | 0.001     | 0.000 to 0.500 |
 +-----------+----------------+
-
-
-
-
-.. _ATC_SAIL_FILT:
-
-ATC\_SAIL\_FILT: Sail Heel control filter frequency
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Sail Heel control input filter\.  Lower values reduce noise but add delay\.
-
-
-+-----------+------------------+-------+
-| Increment | Range            | Units |
-+===========+==================+=======+
-| 0.1       | 0.000 to 100.000 | hertz |
-+-----------+------------------+-------+
 
 
 
@@ -51079,7 +51007,7 @@ LOG\_MAX\_FILES: Maximum number of log files
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-This sets the maximum number of log file that will be written on dataflash or sd card before starting to rotate log number\. Limit is capped at 500 logs\.
+This sets the maximum number of log file that will be written on dataflash or sd card before starting to rotate log number\. The value is capped at a board\-dependent maximum\.
 
 
 +-----------+----------+
@@ -133850,24 +133778,6 @@ Wheel rate control D gain\.  Compensates for short\-term change in desired rate 
 
 
 
-.. _WRC_RATE_FILT:
-
-WRC\_RATE\_FILT: Wheel rate control filter frequency
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Wheel rate control input filter\.  Lower values reduce noise but add delay\.
-
-
-+------------------+-------+
-| Range            | Units |
-+==================+=======+
-| 1.000 to 100.000 | hertz |
-+------------------+-------+
-
-
-
-
 .. _WRC_RATE_FLTT:
 
 WRC\_RATE\_FLTT: Wheel rate control target frequency in Hz
@@ -134102,24 +134012,6 @@ Wheel rate control D gain\.  Compensates for short\-term change in desired rate 
 +================+
 | 0.000 to 0.400 |
 +----------------+
-
-
-
-
-.. _WRC2_RATE_FILT:
-
-WRC2\_RATE\_FILT: Wheel rate control filter frequency
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Wheel rate control input filter\.  Lower values reduce noise but add delay\.
-
-
-+------------------+-------+
-| Range            | Units |
-+==================+=======+
-| 1.000 to 100.000 | hertz |
-+------------------+-------+
 
 
 

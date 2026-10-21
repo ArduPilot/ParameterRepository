@@ -5403,60 +5403,6 @@ Throttle vs attitude control prioritisation used during manual flight \(higher v
 
 
 
-.. _ATC_RAT_RLL_FILT:
-
-ATC\_RAT\_RLL\_FILT: Roll axis rate controller input frequency in Hz
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Roll axis rate controller input frequency in Hz
-
-
-+-----------+----------+-------+
-| Increment | Range    | Units |
-+===========+==========+=======+
-| 1         | 1 to 100 | hertz |
-+-----------+----------+-------+
-
-
-
-
-.. _ATC_RAT_PIT_FILT:
-
-ATC\_RAT\_PIT\_FILT: Pitch axis rate controller input frequency in Hz
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Pitch axis rate controller input frequency in Hz
-
-
-+-----------+----------+-------+
-| Increment | Range    | Units |
-+===========+==========+=======+
-| 1         | 1 to 100 | hertz |
-+-----------+----------+-------+
-
-
-
-
-.. _ATC_RAT_YAW_FILT:
-
-ATC\_RAT\_YAW\_FILT: Yaw axis rate controller input frequency in Hz
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Yaw axis rate controller input frequency in Hz
-
-
-+-----------+----------+-------+
-| Increment | Range    | Units |
-+===========+==========+=======+
-| 1         | 1 to 100 | hertz |
-+-----------+----------+-------+
-
-
-
-
 
 .. _parameters_AVOID_:
 
@@ -65117,7 +65063,7 @@ LOG\_MAX\_FILES: Maximum number of log files
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-This sets the maximum number of log file that will be written on dataflash or sd card before starting to rotate log number\. Limit is capped at 500 logs\.
+This sets the maximum number of log file that will be written on dataflash or sd card before starting to rotate log number\. The value is capped at a board\-dependent maximum\.
 
 
 +-----------+----------+

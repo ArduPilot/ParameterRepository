@@ -1416,17 +1416,6 @@
       },
       "User": "Standard"
     },
-    "ATC_RAT_PIT_FILT": {
-      "Description": "Pitch axis rate controller input frequency in Hz",
-      "DisplayName": "Pitch axis rate controller input frequency in Hz",
-      "Increment": "1",
-      "Range": {
-        "high": "100",
-        "low": "1"
-      },
-      "Units": "Hz",
-      "User": "Standard"
-    },
     "ATC_RAT_PIT_FLTD": {
       "Description": "Pitch axis rate controller input frequency in Hz",
       "DisplayName": "Pitch axis rate controller input frequency in Hz",
@@ -1557,17 +1546,6 @@
       },
       "User": "Standard"
     },
-    "ATC_RAT_RLL_FILT": {
-      "Description": "Roll axis rate controller input frequency in Hz",
-      "DisplayName": "Roll axis rate controller input frequency in Hz",
-      "Increment": "1",
-      "Range": {
-        "high": "100",
-        "low": "1"
-      },
-      "Units": "Hz",
-      "User": "Standard"
-    },
     "ATC_RAT_RLL_FLTD": {
       "Description": "Roll axis rate controller input frequency in Hz",
       "DisplayName": "Roll axis rate controller input frequency in Hz",
@@ -1696,17 +1674,6 @@
         "high": "0.5",
         "low": "0"
       },
-      "User": "Standard"
-    },
-    "ATC_RAT_YAW_FILT": {
-      "Description": "Yaw axis rate controller input frequency in Hz",
-      "DisplayName": "Yaw axis rate controller input frequency in Hz",
-      "Increment": "1",
-      "Range": {
-        "high": "100",
-        "low": "1"
-      },
-      "Units": "Hz",
       "User": "Standard"
     },
     "ATC_RAT_YAW_FLTD": {
@@ -27471,7 +27438,7 @@
       "User": "Standard"
     },
     "LOG_MAX_FILES": {
-      "Description": "This sets the maximum number of log file that will be written on dataflash or sd card before starting to rotate log number. Limit is capped at 500 logs.",
+      "Description": "This sets the maximum number of log file that will be written on dataflash or sd card before starting to rotate log number. The value is capped at a board-dependent maximum.",
       "DisplayName": "Maximum number of log files",
       "Increment": "1",
       "Range": {

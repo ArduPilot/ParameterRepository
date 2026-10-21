@@ -21410,7 +21410,7 @@
       "User": "Standard"
     },
     "LOG_MAX_FILES": {
-      "Description": "This sets the maximum number of log file that will be written on dataflash or sd card before starting to rotate log number. Limit is capped at 500 logs.",
+      "Description": "This sets the maximum number of log file that will be written on dataflash or sd card before starting to rotate log number. The value is capped at a board-dependent maximum.",
       "DisplayName": "Maximum number of log files",
       "Increment": "1",
       "Range": {

@@ -45186,7 +45186,7 @@ LOG\_MAX\_FILES: Maximum number of log files
 | *Note: This parameter is for advanced users*
 | *Note: Reboot required after change*
 
-This sets the maximum number of log file that will be written on dataflash or sd card before starting to rotate log number\. Limit is capped at 500 logs\.
+This sets the maximum number of log file that will be written on dataflash or sd card before starting to rotate log number\. The value is capped at a board\-dependent maximum\.
 
 
 +-----------+----------+
