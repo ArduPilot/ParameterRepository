@@ -39389,6 +39389,22 @@ DO NOT EDIT
 <tr><td>4</td><td>Serial4</td></tr>
 <tr><td>5</td><td>Serial5</td></tr>
 <tr><td>6</td><td>Serial6</td></tr>
+<tr><td>7</td><td>Serial7</td></tr>
+<tr><td>8</td><td>Serial8</td></tr>
+<tr><td>9</td><td>Serial9</td></tr>
+<tr><td>21</td><td>Network Port1</td></tr>
+<tr><td>22</td><td>Network Port2</td></tr>
+<tr><td>23</td><td>Network Port3</td></tr>
+<tr><td>24</td><td>Network Port4</td></tr>
+<tr><td>41</td><td>CAN1 Serial1</td></tr>
+<tr><td>42</td><td>CAN1 Serial2</td></tr>
+<tr><td>43</td><td>CAN1 Serial3</td></tr>
+<tr><td>51</td><td>CAN2 Serial1</td></tr>
+<tr><td>52</td><td>CAN2 Serial2</td></tr>
+<tr><td>53</td><td>CAN2 Serial3</td></tr>
+<tr><td>61</td><td>Scripting Serial1</td></tr>
+<tr><td>62</td><td>Scripting Serial2</td></tr>
+<tr><td>63</td><td>Scripting Serial3</td></tr>
 </table>
 </ul>
 
@@ -39406,6 +39422,22 @@ DO NOT EDIT
 <tr><td>4</td><td>Serial4</td></tr>
 <tr><td>5</td><td>Serial5</td></tr>
 <tr><td>6</td><td>Serial6</td></tr>
+<tr><td>7</td><td>Serial7</td></tr>
+<tr><td>8</td><td>Serial8</td></tr>
+<tr><td>9</td><td>Serial9</td></tr>
+<tr><td>21</td><td>Network Port1</td></tr>
+<tr><td>22</td><td>Network Port2</td></tr>
+<tr><td>23</td><td>Network Port3</td></tr>
+<tr><td>24</td><td>Network Port4</td></tr>
+<tr><td>41</td><td>CAN1 Serial1</td></tr>
+<tr><td>42</td><td>CAN1 Serial2</td></tr>
+<tr><td>43</td><td>CAN1 Serial3</td></tr>
+<tr><td>51</td><td>CAN2 Serial1</td></tr>
+<tr><td>52</td><td>CAN2 Serial2</td></tr>
+<tr><td>53</td><td>CAN2 Serial3</td></tr>
+<tr><td>61</td><td>Scripting Serial1</td></tr>
+<tr><td>62</td><td>Scripting Serial2</td></tr>
+<tr><td>63</td><td>Scripting Serial3</td></tr>
 </table>
 </ul>
 
@@ -43341,7 +43373,7 @@ DO NOT EDIT
 
 <p>GPS Options bitmask</p>
 <ul>
-<li>Bitmask: 0:UBlox GPS is F9P</li>
+<li>Bitmask: 0:UBlox GPS is F9P, 1:UBlox receiver without flash loses its saved configuration on reboot</li>
 </ul>
 
 
@@ -43390,6 +43422,22 @@ DO NOT EDIT
 <p>Glitch offsets of simulated GPS velocity in NED. The reported position also moves continuously with this velocity, so position and velocity stay consistent (e.g. to simulate GPS spoofing that drifts the position). The accumulated position offset is cleared when all three components are zero at a GPS update, so when changing axes set the new component before zeroing the old one (Z-axis)</p>
 <ul>
 <li>Units: meters per second</li>
+</ul>
+
+
+<h2>UBlox receiver model (SIM_GPS1_UBXMDL)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Which u-blox receiver to simulate. Simple outputs all messages and ignores configuration; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Simple</td></tr>
+<tr><td>1</td><td>u-blox 6 FW 7.03</td></tr>
+<tr><td>2</td><td>NEO-M8N FW 2.01</td></tr>
+<tr><td>3</td><td>M8 ROM CORE 3.01</td></tr>
+<tr><td>4</td><td>NEO-M8N SPG 3.01</td></tr>
+<tr><td>5</td><td>NEO-M9N SPG 4.04</td></tr>
+<tr><td>6</td><td>M10 ROM SPG 5.10</td></tr>
+</table>
 </ul>
 
 
@@ -43597,7 +43645,7 @@ DO NOT EDIT
 
 <p>GPS Options bitmask</p>
 <ul>
-<li>Bitmask: 0:UBlox GPS is F9P</li>
+<li>Bitmask: 0:UBlox GPS is F9P, 1:UBlox receiver without flash loses its saved configuration on reboot</li>
 </ul>
 
 
@@ -43646,6 +43694,22 @@ DO NOT EDIT
 <p>Glitch offsets of simulated GPS velocity in NED. The reported position also moves continuously with this velocity, so position and velocity stay consistent (e.g. to simulate GPS spoofing that drifts the position). The accumulated position offset is cleared when all three components are zero at a GPS update, so when changing axes set the new component before zeroing the old one (Z-axis)</p>
 <ul>
 <li>Units: meters per second</li>
+</ul>
+
+
+<h2>UBlox receiver model (SIM_GPS2_UBXMDL)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Which u-blox receiver to simulate. Simple outputs all messages and ignores configuration; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Simple</td></tr>
+<tr><td>1</td><td>u-blox 6 FW 7.03</td></tr>
+<tr><td>2</td><td>NEO-M8N FW 2.01</td></tr>
+<tr><td>3</td><td>M8 ROM CORE 3.01</td></tr>
+<tr><td>4</td><td>NEO-M8N SPG 3.01</td></tr>
+<tr><td>5</td><td>NEO-M9N SPG 4.04</td></tr>
+<tr><td>6</td><td>M10 ROM SPG 5.10</td></tr>
+</table>
 </ul>
 
 
@@ -43853,7 +43917,7 @@ DO NOT EDIT
 
 <p>GPS Options bitmask</p>
 <ul>
-<li>Bitmask: 0:UBlox GPS is F9P</li>
+<li>Bitmask: 0:UBlox GPS is F9P, 1:UBlox receiver without flash loses its saved configuration on reboot</li>
 </ul>
 
 
@@ -43902,6 +43966,22 @@ DO NOT EDIT
 <p>Glitch offsets of simulated GPS velocity in NED. The reported position also moves continuously with this velocity, so position and velocity stay consistent (e.g. to simulate GPS spoofing that drifts the position). The accumulated position offset is cleared when all three components are zero at a GPS update, so when changing axes set the new component before zeroing the old one (Z-axis)</p>
 <ul>
 <li>Units: meters per second</li>
+</ul>
+
+
+<h2>UBlox receiver model (SIM_GPS3_UBXMDL)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Which u-blox receiver to simulate. Simple outputs all messages and ignores configuration; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Simple</td></tr>
+<tr><td>1</td><td>u-blox 6 FW 7.03</td></tr>
+<tr><td>2</td><td>NEO-M8N FW 2.01</td></tr>
+<tr><td>3</td><td>M8 ROM CORE 3.01</td></tr>
+<tr><td>4</td><td>NEO-M8N SPG 3.01</td></tr>
+<tr><td>5</td><td>NEO-M9N SPG 4.04</td></tr>
+<tr><td>6</td><td>M10 ROM SPG 5.10</td></tr>
+</table>
 </ul>
 
 
@@ -44109,7 +44189,7 @@ DO NOT EDIT
 
 <p>GPS Options bitmask</p>
 <ul>
-<li>Bitmask: 0:UBlox GPS is F9P</li>
+<li>Bitmask: 0:UBlox GPS is F9P, 1:UBlox receiver without flash loses its saved configuration on reboot</li>
 </ul>
 
 
@@ -44158,6 +44238,22 @@ DO NOT EDIT
 <p>Glitch offsets of simulated GPS velocity in NED. The reported position also moves continuously with this velocity, so position and velocity stay consistent (e.g. to simulate GPS spoofing that drifts the position). The accumulated position offset is cleared when all three components are zero at a GPS update, so when changing axes set the new component before zeroing the old one (Z-axis)</p>
 <ul>
 <li>Units: meters per second</li>
+</ul>
+
+
+<h2>UBlox receiver model (SIM_GPS4_UBXMDL)</h2><em>Note: This parameter is for advanced users</em><br>
+
+<p>Which u-blox receiver to simulate. Simple outputs all messages and ignores configuration; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output</p>
+<ul>
+<table><th>Value</th><th>Meaning</th>
+<tr><td>0</td><td>Simple</td></tr>
+<tr><td>1</td><td>u-blox 6 FW 7.03</td></tr>
+<tr><td>2</td><td>NEO-M8N FW 2.01</td></tr>
+<tr><td>3</td><td>M8 ROM CORE 3.01</td></tr>
+<tr><td>4</td><td>NEO-M8N SPG 3.01</td></tr>
+<tr><td>5</td><td>NEO-M9N SPG 4.04</td></tr>
+<tr><td>6</td><td>M10 ROM SPG 5.10</td></tr>
+</table>
 </ul>
 
 

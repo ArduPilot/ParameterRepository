@@ -10240,6 +10240,16 @@
         "1": "TriggerHigh"
       }
     },
+    "CAM1_FOC_RAT_MAX": {
+      "Description": "Speed at which the focus output moves for continuous (rate) focus commands. Only used by the Servo camera type. The default of 5%/s moves across the full range in 20 seconds",
+      "DisplayName": "Camera focus speed",
+      "Range": {
+        "high": "100",
+        "low": "0"
+      },
+      "Units": "%/s",
+      "User": "Standard"
+    },
     "CAM1_HFOV": {
       "Description": "Camera horizontal field of view. 0 if unknown",
       "DisplayName": "Camera horizontal field of view",
@@ -10336,6 +10346,16 @@
         "low": "0"
       },
       "Units": "deg",
+      "User": "Standard"
+    },
+    "CAM1_ZOM_RAT_MAX": {
+      "Description": "Speed at which the zoom output moves for continuous (rate) zoom commands. Only used by the Servo camera type. The default of 5%/s moves across the full range in 20 seconds",
+      "DisplayName": "Camera zoom speed",
+      "Range": {
+        "high": "100",
+        "low": "0"
+      },
+      "Units": "%/s",
       "User": "Standard"
     }
   },
@@ -10434,6 +10454,16 @@
         "1": "TriggerHigh"
       }
     },
+    "CAM2_FOC_RAT_MAX": {
+      "Description": "Speed at which the focus output moves for continuous (rate) focus commands. Only used by the Servo camera type. The default of 5%/s moves across the full range in 20 seconds",
+      "DisplayName": "Camera focus speed",
+      "Range": {
+        "high": "100",
+        "low": "0"
+      },
+      "Units": "%/s",
+      "User": "Standard"
+    },
     "CAM2_HFOV": {
       "Description": "Camera horizontal field of view. 0 if unknown",
       "DisplayName": "Camera horizontal field of view",
@@ -10530,6 +10560,16 @@
         "low": "0"
       },
       "Units": "deg",
+      "User": "Standard"
+    },
+    "CAM2_ZOM_RAT_MAX": {
+      "Description": "Speed at which the zoom output moves for continuous (rate) zoom commands. Only used by the Servo camera type. The default of 5%/s moves across the full range in 20 seconds",
+      "DisplayName": "Camera zoom speed",
+      "Range": {
+        "high": "100",
+        "low": "0"
+      },
+      "Units": "%/s",
       "User": "Standard"
     }
   },
@@ -14046,6 +14086,7 @@
       "Values": {
         "0": "None",
         "1": "VectorNav",
+        "10": "Aeron",
         "11": "SensAItion",
         "2": "MicroStrain5",
         "5": "InertialLabs",

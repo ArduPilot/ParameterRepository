@@ -53463,10 +53463,26 @@
         "0": "Serial0",
         "1": "Serial1",
         "2": "Serial2",
+        "21": "Network Port1",
+        "22": "Network Port2",
+        "23": "Network Port3",
+        "24": "Network Port4",
         "3": "Serial3",
         "4": "Serial4",
+        "41": "CAN1 Serial1",
+        "42": "CAN1 Serial2",
+        "43": "CAN1 Serial3",
         "5": "Serial5",
-        "6": "Serial6"
+        "51": "CAN2 Serial1",
+        "52": "CAN2 Serial2",
+        "53": "CAN2 Serial3",
+        "6": "Serial6",
+        "61": "Scripting Serial1",
+        "62": "Scripting Serial2",
+        "63": "Scripting Serial3",
+        "7": "Serial7",
+        "8": "Serial8",
+        "9": "Serial9"
       }
     },
     "SERIAL_PASS2": {
@@ -53478,10 +53494,26 @@
         "0": "Serial0",
         "1": "Serial1",
         "2": "Serial2",
+        "21": "Network Port1",
+        "22": "Network Port2",
+        "23": "Network Port3",
+        "24": "Network Port4",
         "3": "Serial3",
         "4": "Serial4",
+        "41": "CAN1 Serial1",
+        "42": "CAN1 Serial2",
+        "43": "CAN1 Serial3",
         "5": "Serial5",
-        "6": "Serial6"
+        "51": "CAN2 Serial1",
+        "52": "CAN2 Serial2",
+        "53": "CAN2 Serial3",
+        "6": "Serial6",
+        "61": "Scripting Serial1",
+        "62": "Scripting Serial2",
+        "63": "Scripting Serial3",
+        "7": "Serial7",
+        "8": "Serial8",
+        "9": "Serial9"
       }
     },
     "SERIAL_PASSTIMO": {
@@ -63186,7 +63218,8 @@
     },
     "SIM_GPS1_OPTIONS": {
       "Bitmask": {
-        "0": "UBlox GPS is F9P"
+        "0": "UBlox GPS is F9P",
+        "1": "UBlox receiver without flash loses its saved configuration on reboot"
       },
       "Description": "GPS Options bitmask",
       "DisplayName": "GPS Options",
@@ -63221,6 +63254,20 @@
         "7": "File",
         "8": "Nova",
         "9": "SBP2"
+      }
+    },
+    "SIM_GPS1_UBXMDL": {
+      "Description": "Which u-blox receiver to simulate. Simple outputs all messages and ignores configuration; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output",
+      "DisplayName": "UBlox receiver model",
+      "User": "Advanced",
+      "Values": {
+        "0": "Simple",
+        "1": "u-blox 6 FW 7.03",
+        "2": "NEO-M8N FW 2.01",
+        "3": "M8 ROM CORE 3.01",
+        "4": "NEO-M8N SPG 3.01",
+        "5": "NEO-M9N SPG 4.04",
+        "6": "M10 ROM SPG 5.10"
       }
     },
     "SIM_GPS1_VERR_X": {
@@ -63379,7 +63426,8 @@
     },
     "SIM_GPS2_OPTIONS": {
       "Bitmask": {
-        "0": "UBlox GPS is F9P"
+        "0": "UBlox GPS is F9P",
+        "1": "UBlox receiver without flash loses its saved configuration on reboot"
       },
       "Description": "GPS Options bitmask",
       "DisplayName": "GPS Options",
@@ -63414,6 +63462,20 @@
         "7": "File",
         "8": "Nova",
         "9": "SBP2"
+      }
+    },
+    "SIM_GPS2_UBXMDL": {
+      "Description": "Which u-blox receiver to simulate. Simple outputs all messages and ignores configuration; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output",
+      "DisplayName": "UBlox receiver model",
+      "User": "Advanced",
+      "Values": {
+        "0": "Simple",
+        "1": "u-blox 6 FW 7.03",
+        "2": "NEO-M8N FW 2.01",
+        "3": "M8 ROM CORE 3.01",
+        "4": "NEO-M8N SPG 3.01",
+        "5": "NEO-M9N SPG 4.04",
+        "6": "M10 ROM SPG 5.10"
       }
     },
     "SIM_GPS2_VERR_X": {
@@ -63572,7 +63634,8 @@
     },
     "SIM_GPS3_OPTIONS": {
       "Bitmask": {
-        "0": "UBlox GPS is F9P"
+        "0": "UBlox GPS is F9P",
+        "1": "UBlox receiver without flash loses its saved configuration on reboot"
       },
       "Description": "GPS Options bitmask",
       "DisplayName": "GPS Options",
@@ -63607,6 +63670,20 @@
         "7": "File",
         "8": "Nova",
         "9": "SBP2"
+      }
+    },
+    "SIM_GPS3_UBXMDL": {
+      "Description": "Which u-blox receiver to simulate. Simple outputs all messages and ignores configuration; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output",
+      "DisplayName": "UBlox receiver model",
+      "User": "Advanced",
+      "Values": {
+        "0": "Simple",
+        "1": "u-blox 6 FW 7.03",
+        "2": "NEO-M8N FW 2.01",
+        "3": "M8 ROM CORE 3.01",
+        "4": "NEO-M8N SPG 3.01",
+        "5": "NEO-M9N SPG 4.04",
+        "6": "M10 ROM SPG 5.10"
       }
     },
     "SIM_GPS3_VERR_X": {
@@ -63765,7 +63842,8 @@
     },
     "SIM_GPS4_OPTIONS": {
       "Bitmask": {
-        "0": "UBlox GPS is F9P"
+        "0": "UBlox GPS is F9P",
+        "1": "UBlox receiver without flash loses its saved configuration on reboot"
       },
       "Description": "GPS Options bitmask",
       "DisplayName": "GPS Options",
@@ -63800,6 +63878,20 @@
         "7": "File",
         "8": "Nova",
         "9": "SBP2"
+      }
+    },
+    "SIM_GPS4_UBXMDL": {
+      "Description": "Which u-blox receiver to simulate. Simple outputs all messages and ignores configuration; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output",
+      "DisplayName": "UBlox receiver model",
+      "User": "Advanced",
+      "Values": {
+        "0": "Simple",
+        "1": "u-blox 6 FW 7.03",
+        "2": "NEO-M8N FW 2.01",
+        "3": "M8 ROM CORE 3.01",
+        "4": "NEO-M8N SPG 3.01",
+        "5": "NEO-M9N SPG 4.04",
+        "6": "M10 ROM SPG 5.10"
       }
     },
     "SIM_GPS4_VERR_X": {

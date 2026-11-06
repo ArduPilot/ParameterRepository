@@ -34865,6 +34865,22 @@
           <value code="4">Serial4</value>
           <value code="5">Serial5</value>
           <value code="6">Serial6</value>
+          <value code="7">Serial7</value>
+          <value code="8">Serial8</value>
+          <value code="9">Serial9</value>
+          <value code="21">Network Port1</value>
+          <value code="22">Network Port2</value>
+          <value code="23">Network Port3</value>
+          <value code="24">Network Port4</value>
+          <value code="41">CAN1 Serial1</value>
+          <value code="42">CAN1 Serial2</value>
+          <value code="43">CAN1 Serial3</value>
+          <value code="51">CAN2 Serial1</value>
+          <value code="52">CAN2 Serial2</value>
+          <value code="53">CAN2 Serial3</value>
+          <value code="61">Scripting Serial1</value>
+          <value code="62">Scripting Serial2</value>
+          <value code="63">Scripting Serial3</value>
         </values>
       </param>
       <param humanName="Serial passthru second port" name="SERIAL_PASS2" documentation="This sets one side of pass-through between two serial ports. Once both sides are set then all data received on either port will be passed to the other port. This parameter is normally reset to -1 on reboot, disabling passthrough. If SERIAL_PASSTIMO is set to -1 then it is not reset on reboot." user="Advanced">
@@ -34877,6 +34893,22 @@
           <value code="4">Serial4</value>
           <value code="5">Serial5</value>
           <value code="6">Serial6</value>
+          <value code="7">Serial7</value>
+          <value code="8">Serial8</value>
+          <value code="9">Serial9</value>
+          <value code="21">Network Port1</value>
+          <value code="22">Network Port2</value>
+          <value code="23">Network Port3</value>
+          <value code="24">Network Port4</value>
+          <value code="41">CAN1 Serial1</value>
+          <value code="42">CAN1 Serial2</value>
+          <value code="43">CAN1 Serial3</value>
+          <value code="51">CAN2 Serial1</value>
+          <value code="52">CAN2 Serial2</value>
+          <value code="53">CAN2 Serial3</value>
+          <value code="61">Scripting Serial1</value>
+          <value code="62">Scripting Serial2</value>
+          <value code="63">Scripting Serial3</value>
         </values>
       </param>
       <param humanName="Serial passthru timeout" name="SERIAL_PASSTIMO" documentation="This sets a timeout for serial pass-through in seconds. When the pass-through is enabled by setting the SERIAL_PASS1 and SERIAL_PASS2 parameters then it remains in effect until no data comes from the first port for SERIAL_PASSTIMO seconds. This allows the port to revent to its normal usage (such as MAVLink connection to a GCS) when it is no longer needed. A value of 0 means no timeout. A value of -1 means no timeout and the SERIAL_PASS2 parameter is not reset on reboot." user="Advanced">
@@ -42876,8 +42908,9 @@
       <param humanName="GPS Options" name="SIM_GPS1_OPTIONS" documentation="GPS Options bitmask" user="Advanced">
         <bitmask>
           <bit code="0">UBlox GPS is F9P</bit>
+          <bit code="1">UBlox receiver without flash loses its saved configuration on reboot</bit>
         </bitmask>
-        <field name="Bitmask">0:UBlox GPS is F9P</field>
+        <field name="Bitmask">0:UBlox GPS is F9P, 1:UBlox receiver without flash loses its saved configuration on reboot</field>
       </param>
       <param humanName="GPS Fix Type" name="SIM_GPS1_FIXTYPE" documentation="Allow setting which fix type (only some GPS's supported); matches AP_GPS_FixType" user="Advanced">
         <values>
@@ -42905,6 +42938,17 @@
       <param humanName="GPS velocity glitch" name="SIM_GPS1_GLTV_Z" documentation="Glitch offsets of simulated GPS velocity in NED. The reported position also moves continuously with this velocity, so position and velocity stay consistent (e.g. to simulate GPS spoofing that drifts the position). The accumulated position offset is cleared when all three components are zero at a GPS update, so when changing axes set the new component before zeroing the old one (Z-axis)" user="Advanced">
         <field name="Units">m/s</field>
         <field name="UnitText">meters per second</field>
+      </param>
+      <param humanName="UBlox receiver model" name="SIM_GPS1_UBXMDL" documentation="Which u-blox receiver to simulate. Simple outputs all messages and ignores configuration; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output" user="Advanced">
+        <values>
+          <value code="0">Simple</value>
+          <value code="1">u-blox 6 FW 7.03</value>
+          <value code="2">NEO-M8N FW 2.01</value>
+          <value code="3">M8 ROM CORE 3.01</value>
+          <value code="4">NEO-M8N SPG 3.01</value>
+          <value code="5">NEO-M9N SPG 4.04</value>
+          <value code="6">M10 ROM SPG 5.10</value>
+        </values>
       </param>
     </parameters>
     <parameters name="SIM_GPS2_">
@@ -43003,8 +43047,9 @@
       <param humanName="GPS Options" name="SIM_GPS2_OPTIONS" documentation="GPS Options bitmask" user="Advanced">
         <bitmask>
           <bit code="0">UBlox GPS is F9P</bit>
+          <bit code="1">UBlox receiver without flash loses its saved configuration on reboot</bit>
         </bitmask>
-        <field name="Bitmask">0:UBlox GPS is F9P</field>
+        <field name="Bitmask">0:UBlox GPS is F9P, 1:UBlox receiver without flash loses its saved configuration on reboot</field>
       </param>
       <param humanName="GPS Fix Type" name="SIM_GPS2_FIXTYPE" documentation="Allow setting which fix type (only some GPS's supported); matches AP_GPS_FixType" user="Advanced">
         <values>
@@ -43032,6 +43077,17 @@
       <param humanName="GPS velocity glitch" name="SIM_GPS2_GLTV_Z" documentation="Glitch offsets of simulated GPS velocity in NED. The reported position also moves continuously with this velocity, so position and velocity stay consistent (e.g. to simulate GPS spoofing that drifts the position). The accumulated position offset is cleared when all three components are zero at a GPS update, so when changing axes set the new component before zeroing the old one (Z-axis)" user="Advanced">
         <field name="Units">m/s</field>
         <field name="UnitText">meters per second</field>
+      </param>
+      <param humanName="UBlox receiver model" name="SIM_GPS2_UBXMDL" documentation="Which u-blox receiver to simulate. Simple outputs all messages and ignores configuration; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output" user="Advanced">
+        <values>
+          <value code="0">Simple</value>
+          <value code="1">u-blox 6 FW 7.03</value>
+          <value code="2">NEO-M8N FW 2.01</value>
+          <value code="3">M8 ROM CORE 3.01</value>
+          <value code="4">NEO-M8N SPG 3.01</value>
+          <value code="5">NEO-M9N SPG 4.04</value>
+          <value code="6">M10 ROM SPG 5.10</value>
+        </values>
       </param>
     </parameters>
     <parameters name="SIM_GPS3_">
@@ -43130,8 +43186,9 @@
       <param humanName="GPS Options" name="SIM_GPS3_OPTIONS" documentation="GPS Options bitmask" user="Advanced">
         <bitmask>
           <bit code="0">UBlox GPS is F9P</bit>
+          <bit code="1">UBlox receiver without flash loses its saved configuration on reboot</bit>
         </bitmask>
-        <field name="Bitmask">0:UBlox GPS is F9P</field>
+        <field name="Bitmask">0:UBlox GPS is F9P, 1:UBlox receiver without flash loses its saved configuration on reboot</field>
       </param>
       <param humanName="GPS Fix Type" name="SIM_GPS3_FIXTYPE" documentation="Allow setting which fix type (only some GPS's supported); matches AP_GPS_FixType" user="Advanced">
         <values>
@@ -43159,6 +43216,17 @@
       <param humanName="GPS velocity glitch" name="SIM_GPS3_GLTV_Z" documentation="Glitch offsets of simulated GPS velocity in NED. The reported position also moves continuously with this velocity, so position and velocity stay consistent (e.g. to simulate GPS spoofing that drifts the position). The accumulated position offset is cleared when all three components are zero at a GPS update, so when changing axes set the new component before zeroing the old one (Z-axis)" user="Advanced">
         <field name="Units">m/s</field>
         <field name="UnitText">meters per second</field>
+      </param>
+      <param humanName="UBlox receiver model" name="SIM_GPS3_UBXMDL" documentation="Which u-blox receiver to simulate. Simple outputs all messages and ignores configuration; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output" user="Advanced">
+        <values>
+          <value code="0">Simple</value>
+          <value code="1">u-blox 6 FW 7.03</value>
+          <value code="2">NEO-M8N FW 2.01</value>
+          <value code="3">M8 ROM CORE 3.01</value>
+          <value code="4">NEO-M8N SPG 3.01</value>
+          <value code="5">NEO-M9N SPG 4.04</value>
+          <value code="6">M10 ROM SPG 5.10</value>
+        </values>
       </param>
     </parameters>
     <parameters name="SIM_GPS4_">
@@ -43257,8 +43325,9 @@
       <param humanName="GPS Options" name="SIM_GPS4_OPTIONS" documentation="GPS Options bitmask" user="Advanced">
         <bitmask>
           <bit code="0">UBlox GPS is F9P</bit>
+          <bit code="1">UBlox receiver without flash loses its saved configuration on reboot</bit>
         </bitmask>
-        <field name="Bitmask">0:UBlox GPS is F9P</field>
+        <field name="Bitmask">0:UBlox GPS is F9P, 1:UBlox receiver without flash loses its saved configuration on reboot</field>
       </param>
       <param humanName="GPS Fix Type" name="SIM_GPS4_FIXTYPE" documentation="Allow setting which fix type (only some GPS's supported); matches AP_GPS_FixType" user="Advanced">
         <values>
@@ -43286,6 +43355,17 @@
       <param humanName="GPS velocity glitch" name="SIM_GPS4_GLTV_Z" documentation="Glitch offsets of simulated GPS velocity in NED. The reported position also moves continuously with this velocity, so position and velocity stay consistent (e.g. to simulate GPS spoofing that drifts the position). The accumulated position offset is cleared when all three components are zero at a GPS update, so when changing axes set the new component before zeroing the old one (Z-axis)" user="Advanced">
         <field name="Units">m/s</field>
         <field name="UnitText">meters per second</field>
+      </param>
+      <param humanName="UBlox receiver model" name="SIM_GPS4_UBXMDL" documentation="Which u-blox receiver to simulate. Simple outputs all messages and ignores configuration; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output" user="Advanced">
+        <values>
+          <value code="0">Simple</value>
+          <value code="1">u-blox 6 FW 7.03</value>
+          <value code="2">NEO-M8N FW 2.01</value>
+          <value code="3">M8 ROM CORE 3.01</value>
+          <value code="4">NEO-M8N SPG 3.01</value>
+          <value code="5">NEO-M9N SPG 4.04</value>
+          <value code="6">M10 ROM SPG 5.10</value>
+        </values>
       </param>
     </parameters>
     <parameters name="SIM_GRPE_">

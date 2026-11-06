@@ -45682,6 +45682,22 @@ This sets one side of pass-through between two serial ports. Once both sides are
 |4|Serial4|
 |5|Serial5|
 |6|Serial6|
+|7|Serial7|
+|8|Serial8|
+|9|Serial9|
+|21|Network Port1|
+|22|Network Port2|
+|23|Network Port3|
+|24|Network Port4|
+|41|CAN1 Serial1|
+|42|CAN1 Serial2|
+|43|CAN1 Serial3|
+|51|CAN2 Serial1|
+|52|CAN2 Serial2|
+|53|CAN2 Serial3|
+|61|Scripting Serial1|
+|62|Scripting Serial2|
+|63|Scripting Serial3|
 
 ## SERIAL_PASS2: Serial passthru second port
 
@@ -45699,6 +45715,22 @@ This sets one side of pass-through between two serial ports. Once both sides are
 |4|Serial4|
 |5|Serial5|
 |6|Serial6|
+|7|Serial7|
+|8|Serial8|
+|9|Serial9|
+|21|Network Port1|
+|22|Network Port2|
+|23|Network Port3|
+|24|Network Port4|
+|41|CAN1 Serial1|
+|42|CAN1 Serial2|
+|43|CAN1 Serial3|
+|51|CAN2 Serial1|
+|52|CAN2 Serial2|
+|53|CAN2 Serial3|
+|61|Scripting Serial1|
+|62|Scripting Serial2|
+|63|Scripting Serial3|
 
 ## SERIAL_PASSTIMO: Serial passthru timeout
 
@@ -49547,7 +49579,7 @@ GPS heading offset in degrees. how off the simulated GPS heading is from the act
 
 GPS Options bitmask
 
-- Bitmask: 0:UBlox GPS is F9P
+- Bitmask: 0:UBlox GPS is F9P, 1:UBlox receiver without flash loses its saved configuration on reboot
 
 ## SIM_GPS1_FIXTYPE: GPS Fix Type
 
@@ -49596,6 +49628,22 @@ Glitch offsets of simulated GPS velocity in NED. The reported position also move
 Glitch offsets of simulated GPS velocity in NED. The reported position also moves continuously with this velocity, so position and velocity stay consistent (e.g. to simulate GPS spoofing that drifts the position). The accumulated position offset is cleared when all three components are zero at a GPS update, so when changing axes set the new component before zeroing the old one (Z-axis)
 
 - Units: m/s
+
+## SIM_GPS1_UBXMDL: UBlox receiver model
+
+*Note: This parameter is for advanced users*
+
+Which u-blox receiver to simulate. Simple outputs all messages and ignores configuration; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Simple|
+|1|u-blox 6 FW 7.03|
+|2|NEO-M8N FW 2.01|
+|3|M8 ROM CORE 3.01|
+|4|NEO-M8N SPG 3.01|
+|5|NEO-M9N SPG 4.04|
+|6|M10 ROM SPG 5.10|
 
 # SIMGPS2 Parameters
 
@@ -49781,7 +49829,7 @@ GPS heading offset in degrees. how off the simulated GPS heading is from the act
 
 GPS Options bitmask
 
-- Bitmask: 0:UBlox GPS is F9P
+- Bitmask: 0:UBlox GPS is F9P, 1:UBlox receiver without flash loses its saved configuration on reboot
 
 ## SIM_GPS2_FIXTYPE: GPS Fix Type
 
@@ -49830,6 +49878,22 @@ Glitch offsets of simulated GPS velocity in NED. The reported position also move
 Glitch offsets of simulated GPS velocity in NED. The reported position also moves continuously with this velocity, so position and velocity stay consistent (e.g. to simulate GPS spoofing that drifts the position). The accumulated position offset is cleared when all three components are zero at a GPS update, so when changing axes set the new component before zeroing the old one (Z-axis)
 
 - Units: m/s
+
+## SIM_GPS2_UBXMDL: UBlox receiver model
+
+*Note: This parameter is for advanced users*
+
+Which u-blox receiver to simulate. Simple outputs all messages and ignores configuration; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Simple|
+|1|u-blox 6 FW 7.03|
+|2|NEO-M8N FW 2.01|
+|3|M8 ROM CORE 3.01|
+|4|NEO-M8N SPG 3.01|
+|5|NEO-M9N SPG 4.04|
+|6|M10 ROM SPG 5.10|
 
 # SIMGPS3 Parameters
 
@@ -50015,7 +50079,7 @@ GPS heading offset in degrees. how off the simulated GPS heading is from the act
 
 GPS Options bitmask
 
-- Bitmask: 0:UBlox GPS is F9P
+- Bitmask: 0:UBlox GPS is F9P, 1:UBlox receiver without flash loses its saved configuration on reboot
 
 ## SIM_GPS3_FIXTYPE: GPS Fix Type
 
@@ -50064,6 +50128,22 @@ Glitch offsets of simulated GPS velocity in NED. The reported position also move
 Glitch offsets of simulated GPS velocity in NED. The reported position also moves continuously with this velocity, so position and velocity stay consistent (e.g. to simulate GPS spoofing that drifts the position). The accumulated position offset is cleared when all three components are zero at a GPS update, so when changing axes set the new component before zeroing the old one (Z-axis)
 
 - Units: m/s
+
+## SIM_GPS3_UBXMDL: UBlox receiver model
+
+*Note: This parameter is for advanced users*
+
+Which u-blox receiver to simulate. Simple outputs all messages and ignores configuration; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Simple|
+|1|u-blox 6 FW 7.03|
+|2|NEO-M8N FW 2.01|
+|3|M8 ROM CORE 3.01|
+|4|NEO-M8N SPG 3.01|
+|5|NEO-M9N SPG 4.04|
+|6|M10 ROM SPG 5.10|
 
 # SIMGPS4 Parameters
 
@@ -50249,7 +50329,7 @@ GPS heading offset in degrees. how off the simulated GPS heading is from the act
 
 GPS Options bitmask
 
-- Bitmask: 0:UBlox GPS is F9P
+- Bitmask: 0:UBlox GPS is F9P, 1:UBlox receiver without flash loses its saved configuration on reboot
 
 ## SIM_GPS4_FIXTYPE: GPS Fix Type
 
@@ -50298,6 +50378,22 @@ Glitch offsets of simulated GPS velocity in NED. The reported position also move
 Glitch offsets of simulated GPS velocity in NED. The reported position also moves continuously with this velocity, so position and velocity stay consistent (e.g. to simulate GPS spoofing that drifts the position). The accumulated position offset is cleared when all three components are zero at a GPS update, so when changing axes set the new component before zeroing the old one (Z-axis)
 
 - Units: m/s
+
+## SIM_GPS4_UBXMDL: UBlox receiver model
+
+*Note: This parameter is for advanced users*
+
+Which u-blox receiver to simulate. Simple outputs all messages and ignores configuration; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output
+
+|Value|Meaning|
+|:---:|:---:|
+|0|Simple|
+|1|u-blox 6 FW 7.03|
+|2|NEO-M8N FW 2.01|
+|3|M8 ROM CORE 3.01|
+|4|NEO-M8N SPG 3.01|
+|5|NEO-M9N SPG 4.04|
+|6|M10 ROM SPG 5.10|
 
 # SIMGRPE Parameters
 

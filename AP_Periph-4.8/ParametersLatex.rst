@@ -83437,25 +83437,57 @@ SERIAL\_PASS1: Serial passthru first port
 This sets one side of pass\-through between two serial ports\. Once both sides are set then all data received on either port will be passed to the other port
 
 
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| -1    | Disabled |
-+-------+----------+
-| 0     | Serial0  |
-+-------+----------+
-| 1     | Serial1  |
-+-------+----------+
-| 2     | Serial2  |
-+-------+----------+
-| 3     | Serial3  |
-+-------+----------+
-| 4     | Serial4  |
-+-------+----------+
-| 5     | Serial5  |
-+-------+----------+
-| 6     | Serial6  |
-+-------+----------+
++-------+-------------------+
+| Value | Meaning           |
++=======+===================+
+| -1    | Disabled          |
++-------+-------------------+
+| 0     | Serial0           |
++-------+-------------------+
+| 1     | Serial1           |
++-------+-------------------+
+| 2     | Serial2           |
++-------+-------------------+
+| 3     | Serial3           |
++-------+-------------------+
+| 4     | Serial4           |
++-------+-------------------+
+| 5     | Serial5           |
++-------+-------------------+
+| 6     | Serial6           |
++-------+-------------------+
+| 7     | Serial7           |
++-------+-------------------+
+| 8     | Serial8           |
++-------+-------------------+
+| 9     | Serial9           |
++-------+-------------------+
+| 21    | Network Port1     |
++-------+-------------------+
+| 22    | Network Port2     |
++-------+-------------------+
+| 23    | Network Port3     |
++-------+-------------------+
+| 24    | Network Port4     |
++-------+-------------------+
+| 41    | CAN1 Serial1      |
++-------+-------------------+
+| 42    | CAN1 Serial2      |
++-------+-------------------+
+| 43    | CAN1 Serial3      |
++-------+-------------------+
+| 51    | CAN2 Serial1      |
++-------+-------------------+
+| 52    | CAN2 Serial2      |
++-------+-------------------+
+| 53    | CAN2 Serial3      |
++-------+-------------------+
+| 61    | Scripting Serial1 |
++-------+-------------------+
+| 62    | Scripting Serial2 |
++-------+-------------------+
+| 63    | Scripting Serial3 |
++-------+-------------------+
 
 
 
@@ -83470,25 +83502,57 @@ SERIAL\_PASS2: Serial passthru second port
 This sets one side of pass\-through between two serial ports\. Once both sides are set then all data received on either port will be passed to the other port\. This parameter is normally reset to \-1 on reboot\, disabling passthrough\. If SERIAL\_PASSTIMO is set to \-1 then it is not reset on reboot\.
 
 
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| -1    | Disabled |
-+-------+----------+
-| 0     | Serial0  |
-+-------+----------+
-| 1     | Serial1  |
-+-------+----------+
-| 2     | Serial2  |
-+-------+----------+
-| 3     | Serial3  |
-+-------+----------+
-| 4     | Serial4  |
-+-------+----------+
-| 5     | Serial5  |
-+-------+----------+
-| 6     | Serial6  |
-+-------+----------+
++-------+-------------------+
+| Value | Meaning           |
++=======+===================+
+| -1    | Disabled          |
++-------+-------------------+
+| 0     | Serial0           |
++-------+-------------------+
+| 1     | Serial1           |
++-------+-------------------+
+| 2     | Serial2           |
++-------+-------------------+
+| 3     | Serial3           |
++-------+-------------------+
+| 4     | Serial4           |
++-------+-------------------+
+| 5     | Serial5           |
++-------+-------------------+
+| 6     | Serial6           |
++-------+-------------------+
+| 7     | Serial7           |
++-------+-------------------+
+| 8     | Serial8           |
++-------+-------------------+
+| 9     | Serial9           |
++-------+-------------------+
+| 21    | Network Port1     |
++-------+-------------------+
+| 22    | Network Port2     |
++-------+-------------------+
+| 23    | Network Port3     |
++-------+-------------------+
+| 24    | Network Port4     |
++-------+-------------------+
+| 41    | CAN1 Serial1      |
++-------+-------------------+
+| 42    | CAN1 Serial2      |
++-------+-------------------+
+| 43    | CAN1 Serial3      |
++-------+-------------------+
+| 51    | CAN2 Serial1      |
++-------+-------------------+
+| 52    | CAN2 Serial2      |
++-------+-------------------+
+| 53    | CAN2 Serial3      |
++-------+-------------------+
+| 61    | Scripting Serial1 |
++-------+-------------------+
+| 62    | Scripting Serial2 |
++-------+-------------------+
+| 63    | Scripting Serial3 |
++-------+-------------------+
 
 
 
@@ -90719,11 +90783,13 @@ SIM\_GPS1\_OPTIONS: GPS Options
 GPS Options bitmask
 
 
-+-----+------------------+
-| Bit | Meaning          |
-+=====+==================+
-| 0   | UBlox GPS is F9P |
-+-----+------------------+
++-----+----------------------------------------------------------------------+
+| Bit | Meaning                                                              |
++=====+======================================================================+
+| 0   | UBlox GPS is F9P                                                     |
++-----+----------------------------------------------------------------------+
+| 1   | UBlox receiver without flash loses its saved configuration on reboot |
++-----+----------------------------------------------------------------------+
 
 
 
@@ -90831,6 +90897,37 @@ Glitch offsets of simulated GPS velocity in NED\. The reported position also mov
 +===================+
 | meters per second |
 +-------------------+
+
+
+
+
+.. _SIM_GPS1_UBXMDL:
+
+SIM\_GPS1\_UBXMDL: UBlox receiver model
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Which u\-blox receiver to simulate\. Simple outputs all messages and ignores configuration\; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output
+
+
++-------+------------------+
+| Value | Meaning          |
++=======+==================+
+| 0     | Simple           |
++-------+------------------+
+| 1     | u-blox 6 FW 7.03 |
++-------+------------------+
+| 2     | NEO-M8N FW 2.01  |
++-------+------------------+
+| 3     | M8 ROM CORE 3.01 |
++-------+------------------+
+| 4     | NEO-M8N SPG 3.01 |
++-------+------------------+
+| 5     | NEO-M9N SPG 4.04 |
++-------+------------------+
+| 6     | M10 ROM SPG 5.10 |
++-------+------------------+
 
 
 
@@ -91224,11 +91321,13 @@ SIM\_GPS2\_OPTIONS: GPS Options
 GPS Options bitmask
 
 
-+-----+------------------+
-| Bit | Meaning          |
-+=====+==================+
-| 0   | UBlox GPS is F9P |
-+-----+------------------+
++-----+----------------------------------------------------------------------+
+| Bit | Meaning                                                              |
++=====+======================================================================+
+| 0   | UBlox GPS is F9P                                                     |
++-----+----------------------------------------------------------------------+
+| 1   | UBlox receiver without flash loses its saved configuration on reboot |
++-----+----------------------------------------------------------------------+
 
 
 
@@ -91336,6 +91435,37 @@ Glitch offsets of simulated GPS velocity in NED\. The reported position also mov
 +===================+
 | meters per second |
 +-------------------+
+
+
+
+
+.. _SIM_GPS2_UBXMDL:
+
+SIM\_GPS2\_UBXMDL: UBlox receiver model
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Which u\-blox receiver to simulate\. Simple outputs all messages and ignores configuration\; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output
+
+
++-------+------------------+
+| Value | Meaning          |
++=======+==================+
+| 0     | Simple           |
++-------+------------------+
+| 1     | u-blox 6 FW 7.03 |
++-------+------------------+
+| 2     | NEO-M8N FW 2.01  |
++-------+------------------+
+| 3     | M8 ROM CORE 3.01 |
++-------+------------------+
+| 4     | NEO-M8N SPG 3.01 |
++-------+------------------+
+| 5     | NEO-M9N SPG 4.04 |
++-------+------------------+
+| 6     | M10 ROM SPG 5.10 |
++-------+------------------+
 
 
 
@@ -91729,11 +91859,13 @@ SIM\_GPS3\_OPTIONS: GPS Options
 GPS Options bitmask
 
 
-+-----+------------------+
-| Bit | Meaning          |
-+=====+==================+
-| 0   | UBlox GPS is F9P |
-+-----+------------------+
++-----+----------------------------------------------------------------------+
+| Bit | Meaning                                                              |
++=====+======================================================================+
+| 0   | UBlox GPS is F9P                                                     |
++-----+----------------------------------------------------------------------+
+| 1   | UBlox receiver without flash loses its saved configuration on reboot |
++-----+----------------------------------------------------------------------+
 
 
 
@@ -91841,6 +91973,37 @@ Glitch offsets of simulated GPS velocity in NED\. The reported position also mov
 +===================+
 | meters per second |
 +-------------------+
+
+
+
+
+.. _SIM_GPS3_UBXMDL:
+
+SIM\_GPS3\_UBXMDL: UBlox receiver model
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Which u\-blox receiver to simulate\. Simple outputs all messages and ignores configuration\; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output
+
+
++-------+------------------+
+| Value | Meaning          |
++=======+==================+
+| 0     | Simple           |
++-------+------------------+
+| 1     | u-blox 6 FW 7.03 |
++-------+------------------+
+| 2     | NEO-M8N FW 2.01  |
++-------+------------------+
+| 3     | M8 ROM CORE 3.01 |
++-------+------------------+
+| 4     | NEO-M8N SPG 3.01 |
++-------+------------------+
+| 5     | NEO-M9N SPG 4.04 |
++-------+------------------+
+| 6     | M10 ROM SPG 5.10 |
++-------+------------------+
 
 
 
@@ -92234,11 +92397,13 @@ SIM\_GPS4\_OPTIONS: GPS Options
 GPS Options bitmask
 
 
-+-----+------------------+
-| Bit | Meaning          |
-+=====+==================+
-| 0   | UBlox GPS is F9P |
-+-----+------------------+
++-----+----------------------------------------------------------------------+
+| Bit | Meaning                                                              |
++=====+======================================================================+
+| 0   | UBlox GPS is F9P                                                     |
++-----+----------------------------------------------------------------------+
+| 1   | UBlox receiver without flash loses its saved configuration on reboot |
++-----+----------------------------------------------------------------------+
 
 
 
@@ -92346,6 +92511,37 @@ Glitch offsets of simulated GPS velocity in NED\. The reported position also mov
 +===================+
 | meters per second |
 +-------------------+
+
+
+
+
+.. _SIM_GPS4_UBXMDL:
+
+SIM\_GPS4\_UBXMDL: UBlox receiver model
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Which u\-blox receiver to simulate\. Simple outputs all messages and ignores configuration\; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output
+
+
++-------+------------------+
+| Value | Meaning          |
++=======+==================+
+| 0     | Simple           |
++-------+------------------+
+| 1     | u-blox 6 FW 7.03 |
++-------+------------------+
+| 2     | NEO-M8N FW 2.01  |
++-------+------------------+
+| 3     | M8 ROM CORE 3.01 |
++-------+------------------+
+| 4     | NEO-M8N SPG 3.01 |
++-------+------------------+
+| 5     | NEO-M9N SPG 4.04 |
++-------+------------------+
+| 6     | M10 ROM SPG 5.10 |
++-------+------------------+
 
 
 

@@ -31655,6 +31655,22 @@ This sets one side of pass-through between two serial ports. Once both sides are
 |4|Serial4|
 |5|Serial5|
 |6|Serial6|
+|7|Serial7|
+|8|Serial8|
+|9|Serial9|
+|21|Network Port1|
+|22|Network Port2|
+|23|Network Port3|
+|24|Network Port4|
+|41|CAN1 Serial1|
+|42|CAN1 Serial2|
+|43|CAN1 Serial3|
+|51|CAN2 Serial1|
+|52|CAN2 Serial2|
+|53|CAN2 Serial3|
+|61|Scripting Serial1|
+|62|Scripting Serial2|
+|63|Scripting Serial3|
 
 ## SERIAL_PASS2: Serial passthru second port
 
@@ -31672,6 +31688,22 @@ This sets one side of pass-through between two serial ports. Once both sides are
 |4|Serial4|
 |5|Serial5|
 |6|Serial6|
+|7|Serial7|
+|8|Serial8|
+|9|Serial9|
+|21|Network Port1|
+|22|Network Port2|
+|23|Network Port3|
+|24|Network Port4|
+|41|CAN1 Serial1|
+|42|CAN1 Serial2|
+|43|CAN1 Serial3|
+|51|CAN2 Serial1|
+|52|CAN2 Serial2|
+|53|CAN2 Serial3|
+|61|Scripting Serial1|
+|62|Scripting Serial2|
+|63|Scripting Serial3|
 
 ## SERIAL_PASSTIMO: Serial passthru timeout
 
