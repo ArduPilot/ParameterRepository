@@ -1,0 +1,13 @@
+{
+  "name": "webpage",
+  "private": true,
+  "scripts": {
+    "data": "bun scripts/data.js",
+    "bundle": "bun build src/params.js --outfile static/js/params.js --minify",
+    "build": "bun run data && bun run bundle && zola build",
+    "serve": "bun run data && (bun run bundle --watch & zola serve)"
+  },
+  "dependencies": {
+    "minisearch": "7.2.0"
+  }
+}

@@ -1,0 +1,52 @@
+name: Webpage
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_run:
+    workflows: ["Run Python Script and Commit Changes"]
+    types: [completed]
+    branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - name: Install zola
+        uses: taiki-e/install-action@v2
+        with:
+          tool: zola@0.20.0
+      - name: Install bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.1.24
+      - name: Build
+        run: bun install --frozen-lockfile && bun test && bun run build && zola check
+        working-directory: webpage
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: webpage/public
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

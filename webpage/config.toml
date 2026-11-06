@@ -1,0 +1,29 @@
+base_url = "https://patrickelectric.work/ParameterRepository"
+title = "ArduPilot Parameters"
+description = "Search ArduPilot parameters across vehicles and firmware versions."
+default_language = "en"
+theme = "abridge"
+compile_sass = true
+build_search_index = false
+generate_feeds = false
+
+[extra]
+menu = [
+  {url = "params", name = "Parameters", slash = true, blank = false, size = "s110"},
+  {url = "about", name = "About", slash = true, blank = false, size = "s110"},
+]
+menu_footer = []
+textlogo = "ArduPilot Parameters"
+author = "ArduPilot"
+toc = false
+recent = false
+series = false
+footer_credit = true
+seo = false
+search_library = false
+js_bundle = true
+js_switcher = true
+js_switcher_default = "dark"
+integrity = true
+pwa = false
+favicon_svg = "favicon.svg"

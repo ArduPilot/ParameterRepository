@@ -1,0 +1,4 @@
+@use '../themes/abridge/sass/abridge' with (
+  $mw: 1200px,
+);
+@use 'extra';
