@@ -41476,6 +41476,14 @@
         <field name="Units">ms</field>
         <field name="UnitText">milliseconds</field>
       </param>
+      <param humanName="Optical flow rate offset X" name="SIM_FLOW_OFS_X" documentation="Constant offset added to the X axis simulated optical flow rate, for fault injection (false motion on one axis while stationary)" user="Advanced">
+        <field name="Units">rad/s</field>
+        <field name="UnitText">radians per second</field>
+      </param>
+      <param humanName="Optical flow rate offset Y" name="SIM_FLOW_OFS_Y" documentation="Constant offset added to the Y axis simulated optical flow rate, for fault injection (false motion on one axis while stationary)" user="Advanced">
+        <field name="Units">rad/s</field>
+        <field name="UnitText">radians per second</field>
+      </param>
       <param humanName="Number of ADSB aircrafts" name="SIM_ADSB_COUNT" documentation="Total number of ADSB simulated aircraft">
 </param>
       <param humanName="ADSB radius stddev of another aircraft" name="SIM_ADSB_RADIUS" documentation="Simulated standard deviation of radius in ADSB of another aircraft">
@@ -43871,10 +43879,10 @@
         <field name="Range">0 5000.0</field>
       </param>
       <param humanName="(Optional) Maximum drift distance to allow when thermalling." name="SOAR_MAX_DRIFT" documentation="The previous mode will be restored if the horizontal distance to the thermalling start location exceeds this value. -1 to disable." user="Advanced">
-        <field name="Range">0 1000</field>
+        <field name="Range">-1 1000</field>
       </param>
       <param humanName="(Optional) Maximum distance from home" name="SOAR_MAX_RADIUS" documentation="RTL will be entered when a thermal is exited and the plane is more than this distance from home. -1 to disable." user="Advanced">
-        <field name="Range">0 1000</field>
+        <field name="Range">-1 1000</field>
       </param>
       <param humanName="Thermalling bank angle" name="SOAR_THML_BANK" documentation="This parameter sets the bank angle to use when thermalling. Typically 30 - 45 degrees works well." user="Advanced">
         <field name="Range">20 50</field>

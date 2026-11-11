@@ -27023,6 +27023,14 @@
         <field name="Units">ms</field>
         <field name="UnitText">milliseconds</field>
       </param>
+      <param humanName="Optical flow rate offset X" name="SIM_FLOW_OFS_X" documentation="Constant offset added to the X axis simulated optical flow rate, for fault injection (false motion on one axis while stationary)" user="Advanced">
+        <field name="Units">rad/s</field>
+        <field name="UnitText">radians per second</field>
+      </param>
+      <param humanName="Optical flow rate offset Y" name="SIM_FLOW_OFS_Y" documentation="Constant offset added to the Y axis simulated optical flow rate, for fault injection (false motion on one axis while stationary)" user="Advanced">
+        <field name="Units">rad/s</field>
+        <field name="UnitText">radians per second</field>
+      </param>
       <param humanName="Number of ADSB aircrafts" name="SIM_ADSB_COUNT" documentation="Total number of ADSB simulated aircraft">
 </param>
       <param humanName="ADSB radius stddev of another aircraft" name="SIM_ADSB_RADIUS" documentation="Simulated standard deviation of radius in ADSB of another aircraft">

@@ -60985,6 +60985,18 @@
         "1": "Enabled"
       }
     },
+    "SIM_FLOW_OFS_X": {
+      "Description": "Constant offset added to the X axis simulated optical flow rate, for fault injection (false motion on one axis while stationary)",
+      "DisplayName": "Optical flow rate offset X",
+      "Units": "rad/s",
+      "User": "Advanced"
+    },
+    "SIM_FLOW_OFS_Y": {
+      "Description": "Constant offset added to the Y axis simulated optical flow rate, for fault injection (false motion on one axis while stationary)",
+      "DisplayName": "Optical flow rate offset Y",
+      "Units": "rad/s",
+      "User": "Advanced"
+    },
     "SIM_FLOW_POS_X": {
       "Description": "XYZ position of the optical flow sensor focal point relative to the body frame origin (X-axis)",
       "DisplayName": "Opflow Pos",
@@ -64705,7 +64717,7 @@
       "DisplayName": "(Optional) Maximum drift distance to allow when thermalling.",
       "Range": {
         "high": "1000",
-        "low": "0"
+        "low": "-1"
       },
       "User": "Advanced"
     },
@@ -64714,7 +64726,7 @@
       "DisplayName": "(Optional) Maximum distance from home",
       "Range": {
         "high": "1000",
-        "low": "0"
+        "low": "-1"
       },
       "User": "Advanced"
     },

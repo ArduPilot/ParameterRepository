@@ -18636,7 +18636,7 @@ Compass direction in which vehicle should approach towards dock. -1 value repres
 
 - Units: deg
 
-- Range: 0 360
+- Range: -1 360
 
 - Increment: 1
 
@@ -47763,6 +47763,22 @@ Opflow Data Rate
 Opflow data delay
 
 - Units: ms
+
+## SIM_FLOW_OFS_X: Optical flow rate offset X
+
+*Note: This parameter is for advanced users*
+
+Constant offset added to the X axis simulated optical flow rate, for fault injection (false motion on one axis while stationary)
+
+- Units: rad/s
+
+## SIM_FLOW_OFS_Y: Optical flow rate offset Y
+
+*Note: This parameter is for advanced users*
+
+Constant offset added to the Y axis simulated optical flow rate, for fault injection (false motion on one axis while stationary)
+
+- Units: rad/s
 
 ## SIM_ADSB_COUNT: Number of ADSB aircrafts
 

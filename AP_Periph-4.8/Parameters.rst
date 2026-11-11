@@ -42938,13 +42938,6 @@ PPP serial baudrate
 
 
 
-
-.. _parameters_NET_:
-
-NET\_ Parameters
-----------------
-
-
 .. _NET_ENABLE:
 
 NET\_ENABLE: Networking Enable
@@ -82142,6 +82135,44 @@ Enable simulated Optical Flow sensor
 | +-------+---------+ |
 |                     |
 +---------------------+
+
+
+
+
+.. _SIM_FLOW_OFS_X:
+
+SIM\_FLOW\_OFS\_X: Optical flow rate offset X
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Constant offset added to the X axis simulated optical flow rate\, for fault injection \(false motion on one axis while stationary\)
+
+
++--------------------+
+| Units              |
++====================+
+| radians per second |
++--------------------+
+
+
+
+
+.. _SIM_FLOW_OFS_Y:
+
+SIM\_FLOW\_OFS\_Y: Optical flow rate offset Y
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Constant offset added to the Y axis simulated optical flow rate\, for fault injection \(false motion on one axis while stationary\)
+
+
++--------------------+
+| Units              |
++====================+
+| radians per second |
++--------------------+
 
 
 

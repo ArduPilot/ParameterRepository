@@ -12787,7 +12787,7 @@
       <param humanName="Dock mode direction of approach" name="DOCK_DIR" documentation="Compass direction in which vehicle should approach towards dock. -1 value represents unset parameter" user="Advanced">
         <field name="Units">deg</field>
         <field name="UnitText">degrees</field>
-        <field name="Range">0 360</field>
+        <field name="Range">-1 360</field>
         <field name="Increment">1</field>
       </param>
       <param humanName="Dock mode heading correction enable/disable" name="DOCK_HDG_CORR_EN" documentation="When enabled, the autopilot modifies the path to approach the target head-on along desired line of approach in dock mode" user="Advanced">
@@ -37279,6 +37279,14 @@
       <param humanName="Opflow Delay" name="SIM_FLOW_DELAY" documentation="Opflow data delay">
         <field name="Units">ms</field>
         <field name="UnitText">milliseconds</field>
+      </param>
+      <param humanName="Optical flow rate offset X" name="SIM_FLOW_OFS_X" documentation="Constant offset added to the X axis simulated optical flow rate, for fault injection (false motion on one axis while stationary)" user="Advanced">
+        <field name="Units">rad/s</field>
+        <field name="UnitText">radians per second</field>
+      </param>
+      <param humanName="Optical flow rate offset Y" name="SIM_FLOW_OFS_Y" documentation="Constant offset added to the Y axis simulated optical flow rate, for fault injection (false motion on one axis while stationary)" user="Advanced">
+        <field name="Units">rad/s</field>
+        <field name="UnitText">radians per second</field>
       </param>
       <param humanName="Number of ADSB aircrafts" name="SIM_ADSB_COUNT" documentation="Total number of ADSB simulated aircraft">
 </param>

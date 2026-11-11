@@ -130599,6 +130599,44 @@ Enable simulated Optical Flow sensor
 
 
 
+.. _SIM_FLOW_OFS_X:
+
+SIM\_FLOW\_OFS\_X: Optical flow rate offset X
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Constant offset added to the X axis simulated optical flow rate\, for fault injection \(false motion on one axis while stationary\)
+
+
++--------------------+
+| Units              |
++====================+
+| radians per second |
++--------------------+
+
+
+
+
+.. _SIM_FLOW_OFS_Y:
+
+SIM\_FLOW\_OFS\_Y: Optical flow rate offset Y
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Constant offset added to the Y axis simulated optical flow rate\, for fault injection \(false motion on one axis while stationary\)
+
+
++--------------------+
+| Units              |
++====================+
+| radians per second |
++--------------------+
+
+
+
+
 .. _SIM_FLOW_POS_X:
 
 SIM\_FLOW\_POS\_X: Opflow Pos
@@ -139215,11 +139253,11 @@ SOAR\_MAX\_DRIFT: \(Optional\) Maximum drift distance to allow when thermalling\
 The previous mode will be restored if the horizontal distance to the thermalling start location exceeds this value\. \-1 to disable\.
 
 
-+-----------+
-| Range     |
-+===========+
-| 0 to 1000 |
-+-----------+
++------------+
+| Range      |
++============+
+| -1 to 1000 |
++------------+
 
 
 
@@ -139234,11 +139272,11 @@ SOAR\_MAX\_RADIUS: \(Optional\) Maximum distance from home
 RTL will be entered when a thermal is exited and the plane is more than this distance from home\. \-1 to disable\.
 
 
-+-----------+
-| Range     |
-+===========+
-| 0 to 1000 |
-+-----------+
++------------+
+| Range      |
++============+
+| -1 to 1000 |
++------------+
 
 
 

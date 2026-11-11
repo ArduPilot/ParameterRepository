@@ -23094,8 +23094,6 @@ PPP serial baudrate
 |2000|2MBaud|
 |12500000|12.5MBaud|
 
-# NET Parameters
-
 ## NET_ENABLE: Networking Enable
 
 *Note: This parameter is for advanced users*
@@ -39898,6 +39896,22 @@ Opflow Data Rate
 Opflow data delay
 
 - Units: ms
+
+## SIM_FLOW_OFS_X: Optical flow rate offset X
+
+*Note: This parameter is for advanced users*
+
+Constant offset added to the X axis simulated optical flow rate, for fault injection (false motion on one axis while stationary)
+
+- Units: rad/s
+
+## SIM_FLOW_OFS_Y: Optical flow rate offset Y
+
+*Note: This parameter is for advanced users*
+
+Constant offset added to the Y axis simulated optical flow rate, for fault injection (false motion on one axis while stationary)
+
+- Units: rad/s
 
 ## SIM_ADSB_COUNT: Number of ADSB aircrafts
 

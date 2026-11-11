@@ -51184,6 +51184,22 @@ Opflow data delay
 
 - Units: ms
 
+## SIM_FLOW_OFS_X: Optical flow rate offset X
+
+*Note: This parameter is for advanced users*
+
+Constant offset added to the X axis simulated optical flow rate, for fault injection (false motion on one axis while stationary)
+
+- Units: rad/s
+
+## SIM_FLOW_OFS_Y: Optical flow rate offset Y
+
+*Note: This parameter is for advanced users*
+
+Constant offset added to the Y axis simulated optical flow rate, for fault injection (false motion on one axis while stationary)
+
+- Units: rad/s
+
 ## SIM_ADSB_COUNT: Number of ADSB aircrafts
 
 Total number of ADSB simulated aircraft
@@ -55936,7 +55952,7 @@ Cut off throttle at this alt.
 
 The previous mode will be restored if the horizontal distance to the thermalling start location exceeds this value. -1 to disable.
 
-- Range: 0 1000
+- Range: -1 1000
 
 ## SOAR_MAX_RADIUS: (Optional) Maximum distance from home
 
@@ -55944,7 +55960,7 @@ The previous mode will be restored if the horizontal distance to the thermalling
 
 RTL will be entered when a thermal is exited and the plane is more than this distance from home. -1 to disable.
 
-- Range: 0 1000
+- Range: -1 1000
 
 ## SOAR_THML_BANK: Thermalling bank angle
 

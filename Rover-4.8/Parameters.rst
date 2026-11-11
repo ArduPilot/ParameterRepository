@@ -37766,11 +37766,11 @@ DOCK\_DIR: Dock mode direction of approach
 Compass direction in which vehicle should approach towards dock\. \-1 value represents unset parameter
 
 
-+-----------+----------+---------+
-| Increment | Range    | Units   |
-+===========+==========+=========+
-| 1         | 0 to 360 | degrees |
-+-----------+----------+---------+
++-----------+-----------+---------+
+| Increment | Range     | Units   |
++===========+===========+=========+
+| 1         | -1 to 360 | degrees |
++-----------+-----------+---------+
 
 
 
@@ -119398,6 +119398,44 @@ Enable simulated Optical Flow sensor
 | +-------+---------+ |
 |                     |
 +---------------------+
+
+
+
+
+.. _SIM_FLOW_OFS_X:
+
+SIM\_FLOW\_OFS\_X: Optical flow rate offset X
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Constant offset added to the X axis simulated optical flow rate\, for fault injection \(false motion on one axis while stationary\)
+
+
++--------------------+
+| Units              |
++====================+
+| radians per second |
++--------------------+
+
+
+
+
+.. _SIM_FLOW_OFS_Y:
+
+SIM\_FLOW\_OFS\_Y: Optical flow rate offset Y
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Constant offset added to the Y axis simulated optical flow rate\, for fault injection \(false motion on one axis while stationary\)
+
+
++--------------------+
+| Units              |
++====================+
+| radians per second |
++--------------------+
 
 
 

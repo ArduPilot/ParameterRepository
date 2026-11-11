@@ -14402,8 +14402,6 @@
           <value code="12500000">12.5MBaud</value>
         </values>
       </param>
-    </parameters>
-    <parameters name="NET_">
       <param humanName="Networking Enable" name="NET_ENABLE" documentation="Networking Enable" user="Advanced">
         <values>
           <value code="0">Disable</value>
@@ -28318,6 +28316,14 @@
       <param humanName="Opflow Delay" name="SIM_FLOW_DELAY" documentation="Opflow data delay">
         <field name="Units">ms</field>
         <field name="UnitText">milliseconds</field>
+      </param>
+      <param humanName="Optical flow rate offset X" name="SIM_FLOW_OFS_X" documentation="Constant offset added to the X axis simulated optical flow rate, for fault injection (false motion on one axis while stationary)" user="Advanced">
+        <field name="Units">rad/s</field>
+        <field name="UnitText">radians per second</field>
+      </param>
+      <param humanName="Optical flow rate offset Y" name="SIM_FLOW_OFS_Y" documentation="Constant offset added to the Y axis simulated optical flow rate, for fault injection (false motion on one axis while stationary)" user="Advanced">
+        <field name="Units">rad/s</field>
+        <field name="UnitText">radians per second</field>
       </param>
       <param humanName="Number of ADSB aircrafts" name="SIM_ADSB_COUNT" documentation="Total number of ADSB simulated aircraft">
 </param>
