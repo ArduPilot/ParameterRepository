@@ -47336,11 +47336,11 @@ LOIT\_POS\_LAG: Loiter position lag
 Number of seconds\' worth of travel that the actual position can be behind the target position\.
 
 
-+------------+---------+
-| Range      | Units   |
-+============+=========+
-| 0 to 0.999 | seconds |
-+------------+---------+
++--------+---------+
+| Range  | Units   |
++========+=========+
+| 0 to 5 | seconds |
++--------+---------+
 
 
 

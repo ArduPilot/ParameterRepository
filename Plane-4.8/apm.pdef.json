@@ -16964,6 +16964,17 @@
       },
       "User": "Advanced"
     },
+    "FLOW_ALT_MIN": {
+      "Description": "Altitude above terrain below which this sensor cannot focus so its output is not motion. When the altitude above terrain estimate is below this the EKF3 does not fuse the flow measurements. Set this to the sensor's focus limit and no higher because a vehicle held below this altitude in flight will lose optical flow aiding. 0 disables the check. Ignored on the ground before takeoff, by EKF2 and by Rover when FLOW_HGT_OVR is set. Not used when flow is used for terrain estimation (EK3_FLOW_USE=2).",
+      "DisplayName": "Optical flow minimum focus altitude",
+      "Increment": "0.01",
+      "Range": {
+        "high": "5",
+        "low": "0"
+      },
+      "Units": "m",
+      "User": "Advanced"
+    },
     "FLOW_FXSCALER": {
       "Description": "This sets the parts per thousand scale factor correction applied to the flow sensor X axis optical rate. It can be used to correct for variations in effective focal length. Each positive increment of 1 increases the scale factor applied to the X axis optical flow reading by 0.1%. Negative values reduce the scale factor.",
       "DisplayName": "X axis optical flow scale factor correction",

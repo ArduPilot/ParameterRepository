@@ -47678,6 +47678,25 @@ Optical flow options\. Bit 0 should be set if the sensor is stabilised \(e\.g\. 
 
 
 
+.. _FLOW_ALT_MIN:
+
+FLOW\_ALT\_MIN: Optical flow minimum focus altitude
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Altitude above terrain below which this sensor cannot focus so its output is not motion\. When the altitude above terrain estimate is below this the EKF3 does not fuse the flow measurements\. Set this to the sensor\'s focus limit and no higher because a vehicle held below this altitude in flight will lose optical flow aiding\. 0 disables the check\. Ignored on the ground before takeoff\, by EKF2 and by Rover when FLOW\_HGT\_OVR is set\. Not used when flow is used for terrain estimation \(EK3\_FLOW\_USE\=2\)\.
+
+
++-----------+--------+--------+
+| Increment | Range  | Units  |
++===========+========+========+
+| 0.01      | 0 to 5 | meters |
++-----------+--------+--------+
+
+
+
+
 
 .. _parameters_FOLL:
 

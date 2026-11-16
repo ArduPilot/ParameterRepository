@@ -19047,7 +19047,7 @@
       "Description": "Number of seconds' worth of travel that the actual position can be behind the target position.",
       "DisplayName": "Loiter position lag",
       "Range": {
-        "high": "0.999",
+        "high": "5",
         "low": "0"
       },
       "Units": "s",
