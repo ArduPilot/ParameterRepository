@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{%- block seo %}
+  {{- super() }}
+  {{- macros_seo::seo(config=config, title=page.title, title_addition=title_separator ~ config.title, description=page.description, is_page=true) }}
+{%- endblock seo %}
+{%- block content %}
+{%- set idx = load_data(path="static/data/index.json") %}
+<article>
+  <h1>{{ page.title }}</h1>
+  <div class="pctl">
+    <select id="vehicle" aria-label="Vehicle">{% for v, vers in idx %}<option>{{ v }}</option>{% endfor %}</select>
+    <select id="version" aria-label="Version"></select>
+    <input id="q" type="search" placeholder="Search name or description" autocomplete="off" aria-label="Search">
+    <span id="count" aria-live="polite"></span>
+  </div>
+  <div id="chips"></div>
+  <table id="params" data-base="{{ get_url(path='data') }}">
+    <thead><tr><th>Name</th><th>Description</th><th>Range</th><th>Units</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  <button id="more" hidden>Load more</button>
+  <script id="idx" type="application/json">{{ idx | json_encode() | safe }}</script>
+  <script type="module" src="{{ get_url(path='js/params.js') }}"></script>
+</article>
+{%- endblock content %}
