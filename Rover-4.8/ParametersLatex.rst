@@ -1397,13 +1397,13 @@ If RCK\_FORCEHL\=2\, this is the number of seconds of GCS timeout until High Lat
 
 
 
-.. _DR_ENABLE:
+.. _PREV_ENABLE:
 
-DR\_ENABLE: Deadreckoning Enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PREV\_ENABLE: parameter reversion enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Deadreckoning Enable
+Enable parameter reversion system
 
 
 +-------+----------+
@@ -1417,103 +1417,150 @@ Deadreckoning Enable
 
 
 
-.. _DR_ENABLE_DIST:
+.. _PREV_RC_FUNC:
 
-DR\_ENABLE\_DIST: Deadreckoning Enable Distance
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+PREV\_RC\_FUNC: param reversion RC function
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Distance from home \(in meters\) beyond which the dead reckoning will be enabled
+RCn\_OPTION number to used to trigger parameter reversion
+
+
+.. _THR_KILL_FUNC:
+
+THR\_KILL\_FUNC: AUX function to kill engine
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+AUX function to kill engine\. This can be activated either with a RCn\_OPTION and a R\/C switch or with a ground station auxilliary function
+
+
++------------+
+| Range      |
++============+
+| 300 to 307 |
++------------+
+
+
+
+
+.. _THR_KILL_PWM:
+
+THR\_KILL\_PWM: PWM on kill active
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+PWM on kill active
+
+
++-------------+
+| Range       |
++=============+
+| 800 to 2200 |
++-------------+
+
+
+
+
+.. _THR_KILL_CHAN:
+
+THR\_KILL\_CHAN: output channel to change on throttle kill
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+output channel to change on throttle kill\, a value of zero disables the feature
+
+
++---------+
+| Range   |
++=========+
+| 0 to 32 |
++---------+
+
+
+
+
+.. _THR_KILL_VAL:
+
+THR\_KILL\_VAL: auxilliary value to kill throttle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+auxilliary value to kill throttle\. Set to 2 to kill the throttle when the auxilliary is high\. Set to 0 to kill when auxilliary is low
 
 
 +--------+
-| Units  |
+| Range  |
 +========+
-| meters |
+| 0 to 2 |
 +--------+
 
 
 
 
-.. _DR_GPS_SACC_MAX:
+.. _THR_KILL_DEF:
 
-DR\_GPS\_SACC\_MAX: Deadreckoning GPS speed accuracy maximum threshold
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-GPS speed accuracy maximum\, above which deadreckoning home will begin \(default is 0\.8\)\.  Lower values trigger with good GPS quality\, higher values will allow poorer GPS before triggering\. Set to 0 to disable use of GPS speed accuracy
+THR\_KILL\_DEF: throttle kill default value
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-+---------+
-| Range   |
-+=========+
-| 0 to 10 |
-+---------+
+throttle kill default value\. The default auxilliary function position on boot
 
 
-
-
-.. _DR_GPS_SAT_MIN:
-
-DR\_GPS\_SAT\_MIN: Deadreckoning GPS satellite count min threshold
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-GPS satellite count threshold below which deadreckoning home will begin \(default is 6\)\.  Higher values trigger with good GPS quality\, Lower values trigger with worse GPS quality\. Set to 0 to disable use of GPS satellite count
-
-
-+---------+
-| Range   |
-+=========+
-| 0 to 30 |
-+---------+
++--------+
+| Range  |
++========+
+| 0 to 2 |
++--------+
 
 
 
 
-.. _DR_GPS_TRIGG_SEC:
+.. _TERR_BRK_ENABLE:
 
-DR\_GPS\_TRIGG\_SEC: Deadreckoning GPS check trigger seconds
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-GPS checks must fail for this many seconds before dead reckoning will be triggered
+TERR\_BRK\_ENABLE: terrain brake enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-+---------+
-| Units   |
-+=========+
-| seconds |
-+---------+
+terrain brake enable
 
 
-
-
-.. _DR_FLY_ANGLE:
-
-DR\_FLY\_ANGLE: Deadreckoning Lean Angle
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-lean angle \(in degrees\) during deadreckoning
-
-
-+---------+---------+
-| Range   | Units   |
-+=========+=========+
-| 0 to 45 | degrees |
-+---------+---------+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
 
 
 
 
-.. _DR_FLY_ALT_MIN:
+.. _TERR_BRK_ALT:
 
-DR\_FLY\_ALT\_MIN: Deadreckoning Altitude Min
+TERR\_BRK\_ALT: terrain brake altitude
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+terrain brake altitude\. The altitude above the ground below which BRAKE mode will be engaged if in LOITER mode\.
+
+
++----------+--------+
+| Range    | Units  |
++==========+========+
+| 1 to 100 | meters |
++----------+--------+
+
+
+
+
+.. _TERR_BRK_HDIST:
+
+TERR\_BRK\_HDIST: terrain brake home distance
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Copter will fly at at least this altitude \(in meters\) above home during deadreckoning
+terrain brake home distance\. The distance from home where the auto BRAKE will be enabled\. When within this distance of home the script will not activate
 
 
 +-----------+--------+
@@ -1525,71 +1572,31 @@ Copter will fly at at least this altitude \(in meters\) above home during deadre
 
 
 
-.. _DR_FLY_TIMEOUT:
+.. _TERR_BRK_SPD:
 
-DR\_FLY\_TIMEOUT: Deadreckoning flight timeout
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Copter will attempt to switch to NEXT\_MODE after this many seconds of deadreckoning\.  If it cannot switch modes it will continue in Guided\_NoGPS\.  Set to 0 to disable timeout
+TERR\_BRK\_SPD: terrain brake speed threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-+---------+
-| Units   |
-+=========+
-| seconds |
-+---------+
+terrain brake speed threshold\. Don\'t trigger BRAKE if both horizontal speed and descent rate are below this threshold\. By setting this to a small value this can be used to allow the user to climb up to a safe altitude in LOITER mode\. A value of 0\.5 is recommended if you want to use LOITER to recover from an emergency terrain BRAKE mode change\.
 
 
-
-
-.. _DR_NEXT_MODE:
-
-DR\_NEXT\_MODE: Deadreckoning Next Mode
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Copter switch to this mode after GPS recovers or DR\_FLY\_TIMEOUT has elapsed\.  Default is 6\/RTL\.  Set to \-1 to return to mode used before deadreckoning was triggered
-
-
-+-------+--------------+
-| Value | Meaning      |
-+=======+==============+
-| 2     | AltHold      |
-+-------+--------------+
-| 3     | Auto         |
-+-------+--------------+
-| 4     | Guided       |
-+-------+--------------+
-| 5     | Loiter       |
-+-------+--------------+
-| 6     | RTL          |
-+-------+--------------+
-| 7     | Circle       |
-+-------+--------------+
-| 9     | Land         |
-+-------+--------------+
-| 16    | PosHold      |
-+-------+--------------+
-| 17    | Brake        |
-+-------+--------------+
-| 20    | Guided_NoGPS |
-+-------+--------------+
-| 21    | Smart_RTL    |
-+-------+--------------+
-| 27    | Auto RTL     |
-+-------+--------------+
++--------+-------------------+
+| Range  | Units             |
++========+===================+
+| 0 to 5 | meters per second |
++--------+-------------------+
 
 
 
 
-.. _SLUP_ENABLE:
+.. _SHIP_ENABLE:
 
-SLUP\_ENABLE: Slung Payload enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SHIP\_ENABLE: Ship landing enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Slung Payload enable
+Enable ship landing system
 
 
 +-------+----------+
@@ -1603,67 +1610,558 @@ Slung Payload enable
 
 
 
-.. _SLUP_VEL_P:
+.. _SHIP_LAND_ANGLE:
 
-SLUP\_VEL\_P: Slung Payload Velocity P gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Slung Payload Velocity P gain\, higher values will result in faster movements in sync with payload
+SHIP\_LAND\_ANGLE: Ship landing angle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-+----------+
-| Range    |
-+==========+
-| 0 to 0.8 |
-+----------+
+Angle from the stern of the ship for landing approach\. Use this to ensure that on a go\-around that ship superstructure and cables are avoided\. A value of zero means to approach from the rear of the ship\. A value of 90 means the landing will approach from the port \(left\) side of the ship\. A value of \-90 will mean approaching from the starboard \(right\) side of the ship\. A value of 180 will approach from the bow of the ship\. This parameter is combined with the sign of the RTL\_RADIUS parameter to determine the holdoff pattern\. If RTL\_RADIUS is positive then a clockwise loiter is performed\, if RTL\_RADIUS is negative then a counter\-clockwise loiter is used\.
+
+
++-------------+---------+
+| Range       | Units   |
++=============+=========+
+| -180 to 180 | degrees |
++-------------+---------+
 
 
 
 
-.. _SLUP_DIST_MAX:
+.. _SHIP_AUTO_OFS:
 
-SLUP\_DIST\_MAX: Slung Payload horizontal distance max
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SHIP\_AUTO\_OFS: Ship automatic offset trigger
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Oscillation is suppressed when vehicle and payload are no more than this distance horizontally\.  Set to 0 to always suppress
+Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target\. NOTE\: This parameter will auto\-reset to zero once the offset has been calculated\.
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Trigger  |
++-------+----------+
+
+
+
+
+.. _BATT_SOC_COUNT:
+
+BATT\_SOC\_COUNT: Count of SOC estimators
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Number of battery SOC estimators
+
+
++--------+
+| Range  |
++========+
+| 0 to 4 |
++--------+
+
+
+
+
+.. _BATT_SOC1_IDX:
+
+BATT\_SOC1\_IDX: Battery estimator index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator index
+
+
++--------+
+| Range  |
++========+
+| 0 to 4 |
++--------+
+
+
+
+
+.. _BATT_SOC1_NCELL:
+
+BATT\_SOC1\_NCELL: Battery estimator cell count
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator cell count
 
 
 +---------+
 | Range   |
 +=========+
-| 0 to 30 |
+| 0 to 48 |
 +---------+
 
 
 
 
-.. _SLUP_SYSID:
+.. _BATT_SOC1_C1:
 
-SLUP\_SYSID: Slung Payload mavlink system id
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+BATT\_SOC1\_C1: Battery estimator coefficient1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Slung Payload mavlink system id\.  0 to use any\/all system ids
+Battery estimator coefficient1
+
+
++------------+
+| Range      |
++============+
+| 100 to 200 |
++------------+
+
+
+
+
+.. _BATT_SOC1_C2:
+
+BATT\_SOC1\_C2: Battery estimator coefficient2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient2
+
+
++--------+
+| Range  |
++========+
+| 2 to 5 |
++--------+
+
+
+
+
+.. _BATT_SOC1_C3:
+
+BATT\_SOC1\_C3: Battery estimator coefficient3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient3
+
+
++-------------+
+| Range       |
++=============+
+| 0.01 to 0.5 |
++-------------+
+
+
+
+
+.. _BATT_SOC1_C4:
+
+BATT\_SOC1\_C4: Battery estimator coefficient4
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient4
 
 
 +----------+
 | Range    |
 +==========+
-| 0 to 255 |
+| 5 to 100 |
 +----------+
 
 
 
 
-.. _SLUP_WP_POS_P:
+.. _BATT_SOC2_IDX:
 
-SLUP\_WP\_POS\_P: Slung Payload return to WP position P gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+BATT\_SOC2\_IDX: Battery estimator index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-WP position P gain\. higher values will result in vehicle moving more quickly back to the original waypoint
+Battery estimator index
+
+
++--------+
+| Range  |
++========+
+| 0 to 4 |
++--------+
+
+
+
+
+.. _BATT_SOC2_NCELL:
+
+BATT\_SOC2\_NCELL: Battery estimator cell count
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator cell count
+
+
++---------+
+| Range   |
++=========+
+| 0 to 48 |
++---------+
+
+
+
+
+.. _BATT_SOC2_C1:
+
+BATT\_SOC2\_C1: Battery estimator coefficient1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient1
+
+
++------------+
+| Range      |
++============+
+| 100 to 200 |
++------------+
+
+
+
+
+.. _BATT_SOC2_C2:
+
+BATT\_SOC2\_C2: Battery estimator coefficient2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient2
+
+
++--------+
+| Range  |
++========+
+| 2 to 5 |
++--------+
+
+
+
+
+.. _BATT_SOC2_C3:
+
+BATT\_SOC2\_C3: Battery estimator coefficient3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient3
+
+
++-------------+
+| Range       |
++=============+
+| 0.01 to 0.5 |
++-------------+
+
+
+
+
+.. _BATT_SOC2_C4:
+
+BATT\_SOC2\_C4: Battery estimator coefficient4
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient4
+
+
++----------+
+| Range    |
++==========+
+| 5 to 100 |
++----------+
+
+
+
+
+.. _BATT_SOC3_IDX:
+
+BATT\_SOC3\_IDX: Battery estimator index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator index
+
+
++--------+
+| Range  |
++========+
+| 0 to 4 |
++--------+
+
+
+
+
+.. _BATT_SOC3_NCELL:
+
+BATT\_SOC3\_NCELL: Battery estimator cell count
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator cell count
+
+
++---------+
+| Range   |
++=========+
+| 0 to 48 |
++---------+
+
+
+
+
+.. _BATT_SOC3_C1:
+
+BATT\_SOC3\_C1: Battery estimator coefficient1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient1
+
+
++------------+
+| Range      |
++============+
+| 100 to 200 |
++------------+
+
+
+
+
+.. _BATT_SOC3_C2:
+
+BATT\_SOC3\_C2: Battery estimator coefficient2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient2
+
+
++--------+
+| Range  |
++========+
+| 2 to 5 |
++--------+
+
+
+
+
+.. _BATT_SOC3_C3:
+
+BATT\_SOC3\_C3: Battery estimator coefficient3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient3
+
+
++-------------+
+| Range       |
++=============+
+| 0.01 to 0.5 |
++-------------+
+
+
+
+
+.. _BATT_SOC3_C4:
+
+BATT\_SOC3\_C4: Battery estimator coefficient4
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient4
+
+
++----------+
+| Range    |
++==========+
+| 5 to 100 |
++----------+
+
+
+
+
+.. _BATT_SOC4_IDX:
+
+BATT\_SOC4\_IDX: Battery estimator index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator index
+
+
++--------+
+| Range  |
++========+
+| 0 to 4 |
++--------+
+
+
+
+
+.. _BATT_SOC4_NCELL:
+
+BATT\_SOC4\_NCELL: Battery estimator cell count
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator cell count
+
+
++---------+
+| Range   |
++=========+
+| 0 to 48 |
++---------+
+
+
+
+
+.. _BATT_SOC4_C1:
+
+BATT\_SOC4\_C1: Battery estimator coefficient1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient1
+
+
++------------+
+| Range      |
++============+
+| 100 to 200 |
++------------+
+
+
+
+
+.. _BATT_SOC4_C2:
+
+BATT\_SOC4\_C2: Battery estimator coefficient2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient2
+
+
++--------+
+| Range  |
++========+
+| 2 to 5 |
++--------+
+
+
+
+
+.. _BATT_SOC4_C3:
+
+BATT\_SOC4\_C3: Battery estimator coefficient3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient3
+
+
++-------------+
+| Range       |
++=============+
+| 0.01 to 0.5 |
++-------------+
+
+
+
+
+.. _BATT_SOC4_C4:
+
+BATT\_SOC4\_C4: Battery estimator coefficient4
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Battery estimator coefficient4
+
+
++----------+
+| Range    |
++==========+
+| 5 to 100 |
++----------+
+
+
+
+
+.. _BTAG_ENABLE:
+
+BTAG\_ENABLE: enable battery info support
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+enable battery info support
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _BTAG_MAX_CYCLES:
+
+BTAG\_MAX\_CYCLES: max battery cycles
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+max battery cycles for arming
+
+
++------------+
+| Range      |
++============+
+| 0 to 10000 |
++------------+
+
+
+
+
+.. _BTAG_CUR_CYCLES:
+
+BTAG\_CUR\_CYCLES: current battery cycles
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+this is the highest value for battery cycles for all connected batteries
+
+
++------------+
+| Range      |
++============+
+| 0 to 10000 |
++------------+
+
+
+
+
+.. _ESRC_EXTN_THRESH:
+
+ESRC\_EXTN\_THRESH: EKF Source ExternalNav Innovation Threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+ExternalNav may be used if innovations are below this threshold
 
 
 +--------+
@@ -1675,31 +2173,85 @@ WP position P gain\. higher values will result in vehicle moving more quickly ba
 
 
 
-.. _SLUP_RESTOFS_TC:
+.. _ESRC_EXTN_QUAL:
 
-SLUP\_RESTOFS\_TC: Slung Payload resting offset estimate filter time constant
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-payload\'s position estimator\'s time constant used to compensate for GPS errors and wind\.  Higher values result in smoother estimate but slower response
+ESRC\_EXTN\_QUAL: EKF Source ExternalNav Quality Threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-+---------+
-| Range   |
-+=========+
-| 1 to 20 |
-+---------+
+ExternalNav may be used if quality is above this threshold
+
+
++----------+---------+
+| Range    | Units   |
++==========+=========+
+| 0 to 100 | percent |
++----------+---------+
 
 
 
 
-.. _SLUP_DEBUG:
+.. _ESRC_FLOW_THRESH:
 
-SLUP\_DEBUG: Slung Payload debug output
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ESRC\_FLOW\_THRESH: EKF Source OpticalFlow Innovation Threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Slung payload debug output\, set to 1 to enable debug
+OpticalFlow may be used if innovations are below this threshold
+
+
++--------+
+| Range  |
++========+
+| 0 to 1 |
++--------+
+
+
+
+
+.. _ESRC_FLOW_QUAL:
+
+ESRC\_FLOW\_QUAL: EKF Source OpticalFlow Quality Threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+OpticalFlow may be used if quality is above this threshold
+
+
++----------+---------+
+| Range    | Units   |
++==========+=========+
+| 0 to 100 | percent |
++----------+---------+
+
+
+
+
+.. _ESRC_RNGFND_MAX:
+
+ESRC\_RNGFND\_MAX: EKF Source Rangefinder Max
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+OpticalFlow may be used if rangefinder distance is below this threshold
+
+
++---------+--------+
+| Range   | Units  |
++=========+========+
+| 0 to 50 | meters |
++---------+--------+
+
+
+
+
+.. _QUIK_ENABLE:
+
+QUIK\_ENABLE: Quicktune enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Enable quicktune system
 
 
 +-------+----------+
@@ -1709,6 +2261,274 @@ Slung payload debug output\, set to 1 to enable debug
 +-------+----------+
 | 1     | Enabled  |
 +-------+----------+
+
+
+
+
+.. _QUIK_AXES:
+
+QUIK\_AXES: Quicktune axes
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+axes to tune
+
+
++-----+---------+
+| Bit | Meaning |
++=====+=========+
+| 0   | Roll    |
++-----+---------+
+| 1   | Pitch   |
++-----+---------+
+| 2   | Yaw     |
++-----+---------+
+
+
+
+
+.. _QUIK_DOUBLE_TIME:
+
+QUIK\_DOUBLE\_TIME: Quicktune doubling time
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Time to double a tuning parameter\. Raise this for a slower tune\.
+
+
++---------+---------+
+| Range   | Units   |
++=========+=========+
+| 5 to 20 | seconds |
++---------+---------+
+
+
+
+
+.. _QUIK_GAIN_MARGIN:
+
+QUIK\_GAIN\_MARGIN: Quicktune gain margin
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Reduction in gain after oscillation detected\. Raise this number to get a more conservative tune
+
+
++----------+---------+
+| Range    | Units   |
++==========+=========+
+| 20 to 80 | percent |
++----------+---------+
+
+
+
+
+.. _QUIK_OSC_SMAX:
+
+QUIK\_OSC\_SMAX: Quicktune oscillation rate threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Threshold for oscillation detection\. A lower value will lead to a more conservative tune\.
+
+
++---------+
+| Range   |
++=========+
+| 1 to 10 |
++---------+
+
+
+
+
+.. _QUIK_YAW_P_MAX:
+
+QUIK\_YAW\_P\_MAX: Quicktune Yaw P max
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Maximum value for yaw P gain
+
+
++----------+
+| Range    |
++==========+
+| 0.1 to 3 |
++----------+
+
+
+
+
+.. _QUIK_YAW_D_MAX:
+
+QUIK\_YAW\_D\_MAX: Quicktune Yaw D max
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Maximum value for yaw D gain
+
+
++------------+
+| Range      |
++============+
+| 0.001 to 1 |
++------------+
+
+
+
+
+.. _QUIK_RP_PI_RATIO:
+
+QUIK\_RP\_PI\_RATIO: Quicktune roll\/pitch PI ratio
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Ratio between P and I gains for roll and pitch\. Raise this to get a lower I gain
+
+
++------------+
+| Range      |
++============+
+| 0.5 to 1.0 |
++------------+
+
+
+
+
+.. _QUIK_Y_PI_RATIO:
+
+QUIK\_Y\_PI\_RATIO: Quicktune Yaw PI ratio
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Ratio between P and I gains for yaw\. Raise this to get a lower I gain
+
+
++-----------+
+| Range     |
++===========+
+| 0.5 to 20 |
++-----------+
+
+
+
+
+.. _QUIK_AUTO_FILTER:
+
+QUIK\_AUTO\_FILTER: Quicktune auto filter enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+When enabled the PID filter settings are automatically set based on INS\_GYRO\_FILTER
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _QUIK_AUTO_SAVE:
+
+QUIK\_AUTO\_SAVE: Quicktune auto save
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Number of seconds after completion of tune to auto\-save\. This is useful when using a 2 position switch for quicktune
+
+
++---------+
+| Units   |
++=========+
+| seconds |
++---------+
+
+
+
+
+.. _QUIK_RC_FUNC:
+
+QUIK\_RC\_FUNC: Quicktune RC function
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+RCn\_OPTION number to use to control tuning stop\/start\/save
+
+
+.. _QUIK_MAX_REDUCE:
+
+QUIK\_MAX\_REDUCE: Quicktune maximum gain reduction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+This controls how much quicktune is allowed to lower gains from the original gains\. If the vehicle already has a reasonable tune and is not oscillating then you can set this to zero to prevent gain reductions\. The default of 20\% is reasonable for most vehicles\. Using a maximum gain reduction lowers the chance of an angle P oscillation happening if quicktune gets a false positive oscillation at a low gain\, which can result in very low rate gains and a dangerous angle P oscillation\.
+
+
++----------+---------+
+| Range    | Units   |
++==========+=========+
+| 0 to 100 | percent |
++----------+---------+
+
+
+
+
+.. _QUIK_OPTIONS:
+
+QUIK\_OPTIONS: Quicktune options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Additional options\. When the Two Position Switch option is enabled then a high switch position will start the tune\, low will disable the tune\. you should also set a QUIK\_AUTO\_SAVE time so that you will be able to save the tune\.
+
+
++-----+----------------------+
+| Bit | Meaning              |
++=====+======================+
+| 0   | UseTwoPositionSwitch |
++-----+----------------------+
+
+
+
+
+.. _QUIK_ANGLE_MAX:
+
+QUIK\_ANGLE\_MAX: maximum angle error for tune abort
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+If while tuning the angle error goes over this limit then the tune will aborts to prevent a bad oscillation in the case of the tuning algorithm failing\. If you get an error \"Tuning\: attitude error ABORTING\" and you think it is a false positive then you can either raise this parameter or you can try increasing the QUIK\_DOUBLE\_TIME to do the tune more slowly\. A value of zero disables this check\.
+
+
++---------+
+| Units   |
++=========+
+| degrees |
++---------+
+
+
+
+
+.. _CGA_RATIO:
+
+CGA\_RATIO: CoG adjustment ratio
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+The ratio between the front and back motor outputs during steady\-state hover\. Positive when the CoG is in front of the motors midpoint \(front motors work harder\)\.
+
+
++----------+
+| Range    |
++==========+
+| 0.5 to 2 |
++----------+
 
 
 
@@ -1983,21 +2803,174 @@ Use this radius for the loiter when trying to gain altitude\. If not set or \<\=
 
 
 
-.. _CGA_RATIO:
+.. _WEB_ENABLE:
 
-CGA\_RATIO: CoG adjustment ratio
+WEB\_ENABLE: enable web server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+enable web server
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _WEB_BIND_PORT:
+
+WEB\_BIND\_PORT: web server TCP port
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+web server TCP port
+
+
++------------+
+| Range      |
++============+
+| 1 to 65535 |
++------------+
+
+
+
+
+.. _WEB_DEBUG:
+
+WEB\_DEBUG: web server debugging
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 | *Note: This parameter is for advanced users*
 
-The ratio between the front and back motor outputs during steady\-state hover\. Positive when the CoG is in front of the motors midpoint \(front motors work harder\)\.
+web server debugging
 
 
-+----------+
-| Range    |
-+==========+
-| 0.5 to 2 |
-+----------+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _WEB_BLOCK_SIZE:
+
+WEB\_BLOCK\_SIZE: web server block size
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+web server block size for download
+
+
++------------+
+| Range      |
++============+
+| 1 to 65535 |
++------------+
+
+
+
+
+.. _WEB_TIMEOUT:
+
+WEB\_TIMEOUT: web server timeout
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+timeout for inactive connections
+
+
++-----------+---------+
+| Range     | Units   |
++===========+=========+
+| 0.1 to 60 | seconds |
++-----------+---------+
+
+
+
+
+.. _WEB_SENDFILE_MIN:
+
+WEB\_SENDFILE\_MIN: web server minimum file size for sendfile
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+sendfile is an offloading mechanism for faster file download\. If this is non\-zero and the file is larger than this size then sendfile will be used for file download
+
+
++---------------+
+| Range         |
++===============+
+| 0 to 10000000 |
++---------------+
+
+
+
+
+.. _ALAND_ENABLE:
+
+ALAND\_ENABLE: Auto land enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+enable Auto land script action
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _ALAND_WP_ALT:
+
+ALAND\_WP\_ALT: Final approach waypoint alt
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Altitude of final approach waypoint created by script
+
+
++----------+--------+
+| Range    | Units  |
++==========+========+
+| 1 to 100 | meters |
++----------+--------+
+
+
+
+
+.. _ALAND_WP_DIST:
+
+ALAND\_WP\_DIST: Final approach waypoint distance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Distance from landing point \(HOME\) to final approach waypoint created by script in the opposite direction of initial takeoff
+
+
++-----------+--------+
+| Range     | Units  |
++===========+========+
+| 0 to 1000 | meters |
++-----------+--------+
 
 
 
@@ -2095,6 +3068,772 @@ save images with raw temperatures
 
 
 
+.. _FOLLP_FAIL_MODE:
+
+FOLLP\_FAIL\_MODE: Plane Follow lost target mode
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Mode to switch to if the target is lost \(no signal or \> FOLL\_DIST\_MAX\)\.
+
+
+.. _FOLLP_EXIT_MODE:
+
+FOLLP\_EXIT\_MODE: Plane Follow exit mode
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Mode to switch to when follow mode is exited normally
+
+
+.. _FOLLP_ACT_FN:
+
+FOLLP\_ACT\_FN: Plane Follow Scripting ActivationFunction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Setting an RC channel\'s \_OPTION to this value will use it for Plane Follow enable\/disable
+
+
++------------+
+| Range      |
++============+
+| 300 to 307 |
++------------+
+
+
+
+
+.. _FOLLP_TIMEOUT:
+
+FOLLP\_TIMEOUT: Plane Follow Telemetry Timeout
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+How long to try reaquire a target if telemetry from the lead vehicle is lost\.
+
+
++---------+---------+
+| Range   | Units   |
++=========+=========+
+| 0 to 30 | seconds |
++---------+---------+
+
+
+
+
+.. _FOLLP_OVRSHT_DEG:
+
+FOLLP\_OVRSHT\_DEG: Plane Follow Scripting Overshoot Angle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+If the target is greater than this many degrees left or right\, assume an overshoot
+
+
++----------+---------+
+| Range    | Units   |
++==========+=========+
+| 0 to 180 | degrees |
++----------+---------+
+
+
+
+
+.. _FOLLP_TURN_DEG:
+
+FOLLP\_TURN\_DEG: Plane Follow Scripting Turn Angle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+If the target is greater than this many degrees left or right\, assume it\'s turning
+
+
++----------+---------+
+| Range    | Units   |
++==========+=========+
+| 0 to 180 | degrees |
++----------+---------+
+
+
+
+
+.. _FOLLP_DIST_CLOSE:
+
+FOLLP\_DIST\_CLOSE: Plane Follow Scripting Close Distance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+When closer than this distance assume we track by heading
+
+
++----------+--------+
+| Range    | Units  |
++==========+========+
+| 0 to 100 | meters |
++----------+--------+
+
+
+
+
+.. _FOLLP_WIDE_TURNS:
+
+FOLLP\_WIDE\_TURNS: Plane Follow Scripting Wide Turns
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Use wide turns when following a turning target\. Alternative is \"cutting the corner\"
+
+
++--------+
+| Range  |
++========+
+| 0 to 1 |
++--------+
+
+
+
+
+.. _FOLLP_ALT:
+
+FOLLP\_ALT: Plane Follow Scripting Altitude Override
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+When non zero\, this altitude value \(in FOLL\_ALT\_TYPE frame\) overrides the value sent by the target vehicle
+
+
++-----------+--------+
+| Range     | Units  |
++===========+========+
+| 0 to 1000 | meters |
++-----------+--------+
+
+
+
+
+.. _FOLLP_D_P:
+
+FOLLP\_D\_P: Plane Follow Scripting distance P gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+P gain for the speed PID controller distance component
+
+
++--------+
+| Range  |
++========+
+| 0 to 1 |
++--------+
+
+
+
+
+.. _FOLLP_D_I:
+
+FOLLP\_D\_I: Plane Follow Scripting distance I gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+I gain for the speed PID  distance component
+
+
++--------+
+| Range  |
++========+
+| 0 to 1 |
++--------+
+
+
+
+
+.. _FOLLP_D_D:
+
+FOLLP\_D\_D: Plane Follow Scripting distance D gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+D gain for the speed PID controller distance component
+
+
++--------+
+| Range  |
++========+
+| 0 to 1 |
++--------+
+
+
+
+
+.. _FOLLP_V_P:
+
+FOLLP\_V\_P: Plane Follow Scripting speed P gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+P gain for the speed PID controller velocity component
+
+
++--------+
+| Range  |
++========+
+| 0 to 1 |
++--------+
+
+
+
+
+.. _FOLLP_V_I:
+
+FOLLP\_V\_I: Plane Follow Scripting speed I gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+I gain for the speed PID controller velocity component
+
+
++--------+
+| Range  |
++========+
+| 0 to 1 |
++--------+
+
+
+
+
+.. _FOLLP_V_D:
+
+FOLLP\_V\_D: Plane Follow Scripting speed D gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+D gain for the speed PID controller velocity component
+
+
++--------+
+| Range  |
++========+
+| 0 to 1 |
++--------+
+
+
+
+
+.. _FOLLP_LkAHD:
+
+FOLLP\_LkAHD: Plane Follow Lookahead seconds
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Time to \"lookahead\" when calculating distance errors
+
+
++---------+
+| Units   |
++=========+
+| seconds |
++---------+
+
+
+
+
+.. _FOLLP_SIM_TLF_FN:
+
+FOLLP\_SIM\_TLF\_FN: Plane Follow Simulate Telemetry fail function
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Set this switch to simulate losing telemetry from the other vehicle
+
+
++------------+
+| Range      |
++============+
+| 300 to 307 |
++------------+
+
+
+
+
+.. _FOLLP_XT_P:
+
+FOLLP\_XT\_P: Plane Follow crosstrack PID controller P term
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+P term for the crosstrack\/heading PID controller
+
+
++--------+
+| Range  |
++========+
+| 0 to 1 |
++--------+
+
+
+
+
+.. _FOLLP_XT_I:
+
+FOLLP\_XT\_I: Plane Follow crosstrack PID controller I term
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+I term for the crosstrack\/heading PID controller
+
+
++--------+
+| Range  |
++========+
+| 0 to 1 |
++--------+
+
+
+
+
+.. _FOLLP_XT_D:
+
+FOLLP\_XT\_D: Plane Follow crosstrack PID controller D term
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+D term for the crosstrack\/heading PID controller
+
+
++--------+
+| Range  |
++========+
+| 0 to 1 |
++--------+
+
+
+
+
+.. _FOLLP_XT_MAX:
+
+FOLLP\_XT\_MAX: Plane Follow crosstrack PID controller maximum correction
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+maximum correction retured by the crosstrack\/heading PID controller
+
+
++--------+---------+
+| Range  | Units   |
++========+=========+
+| 0 to 1 | degrees |
++--------+---------+
+
+
+
+
+.. _FOLLP_XT_I_MAX:
+
+FOLLP\_XT\_I\_MAX: Plane Follow crosstrack PID controller maximum integral
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+maximum I applied the crosstrack\/heading PID controller
+
+
++----------+--------------+
+| Range    | Units        |
++==========+==============+
+| 0 to 100 | milliseconds |
++----------+--------------+
+
+
+
+
+.. _FOLLP_REFRESH:
+
+FOLLP\_REFRESH: Plane Follow refresh rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+refresh rate for Plane Follow updates
+
+
++----------+---------+
+| Range    | Units   |
++==========+=========+
+| 0 to 0.2 | seconds |
++----------+---------+
+
+
+
+
+.. _SLUP_ENABLE:
+
+SLUP\_ENABLE: Slung Payload enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Slung Payload enable
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _SLUP_VEL_P:
+
+SLUP\_VEL\_P: Slung Payload Velocity P gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Slung Payload Velocity P gain\, higher values will result in faster movements in sync with payload
+
+
++----------+
+| Range    |
++==========+
+| 0 to 0.8 |
++----------+
+
+
+
+
+.. _SLUP_DIST_MAX:
+
+SLUP\_DIST\_MAX: Slung Payload horizontal distance max
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Oscillation is suppressed when vehicle and payload are no more than this distance horizontally\.  Set to 0 to always suppress
+
+
++---------+
+| Range   |
++=========+
+| 0 to 30 |
++---------+
+
+
+
+
+.. _SLUP_SYSID:
+
+SLUP\_SYSID: Slung Payload mavlink system id
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Slung Payload mavlink system id\.  0 to use any\/all system ids
+
+
++----------+
+| Range    |
++==========+
+| 0 to 255 |
++----------+
+
+
+
+
+.. _SLUP_WP_POS_P:
+
+SLUP\_WP\_POS\_P: Slung Payload return to WP position P gain
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+WP position P gain\. higher values will result in vehicle moving more quickly back to the original waypoint
+
+
++--------+
+| Range  |
++========+
+| 0 to 1 |
++--------+
+
+
+
+
+.. _SLUP_RESTOFS_TC:
+
+SLUP\_RESTOFS\_TC: Slung Payload resting offset estimate filter time constant
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+payload\'s position estimator\'s time constant used to compensate for GPS errors and wind\.  Higher values result in smoother estimate but slower response
+
+
++---------+
+| Range   |
++=========+
+| 1 to 20 |
++---------+
+
+
+
+
+.. _SLUP_DEBUG:
+
+SLUP\_DEBUG: Slung Payload debug output
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Slung payload debug output\, set to 1 to enable debug
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _POI_DIST_MAX:
+
+POI\_DIST\_MAX: Mount POI distance max
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+POI\'s max distance \(in meters\) from the vehicle
+
+
++------------+
+| Range      |
++============+
+| 0 to 10000 |
++------------+
+
+
+
+
+.. _PLND_ALT_CUTOFF:
+
+PLND\_ALT\_CUTOFF: Precland altitude cutoff
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+The altitude \(rangefinder distance\) below which we stop using the precision landing sensor and continue landing
+
+
++---------+--------+
+| Range   | Units  |
++=========+========+
+| 0 to 20 | meters |
++---------+--------+
+
+
+
+
+.. _DIST_CUTOFF:
+
+DIST\_CUTOFF: Precland distance cutoff
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+The distance from target beyond which the target is ignored
+
+
++----------+--------+
+| Range    | Units  |
++==========+========+
+| 0 to 100 | meters |
++----------+--------+
+
+
+
+
+.. _DR_ENABLE:
+
+DR\_ENABLE: Deadreckoning Enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Deadreckoning Enable
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _DR_ENABLE_DIST:
+
+DR\_ENABLE\_DIST: Deadreckoning Enable Distance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Distance from home \(in meters\) beyond which the dead reckoning will be enabled
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
+.. _DR_GPS_SACC_MAX:
+
+DR\_GPS\_SACC\_MAX: Deadreckoning GPS speed accuracy maximum threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+GPS speed accuracy maximum\, above which deadreckoning home will begin \(default is 0\.8\)\.  Lower values trigger with good GPS quality\, higher values will allow poorer GPS before triggering\. Set to 0 to disable use of GPS speed accuracy
+
+
++---------+
+| Range   |
++=========+
+| 0 to 10 |
++---------+
+
+
+
+
+.. _DR_GPS_SAT_MIN:
+
+DR\_GPS\_SAT\_MIN: Deadreckoning GPS satellite count min threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+GPS satellite count threshold below which deadreckoning home will begin \(default is 6\)\.  Higher values trigger with good GPS quality\, Lower values trigger with worse GPS quality\. Set to 0 to disable use of GPS satellite count
+
+
++---------+
+| Range   |
++=========+
+| 0 to 30 |
++---------+
+
+
+
+
+.. _DR_GPS_TRIGG_SEC:
+
+DR\_GPS\_TRIGG\_SEC: Deadreckoning GPS check trigger seconds
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+GPS checks must fail for this many seconds before dead reckoning will be triggered
+
+
++---------+
+| Units   |
++=========+
+| seconds |
++---------+
+
+
+
+
+.. _DR_FLY_ANGLE:
+
+DR\_FLY\_ANGLE: Deadreckoning Lean Angle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+lean angle \(in degrees\) during deadreckoning
+
+
++---------+---------+
+| Range   | Units   |
++=========+=========+
+| 0 to 45 | degrees |
++---------+---------+
+
+
+
+
+.. _DR_FLY_ALT_MIN:
+
+DR\_FLY\_ALT\_MIN: Deadreckoning Altitude Min
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Copter will fly at at least this altitude \(in meters\) above home during deadreckoning
+
+
++-----------+--------+
+| Range     | Units  |
++===========+========+
+| 0 to 1000 | meters |
++-----------+--------+
+
+
+
+
+.. _DR_FLY_TIMEOUT:
+
+DR\_FLY\_TIMEOUT: Deadreckoning flight timeout
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Copter will attempt to switch to NEXT\_MODE after this many seconds of deadreckoning\.  If it cannot switch modes it will continue in Guided\_NoGPS\.  Set to 0 to disable timeout
+
+
++---------+
+| Units   |
++=========+
+| seconds |
++---------+
+
+
+
+
+.. _DR_NEXT_MODE:
+
+DR\_NEXT\_MODE: Deadreckoning Next Mode
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Copter switch to this mode after GPS recovers or DR\_FLY\_TIMEOUT has elapsed\.  Default is 6\/RTL\.  Set to \-1 to return to mode used before deadreckoning was triggered
+
+
++-------+--------------+
+| Value | Meaning      |
++=======+==============+
+| 2     | AltHold      |
++-------+--------------+
+| 3     | Auto         |
++-------+--------------+
+| 4     | Guided       |
++-------+--------------+
+| 5     | Loiter       |
++-------+--------------+
+| 6     | RTL          |
++-------+--------------+
+| 7     | Circle       |
++-------+--------------+
+| 9     | Land         |
++-------+--------------+
+| 16    | PosHold      |
++-------+--------------+
+| 17    | Brake        |
++-------+--------------+
+| 20    | Guided_NoGPS |
++-------+--------------+
+| 21    | Smart_RTL    |
++-------+--------------+
+| 27    | Auto RTL     |
++-------+--------------+
+
+
+
+
 .. _AHRS_ORIG_LAT:
 
 AHRS\_ORIG\_LAT: AHRS\/EKF Origin Latitude
@@ -2149,13 +3888,13 @@ AHRS\/EKF origin will be set to this altitude \(in meters above sea level\) if n
 
 
 
-.. _PREV_ENABLE:
+.. _RTUN_ENABLE:
 
-PREV\_ENABLE: parameter reversion enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RTUN\_ENABLE: Rover Quicktune enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Enable parameter reversion system
+Enable quicktune system
 
 
 +-------+----------+
@@ -2169,321 +3908,218 @@ Enable parameter reversion system
 
 
 
-.. _PREV_RC_FUNC:
+.. _RTUN_AXES:
 
-PREV\_RC\_FUNC: param reversion RC function
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-RCn\_OPTION number to used to trigger parameter reversion
+RTUN\_AXES: Rover Quicktune axes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-.. _VID1_CAMMODEL:
-
-VID1\_CAMMODEL: Camera1 Video Stream Camera Model
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+axes to tune
 
 
-Video stream camera model
-
-
-+-------+------------------------+
-| Value | Meaning                |
-+=======+========================+
-| 0     | Unknown                |
-+-------+------------------------+
-| 1     | Siyi A8                |
-+-------+------------------------+
-| 2     | Siyi ZR10              |
-+-------+------------------------+
-| 3     | Siyi ZR30              |
-+-------+------------------------+
-| 4     | Siyi ZT30 Zoom         |
-+-------+------------------------+
-| 5     | Siyi ZT30 Wide         |
-+-------+------------------------+
-| 6     | Siyi ZT30 IR           |
-+-------+------------------------+
-| 7     | Siyi ZT6 RGB           |
-+-------+------------------------+
-| 8     | Siyi ZT6 IR            |
-+-------+------------------------+
-| 9     | Herelink WifiAP        |
-+-------+------------------------+
-| 10    | Herelink USB-tethering |
-+-------+------------------------+
-| 11    | Topotek 1080p          |
-+-------+------------------------+
-| 12    | Topotek 480p           |
-+-------+------------------------+
-| 13    | Viewpro                |
-+-------+------------------------+
++-----+----------+
+| Bit | Meaning  |
++=====+==========+
+| 0   | Steering |
++-----+----------+
+| 1   | Speed    |
++-----+----------+
 
 
 
 
-.. _VID1_ID:
+.. _RTUN_STR_FFRATIO:
 
-VID1\_ID: Camera1 Video Stream Id
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Video stream id
+RTUN\_STR\_FFRATIO: Rover Quicktune Steering Rate FeedForward ratio
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-+---------+
-| Range   |
-+=========+
-| 0 to 50 |
-+---------+
+Ratio between measured response and FF gain\. Raise this to get a higher FF gain
+
+
++----------+
+| Range    |
++==========+
+| 0 to 1.0 |
++----------+
 
 
 
 
-.. _VID1_TYPE:
+.. _RTUN_STR_P_RATIO:
 
-VID1\_TYPE: Camera1 Video Stream Type
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RTUN\_STR\_P\_RATIO: Rover Quicktune Steering FF to P ratio
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Video stream type
+Ratio between steering FF and P gains\. Raise this to get a higher P gain\, 0 to leave P unchanged
+
+
++----------+
+| Range    |
++==========+
+| 0 to 2.0 |
++----------+
+
+
+
+
+.. _RTUN_STR_I_RATIO:
+
+RTUN\_STR\_I\_RATIO: Rover Quicktune Steering FF to I ratio
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Ratio between steering FF and I gains\. Raise this to get a higher I gain\, 0 to leave I unchanged
+
+
++----------+
+| Range    |
++==========+
+| 0 to 2.0 |
++----------+
+
+
+
+
+.. _RTUN_SPD_FFRATIO:
+
+RTUN\_SPD\_FFRATIO: Rover Quicktune Speed FeedForward \(equivalent\) ratio
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Ratio between measured response and CRUISE\_THROTTLE value\. Raise this to get a higher CRUISE\_THROTTLE value
+
+
++----------+
+| Range    |
++==========+
+| 0 to 1.0 |
++----------+
+
+
+
+
+.. _RTUN_SPD_P_RATIO:
+
+RTUN\_SPD\_P\_RATIO: Rover Quicktune Speed FF to P ratio
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Ratio between speed FF and P gain\. Raise this to get a higher P gain\, 0 to leave P unchanged
+
+
++----------+
+| Range    |
++==========+
+| 0 to 2.0 |
++----------+
+
+
+
+
+.. _RTUN_SPD_I_RATIO:
+
+RTUN\_SPD\_I\_RATIO: Rover Quicktune Speed FF to I ratio
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Ratio between speed FF and I gain\. Raise this to get a higher I gain\, 0 to leave I unchanged
+
+
++----------+
+| Range    |
++==========+
+| 0 to 2.0 |
++----------+
+
+
+
+
+.. _RTUN_AUTO_FILTER:
+
+RTUN\_AUTO\_FILTER: Rover Quicktune auto filter enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+When enabled the PID filter settings are automatically set based on INS\_GYRO\_FILTER
 
 
 +-------+----------+
 | Value | Meaning  |
 +=======+==========+
-| 0     | RTSP     |
+| 0     | Disabled |
 +-------+----------+
-| 1     | RTPUDP   |
-+-------+----------+
-| 2     | TCP_MPEG |
-+-------+----------+
-| 3     | MPEG_TS  |
+| 1     | Enabled  |
 +-------+----------+
 
 
 
 
-.. _VID1_FLAG:
+.. _RTUN_AUTO_SAVE:
 
-VID1\_FLAG: Camera1 Video Stream Flags
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Video stream flags
-
-
-+-----+-----------------------+
-| Bit | Meaning               |
-+=====+=======================+
-| 0   | Running               |
-+-----+-----------------------+
-| 1   | Thermal               |
-+-----+-----------------------+
-| 2   | Thermal Range Enabled |
-+-----+-----------------------+
-
-
-
-
-.. _VID1_FRAME_RATE:
-
-VID1\_FRAME\_RATE: Camera1 Video Stream Frame Rate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Video stream frame rate
-
-
-+---------+
-| Range   |
-+=========+
-| 0 to 50 |
-+---------+
-
-
-
-
-.. _VID1_HRES:
-
-VID1\_HRES: Camera1 Video Stream Horizontal Resolution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Video stream horizontal resolution
-
-
-+-----------+
-| Range     |
-+===========+
-| 0 to 4096 |
-+-----------+
-
-
-
-
-.. _VID1_VRES:
-
-VID1\_VRES: Camera1 Video Stream Vertical Resolution
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Video stream vertical resolution
-
-
-+-----------+
-| Range     |
-+===========+
-| 0 to 4096 |
-+-----------+
-
-
-
-
-.. _VID1_BITRATE:
-
-VID1\_BITRATE: Camera1 Video Stream Bitrate
+RTUN\_AUTO\_SAVE: Rover Quicktune auto save
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Video stream bitrate
+Number of seconds after completion of tune to auto\-save\. This is useful when using a 2 position switch for quicktune
 
 
-+------------+
-| Range      |
-+============+
-| 0 to 10000 |
-+------------+
++---------+
+| Units   |
++=========+
+| seconds |
++---------+
 
 
 
 
-.. _VID1_HFOV:
+.. _RTUN_RC_FUNC:
 
-VID1\_HFOV: Camera1 Video Stream Horizontal FOV
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RTUN\_RC\_FUNC: Rover Quicktune RC function
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Video stream horizontal FOV
+RCn\_OPTION number to use to control tuning stop\/start\/save
 
 
-+----------+
-| Range    |
-+==========+
-| 0 to 360 |
-+----------+
++-------+------------+
+| Value | Meaning    |
++=======+============+
+| 300   | Scripting1 |
++-------+------------+
+| 301   | Scripting2 |
++-------+------------+
+| 302   | Scripting3 |
++-------+------------+
+| 303   | Scripting4 |
++-------+------------+
+| 304   | Scripting5 |
++-------+------------+
+| 305   | Scripting6 |
++-------+------------+
+| 306   | Scripting7 |
++-------+------------+
+| 307   | Scripting8 |
++-------+------------+
 
 
 
 
-.. _VID1_ENCODING:
+.. _RTUN_SPEED_MIN:
 
-VID1\_ENCODING: Camera1 Video Stream Encoding
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RTUN\_SPEED\_MIN: Rover Quicktune minimum speed for tuning
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Video stream encoding
+The mimimum speed in m\/s required for tuning to start
 
 
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | Unknown |
-+-------+---------+
-| 1     | H264    |
-+-------+---------+
-| 2     | H265    |
-+-------+---------+
-
-
-
-
-.. _VID1_IPADDR0:
-
-VID1\_IPADDR0: Camera1 Video Stream IP Address 0
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Video stream IP Address first octet
-
-
-+----------+
-| Range    |
-+==========+
-| 0 to 255 |
-+----------+
-
-
-
-
-.. _VID1_IPADDR1:
-
-VID1\_IPADDR1: Camera1 Video Stream IP Address 1
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Video stream IP Address second octet
-
-
-+----------+
-| Range    |
-+==========+
-| 0 to 255 |
-+----------+
-
-
-
-
-.. _VID1_IPADDR2:
-
-VID1\_IPADDR2: Camera1 Video Stream IP Address 2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Video stream IP Address third octet
-
-
-+----------+
-| Range    |
-+==========+
-| 0 to 255 |
-+----------+
-
-
-
-
-.. _VID1_IPADDR3:
-
-VID1\_IPADDR3: Camera1 Video Stream IP Address 3
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Video stream IP Address fourth octet
-
-
-+----------+
-| Range    |
-+==========+
-| 0 to 255 |
-+----------+
-
-
-
-
-.. _VID1_IPPORT:
-
-VID1\_IPPORT: Camera1 Video Stream IP Address Port
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Video stream IP Address Port
-
-
-+------------+
-| Range      |
-+============+
-| 0 to 65535 |
-+------------+
++------------+-------------------+
+| Range      | Units             |
++============+===================+
+| 0.1 to 0.5 | meters per second |
++------------+-------------------+
 
 
 
@@ -3084,739 +4720,49 @@ Legal max altitude for UAV\/RPAS\/drones in your jurisdiction
 
 
 
-.. _ESRC_EXTN_THRESH:
+.. _WINCH_RATE_UP:
 
-ESRC\_EXTN\_THRESH: EKF Source ExternalNav Innovation Threshold
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+WINCH\_RATE\_UP: WinchControl Rate Up
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-ExternalNav may be used if innovations are below this threshold
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 1 |
-+--------+
-
-
-
-
-.. _ESRC_EXTN_QUAL:
-
-ESRC\_EXTN\_QUAL: EKF Source ExternalNav Quality Threshold
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-ExternalNav may be used if quality is above this threshold
-
-
-+----------+---------+
-| Range    | Units   |
-+==========+=========+
-| 0 to 100 | percent |
-+----------+---------+
-
-
-
-
-.. _ESRC_FLOW_THRESH:
-
-ESRC\_FLOW\_THRESH: EKF Source OpticalFlow Innovation Threshold
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-OpticalFlow may be used if innovations are below this threshold
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 1 |
-+--------+
-
-
-
-
-.. _ESRC_FLOW_QUAL:
-
-ESRC\_FLOW\_QUAL: EKF Source OpticalFlow Quality Threshold
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-OpticalFlow may be used if quality is above this threshold
-
-
-+----------+---------+
-| Range    | Units   |
-+==========+=========+
-| 0 to 100 | percent |
-+----------+---------+
-
-
-
-
-.. _ESRC_RNGFND_MAX:
-
-ESRC\_RNGFND\_MAX: EKF Source Rangefinder Max
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-OpticalFlow may be used if rangefinder distance is below this threshold
-
-
-+---------+--------+
-| Range   | Units  |
-+=========+========+
-| 0 to 50 | meters |
-+---------+--------+
-
-
-
-
-.. _BATT_SOC_COUNT:
-
-BATT\_SOC\_COUNT: Count of SOC estimators
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Number of battery SOC estimators
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 4 |
-+--------+
-
-
-
-
-.. _BATT_SOC1_IDX:
-
-BATT\_SOC1\_IDX: Battery estimator index
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator index
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 4 |
-+--------+
-
-
-
-
-.. _BATT_SOC1_NCELL:
-
-BATT\_SOC1\_NCELL: Battery estimator cell count
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator cell count
-
-
-+---------+
-| Range   |
-+=========+
-| 0 to 48 |
-+---------+
-
-
-
-
-.. _BATT_SOC1_C1:
-
-BATT\_SOC1\_C1: Battery estimator coefficient1
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient1
+Maximum rate when retracting line
 
 
 +------------+
 | Range      |
 +============+
-| 100 to 200 |
+| 0.1 to 5.0 |
 +------------+
 
 
 
 
-.. _BATT_SOC1_C2:
+.. _WINCH_RATE_DN:
 
-BATT\_SOC1\_C2: Battery estimator coefficient2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient2
+WINCH\_RATE\_DN: WinchControl Rate Down
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-+--------+
-| Range  |
-+========+
-| 2 to 5 |
-+--------+
-
-
-
-
-.. _BATT_SOC1_C3:
-
-BATT\_SOC1\_C3: Battery estimator coefficient3
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient3
-
-
-+-------------+
-| Range       |
-+=============+
-| 0.01 to 0.5 |
-+-------------+
-
-
-
-
-.. _BATT_SOC1_C4:
-
-BATT\_SOC1\_C4: Battery estimator coefficient4
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient4
-
-
-+----------+
-| Range    |
-+==========+
-| 5 to 100 |
-+----------+
-
-
-
-
-.. _BATT_SOC2_IDX:
-
-BATT\_SOC2\_IDX: Battery estimator index
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator index
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 4 |
-+--------+
-
-
-
-
-.. _BATT_SOC2_NCELL:
-
-BATT\_SOC2\_NCELL: Battery estimator cell count
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator cell count
-
-
-+---------+
-| Range   |
-+=========+
-| 0 to 48 |
-+---------+
-
-
-
-
-.. _BATT_SOC2_C1:
-
-BATT\_SOC2\_C1: Battery estimator coefficient1
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient1
+Maximum rate when releasing line
 
 
 +------------+
 | Range      |
 +============+
-| 100 to 200 |
+| 0.1 to 5.0 |
 +------------+
 
 
 
 
-.. _BATT_SOC2_C2:
+.. _WINCH_RC_FUNC:
 
-BATT\_SOC2\_C2: Battery estimator coefficient2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient2
-
-
-+--------+
-| Range  |
-+========+
-| 2 to 5 |
-+--------+
-
-
-
-
-.. _BATT_SOC2_C3:
-
-BATT\_SOC2\_C3: Battery estimator coefficient3
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient3
-
-
-+-------------+
-| Range       |
-+=============+
-| 0.01 to 0.5 |
-+-------------+
-
-
-
-
-.. _BATT_SOC2_C4:
-
-BATT\_SOC2\_C4: Battery estimator coefficient4
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient4
-
-
-+----------+
-| Range    |
-+==========+
-| 5 to 100 |
-+----------+
-
-
-
-
-.. _BATT_SOC3_IDX:
-
-BATT\_SOC3\_IDX: Battery estimator index
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator index
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 4 |
-+--------+
-
-
-
-
-.. _BATT_SOC3_NCELL:
-
-BATT\_SOC3\_NCELL: Battery estimator cell count
+WINCH\_RC\_FUNC: Winch Rate Control RC function
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Battery estimator cell count
-
-
-+---------+
-| Range   |
-+=========+
-| 0 to 48 |
-+---------+
-
-
-
-
-.. _BATT_SOC3_C1:
-
-BATT\_SOC3\_C1: Battery estimator coefficient1
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient1
-
-
-+------------+
-| Range      |
-+============+
-| 100 to 200 |
-+------------+
-
-
-
-
-.. _BATT_SOC3_C2:
-
-BATT\_SOC3\_C2: Battery estimator coefficient2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient2
-
-
-+--------+
-| Range  |
-+========+
-| 2 to 5 |
-+--------+
-
-
-
-
-.. _BATT_SOC3_C3:
-
-BATT\_SOC3\_C3: Battery estimator coefficient3
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient3
-
-
-+-------------+
-| Range       |
-+=============+
-| 0.01 to 0.5 |
-+-------------+
-
-
-
-
-.. _BATT_SOC3_C4:
-
-BATT\_SOC3\_C4: Battery estimator coefficient4
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient4
-
-
-+----------+
-| Range    |
-+==========+
-| 5 to 100 |
-+----------+
-
-
-
-
-.. _BATT_SOC4_IDX:
-
-BATT\_SOC4\_IDX: Battery estimator index
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator index
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 4 |
-+--------+
-
-
-
-
-.. _BATT_SOC4_NCELL:
-
-BATT\_SOC4\_NCELL: Battery estimator cell count
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator cell count
-
-
-+---------+
-| Range   |
-+=========+
-| 0 to 48 |
-+---------+
-
-
-
-
-.. _BATT_SOC4_C1:
-
-BATT\_SOC4\_C1: Battery estimator coefficient1
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient1
-
-
-+------------+
-| Range      |
-+============+
-| 100 to 200 |
-+------------+
-
-
-
-
-.. _BATT_SOC4_C2:
-
-BATT\_SOC4\_C2: Battery estimator coefficient2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient2
-
-
-+--------+
-| Range  |
-+========+
-| 2 to 5 |
-+--------+
-
-
-
-
-.. _BATT_SOC4_C3:
-
-BATT\_SOC4\_C3: Battery estimator coefficient3
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient3
-
-
-+-------------+
-| Range       |
-+=============+
-| 0.01 to 0.5 |
-+-------------+
-
-
-
-
-.. _BATT_SOC4_C4:
-
-BATT\_SOC4\_C4: Battery estimator coefficient4
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery estimator coefficient4
-
-
-+----------+
-| Range    |
-+==========+
-| 5 to 100 |
-+----------+
-
-
-
-
-.. _RTUN_ENABLE:
-
-RTUN\_ENABLE: Rover Quicktune enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Enable quicktune system
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _RTUN_AXES:
-
-RTUN\_AXES: Rover Quicktune axes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-axes to tune
-
-
-+-----+----------+
-| Bit | Meaning  |
-+=====+==========+
-| 0   | Steering |
-+-----+----------+
-| 1   | Speed    |
-+-----+----------+
-
-
-
-
-.. _RTUN_STR_FFRATIO:
-
-RTUN\_STR\_FFRATIO: Rover Quicktune Steering Rate FeedForward ratio
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Ratio between measured response and FF gain\. Raise this to get a higher FF gain
-
-
-+----------+
-| Range    |
-+==========+
-| 0 to 1.0 |
-+----------+
-
-
-
-
-.. _RTUN_STR_P_RATIO:
-
-RTUN\_STR\_P\_RATIO: Rover Quicktune Steering FF to P ratio
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Ratio between steering FF and P gains\. Raise this to get a higher P gain\, 0 to leave P unchanged
-
-
-+----------+
-| Range    |
-+==========+
-| 0 to 2.0 |
-+----------+
-
-
-
-
-.. _RTUN_STR_I_RATIO:
-
-RTUN\_STR\_I\_RATIO: Rover Quicktune Steering FF to I ratio
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Ratio between steering FF and I gains\. Raise this to get a higher I gain\, 0 to leave I unchanged
-
-
-+----------+
-| Range    |
-+==========+
-| 0 to 2.0 |
-+----------+
-
-
-
-
-.. _RTUN_SPD_FFRATIO:
-
-RTUN\_SPD\_FFRATIO: Rover Quicktune Speed FeedForward \(equivalent\) ratio
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Ratio between measured response and CRUISE\_THROTTLE value\. Raise this to get a higher CRUISE\_THROTTLE value
-
-
-+----------+
-| Range    |
-+==========+
-| 0 to 1.0 |
-+----------+
-
-
-
-
-.. _RTUN_SPD_P_RATIO:
-
-RTUN\_SPD\_P\_RATIO: Rover Quicktune Speed FF to P ratio
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Ratio between speed FF and P gain\. Raise this to get a higher P gain\, 0 to leave P unchanged
-
-
-+----------+
-| Range    |
-+==========+
-| 0 to 2.0 |
-+----------+
-
-
-
-
-.. _RTUN_SPD_I_RATIO:
-
-RTUN\_SPD\_I\_RATIO: Rover Quicktune Speed FF to I ratio
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Ratio between speed FF and I gain\. Raise this to get a higher I gain\, 0 to leave I unchanged
-
-
-+----------+
-| Range    |
-+==========+
-| 0 to 2.0 |
-+----------+
-
-
-
-
-.. _RTUN_AUTO_FILTER:
-
-RTUN\_AUTO\_FILTER: Rover Quicktune auto filter enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-When enabled the PID filter settings are automatically set based on INS\_GYRO\_FILTER
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _RTUN_AUTO_SAVE:
-
-RTUN\_AUTO\_SAVE: Rover Quicktune auto save
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Number of seconds after completion of tune to auto\-save\. This is useful when using a 2 position switch for quicktune
-
-
-+---------+
-| Units   |
-+=========+
-| seconds |
-+---------+
-
-
-
-
-.. _RTUN_RC_FUNC:
-
-RTUN\_RC\_FUNC: Rover Quicktune RC function
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-RCn\_OPTION number to use to control tuning stop\/start\/save
+RCn\_OPTION number to use to control winch rate
 
 
 +-------+------------+
@@ -3842,20 +4788,350 @@ RCn\_OPTION number to use to control tuning stop\/start\/save
 
 
 
-.. _RTUN_SPEED_MIN:
+.. _FOLT_ENABLE:
 
-RTUN\_SPEED\_MIN: Rover Quicktune minimum speed for tuning
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-The mimimum speed in m\/s required for tuning to start
+FOLT\_ENABLE: Follow Target Send Enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-+------------+-------------------+
-| Range      | Units             |
-+============+===================+
-| 0.1 to 0.5 | meters per second |
-+------------+-------------------+
+Follow Target Send Enable
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _FOLT_MAV_CHAN:
+
+FOLT\_MAV\_CHAN: Follow Target Send MAVLink Channel
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+MAVLink channel to which FOLLOW\_TARGET should be sent
+
+
++---------+
+| Range   |
++=========+
+| 0 to 10 |
++---------+
+
+
+
+
+.. _VID1_CAMMODEL:
+
+VID1\_CAMMODEL: Camera1 Video Stream Camera Model
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Video stream camera model
+
+
++-------+------------------------+
+| Value | Meaning                |
++=======+========================+
+| 0     | Unknown                |
++-------+------------------------+
+| 1     | Siyi A8                |
++-------+------------------------+
+| 2     | Siyi ZR10              |
++-------+------------------------+
+| 3     | Siyi ZR30              |
++-------+------------------------+
+| 4     | Siyi ZT30 Zoom         |
++-------+------------------------+
+| 5     | Siyi ZT30 Wide         |
++-------+------------------------+
+| 6     | Siyi ZT30 IR           |
++-------+------------------------+
+| 7     | Siyi ZT6 RGB           |
++-------+------------------------+
+| 8     | Siyi ZT6 IR            |
++-------+------------------------+
+| 9     | Herelink WifiAP        |
++-------+------------------------+
+| 10    | Herelink USB-tethering |
++-------+------------------------+
+| 11    | Topotek 1080p          |
++-------+------------------------+
+| 12    | Topotek 480p           |
++-------+------------------------+
+| 13    | Viewpro                |
++-------+------------------------+
+
+
+
+
+.. _VID1_ID:
+
+VID1\_ID: Camera1 Video Stream Id
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Video stream id
+
+
++---------+
+| Range   |
++=========+
+| 0 to 50 |
++---------+
+
+
+
+
+.. _VID1_TYPE:
+
+VID1\_TYPE: Camera1 Video Stream Type
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Video stream type
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | RTSP     |
++-------+----------+
+| 1     | RTPUDP   |
++-------+----------+
+| 2     | TCP_MPEG |
++-------+----------+
+| 3     | MPEG_TS  |
++-------+----------+
+
+
+
+
+.. _VID1_FLAG:
+
+VID1\_FLAG: Camera1 Video Stream Flags
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Video stream flags
+
+
++-----+-----------------------+
+| Bit | Meaning               |
++=====+=======================+
+| 0   | Running               |
++-----+-----------------------+
+| 1   | Thermal               |
++-----+-----------------------+
+| 2   | Thermal Range Enabled |
++-----+-----------------------+
+
+
+
+
+.. _VID1_FRAME_RATE:
+
+VID1\_FRAME\_RATE: Camera1 Video Stream Frame Rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Video stream frame rate
+
+
++---------+
+| Range   |
++=========+
+| 0 to 50 |
++---------+
+
+
+
+
+.. _VID1_HRES:
+
+VID1\_HRES: Camera1 Video Stream Horizontal Resolution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Video stream horizontal resolution
+
+
++-----------+
+| Range     |
++===========+
+| 0 to 4096 |
++-----------+
+
+
+
+
+.. _VID1_VRES:
+
+VID1\_VRES: Camera1 Video Stream Vertical Resolution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Video stream vertical resolution
+
+
++-----------+
+| Range     |
++===========+
+| 0 to 4096 |
++-----------+
+
+
+
+
+.. _VID1_BITRATE:
+
+VID1\_BITRATE: Camera1 Video Stream Bitrate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Video stream bitrate
+
+
++------------+
+| Range      |
++============+
+| 0 to 10000 |
++------------+
+
+
+
+
+.. _VID1_HFOV:
+
+VID1\_HFOV: Camera1 Video Stream Horizontal FOV
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Video stream horizontal FOV
+
+
++----------+
+| Range    |
++==========+
+| 0 to 360 |
++----------+
+
+
+
+
+.. _VID1_ENCODING:
+
+VID1\_ENCODING: Camera1 Video Stream Encoding
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Video stream encoding
+
+
++-------+---------+
+| Value | Meaning |
++=======+=========+
+| 0     | Unknown |
++-------+---------+
+| 1     | H264    |
++-------+---------+
+| 2     | H265    |
++-------+---------+
+
+
+
+
+.. _VID1_IPADDR0:
+
+VID1\_IPADDR0: Camera1 Video Stream IP Address 0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Video stream IP Address first octet
+
+
++----------+
+| Range    |
++==========+
+| 0 to 255 |
++----------+
+
+
+
+
+.. _VID1_IPADDR1:
+
+VID1\_IPADDR1: Camera1 Video Stream IP Address 1
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Video stream IP Address second octet
+
+
++----------+
+| Range    |
++==========+
+| 0 to 255 |
++----------+
+
+
+
+
+.. _VID1_IPADDR2:
+
+VID1\_IPADDR2: Camera1 Video Stream IP Address 2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Video stream IP Address third octet
+
+
++----------+
+| Range    |
++==========+
+| 0 to 255 |
++----------+
+
+
+
+
+.. _VID1_IPADDR3:
+
+VID1\_IPADDR3: Camera1 Video Stream IP Address 3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Video stream IP Address fourth octet
+
+
++----------+
+| Range    |
++==========+
+| 0 to 255 |
++----------+
+
+
+
+
+.. _VID1_IPPORT:
+
+VID1\_IPPORT: Camera1 Video Stream IP Address Port
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Video stream IP Address Port
+
+
++------------+
+| Range      |
++============+
+| 0 to 65535 |
++------------+
 
 
 
@@ -4030,551 +5306,6 @@ SERVOn GPIO channel that reads the Rockblock booted state\. This connects to I\_
 
 
 
-.. _QUIK_ENABLE:
-
-QUIK\_ENABLE: Quicktune enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Enable quicktune system
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _QUIK_AXES:
-
-QUIK\_AXES: Quicktune axes
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-axes to tune
-
-
-+-----+---------+
-| Bit | Meaning |
-+=====+=========+
-| 0   | Roll    |
-+-----+---------+
-| 1   | Pitch   |
-+-----+---------+
-| 2   | Yaw     |
-+-----+---------+
-
-
-
-
-.. _QUIK_DOUBLE_TIME:
-
-QUIK\_DOUBLE\_TIME: Quicktune doubling time
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Time to double a tuning parameter\. Raise this for a slower tune\.
-
-
-+---------+---------+
-| Range   | Units   |
-+=========+=========+
-| 5 to 20 | seconds |
-+---------+---------+
-
-
-
-
-.. _QUIK_GAIN_MARGIN:
-
-QUIK\_GAIN\_MARGIN: Quicktune gain margin
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Reduction in gain after oscillation detected\. Raise this number to get a more conservative tune
-
-
-+----------+---------+
-| Range    | Units   |
-+==========+=========+
-| 20 to 80 | percent |
-+----------+---------+
-
-
-
-
-.. _QUIK_OSC_SMAX:
-
-QUIK\_OSC\_SMAX: Quicktune oscillation rate threshold
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Threshold for oscillation detection\. A lower value will lead to a more conservative tune\.
-
-
-+---------+
-| Range   |
-+=========+
-| 1 to 10 |
-+---------+
-
-
-
-
-.. _QUIK_YAW_P_MAX:
-
-QUIK\_YAW\_P\_MAX: Quicktune Yaw P max
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Maximum value for yaw P gain
-
-
-+----------+
-| Range    |
-+==========+
-| 0.1 to 3 |
-+----------+
-
-
-
-
-.. _QUIK_YAW_D_MAX:
-
-QUIK\_YAW\_D\_MAX: Quicktune Yaw D max
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Maximum value for yaw D gain
-
-
-+------------+
-| Range      |
-+============+
-| 0.001 to 1 |
-+------------+
-
-
-
-
-.. _QUIK_RP_PI_RATIO:
-
-QUIK\_RP\_PI\_RATIO: Quicktune roll\/pitch PI ratio
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Ratio between P and I gains for roll and pitch\. Raise this to get a lower I gain
-
-
-+------------+
-| Range      |
-+============+
-| 0.5 to 1.0 |
-+------------+
-
-
-
-
-.. _QUIK_Y_PI_RATIO:
-
-QUIK\_Y\_PI\_RATIO: Quicktune Yaw PI ratio
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Ratio between P and I gains for yaw\. Raise this to get a lower I gain
-
-
-+-----------+
-| Range     |
-+===========+
-| 0.5 to 20 |
-+-----------+
-
-
-
-
-.. _QUIK_AUTO_FILTER:
-
-QUIK\_AUTO\_FILTER: Quicktune auto filter enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-When enabled the PID filter settings are automatically set based on INS\_GYRO\_FILTER
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _QUIK_AUTO_SAVE:
-
-QUIK\_AUTO\_SAVE: Quicktune auto save
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Number of seconds after completion of tune to auto\-save\. This is useful when using a 2 position switch for quicktune
-
-
-+---------+
-| Units   |
-+=========+
-| seconds |
-+---------+
-
-
-
-
-.. _QUIK_RC_FUNC:
-
-QUIK\_RC\_FUNC: Quicktune RC function
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-RCn\_OPTION number to use to control tuning stop\/start\/save
-
-
-.. _QUIK_MAX_REDUCE:
-
-QUIK\_MAX\_REDUCE: Quicktune maximum gain reduction
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-This controls how much quicktune is allowed to lower gains from the original gains\. If the vehicle already has a reasonable tune and is not oscillating then you can set this to zero to prevent gain reductions\. The default of 20\% is reasonable for most vehicles\. Using a maximum gain reduction lowers the chance of an angle P oscillation happening if quicktune gets a false positive oscillation at a low gain\, which can result in very low rate gains and a dangerous angle P oscillation\.
-
-
-+----------+---------+
-| Range    | Units   |
-+==========+=========+
-| 0 to 100 | percent |
-+----------+---------+
-
-
-
-
-.. _QUIK_OPTIONS:
-
-QUIK\_OPTIONS: Quicktune options
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Additional options\. When the Two Position Switch option is enabled then a high switch position will start the tune\, low will disable the tune\. you should also set a QUIK\_AUTO\_SAVE time so that you will be able to save the tune\.
-
-
-+-----+----------------------+
-| Bit | Meaning              |
-+=====+======================+
-| 0   | UseTwoPositionSwitch |
-+-----+----------------------+
-
-
-
-
-.. _QUIK_ANGLE_MAX:
-
-QUIK\_ANGLE\_MAX: maximum angle error for tune abort
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-If while tuning the angle error goes over this limit then the tune will aborts to prevent a bad oscillation in the case of the tuning algorithm failing\. If you get an error \"Tuning\: attitude error ABORTING\" and you think it is a false positive then you can either raise this parameter or you can try increasing the QUIK\_DOUBLE\_TIME to do the tune more slowly\. A value of zero disables this check\.
-
-
-+---------+
-| Units   |
-+=========+
-| degrees |
-+---------+
-
-
-
-
-.. _WINCH_RATE_UP:
-
-WINCH\_RATE\_UP: WinchControl Rate Up
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Maximum rate when retracting line
-
-
-+------------+
-| Range      |
-+============+
-| 0.1 to 5.0 |
-+------------+
-
-
-
-
-.. _WINCH_RATE_DN:
-
-WINCH\_RATE\_DN: WinchControl Rate Down
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Maximum rate when releasing line
-
-
-+------------+
-| Range      |
-+============+
-| 0.1 to 5.0 |
-+------------+
-
-
-
-
-.. _WINCH_RC_FUNC:
-
-WINCH\_RC\_FUNC: Winch Rate Control RC function
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-RCn\_OPTION number to use to control winch rate
-
-
-+-------+------------+
-| Value | Meaning    |
-+=======+============+
-| 300   | Scripting1 |
-+-------+------------+
-| 301   | Scripting2 |
-+-------+------------+
-| 302   | Scripting3 |
-+-------+------------+
-| 303   | Scripting4 |
-+-------+------------+
-| 304   | Scripting5 |
-+-------+------------+
-| 305   | Scripting6 |
-+-------+------------+
-| 306   | Scripting7 |
-+-------+------------+
-| 307   | Scripting8 |
-+-------+------------+
-
-
-
-
-.. _PLND_ALT_CUTOFF:
-
-PLND\_ALT\_CUTOFF: Precland altitude cutoff
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-The altitude \(rangefinder distance\) below which we stop using the precision landing sensor and continue landing
-
-
-+---------+--------+
-| Range   | Units  |
-+=========+========+
-| 0 to 20 | meters |
-+---------+--------+
-
-
-
-
-.. _DIST_CUTOFF:
-
-DIST\_CUTOFF: Precland distance cutoff
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-The distance from target beyond which the target is ignored
-
-
-+----------+--------+
-| Range    | Units  |
-+==========+========+
-| 0 to 100 | meters |
-+----------+--------+
-
-
-
-
-.. _POI_DIST_MAX:
-
-POI\_DIST\_MAX: Mount POI distance max
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-POI\'s max distance \(in meters\) from the vehicle
-
-
-+------------+
-| Range      |
-+============+
-| 0 to 10000 |
-+------------+
-
-
-
-
-.. _WEB_ENABLE:
-
-WEB\_ENABLE: enable web server
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-enable web server
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _WEB_BIND_PORT:
-
-WEB\_BIND\_PORT: web server TCP port
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-web server TCP port
-
-
-+------------+
-| Range      |
-+============+
-| 1 to 65535 |
-+------------+
-
-
-
-
-.. _WEB_DEBUG:
-
-WEB\_DEBUG: web server debugging
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-web server debugging
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _WEB_BLOCK_SIZE:
-
-WEB\_BLOCK\_SIZE: web server block size
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-web server block size for download
-
-
-+------------+
-| Range      |
-+============+
-| 1 to 65535 |
-+------------+
-
-
-
-
-.. _WEB_TIMEOUT:
-
-WEB\_TIMEOUT: web server timeout
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-timeout for inactive connections
-
-
-+-----------+---------+
-| Range     | Units   |
-+===========+=========+
-| 0.1 to 60 | seconds |
-+-----------+---------+
-
-
-
-
-.. _WEB_SENDFILE_MIN:
-
-WEB\_SENDFILE\_MIN: web server minimum file size for sendfile
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-sendfile is an offloading mechanism for faster file download\. If this is non\-zero and the file is larger than this size then sendfile will be used for file download
-
-
-+---------------+
-| Range         |
-+===============+
-| 0 to 10000000 |
-+---------------+
-
-
-
-
-.. _FOLT_ENABLE:
-
-FOLT\_ENABLE: Follow Target Send Enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Follow Target Send Enable
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _FOLT_MAV_CHAN:
-
-FOLT\_MAV\_CHAN: Follow Target Send MAVLink Channel
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-MAVLink channel to which FOLLOW\_TARGET should be sent
-
-
-+---------+
-| Range   |
-+=========+
-| 0 to 10 |
-+---------+
-
-
-
-
 .. _PARAM_LOCK_ENAB:
 
 PARAM\_LOCK\_ENAB: Param Lockdown enable
@@ -4591,737 +5322,6 @@ Param Lockdown enable
 +-------+----------+
 | 1     | Enabled  |
 +-------+----------+
-
-
-
-
-.. _ALAND_ENABLE:
-
-ALAND\_ENABLE: Auto land enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-enable Auto land script action
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _ALAND_WP_ALT:
-
-ALAND\_WP\_ALT: Final approach waypoint alt
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Altitude of final approach waypoint created by script
-
-
-+----------+--------+
-| Range    | Units  |
-+==========+========+
-| 1 to 100 | meters |
-+----------+--------+
-
-
-
-
-.. _ALAND_WP_DIST:
-
-ALAND\_WP\_DIST: Final approach waypoint distance
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Distance from landing point \(HOME\) to final approach waypoint created by script in the opposite direction of initial takeoff
-
-
-+-----------+--------+
-| Range     | Units  |
-+===========+========+
-| 0 to 1000 | meters |
-+-----------+--------+
-
-
-
-
-.. _THR_KILL_FUNC:
-
-THR\_KILL\_FUNC: AUX function to kill engine
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-AUX function to kill engine\. This can be activated either with a RCn\_OPTION and a R\/C switch or with a ground station auxilliary function
-
-
-+------------+
-| Range      |
-+============+
-| 300 to 307 |
-+------------+
-
-
-
-
-.. _THR_KILL_PWM:
-
-THR\_KILL\_PWM: PWM on kill active
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-PWM on kill active
-
-
-+-------------+
-| Range       |
-+=============+
-| 800 to 2200 |
-+-------------+
-
-
-
-
-.. _THR_KILL_CHAN:
-
-THR\_KILL\_CHAN: output channel to change on throttle kill
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-output channel to change on throttle kill\, a value of zero disables the feature
-
-
-+---------+
-| Range   |
-+=========+
-| 0 to 32 |
-+---------+
-
-
-
-
-.. _THR_KILL_VAL:
-
-THR\_KILL\_VAL: auxilliary value to kill throttle
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-auxilliary value to kill throttle\. Set to 2 to kill the throttle when the auxilliary is high\. Set to 0 to kill when auxilliary is low
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 2 |
-+--------+
-
-
-
-
-.. _THR_KILL_DEF:
-
-THR\_KILL\_DEF: throttle kill default value
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-throttle kill default value\. The default auxilliary function position on boot
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 2 |
-+--------+
-
-
-
-
-.. _TERR_BRK_ENABLE:
-
-TERR\_BRK\_ENABLE: terrain brake enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-terrain brake enable
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _TERR_BRK_ALT:
-
-TERR\_BRK\_ALT: terrain brake altitude
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-terrain brake altitude\. The altitude above the ground below which BRAKE mode will be engaged if in LOITER mode\.
-
-
-+----------+--------+
-| Range    | Units  |
-+==========+========+
-| 1 to 100 | meters |
-+----------+--------+
-
-
-
-
-.. _TERR_BRK_HDIST:
-
-TERR\_BRK\_HDIST: terrain brake home distance
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-terrain brake home distance\. The distance from home where the auto BRAKE will be enabled\. When within this distance of home the script will not activate
-
-
-+-----------+--------+
-| Range     | Units  |
-+===========+========+
-| 0 to 1000 | meters |
-+-----------+--------+
-
-
-
-
-.. _TERR_BRK_SPD:
-
-TERR\_BRK\_SPD: terrain brake speed threshold
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-terrain brake speed threshold\. Don\'t trigger BRAKE if both horizontal speed and descent rate are below this threshold\. By setting this to a small value this can be used to allow the user to climb up to a safe altitude in LOITER mode\. A value of 0\.5 is recommended if you want to use LOITER to recover from an emergency terrain BRAKE mode change\.
-
-
-+--------+-------------------+
-| Range  | Units             |
-+========+===================+
-| 0 to 5 | meters per second |
-+--------+-------------------+
-
-
-
-
-.. _SHIP_ENABLE:
-
-SHIP\_ENABLE: Ship landing enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Enable ship landing system
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _SHIP_LAND_ANGLE:
-
-SHIP\_LAND\_ANGLE: Ship landing angle
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Angle from the stern of the ship for landing approach\. Use this to ensure that on a go\-around that ship superstructure and cables are avoided\. A value of zero means to approach from the rear of the ship\. A value of 90 means the landing will approach from the port \(left\) side of the ship\. A value of \-90 will mean approaching from the starboard \(right\) side of the ship\. A value of 180 will approach from the bow of the ship\. This parameter is combined with the sign of the RTL\_RADIUS parameter to determine the holdoff pattern\. If RTL\_RADIUS is positive then a clockwise loiter is performed\, if RTL\_RADIUS is negative then a counter\-clockwise loiter is used\.
-
-
-+-------------+---------+
-| Range       | Units   |
-+=============+=========+
-| -180 to 180 | degrees |
-+-------------+---------+
-
-
-
-
-.. _SHIP_AUTO_OFS:
-
-SHIP\_AUTO\_OFS: Ship automatic offset trigger
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Settings this parameter to one triggers an automatic follow offset calculation based on current position of the vehicle and the landing target\. NOTE\: This parameter will auto\-reset to zero once the offset has been calculated\.
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Trigger  |
-+-------+----------+
-
-
-
-
-.. _BTAG_ENABLE:
-
-BTAG\_ENABLE: enable battery info support
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-enable battery info support
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _BTAG_MAX_CYCLES:
-
-BTAG\_MAX\_CYCLES: max battery cycles
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-max battery cycles for arming
-
-
-+------------+
-| Range      |
-+============+
-| 0 to 10000 |
-+------------+
-
-
-
-
-.. _BTAG_CUR_CYCLES:
-
-BTAG\_CUR\_CYCLES: current battery cycles
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-this is the highest value for battery cycles for all connected batteries
-
-
-+------------+
-| Range      |
-+============+
-| 0 to 10000 |
-+------------+
-
-
-
-
-.. _FOLLP_FAIL_MODE:
-
-FOLLP\_FAIL\_MODE: Plane Follow lost target mode
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Mode to switch to if the target is lost \(no signal or \> FOLL\_DIST\_MAX\)\.
-
-
-.. _FOLLP_EXIT_MODE:
-
-FOLLP\_EXIT\_MODE: Plane Follow exit mode
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Mode to switch to when follow mode is exited normally
-
-
-.. _FOLLP_ACT_FN:
-
-FOLLP\_ACT\_FN: Plane Follow Scripting ActivationFunction
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Setting an RC channel\'s \_OPTION to this value will use it for Plane Follow enable\/disable
-
-
-+------------+
-| Range      |
-+============+
-| 300 to 307 |
-+------------+
-
-
-
-
-.. _FOLLP_TIMEOUT:
-
-FOLLP\_TIMEOUT: Plane Follow Telemetry Timeout
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-How long to try reaquire a target if telemetry from the lead vehicle is lost\.
-
-
-+---------+---------+
-| Range   | Units   |
-+=========+=========+
-| 0 to 30 | seconds |
-+---------+---------+
-
-
-
-
-.. _FOLLP_OVRSHT_DEG:
-
-FOLLP\_OVRSHT\_DEG: Plane Follow Scripting Overshoot Angle
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-If the target is greater than this many degrees left or right\, assume an overshoot
-
-
-+----------+---------+
-| Range    | Units   |
-+==========+=========+
-| 0 to 180 | degrees |
-+----------+---------+
-
-
-
-
-.. _FOLLP_TURN_DEG:
-
-FOLLP\_TURN\_DEG: Plane Follow Scripting Turn Angle
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-If the target is greater than this many degrees left or right\, assume it\'s turning
-
-
-+----------+---------+
-| Range    | Units   |
-+==========+=========+
-| 0 to 180 | degrees |
-+----------+---------+
-
-
-
-
-.. _FOLLP_DIST_CLOSE:
-
-FOLLP\_DIST\_CLOSE: Plane Follow Scripting Close Distance
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-When closer than this distance assume we track by heading
-
-
-+----------+--------+
-| Range    | Units  |
-+==========+========+
-| 0 to 100 | meters |
-+----------+--------+
-
-
-
-
-.. _FOLLP_WIDE_TURNS:
-
-FOLLP\_WIDE\_TURNS: Plane Follow Scripting Wide Turns
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Use wide turns when following a turning target\. Alternative is \"cutting the corner\"
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 1 |
-+--------+
-
-
-
-
-.. _FOLLP_ALT:
-
-FOLLP\_ALT: Plane Follow Scripting Altitude Override
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-When non zero\, this altitude value \(in FOLL\_ALT\_TYPE frame\) overrides the value sent by the target vehicle
-
-
-+-----------+--------+
-| Range     | Units  |
-+===========+========+
-| 0 to 1000 | meters |
-+-----------+--------+
-
-
-
-
-.. _FOLLP_D_P:
-
-FOLLP\_D\_P: Plane Follow Scripting distance P gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-P gain for the speed PID controller distance component
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 1 |
-+--------+
-
-
-
-
-.. _FOLLP_D_I:
-
-FOLLP\_D\_I: Plane Follow Scripting distance I gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-I gain for the speed PID  distance component
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 1 |
-+--------+
-
-
-
-
-.. _FOLLP_D_D:
-
-FOLLP\_D\_D: Plane Follow Scripting distance D gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-D gain for the speed PID controller distance component
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 1 |
-+--------+
-
-
-
-
-.. _FOLLP_V_P:
-
-FOLLP\_V\_P: Plane Follow Scripting speed P gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-P gain for the speed PID controller velocity component
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 1 |
-+--------+
-
-
-
-
-.. _FOLLP_V_I:
-
-FOLLP\_V\_I: Plane Follow Scripting speed I gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-I gain for the speed PID controller velocity component
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 1 |
-+--------+
-
-
-
-
-.. _FOLLP_V_D:
-
-FOLLP\_V\_D: Plane Follow Scripting speed D gain
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-D gain for the speed PID controller velocity component
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 1 |
-+--------+
-
-
-
-
-.. _FOLLP_LkAHD:
-
-FOLLP\_LkAHD: Plane Follow Lookahead seconds
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Time to \"lookahead\" when calculating distance errors
-
-
-+---------+
-| Units   |
-+=========+
-| seconds |
-+---------+
-
-
-
-
-.. _FOLLP_SIM_TLF_FN:
-
-FOLLP\_SIM\_TLF\_FN: Plane Follow Simulate Telemetry fail function
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Set this switch to simulate losing telemetry from the other vehicle
-
-
-+------------+
-| Range      |
-+============+
-| 300 to 307 |
-+------------+
-
-
-
-
-.. _FOLLP_XT_P:
-
-FOLLP\_XT\_P: Plane Follow crosstrack PID controller P term
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-P term for the crosstrack\/heading PID controller
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 1 |
-+--------+
-
-
-
-
-.. _FOLLP_XT_I:
-
-FOLLP\_XT\_I: Plane Follow crosstrack PID controller I term
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-I term for the crosstrack\/heading PID controller
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 1 |
-+--------+
-
-
-
-
-.. _FOLLP_XT_D:
-
-FOLLP\_XT\_D: Plane Follow crosstrack PID controller D term
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-D term for the crosstrack\/heading PID controller
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 1 |
-+--------+
-
-
-
-
-.. _FOLLP_XT_MAX:
-
-FOLLP\_XT\_MAX: Plane Follow crosstrack PID controller maximum correction
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-maximum correction retured by the crosstrack\/heading PID controller
-
-
-+--------+---------+
-| Range  | Units   |
-+========+=========+
-| 0 to 1 | degrees |
-+--------+---------+
-
-
-
-
-.. _FOLLP_XT_I_MAX:
-
-FOLLP\_XT\_I\_MAX: Plane Follow crosstrack PID controller maximum integral
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-maximum I applied the crosstrack\/heading PID controller
-
-
-+----------+--------------+
-| Range    | Units        |
-+==========+==============+
-| 0 to 100 | milliseconds |
-+----------+--------------+
-
-
-
-
-.. _FOLLP_REFRESH:
-
-FOLLP\_REFRESH: Plane Follow refresh rate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-refresh rate for Plane Follow updates
-
-
-+----------+---------+
-| Range    | Units   |
-+==========+=========+
-| 0 to 0.2 | seconds |
-+----------+---------+
 
 
 
@@ -5879,13 +5879,13 @@ Number of tricks which can be selected over the range of the trik selection RC c
 
 
 
-.. _EFI_DLA64_ENABLE:
+.. _TRQL_ENABLE:
 
-EFI\_DLA64\_ENABLE: EFI DLA64 enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+TRQL\_ENABLE: Torqeedo TorqLink Enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Enable EFI DLA64 driver
+Torqeedo TorqLink Enable
 
 
 +-------+----------+
@@ -5895,6 +5895,30 @@ Enable EFI DLA64 driver
 +-------+----------+
 | 1     | Enabled  |
 +-------+----------+
+
+
+
+
+.. _TRQL_DEBUG:
+
+TRQL\_DEBUG: Torqeedo TorqLink Debug Level
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Torqeedo TorqLink Debug Level
+
+
++-------+---------+
+| Value | Meaning |
++=======+=========+
+| 0     | None    |
++-------+---------+
+| 1     | Low     |
++-------+---------+
+| 2     | Medium  |
++-------+---------+
+| 3     | High    |
++-------+---------+
 
 
 
@@ -5964,88 +5988,6 @@ EFI\_INF\_IGN\_AUX: EFI INF\-Inject ignition aux function
 EFI INF throttle ignition aux function
 
 
-.. _TRQL_ENABLE:
-
-TRQL\_ENABLE: Torqeedo TorqLink Enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Torqeedo TorqLink Enable
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _TRQL_DEBUG:
-
-TRQL\_DEBUG: Torqeedo TorqLink Debug Level
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Torqeedo TorqLink Debug Level
-
-
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | None    |
-+-------+---------+
-| 1     | Low     |
-+-------+---------+
-| 2     | Medium  |
-+-------+---------+
-| 3     | High    |
-+-------+---------+
-
-
-
-
-.. _EFI_DLA_ENABLE:
-
-EFI\_DLA\_ENABLE: EFI DLA enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Enable EFI DLA driver
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _EFI_DLA_LPS:
-
-EFI\_DLA\_LPS: EFI DLA fuel scale
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-EFI DLA litres of fuel per second of injection time
-
-
-+--------------+--------+
-| Range        | Units  |
-+==============+========+
-| 0.00001 to 1 | litres |
-+--------------+--------+
-
-
-
-
 .. _ENABLE:
 
 ENABLE: Enable this script
@@ -6109,13 +6051,13 @@ Which Scripting serial port the sensor is connected at\.
 
 
 
-.. _EFI_2K_ENABLE:
+.. _EFI_DLA_ENABLE:
 
-EFI\_2K\_ENABLE: Enable NMEA 2000 EFI driver
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+EFI\_DLA\_ENABLE: EFI DLA enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Enable NMEA 2000 EFI driver
+Enable EFI DLA driver
 
 
 +-------+----------+
@@ -6129,24 +6071,134 @@ Enable NMEA 2000 EFI driver
 
 
 
-.. _EFI_2K_CANDRV:
+.. _EFI_DLA_LPS:
 
-EFI\_2K\_CANDRV: NMEA 2000 CAN driver
+EFI\_DLA\_LPS: EFI DLA fuel scale
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+EFI DLA litres of fuel per second of injection time
+
+
++--------------+--------+
+| Range        | Units  |
++==============+========+
+| 0.00001 to 1 | litres |
++--------------+--------+
+
+
+
+
+.. _EFI_HFE_ENABLE:
+
+EFI\_HFE\_ENABLE: Enable HFE EFI driver
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Enable HFE EFI driver
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _EFI_HFE_RATE_HZ:
+
+EFI\_HFE\_RATE\_HZ: HFI EFI Update rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+HFI EFI Update rate
+
+
++----------+
+| Range    |
++==========+
+| 0 to 400 |
++----------+
+
+
+
+
+.. _EFI_HFE_ECU_IDX:
+
+EFI\_HFE\_ECU\_IDX: HFI EFI ECU index
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-NMEA 2000 CAN driver\. Use 1 for first CAN scripting driver\, 2 for 2nd driver
+HFI EFI ECU index\, 0 for automatic
 
 
-+-------+-----------+
-| Value | Meaning   |
-+=======+===========+
-| 0     | Disabled  |
-+-------+-----------+
-| 1     | FirstCAN  |
-+-------+-----------+
-| 2     | SecondCAN |
-+-------+-----------+
++---------+
+| Range   |
++=========+
+| 0 to 10 |
++---------+
+
+
+
+
+.. _EFI_HFE_FUEL_DTY:
+
+EFI\_HFE\_FUEL\_DTY: HFI EFI fuel density
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+HFI EFI fuel density in gram per litre
+
+
++-----------+
+| Range     |
++===========+
+| 0 to 2000 |
++-----------+
+
+
+
+
+.. _EFI_HFE_REL_IDX:
+
+EFI\_HFE\_REL\_IDX: HFI EFI relay index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+HFI EFI relay index
+
+
++---------+
+| Range   |
++=========+
+| 0 to 10 |
++---------+
+
+
+
+
+.. _EFI_HFE_CANDRV:
+
+EFI\_HFE\_CANDRV: HFI EFI CAN driver
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+HFI EFI CAN driver
+
+
++-------+--------------+
+| Value | Meaning      |
++=======+==============+
+| 0     | None         |
++-------+--------------+
+| 1     | 1stCANDriver |
++-------+--------------+
+| 2     | 2ndCanDriver |
++-------+--------------+
 
 
 
@@ -6207,307 +6259,57 @@ Motor number offset of first ESC
 
 
 
-.. _EFI_SP_ENABLE:
+.. _DCS_NUM_CIRCUITS:
 
-EFI\_SP\_ENABLE: Enable SkyPower EFI support
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+DCS\_NUM\_CIRCUITS: Number of CircuitStatus monitors
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+| *Note: Reboot required after change*
 
-Enable SkyPower EFI support
+Number of DroneCAN CircuitStatus battery monitor instances\. The per\-instance DCSx\_ parameters are created based on this value\.
 
 
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
++--------+
+| Range  |
++========+
+| 0 to 9 |
++--------+
 
 
 
 
-.. _EFI_SP_CANDRV:
+.. _DCS1_CIRCUIT_ID:
 
-EFI\_SP\_CANDRV: Set SkyPower EFI CAN driver
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Set SkyPower EFI CAN driver
-
-
-+-------+--------------+
-| Value | Meaning      |
-+=======+==============+
-| 0     | None         |
-+-------+--------------+
-| 1     | 1stCANDriver |
-+-------+--------------+
-| 2     | 2ndCanDriver |
-+-------+--------------+
-
-
-
-
-.. _EFI_SP_UPDATE_HZ:
-
-EFI\_SP\_UPDATE\_HZ: SkyPower EFI update rate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-SkyPower EFI update rate
-
-
-+-----------+-------+
-| Range     | Units |
-+===========+=======+
-| 10 to 200 | hertz |
-+-----------+-------+
-
-
-
-
-.. _EFI_SP_THR_FN:
-
-EFI\_SP\_THR\_FN: SkyPower EFI throttle function
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-SkyPower EFI throttle function\. This sets which SERVOn\_FUNCTION to use for the target throttle\. This should be 70 for fixed wing aircraft and 31 for helicopter rotor speed control
-
-
-+-------+-----------+
-| Value | Meaning   |
-+=======+===========+
-| 0     | Disabled  |
-+-------+-----------+
-| 70    | FixedWing |
-+-------+-----------+
-| 31    | HeliRSC   |
-+-------+-----------+
-
-
-
-
-.. _EFI_SP_THR_RATE:
-
-EFI\_SP\_THR\_RATE: SkyPower EFI throttle rate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-SkyPower EFI throttle rate\. This sets rate at which throttle updates are sent to the engine
-
-
-+-----------+-------+
-| Range     | Units |
-+===========+=======+
-| 10 to 100 | hertz |
-+-----------+-------+
-
-
-
-
-.. _EFI_SP_START_FN:
-
-EFI\_SP\_START\_FN: SkyPower EFI start function
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-SkyPower EFI start function\. This is the RCn\_OPTION value to use to find the R\/C channel used for controlling engine start
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 300   | 300      |
-+-------+----------+
-| 301   | 301      |
-+-------+----------+
-| 302   | 302      |
-+-------+----------+
-| 303   | 303      |
-+-------+----------+
-| 304   | 304      |
-+-------+----------+
-| 305   | 305      |
-+-------+----------+
-| 306   | 306      |
-+-------+----------+
-| 307   | 307      |
-+-------+----------+
-
-
-
-
-.. _EFI_SP_GEN_FN:
-
-EFI\_SP\_GEN\_FN: SkyPower EFI generator control function
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-SkyPower EFI generator control function\. This is the RCn\_OPTION value to use to find the R\/C channel used for controlling generator start\/stop
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 300   | 300      |
-+-------+----------+
-| 301   | 301      |
-+-------+----------+
-| 302   | 302      |
-+-------+----------+
-| 303   | 303      |
-+-------+----------+
-| 304   | 304      |
-+-------+----------+
-| 305   | 305      |
-+-------+----------+
-| 306   | 306      |
-+-------+----------+
-| 307   | 307      |
-+-------+----------+
-
-
-
-
-.. _EFI_SP_MIN_RPM:
-
-EFI\_SP\_MIN\_RPM: SkyPower EFI minimum RPM
+DCS1\_CIRCUIT\_ID: CircuitStatus circuit ID
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-| *Note: This parameter is for advanced users*
 
-SkyPower EFI minimum RPM\. This is the RPM below which the engine is considered to be stopped
-
-
-+-----------+
-| Range     |
-+===========+
-| 1 to 1000 |
-+-----------+
+circuit\_id of the CircuitStatus message to use for this instance\. Set to \-1 to disable\.
 
 
-
-
-.. _EFI_SP_TLM_RT:
-
-EFI\_SP\_TLM\_RT: SkyPower EFI telemetry rate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-SkyPower EFI telemetry rate\. This is the rate at which extra telemetry values are sent to the GCS
-
-
-+---------+-------+
-| Range   | Units |
-+=========+=======+
-| 1 to 10 | hertz |
-+---------+-------+
++-------------+
+| Range       |
++=============+
+| -1 to 65535 |
++-------------+
 
 
 
 
-.. _EFI_SP_LOG_RT:
+.. _DCS1_BATT_IDX:
 
-EFI\_SP\_LOG\_RT: SkyPower EFI log rate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-SkyPower EFI log rate\. This is the rate at which extra logging of the SkyPower EFI is performed
+DCS1\_BATT\_IDX: CircuitStatus battery index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-+---------+-------+
-| Range   | Units |
-+=========+=======+
-| 1 to 50 | hertz |
-+---------+-------+
+Battery monitor instance to feed with this circuit\. Set to 1 for BATT\, 2 for BATT2 etc\. The corresponding BATTn\_MONITOR must be 29 \(scripting\)\. Set to 0 to disable\.
 
 
-
-
-.. _EFI_SP_ST_DISARM:
-
-EFI\_SP\_ST\_DISARM: SkyPower EFI allow start disarmed
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-SkyPower EFI allow start disarmed\. This controls if starting the engine while disarmed is allowed
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _EFI_SP_MODEL:
-
-EFI\_SP\_MODEL: SkyPower EFI ECU model
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-SkyPower EFI ECU model
-
-
-+-------+---------+
-| Value | Meaning |
-+=======+=========+
-| 0     | SRE_180 |
-+-------+---------+
-| 1     | SP_275  |
-+-------+---------+
-
-
-
-
-.. _EFI_SP_GEN_CTRL:
-
-EFI\_SP\_GEN\_CTRL: SkyPower EFI enable generator control
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-SkyPower EFI enable generator control
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _EFI_SP_RST_TIME:
-
-EFI\_SP\_RST\_TIME: SkyPower EFI restart time
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-SkyPower EFI restart time\. If engine should be running and it has stopped for this amount of time then auto\-restart\. To disable this feature set this value to zero\.
-
-
-+---------+---------+
-| Range   | Units   |
-+=========+=========+
-| 0 to 10 | seconds |
-+---------+---------+
++--------+
+| Range  |
++========+
+| 0 to 9 |
++--------+
 
 
 
@@ -6951,140 +6753,22 @@ This allows selection of LTE band\. A value of \-1 means no band setting change 
 
 
 
-.. _EFI_SVF_ENABLE:
+.. _EFI_DLA64_ENABLE:
 
-EFI\_SVF\_ENABLE: Generator SVFFI enable
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Enable SVFFI generator support
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _EFI_SVF_ARMCHECK:
-
-EFI\_SVF\_ARMCHECK: Generator SVFFI arming check
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Check for Generator ARM state before arming
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _DJIR_DEBUG:
-
-DJIR\_DEBUG: DJIRS2 debug
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: This parameter is for advanced users*
-
-Enable DJIRS2 debug
-
-
-+-------+---------------------------------+
-| Value | Meaning                         |
-+=======+=================================+
-| 0     | Disabled                        |
-+-------+---------------------------------+
-| 1     | Enabled                         |
-+-------+---------------------------------+
-| 2     | Enabled with attitude reporting |
-+-------+---------------------------------+
-
-
-
-
-.. _DJIR_UPSIDEDOWN:
-
-DJIR\_UPSIDEDOWN: DJIRS2 upside down
+EFI\_DLA64\_ENABLE: EFI DLA64 enable
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-DJIRS2 upside down
+Enable EFI DLA64 driver
 
 
-+-------+---------------+
-| Value | Meaning       |
-+=======+===============+
-| 0     | Right side up |
-+-------+---------------+
-| 1     | Upside down   |
-+-------+---------------+
-
-
-
-
-.. _DCS_NUM_CIRCUITS:
-
-DCS\_NUM\_CIRCUITS: Number of CircuitStatus monitors
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| *Note: Reboot required after change*
-
-Number of DroneCAN CircuitStatus battery monitor instances\. The per\-instance DCSx\_ parameters are created based on this value\.
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 9 |
-+--------+
-
-
-
-
-.. _DCS1_CIRCUIT_ID:
-
-DCS1\_CIRCUIT\_ID: CircuitStatus circuit ID
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-circuit\_id of the CircuitStatus message to use for this instance\. Set to \-1 to disable\.
-
-
-+-------------+
-| Range       |
-+=============+
-| -1 to 65535 |
-+-------------+
-
-
-
-
-.. _DCS1_BATT_IDX:
-
-DCS1\_BATT\_IDX: CircuitStatus battery index
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Battery monitor instance to feed with this circuit\. Set to 1 for BATT\, 2 for BATT2 etc\. The corresponding BATTn\_MONITOR must be 29 \(scripting\)\. Set to 0 to disable\.
-
-
-+--------+
-| Range  |
-+========+
-| 0 to 9 |
-+--------+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
 
 
 
@@ -7145,120 +6829,6 @@ ANX CAN battery index
 +=========+
 | 1 to 10 |
 +---------+
-
-
-
-
-.. _EFI_HFE_ENABLE:
-
-EFI\_HFE\_ENABLE: Enable HFE EFI driver
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Enable HFE EFI driver
-
-
-+-------+----------+
-| Value | Meaning  |
-+=======+==========+
-| 0     | Disabled |
-+-------+----------+
-| 1     | Enabled  |
-+-------+----------+
-
-
-
-
-.. _EFI_HFE_RATE_HZ:
-
-EFI\_HFE\_RATE\_HZ: HFI EFI Update rate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-HFI EFI Update rate
-
-
-+----------+
-| Range    |
-+==========+
-| 0 to 400 |
-+----------+
-
-
-
-
-.. _EFI_HFE_ECU_IDX:
-
-EFI\_HFE\_ECU\_IDX: HFI EFI ECU index
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-HFI EFI ECU index\, 0 for automatic
-
-
-+---------+
-| Range   |
-+=========+
-| 0 to 10 |
-+---------+
-
-
-
-
-.. _EFI_HFE_FUEL_DTY:
-
-EFI\_HFE\_FUEL\_DTY: HFI EFI fuel density
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-HFI EFI fuel density in gram per litre
-
-
-+-----------+
-| Range     |
-+===========+
-| 0 to 2000 |
-+-----------+
-
-
-
-
-.. _EFI_HFE_REL_IDX:
-
-EFI\_HFE\_REL\_IDX: HFI EFI relay index
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-HFI EFI relay index
-
-
-+---------+
-| Range   |
-+=========+
-| 0 to 10 |
-+---------+
-
-
-
-
-.. _EFI_HFE_CANDRV:
-
-EFI\_HFE\_CANDRV: HFI EFI CAN driver
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-HFI EFI CAN driver
-
-
-+-------+--------------+
-| Value | Meaning      |
-+=======+==============+
-| 0     | None         |
-+-------+--------------+
-| 1     | 1stCANDriver |
-+-------+--------------+
-| 2     | 2ndCanDriver |
-+-------+--------------+
 
 
 
@@ -7361,6 +6931,483 @@ Optional settings
 +-----+--------------------------+
 
 
+
+
+.. _EFI_SVF_ENABLE:
+
+EFI\_SVF\_ENABLE: Generator SVFFI enable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Enable SVFFI generator support
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _EFI_SVF_ARMCHECK:
+
+EFI\_SVF\_ARMCHECK: Generator SVFFI arming check
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Check for Generator ARM state before arming
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _EFI_SP_ENABLE:
+
+EFI\_SP\_ENABLE: Enable SkyPower EFI support
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Enable SkyPower EFI support
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _EFI_SP_CANDRV:
+
+EFI\_SP\_CANDRV: Set SkyPower EFI CAN driver
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Set SkyPower EFI CAN driver
+
+
++-------+--------------+
+| Value | Meaning      |
++=======+==============+
+| 0     | None         |
++-------+--------------+
+| 1     | 1stCANDriver |
++-------+--------------+
+| 2     | 2ndCanDriver |
++-------+--------------+
+
+
+
+
+.. _EFI_SP_UPDATE_HZ:
+
+EFI\_SP\_UPDATE\_HZ: SkyPower EFI update rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+SkyPower EFI update rate
+
+
++-----------+-------+
+| Range     | Units |
++===========+=======+
+| 10 to 200 | hertz |
++-----------+-------+
+
+
+
+
+.. _EFI_SP_THR_FN:
+
+EFI\_SP\_THR\_FN: SkyPower EFI throttle function
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+SkyPower EFI throttle function\. This sets which SERVOn\_FUNCTION to use for the target throttle\. This should be 70 for fixed wing aircraft and 31 for helicopter rotor speed control
+
+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Disabled  |
++-------+-----------+
+| 70    | FixedWing |
++-------+-----------+
+| 31    | HeliRSC   |
++-------+-----------+
+
+
+
+
+.. _EFI_SP_THR_RATE:
+
+EFI\_SP\_THR\_RATE: SkyPower EFI throttle rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+SkyPower EFI throttle rate\. This sets rate at which throttle updates are sent to the engine
+
+
++-----------+-------+
+| Range     | Units |
++===========+=======+
+| 10 to 100 | hertz |
++-----------+-------+
+
+
+
+
+.. _EFI_SP_START_FN:
+
+EFI\_SP\_START\_FN: SkyPower EFI start function
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+SkyPower EFI start function\. This is the RCn\_OPTION value to use to find the R\/C channel used for controlling engine start
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 300   | 300      |
++-------+----------+
+| 301   | 301      |
++-------+----------+
+| 302   | 302      |
++-------+----------+
+| 303   | 303      |
++-------+----------+
+| 304   | 304      |
++-------+----------+
+| 305   | 305      |
++-------+----------+
+| 306   | 306      |
++-------+----------+
+| 307   | 307      |
++-------+----------+
+
+
+
+
+.. _EFI_SP_GEN_FN:
+
+EFI\_SP\_GEN\_FN: SkyPower EFI generator control function
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+SkyPower EFI generator control function\. This is the RCn\_OPTION value to use to find the R\/C channel used for controlling generator start\/stop
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 300   | 300      |
++-------+----------+
+| 301   | 301      |
++-------+----------+
+| 302   | 302      |
++-------+----------+
+| 303   | 303      |
++-------+----------+
+| 304   | 304      |
++-------+----------+
+| 305   | 305      |
++-------+----------+
+| 306   | 306      |
++-------+----------+
+| 307   | 307      |
++-------+----------+
+
+
+
+
+.. _EFI_SP_MIN_RPM:
+
+EFI\_SP\_MIN\_RPM: SkyPower EFI minimum RPM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+SkyPower EFI minimum RPM\. This is the RPM below which the engine is considered to be stopped
+
+
++-----------+
+| Range     |
++===========+
+| 1 to 1000 |
++-----------+
+
+
+
+
+.. _EFI_SP_TLM_RT:
+
+EFI\_SP\_TLM\_RT: SkyPower EFI telemetry rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+SkyPower EFI telemetry rate\. This is the rate at which extra telemetry values are sent to the GCS
+
+
++---------+-------+
+| Range   | Units |
++=========+=======+
+| 1 to 10 | hertz |
++---------+-------+
+
+
+
+
+.. _EFI_SP_LOG_RT:
+
+EFI\_SP\_LOG\_RT: SkyPower EFI log rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+SkyPower EFI log rate\. This is the rate at which extra logging of the SkyPower EFI is performed
+
+
++---------+-------+
+| Range   | Units |
++=========+=======+
+| 1 to 50 | hertz |
++---------+-------+
+
+
+
+
+.. _EFI_SP_ST_DISARM:
+
+EFI\_SP\_ST\_DISARM: SkyPower EFI allow start disarmed
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+SkyPower EFI allow start disarmed\. This controls if starting the engine while disarmed is allowed
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _EFI_SP_MODEL:
+
+EFI\_SP\_MODEL: SkyPower EFI ECU model
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+SkyPower EFI ECU model
+
+
++-------+---------+
+| Value | Meaning |
++=======+=========+
+| 0     | SRE_180 |
++-------+---------+
+| 1     | SP_275  |
++-------+---------+
+
+
+
+
+.. _EFI_SP_GEN_CTRL:
+
+EFI\_SP\_GEN\_CTRL: SkyPower EFI enable generator control
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+SkyPower EFI enable generator control
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _EFI_SP_RST_TIME:
+
+EFI\_SP\_RST\_TIME: SkyPower EFI restart time
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+SkyPower EFI restart time\. If engine should be running and it has stopped for this amount of time then auto\-restart\. To disable this feature set this value to zero\.
+
+
++---------+---------+
+| Range   | Units   |
++=========+=========+
+| 0 to 10 | seconds |
++---------+---------+
+
+
+
+
+.. _DJIR_DEBUG:
+
+DJIR\_DEBUG: DJIRS2 debug
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Enable DJIRS2 debug
+
+
++-------+---------------------------------+
+| Value | Meaning                         |
++=======+=================================+
+| 0     | Disabled                        |
++-------+---------------------------------+
+| 1     | Enabled                         |
++-------+---------------------------------+
+| 2     | Enabled with attitude reporting |
++-------+---------------------------------+
+
+
+
+
+.. _DJIR_UPSIDEDOWN:
+
+DJIR\_UPSIDEDOWN: DJIRS2 upside down
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+DJIRS2 upside down
+
+
++-------+---------------+
+| Value | Meaning       |
++=======+===============+
+| 0     | Right side up |
++-------+---------------+
+| 1     | Upside down   |
++-------+---------------+
+
+
+
+
+.. _EFI_2K_ENABLE:
+
+EFI\_2K\_ENABLE: Enable NMEA 2000 EFI driver
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Enable NMEA 2000 EFI driver
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | Enabled  |
++-------+----------+
+
+
+
+
+.. _EFI_2K_CANDRV:
+
+EFI\_2K\_CANDRV: NMEA 2000 CAN driver
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+NMEA 2000 CAN driver\. Use 1 for first CAN scripting driver\, 2 for 2nd driver
+
+
++-------+-----------+
+| Value | Meaning   |
++=======+===========+
+| 0     | Disabled  |
++-------+-----------+
+| 1     | FirstCAN  |
++-------+-----------+
+| 2     | SecondCAN |
++-------+-----------+
+
+
+
+
+.. _TOFSENSE_S1_PRX:
+
+TOFSENSE\_S1\_PRX: TOFSENSE\-M to be used as Proximity sensor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Set 0 if sensor is to be used as a 1\-D rangefinder \(minimum of all distances will be sent\, typically used for height detection\)\. Set 1 if it should be used as a 3\-D proximity device \(Eg\. Obstacle Avoidance\)
+
+
++-------+-------------------------+
+| Value | Meaning                 |
++=======+=========================+
+| 0     | Set as Rangefinder      |
++-------+-------------------------+
+| 1     | Set as Proximity sensor |
++-------+-------------------------+
+
+
+
+
+.. _TOFSENSE_S1_SP:
+
+TOFSENSE\_S1\_SP: TOFSENSE\-M serial port config
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+UART instance sensor is connected to\. Set 1 if sensor is connected to the port with fist SERIALx\_PROTOCOL \= 28\.
+
+
++--------+
+| Range  |
++========+
+| 1 to 4 |
++--------+
+
+
+
+
+.. _TOFSENSE_S1_BR:
+
+TOFSENSE\_S1\_BR: TOFSENSE\-M serial port baudrate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Serial Port baud rate\. Sensor baud rate can be changed from Nassistant software
 
 
 .. _TOFSENSE_PRX:
@@ -7527,53 +7574,6 @@ Third TOFSENSE\-M sensor ID\. This cannot be 0\. You can change ID of sensor fro
 +----------+
 
 
-
-
-.. _TOFSENSE_S1_PRX:
-
-TOFSENSE\_S1\_PRX: TOFSENSE\-M to be used as Proximity sensor
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Set 0 if sensor is to be used as a 1\-D rangefinder \(minimum of all distances will be sent\, typically used for height detection\)\. Set 1 if it should be used as a 3\-D proximity device \(Eg\. Obstacle Avoidance\)
-
-
-+-------+-------------------------+
-| Value | Meaning                 |
-+=======+=========================+
-| 0     | Set as Rangefinder      |
-+-------+-------------------------+
-| 1     | Set as Proximity sensor |
-+-------+-------------------------+
-
-
-
-
-.. _TOFSENSE_S1_SP:
-
-TOFSENSE\_S1\_SP: TOFSENSE\-M serial port config
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-UART instance sensor is connected to\. Set 1 if sensor is connected to the port with fist SERIALx\_PROTOCOL \= 28\.
-
-
-+--------+
-| Range  |
-+========+
-| 1 to 4 |
-+--------+
-
-
-
-
-.. _TOFSENSE_S1_BR:
-
-TOFSENSE\_S1\_BR: TOFSENSE\-M serial port baudrate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Serial Port baud rate\. Sensor baud rate can be changed from Nassistant software
 
 
 

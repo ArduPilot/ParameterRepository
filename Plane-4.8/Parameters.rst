@@ -1082,7 +1082,7 @@ FS\_SHORT\_ACTN: Short failsafe action
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-The action to take on a short failsafe event\. A short failsafe event can be triggered instantly by loss of RC control or by throttle value \(see THR\_FS\_VALUE\)\. If in CIRCLE or RTL mode this parameter is ignored\. A short failsafe event in stabilization and manual modes will cause a change to CIRCLE mode if FS\_SHORT\_ACTN is 0 or 1\, a change to FBWA mode with zero throttle if FS\_SHORT\_ACTN is 2\, and a change to FBWB mode if FS\_SHORT\_ACTN is 4\. In all other modes \(AUTO\, GUIDED and LOITER\) a short failsafe event will cause no mode change if FS\_SHORT\_ACTN is set to 0\, will cause a change to CIRCLE mode if set to 1\, will change to FBWA mode with zero throttle if set to 2\, or will change to FBWB if set to 4\. Please see the documentation for FS\_LONG\_ACTN for the behaviour after FS\_LONG\_TIMEOUT seconds of failsafe\. This parameter only applies to failsafes during fixed wing modes\. Quadplane modes will switch to QLAND unless Q\_OPTIONS bit 5\(QRTL\) or 20\(RTL\) are set\.
+The action to take on a short failsafe event\. A short failsafe event can be triggered instantly by loss of RC control or by throttle value \(see THR\_FS\_VALUE\)\. If in CIRCLE or RTL mode this parameter is ignored\. A short failsafe event in stabilization and manual modes will cause a change to CIRCLE mode if FS\_SHORT\_ACTN is 0 or 1\, a change to Glide mode \(zero throttle\, wings level\) if FS\_SHORT\_ACTN is 2\, and a change to FBWB mode if FS\_SHORT\_ACTN is 4\. In all other modes \(AUTO\, GUIDED and LOITER\) a short failsafe event will cause no mode change if FS\_SHORT\_ACTN is set to 0\, will cause a change to CIRCLE mode if set to 1\, will change to Glide mode if set to 2\, or will change to FBWB if set to 4\. Please see the documentation for FS\_LONG\_ACTN for the behaviour after FS\_LONG\_TIMEOUT seconds of failsafe\. This parameter only applies to failsafes during fixed wing modes\. Quadplane modes will switch to QLAND unless Q\_OPTIONS bit 5\(QRTL\) or 20\(RTL\) are set\.
 
 
 +----------------------------------------------------------------+
@@ -1095,7 +1095,7 @@ The action to take on a short failsafe event\. A short failsafe event can be tri
 | +-------+----------------------------------------------------+ |
 | | 1     | CIRCLE                                             | |
 | +-------+----------------------------------------------------+ |
-| | 2     | FBWA at zero throttle                              | |
+| | 2     | Glide                                              | |
 | +-------+----------------------------------------------------+ |
 | | 3     | Disable                                            | |
 | +-------+----------------------------------------------------+ |
@@ -1113,7 +1113,7 @@ FS\_LONG\_ACTN: Long failsafe action
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-The action to take on a long \(FS\_LONG\_TIMEOUT seconds\) failsafe event\. If the aircraft was in a stabilization or manual mode when failsafe started and a long failsafe occurs then it will change to RTL mode if FS\_LONG\_ACTN is 0 or 1\, and will change to FBWA if FS\_LONG\_ACTN is set to 2\. If the aircraft was in an auto mode \(such as AUTO or GUIDED\) when the failsafe started then it will continue in the auto mode if FS\_LONG\_ACTN is set to 0\, will change to RTL mode if FS\_LONG\_ACTN is set to 1 and will change to FBWA mode if FS\_LONG\_ACTN is set to 2\. If FS\_LONG\_ACTN is set to 3\, the parachute will be deployed \(make sure the chute is configured and enabled\)\. If FS\_LONG\_ACTN is set to 4 the aircraft will switch to mode AUTO with the current waypoint if it is not already in mode AUTO\, unless it is in the middle of a landing sequence\. If FS\_LONG\_ACTN is set to 5\, will switch to AUTOLAND mode if possible\, otherwise RTL mode\. This parameter only applies to failsafes during fixed wing modes\. Quadplane modes will switch to QLAND unless Q\_OPTIONS bit 5 \(QRTL\) or 20\(RTL\) are set\.
+The action to take on a long \(FS\_LONG\_TIMEOUT seconds\) failsafe event\. If the aircraft was in a stabilization or manual mode when failsafe started and a long failsafe occurs then it will change to RTL mode if FS\_LONG\_ACTN is 0 or 1\, and will change to Glide mode \(zero throttle\, wings level\) if FS\_LONG\_ACTN is set to 2\. If the aircraft was in an auto mode \(such as AUTO or GUIDED\) when the failsafe started then it will continue in the auto mode if FS\_LONG\_ACTN is set to 0\, will change to RTL mode if FS\_LONG\_ACTN is set to 1 and will change to Glide mode if FS\_LONG\_ACTN is set to 2\. If FS\_LONG\_ACTN is set to 3\, the parachute will be deployed \(make sure the chute is configured and enabled\)\. If FS\_LONG\_ACTN is set to 4 the aircraft will switch to mode AUTO with the current waypoint if it is not already in mode AUTO\, unless it is in the middle of a landing sequence\. If FS\_LONG\_ACTN is set to 5\, will switch to AUTOLAND mode if possible\, otherwise RTL mode\. This parameter only applies to failsafes during fixed wing modes\. Quadplane modes will switch to QLAND unless Q\_OPTIONS bit 5 \(QRTL\) or 20\(RTL\) are set\.
 
 
 +------------------------------+
@@ -1308,6 +1308,8 @@ Flight mode for switch position 1 \(910 to 1230 and above 2049\)
 | +-------+-----------------+ |
 | | 26    | AUTOLAND        | |
 | +-------+-----------------+ |
+| | 27    | Glide           | |
+| +-------+-----------------+ |
 |                             |
 +-----------------------------+
 
@@ -1378,6 +1380,8 @@ Flight mode for switch position 2 \(1231 to 1360\)
 | | 25    | Loiter to QLand | |
 | +-------+-----------------+ |
 | | 26    | AUTOLAND        | |
+| +-------+-----------------+ |
+| | 27    | Glide           | |
 | +-------+-----------------+ |
 |                             |
 +-----------------------------+
@@ -1450,6 +1454,8 @@ Flight mode for switch position 3 \(1361 to 1490\)
 | +-------+-----------------+ |
 | | 26    | AUTOLAND        | |
 | +-------+-----------------+ |
+| | 27    | Glide           | |
+| +-------+-----------------+ |
 |                             |
 +-----------------------------+
 
@@ -1520,6 +1526,8 @@ Flight mode for switch position 4 \(1491 to 1620\)
 | | 25    | Loiter to QLand | |
 | +-------+-----------------+ |
 | | 26    | AUTOLAND        | |
+| +-------+-----------------+ |
+| | 27    | Glide           | |
 | +-------+-----------------+ |
 |                             |
 +-----------------------------+
@@ -1592,6 +1600,8 @@ Flight mode for switch position 5 \(1621 to 1749\)
 | +-------+-----------------+ |
 | | 26    | AUTOLAND        | |
 | +-------+-----------------+ |
+| | 27    | Glide           | |
+| +-------+-----------------+ |
 |                             |
 +-----------------------------+
 
@@ -1662,6 +1672,8 @@ Flight mode for switch position 6 \(1750 to 2049\)
 | | 25    | Loiter to QLand | |
 | +-------+-----------------+ |
 | | 26    | AUTOLAND        | |
+| +-------+-----------------+ |
+| | 27    | Glide           | |
 | +-------+-----------------+ |
 |                             |
 +-----------------------------+
@@ -1734,6 +1746,8 @@ This selects the mode to start in on boot\. This is useful for when you want to 
 | | 25    | Loiter to QLand | |
 | +-------+-----------------+ |
 | | 26    | AUTOLAND        | |
+| +-------+-----------------+ |
+| | 27    | Glide           | |
 | +-------+-----------------+ |
 |                             |
 +-----------------------------+
@@ -3062,6 +3076,8 @@ Bitmask of flight modes to disable for GCS selection\. Mode can still be accesse
 | | 20  | Loiter to QLand | |
 | +-----+-----------------+ |
 | | 21  | Autoland        | |
+| +-----+-----------------+ |
+| | 22  | Glide           | |
 | +-----+-----------------+ |
 |                           |
 +---------------------------+
@@ -29821,7 +29837,7 @@ Auxiliary RC Options function executed on pin change
 | +-------+-----------------------------------------------------+ |
 | | 155   | Set roll pitch and yaw trim to current servo and RC | |
 | +-------+-----------------------------------------------------+ |
-| | 157   | Force FS Action to FBWA                             | |
+| | 157   | Force-enable Glide failsafe action                  | |
 | +-------+-----------------------------------------------------+ |
 | | 158   | Optflow Calibration                                 | |
 | +-------+-----------------------------------------------------+ |
@@ -30080,7 +30096,7 @@ Auxiliary RC Options function executed on pin change
 | +-------+-----------------------------------------------------+ |
 | | 155   | Set roll pitch and yaw trim to current servo and RC | |
 | +-------+-----------------------------------------------------+ |
-| | 157   | Force FS Action to FBWA                             | |
+| | 157   | Force-enable Glide failsafe action                  | |
 | +-------+-----------------------------------------------------+ |
 | | 158   | Optflow Calibration                                 | |
 | +-------+-----------------------------------------------------+ |
@@ -30339,7 +30355,7 @@ Auxiliary RC Options function executed on pin change
 | +-------+-----------------------------------------------------+ |
 | | 155   | Set roll pitch and yaw trim to current servo and RC | |
 | +-------+-----------------------------------------------------+ |
-| | 157   | Force FS Action to FBWA                             | |
+| | 157   | Force-enable Glide failsafe action                  | |
 | +-------+-----------------------------------------------------+ |
 | | 158   | Optflow Calibration                                 | |
 | +-------+-----------------------------------------------------+ |
@@ -30598,7 +30614,7 @@ Auxiliary RC Options function executed on pin change
 | +-------+-----------------------------------------------------+ |
 | | 155   | Set roll pitch and yaw trim to current servo and RC | |
 | +-------+-----------------------------------------------------+ |
-| | 157   | Force FS Action to FBWA                             | |
+| | 157   | Force-enable Glide failsafe action                  | |
 | +-------+-----------------------------------------------------+ |
 | | 158   | Optflow Calibration                                 | |
 | +-------+-----------------------------------------------------+ |
@@ -53400,7 +53416,7 @@ Used in autoland to give the minimum pitch in the final stage of landing \(after
 +-----------+-----------+---------+
 | Increment | Range     | Units   |
 +===========+===========+=========+
-| 10        | -20 to 20 | degrees |
+| 0.5       | -20 to 20 | degrees |
 +-----------+-----------+---------+
 
 
@@ -93884,7 +93900,7 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 155   | Set roll pitch and yaw trim to current servo and RC | |
 | +-------+-----------------------------------------------------+ |
-| | 157   | Force FS Action to FBWA                             | |
+| | 157   | Force-enable Glide failsafe action                  | |
 | +-------+-----------------------------------------------------+ |
 | | 158   | Optflow Calibration                                 | |
 | +-------+-----------------------------------------------------+ |
@@ -94252,7 +94268,7 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 155   | Set roll pitch and yaw trim to current servo and RC | |
 | +-------+-----------------------------------------------------+ |
-| | 157   | Force FS Action to FBWA                             | |
+| | 157   | Force-enable Glide failsafe action                  | |
 | +-------+-----------------------------------------------------+ |
 | | 158   | Optflow Calibration                                 | |
 | +-------+-----------------------------------------------------+ |
@@ -94620,7 +94636,7 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 155   | Set roll pitch and yaw trim to current servo and RC | |
 | +-------+-----------------------------------------------------+ |
-| | 157   | Force FS Action to FBWA                             | |
+| | 157   | Force-enable Glide failsafe action                  | |
 | +-------+-----------------------------------------------------+ |
 | | 158   | Optflow Calibration                                 | |
 | +-------+-----------------------------------------------------+ |
@@ -94988,7 +95004,7 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 155   | Set roll pitch and yaw trim to current servo and RC | |
 | +-------+-----------------------------------------------------+ |
-| | 157   | Force FS Action to FBWA                             | |
+| | 157   | Force-enable Glide failsafe action                  | |
 | +-------+-----------------------------------------------------+ |
 | | 158   | Optflow Calibration                                 | |
 | +-------+-----------------------------------------------------+ |
@@ -95356,7 +95372,7 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 155   | Set roll pitch and yaw trim to current servo and RC | |
 | +-------+-----------------------------------------------------+ |
-| | 157   | Force FS Action to FBWA                             | |
+| | 157   | Force-enable Glide failsafe action                  | |
 | +-------+-----------------------------------------------------+ |
 | | 158   | Optflow Calibration                                 | |
 | +-------+-----------------------------------------------------+ |
@@ -95724,7 +95740,7 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 155   | Set roll pitch and yaw trim to current servo and RC | |
 | +-------+-----------------------------------------------------+ |
-| | 157   | Force FS Action to FBWA                             | |
+| | 157   | Force-enable Glide failsafe action                  | |
 | +-------+-----------------------------------------------------+ |
 | | 158   | Optflow Calibration                                 | |
 | +-------+-----------------------------------------------------+ |
@@ -96092,7 +96108,7 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 155   | Set roll pitch and yaw trim to current servo and RC | |
 | +-------+-----------------------------------------------------+ |
-| | 157   | Force FS Action to FBWA                             | |
+| | 157   | Force-enable Glide failsafe action                  | |
 | +-------+-----------------------------------------------------+ |
 | | 158   | Optflow Calibration                                 | |
 | +-------+-----------------------------------------------------+ |
@@ -96460,7 +96476,7 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 155   | Set roll pitch and yaw trim to current servo and RC | |
 | +-------+-----------------------------------------------------+ |
-| | 157   | Force FS Action to FBWA                             | |
+| | 157   | Force-enable Glide failsafe action                  | |
 | +-------+-----------------------------------------------------+ |
 | | 158   | Optflow Calibration                                 | |
 | +-------+-----------------------------------------------------+ |
@@ -96828,7 +96844,7 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 155   | Set roll pitch and yaw trim to current servo and RC | |
 | +-------+-----------------------------------------------------+ |
-| | 157   | Force FS Action to FBWA                             | |
+| | 157   | Force-enable Glide failsafe action                  | |
 | +-------+-----------------------------------------------------+ |
 | | 158   | Optflow Calibration                                 | |
 | +-------+-----------------------------------------------------+ |
@@ -97196,7 +97212,7 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 155   | Set roll pitch and yaw trim to current servo and RC | |
 | +-------+-----------------------------------------------------+ |
-| | 157   | Force FS Action to FBWA                             | |
+| | 157   | Force-enable Glide failsafe action                  | |
 | +-------+-----------------------------------------------------+ |
 | | 158   | Optflow Calibration                                 | |
 | +-------+-----------------------------------------------------+ |
@@ -97564,7 +97580,7 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 155   | Set roll pitch and yaw trim to current servo and RC | |
 | +-------+-----------------------------------------------------+ |
-| | 157   | Force FS Action to FBWA                             | |
+| | 157   | Force-enable Glide failsafe action                  | |
 | +-------+-----------------------------------------------------+ |
 | | 158   | Optflow Calibration                                 | |
 | +-------+-----------------------------------------------------+ |
@@ -97932,7 +97948,7 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 155   | Set roll pitch and yaw trim to current servo and RC | |
 | +-------+-----------------------------------------------------+ |
-| | 157   | Force FS Action to FBWA                             | |
+| | 157   | Force-enable Glide failsafe action                  | |
 | +-------+-----------------------------------------------------+ |
 | | 158   | Optflow Calibration                                 | |
 | +-------+-----------------------------------------------------+ |
@@ -98300,7 +98316,7 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 155   | Set roll pitch and yaw trim to current servo and RC | |
 | +-------+-----------------------------------------------------+ |
-| | 157   | Force FS Action to FBWA                             | |
+| | 157   | Force-enable Glide failsafe action                  | |
 | +-------+-----------------------------------------------------+ |
 | | 158   | Optflow Calibration                                 | |
 | +-------+-----------------------------------------------------+ |
@@ -98668,7 +98684,7 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 155   | Set roll pitch and yaw trim to current servo and RC | |
 | +-------+-----------------------------------------------------+ |
-| | 157   | Force FS Action to FBWA                             | |
+| | 157   | Force-enable Glide failsafe action                  | |
 | +-------+-----------------------------------------------------+ |
 | | 158   | Optflow Calibration                                 | |
 | +-------+-----------------------------------------------------+ |
@@ -99036,7 +99052,7 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 155   | Set roll pitch and yaw trim to current servo and RC | |
 | +-------+-----------------------------------------------------+ |
-| | 157   | Force FS Action to FBWA                             | |
+| | 157   | Force-enable Glide failsafe action                  | |
 | +-------+-----------------------------------------------------+ |
 | | 158   | Optflow Calibration                                 | |
 | +-------+-----------------------------------------------------+ |
@@ -99404,7 +99420,7 @@ Function assigned to this RC channel
 | +-------+-----------------------------------------------------+ |
 | | 155   | Set roll pitch and yaw trim to current servo and RC | |
 | +-------+-----------------------------------------------------+ |
-| | 157   | Force FS Action to FBWA                             | |
+| | 157   | Force-enable Glide failsafe action                  | |
 | +-------+-----------------------------------------------------+ |
 | | 158   | Optflow Calibration                                 | |
 | +-------+-----------------------------------------------------+ |
