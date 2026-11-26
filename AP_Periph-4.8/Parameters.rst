@@ -5669,7 +5669,7 @@ BATT2\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -6831,7 +6831,7 @@ BATT3\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -7993,7 +7993,7 @@ BATT4\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -9155,7 +9155,7 @@ BATT5\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -10317,7 +10317,7 @@ BATT6\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -11479,7 +11479,7 @@ BATT7\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -12641,7 +12641,7 @@ BATT8\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -13803,7 +13803,7 @@ BATT9\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -14965,7 +14965,7 @@ BATTA\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -16127,7 +16127,7 @@ BATTB\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -17289,7 +17289,7 @@ BATTC\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -18451,7 +18451,7 @@ BATTD\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -19613,7 +19613,7 @@ BATTE\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -20775,7 +20775,7 @@ BATTF\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -21937,7 +21937,7 @@ BATTG\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -23099,7 +23099,7 @@ BATT\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -83215,28 +83215,30 @@ SIM\_GPS1\_UBXMDL: UBlox receiver model
 Which u\-blox receiver to simulate\. Simple outputs all messages and ignores configuration\; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output
 
 
-+------------------------------+
-| Values                       |
-+==============================+
-| +-------+------------------+ |
-| | Value | Meaning          | |
-| +=======+==================+ |
-| | 0     | Simple           | |
-| +-------+------------------+ |
-| | 1     | u-blox 6 FW 7.03 | |
-| +-------+------------------+ |
-| | 2     | NEO-M8N FW 2.01  | |
-| +-------+------------------+ |
-| | 3     | M8 ROM CORE 3.01 | |
-| +-------+------------------+ |
-| | 4     | NEO-M8N SPG 3.01 | |
-| +-------+------------------+ |
-| | 5     | NEO-M9N SPG 4.04 | |
-| +-------+------------------+ |
-| | 6     | M10 ROM SPG 5.10 | |
-| +-------+------------------+ |
-|                              |
-+------------------------------+
++-------------------------------+
+| Values                        |
++===============================+
+| +-------+-------------------+ |
+| | Value | Meaning           | |
+| +=======+===================+ |
+| | 0     | Simple            | |
+| +-------+-------------------+ |
+| | 1     | u-blox 6 FW 7.03  | |
+| +-------+-------------------+ |
+| | 2     | NEO-M8N FW 2.01   | |
+| +-------+-------------------+ |
+| | 3     | M8 ROM CORE 3.01  | |
+| +-------+-------------------+ |
+| | 4     | NEO-M8N SPG 3.01  | |
+| +-------+-------------------+ |
+| | 5     | NEO-M9N SPG 4.04  | |
+| +-------+-------------------+ |
+| | 6     | M10 ROM SPG 5.10  | |
+| +-------+-------------------+ |
+| | 7     | ZED-X20P HPG 2.11 | |
+| +-------+-------------------+ |
+|                               |
++-------------------------------+
 
 
 
@@ -83787,28 +83789,30 @@ SIM\_GPS2\_UBXMDL: UBlox receiver model
 Which u\-blox receiver to simulate\. Simple outputs all messages and ignores configuration\; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output
 
 
-+------------------------------+
-| Values                       |
-+==============================+
-| +-------+------------------+ |
-| | Value | Meaning          | |
-| +=======+==================+ |
-| | 0     | Simple           | |
-| +-------+------------------+ |
-| | 1     | u-blox 6 FW 7.03 | |
-| +-------+------------------+ |
-| | 2     | NEO-M8N FW 2.01  | |
-| +-------+------------------+ |
-| | 3     | M8 ROM CORE 3.01 | |
-| +-------+------------------+ |
-| | 4     | NEO-M8N SPG 3.01 | |
-| +-------+------------------+ |
-| | 5     | NEO-M9N SPG 4.04 | |
-| +-------+------------------+ |
-| | 6     | M10 ROM SPG 5.10 | |
-| +-------+------------------+ |
-|                              |
-+------------------------------+
++-------------------------------+
+| Values                        |
++===============================+
+| +-------+-------------------+ |
+| | Value | Meaning           | |
+| +=======+===================+ |
+| | 0     | Simple            | |
+| +-------+-------------------+ |
+| | 1     | u-blox 6 FW 7.03  | |
+| +-------+-------------------+ |
+| | 2     | NEO-M8N FW 2.01   | |
+| +-------+-------------------+ |
+| | 3     | M8 ROM CORE 3.01  | |
+| +-------+-------------------+ |
+| | 4     | NEO-M8N SPG 3.01  | |
+| +-------+-------------------+ |
+| | 5     | NEO-M9N SPG 4.04  | |
+| +-------+-------------------+ |
+| | 6     | M10 ROM SPG 5.10  | |
+| +-------+-------------------+ |
+| | 7     | ZED-X20P HPG 2.11 | |
+| +-------+-------------------+ |
+|                               |
++-------------------------------+
 
 
 
@@ -84359,28 +84363,30 @@ SIM\_GPS3\_UBXMDL: UBlox receiver model
 Which u\-blox receiver to simulate\. Simple outputs all messages and ignores configuration\; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output
 
 
-+------------------------------+
-| Values                       |
-+==============================+
-| +-------+------------------+ |
-| | Value | Meaning          | |
-| +=======+==================+ |
-| | 0     | Simple           | |
-| +-------+------------------+ |
-| | 1     | u-blox 6 FW 7.03 | |
-| +-------+------------------+ |
-| | 2     | NEO-M8N FW 2.01  | |
-| +-------+------------------+ |
-| | 3     | M8 ROM CORE 3.01 | |
-| +-------+------------------+ |
-| | 4     | NEO-M8N SPG 3.01 | |
-| +-------+------------------+ |
-| | 5     | NEO-M9N SPG 4.04 | |
-| +-------+------------------+ |
-| | 6     | M10 ROM SPG 5.10 | |
-| +-------+------------------+ |
-|                              |
-+------------------------------+
++-------------------------------+
+| Values                        |
++===============================+
+| +-------+-------------------+ |
+| | Value | Meaning           | |
+| +=======+===================+ |
+| | 0     | Simple            | |
+| +-------+-------------------+ |
+| | 1     | u-blox 6 FW 7.03  | |
+| +-------+-------------------+ |
+| | 2     | NEO-M8N FW 2.01   | |
+| +-------+-------------------+ |
+| | 3     | M8 ROM CORE 3.01  | |
+| +-------+-------------------+ |
+| | 4     | NEO-M8N SPG 3.01  | |
+| +-------+-------------------+ |
+| | 5     | NEO-M9N SPG 4.04  | |
+| +-------+-------------------+ |
+| | 6     | M10 ROM SPG 5.10  | |
+| +-------+-------------------+ |
+| | 7     | ZED-X20P HPG 2.11 | |
+| +-------+-------------------+ |
+|                               |
++-------------------------------+
 
 
 
@@ -84931,28 +84937,30 @@ SIM\_GPS4\_UBXMDL: UBlox receiver model
 Which u\-blox receiver to simulate\. Simple outputs all messages and ignores configuration\; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output
 
 
-+------------------------------+
-| Values                       |
-+==============================+
-| +-------+------------------+ |
-| | Value | Meaning          | |
-| +=======+==================+ |
-| | 0     | Simple           | |
-| +-------+------------------+ |
-| | 1     | u-blox 6 FW 7.03 | |
-| +-------+------------------+ |
-| | 2     | NEO-M8N FW 2.01  | |
-| +-------+------------------+ |
-| | 3     | M8 ROM CORE 3.01 | |
-| +-------+------------------+ |
-| | 4     | NEO-M8N SPG 3.01 | |
-| +-------+------------------+ |
-| | 5     | NEO-M9N SPG 4.04 | |
-| +-------+------------------+ |
-| | 6     | M10 ROM SPG 5.10 | |
-| +-------+------------------+ |
-|                              |
-+------------------------------+
++-------------------------------+
+| Values                        |
++===============================+
+| +-------+-------------------+ |
+| | Value | Meaning           | |
+| +=======+===================+ |
+| | 0     | Simple            | |
+| +-------+-------------------+ |
+| | 1     | u-blox 6 FW 7.03  | |
+| +-------+-------------------+ |
+| | 2     | NEO-M8N FW 2.01   | |
+| +-------+-------------------+ |
+| | 3     | M8 ROM CORE 3.01  | |
+| +-------+-------------------+ |
+| | 4     | NEO-M8N SPG 3.01  | |
+| +-------+-------------------+ |
+| | 5     | NEO-M9N SPG 4.04  | |
+| +-------+-------------------+ |
+| | 6     | M10 ROM SPG 5.10  | |
+| +-------+-------------------+ |
+| | 7     | ZED-X20P HPG 2.11 | |
+| +-------+-------------------+ |
+|                               |
++-------------------------------+
 
 
 

@@ -4849,6 +4849,725 @@ Param Lockdown enable
 
 
 
+.. _DAA_ACT_FN:
+
+DAA\_ACT\_FN: DAA Activation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Disable the DAA capability or turn it off \(defaults to on\)
+
+
++------------+
+| Range      |
++============+
+| 300 to 308 |
++------------+
+
+
+
+
+.. _DAA_MARGIN_FENCE:
+
+DAA\_MARGIN\_FENCE: fence margin
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Avoidance margin \(m\) kept clear of fences\. 0 \(default\) uses the achievable turn radius \(from AIRSPEED\_CRUISE\/ROLL\_LIMIT\_DEG\) with a safety factor\, falling back to WP\_LOITER\_RAD only if no cruise speed is configured yet\.
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
+.. _DAA_LKAHD_M:
+
+DAA\_LKAHD\_M: avoidance probe distance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+How far along each candidate heading the bendy ruler probes for a clear path\; the second leg probes a further 2x\. Not the detection range \(DAA\_DETECT\_M\) nor the commanded target distance \(DAA\_PLAN\_M\)\. Keep it at least 3x the turn radius\.
+
+
++------------+--------+
+| Range      | Units  |
++============+========+
+| 50 to 2000 | meters |
++------------+--------+
+
+
+
+
+.. _DAA_UPDATE_RATE:
+
+DAA\_UPDATE\_RATE: rate to process avoidance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Avoidance processing rate
+
+
++-------+
+| Units |
++=======+
+| hertz |
++-------+
+
+
+
+
+.. _DAA_MARGIN_CA:
+
+DAA\_MARGIN\_CA: Margin for crewed aircraft
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Avoidance margin for crewed aircraft \(fixed wing\, helicopter\, eVTOL\) over and above the Well Clear margin AVD\_WCLR\_XY
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
+.. _DAA_MARGIN_UAV:
+
+DAA\_MARGIN\_UAV: Margin for UAVs\/Drones
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Avoidance radius for UAV\/drone \(MAVLink sourced\)
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
+.. _DAA_MARGIN_AIS:
+
+DAA\_MARGIN\_AIS: Margin for AIS \(ships\)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Avoidance radius for AIS \(MAVLink sourced\)
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
+.. _DAA_MARGIN_PRX:
+
+DAA\_MARGIN\_PRX: Margin for proximity
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Avoidance radius for obstacles detected by proximity sensors\. Typically pretty close
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
+.. _DAA_BR_RATIO:
+
+DAA\_BR\_RATIO: DAA margin ratio for BendyRuler to change bearing significantly
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+DAA BendyRuler will avoid changing bearing unless ratio of previous margin from obstacle \(or fence\) to present calculated margin is at least this much\.
+
+
++-----------+----------+
+| Increment | Range    |
++===========+==========+
+| 0.1       | 1.1 to 2 |
++-----------+----------+
+
+
+
+
+.. _DAA_BR_ANGLE:
+
+DAA\_BR\_ANGLE: BendyRuler\'s bearing change resistance threshold angle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+DAA BendyRuler will resist changing current bearing if the change in bearing is over this angle
+
+
++-----------+-----------+
+| Increment | Range     |
++===========+===========+
+| 5         | 20 to 180 |
++-----------+-----------+
+
+
+
+
+.. _DAA_AVD_ALT:
+
+DAA\_AVD\_ALT: The altitude to loiter to when avoiding a crewed aircraft
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+DAA will loiter and descent to this altitude if a crewed aircraft is detected within DAA\_MARGIN\_CA of the vehicle\. Ignored if zero \(0\)\.
+
+
++-----------+------------+
+| Increment | Range      |
++===========+============+
+| 5         | 20 to 5000 |
++-----------+------------+
+
+
+
+
+.. _DAA_AVD_ALT_TP:
+
+DAA\_AVD\_ALT\_TP: The frame of the DAA\_AVD\_ALT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+DAA will loiter and descent to DAA\_AVD\_ALT in this frame\.
+
+
++-------+---------------+
+| Value | Meaning       |
++=======+===============+
+| 0     | Absolute      |
++-------+---------------+
+| 1     | Above Home    |
++-------+---------------+
+| 2     | Above Origin  |
++-------+---------------+
+| 3     | Above Terrain |
++-------+---------------+
+
+
+
+
+.. _DAA_AVD_ALERT:
+
+DAA\_AVD\_ALERT: Alert for DAA Avoidance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Alert or not Alert
+
+
++-------+---------+
+| Value | Meaning |
++=======+=========+
+| 0     | None    |
++-------+---------+
+| 1     | Alert   |
++-------+---------+
+
+
+
+
+.. _DAA_AVD_ACTION:
+
+DAA\_AVD\_ACTION: Action for DAA Avoidance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Action for DAA Avoidance
+
+
++-------+---------+
+| Value | Meaning |
++=======+=========+
+| 0     | None    |
++-------+---------+
+| 1     | Avoid   |
++-------+---------+
+
+
+
+
+.. _DAA_MARGIN_ALT:
+
+DAA\_MARGIN\_ALT: Altitude fence avoidance margin
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Proactive buffer \(in metres\) inside the safe altitude\-fence limits at which DAA starts clamping the commanded altitude\. The plane levels off this far inside the safe limit\. If both altitude fences are enabled and their DAA buffers overlap\, the target is clamped to the midpoint of the core safe band with a reduced buffer\. Avoidance kicks in for FENCE\_ALT\_MAX \(FENCE\_TYPE bit 0\) and\/or FENCE\_ALT\_MIN \(FENCE\_TYPE bit 3\) when enabled\.
+
+
++-----------+----------+--------+
+| Increment | Range    | Units  |
++===========+==========+========+
+| 1         | 0 to 200 | meters |
++-----------+----------+--------+
+
+
+
+
+.. _DAA_ALT_HYST_M:
+
+DAA\_ALT\_HYST\_M: Altitude fence avoidance hysteresis
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Hysteresis band \(in metres\) for altitude\-fence avoidance\. Once engaged\, avoidance stays engaged until the altitude is this far back inside the safe band\, preventing chatter as the plane levels off\. Also sets how far before the level\-off altitude the notice is announced\.
+
+
++-----------+----------+--------+
+| Increment | Range    | Units  |
++===========+==========+========+
+| 1         | 0 to 100 | meters |
++-----------+----------+--------+
+
+
+
+
+.. _DAA_ALT_COOL_S:
+
+DAA\_ALT\_COOL\_S: Altitude fence alert cooldown
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Minimum time \(in seconds\) between altitude\-fence \"levelling off\" notices\, so brief re\-engagements do not re\-spam the GCS\. Does not affect the avoidance itself\.
+
+
++-----------+----------+---------+
+| Increment | Range    | Units   |
++===========+==========+=========+
+| 1         | 0 to 120 | seconds |
++-----------+----------+---------+
+
+
+
+
+.. _DAA_HEADING_INC:
+
+DAA\_HEADING\_INC: Avoidance heading search increment
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Angular step \(in degrees\) used when searching candidate headings around the target bearing for a collision\-free path\. Smaller values search more finely but cost more CPU per avoidance update\.
+
+
++-----------+-----------+---------+
+| Increment | Range     | Units   |
++===========+===========+=========+
+| 0.5       | 0.5 to 45 | degrees |
++-----------+-----------+---------+
+
+
+
+
+.. _DAA_WIND_MIN:
+
+DAA\_WIND\_MIN: Minimum wind speed for wind\-aware avoidance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Minimum wind speed \(in m\/s\) above which DAA\_WIND\_MARG widens the fence avoidance margin\. Below this threshold the margin is not widened\. This threshold does not disable wind modelling in the candidate path\.
+
+
++-----------+---------+-------------------+
+| Increment | Range   | Units             |
++===========+=========+===================+
+| 0.5       | 0 to 50 | meters per second |
++-----------+---------+-------------------+
+
+
+
+
+.. _DAA_WIND_MARG:
+
+DAA\_WIND\_MARG: Wind\-scaled fence margin
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Extra fence avoidance margin added per m\/s of wind above DAA\_WIND\_MIN\, in metres per m\/s\. This widens the commanded standoff from fences in wind so the controller has buffer to absorb cross\-track drift and is less likely to be blown across the boundary\. 0 disables wind scaling\. The extra margin is DAA\_WIND\_MARG \* max\(0\, wind\_speed \- DAA\_WIND\_MIN\)\.
+
+
++-----------+---------+---------+
+| Increment | Range   | Units   |
++===========+=========+=========+
+| 0.5       | 0 to 20 | seconds |
++-----------+---------+---------+
+
+
+
+
+.. _DAA_SLEW_DPS:
+
+DAA\_SLEW\_DPS: Avoidance heading slew rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Maximum rate the commanded avoidance heading is allowed to change\, in degrees per second\. Rate\-limiting the avoidance heading smooths the oscillation a per\-cycle bendy ruler produces against moving obstacles and near fences\. Bypassed when the estimated time\-to\-conflict is below DAA\_SLEW\_URG so an urgent manoeuvre keeps full authority\. 0 disables the slew limit\.
+
+
++-----------+---------+--------------------+
+| Increment | Range   | Units              |
++===========+=========+====================+
+| 1         | 0 to 90 | degrees per second |
++-----------+---------+--------------------+
+
+
+
+
+.. _DAA_SLEW_URG:
+
+DAA\_SLEW\_URG: Avoidance slew urgency time
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+If the estimated time\-to\-conflict with a moving obstacle is below this\, the DAA\_SLEW\_DPS heading slew limit is bypassed so the aircraft can turn at full authority\. 0 always applies the slew limit\.
+
+
++-----------+---------+---------+
+| Increment | Range   | Units   |
++===========+=========+=========+
+| 0.5       | 0 to 20 | seconds |
++-----------+---------+---------+
+
+
+
+
+.. _DAA_SIDE_HOLD:
+
+DAA\_SIDE\_HOLD: Avoidance side hold time
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Once a left\/right avoidance side is committed for an obstacle\, the opposite side must be preferred by the bendy ruler for at least this long before the aircraft is allowed to switch sides\. This stops the left\/right flip\-flop when avoiding a moving obstacle\. 0 disables side commitment\.
+
+
++-----------+---------+---------+
+| Increment | Range   | Units   |
++===========+=========+=========+
+| 0.5       | 0 to 10 | seconds |
++-----------+---------+---------+
+
+
+
+
+.. _DAA_CPA_MIN:
+
+DAA\_CPA\_MIN: Avoidance minimum closing speed
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Minimum closing speed for a moving obstacle to be treated as a conflict\. CPA \(Closest Point of Approach\) is the predicted minimum separation between the vehicle and a moving obstacle on their current tracks\. A moving obstacle whose CPA stays beyond the well\-clear distance and which is opening range faster than this is not avoided \(it is leaving\)\. 0 removes the minimum closing speed\; an opening contact whose CPA remains beyond well clear is still ignored\.
+
+
++-----------+---------+-------------------+
+| Increment | Range   | Units             |
++===========+=========+===================+
+| 0.5       | 0 to 20 | meters per second |
++-----------+---------+-------------------+
+
+
+
+
+.. _DAA_TRAP_ACT:
+
+DAA\_TRAP\_ACT: Trapped\-failsafe action
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+What to do when the vehicle has been compromised continuously for DAA\_TRAP\_S \- a fence breach\, or a crewed aircraft inside the AVD\_NMAC\_XY\/Z near\-miss volume\. A hung avoidance \- running but making no progress toward the navigation target for DAA\_HUNG\_ALRT\_S \- is also a compromise\, and unlike the fence branch it is never stood down\. \(Detecting that the bendy ruler is boxed in \- no clear heading at all \- is a different condition and is not implemented yet\.\) 0 disables the trapped\-failsafe entirely \(avoidance just keeps trying\)\. For a VTOL\, QLOITER stops forward flight and hovers \(zero turn radius\) \- the safest way out of a tight space\. If the aircraft has no VTOL \(Q\_ENABLE\=0\) the VTOL options fall back to RTL\. Trapped by a fixed obstacle \(fence\) is sticky \(held until the pilot changes mode\)\; trapped by a moving obstacle \(a crewed aircraft\) recovers to the previous mode after DAA\_TRAP\_CLR\_S\. NOTE\: the fence branch of the trap stands down when the core fence library will refuse a scripted mode change \- i\.e\. FENCE\_ACTION is non\-zero AND FENCE\_OPTIONS bit0 \(DISABLE\_MODE\_CHANGE\) is set \- because in that case the core already handles the breach and the trap\'s mode change would only be denied\. The aircraft near\-miss branch \(AVD\_NMAC\_XY\/Z\) is unaffected\.
+
+
++-------+----------+
+| Value | Meaning  |
++=======+==========+
+| 0     | Disabled |
++-------+----------+
+| 1     | RTL      |
++-------+----------+
+| 2     | QRTL     |
++-------+----------+
+| 3     | QLOITER  |
++-------+----------+
+| 4     | QLAND    |
++-------+----------+
+
+
+
+
+.. _DAA_TRAP_S:
+
+DAA\_TRAP\_S: Trapped\-failsafe trigger time
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+The vehicle must be compromised continuously for this long before the DAA\_TRAP\_ACT failsafe fires \- a fence breach\, or a crewed aircraft inside the AVD\_NMAC\_XY\/Z near\-miss volume\. Prevents transient clutter from triggering it\.
+
+
++-----------+---------+---------+
+| Increment | Range   | Units   |
++===========+=========+=========+
+| 0.5       | 0 to 30 | seconds |
++-----------+---------+---------+
+
+
+
+
+.. _DAA_TRAP_CLR_S:
+
+DAA\_TRAP\_CLR\_S: Trapped\-failsafe recover time
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+For a trap caused by a MOVING obstacle \(a crewed aircraft\)\, resume the previous mode this long after the failsafe fired\, on the assumption the obstacle has passed \(if it has not\, forward flight simply re\-triggers the failsafe\)\. A trap caused by a fixed obstacle \(fence\) is not auto\-recovered \- it is held until the pilot changes mode\.
+
+
++-----------+---------+---------+
+| Increment | Range   | Units   |
++===========+=========+=========+
+| 1         | 1 to 60 | seconds |
++-----------+---------+---------+
+
+
+
+
+.. _DAA_TRAP_ESC_ACT:
+
+DAA\_TRAP\_ESC\_ACT: Trapped\-failsafe escalation action
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Action to take when the DAA\_TRAP\_ACT action would leave the aircraft in the mode it is ALREADY in \(e\.g\. DAA\_TRAP\_ACT\=RTL and the aircraft is already in RTL\) \- commanding the same mode again would do nothing\, so escalate to this instead\. Typically the aircraft is trapped mid\-RTL and this stops it\: QRTL \(VTOL return\, zero turn radius\) or QLOITER \(stop \& hover\) or QLAND\. VTOL actions fall back to RTL if there is no VTOL\. Set equal to DAA\_TRAP\_ACT to disable escalation\.
+
+
++-------+---------+
+| Value | Meaning |
++=======+=========+
+| 1     | RTL     |
++-------+---------+
+| 2     | QRTL    |
++-------+---------+
+| 3     | QLOITER |
++-------+---------+
+| 4     | QLAND   |
++-------+---------+
+
+
+
+
+.. _DAA_STALE_S:
+
+DAA\_STALE\_S: Traffic\-feed staleness warning threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+When avoiding a network\-sourced moving obstacle \(ADS\-B drone\/aircraft\) whose position has not been updated for longer than this\, a \"traffic stale\" warning is sent to the GCS \- the DAA is acting on lagged data\, e\.g\. from an intermittent telemetry\/ADS\-B link\. A \"lost\" warning is sent if such an obstacle then disappears \(pruned\)\. Fences are on\-board and never go stale\. Set to 0 to disable the warnings\.
+
+
++---------+---------+
+| Range   | Units   |
++=========+=========+
+| 0 to 30 | seconds |
++---------+---------+
+
+
+
+
+.. _DAA_MARGIN_CA_Z:
+
+DAA\_MARGIN\_CA\_Z: Vertical margin for crewed aircraft
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Vertical avoidance margin for crewed aircraft\, over and above the Well Clear vertical separation AVD\_WCLR\_Z\. An aircraft is detected \(and the loiter\-to\-altitude triggered\) only while the altitude difference between it and the vehicle is less than AVD\_WCLR\_Z \+ this margin\. This is the vertical mirror of the horizontal DAA\_MARGIN\_CA\.
+
+
++----------+--------+
+| Range    | Units  |
++==========+========+
+| 0 to 200 | meters |
++----------+--------+
+
+
+
+
+.. _DAA_LTR_COOL_S:
+
+DAA\_LTR\_COOL\_S: Aircraft loiter release delay
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Time the aircraft loiter\-to\-altitude is held after the aircraft was last detected\, before releasing back to the mission\. Acts as hysteresis so a briefly\-dropped or laggy ADS\-B feed cannot thrash the vehicle between GUIDED \(loiter\) and AUTO \(mission\)\. Set to 0 to release as soon as the aircraft is no longer detected\.
+
+
++---------+---------+
+| Range   | Units   |
++=========+=========+
+| 0 to 60 | seconds |
++---------+---------+
+
+
+
+
+.. _DAA_HUNG_ALRT_S:
+
+DAA\_HUNG\_ALRT\_S: Hung\-avoidance alert time
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Avoidance is \"hung\" when it has run this long without the vehicle getting closer to its navigation target\, e\.g\. a waypoint inside an exclusion\-fence standoff that can never be reached while avoiding\. Raises a GCS alert\, then counts as a compromise for DAA\_TRAP\_ACT after the DAA\_TRAP\_S dwell\, so with DAA\_TRAP\_ACT\=0 it is alert\-only\. Never stood down by FENCE\_ACTION\/FENCE\_OPTIONS\. Released when the mission moves on or the pilot changes mode\. 0 disables\. Detects lack of PROGRESS\, not being boxed in\.
+
+
++-----------+----------+---------+
+| Increment | Range    | Units   |
++===========+==========+=========+
+| 5         | 0 to 300 | seconds |
++-----------+----------+---------+
+
+
+
+
+.. _DAA_DETECT_M:
+
+DAA\_DETECT\_M: Obstacle detection horizon
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Range within which obstacles are detected and announced\. Shortening it costs detection of fences and drones\. Crewed traffic is unaffected \(AVD\_WCLR\_XY \+ DAA\_MARGIN\_CA\)\. Also sets the altitude\-fence anticipation horizon\.
+
+
++-------------+--------+
+| Range       | Units  |
++=============+========+
+| 100 to 5000 | meters |
++-------------+--------+
+
+
+
+
+.. _DAA_PLAN_M:
+
+DAA\_PLAN\_M: Commanded avoidance target distance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Minimum distance along the chosen bearing at which the commanded avoidance target is placed\. It replaces next\_WP\_loc\, which the mission also uses to decide it has reached or passed the waypoint\, so shortening it makes the mission skip waypoints and costs fence clearance\. Raise before lowering \- see planedaa\.md\.
+
+
++-------------+--------+
+| Range       | Units  |
++=============+========+
+| 100 to 2000 | meters |
++-------------+--------+
+
+
+
+
+.. _DAA_TAU_S:
+
+DAA\_TAU\_S: Crewed\-aircraft modified\-tau conflict threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+A crewed aircraft \(not a drone\/UAV\) is treated as a conflict when its MEASURED range is predicted to cross the AVD\_WCLR\_XY keep\-out radius within this many seconds\, using RTCA DO\-365C style modified\-tau \(time to keep\-out\, not time to zero range\)\. Unlike the drone\/general moving\-obstacle conflict test\, this uses the aircraft\'s actual measured closing trend rather than its instantaneous velocity\, so a contact that is genuinely loitering nearby \- whose instantaneous heading sweeps toward you for part of every circle without it ever really closing \- is not mistaken for an inbound conflict\. An aircraft already inside AVD\_WCLR\_XY is always a conflict regardless of this setting\.
+
+
++-----------+----------+---------+
+| Increment | Range    | Units   |
++===========+==========+=========+
+| 1         | 5 to 120 | seconds |
++-----------+----------+---------+
+
+
+
+
+.. _DAA_NMAC_UAV_XY:
+
+DAA\_NMAC\_UAV\_XY: Drone\/UAV near\-miss horizontal distance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+A drone\/UAV \(UNCREWED\_AIRCRAFT\, not a crewed aircraft\) closer than this horizontally is a genuine near\-miss and\, together with DAA\_NMAC\_UAV\_Z\, is treated as a compromise by the trapped\-failsafe \(DAA\_TRAP\_ACT\) the same way a crewed\-aircraft near\-miss is \- regardless of whether ordinary avoidance or the aircraft loiter currently has control of the vehicle\. This is the hard danger line\, not the normal drone avoidance standoff \(AVD\_UAV\_XY\/DAA\_MARGIN\_UAV\) that ordinary avoidance tries to stay outside of \- it should be smaller than both\.
+
+
++-----------+----------+--------+
+| Increment | Range    | Units  |
++===========+==========+========+
+| 1         | 5 to 100 | meters |
++-----------+----------+--------+
+
+
+
+
+.. _DAA_NMAC_UAV_Z:
+
+DAA\_NMAC\_UAV\_Z: Drone\/UAV near\-miss vertical distance
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+The vertical companion to DAA\_NMAC\_UAV\_XY\.
+
+
++-----------+---------+--------+
+| Increment | Range   | Units  |
++===========+=========+========+
+| 1         | 2 to 50 | meters |
++-----------+---------+--------+
+
+
+
+
+.. _DAA_LTR_SIDE:
+
+DAA\_LTR\_SIDE: Aircraft loiter turn\-away quadrant
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+The aircraft loiter\-to\-altitude \(DAA\_AVD\_ALT\) normally always loiters right\. If the crewed aircraft that triggered it lies within this many degrees to the right of straight ahead \(0 \= dead ahead\)\, loiter LEFT instead\, so the turn banks away from the aircraft\'s side rather than across its nose\. 0 disables this and always loiters right\.
+
+
++-----------+----------+---------+
+| Increment | Range    | Units   |
++===========+==========+=========+
+| 5         | 0 to 180 | degrees |
++-----------+----------+---------+
+
+
+
+
 .. _AEROM_ANG_ACCEL:
 
 AEROM\_ANG\_ACCEL: Angular acceleration limit
@@ -11270,7 +11989,7 @@ BATT2\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-----+---------+
@@ -12462,7 +13181,7 @@ BATT3\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-----+---------+
@@ -13654,7 +14373,7 @@ BATT4\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-----+---------+
@@ -14846,7 +15565,7 @@ BATT5\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-----+---------+
@@ -16038,7 +16757,7 @@ BATT6\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-----+---------+
@@ -17230,7 +17949,7 @@ BATT7\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-----+---------+
@@ -18422,7 +19141,7 @@ BATT8\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-----+---------+
@@ -19614,7 +20333,7 @@ BATT9\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-----+---------+
@@ -20806,7 +21525,7 @@ BATTA\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-----+---------+
@@ -21998,7 +22717,7 @@ BATTB\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-----+---------+
@@ -23190,7 +23909,7 @@ BATTC\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-----+---------+
@@ -24382,7 +25101,7 @@ BATTD\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-----+---------+
@@ -25574,7 +26293,7 @@ BATTE\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-----+---------+
@@ -26766,7 +27485,7 @@ BATTF\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-----+---------+
@@ -27958,7 +28677,7 @@ BATTG\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-----+---------+
@@ -29150,7 +29869,7 @@ BATT\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-----+---------+
@@ -41161,6 +41880,25 @@ Offset to apply to ESC numbers when reporting as ESC\_TELEMETRY packets over MAV
 
 
 
+.. _ESC_TLM_LOG_RATE:
+
+ESC\_TLM\_LOG\_RATE: ESC Telemetry logging rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Rate at which ESC telemetry is written to the onboard log as ESC\, ESCX and EDT2 messages\. An ESC is only logged when it has new data\. The telemetry is checked at least 100 times a second\, or every main loop when SCHED\_LOOP\_RATE is lower than 100\, in which case the most it can log is SCHED\_LOOP\_RATE\. Lower values reduce the log size\. 0 disables ESC telemetry logging\.
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 0 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
 
 .. _parameters_FENCE_:
 
@@ -41620,7 +42358,7 @@ FFT\_HMNC\_PEAK: FFT harmonic peak target
 
 | *Note: This parameter is for advanced users*
 
-The FFT harmonic peak target that should be returned by FTN1\.PkAvg\. The resulting value will be used by the harmonic notch if configured to track the FFT frequency\. By default the appropriate peak is auto\-detected based on the harmonic fit between peaks and the energy\-weighted average frequency on roll on pitch is used\. Setting this to 1 will always target the highest energy peak\. Setting this to 2 will target the highest energy peak that is lower in frequency than the highest energy peak\. Setting this to 3 will target the highest energy peak that is higher in frequency than the highest energy peak\. Setting this to 4 will target the highest energy peak on the roll axis only and only the roll frequency will be used \(some vehicles have a much more pronounced peak on roll\)\. Setting this to 5 will target the highest energy peak on the pitch axis only and only the pitch frequency will be used \(some vehicles have a much more pronounced peak on roll\)\.
+The FFT harmonic peak target that should be returned by FTN1\.PkAvg\. The resulting value will be used by the harmonic notch if configured to track the FFT frequency\. By default the appropriate peak is auto\-detected based on the harmonic fit between peaks and the energy\-weighted average frequency on roll and pitch is used\. Setting this to 1 will always target the highest energy peak\. Setting this to 2 will target the highest energy peak that is lower in frequency than the highest energy peak\. Setting this to 3 will target the highest energy peak that is higher in frequency than the highest energy peak\. Setting this to 4 will target the highest energy peak on the roll axis only and only the roll frequency will be used \(some vehicles have a much more pronounced peak on roll\)\. Setting this to 5 will target the highest energy peak on the pitch axis only and only the pitch frequency will be used \(some vehicles have a much more pronounced peak on pitch\)\.
 
 
 +-------+--------------------------+

@@ -9173,7 +9173,7 @@ AVD\_W\_DIST\_Z: Distance Warn Z
 
 | *Note: This parameter is for advanced users*
 
-Closest allowed projected distance before BEHAVIOUR\_W is undertaken
+Closest allowed projected distance before W\_ACTION is undertaken
 
 
 +--------+
@@ -9192,7 +9192,7 @@ AVD\_F\_DIST\_Z: Distance Fail Z
 
 | *Note: This parameter is for advanced users*
 
-Closest allowed projected distance before BEHAVIOUR\_F is undertaken
+Closest allowed projected distance before F\_ACTION is undertaken
 
 
 +--------+
@@ -9219,6 +9219,192 @@ Minimum AMSL \(above mean sea level\) altitude for ADS\-B avoidance\. If the veh
 +========+
 | meters |
 +--------+
+
+
+
+
+.. _AVD_WCLR_XY:
+
+AVD\_WCLR\_XY: Well Clear horizontal
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Horizontal \"Well Clear\" separation kept from crewed aircraft during ADS\-B avoidance \(metres\)\. The ASTM F3442M\-23 standard specifies 2000 ft \(\= 609\.6 m\)\.
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
+.. _AVD_WCLR_Z:
+
+AVD\_WCLR\_Z: Well Clear vertical
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Vertical \"Well Clear\" separation kept from crewed aircraft during ADS\-B avoidance \(metres\)\. The ASTM F3442M\-23 standard specifies 250 ft \(\= 76\.2 m\)\.
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
+.. _AVD_NMAC_XY:
+
+AVD\_NMAC\_XY: Near Miss Horizontal
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Horizontal Near Mid\-Air Collision \(NMAC\) separation from crewed aircraft\; closer than this counts as a near miss \(metres\, 0 disables\)\. The FAA figure is 500 ft \(\= 152\.4 m\)\.
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
+.. _AVD_NMAC_Z:
+
+AVD\_NMAC\_Z: Near Miss Vertical
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Vertical Near Mid\-Air Collision \(NMAC\) separation from crewed aircraft\; within this counts as a near miss \(metres\, 0 disables\)\. The RTCA DO\-396 \(TCAS MOPS\) figure is 100 ft \(\= 30\.48 m\)\.
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
+.. _AVD_UAV_XY:
+
+AVD\_UAV\_XY: UAV horizontal avoidance radius
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Horizontal keep\-out radius used for ADS\-B drones\/UAVs \(emitter type UAV\)\. This is the drone equivalent of the crewed\-aircraft Well Clear AVD\_WCLR\_XY\, and is normally smaller since drone\-to\-drone separation needs are lower\.
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
+.. _AVD_UAV_Z:
+
+AVD\_UAV\_Z: UAV vertical avoidance gate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Vertical separation gate used for ADS\-B drones\/UAVs \(emitter type UAV\)\. Obstacles more than this far above or below are ignored\. This is the drone equivalent of the crewed\-aircraft Well Clear AVD\_WCLR\_Z\, and is normally small because drones are vertically thin\.
+
+
++--------+
+| Units  |
++========+
+| meters |
++--------+
+
+
+
+
+.. _AVD_GND_ALT:
+
+AVD\_GND\_ALT: Ground contact altitude threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+A traffic contact \(crewed aircraft or MAVLink drone\) is excluded from avoidance while its own altitude is within this many metres of home AND its groundspeed is below AVD\_GND\_SPD \- this is a parked\-contact heuristic\, not confirmation that the contact is on the ground\. A hovering or slowly moving aircraft within the altitude band is also excluded\. It is broadcasting an airborne emitter type is not evidence it is actually in the air\: a real aircraft on the ground near a runway keeps reporting the same category it uses in flight\, and is\_ground\_vehicle\(\) only catches genuine ADS\-B surface\-vehicle categories\. Without this\, a stationary contact can win the single\-closest\-obstacle search purely because its keep\-out radius \(AVD\_WCLR\_XY for a crewed aircraft\) is larger than a real threat\'s\, masking that threat entirely\. 0 disables the exemption \(every contact is always a potential threat\)\.
+
+
++---------+--------+
+| Range   | Units  |
++=========+========+
+| 0 to 20 | meters |
++---------+--------+
+
+
+
+
+.. _AVD_GND_SPD:
+
+AVD\_GND\_SPD: Ground contact groundspeed threshold
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+The groundspeed half of the AVD\_GND\_ALT ground\-contact exclusion \- see that parameter\. Both conditions must hold \(low altitude AND low groundspeed\) for a contact to be excluded\. A hovering or slowly moving aircraft satisfying both conditions is also excluded\.
+
+
++---------+-------------------+
+| Range   | Units             |
++=========+===================+
+| 0 to 10 | meters per second |
++---------+-------------------+
+
+
+
+
+.. _AVD_GND_DEB:
+
+AVD\_GND\_DEB: Ground contact debounce time
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Once a contact is excluded by AVD\_GND\_ALT\/AVD\_GND\_SPD as parked\, a sample reading faster than AVD\_GND\_SPD must persist continuously for this long before the exclusion is withdrawn \- a single instantaneous fast sample does not immediately conclude it is now moving\. A contact\'s reported groundspeed can read as nonzero for a few seconds purely from GPS noise while its own GPS fix is still acquiring or settling\, with no transponder\-side filtering of that noise on a raw MAVLink contact the way a real ADS\-B squawk often has\. 0 disables the debounce \(any single fast sample withdraws the exclusion immediately\, the prior behaviour\)\. Trade\-off\: a contact that genuinely starts moving is still treated as parked for up to this long afterwards\, bounded by AVD\_GND\_ALT also excluding it once it climbs or moves far enough away regardless\.
+
+
++---------+---------+
+| Range   | Units   |
++=========+=========+
+| 0 to 10 | seconds |
++---------+---------+
+
+
+
+
+.. _AVD_LOC_STALE_S:
+
+AVD\_LOC\_STALE\_S: Stale location detection time
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+A traffic contact\'s reported position \(lat\/lng\/alt together\) unchanged for this long\, whether or not messages are still arriving\, is treated as a frozen feed rather than live tracking and is excluded from avoidance entirely until it starts updating again\. A genuine GPS\/EKF\-sourced position always carries some sample\-to\-sample jitter\; an exact\, sustained repeat is not that\. Applies only to a direct\-MAVLink \(GLOBAL\_POSITION\_INT\) contact\, never to an ADS\-B one\: ADS\-B\'s own timestamp is back\-dated at arrival by the message\'s reported age\, which this check cannot tell apart from a genuinely frozen feed\. 0 disables stale detection \(a contact is trusted regardless of how long its position has been unchanged\)\.
+
+
++---------+---------+
+| Range   | Units   |
++=========+=========+
+| 0 to 10 | seconds |
++---------+---------+
 
 
 
@@ -11172,7 +11358,7 @@ BATT2\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -12408,7 +12594,7 @@ BATT3\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -13644,7 +13830,7 @@ BATT4\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -14880,7 +15066,7 @@ BATT5\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -16116,7 +16302,7 @@ BATT6\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -17352,7 +17538,7 @@ BATT7\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -18588,7 +18774,7 @@ BATT8\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -19824,7 +20010,7 @@ BATT9\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -21060,7 +21246,7 @@ BATTA\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -22296,7 +22482,7 @@ BATTB\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -23532,7 +23718,7 @@ BATTC\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -24768,7 +24954,7 @@ BATTD\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -26004,7 +26190,7 @@ BATTE\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -27240,7 +27426,7 @@ BATTF\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -28476,7 +28662,7 @@ BATTG\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -29712,7 +29898,7 @@ BATT\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -45911,6 +46097,25 @@ Offset to apply to ESC numbers when reporting as ESC\_TELEMETRY packets over MAV
 
 
 
+.. _ESC_TLM_LOG_RATE:
+
+ESC\_TLM\_LOG\_RATE: ESC Telemetry logging rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Rate at which ESC telemetry is written to the onboard log as ESC\, ESCX and EDT2 messages\. An ESC is only logged when it has new data\. The telemetry is checked at least 100 times a second\, or every main loop when SCHED\_LOOP\_RATE is lower than 100\, in which case the most it can log is SCHED\_LOOP\_RATE\. Lower values reduce the log size\. 0 disables ESC telemetry logging\.
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 0 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
 
 .. _parameters_FENCE_:
 
@@ -46502,7 +46707,7 @@ FFT\_HMNC\_PEAK: FFT harmonic peak target
 
 | *Note: This parameter is for advanced users*
 
-The FFT harmonic peak target that should be returned by FTN1\.PkAvg\. The resulting value will be used by the harmonic notch if configured to track the FFT frequency\. By default the appropriate peak is auto\-detected based on the harmonic fit between peaks and the energy\-weighted average frequency on roll on pitch is used\. Setting this to 1 will always target the highest energy peak\. Setting this to 2 will target the highest energy peak that is lower in frequency than the highest energy peak\. Setting this to 3 will target the highest energy peak that is higher in frequency than the highest energy peak\. Setting this to 4 will target the highest energy peak on the roll axis only and only the roll frequency will be used \(some vehicles have a much more pronounced peak on roll\)\. Setting this to 5 will target the highest energy peak on the pitch axis only and only the pitch frequency will be used \(some vehicles have a much more pronounced peak on roll\)\.
+The FFT harmonic peak target that should be returned by FTN1\.PkAvg\. The resulting value will be used by the harmonic notch if configured to track the FFT frequency\. By default the appropriate peak is auto\-detected based on the harmonic fit between peaks and the energy\-weighted average frequency on roll and pitch is used\. Setting this to 1 will always target the highest energy peak\. Setting this to 2 will target the highest energy peak that is lower in frequency than the highest energy peak\. Setting this to 3 will target the highest energy peak that is higher in frequency than the highest energy peak\. Setting this to 4 will target the highest energy peak on the roll axis only and only the roll frequency will be used \(some vehicles have a much more pronounced peak on roll\)\. Setting this to 5 will target the highest energy peak on the pitch axis only and only the pitch frequency will be used \(some vehicles have a much more pronounced peak on pitch\)\.
 
 
 +--------------------------------------+
@@ -57955,7 +58160,7 @@ LOIT\_OPTIONS: Loiter mode options
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Enables optional Loiter mode behaviors
+Enables optional Loiter mode behaviors\. Coordinated turns are reduced when the pilot request uses the full lean angle\.
 
 
 +------------------------------------+
@@ -131619,28 +131824,30 @@ SIM\_GPS1\_UBXMDL: UBlox receiver model
 Which u\-blox receiver to simulate\. Simple outputs all messages and ignores configuration\; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output
 
 
-+------------------------------+
-| Values                       |
-+==============================+
-| +-------+------------------+ |
-| | Value | Meaning          | |
-| +=======+==================+ |
-| | 0     | Simple           | |
-| +-------+------------------+ |
-| | 1     | u-blox 6 FW 7.03 | |
-| +-------+------------------+ |
-| | 2     | NEO-M8N FW 2.01  | |
-| +-------+------------------+ |
-| | 3     | M8 ROM CORE 3.01 | |
-| +-------+------------------+ |
-| | 4     | NEO-M8N SPG 3.01 | |
-| +-------+------------------+ |
-| | 5     | NEO-M9N SPG 4.04 | |
-| +-------+------------------+ |
-| | 6     | M10 ROM SPG 5.10 | |
-| +-------+------------------+ |
-|                              |
-+------------------------------+
++-------------------------------+
+| Values                        |
++===============================+
+| +-------+-------------------+ |
+| | Value | Meaning           | |
+| +=======+===================+ |
+| | 0     | Simple            | |
+| +-------+-------------------+ |
+| | 1     | u-blox 6 FW 7.03  | |
+| +-------+-------------------+ |
+| | 2     | NEO-M8N FW 2.01   | |
+| +-------+-------------------+ |
+| | 3     | M8 ROM CORE 3.01  | |
+| +-------+-------------------+ |
+| | 4     | NEO-M8N SPG 3.01  | |
+| +-------+-------------------+ |
+| | 5     | NEO-M9N SPG 4.04  | |
+| +-------+-------------------+ |
+| | 6     | M10 ROM SPG 5.10  | |
+| +-------+-------------------+ |
+| | 7     | ZED-X20P HPG 2.11 | |
+| +-------+-------------------+ |
+|                               |
++-------------------------------+
 
 
 
@@ -132191,28 +132398,30 @@ SIM\_GPS2\_UBXMDL: UBlox receiver model
 Which u\-blox receiver to simulate\. Simple outputs all messages and ignores configuration\; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output
 
 
-+------------------------------+
-| Values                       |
-+==============================+
-| +-------+------------------+ |
-| | Value | Meaning          | |
-| +=======+==================+ |
-| | 0     | Simple           | |
-| +-------+------------------+ |
-| | 1     | u-blox 6 FW 7.03 | |
-| +-------+------------------+ |
-| | 2     | NEO-M8N FW 2.01  | |
-| +-------+------------------+ |
-| | 3     | M8 ROM CORE 3.01 | |
-| +-------+------------------+ |
-| | 4     | NEO-M8N SPG 3.01 | |
-| +-------+------------------+ |
-| | 5     | NEO-M9N SPG 4.04 | |
-| +-------+------------------+ |
-| | 6     | M10 ROM SPG 5.10 | |
-| +-------+------------------+ |
-|                              |
-+------------------------------+
++-------------------------------+
+| Values                        |
++===============================+
+| +-------+-------------------+ |
+| | Value | Meaning           | |
+| +=======+===================+ |
+| | 0     | Simple            | |
+| +-------+-------------------+ |
+| | 1     | u-blox 6 FW 7.03  | |
+| +-------+-------------------+ |
+| | 2     | NEO-M8N FW 2.01   | |
+| +-------+-------------------+ |
+| | 3     | M8 ROM CORE 3.01  | |
+| +-------+-------------------+ |
+| | 4     | NEO-M8N SPG 3.01  | |
+| +-------+-------------------+ |
+| | 5     | NEO-M9N SPG 4.04  | |
+| +-------+-------------------+ |
+| | 6     | M10 ROM SPG 5.10  | |
+| +-------+-------------------+ |
+| | 7     | ZED-X20P HPG 2.11 | |
+| +-------+-------------------+ |
+|                               |
++-------------------------------+
 
 
 
@@ -132763,28 +132972,30 @@ SIM\_GPS3\_UBXMDL: UBlox receiver model
 Which u\-blox receiver to simulate\. Simple outputs all messages and ignores configuration\; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output
 
 
-+------------------------------+
-| Values                       |
-+==============================+
-| +-------+------------------+ |
-| | Value | Meaning          | |
-| +=======+==================+ |
-| | 0     | Simple           | |
-| +-------+------------------+ |
-| | 1     | u-blox 6 FW 7.03 | |
-| +-------+------------------+ |
-| | 2     | NEO-M8N FW 2.01  | |
-| +-------+------------------+ |
-| | 3     | M8 ROM CORE 3.01 | |
-| +-------+------------------+ |
-| | 4     | NEO-M8N SPG 3.01 | |
-| +-------+------------------+ |
-| | 5     | NEO-M9N SPG 4.04 | |
-| +-------+------------------+ |
-| | 6     | M10 ROM SPG 5.10 | |
-| +-------+------------------+ |
-|                              |
-+------------------------------+
++-------------------------------+
+| Values                        |
++===============================+
+| +-------+-------------------+ |
+| | Value | Meaning           | |
+| +=======+===================+ |
+| | 0     | Simple            | |
+| +-------+-------------------+ |
+| | 1     | u-blox 6 FW 7.03  | |
+| +-------+-------------------+ |
+| | 2     | NEO-M8N FW 2.01   | |
+| +-------+-------------------+ |
+| | 3     | M8 ROM CORE 3.01  | |
+| +-------+-------------------+ |
+| | 4     | NEO-M8N SPG 3.01  | |
+| +-------+-------------------+ |
+| | 5     | NEO-M9N SPG 4.04  | |
+| +-------+-------------------+ |
+| | 6     | M10 ROM SPG 5.10  | |
+| +-------+-------------------+ |
+| | 7     | ZED-X20P HPG 2.11 | |
+| +-------+-------------------+ |
+|                               |
++-------------------------------+
 
 
 
@@ -133335,28 +133546,30 @@ SIM\_GPS4\_UBXMDL: UBlox receiver model
 Which u\-blox receiver to simulate\. Simple outputs all messages and ignores configuration\; the other models are configured by the autopilot through the UBX configuration protocol and output only the messages they have been configured to output
 
 
-+------------------------------+
-| Values                       |
-+==============================+
-| +-------+------------------+ |
-| | Value | Meaning          | |
-| +=======+==================+ |
-| | 0     | Simple           | |
-| +-------+------------------+ |
-| | 1     | u-blox 6 FW 7.03 | |
-| +-------+------------------+ |
-| | 2     | NEO-M8N FW 2.01  | |
-| +-------+------------------+ |
-| | 3     | M8 ROM CORE 3.01 | |
-| +-------+------------------+ |
-| | 4     | NEO-M8N SPG 3.01 | |
-| +-------+------------------+ |
-| | 5     | NEO-M9N SPG 4.04 | |
-| +-------+------------------+ |
-| | 6     | M10 ROM SPG 5.10 | |
-| +-------+------------------+ |
-|                              |
-+------------------------------+
++-------------------------------+
+| Values                        |
++===============================+
+| +-------+-------------------+ |
+| | Value | Meaning           | |
+| +=======+===================+ |
+| | 0     | Simple            | |
+| +-------+-------------------+ |
+| | 1     | u-blox 6 FW 7.03  | |
+| +-------+-------------------+ |
+| | 2     | NEO-M8N FW 2.01   | |
+| +-------+-------------------+ |
+| | 3     | M8 ROM CORE 3.01  | |
+| +-------+-------------------+ |
+| | 4     | NEO-M8N SPG 3.01  | |
+| +-------+-------------------+ |
+| | 5     | NEO-M9N SPG 4.04  | |
+| +-------+-------------------+ |
+| | 6     | M10 ROM SPG 5.10  | |
+| +-------+-------------------+ |
+| | 7     | ZED-X20P HPG 2.11 | |
+| +-------+-------------------+ |
+|                               |
++-------------------------------+
 
 
 

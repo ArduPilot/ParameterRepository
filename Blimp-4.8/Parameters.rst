@@ -5331,7 +5331,7 @@ BATT2\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -6543,7 +6543,7 @@ BATT3\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -7755,7 +7755,7 @@ BATT4\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -8967,7 +8967,7 @@ BATT5\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -10179,7 +10179,7 @@ BATT6\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -11391,7 +11391,7 @@ BATT7\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -12603,7 +12603,7 @@ BATT8\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -13815,7 +13815,7 @@ BATT9\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -15027,7 +15027,7 @@ BATTA\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -16239,7 +16239,7 @@ BATTB\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -17451,7 +17451,7 @@ BATTC\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -18663,7 +18663,7 @@ BATTD\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -19875,7 +19875,7 @@ BATTE\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -21087,7 +21087,7 @@ BATTF\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -22299,7 +22299,7 @@ BATTG\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -23511,7 +23511,7 @@ BATT\_ESC\_MASK: ESC mask
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-If 0 all connected ESCs will be used\. If non\-zero\, only those selected in will be used\.
+If 0 all connected ESCs will be used\. If non\-zero\, only those selected in the bitmask will be used\.
 
 
 +-------------------+
@@ -36145,6 +36145,25 @@ Offset to apply to ESC numbers when reporting as ESC\_TELEMETRY packets over MAV
 
 
 
+.. _ESC_TLM_LOG_RATE:
+
+ESC\_TLM\_LOG\_RATE: ESC Telemetry logging rate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+| *Note: This parameter is for advanced users*
+
+Rate at which ESC telemetry is written to the onboard log as ESC\, ESCX and EDT2 messages\. An ESC is only logged when it has new data\. The telemetry is checked at least 100 times a second\, or every main loop when SCHED\_LOOP\_RATE is lower than 100\, in which case the most it can log is SCHED\_LOOP\_RATE\. Lower values reduce the log size\. 0 disables ESC telemetry logging\.
+
+
++-----------+----------+-------+
+| Increment | Range    | Units |
++===========+==========+=======+
+| 1         | 0 to 100 | hertz |
++-----------+----------+-------+
+
+
+
+
 
 .. _parameters_FENCE_:
 
@@ -36634,7 +36653,7 @@ FFT\_HMNC\_PEAK: FFT harmonic peak target
 
 | *Note: This parameter is for advanced users*
 
-The FFT harmonic peak target that should be returned by FTN1\.PkAvg\. The resulting value will be used by the harmonic notch if configured to track the FFT frequency\. By default the appropriate peak is auto\-detected based on the harmonic fit between peaks and the energy\-weighted average frequency on roll on pitch is used\. Setting this to 1 will always target the highest energy peak\. Setting this to 2 will target the highest energy peak that is lower in frequency than the highest energy peak\. Setting this to 3 will target the highest energy peak that is higher in frequency than the highest energy peak\. Setting this to 4 will target the highest energy peak on the roll axis only and only the roll frequency will be used \(some vehicles have a much more pronounced peak on roll\)\. Setting this to 5 will target the highest energy peak on the pitch axis only and only the pitch frequency will be used \(some vehicles have a much more pronounced peak on roll\)\.
+The FFT harmonic peak target that should be returned by FTN1\.PkAvg\. The resulting value will be used by the harmonic notch if configured to track the FFT frequency\. By default the appropriate peak is auto\-detected based on the harmonic fit between peaks and the energy\-weighted average frequency on roll and pitch is used\. Setting this to 1 will always target the highest energy peak\. Setting this to 2 will target the highest energy peak that is lower in frequency than the highest energy peak\. Setting this to 3 will target the highest energy peak that is higher in frequency than the highest energy peak\. Setting this to 4 will target the highest energy peak on the roll axis only and only the roll frequency will be used \(some vehicles have a much more pronounced peak on roll\)\. Setting this to 5 will target the highest energy peak on the pitch axis only and only the pitch frequency will be used \(some vehicles have a much more pronounced peak on pitch\)\.
 
 
 +--------------------------------------+
