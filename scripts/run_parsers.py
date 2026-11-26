@@ -225,8 +225,8 @@ class Groundskeeper:
             # The parser expects to be run from its normal place in the repository
             script_folder = f'{self.repository_path}/Tools/scripts/'
             script_file = script_folder + 'mavlink_parse.py'
-            # Stream groups were added in 4.1, and removed in 4.7, so only include them when relevant
-            stream_groups = 'g' if (4, 0) < (tag_major_version, tag_minor_version) < (4, 7) else ''
+            # Stream groups were added in 4.1 and moved to a shared library file in 4.7, which the parser also reads
+            stream_groups = 'g' if (4, 0) < (tag_major_version, tag_minor_version) else ''
             try:
                 shutil.copy(f'{self.temp_folder}/mavlink_parse.py', script_file)
                 subprocess.run(['python', script_file, f'-c{stream_groups}uq', '--header', 'ardupilot_wiki', '--format', 'rst',
